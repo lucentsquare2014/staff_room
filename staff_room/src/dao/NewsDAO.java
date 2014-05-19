@@ -1,8 +1,6 @@
 package dao;
 
-/**
- * DBとやりとりをするクラス
- */
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -12,7 +10,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class newsDAO {
+/**
+ * DBとやりとりをするクラス
+ */
+public class NewsDAO {
 
 	/* newsDBに接続するメソッド
 	 * @return 	データベースとやりとりするコネクションクラス
@@ -23,12 +24,12 @@ public class newsDAO {
 			// JDBCドライバの読み取り 
 			Class.forName("org.postgresql.Driver");
 			// 各種設定 
-			String user = "postgres";
-			String pass = "jhyw79pg";
+			String user = "lsc2014";
+			String pass = "admin";
 
 			// データベース接続 
 			con = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/NEO-NEO", user, pass);
+					"jdbc:postgresql://localhost:5432/NewsDB", user, pass);
 			System.out.println("接続成功");
 		} catch (Exception e) {
 			System.out.println("例外発生：" + e);
@@ -72,9 +73,9 @@ public class newsDAO {
 					+ Newsdata.get("update");
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			int num = stmt.executeUpdate(sql);
+			closeNewsDB(con);
 		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 
@@ -95,9 +96,9 @@ public class newsDAO {
 					+ Newsdata.get("newsID");
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			int num = stmt.executeUpdate(sql);
+			closeNewsDB(con);
 		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 
@@ -112,9 +113,9 @@ public class newsDAO {
 			String sql = "DELETE news WHERE newsID=" + id;
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			int num = stmt.executeUpdate(sql);
+			closeNewsDB(con);
 		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 
@@ -155,8 +156,7 @@ public class newsDAO {
 			}
 			closeNewsDB(con);
 		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			System.out.println(e);
 		}
 		return list;
 	}
