@@ -1,5 +1,8 @@
 package dao;
 
+/**
+ * DBとやりとりをするクラス
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,17 +14,19 @@ import java.util.HashMap;
 
 public class newsDAO {
 
-	// newsDBに接続するメソッド
-	public static Connection openNewsDB() {
+	/* newsDBに接続するメソッド
+	 * @return 	データベースとやりとりするコネクションクラス
+	 */
+	private static Connection openNewsDB() {
 		Connection con = null;
 		try {
-			// JDBCドライバの読み取り
+			// JDBCドライバの読み取り 
 			Class.forName("org.postgresql.Driver");
-			// 各種設定
+			// 各種設定 
 			String user = "postgres";
 			String pass = "jhyw79pg";
 
-			// データベース接続
+			// データベース接続 
 			con = DriverManager.getConnection(
 					"jdbc:postgresql://localhost:5432/NEO-NEO", user, pass);
 			System.out.println("接続成功");
@@ -31,8 +36,8 @@ public class newsDAO {
 		return con;
 	}
 
-	// newsDBへの接続を切断するメソッド
-	public static void closeNewsDB(Connection con) {
+	/* newsDBへの接続を切断するメソッド */
+	private static void closeNewsDB(Connection con) {
 		try {
 			// データベース切断
 			con.close();
@@ -42,7 +47,7 @@ public class newsDAO {
 		}
 	}
 
-	// newsDBに新規に書き込むメソッド
+	/* newsDBに新規に書き込むメソッド */
 	public void writeNews(HashMap<String, String> Newsdata) {
 		Connection con = openNewsDB();
 		// ステートメントを作成
@@ -73,7 +78,7 @@ public class newsDAO {
 		}
 	}
 
-	// newsDBにある記事を編集するメソッド
+	/* newsDBにある記事を編集するメソッド */
 	public void updateNews(HashMap<String, String> Newsdata) {
 		Connection con = openNewsDB();
 		// ステートメントを作成
@@ -96,7 +101,7 @@ public class newsDAO {
 		}
 	}
 
-	// 記事を削除するメソッド
+	/* 記事を削除するメソッド*/
 	public void deleteNews(String id) {
 		Connection con = openNewsDB();
 		// ステートメントを作成
@@ -114,12 +119,14 @@ public class newsDAO {
 	}
 
 	// 例：getNews("select * from newsDB");
-	// テーブルのデータを参照し、listに格納して返すメソッド
+	/* テーブルのデータを参照し、listに格納して返すメソッド
+	 * @return ArrayList<HashMap<String,String>>型の検索結果を格納したリスト
+	 */
 	public ArrayList<HashMap<String, String>> getNews(String sql) {
 		Connection con = openNewsDB();
 		// ステートメントを作成
 		Statement stmt;
-		// データ格納
+		// データ格納用のリスト
 		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 
 		try {
