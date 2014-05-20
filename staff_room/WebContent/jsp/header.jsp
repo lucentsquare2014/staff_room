@@ -12,6 +12,7 @@
 		<img src="Logo.png" alt="会社のページに戻る" width="30" height="30"></img>
 	</a>
 	<ul class="uk-navbar-nav">
+	<li class="header"><a href="./top.jsp">TOP</a></li>
 		<li class="uk-parent header" data-uk-dropdown>
 			<a href="">連絡<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
@@ -41,16 +42,14 @@
 		</li>
 		<li class="header"><a href="">申請書類</a></li>
 		<li class="header"><a href="">マニュアル</a></li>
-		<li class="header"><a href="">Mail</a></li>
-		<li class="header"><a href="">掲示板</a></li>
+		<li class="header"><a href="http://www.lucentsquare.co.jp/staff/mail_link.html">Mail</a></li>
+		<li class="header"><a href="http://www.lucentsquare.co.jp/staff/members/joyful/joyful.cgi">掲示板</a></li>
 		<li class="uk-parent header" data-uk-dropdown>
 			<a href="">Photo<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
-					<li><a href="">BBQ写真館</a></li>
-					<li><a href="">創立２５周年記念</a></li>
-					<li class="uk-nav-divider"></li>
-					<li><a href="">管理-Photo</a></li>
+					<li><a href="http://www.lucentsquare.co.jp/staff/bbq_index.html">BBQ写真館</a></li>
+					<li><a href="http://www.lucentsquare.co.jp/staff/25%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5%E8%A1%8C%E4%BA%8B%E6%A1%88%E5%86%85/25year_index.html">創立２５周年記念</a></li>
 			</ul>
 			</div>
 		</li>
@@ -58,9 +57,9 @@
 			<a href="">etc<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
-					<li><a href="">GPS</a></li>
-					<li><a href="">e-talent</a></li>
-					<li><a href="">Advance meeting</a></li>
+					<li><a href="http://www.lucentsquare.co.jp/gps/pc/">GPS</a></li>
+					<li><a href="http://www.lucentsquare.co.jp:8080/etalent5_27/main.jsp">e-talent</a></li>
+					<li><a href="http://www.lucentsquare.co.jp/staff/WorkingGroup/Advance_WorkingGroup.html">Advance meeting</a></li>
 				</ul>
 			</div>
 		</li>
