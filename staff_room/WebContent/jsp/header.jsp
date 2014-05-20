@@ -6,6 +6,7 @@
  		position: fixed;
  		opacity: 0.8;
  	}
+ 
 </style>
 <nav id="header" class="uk-navbar">
 	<a href="http://www.lucentsquare.co.jp/" class="uk-navbar-brand">

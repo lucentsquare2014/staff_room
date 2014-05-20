@@ -11,7 +11,7 @@ public class ShainDB {
 	    Class.forName("org.postgresql.Driver");
 	    //　各種設定
 	    String user = "postgres";
-	    String pass = "";
+	    String pass = "Postgresql";
 
 	    //　データベース接続 
 	    con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/staff_room",user,pass);
