@@ -2,7 +2,6 @@
           import="java.io.*,java.util.*,java.text.*;" %>
 <%
 File syorui = new File(application.getRealPath(File.separator+"jsp"));//使用するフォルダの場所を指定
-out.println(File.separator);
 String filelist[] = syorui.list();//String型の配列にファイル名を入れる
 File[] filedate=syorui.listFiles();//File型の配列にファイル名を入れる
 for (int i = 0 ; i < filelist.length ; i++){
