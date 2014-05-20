@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%!
-// 譁�ｭ励さ繝ｼ繝峨ｒ螟画鋤縺吶ｋ
+// 入力フォームからJSPに渡す文字データを日本語コードに直すメソッド。インクルードして使用
+//例：jpn2unicode(request.getParameter("name"), "任意の日本語コード→UTF-8など"));
 	public String jpn2unicode(String original, String encode)
 		throws java.io.UnsupportedEncodingException
 			{
