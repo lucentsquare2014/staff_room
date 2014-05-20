@@ -32,7 +32,7 @@
 					<input type="text" placeholder="ユーザ" name="id" class="uk-form-width-medium">
 				</div>
 				<div class="uk-form-row">
-					<input type="text" placeholder="パスワード" name="password" class="uk-form-width-medium">
+					<input type="password" placeholder="パスワード" name="password" class="uk-form-width-medium">
 				</div>
 				<div class="uk-form-row">
 					<input type="submit" value="ログイン" class="uk-button uk-button-primary">

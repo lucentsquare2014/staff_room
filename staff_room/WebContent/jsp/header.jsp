@@ -4,13 +4,13 @@
  	nav#header {
  		width: 100%;
  		position: fixed;
- 		opacity: 0.8;
+ 		opacity: 1;
  	}
  
 </style>
 <nav id="header" class="uk-navbar">
 	<a href="http://www.lucentsquare.co.jp/" class="uk-navbar-brand">
-		<img src="Logo.png" alt="会社のページに戻る" width="30" height="30"></img>
+		<img src="./Logo.png" alt="会社のページに戻る" width="30" height="30"></img>
 	</a>
 	<ul class="uk-navbar-nav">
 	<li class="header"><a href="./top.jsp">TOP</a></li>
@@ -32,17 +32,17 @@
 			<a href="">社内システム<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
-					<li><a href="">社内スケジュール</a></li>
-					<li><a href="">社内勤怠システム</a></li>
-					<li><a href="">社内文書システム</a></li>
-					<li><a href="">社内システム操作説明</a></li>
+					<li><a href="schedule.jsp">社内スケジュール</a></li>
+					<li><a href="attendance.jsp">社内勤怠システム</a></li>
+					<li><a href="document.jsp">社内文書システム</a></li>
+					<li><a href="setsumei.jsp">社内システム操作説明</a></li>
 					<li class="uk-nav-divider"></li>
-					<li><a href="">管理-社内システム</a></li>
+					<li><a href="administer.jsp">管理-社内システム</a></li>
 				</ul>
 			</div>
 		</li>
-		<li class="header"><a href="">申請書類</a></li>
-		<li class="header"><a href="">マニュアル</a></li>
+		<li class="header"><a href="teisyutsusyorui.jsp">申請書類</a></li>
+		<li class="header"><a href="manual.jsp">マニュアル</a></li>
 		<li class="header"><a href="http://www.lucentsquare.co.jp/staff/mail_link.html">Mail</a></li>
 		<li class="header"><a href="http://www.lucentsquare.co.jp/staff/members/joyful/joyful.cgi">掲示板</a></li>
 		<li class="uk-parent header" data-uk-dropdown>

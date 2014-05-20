@@ -24,12 +24,12 @@ public class NewsDAO {
 			// JDBCドライバの読み取り 
 			Class.forName("org.postgresql.Driver");
 			// 各種設定 
-			String user = "lsc2014";
-			String pass = "admin";
+			String user = "postgres";
+			String pass = "";
 
 			// データベース接続 
 			con = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/NewsDB", user, pass);
+					"jdbc:postgresql://localhost:5432/newsDB", user, pass);
 			System.out.println("接続成功");
 		} catch (Exception e) {
 			System.out.println("例外発生：" + e);

@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import dao.ShainDB;
 
 /**
@@ -63,6 +65,8 @@ public class Login extends HttpServlet {
 		if(id == null || id.length() == 0 || pwd == null || pwd.length() == 0) {
 			return false;
 		}
+		//　互換性を保つためにパスワードを暗号化に使用する
+		pwd =  DigestUtils.shaHex(pwd);
 		// 社員データベースから照合する
 		ShainDB shain = new ShainDB();
 		Connection con = shain.openShainDB();

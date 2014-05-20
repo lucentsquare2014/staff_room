@@ -1,8 +1,8 @@
-<%@ page language="java"
-    contentType="text/html; charset=Windows-31J" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%-- code.jsp��jpn2unicode���\�b�h ���������h�~�̕����R�[�h�ϊ����\�b�h --%>
+<%-- code.jsp＝jpn2unicodeメソッド 文字化け防止の文字コード変換メソッド --%>
 
 <%@ include file="code.jsp" %>
 <%@ page import="java.util.HashMap" %>
@@ -16,11 +16,12 @@
 <%@ page import="java.sql.ResultSetMetaData" %>
 <%@ page import="java.sql.SQLException" %>
 <HTML>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <BODY>
 
 				<%
 
-				//���̓t�H�[������n���ꂽ�f�[�^��HashMap�^newsWrite�Ɋi�[
+				//入力フォームから渡されたデータをHashMap型newsWriteに格納
 
 				HashMap<String,String> Newsdata = new HashMap<String,String>();
 
@@ -28,12 +29,12 @@
 					Newsdata.put("title", jpn2unicode(request.getParameter("inputTitle"), "Windows-31J"));
 					Newsdata.put("text", jpn2unicode(request.getParameter("inputText"), "Windows-31J"));
 
-				/*�Y�t�t�@�C�� ��������ۗ�
+				/*添付ファイル いったん保留
 					Newsdata.put("file", jpn2unicode(request.getParameter("inputFile"), "Windows-31J")); */
 
 					Newsdata.put("writer", jpn2unicode(request.getParameter("inputWriter"), "Windows-31J"));
 
-				//  ���Ԃ��擾���č쐬���Ƃ��Ċi�[
+				//  時間を取得して作成日として格納
 
 				Date date = new Date();
 
@@ -41,10 +42,10 @@
 
 					Newsdata.put("created", sdf.format(date));
 
-					// DAO���烁�\�b�h�̌Ăяo��
+					// DAOからメソッドの呼び出し
 					NewsDAO dao = new NewsDAO();
 
-							//�f�[�^�x�[�X��hashMap���珑������
+							//データベースにhashMapから書き込み
 							dao.writeNews(Newsdata);
 
 					%>
@@ -62,7 +63,7 @@
 				<%
 				}else{
 				%>
-					  �w�肵���L�[�͑��݂��܂���
+					  指定したキーは存在しません
 				 <%
 				 	}
 				 %>
