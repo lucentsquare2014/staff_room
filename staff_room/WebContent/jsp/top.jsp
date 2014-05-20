@@ -19,7 +19,7 @@
 		<div class="changelog_content">
 			<%
 				NewsDAO dao = new NewsDAO();
-				String sql = "select newsid, created, postname,title from news, post where news.postid = post.postid order by created desc limit '10'";
+				String sql = "select news_id, created, postname,title from news, post where news.post_id = post.post_id order by created desc limit '10'";
 				ArrayList<HashMap<String, String>> table = dao.getNews(sql);
 
 				out.println("<table border='1'>");
