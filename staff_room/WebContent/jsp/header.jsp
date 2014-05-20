@@ -67,7 +67,7 @@
 	</ul>
 	<div class="uk-navbar-flip">
 		<ul class="uk-navbar-nav">
-			<li><a href="">ログアウト</a></li>
+			<li><a href="../Logout">ログアウト</a></li>
 		</ul>                            
     </div>
 </nav>
