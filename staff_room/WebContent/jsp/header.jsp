@@ -24,7 +24,7 @@
 					<li><a href="">開発企画</a></li>
 					<li><a href="">その他</a></li>
 					<li class="uk-nav-divider"></li>
-					<li><a href="">管理-連絡</a></li>
+					<li><a href="kanri.jsp">管理-連絡</a></li>
 			</ul>
 			</div>
 		</li>
@@ -43,8 +43,8 @@
 		</li>
 		<li class="header"><a href="teisyutsusyorui.jsp">申請書類</a></li>
 		<li class="header"><a href="manual.jsp">マニュアル</a></li>
-		<li class="header"><a href="http://www.lucentsquare.co.jp/staff/mail_link.html">Mail</a></li>
-		<li class="header"><a href="http://www.lucentsquare.co.jp/staff/members/joyful/joyful.cgi">掲示板</a></li>
+		<li class="header"><a href="mail.jsp">Mail</a></li>
+		<li class="header"><a href="bbs.jsp">掲示板</a></li>
 		<li class="uk-parent header" data-uk-dropdown>
 			<a href="">Photo<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
