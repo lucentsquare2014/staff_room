@@ -12,9 +12,7 @@
 <title>スタッフルーム</title>
 </head>
 <body>
-	<jsp:include page="./header.jsp">
-		<jsp:param name="java" value="jsp" />
-	</jsp:include>
+	<jsp:include page="./header.jsp" />
 	<div class="changelog" style="padding-top: 50px;">
 		<p>
 			<strong>更新履歴</strong>
