@@ -19,11 +19,11 @@
 			<a>連絡<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
-					<li><a href="news.jsp?news=1">総務</a></li>
-					<li><a href="news.jsp?news=2">人事</a></li>
-					<li><a href="news.jsp?news=3">行事</a></li>
-					<li><a href="news.jsp?news=4">開発企画</a></li>
-					<li><a href="news.jsp?news=5">その他</a></li>
+					<li><a href="/staff_room/jsp/news.jsp?news=1">総務</a></li>
+					<li><a href="/staff_room/jsp/news.jsp?news=2">人事</a></li>
+					<li><a href="/staff_room/jsp/news.jsp?news=3">行事</a></li>
+					<li><a href="/staff_room/jsp/news.jsp?news=4">開発企画</a></li>
+					<li><a href="/staff_room/jsp/news.jsp?news=5">その他</a></li>
 					<li class="uk-nav-divider"></li>
 					<li><a href="/staff_room/jsp/writeNews/writeNews.jsp">管理-連絡</a></li>
 			</ul>
