@@ -21,13 +21,13 @@ public class NewsDAO {
 	private static Connection openNewsDB() {
 		Connection con = null;
 		try {
-			// JDBCドライバの読み取り 
+			// JDBCドライバの読み取り
 			Class.forName("org.postgresql.Driver");
-			// 各種設定 
+			// 各種設定
 			String user = "lsc2014";
 			String pass = "admin";
 
-			// データベース接続 
+			// データベース接続
 			con = DriverManager.getConnection(
 					"jdbc:postgresql://localhost:5432/newsDB", user, pass);
 			System.out.println("接続成功");
@@ -88,12 +88,19 @@ public class NewsDAO {
 			stmt = con.createStatement();
 
 			// SQL文を文字列としてsqlという変数に格納
-			String sql = "UPDATE news SET postID=" + Newsdata.get("postID")
-					+ ", " + Newsdata.get("title") + ", "
-					+ Newsdata.get("text") + ", " + Newsdata.get("writer")
-					+ "," + Newsdata.get("filename") + ","
-					+ Newsdata.get("update") + "WHERE newsID="
-					+ Newsdata.get("newsID");
+			String sql = "UPDATE news SET postID="
+					+ Newsdata.get("postID")
+					+ ", "
+					+ Newsdata.get("title")
+					+ ", "
+					+ Newsdata.get("text")
+					+ ", "
+					+ Newsdata.get("writer")
+					+ ","
+					+ Newsdata.get("filename")
+					+ ","
+					+ Newsdata.get("update")
+					+ "WHERE newsID="+ Newsdata.get("newsID");
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			int num = stmt.executeUpdate(sql);
 			closeNewsDB(con);
