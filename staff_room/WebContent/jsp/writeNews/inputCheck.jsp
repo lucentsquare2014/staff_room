@@ -57,7 +57,7 @@
 
 
 			<!-- 入力・編集フォームから渡されたデータ→newsWrite.jsp-->
-			<form method="POST" action="newsWrite.jsp">
+			<form method="POST" action="	write_finish.jsp">
 
 			<!-- 管理編集画面→編集フォーム→確認画面と渡されたnews_idを渡すnewsWrite.jsp-->
 
@@ -95,12 +95,12 @@
 
 		<input type="submit" value="決定">
 		<!--  戻るボタン。リンク先をifで入力フォームと編集ホームに判断
-		<a href="if(jpn2unicode(request.getParameter("formType"),"UTF-8").equals("input")){
+		<a onclick="submit(href="if(jpn2unicode(request.getParameter("formType"),"UTF-8").equals("input")){
 							入力フォームのリンクＵＲＬ
 				}else if(jpn2unicode(request.getParameter("formType"),"UTF-8").equals("input")){
 							編集ホームのリンク先
 				}
-								"></a>
+								)"></a>
 										戻るボタン。リンク先をifで入力フォームと編集ホームに判断-->
 	</form>
 

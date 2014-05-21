@@ -32,32 +32,31 @@
 				<th>分類</th>
 				<td><select name="inputPost">
 						<option value="1"
-							<%if (request.getParameter("post_id").equals("1")) {%> selected
+							<%if (jpn2unicode(request.getParameter("post_id"),"UTF-8").equals("1")) {%> selected
 							<%}%>>総務</option>
 						<option value="2"
-							<%if (request.getParameter("post_id").equals("2")) {%> selected
+							<%if (jpn2unicode(request.getParameter("post_id"),"UTF-8").equals("2")) {%> selected
 							<%}%>>人事</option>
 						<option value="3"
-							<%if (request.getParameter("post_id").equals("3")) {%> selected
+							<%if (jpn2unicode(request.getParameter("post_id"),"UTF-8").equals("3")) {%> selected
 							<%}%>>行事</option>
 						<option value="4"
-							<%if (request.getParameter("post_id").equals("4")) {%> selected
+							<%if (jpn2unicode(request.getParameter("post_id"),"UTF-8").equals("4")) {%> selected
 							<%}%>>開発</option>
 						<option value="5"
-							<%if (request.getParameter("post_id").equals("5")) {%> selected
+							<%if (jpn2unicode(request.getParameter("post_id"),"UTF-8").equals("5")) {%> selected
 							<%}%>>その他</option>
 				</select></td>
 			</tr>
 			<tr>
 				<th>タイトル</th>
-				<td><input type="text" name="inputTitle" size="40">
-				<%= request.getParameter("title") %>
+				<td><input type="text" name="inputTitle" size="40"
+				value="<%= jpn2unicode(request.getParameter("title"),"UTF-8") %>">
 				</td>
 			</tr>
 			<tr>
 				<th>本文</th>
-				<td><textarea name="inputText" rows="10" cols="40"></textarea>
-				<%= request.getParameter("text") %>
+				<td><textarea name="inputText" rows="10" cols="40"><%= jpn2unicode(request.getParameter("text"),"UTF-8") %></textarea>
 				</td>
 			</tr>
 
@@ -72,8 +71,8 @@
 
 			<tr>
 				<th>保存者</th>
-				<td><input type="text" name="inputWriter" size="40">
-				<%= request.getParameter("writer") %>
+				<td><input type="text" name="inputWriter" size="40"
+				value="<%= jpn2unicode(request.getParameter("writer"),"UTF-8") %>">
 				</td>
 			</tr>
 		</table>
