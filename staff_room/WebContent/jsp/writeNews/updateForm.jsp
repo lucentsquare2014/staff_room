@@ -12,6 +12,10 @@
 
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+<jsp:include page="/html/head.html" />
+<title>入力フォーム</title>
+</head>
 <body>
 	<h1><% if(jpn2unicode(request.getParameter("inputNewsid"),"UTF-8").equals("null")){
 		out.println("既存記事の編集");
