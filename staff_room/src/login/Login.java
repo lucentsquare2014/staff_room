@@ -24,6 +24,7 @@ import dao.ShainDB;
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private int n = 0;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,12 +53,12 @@ public class Login extends HttpServlet {
 	    	session.setAttribute("login", id);
 	        response.sendRedirect("./jsp/top/top.jsp");
 	    } else {
-	    	session.setAttribute("status", "Not Auth");
+	    	// ログイン回数をプラスする
+	    	session.setAttribute("count", ++n);
 	    	String msg = "idまたはパスワードが正しくありません。";
 	    	request.setAttribute("error",msg);
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
             dispatcher.forward(request, response);
-	        
 	    }
 	}
 	
