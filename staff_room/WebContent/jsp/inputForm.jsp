@@ -9,7 +9,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <body>
-	<h1>連絡事項新規作成</h1>
+	<h1>記事の新規作成新規作成</h1>
 
 	<!-- 入力フォーム データ→確認画面-->
 
@@ -48,8 +48,8 @@
 				<td><input type="text" name="inputWriter" size="40"></td>
 		</tr>
 	</table>
-	<input type="submit" value="投稿">
-	<input type="reset" value="元に戻す">
+	<input type="submit" value="確認する">
+	<input type="reset" value="リセット">
 	</form>
 
 <!-- /入力フォーム -->
