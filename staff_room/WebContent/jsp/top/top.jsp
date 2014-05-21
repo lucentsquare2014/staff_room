@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="dao.NewsDAO"%>
-<%@ page import="java.util.ArrayList, java.util.HashMap"%>
+<%@ page import="java.util.ArrayList, java.util.HashMap, java.io.File"%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<jsp:include page="../../html/head.html" />
+<%String str = application.getRealPath(File.separator+"WebContent"+File.separator+"html"+File.separator+"head.html"); %>
+<jsp:include page="/html/head.html" />
 <title>スタッフルーム</title>
 </head>
 <body>

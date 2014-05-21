@@ -10,7 +10,7 @@
 </style>
 <nav id="header" class="uk-navbar">
 	<a href="http://www.lucentsquare.co.jp/" class="uk-navbar-brand">
-		<img src="../images/Logo.png" alt="会社のページに戻る" width="30" height="30"></img>
+		<img src="/staff_room/images/Logo.png" alt="会社のページに戻る" width="30" height="30"></img>
 	</a>
 	<ul class="uk-navbar-nav">
 	<li class="header"><a href="./top.jsp">TOP</a></li>

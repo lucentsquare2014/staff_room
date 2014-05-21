@@ -3,9 +3,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="../../html/head.html"></jsp:include>
 <title>社内掲示板</title>
 </head>
