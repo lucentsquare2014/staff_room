@@ -25,7 +25,7 @@
 					<li><a href="news.jsp?news=4">開発企画</a></li>
 					<li><a href="news.jsp?news=5">その他</a></li>
 					<li class="uk-nav-divider"></li>
-					<li><a href="/staff_room/jsp/kanri.jsp">管理-連絡</a></li>
+					<li><a href="/staff_room/jsp/writeNews/writeNews.jsp">管理-連絡</a></li>
 			</ul>
 			</div>
 		</li>
