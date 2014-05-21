@@ -12,19 +12,20 @@
 	<a href="http://www.lucentsquare.co.jp/" class="uk-navbar-brand">
 		<img src="/staff_room/images/Logo.png" alt="会社のページに戻る" width="30" height="30"></img>
 	</a>
+	
 	<ul class="uk-navbar-nav">
 	<li class="header"><a href="/staff_room/jsp/top/top.jsp">TOP</a></li>
 		<li class="uk-parent header" data-uk-dropdown>
 			<a>連絡<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
-					<li><a href="">総務</a></li>
-					<li><a href="">人事</a></li>
-					<li><a href="">行事</a></li>
-					<li><a href="">開発企画</a></li>
-					<li><a href="">その他</a></li>
+					<li><a href="news.jsp?news=1">総務</a></li>
+					<li><a href="news.jsp?news=2">人事</a></li>
+					<li><a href="news.jsp?news=3">行事</a></li>
+					<li><a href="news.jsp?news=4">開発企画</a></li>
+					<li><a href="news.jsp?news=5">その他</a></li>
 					<li class="uk-nav-divider"></li>
-					<li><a href="staff_room/jsp/kanri.jsp">管理-連絡</a></li>
+					<li><a href="/staff_room/jsp/kanri.jsp">管理-連絡</a></li>
 			</ul>
 			</div>
 		</li>
@@ -66,6 +67,7 @@
 			</div>
 		</li>
 	</ul>
+	</form>
 	<div class="uk-navbar-flip">
 		<ul class="uk-navbar-nav">
 			<li><a href="/staff_room/Logout">ログアウト</a></li>

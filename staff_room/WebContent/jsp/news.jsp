@@ -42,8 +42,14 @@ function show(a) {
 
 	<%
 		String value = null;
-		value = request.getParameter("bunrui");
-		value = "1";
+		value = request.getParameter("news");
+		if(value == null){
+			value = "1";
+		}
+		int flag = Integer.parseInt(value);
+		if(!(flag == 1 || flag == 2 ||flag == 3 ||flag == 4 || flag == 5)){
+			value = "1";
+		}
 
 		//配列
 		ArrayList<Integer> x = new ArrayList<Integer>();
@@ -51,9 +57,9 @@ function show(a) {
 		NewsDAO dao = new NewsDAO();
 		ArrayList<HashMap<String, String>> list = null;
 		list = dao
-				.getNews("select created,title,text,writer from news where post_id = '"
-						+ value + "' order by update desc");
-
+				.getNews("select created,title,text,writer from news where post_id = "
+						+ value + " order by update desc");
+		System.out.print(list);
 		out.println("<table border='1'>");
 		out.println("<tr>");
 		out.println("<td>");
@@ -67,7 +73,7 @@ function show(a) {
 		out.println("</td>");
 		out.println("</tr>");
 		
-		for (int i = 1; i < list.size(); i++) {
+		for (int i = 0; i < list.size(); i++) {
 			HashMap<String, String> row = list.get(i);
 			if (!row.get("created").equals("")) {
 				out.println("<tr>");
