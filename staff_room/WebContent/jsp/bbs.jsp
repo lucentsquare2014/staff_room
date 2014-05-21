@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<jsp:include page="../../html/head.html"></jsp:include>
+<jsp:include page="/html/head.html"></jsp:include>
 <title>社内掲示板</title>
 </head>
 <body>
