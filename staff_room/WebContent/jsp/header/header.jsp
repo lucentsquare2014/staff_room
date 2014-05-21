@@ -13,7 +13,7 @@
 		<img src="/staff_room/images/Logo.png" alt="会社のページに戻る" width="30" height="30"></img>
 	</a>
 	<ul class="uk-navbar-nav">
-	<li class="header"><a href="./top.jsp">TOP</a></li>
+	<li class="header"><a href="/staff_room/jsp/top/top.jsp">TOP</a></li>
 		<li class="uk-parent header" data-uk-dropdown>
 			<a href="">連絡<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
