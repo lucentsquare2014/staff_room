@@ -8,7 +8,7 @@
 </head>
 <body>
     <jsp:include page="/jsp/header/header.jsp" />
-<p>管理 - 社内システムです。</p>
+<p style="padding-top: 60px;">管理 - 社内システムです。</p>
 
 </body>
 </html>

@@ -8,7 +8,7 @@
 </head>
 <body>
     <jsp:include page="/jsp/header/header.jsp" />
-<p>ここは社内勤怠システムです。</p>
+<p style="padding-top: 60px;">ここは社内勤怠システムです。</p>
 
 </body>
 </html>

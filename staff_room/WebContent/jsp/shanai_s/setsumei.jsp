@@ -8,7 +8,7 @@
 </head>
 <body>
     <jsp:include page="/jsp/header/header.jsp" />
-    <p>ここは社内システム 操作説明です</p>
+    <p style="padding-top: 60px;">ここは社内システム 操作説明です</p>
 
 </body>
 </html>
