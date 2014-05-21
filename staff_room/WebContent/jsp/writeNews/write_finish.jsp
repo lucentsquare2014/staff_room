@@ -88,8 +88,8 @@
 				 <%
 				 	}
 				 %>
-
-
+				 記事の保存が完了しました。
+<form method="POST" action="writeNews.jsp"><input type="submit" value="管理・編集に戻る"></form>
 
 </body>
 </html>

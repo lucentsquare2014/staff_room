@@ -40,13 +40,14 @@ function show(a) {
 		<p>
 			<h1>管理・編集</h1>
 		</p>
+		<form method="POST" action="inputForm.jsp"><input type="submit" value="新規作成"></form>
 			<%
 				//配列
 				ArrayList<Integer> x = new ArrayList<Integer>();
 				int j=0,z=0;
 			    NewsDAO dao = new NewsDAO();
 			    ArrayList<HashMap<String, String>> list = null;
-			    list = dao.getNews("select news_id,created,postname,title,text,writer from news, post where news.post_id = post.post_id order by created desc"  );
+			    list = dao.getNews("select news_id,created,post.post_id,postname,title,text,writer from news, post where news.post_id = post.post_id order by created desc"  );
 
 				out.println("<table border='1'>");
 				for (int i = 0; i < list.size(); i++) {
@@ -71,8 +72,21 @@ function show(a) {
 						out.println("<td>");
 						%>
 						<form method="POST" action="updateForm.jsp">
-						<input type="hidden" name="inputNewsid"
+
+						<input type="hidden" name="news_id"
 						value="<%= row.get("news_id") %>">
+
+						<input type="hidden" name="post_id"
+						value="<%= row.get("post_id") %>">
+
+						<input type="hidden" name="title"
+						value="<%= row.get("title") %>">
+
+						<input type="hidden" name="text"
+						value="<%= row.get("text") %>">
+
+						<input type="hidden" name="writer"
+						value="<%= row.get("writer") %>">
 						<input type="submit" value="編集">
 						</form>
 						<%
@@ -94,10 +108,24 @@ function show(a) {
 					out.println("&nbsp;</td>");
 					out.println("<td>");
 					%>
-					<h4><%= row.get("title") %></h4>
-					<dl>
-					<dt><%= row.get("text") %></dt>
-					</dl>
+					<form method="POST" action="updateForm.jsp">
+
+					<input type="hidden" name="news_id"
+					value="<%= row.get("news_id") %>">
+
+					<input type="hidden" name="post_id"
+					value="<%= row.get("post_id") %>">
+
+					<input type="hidden" name="title"
+					value="<%= row.get("title") %>">
+
+					<input type="hidden" name="text"
+					value="<%= row.get("text") %>">
+
+					<input type="hidden" name="writer"
+					value="<%= row.get("writer") %>">
+					<input type="submit" value="編集">
+					</form>
 					<%
 					out.println("&nbsp;</td>");
 					out.println("</tr>");
