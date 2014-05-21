@@ -7,27 +7,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
-<!-- ほとんどhtmlだけど文字化けが激しいのでjspに -->
+
 
 
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <body>
-	<h1>記事の編集</h1>
+	<h1><% if(jpn2unicode(request.getParameter("inputNewsid"),"UTF-8").equals("null")){
+		out.println("既存記事の編集");
+		}else{
+		out.println("新規記事の作成");
+		}%></h1>
 
 	<!-- 入力フォーム データ→確認画面-->
 
 	<form method="POST" action="inputCheck.jsp">
 		<table border="1">
-		<!-- 管理編集画面から渡されたnews_idをnewsWrite.jspへ渡す記述 保留
-		<tr>
-		<th>news_id</th>
-		<td>
-		<input type="text"name="inputNewsid" size="40" disabled>
-		<%= request.getParameter("news_id") %>
-		</td>
-		下に習ってみたがフォームにする必要はないし、見せたくない
-		 -->
 			<tr>
 				<th>分類</th>
 				<td><select name="inputPost">
@@ -61,13 +56,13 @@
 			</tr>
 
 			<!-- 添付ファイル いったん保留
-		<tr>
+			<tr>
 			<th>添付ファイル</th>
 				<td><input type="file" name="inputFile" size="30" />
 				<%= request.getParameter("file") %>
 				</td>
-		</tr>
-		-->
+			</tr>
+			-->
 
 			<tr>
 				<th>保存者</th>
@@ -84,8 +79,6 @@
 		<input type="submit" value="確認する">
 		<input type="reset"value="リセット">
 	</form>
-
-	<!-- /入力フォーム -->
 
 </body>
 </html>

@@ -19,77 +19,64 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <body>
 
-				<%
+	<%
+		//入力フォームから渡されたデータをHashMap型newsWriteに格納
+		HashMap<String, String> Newsdata = new HashMap<String, String>();
+		Newsdata.put("post_id",
+				jpn2unicode(request.getParameter("inputPost"), "UTF-8"));
+		Newsdata.put("title",
+				jpn2unicode(request.getParameter("inputTitle"), "UTF-8"));
+		Newsdata.put("text",
+				jpn2unicode(request.getParameter("inputText"), "UTF-8"));
 
-				//入力フォームから渡されたデータをHashMap型newsWriteに格納
+		/*添付ファイル いったん保留
+		Newsdata.put("file", jpn2unicode(request.getParameter("inputFile"), "Windows-31J")); */
 
-				HashMap<String,String> Newsdata = new HashMap<String,String>();
+		Newsdata.put("writer",
+				jpn2unicode(request.getParameter("inputWriter"), "UTF-8"));
 
-					Newsdata.put("postID", jpn2unicode(request.getParameter("inputPost"), "UTF-8"));
-					Newsdata.put("title", jpn2unicode(request.getParameter("inputTitle"), "UTF-8"));
-					Newsdata.put("text", jpn2unicode(request.getParameter("inputText"), "UTF-8"));
+		//  時間を取得して作成日として格納
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
+		Newsdata.put("created", sdf.format(date));
 
-				/*添付ファイル いったん保留
-					Newsdata.put("file", jpn2unicode(request.getParameter("inputFile"), "Windows-31J")); */
+		/* DAOからメソッドの呼び出し
+		NewsDAO dao = new NewsDAO();
 
-					Newsdata.put("writer", jpn2unicode(request.getParameter("inputWriter"), "UTF-8"));
+		確認画面から渡されたname="inputNewsid"がnullかどうかで呼ぶメソッドを判断
+		文字コード変換のせいでnullという文字列になっていることに注意
+		if(jpn2unicode(request.getParameter("inputNewsid"),"UTF-8").equals("null"){
 
-				//  時間を取得して作成日として格納
+		データベースにhashMapから書き込み
+		dao.writeNews(Newsdata);
+		}else{
+			データベースにhashMapから更新
+		dao.updateNews(Newsdata);
+		}
+		 */
+	%>
+	記事の保存が完了しました。
+	<form method="POST" action="writeNews.jsp">
+		<input type="submit" value="管理・編集に戻る">
+	</form>
 
-				Date date = new Date();
+	<%--テスト用 --%>
+	以下、テスト用<br>
+	DBにそれぞれ書き込む内容<br>
+	post_id：<%= Newsdata.get("postID") %><br>
+	title：<%= Newsdata.get("title") %>
+	text：<pre><%= Newsdata.get("text") %></pre>
+	<%-- Newsdata.get("file") --%>
+	writer：<%= Newsdata.get("writer") %><br>
+	created：<%= Newsdata.get("created") %><br>
+	news_id：<%=jpn2unicode(request.getParameter("inputNewsid"),"UTF-8")%><br>
+	<% if(jpn2unicode(request.getParameter("inputNewsid"),"UTF-8").equals("null")){
+						out.println("記事の新規作成メソッドを選択");
+						 }else{
+						out.println("既存記事更新メソッドを選択");
+						 }
+						%>
 
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
-
-					Newsdata.put("created", sdf.format(date));
-
-					/* DAOからメソッドの呼び出し
-					NewsDAO dao = new NewsDAO();
-
-
-					確認画面から渡されたname="inputNewsid"がnullかどうかで呼ぶメソッドを判断
-							文字コード変換のせいでnullという文字列になっていることに注意
-							if(jpn2unicode(request.getParameter("inputNewsid"),"UTF-8")==null){
-
-							データベースにhashMapから書き込み
-							dao.writeNews(Newsdata);
-
-							}else{
-								データベースにhashMapから更新
-								dao.updateNews(Newsdata);
-							}
-							*/
-
-					%>
-
-<%--テスト用 --%>
-				<%
-				if (Newsdata.containsKey("postID")){
-					%>
-					 <%= Newsdata.get("postID") %>
-					 <%= Newsdata.get("title") %>
-					 <pre><%= Newsdata.get("text") %></pre>
-					 <%= Newsdata.get("file") %>
-					 <%= Newsdata.get("writer") %>
-					 <%= Newsdata.get("created") %>
-					 <%=jpn2unicode(request.getParameter("inputNewsid"),"UTF-8")%>
-					<% if(jpn2unicode(request.getParameter("inputNewsid"),"UTF-8").equals("null")){ %>
-
-							データベースにhashMapから書き込み
-
-
-							<% }else{%>
-								データベースにhashMapから更新
-								<% }
-					%>
-				<%
-				}else{
-				%>
-					  指定したキーは存在しません
-				 <%
-				 	}
-				 %>
-				 記事の保存が完了しました。
-<form method="POST" action="writeNews.jsp"><input type="submit" value="管理・編集に戻る"></form>
 
 </body>
 </html>

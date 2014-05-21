@@ -40,7 +40,7 @@ function show(a) {
 		<p>
 			<h1>管理・編集</h1>
 		</p>
-		<form method="POST" action="inputForm.jsp"><input type="submit" value="新規作成"></form>
+		<form method="POST" action="updateForm.jsp"><input type="submit" value="新規作成"></form>
 			<%
 				//配列
 				ArrayList<Integer> x = new ArrayList<Integer>();
@@ -71,67 +71,57 @@ function show(a) {
 
 						out.println("<td>");
 						%>
-						<form method="POST" action="updateForm.jsp">
+		<form method="POST" action="updateForm.jsp">
 
-						<input type="hidden" name="news_id"
-						value="<%= row.get("news_id") %>">
+			<input type="hidden" name="news_id" value="<%=row.get("news_id")%>">
 
-						<input type="hidden" name="post_id"
-						value="<%= row.get("post_id") %>">
+			<input type="hidden" name="post_id" value="<%=row.get("post_id")%>">
 
-						<input type="hidden" name="title"
-						value="<%= row.get("title") %>">
+			<input type="hidden" name="title" value="<%=row.get("title")%>">
 
-						<input type="hidden" name="text"
-						value="<%= row.get("text") %>">
+			<input type="hidden" name="text" value="<%=row.get("text")%>">
 
-						<input type="hidden" name="writer"
-						value="<%= row.get("writer") %>">
-						<input type="submit" value="編集">
-						</form>
-						<%
-						out.println("&nbsp;</td>");
-						out.println("</tr>");
-					} else {
-						x.add(i);
-						z++;
-					}
-				}
-				for (int i = 0; i < z; i++) {
-					HashMap<String, String> row = list.get(x.get(i));
-					out.println("<tr>");
-					out.println("<td>");
-					out.println(row.get("created"));
-					out.println("&nbsp;</td>");
-					out.println("<td>");
-					out.println(row.get("postname"));
-					out.println("&nbsp;</td>");
-					out.println("<td>");
-					%>
-					<form method="POST" action="updateForm.jsp">
-
-					<input type="hidden" name="news_id"
-					value="<%= row.get("news_id") %>">
-
-					<input type="hidden" name="post_id"
-					value="<%= row.get("post_id") %>">
-
-					<input type="hidden" name="title"
-					value="<%= row.get("title") %>">
-
-					<input type="hidden" name="text"
-					value="<%= row.get("text") %>">
-
-					<input type="hidden" name="writer"
-					value="<%= row.get("writer") %>">
-					<input type="submit" value="編集">
-					</form>
-					<%
-					out.println("&nbsp;</td>");
+			<input type="hidden" name="writer" value="<%=row.get("writer")%>">
+			<input type="submit" value="編集">
+		</form>
+		<%
+			out.println("&nbsp;</td>");
 					out.println("</tr>");
+				} else {
+					x.add(i);
+					z++;
 				}
-				out.println("</table>");
-			%>
+			}
+			for (int i = 0; i < z; i++) {
+				HashMap<String, String> row = list.get(x.get(i));
+				out.println("<tr>");
+				out.println("<td>");
+				out.println(row.get("created"));
+				out.println("&nbsp;</td>");
+				out.println("<td>");
+				out.println(row.get("postname"));
+				out.println("&nbsp;</td>");
+				out.println("<td>");
+		%>
+		<form method="POST" action="updateForm.jsp">
+
+			<input type="hidden" name="news_id" value="<%=row.get("news_id")%>">
+
+			<input type="hidden" name="post_id" value="<%=row.get("post_id")%>">
+
+			<input type="hidden" name="title" value="<%=row.get("title")%>">
+
+			<input type="hidden" name="text" value="<%=row.get("text")%>">
+
+			<input type="hidden" name="writer" value="<%=row.get("writer")%>">
+			<input type="submit" value="編集">
+		</form>
+		<%
+			out.println("&nbsp;</td>");
+				out.println("</tr>");
+			}
+			out.println("</table>");
+		%>
 		</div>
 	<div class="page_title">
 	</div>
