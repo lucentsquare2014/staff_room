@@ -7,7 +7,7 @@
 
 <!-- ほとんどhtmlだけど文字化けが激しいのでjspに -->
 
-
+<%@ include file="code.jsp" %>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <body>
@@ -17,63 +17,74 @@
 
 	<form method="POST" action="inputCheck.jsp">
 		<table border="1">
-		<!-- 管理編集画面から渡されたnews_idをnewsWrite.jspへ渡す記述 保留
+		<!-- 管理編集画面から渡されたnews_idを渡す記述 保留
 		<tr>
 		<th>news_id</th>
 		<td>
 		<input type="text"name="inputNewsid" size="40" disabled>
 		<%= request.getParameter("news_id") %>
 		</td>
+		</tr>
 		下に習ってみたがフォームにする必要はないし、見せたくない
 		 -->
 			<tr>
 				<th>分類</th>
-				<td><select name="inputPost">
+				<td><select name="inputPost" disabled>
 						<option value="1"
-							<%if (request.getParameter("post_id").equals("1")) {%> selected
+							<%if (jpn2unicode(request.getParameter("inputPost"),"UTF-8").equals("1")) {%> selected
 							<%}%>>総務</option>
 						<option value="2"
-							<%if (request.getParameter("post_id").equals("2")) {%> selected
+							<%if (jpn2unicode(request.getParameter("inputPost"),"UTF-8").equals("2")) {%> selected
 							<%}%>>人事</option>
 						<option value="3"
-							<%if (request.getParameter("post_id").equals("3")) {%> selected
+							<%if (jpn2unicode(request.getParameter("inputPost"),"UTF-8").equals("3")) {%> selected
 							<%}%>>行事</option>
 						<option value="4"
-							<%if (request.getParameter("post_id").equals("4")) {%> selected
+							<%if (jpn2unicode(request.getParameter("inputPost"),"UTF-8").equals("4")) {%> selected
 							<%}%>>開発</option>
 						<option value="5"
-							<%if (request.getParameter("post_id").equals("5")) {%> selected
+							<%if (jpn2unicode(request.getParameter("inputPost"),"UTF-8").equals("5")) {%> selected
 							<%}%>>その他</option>
 				</select></td>
 			</tr>
 			<tr>
 				<th>タイトル</th>
-				<td><input type="text" name="inputTitle" size="40">
-				<%= request.getParameter("title") %>
+				<td><input type="text" name="inputTitle" size="40" disabled>
+				<%= jpn2unicode(request.getParameter("inputTitle"),"UTF-8") %>
 				</td>
 			</tr>
 			<tr>
 				<th>本文</th>
-				<td><textarea name="inputText" rows="10" cols="40"></textarea>
-				<%= request.getParameter("text") %>
+				<td><textarea name="inputText" rows="10" cols="40" disabled></textarea>
+				<%= jpn2unicode(request.getParameter("inputText"),"UTF-8") %>
 				</td>
 			</tr>
 
 			<!-- 添付ファイル いったん保留
 		<tr>
 			<th>添付ファイル</th>
-				<td><input type="file" name="inputFile" size="30" />
-				<%= request.getParameter("file") %>
+				<td><input type="file" name="inputFile" size="30" disabled>
+				<%= jpn2unicode(request.getParameter("inputFile"),"UTF-8") %>
 				</td>
 		</tr>
 		-->
 
 			<tr>
 				<th>保存者</th>
-				<td><input type="text" name="inputWriter" size="40">
-				<%= request.getParameter("writer") %>
+				<td><input type="text" name="inputWriter" size="40" disabled>
+				<%= jpn2unicode(request.getParameter("inputWriter"),"UTF-8") %>
 				</td>
 			</tr>
+
+
+
+			<!-- ついでに入力フォームか編集フォームかを判断する値を渡したらいいと思う
+			name="formType" valueは"input"だとか"update"だとか
+			-->
+
+
+
+
 		</table>
 		<input type="submit" value="投稿"> <input type="reset"
 			value="元に戻す">

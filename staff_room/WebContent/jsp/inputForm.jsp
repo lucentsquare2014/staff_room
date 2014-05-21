@@ -11,9 +11,9 @@
 <body>
 	<h1>連絡事項新規作成</h1>
 
-	<!-- 入力フォーム データ→newsWrite.jsp-->
+	<!-- 入力フォーム データ→確認画面-->
 
-	<form method="POST" action="newsWrite.jsp">
+	<form method="POST" action="inputCheck.jsp">
 	<table border="1">
 		<tr>
 			<th>分類</th>

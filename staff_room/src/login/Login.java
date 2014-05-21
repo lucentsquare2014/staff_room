@@ -66,7 +66,7 @@ public class Login extends HttpServlet {
 			return false;
 		}
 		//　互換性を保つためにパスワードを暗号化に使用する
-		pwd =  DigestUtils.shaHex(pwd);
+		pwd =  DigestUtils.sha1Hex(pwd);
 		// 社員データベースから照合する
 		ShainDB shain = new ShainDB();
 		Connection con = shain.openShainDB();

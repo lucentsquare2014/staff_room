@@ -25,9 +25,9 @@
 
 				HashMap<String,String> Newsdata = new HashMap<String,String>();
 
-					Newsdata.put("postID", jpn2unicode(request.getParameter("inputPost"), "Windows-31J"));
-					Newsdata.put("title", jpn2unicode(request.getParameter("inputTitle"), "Windows-31J"));
-					Newsdata.put("text", jpn2unicode(request.getParameter("inputText"), "Windows-31J"));
+					Newsdata.put("postID", jpn2unicode(request.getParameter("inputPost"), "UTF-8"));
+					Newsdata.put("title", jpn2unicode(request.getParameter("inputTitle"), "UTF-8"));
+					Newsdata.put("text", jpn2unicode(request.getParameter("inputText"), "UTF-8"));
 
 				/*添付ファイル いったん保留
 					Newsdata.put("file", jpn2unicode(request.getParameter("inputFile"), "Windows-31J")); */
@@ -42,15 +42,25 @@
 
 					Newsdata.put("created", sdf.format(date));
 
-					// DAOからメソッドの呼び出し
+					/* DAOからメソッドの呼び出し
 					NewsDAO dao = new NewsDAO();
 
-							//データベースにhashMapから書き込み
+
+					確認画面から渡されたname="formType"で呼ぶメソッドを判断
+							if(jpn2unicode(request.getParameter("formType"),"UTF-8").equals("input")){
+
+							データベースにhashMapから書き込み
 							dao.writeNews(Newsdata);
+
+							}else if(jpn2unicode(request.getParameter("formType"),"UTF-8").equals("input")){
+								データベースにhashMapから更新
+								dao.updateNews(Newsdata);
+							}
+							*/
 
 					%>
 
-
+				<%--テスト用
 				<%
 				if (Newsdata.containsKey("postID")){
 					%>
@@ -67,6 +77,7 @@
 				 <%
 				 	}
 				 %>
+				 テスト用--%>
 
 
 </BODY>
