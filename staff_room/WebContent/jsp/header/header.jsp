@@ -15,7 +15,7 @@
 	<ul class="uk-navbar-nav">
 	<li class="header"><a href="/staff_room/jsp/top/top.jsp">TOP</a></li>
 		<li class="uk-parent header" data-uk-dropdown>
-			<a href="">連絡<i class="uk-icon-caret-down"></i></a>
+			<a>連絡<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
 					<li><a href="">総務</a></li>
@@ -29,7 +29,7 @@
 			</div>
 		</li>
 		<li class="uk-parent header" data-uk-dropdown>
-			<a href="">社内システム<i class="uk-icon-caret-down"></i></a>
+			<a>社内システム<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
 					<li><a href="/staff_room/jsp/shanai_s/schedule.jsp">社内スケジュール</a></li>
@@ -46,7 +46,7 @@
 		<li class="header"><a href="/staff_room/jsp/mail/mail.jsp">Mail</a></li>
 		<li class="header"><a href="/staff_room/jsp/bbs/bbs.jsp">掲示板</a></li>
 		<li class="uk-parent header" data-uk-dropdown>
-			<a href="">Photo<i class="uk-icon-caret-down"></i></a>
+			<a>Photo<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
 					<li><a href="http://www.lucentsquare.co.jp/staff/bbq_index.html">BBQ写真館</a></li>
@@ -55,7 +55,7 @@
 			</div>
 		</li>
 		<li class="uk-parent header" data-uk-dropdown>
-			<a href="">etc<i class="uk-icon-caret-down"></i></a>
+			<a>etc<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
 					<li><a href="http://www.lucentsquare.co.jp/gps/pc/">GPS</a></li>
