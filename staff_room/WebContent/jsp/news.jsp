@@ -9,14 +9,29 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="dao.NewsDAO"%>
+<%@page import="java.util.*"%>
 
-<script>
-function show_block(){
-   if(document.getElementById("hoge").style.display == ""){
-      document.getElementById("hoge").style.display = "none";
-   }else{
-      document.getElementById("hoge").style.display = "";
-   }
+<script type="text/javascript">
+var display_tag;
+window.onload = function() {
+	if (!document.getElementsByTagName) return;
+
+	var change_tag = document.getElementsByTagName("h4");		// タイトルの部分のタグ
+	display_tag = document.getElementsByTagName("dl");		// 非表示させたい部分のタグ
+
+	for (var i = 0; i < change_tag.length; i++) {
+		// 非表示させたいタグの処理
+		display_tag.item(i).style.display = "none";
+
+		// タイトルの文字を取得して表示切り替えのリンクに変更
+		var ele = change_tag.item(i);
+		var str = ele.innerText || ele.innerHTML;
+		ele.innerHTML = '<a href="javascript:show(' + i + ');">' + str + '<\/a>';
+	}
+}
+function show(a) {
+	var ele = display_tag.item(a);
+	ele.style.display = (ele.style.display == "none") ? "block" : "none";
 }
 </script>
 
@@ -30,14 +45,16 @@ function show_block(){
 		value = request.getParameter("bunrui");
 		value = "1";
 
-		int j = 0;
+		//配列
+		ArrayList<Integer> x = new ArrayList<Integer>();
+		int j=0,z=0;
 		NewsDAO dao = new NewsDAO();
 		ArrayList<HashMap<String, String>> list = null;
 		list = dao
 				.getNews("select created,title,text,writer from news where post_id = '"
 						+ value + "' order by update desc");
 
-		out.println("<table>");
+		out.println("<table border='1'>");
 		out.println("<tr>");
 		out.println("<td>");
 		out.println("日付");
@@ -52,42 +69,48 @@ function show_block(){
 		
 		for (int i = 1; i < list.size(); i++) {
 			HashMap<String, String> row = list.get(i);
-			out.println("<tr>");
-			out.println("<td>");
-			//if (!row.get("created").equals("")) {
+			if (!row.get("created").equals("")) {
+				out.println("<tr>");
+				out.println("<td>");
 				out.println(row.get("created"));
 				out.println("&nbsp;</td>");
 				out.println("<td>");
 				%>
-				
-				<p><a href="javascript:void(0)" onclick="show_block();"><%= row.get("title") %></a></p>
-				<div id="hoge" style="display:none;"><%= row.get("text") %></div>
+				<h4><%= row.get("title") %></h4>
+				<dl>
+				<dt><%= row.get("text") %></dt>
+				</dl>
 				<%
-				//out.println(row.get("title"));
 				out.println("&nbsp;</td>");
 				out.println("<td>");
 				out.println(row.get("writer"));
 				out.println("</td>");
 				out.println("</tr>");
-			//} else {
-			//	j=i;
-			//}
+				
+			} else {
+				x.add(i);
+				z++;
+			}
 		}
-		/*
-		HashMap<String, String> row = list.get(j);
-		out.println("<tr>");
-		out.println("<td>");
-		out.println(row.get("created"));
-		out.println("&nbsp;</td>");
-		out.println("<td>");
-		out.println(row.get("title"));
-		out.println("&nbsp;</td>");
-		out.println("<td>");
-		out.println(row.get("writer"));
-		out.println("</td>");
-		out.println("</tr>");
-		*/
-		
+		for (int i = 0; i < z; i++) {
+			HashMap<String, String> row = list.get(x.get(i));
+			out.println("<tr>");
+			out.println("<td>");
+			out.println(row.get("created"));
+			out.println("&nbsp;</td>");
+			out.println("<td>");
+			%>
+			<h4><%= row.get("title") %></h4>
+			<dl>
+			<dt><%= row.get("text") %></dt>
+			</dl>
+			<%
+			out.println("&nbsp;</td>");
+			out.println("<td>");
+			out.println(row.get("writer"));
+			out.println("</td>");
+			out.println("</tr>");
+		}
 	%>
 
 </body>
