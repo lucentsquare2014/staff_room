@@ -15,9 +15,9 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.ResultSetMetaData" %>
 <%@ page import="java.sql.SQLException" %>
-<HTML>
+<html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<BODY>
+<body>
 
 				<%
 
@@ -32,7 +32,7 @@
 				/*添付ファイル いったん保留
 					Newsdata.put("file", jpn2unicode(request.getParameter("inputFile"), "Windows-31J")); */
 
-					Newsdata.put("writer", jpn2unicode(request.getParameter("inputWriter"), "Windows-31J"));
+					Newsdata.put("writer", jpn2unicode(request.getParameter("inputWriter"), "UTF-8"));
 
 				//  時間を取得して作成日として格納
 
@@ -46,13 +46,14 @@
 					NewsDAO dao = new NewsDAO();
 
 
-					確認画面から渡されたname="formType"で呼ぶメソッドを判断
-							if(jpn2unicode(request.getParameter("formType"),"UTF-8").equals("input")){
+					確認画面から渡されたname="inputNewsid"がnullかどうかで呼ぶメソッドを判断
+							文字コード変換のせいでnullという文字列になっていることに注意
+							if(jpn2unicode(request.getParameter("inputNewsid"),"UTF-8")==null){
 
 							データベースにhashMapから書き込み
 							dao.writeNews(Newsdata);
 
-							}else if(jpn2unicode(request.getParameter("formType"),"UTF-8").equals("input")){
+							}else{
 								データベースにhashMapから更新
 								dao.updateNews(Newsdata);
 							}
@@ -60,16 +61,26 @@
 
 					%>
 
-				<%--テスト用
+<%--テスト用 --%>
 				<%
 				if (Newsdata.containsKey("postID")){
 					%>
 					 <%= Newsdata.get("postID") %>
 					 <%= Newsdata.get("title") %>
-					 <%= Newsdata.get("text") %>
+					 <pre><%= Newsdata.get("text") %></pre>
 					 <%= Newsdata.get("file") %>
 					 <%= Newsdata.get("writer") %>
 					 <%= Newsdata.get("created") %>
+					 <%=jpn2unicode(request.getParameter("inputNewsid"),"UTF-8")%>
+					<% if(jpn2unicode(request.getParameter("inputNewsid"),"UTF-8").equals("null")){ %>
+
+							データベースにhashMapから書き込み
+
+
+							<% }else{%>
+								データベースにhashMapから更新
+								<% }
+					%>
 				<%
 				}else{
 				%>
@@ -77,8 +88,8 @@
 				 <%
 				 	}
 				 %>
-				 テスト用--%>
 
 
-</BODY>
-</HTML>
+
+</body>
+</html>

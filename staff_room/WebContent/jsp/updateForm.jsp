@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ include file="code.jsp" %>
 <%@ page import="dao.NewsDAO"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,7 +13,7 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <body>
-	<h1>連絡事項新規作成</h1>
+	<h1>記事の編集</h1>
 
 	<!-- 入力フォーム データ→確認画面-->
 
@@ -75,8 +77,13 @@
 				</td>
 			</tr>
 		</table>
-		<input type="submit" value="投稿"> <input type="reset"
-			value="元に戻す">
+
+	<!-- 管理編集画面から渡されたnews_idをinputCheck.jspへ渡す -->
+		<input type="hidden" name="inputNewsid"
+				value="<%= jpn2unicode(request.getParameter("news_id"),"UTF-8") %>">
+
+		<input type="submit" value="確認する">
+		<input type="reset"value="リセット">
 	</form>
 
 	<!-- /入力フォーム -->
