@@ -24,7 +24,7 @@
 					<li><a href="">開発企画</a></li>
 					<li><a href="">その他</a></li>
 					<li class="uk-nav-divider"></li>
-					<li><a href="kanri.jsp">管理-連絡</a></li>
+					<li><a href="staff_room/jsp/kanri.jsp">管理-連絡</a></li>
 			</ul>
 			</div>
 		</li>
@@ -32,19 +32,19 @@
 			<a href="">社内システム<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
-					<li><a href="schedule.jsp">社内スケジュール</a></li>
-					<li><a href="attendance.jsp">社内勤怠システム</a></li>
-					<li><a href="document.jsp">社内文書システム</a></li>
-					<li><a href="setsumei.jsp">社内システム操作説明</a></li>
+					<li><a href="/staff_room/jsp/shanai_s/schedule.jsp">社内スケジュール</a></li>
+					<li><a href="/staff_room/jsp/shanai_s/attendance.jsp">社内勤怠システム</a></li>
+					<li><a href="/staff_room/jsp/shanai_s/document.jsp">社内文書システム</a></li>
+					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
 					<li class="uk-nav-divider"></li>
-					<li><a href="administer.jsp">管理-社内システム</a></li>
+					<li><a href="/staff_room/jsp/shanai_s/administer.jsp">管理-社内システム</a></li>
 				</ul>
 			</div>
 		</li>
-		<li class="header"><a href="teisyutsusyorui.jsp">申請書類</a></li>
-		<li class="header"><a href="manual.jsp">マニュアル</a></li>
-		<li class="header"><a href="mail.jsp">Mail</a></li>
-		<li class="header"><a href="bbs.jsp">掲示板</a></li>
+		<li class="header"><a href="/staff_room/jsp/teisyutsusyorui.jsp">申請書類</a></li>
+		<li class="header"><a href="/staff_room/jsp/manual.jsp">マニュアル</a></li>
+		<li class="header"><a href="/staff_room/jsp/mail/mail.jsp">Mail</a></li>
+		<li class="header"><a href="/staff_room/jsp/bbs/bbs.jsp">掲示板</a></li>
 		<li class="uk-parent header" data-uk-dropdown>
 			<a href="">Photo<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
