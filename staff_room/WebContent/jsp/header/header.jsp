@@ -24,7 +24,7 @@
 					<li><a href="">開発企画</a></li>
 					<li><a href="">その他</a></li>
 					<li class="uk-nav-divider"></li>
-					<li><a href="staff_room/jsp/kanri.jsp">管理-連絡</a></li>
+					<li><a href="/staff_room/jsp/kanri.jsp">管理-連絡</a></li>
 			</ul>
 			</div>
 		</li>
