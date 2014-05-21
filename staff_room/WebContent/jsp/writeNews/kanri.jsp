@@ -67,6 +67,8 @@ function show(a) {
 						</dl>
 						<%
 						out.println("&nbsp;</td>");
+
+						out.println("<td>");
 						%>
 						<form method="POST" action="updateForm.jsp">
 						<input type="hidden" name="inputNewsid"
@@ -74,6 +76,7 @@ function show(a) {
 						<input type="submit" value="編集">
 						</form>
 						<%
+						out.println("&nbsp;</td>");
 						out.println("</tr>");
 					} else {
 						x.add(i);
