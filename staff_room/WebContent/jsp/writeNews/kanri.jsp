@@ -46,7 +46,7 @@ function show(a) {
 				int j=0,z=0;
 			    NewsDAO dao = new NewsDAO();
 			    ArrayList<HashMap<String, String>> list = null;
-			    list = dao.getNews("select created,postname,title,text,writer from news, post where news.post_id = post.post_id order by created desc"  );
+			    list = dao.getNews("select news_id,created,postname,title,text,writer from news, post where news.post_id = post.post_id order by created desc"  );
 
 				out.println("<table border='1'>");
 				for (int i = 0; i < list.size(); i++) {
@@ -67,6 +67,13 @@ function show(a) {
 						</dl>
 						<%
 						out.println("&nbsp;</td>");
+						%>
+						<form method="POST" action="updateForm.jsp">
+						<input type="hidden" name="inputNewsid"
+						value="<%= row.get("news_id") %>">
+						<input type="submit" value="編集">
+						</form>
+						<%
 						out.println("</tr>");
 					} else {
 						x.add(i);
