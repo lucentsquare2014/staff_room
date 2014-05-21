@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>社内スケジュール</title>
+<title>管理-社内システム</title>
 </head>
 <body>
-ここは社内ページです。
+ここは管理-社内システムです。
 </body>
 </html>

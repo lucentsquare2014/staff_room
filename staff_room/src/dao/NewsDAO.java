@@ -24,8 +24,8 @@ public class NewsDAO {
 			// JDBCドライバの読み取り 
 			Class.forName("org.postgresql.Driver");
 			// 各種設定 
-			String user = "postgres";
-			String pass = "";
+			String user = "lsc2014";
+			String pass = "admin";
 
 			// データベース接続 
 			con = DriverManager.getConnection(

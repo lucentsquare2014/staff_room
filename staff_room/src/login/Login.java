@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
 	    boolean check = authUser(id, pwd);
 	    if(check) {
 	    	session.setAttribute("login", id);
-	        response.sendRedirect("./jsp/top.jsp");
+	        response.sendRedirect("./jsp/top/top.jsp");
 	    } else {
 	    	session.setAttribute("status", "Not Auth");
 	    	String msg = "idまたはパスワードが正しくありません。";
