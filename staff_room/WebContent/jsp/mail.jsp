@@ -10,7 +10,7 @@
 <title>メールリンク</title>
 </head>
 <body>
-    <jsp:include page="./header.jsp" />
+    <jsp:include page="./header/header.jsp" />
     <div class="conetent"
         style="padding: 0; padding-top: 42px; height: 100%; width: 100%;">
         <iframe width="100%" height="100%"

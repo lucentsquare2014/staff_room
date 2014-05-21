@@ -13,7 +13,7 @@
 </head>
 
 <body background="a0001_016825_m.png">
- <jsp:include page="header.jsp" >
+ <jsp:include page="./header/header.jsp" >
  	<jsp:param name="name" value="java" />
  	</jsp:include>
  	<br><br><br><br><br><br><br><br><br><br><br><br><br> <input type="submit" value="submit"><br><br><br><br><br><br><br><br><br><br>
