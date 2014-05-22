@@ -8,7 +8,14 @@
 <jsp:include page="/html/head.html" />
 <script type="text/javascript">
 	var display_tag;
+	$(window).unload(function() {
+		a = $(".delete_check");
+		for (var i = 0; i < a.length; i++) {
+			a[i].removeAttribute("checked");
+		}
+	});
 	window.onload = function() {
+
 		if (!document.getElementsByTagName)
 			return;
 
@@ -26,6 +33,38 @@
 					+ '<\/a>';
 		}
 	}
+	// チェックボックスにチェックがついたかを判別する
+	function del_checked(id) {
+		var checkbox = $("#" + id);
+		if (checkbox.attr("flag") === "0" || checkbox.attr("flag") === void 0) {
+            checkbox.attr("checked", "checked");			
+			checkbox.attr("flag", "1");
+		} else {
+			checkbox.attr("flag", "0");
+		}
+	}
+	// 記事を削除するdeleteNews.jspに記事IDを渡す関数
+	function delete_news() {
+		var ids = [];
+		var news = $(".delete_check");
+		//console.debug(news);
+		// 削除する記事のIDを格納した配列を生成
+		for (var n = 0; n < news.length; n++) {
+			// チェックボックスにチェックがついていたらIDを配列に格納
+			if (news[n].getAttribute("flag") == "1") {
+				ids.push(news[n].getAttribute("id"));
+			}
+		}
+		console.debug(ids);
+		$.ajax({
+		    type: "POST",
+		    url: "deleteNews.jsp",
+		    data: ids
+		}).done(function() {
+			
+		});
+	}
+
 	function show(a) {
 		var ele = display_tag.item(a);
 		ele.style.display = (ele.style.display == "none") ? "block" : "none";
@@ -42,6 +81,9 @@
 		<form method="POST" action="updateForm.jsp">
 			<input type="submit" value="新規作成">
 		</form>
+		<div class="delete_button">
+			<button type="button" onclick="delete_news()">削除</button>
+		</div>
 		<%
 			//配列
 			ArrayList<Integer> x = new ArrayList<Integer>();
@@ -57,8 +99,9 @@
 				if (!row.get("created").equals("")) {
 					out.println("<tr>");
 					out.println("<td>");
-					out.println("<input type=\"checkbox\" name=\"delete_check\" value=\""
-							+ row.get("news_id") + "\">");
+					out.println("<input type=\"checkbox\" class=\"delete_check\" id=\""
+							+ row.get("news_id")
+							+ "\" onclick=\"del_checked(this.id)\">");
 					out.println("</td>");
 					out.println("<td>");
 					out.println(row.get("created"));
@@ -70,7 +113,10 @@
 		%>
 		<h4><%=row.get("title")%></h4>
 		<dl>
-			<dt><pre><%=row.get("text")%></pre></dt>
+			<dt>
+				<pre><%=row.get("text")%></pre>
+			</dt>
+			<dt style="display: none"></dt>
 		</dl>
 		<%
 			out.println("&nbsp;</td>");
@@ -113,10 +159,12 @@
 				out.println("&nbsp;</td>");
 				out.println("<td>");
 		%>
-        <h4><%=row.get("title")%></h4>
-        <dl>
-            <dt><pre><%=row.get("text")%></pre></dt>
-        </dl>
+		<h4><%=row.get("title")%></h4>
+		<dl>
+			<dt>
+				<pre><%=row.get("text")%></pre>
+			</dt>
+		</dl>
 		<%
 			out.println("&nbsp;</td>");
 				out.println("<td>");
@@ -140,9 +188,6 @@
 			}
 			out.println("</table>");
 		%>
-		<div class="delete_button">
-		<button type="button" onclick="delete()">削除</button>
-		</div>
 	</div>
 </body>
 </html>
