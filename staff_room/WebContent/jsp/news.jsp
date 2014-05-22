@@ -9,8 +9,9 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="dao.NewsDAO"%>
-<%@page import="java.util.*"%>
-
+<%@ page import="java.util.*"%>
+<%@ page import="java.text.*"%>
+<jsp:include page="/html/head.html" />
 <script type="text/javascript">
 var display_tag;
 window.onload = function() {
@@ -28,7 +29,7 @@ window.onload = function() {
 		var str = ele.innerText || ele.innerHTML;
 		ele.innerHTML = '<a href="javascript:show(' + i + ');">' + str + '<\/a>';
 	}
-}
+};
 function show(a) {
 	var ele = display_tag.item(a);
 	ele.style.display = (ele.style.display == "none") ? "block" : "none";
@@ -39,7 +40,7 @@ function show(a) {
 </head>
 <body>
 	<h1>連絡事項</h1>
-
+    
 	<%
 		String value = null;
 		value = request.getParameter("news");
@@ -57,18 +58,18 @@ function show(a) {
 		NewsDAO dao = new NewsDAO();
 		ArrayList<HashMap<String, String>> list = null;
 		list = dao
-				.getNews("select created,title,text,writer from news where post_id = "
+				.getNews("select TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,news_id,title,text,writer from news where post_id = "
 						+ value + " order by update desc");
 		System.out.print(list);
-		out.println("<table border='1'>");
+		out.println("<table class=\"uk-table uk-table-condensed uk-text-center uk-table-striped\">");
 		out.println("<tr>");
-		out.println("<td>");
+		out.println("<td class=\"uk-h2 uk-width-medium-1-4\">");
 		out.println("日付");
 		out.println("</td>");
-		out.println("<td>");
+		out.println("<td class=\"uk-h2 uk-width-medium-2-4\">");
 		out.println("件名");
 		out.println("</td>");
-		out.println("<td>");
+		out.println("<td class=\"uk-h2 uk-width-medium-1-4\">");
 		out.println("保存者");
 		out.println("</td>");
 		out.println("</tr>");
@@ -82,10 +83,13 @@ function show(a) {
 				out.println("&nbsp;</td>");
 				out.println("<td>");
 				%>
-				<h4><%= row.get("title") %></h4>
-				<dl>
-				<dt><%= row.get("text") %></dt>
-				</dl>
+				<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
+				<div id="<%= row.get("news_id") %>" class="uk-modal">
+    				<div class="uk-modal-dialog">
+        				<a class="uk-modal-close uk-close"></a>
+        				<div class="uk-h3"><%= row.get("text") %></div>
+    				</div>
+				</div>
 				<%
 				out.println("&nbsp;</td>");
 				out.println("<td>");
@@ -106,10 +110,13 @@ function show(a) {
 			out.println("&nbsp;</td>");
 			out.println("<td>");
 			%>
-			<h4><%= row.get("title") %></h4>
-			<dl>
-			<dt><%= row.get("text") %></dt>
-			</dl>
+			<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
+				<div id="<%= row.get("news_id") %>" class="uk-modal">
+    				<div class="uk-modal-dialog">
+        				<a class="uk-modal-close uk-close"></a>
+        				<div class="uk-h3"><%= row.get("text") %></div>
+    				</div>
+				</div>
 			<%
 			out.println("&nbsp;</td>");
 			out.println("<td>");
