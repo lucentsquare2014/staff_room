@@ -67,10 +67,9 @@
 			</div>
 		</li>
 	</ul>
-	</form>
-	<div class="uk-navbar-flip">
-		<ul class="uk-navbar-nav">
-			<li><a href="/staff_room/Logout">ログアウト</a></li>
-		</ul>                            
-    </div>
+	<div class="uk-navbar-content uk-navbar-flip  uk-hidden-small">
+              <div class="uk-button-group">
+                       <a class="uk-button uk-button-danger" href="/staff_room/Logout">ログアウト</a>
+              </div>
+       </div>
 </nav>
