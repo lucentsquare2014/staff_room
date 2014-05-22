@@ -72,15 +72,15 @@ function show(a) {
 						%>
 		<form method="POST" action="updateForm.jsp">
 
-			<input type="hidden" name="news_id" value="<%=row.get("news_id")%>">
+			<input type="hidden" name="inputNewsid" value="<%=row.get("news_id")%>">
 
-			<input type="hidden" name="post_id" value="<%=row.get("post_id")%>">
+			<input type="hidden" name="inputPostid" value="<%=row.get("post_id")%>">
 
-			<input type="hidden" name="title" value="<%=row.get("title")%>">
+			<input type="hidden" name="inputTitle" value="<%=row.get("title")%>">
 
-			<input type="hidden" name="text" value="<%=row.get("text")%>">
+			<input type="hidden" name="inputText" value="<%=row.get("text")%>">
 
-			<input type="hidden" name="writer" value="<%=row.get("writer")%>">
+			<input type="hidden" name="inputWriter" value="<%=row.get("writer")%>">
 			<input type="submit" value="編集">
 		</form>
 		<%
@@ -104,15 +104,15 @@ function show(a) {
 		%>
 		<form method="POST" action="updateForm.jsp">
 
-			<input type="hidden" name="news_id" value="<%=row.get("news_id")%>">
+			<input type="hidden" name="inputNewsid" value="<%=row.get("news_id")%>">
 
-			<input type="hidden" name="post_id" value="<%=row.get("post_id")%>">
+			<input type="hidden" name="inputPostid" value="<%=row.get("post_id")%>">
 
-			<input type="hidden" name="title" value="<%=row.get("title")%>">
+			<input type="hidden" name="inputTitle" value="<%=row.get("title")%>">
 
-			<input type="hidden" name="text" value="<%=row.get("text")%>">
+			<input type="hidden" name="inputText" value="<%=row.get("text")%>">
 
-			<input type="hidden" name="writer" value="<%=row.get("writer")%>">
+			<input type="hidden" name="inputWriter" value="<%=row.get("writer")%>">
 			<input type="submit" value="編集">
 		</form>
 		<%
