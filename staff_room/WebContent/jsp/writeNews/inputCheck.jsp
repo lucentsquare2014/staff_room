@@ -11,7 +11,6 @@
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head>
-<jsp:include page="/html/head.html" />
 <title>入力確認</title>
 </head>
 <body>
