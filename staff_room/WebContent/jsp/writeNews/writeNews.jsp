@@ -8,12 +8,6 @@
 <jsp:include page="/html/head.html" />
 <script type="text/javascript">
 	var display_tag;
-	$(window).unload(function() {
-		a = $(".delete_check");
-		for ( var i = 0; i < a.length; i++) {
-			a[i].removeAttribute("checked");
-		}
-	});
 	window.onload = function() {
 
 		if (!document.getElementsByTagName)
@@ -36,8 +30,7 @@
 	// チェックボックスにチェックがついたかを判別する
 	function del_checked(id) {
 		var checkbox = $("#" + id);
-		if (checkbox.attr("flag") === "0" || checkbox.attr("flag") === void 0) {
-			checkbox.attr("checked", "checked");
+		if (checkbox.attr("flag") === "0") {
 			checkbox.attr("flag", "1");
 		} else {
 			checkbox.attr("flag", "0");
@@ -53,6 +46,7 @@
 			// チェックボックスにチェックがついていたらIDを配列に格納
 			if (news[n].getAttribute("flag") == "1") {
 				ids.push(news[n].getAttribute("id"));
+				$("#row" + news[n].getAttribute("id")).fadeOut();
 			}
 		}
 		console.debug(ids);
@@ -76,6 +70,7 @@
 <title>管理編集</title>
 </head>
 <body>
+
 	<div class="content">
 		<p>
 		<h1>管理・編集</h1>
@@ -99,9 +94,9 @@
 			for (int i = 0; i < list.size(); i++) {
 				HashMap<String, String> row = list.get(i);
 				if (!row.get("created").equals("")) {
-					out.println("<tr>");
+					out.println("<tr id=\"row" + row.get("news_id") + "\">");
 					out.println("<td>");
-					out.println("<input type=\"checkbox\" class=\"delete_check\" id=\""
+					out.println("<input type=\"checkbox\" flag=\"0\" class=\"delete_check\" id=\""
 							+ row.get("news_id")
 							+ "\" onclick=\"del_checked(this.id)\">");
 					out.println("</td>");
@@ -148,9 +143,9 @@
 			}
 			for (int i = 0; i < z; i++) {
 				HashMap<String, String> row = list.get(x.get(i));
-				out.println("<tr>");
+				out.println("<tr id=\"row" + row.get("news_id") + "\">");
 				out.println("<td>");
-				out.println("<input type=\"checkbox\" class=\"delete_check\" id=\""
+				out.println("<input type=\"checkbox\" flag=\"0\" class=\"delete_check\" id=\""
 						+ row.get("news_id")
 						+ "\" onclick=\"del_checked(this.id)\">");
 				out.println("</td>");
