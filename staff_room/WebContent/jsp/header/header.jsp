@@ -62,15 +62,14 @@
 					<li><a href="http://www.lucentsquare.co.jp/gps/pc/">GPS</a></li>
 					<li><a href="http://www.lucentsquare.co.jp:8080/etalent5_27/main.jsp">e-talent</a></li>
 					<li><a href="http://www.lucentsquare.co.jp/staff/WorkingGroup/Advance_WorkingGroup.html">Advance meeting</a></li>
-					<li><a href="http://www.lucentsquare.co.jp/staff/staff_main.html">新入社員紹介</a></li>
+					<li><a href="http://www.lucentsquare.co.jp/staff/newstaff_2014/newstaff_index.html">新入社員紹介</a></li>
 				</ul>
 			</div>
 		</li>
 	</ul>
-	</form>
-	<div class="uk-navbar-flip">
-		<ul class="uk-navbar-nav">
-			<li><a href="/staff_room/Logout">ログアウト</a></li>
-		</ul>                            
-    </div>
+	<div class="uk-navbar-content uk-navbar-flip  uk-hidden-small">
+              <div class="uk-button-group">
+                       <a class="uk-button uk-button-danger" href="/staff_room/Logout">ログアウト</a>
+              </div>
+       </div>
 </nav>
