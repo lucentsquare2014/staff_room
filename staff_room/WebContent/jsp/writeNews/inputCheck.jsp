@@ -16,6 +16,10 @@
 <body>
 	<h1>入力確認</h1>
 
+<%if(request.getParameter("inputTitle")==""||request.getParameter("inputText")==""){ %>
+	エラー！<br>
+	タイトルと本文は必ず入力してください！
+	<%}%>
 	<!-- 入力フォーム データ→確認画面-->
 
 
@@ -24,7 +28,7 @@
 				<th>分類</th>
 				<td>
 				<%String [] POST = new String []{"総務","人事","行事","開発","その他"};%>
-				<%=POST[Integer.parseInt(jpn2unicode(request.getParameter("inputPost"),"UTF-8"))-1]%>
+				<%=POST[Integer.parseInt(request.getParameter("inputPostid"))-1]%>
 				</td>
 			</tr>
 			<tr>
@@ -53,16 +57,17 @@
 			</tr>
 			</table>
 
-			<!-- 入力・編集フォームから渡されたデータ→write_finish.jsp-->
+			<!-- 決定ボタン   入力・編集フォームから渡されたデータ→write_finish.jsp-->
+	<%if(request.getParameter("inputTitle")!=""||request.getParameter("inputText")!=""){ %>
 	<form method="POST" action="	write_finish.jsp">
 
 		<!-- 管理編集画面→編集フォーム→確認画面と渡されたnews_idを渡すnewsWrite.jsp-->
 
 		<input type="hidden" name="inputNewsid"
-			value="<%=jpn2unicode(request.getParameter("inputNewsid"), "UTF-8")%>">
+			value="<%=request.getParameter("inputNewsid")%>">
 
-		<input type="hidden" name="inputPost"
-			value="<%=jpn2unicode(request.getParameter("inputPost"), "UTF-8")%>">
+		<input type="hidden" name="inputPostid"
+			value="<%=request.getParameter("inputPostid")%>">
 
 		<input type="hidden" name="inputTitle"
 			value="<%=jpn2unicode(request.getParameter("inputTitle"), "UTF-8")%>">
@@ -80,27 +85,50 @@
 
 		<input type="submit" value="決定">
 	</form>
+	<%}%>
+
+	<%-- 内容を編集するボタン 入力・編集フォームから渡されたデータ→updateForm.jsp--%>
 	<form method="POST" action="updateForm.jsp">
 
 		<input type="hidden" name="inputNewsid"
-			value="<%=jpn2unicode(request.getParameter("inputNewsid"), "UTF-8")%>">
+			value="<%=request.getParameter("inputNewsid")%>">
 
-		<input type="hidden" name="inputPost"
-			value="<%=jpn2unicode(request.getParameter("inputPost"), "UTF-8")%>">
 
+		<input type="hidden" name="inputPostid"
+			value="<%=request.getParameter("inputPostid")%>">
+
+		<%
+			if (request.getParameter("inputTitle") !="") {
+		%>
 		<input type="hidden" name="inputTitle"
-			value="<%=jpn2unicode(request.getParameter("inputTitle"), "UTF-8")%>">
-
+			value="<%=jpn2unicode(request.getParameter("inputTitle"),"UTF-8")%>">
+		<%
+			}
+		%>
+		<%
+			if (request.getParameter("inputText") !="") {
+		%>
 		<input type="hidden" name="inputText"
-			value="<%=jpn2unicode(request.getParameter("inputText"), "UTF-8")%>">
+			value="<%=jpn2unicode(request.getParameter("inputText"),"UTF-8")%>">
+		<%
+			}
+		%>
 
-		<!-- 添付ファイル いったん保留
+		<%--  添付ファイル いったん保留
+		<%if (request.getParameter("inputFile") != null) {%>
 		<input type="hidden" name="inputFile"
-			value="<%=jpn2unicode(request.getParameter("inputFile"), "UTF-8")%>">
-		-->
+			value="jpn2unicode(<%=request.getParameter("inputFile")UTF-8")%>">
+			<%}%>
+		--%>
 
+		<%
+			if (request.getParameter("inputWriter") != "") {
+		%>
 		<input type="hidden" name="inputWriter"
-			value="<%=jpn2unicode(request.getParameter("inputWriter"), "UTF-8")%>">
+			value="<%=jpn2unicode(request.getParameter("inputWriter"),"UTF-8")%>">
+		<%
+			}
+		%>
 
 		<input type="submit" value="内容を編集する">
 	</form>

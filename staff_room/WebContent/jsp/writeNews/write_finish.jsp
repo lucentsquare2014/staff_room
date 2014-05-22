@@ -26,7 +26,7 @@
 		//入力フォームから渡されたデータをHashMap型newsWriteに格納
 		HashMap<String, String> Newsdata = new HashMap<String, String>();
 		Newsdata.put("post_id",
-				jpn2unicode(request.getParameter("inputPost"), "UTF-8"));
+				request.getParameter("inputPostid"));
 		Newsdata.put("title",
 				jpn2unicode(request.getParameter("inputTitle"), "UTF-8"));
 		Newsdata.put("text",
@@ -43,20 +43,19 @@
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
 		Newsdata.put("created", sdf.format(date));
 
-		/* DAOからメソッドの呼び出し
+		// DAOからメソッドの呼び出し
 		NewsDAO dao = new NewsDAO();
 
-		確認画面から渡されたname="inputNewsid"がnullかどうかで呼ぶメソッドを判断
-		文字コード変換のせいでnullという文字列になっていることに注意
-		if(jpn2unicode(request.getParameter("inputNewsid"),"UTF-8").equals("null"){
+		//確認画面から渡されたname="inputNewsid"がnullかどうかで呼ぶメソッドを判断 文字コード変換のせいでnullという文字列になっていることに注意
+		if(request.getParameter("inputNewsid").equals("null")){
 
-		データベースにhashMapから書き込み
+		//データベースにhashMapから書き込み
 		dao.writeNews(Newsdata);
 		}else{
-			データベースにhashMapから更新
+			//データベースにhashMapから更新
 		dao.updateNews(Newsdata);
 		}
-		 */
+
 	%>
 	記事の保存が完了しました。
 	<form method="POST" action="writeNews.jsp">
@@ -66,14 +65,14 @@
 	<%--テスト用 --%>
 	以下、テスト用<br>
 	DBにそれぞれ書き込む内容<br>
-	post_id：<%= Newsdata.get("postID") %><br>
-	title：<%= Newsdata.get("title") %>
+	post_id：<%= Newsdata.get("post_id") %><br>
+	title：<%= Newsdata.get("title") %><br>
 	text：<pre><%= Newsdata.get("text") %></pre>
 	<%-- Newsdata.get("file") --%>
 	writer：<%= Newsdata.get("writer") %><br>
 	created：<%= Newsdata.get("created") %><br>
-	news_id：<%=jpn2unicode(request.getParameter("inputNewsid"),"UTF-8")%><br>
-	<% if(jpn2unicode(request.getParameter("inputNewsid"),"UTF-8").equals("null")){
+	news_id：<%=request.getParameter("inputNewsid")%><br>
+	<%if(request.getParameter("inputNewsid").equals("null")){
 						out.println("記事の新規作成メソッドを選択");
 						 }else{
 						out.println("既存記事更新メソッドを選択");
