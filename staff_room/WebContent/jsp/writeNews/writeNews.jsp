@@ -32,34 +32,38 @@
 		var checkbox = $("#" + id);
 		if (checkbox.attr("flag") === "0") {
 			checkbox.attr("flag", "1");
+			$("#"+checkbox.attr("id")).attr("class","uk-icon-check-square-o");
 		} else {
 			checkbox.attr("flag", "0");
+			$("#"+checkbox.attr("id")).attr("class","uk-icon-square-o");
 		}
 	}
 	// 記事を削除するdeleteNews.jspに記事IDを渡す関数
 	function delete_news() {
+		// 削除をクリックされると確認ダイヤログを表示するOKが押されるとif文の中を実行
 		if (confirm('選択された記事をすべて削除してもいいですか?')) {
 			var ids = [];
-			var news = $(".delete_check");
-			//console.debug(news);
+			// class=delete_checkのついてるタグをすべて取得
+			var news = $('[name="delete_check"]');
 			// 削除する記事のIDを格納した配列を生成
 			for ( var n = 0; n < news.length; n++) {
 				// チェックボックスにチェックがついていたらIDを配列に格納
 				if (news[n].getAttribute("flag") == "1") {
 					ids.push(news[n].getAttribute("id"));
+					// 削除する記事を隠す
 					$("#row" + news[n].getAttribute("id")).fadeOut();
 				}
 			}
 		}
-		console.debug(ids);
+		// IDを格納した配列をdeleteNews.jspにPOST送信
 		$.ajax({
 			type : "POST",
 			url : "deleteNews.jsp",
 			data : {
+				// 配列を区切り文字","の文字列に変換 例:[1,2,3,]→"1,2,3"
 				"del_id" : "" + ids
 			}
 		}).done(function() {
-
 		});
 	}
 
@@ -98,9 +102,10 @@
 				if (!row.get("created").equals("")) {
 					out.println("<tr id=\"row" + row.get("news_id") + "\">");
 					out.println("<td>");
-					out.println("<input type=\"checkbox\" flag=\"0\" class=\"delete_check\" id=\""
+					out.println("<a flag=\"0\" class=\"uk-icon-square-o\" name=\"delete_check\" id=\""
 							+ row.get("news_id")
 							+ "\" onclick=\"del_checked(this.id)\">");
+					out.println("</a>");
 					out.println("</td>");
 					out.println("<td>");
 					out.println(row.get("created"));
@@ -146,11 +151,12 @@
 			for (int i = 0; i < z; i++) {
 				HashMap<String, String> row = list.get(x.get(i));
 				out.println("<tr id=\"row" + row.get("news_id") + "\">");
-				out.println("<td>");
-				out.println("<input type=\"checkbox\" flag=\"0\" class=\"delete_check\" id=\""
-						+ row.get("news_id")
-						+ "\" onclick=\"del_checked(this.id)\">");
-				out.println("</td>");
+					out.println("<td>");
+					out.println("<a flag=\"0\" class=\"uk-icon-square-o\" name=\"delete_check\" id=\""
+							+ row.get("news_id")
+							+ "\" onclick=\"del_checked(this.id)\">");
+					out.println("</a>");
+					out.println("</td>");
 				out.println("<td>");
 				out.println(row.get("created"));
 				out.println("&nbsp;</td>");
