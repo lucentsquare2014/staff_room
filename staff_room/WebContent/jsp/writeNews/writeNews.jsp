@@ -10,7 +10,7 @@
 	var display_tag;
 	$(window).unload(function() {
 		a = $(".delete_check");
-		for (var i = 0; i < a.length; i++) {
+		for ( var i = 0; i < a.length; i++) {
 			a[i].removeAttribute("checked");
 		}
 	});
@@ -22,7 +22,7 @@
 		var change_tag = document.getElementsByTagName("h4"); // タイトルの部分のタグ
 		display_tag = document.getElementsByTagName("dl"); // 非表示させたい部分のタグ
 
-		for (var i = 0; i < change_tag.length; i++) {
+		for ( var i = 0; i < change_tag.length; i++) {
 			// 非表示させたいタグの処理
 			display_tag.item(i).style.display = "none";
 
@@ -37,7 +37,7 @@
 	function del_checked(id) {
 		var checkbox = $("#" + id);
 		if (checkbox.attr("flag") === "0" || checkbox.attr("flag") === void 0) {
-            checkbox.attr("checked", "checked");			
+			checkbox.attr("checked", "checked");
 			checkbox.attr("flag", "1");
 		} else {
 			checkbox.attr("flag", "0");
@@ -49,7 +49,7 @@
 		var news = $(".delete_check");
 		//console.debug(news);
 		// 削除する記事のIDを格納した配列を生成
-		for (var n = 0; n < news.length; n++) {
+		for ( var n = 0; n < news.length; n++) {
 			// チェックボックスにチェックがついていたらIDを配列に格納
 			if (news[n].getAttribute("flag") == "1") {
 				ids.push(news[n].getAttribute("id"));
@@ -57,11 +57,13 @@
 		}
 		console.debug(ids);
 		$.ajax({
-		    type: "POST",
-		    url: "deleteNews.jsp",
-		    data: ids
+			type : "POST",
+			url : "deleteNews.jsp",
+			data : {
+				"del_id" : "" + ids
+			}
 		}).done(function() {
-			
+
 		});
 	}
 
@@ -148,8 +150,9 @@
 				HashMap<String, String> row = list.get(x.get(i));
 				out.println("<tr>");
 				out.println("<td>");
-				out.println("<input type=\"checkbox\" name=\"delete_check\" value=\""
-						+ row.get("news_id") + "\">");
+				out.println("<input type=\"checkbox\" class=\"delete_check\" id=\""
+						+ row.get("news_id")
+						+ "\" onclick=\"del_checked(this.id)\">");
 				out.println("</td>");
 				out.println("<td>");
 				out.println(row.get("created"));
