@@ -9,13 +9,14 @@
 <script type="text/javascript">
 	var display_tag;
 	window.onload = function() {
+
 		if (!document.getElementsByTagName)
 			return;
 
 		var change_tag = document.getElementsByTagName("h4"); // タイトルの部分のタグ
 		display_tag = document.getElementsByTagName("dl"); // 非表示させたい部分のタグ
 
-		for (var i = 0; i < change_tag.length; i++) {
+		for ( var i = 0; i < change_tag.length; i++) {
 			// 非表示させたいタグの処理
 			display_tag.item(i).style.display = "none";
 
@@ -26,6 +27,46 @@
 					+ '<\/a>';
 		}
 	}
+	// チェックボックスにチェックがついたかを判別する
+	function del_checked(id) {
+		var checkbox = $("#" + id);
+		if (checkbox.attr("flag") === "0") {
+			checkbox.attr("flag", "1");
+			$("#"+checkbox.attr("id")).attr("class","uk-icon-check-square-o");
+		} else {
+			checkbox.attr("flag", "0");
+			$("#"+checkbox.attr("id")).attr("class","uk-icon-square-o");
+		}
+	}
+	// 記事を削除するdeleteNews.jspに記事IDを渡す関数
+	function delete_news() {
+		// 削除をクリックされると確認ダイヤログを表示するOKが押されるとif文の中を実行
+		if (confirm('選択された記事をすべて削除してもいいですか?')) {
+			var ids = [];
+			// class=delete_checkのついてるタグをすべて取得
+			var news = $('[name="delete_check"]');
+			// 削除する記事のIDを格納した配列を生成
+			for ( var n = 0; n < news.length; n++) {
+				// チェックボックスにチェックがついていたらIDを配列に格納
+				if (news[n].getAttribute("flag") == "1") {
+					ids.push(news[n].getAttribute("id"));
+					// 削除する記事を隠す
+					$("#row" + news[n].getAttribute("id")).fadeOut();
+				}
+			}
+		}
+		// IDを格納した配列をdeleteNews.jspにPOST送信
+		$.ajax({
+			type : "POST",
+			url : "deleteNews.jsp",
+			data : {
+				// 配列を区切り文字","の文字列に変換 例:[1,2,3,]→"1,2,3"
+				"del_id" : "" + ids
+			}
+		}).done(function() {
+		});
+	}
+
 	function show(a) {
 		var ele = display_tag.item(a);
 		ele.style.display = (ele.style.display == "none") ? "block" : "none";
@@ -35,6 +76,7 @@
 <title>管理編集</title>
 </head>
 <body>
+
 	<div class="content">
 		<p>
 		<h1>管理・編集</h1>
@@ -42,6 +84,9 @@
 		<form method="POST" action="updateForm.jsp">
 			<input type="submit" value="新規作成">
 		</form>
+		<div class="delete_button">
+			<button type="button" onclick="delete_news()">削除</button>
+		</div>
 		<%
 			//配列
 			ArrayList<Integer> x = new ArrayList<Integer>();
@@ -55,10 +100,12 @@
 			for (int i = 0; i < list.size(); i++) {
 				HashMap<String, String> row = list.get(i);
 				if (!row.get("created").equals("")) {
-					out.println("<tr>");
+					out.println("<tr id=\"row" + row.get("news_id") + "\">");
 					out.println("<td>");
-					out.println("<input type=\"checkbox\" name=\"delete_check\" value=\""
-							+ row.get("news_id") + "\">");
+					out.println("<a flag=\"0\" class=\"uk-icon-square-o\" name=\"delete_check\" id=\""
+							+ row.get("news_id")
+							+ "\" onclick=\"del_checked(this.id)\">");
+					out.println("</a>");
 					out.println("</td>");
 					out.println("<td>");
 					out.println(row.get("created"));
@@ -70,7 +117,10 @@
 		%>
 		<h4><%=row.get("title")%></h4>
 		<dl>
-			<dt><pre><%=row.get("text")%></pre></dt>
+			<dt>
+				<pre><%=row.get("text")%></pre>
+			</dt>
+			<dt style="display: none"></dt>
 		</dl>
 		<%
 			out.println("&nbsp;</td>");
@@ -100,11 +150,13 @@
 			}
 			for (int i = 0; i < z; i++) {
 				HashMap<String, String> row = list.get(x.get(i));
-				out.println("<tr>");
-				out.println("<td>");
-				out.println("<input type=\"checkbox\" name=\"delete_check\" value=\""
-						+ row.get("news_id") + "\">");
-				out.println("</td>");
+				out.println("<tr id=\"row" + row.get("news_id") + "\">");
+					out.println("<td>");
+					out.println("<a flag=\"0\" class=\"uk-icon-square-o\" name=\"delete_check\" id=\""
+							+ row.get("news_id")
+							+ "\" onclick=\"del_checked(this.id)\">");
+					out.println("</a>");
+					out.println("</td>");
 				out.println("<td>");
 				out.println(row.get("created"));
 				out.println("&nbsp;</td>");
@@ -113,10 +165,12 @@
 				out.println("&nbsp;</td>");
 				out.println("<td>");
 		%>
-        <h4><%=row.get("title")%></h4>
-        <dl>
-            <dt><pre><%=row.get("text")%></pre></dt>
-        </dl>
+		<h4><%=row.get("title")%></h4>
+		<dl>
+			<dt>
+				<pre><%=row.get("text")%></pre>
+			</dt>
+		</dl>
 		<%
 			out.println("&nbsp;</td>");
 				out.println("<td>");
@@ -140,9 +194,6 @@
 			}
 			out.println("</table>");
 		%>
-		<div class="delete_button">
-		<button type="button" onclick="delete()">削除</button>
-		</div>
 	</div>
 </body>
 </html>

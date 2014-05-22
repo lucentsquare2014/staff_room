@@ -1,6 +1,5 @@
 package dao;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -15,8 +14,10 @@ import java.util.HashMap;
  */
 public class NewsDAO {
 
-	/* newsDBに接続するメソッド
-	 * @return 	データベースとやりとりするコネクションクラス
+	/*
+	 * newsDBに接続するメソッド
+	 * 
+	 * @return データベースとやりとりするコネクションクラス
 	 */
 	private static Connection openNewsDB() {
 		Connection con = null;
@@ -88,19 +89,12 @@ public class NewsDAO {
 			stmt = con.createStatement();
 
 			// SQL文を文字列としてsqlという変数に格納
-			String sql = "UPDATE news SET postID="
-					+ Newsdata.get("postID")
-					+ ", "
-					+ Newsdata.get("title")
-					+ ", "
-					+ Newsdata.get("text")
-					+ ", "
-					+ Newsdata.get("writer")
-					+ ","
-					+ Newsdata.get("filename")
-					+ ","
-					+ Newsdata.get("update")
-					+ "WHERE newsID="+ Newsdata.get("newsID");
+			String sql = "UPDATE news SET postID=" + Newsdata.get("postID")
+					+ ", " + Newsdata.get("title") + ", "
+					+ Newsdata.get("text") + ", " + Newsdata.get("writer")
+					+ "," + Newsdata.get("filename") + ","
+					+ Newsdata.get("update") + "WHERE newsID="
+					+ Newsdata.get("newsID");
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			int num = stmt.executeUpdate(sql);
 			closeNewsDB(con);
@@ -109,17 +103,19 @@ public class NewsDAO {
 		}
 	}
 
-	/* 記事を削除するメソッド*/
-	public void deleteNews(String id) {
+	/* 記事を削除するメソッド */
+	public void deleteNews(String[] ids) {
 		Connection con = openNewsDB();
 		// ステートメントを作成
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
-			// SQL文を文字列としてsqlという変数に格納
-			String sql = "DELETE news WHERE newsID=" + id;
-			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
-			int num = stmt.executeUpdate(sql);
+			for (String id : ids) {
+				// SQL文を文字列としてsqlという変数に格納
+				String sql = "delete from news where news_id=" + id;
+				// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
+				stmt.executeUpdate(sql);
+			}
 			closeNewsDB(con);
 		} catch (SQLException e) {
 			System.out.println(e);
@@ -127,7 +123,9 @@ public class NewsDAO {
 	}
 
 	// 例：getNews("select * from newsDB");
-	/* テーブルのデータを参照し、listに格納して返すメソッド
+	/*
+	 * テーブルのデータを参照し、listに格納して返すメソッド
+	 * 
 	 * @return ArrayList<HashMap<String,String>>型の検索結果を格納したリスト
 	 */
 	public ArrayList<HashMap<String, String>> getNews(String sql) {
