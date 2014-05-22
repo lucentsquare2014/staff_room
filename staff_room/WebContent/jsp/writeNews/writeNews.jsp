@@ -38,15 +38,17 @@
 	}
 	// 記事を削除するdeleteNews.jspに記事IDを渡す関数
 	function delete_news() {
-		var ids = [];
-		var news = $(".delete_check");
-		//console.debug(news);
-		// 削除する記事のIDを格納した配列を生成
-		for ( var n = 0; n < news.length; n++) {
-			// チェックボックスにチェックがついていたらIDを配列に格納
-			if (news[n].getAttribute("flag") == "1") {
-				ids.push(news[n].getAttribute("id"));
-				$("#row" + news[n].getAttribute("id")).fadeOut();
+		if (confirm('選択された記事をすべて削除してもいいですか?')) {
+			var ids = [];
+			var news = $(".delete_check");
+			//console.debug(news);
+			// 削除する記事のIDを格納した配列を生成
+			for ( var n = 0; n < news.length; n++) {
+				// チェックボックスにチェックがついていたらIDを配列に格納
+				if (news[n].getAttribute("flag") == "1") {
+					ids.push(news[n].getAttribute("id"));
+					$("#row" + news[n].getAttribute("id")).fadeOut();
+				}
 			}
 		}
 		console.debug(ids);
