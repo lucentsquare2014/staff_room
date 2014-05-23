@@ -103,12 +103,15 @@ body{width: 100%;
 		<p>
 		<h1>管理・編集</h1>
      		<form method="POST" action="updateForm.jsp" align="right" style="margin-right:60px" style="margin-top:20px;">
-			<input type="submit" value="新規作成" align="right">
+			<input type="submit" value="新規作成" align="right" style="width:200px; height:50px; color:black background:white;">
 		</form>
 		<p>          
 		</p>
-		<div class="delete_button" align="right" style="margin-right:60px" style="margin-top:30px;">
-			<button type="button" onclick="delete_news()"><big> 削除 </big></button>
+		<div class="delete_button" align="right" style="margin-right:75px" style="margin-top:30px;">
+			<button style="width:175px; height:50px; color:black; background-color:darkgray; 
+			font-weight:30; type="button" onclick="delete_news() ">
+			<big> 削除 </big>
+			</button>
 		</div>
 		<%
 			//配列
@@ -163,8 +166,8 @@ body{width: 100%;
 
 			<input type="hidden" name="inputText" value="<%=row.get("text")%>">
 
-			<input type="hidden" name="inputWriter"
-				value="<%=row.get("writer")%>"> <input type="submit"
+			<input type="hidden" name="inputWriter" 
+				value="<%=row.get("writer")%>"> <input type="submit" style="width:200px; height:50px; color:black background:white;"
 				value="編集">
 		</form>
 		<%
@@ -212,8 +215,8 @@ body{width: 100%;
 
 			<input type="hidden" name="inputText" value="<%=row.get("text")%>">
 
-			<input type="hidden" name="inputWriter"
-				value="<%=row.get("writer")%>"> <input type="submit"
+			<input type="hidden" name="inputWriter" 
+				value="<%=row.get("writer")%>"> <input type="submit" style="width:200px; height:50px; color:black background:white;"
 				value="編集">
 		</form>
 		<%
