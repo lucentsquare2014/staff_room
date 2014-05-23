@@ -14,7 +14,6 @@
 <%@ page import="java.text.*"%>
 <jsp:include page="/html/head.html" />
 <script type="text/javascript">
-
 var display_tag;
 window.onload = function() {
 	if (!document.getElementsByTagName) return;
@@ -41,10 +40,14 @@ function show(a) {
 <title>連絡事項</title>
 </head>
 <body>
-<jsp:include page="/jsp/header/header.jsp" />
-<div class="changelog" style="padding-top: 50px;">
-	<h1>連絡事項</h1>
-    
+	<jsp:include page="/jsp/header/header.jsp" /><br><br>
+	<img src="/staff_room/images/renraku2.jpg" style="height: 300; width:100%">
+	<div style="position:absolute; top:520px; left:80px; width: 100%;">
+	<div align="right"><h1><i><u><font color="#000000" face="HGP明朝E" style="font-size:50pt;">連絡事項</font></u></i>　　　　　</h1></div>
+	</div>
+	<div align="center">
+	<img src="/staff_room/images/newswall.png" style="height: 300; width:100%">
+	<div style="position:absolute; top:600px; left:0px; width: 100%;">
 	<%
 		String value = null;
 		value = request.getParameter("news");
@@ -64,32 +67,49 @@ function show(a) {
 		list = dao
 				.getNews("select TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,news_id,title,text,writer from news where post_id = "
 						+ value + " order by update desc");
+		ArrayList<HashMap<String, String>> name = null;
+		name = dao.getNews("select postname from post where post_id =" + value);
+		System.out.print(name);
+
+		for (int i = 0; i < name.size(); i++) {
+			HashMap<String, String> raw = name.get(i);
+			out.println("<div align=\"left\">");
+			out.println("<font face=\"HGP創英角ﾎﾟｯﾌﾟ体\">");
+			out.println("<font size =\"7\">");
+			out.println("<br><br><br>　　　　　");
+			out.println(raw.get("postname"));
+			out.println("<br>");
+			out.println("</font>");
+			out.println("</font>");
+			out.println("</div>");
+		}
+		out.println("<br><br><br><br>");
 		System.out.print(list);
-		out.println("<table class=\"uk-table uk-table-condensed uk-table-striped\">");
+		out.println("<table class=\" uk-text-center uk-width-medium-3-4\">");
 		out.println("<tr>");
-		out.println("<td class=\"uk-text-center uk-h2 uk-width-medium-1-4\">");
+		out.println("<td class=\"uk-h2 uk-width-medium-1-4\">");
 		out.println("日付");
 		out.println("</td>");
-		out.println("<td class=\"uk-text-center uk-h2 uk-width-medium-2-4\">");
+		out.println("<td class=\"uk-h2 uk-width-medium-2-4\">");
 		out.println("件名");
 		out.println("</td>");
-		out.println("<td class=\"uk-text-center uk-h2 uk-width-medium-1-4\">");
+		out.println("<td class=\"uk-h2 uk-width-medium-1-4\">");
 		out.println("保存者");
 		out.println("</td>");
 		out.println("</tr>");
-		
+
 		for (int i = 0; i < list.size(); i++) {
 			HashMap<String, String> row = list.get(i);
 			if (!row.get("created").equals("")) {
 				out.println("<tr>");
-				out.println("<td class=\"uk-text-center\">");
+				out.println("<td class=\"uk-h3 uk-width-medium-1-4 \">");
 				out.println(row.get("created"));
 				out.println("&nbsp;</td>");
-				out.println("<td>");
+				out.println("<td class=\"uk-h3 uk-width-medium-2-4\">");
 				%>
 				<h4><%= row.get("title") %></h4>
 				<dl><pre><%= row.get("text") %></pre></dl>
-				
+
 				<!--
 				<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
 				<div id="<%= row.get("news_id") %>" class="uk-modal">
@@ -101,11 +121,11 @@ function show(a) {
 				-->
 				<%
 				out.println("&nbsp;</td>");
-				out.println("<td>");
+				out.println("<td class=\"uk-h3 uk-width-medium-1-4\">");
 				out.println(row.get("writer"));
 				out.println("</td>");
 				out.println("</tr>");
-				
+
 			} else {
 				x.add(i);
 				z++;
@@ -115,7 +135,7 @@ function show(a) {
 			HashMap<String, String> row = list.get(x.get(i));
 			out.println("<tr>");
 			out.println("<td>");
-			out.println("<td class=\"uk-text-center\">");
+			out.println(row.get("created"));
 			out.println("&nbsp;</td>");
 			out.println("<td>");
 			%>
@@ -138,6 +158,7 @@ function show(a) {
 			out.println("</tr>");
 		}
 	%>
-</div>
+	</div>
+	</div>
 </body>
 </html>
