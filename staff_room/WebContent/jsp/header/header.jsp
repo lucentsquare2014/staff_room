@@ -5,6 +5,7 @@
  		width: 100%;
  		position: fixed;
  		opacity: 1;
+ 		 top: 0;
  	}
  
 </style>
