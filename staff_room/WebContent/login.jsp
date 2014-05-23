@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	if(session.isNew()){
+		session.setAttribute("count", 0);
+	}
 	if(session.getAttribute("count") != null){
 		String str = String.valueOf(session.getAttribute("count"));
 		if(Integer.valueOf(str) > 4){
