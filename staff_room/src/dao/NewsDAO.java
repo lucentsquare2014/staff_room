@@ -61,17 +61,28 @@ public class NewsDAO {
 			String sql = "INSERT INTO news (post_id, title, text, writer, filename, created, update) VALUES ("
 					+ Newsdata.get("post_id")
 					+ ", "
-					+ "'"+Newsdata.get("title")+"'"
+					+ "'"
+					+ Newsdata.get("title")
+					+ "'"
 					+ ", "
-					+ "'"+Newsdata.get("text")+"'"
+					+ "'"
+					+ Newsdata.get("text")
+					+ "'"
 					+ ", "
-					+ "'"+Newsdata.get("writer")+"'"
+					+ "'"
+					+ Newsdata.get("writer")
+					+ "'"
 					+ ", "
-					+ "'"+Newsdata.get("filename")+"'"
+					+ "'"
+					+ Newsdata.get("filename")
+					+ "'"
 					+ ", "
-					+ "'"+Newsdata.get("created")+"'"
+					+ "'"
+					+ Newsdata.get("created")
+					+ "'"
 					+ ", "
-					+ "'"+Newsdata.get("created")+"')";
+					+ "'"
+					+ Newsdata.get("created") + "')";
 			System.out.println(sql);
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			int num = stmt.executeUpdate(sql);
@@ -90,13 +101,38 @@ public class NewsDAO {
 			stmt = con.createStatement();
 
 			// SQL文を文字列としてsqlという変数に格納
-			String sql = "UPDATE news SET postID=" + Newsdata.get("postID")
-					+ ", " + Newsdata.get("title") + ", "
-					+ Newsdata.get("text") + ", " + Newsdata.get("writer")
-					+ "," + Newsdata.get("filename") + ","
-					+ Newsdata.get("update") + "WHERE newsID="
-					+ Newsdata.get("newsID");
+			String sql = "UPDATE news SET " 
+					+ "post_id=" 
+					+ Newsdata.get("post_id")
+					+ ", " 
+					+ "title=" 
+					+ "'"
+					+ Newsdata.get("title")
+					+ "'"
+					+ ", "
+					+ "text=" 
+					+ "'"
+					+ Newsdata.get("text") 
+					+ "'"
+					+ ", " 
+					+ "writer=" 
+					+ "'"
+					+ Newsdata.get("writer")
+					+ "'"					
+					+ "," 
+					+ "filename=" 
+					+ "'"
+					+ Newsdata.get("filename") 
+					+ "'"					
+					+ ","
+					+ "update=" 
+					+ "'"
+					+ Newsdata.get("update") 
+					+ "'"					
+					+ " WHERE news_id="
+					+ Newsdata.get("news_id");
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
+			System.out.println(sql);
 			int num = stmt.executeUpdate(sql);
 			closeNewsDB(con);
 		} catch (SQLException e) {

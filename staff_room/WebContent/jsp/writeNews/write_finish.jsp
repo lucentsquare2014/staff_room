@@ -37,21 +37,21 @@
 
 		Newsdata.put("writer",
 				jpn2unicode(request.getParameter("inputWriter"), "UTF-8"));
-
-		//  時間を取得して作成日として格納
-		Date date = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
-		Newsdata.put("created", sdf.format(date));
-
 		// DAOからメソッドの呼び出し
 		NewsDAO dao = new NewsDAO();
 
 		//確認画面から渡されたname="inputNewsid"がnullかどうかで呼ぶメソッドを判断 文字コード変換のせいでnullという文字列になっていることに注意
 		if(request.getParameter("inputNewsid").equals("null")){
+			Date date = new Date();
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
+	        Newsdata.put("created", sdf.format(date));
 
 		//データベースにhashMapから書き込み
 		dao.writeNews(Newsdata);
 		}else{
+			Date date = new Date();
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
+	        Newsdata.put("update", sdf.format(date));
 			//データベースにhashMapから更新
 		dao.updateNews(Newsdata);
 		}
