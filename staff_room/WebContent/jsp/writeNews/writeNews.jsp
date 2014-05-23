@@ -85,7 +85,7 @@
 <title>管理編集</title>
 </head>
 <body>
-
+    <jsp:include page="/jsp/header/header.jsp" />
 	<div class="content">
 		<p>
 		<h1>管理・編集</h1>
