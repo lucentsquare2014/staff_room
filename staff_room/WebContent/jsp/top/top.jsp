@@ -12,8 +12,10 @@
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="main-container uk-container uk-container-center">
-		<div class="changelog" >
-			<div class="changelog-title uk-panel-box"><h1 class=" uk-text-bold">更新履歴</h1></div>
+		<div class="changelog">
+			<div class="changelog-title uk-panel-box">
+				<h1 class=" uk-text-bold">更新履歴</h1>
+			</div>
 			<div class="changelog-content uk-panel-box">
 				<%
 					NewsDAO dao = new NewsDAO();
@@ -28,27 +30,37 @@
 							table.remove(table.indexOf(row));
 						}
 					}
-					out.println("<table>");
-					for (int i = 0; i < table.size(); i++) {
-						// 10こ表示したらループを止める
-						if (i == 10) {
-							break;
-						}
-						HashMap<String, String> row = table.get(i);
-						out.println("<tr>");
-						out.println("<td>");
-						out.println(row.get("created"));
-						out.println("&nbsp;</td>");
-						out.println("<td>");
-						out.println(row.get("postname"));
-						out.println("&nbsp;</td>");
-						out.println("<td>");
-						out.println(row.get("title"));
-						out.println("</td>");
-						out.println("</tr>");
-					}
-					out.println("</table>");
 				%>
+				<table>
+					<%
+						for (int i = 0; i < table.size(); i++) {
+							// 10こ表示したらループを止める
+							if (i == 10) {
+								break;
+							}
+							HashMap<String, String> row = table.get(i);
+					%>
+					<tr>
+						<td>
+							<%
+								out.println(row.get("created"));
+							%>
+						</td>
+						<td>
+							<%
+								out.println(row.get("postname"));
+							%>
+						</td>
+						<td>
+							<%
+								out.println(row.get("title"));
+							%>
+						</td>
+					</tr>
+					<%
+						}
+					%>
+				</table>
 			</div>
 		</div>
 		<div class="page-title">

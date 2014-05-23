@@ -1,35 +1,41 @@
-body{
-	background-image : url("/staff_room/images/top.png");
+body {
+	background-image: url("/staff_room/images/top.png");
 }
 
-.main-container{
+.main-container {
 	padding-top: 50px;
 }
-.changelog-content{
+
+.changelog-content {
 	position: absolute;
 	float: left;
 	bottom: 50px;
+	overflow: scroll;
 }
 
-.changelog-title{
-	position: absolute;
-    float: left;
-    top: 250px;
-    padding: 0;
-    background-color: #5bc0de;
-    
+.changelog-tr{
+	position: relative;
 }
+.changelog-title {
+	position: absolute;
+	float: left;
+	top: 250px;
+	padding: 0;
+	background-color: #5bc0de;
+}
+
 .changelog-title h1 {
 	padding: 15px 20px 0 20px;
 	color: white;
 }
-.page-title{
+
+.page-title {
 	clear: both;
 	position: absolute;
 	bottom: 50px;
 	right: 30px;
 }
 
-.page-title h1{
-	   font-size: 100px;
+.page-title h1 {
+	font-size: 100px;
 }
