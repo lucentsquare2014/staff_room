@@ -14,6 +14,7 @@
 <%@ page import="java.text.*"%>
 <jsp:include page="/html/head.html" />
 <script type="text/javascript">
+
 var display_tag;
 window.onload = function() {
 	if (!document.getElementsByTagName) return;
@@ -40,6 +41,8 @@ function show(a) {
 <title>連絡事項</title>
 </head>
 <body>
+<jsp:include page="/jsp/header/header.jsp" />
+<div class="changelog" style="padding-top: 50px;">
 	<h1>連絡事項</h1>
     
 	<%
@@ -62,15 +65,15 @@ function show(a) {
 				.getNews("select TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,news_id,title,text,writer from news where post_id = "
 						+ value + " order by update desc");
 		System.out.print(list);
-		out.println("<table class=\"uk-table uk-table-condensed uk-text-center uk-table-striped\">");
+		out.println("<table class=\"uk-table uk-table-condensed uk-table-striped\">");
 		out.println("<tr>");
-		out.println("<td class=\"uk-h2 uk-width-medium-1-4\">");
+		out.println("<td class=\"uk-text-center uk-h2 uk-width-medium-1-4\">");
 		out.println("日付");
 		out.println("</td>");
-		out.println("<td class=\"uk-h2 uk-width-medium-2-4\">");
+		out.println("<td class=\"uk-text-center uk-h2 uk-width-medium-2-4\">");
 		out.println("件名");
 		out.println("</td>");
-		out.println("<td class=\"uk-h2 uk-width-medium-1-4\">");
+		out.println("<td class=\"uk-text-center uk-h2 uk-width-medium-1-4\">");
 		out.println("保存者");
 		out.println("</td>");
 		out.println("</tr>");
@@ -79,13 +82,13 @@ function show(a) {
 			HashMap<String, String> row = list.get(i);
 			if (!row.get("created").equals("")) {
 				out.println("<tr>");
-				out.println("<td>");
+				out.println("<td class=\"uk-text-center\">");
 				out.println(row.get("created"));
 				out.println("&nbsp;</td>");
 				out.println("<td>");
 				%>
 				<h4><%= row.get("title") %></h4>
-				<dl><%= row.get("text") %></dl>
+				<dl><pre><%= row.get("text") %></pre></dl>
 				
 				<!--
 				<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
@@ -112,12 +115,12 @@ function show(a) {
 			HashMap<String, String> row = list.get(x.get(i));
 			out.println("<tr>");
 			out.println("<td>");
-			out.println(row.get("created"));
+			out.println("<td class=\"uk-text-center\">");
 			out.println("&nbsp;</td>");
 			out.println("<td>");
 			%>
 			<h4><%= row.get("title") %></h4>
-		    <dl><%= row.get("text") %></dl>
+		    <dl><pre><%= row.get("text") %></pre></dl>
 			<!--
 			<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
 				<div id="<%= row.get("news_id") %>" class="uk-modal">
@@ -135,6 +138,6 @@ function show(a) {
 			out.println("</tr>");
 		}
 	%>
-
+</div>
 </body>
 </html>
