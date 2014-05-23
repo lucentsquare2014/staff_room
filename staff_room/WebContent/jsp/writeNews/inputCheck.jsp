@@ -58,7 +58,7 @@
 			</table>
 
 			<!-- 決定ボタン   入力・編集フォームから渡されたデータ→write_finish.jsp-->
-	<%if(request.getParameter("inputTitle")!=""||request.getParameter("inputText")!=""){ %>
+	<%if(request.getParameter("inputTitle")==""||request.getParameter("inputText")==""){ %>
 	<form method="POST" action="	write_finish.jsp">
 
 		<!-- 管理編集画面→編集フォーム→確認画面と渡されたnews_idを渡すnewsWrite.jsp-->
