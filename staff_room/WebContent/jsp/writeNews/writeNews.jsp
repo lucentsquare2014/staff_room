@@ -16,7 +16,7 @@
 		var change_tag = document.getElementsByTagName("h4"); // タイトルの部分のタグ
 		display_tag = document.getElementsByTagName("dl"); // 非表示させたい部分のタグ
 
-		for ( var i = 0; i < change_tag.length; i++) {
+		for (var i = 0; i < change_tag.length; i++) {
 			// 非表示させたいタグの処理
 			display_tag.item(i).style.display = "none";
 
@@ -32,39 +32,48 @@
 		var checkbox = $("#" + id);
 		if (checkbox.attr("flag") === "0") {
 			checkbox.attr("flag", "1");
-			$("#"+checkbox.attr("id")).attr("class","uk-icon-check-square-o");
+			$("#" + checkbox.attr("id"))
+					.attr("class", "uk-icon-check-square-o");
 		} else {
 			checkbox.attr("flag", "0");
-			$("#"+checkbox.attr("id")).attr("class","uk-icon-square-o");
+			$("#" + checkbox.attr("id")).attr("class", "uk-icon-square-o");
 		}
 	}
 	// 記事を削除するdeleteNews.jspに記事IDを渡す関数
 	function delete_news() {
 		// 削除をクリックされると確認ダイヤログを表示するOKが押されるとif文の中を実行
 		if (confirm('選択された記事をすべて削除してもいいですか?')) {
+			var f = -1;
 			var ids = [];
 			// class=delete_checkのついてるタグをすべて取得
 			var news = $('[name="delete_check"]');
 			// 削除する記事のIDを格納した配列を生成
-			for ( var n = 0; n < news.length; n++) {
+			for (var n = 0; n < news.length; n++) {
 				// チェックボックスにチェックがついていたらIDを配列に格納
 				if (news[n].getAttribute("flag") == "1") {
 					ids.push(news[n].getAttribute("id"));
+					f=1;
 					// 削除する記事を隠す
 					$("#row" + news[n].getAttribute("id")).fadeOut();
 				}
 			}
-		}
-		// IDを格納した配列をdeleteNews.jspにPOST送信
-		$.ajax({
-			type : "POST",
-			url : "deleteNews.jsp",
-			data : {
-				// 配列を区切り文字","の文字列に変換 例:[1,2,3,]→"1,2,3"
-				"del_id" : "" + ids
+			
+			if (f == -1) {
+				window.alert("記事が選択されていません。");
+			} else {
+				// IDを格納した配列をdeleteNews.jspにPOST送信
+				$.ajax({
+					type : "POST",
+					url : "deleteNews.jsp",
+					data : {
+						// 配列を区切り文字","の文字列に変換 例:[1,2,3,]→"1,2,3"
+						"del_id" : "" + ids
+					}
+				}).done(function() {
+				});
 			}
-		}).done(function() {
-		});
+		}
+
 	}
 
 	function show(a) {
@@ -94,7 +103,7 @@
 			NewsDAO dao = new NewsDAO();
 			ArrayList<HashMap<String, String>> list = null;
 			list = dao
-					.getNews("select news_id,created,post.post_id,postname,title,text,writer from news, post where news.post_id = post.post_id order by created desc");
+					.getNews("select news_id,TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,post.post_id,postname,title,text,writer from news, post where news.post_id = post.post_id order by created desc");
 
 			out.println("<table border='1'>");
 			for (int i = 0; i < list.size(); i++) {
@@ -151,12 +160,12 @@
 			for (int i = 0; i < z; i++) {
 				HashMap<String, String> row = list.get(x.get(i));
 				out.println("<tr id=\"row" + row.get("news_id") + "\">");
-					out.println("<td>");
-					out.println("<a flag=\"0\" class=\"uk-icon-square-o\" name=\"delete_check\" id=\""
-							+ row.get("news_id")
-							+ "\" onclick=\"del_checked(this.id)\">");
-					out.println("</a>");
-					out.println("</td>");
+				out.println("<td>");
+				out.println("<a flag=\"0\" class=\"uk-icon-square-o\" name=\"delete_check\" id=\""
+						+ row.get("news_id")
+						+ "\" onclick=\"del_checked(this.id)\">");
+				out.println("</a>");
+				out.println("</td>");
 				out.println("<td>");
 				out.println(row.get("created"));
 				out.println("&nbsp;</td>");
