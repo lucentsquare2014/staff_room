@@ -49,6 +49,8 @@
 		//データベースにhashMapから書き込み
 		dao.writeNews(Newsdata);
 		}else{
+			Newsdata.put("news_id",
+	                request.getParameter("inputNewsid"));
 			Date date = new Date();
 	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
 	        Newsdata.put("update", sdf.format(date));
