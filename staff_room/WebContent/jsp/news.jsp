@@ -46,6 +46,8 @@ function show(a) {
 	<div align="right"><h1><i><u><font color="#000000" face="HGP明朝E" style="font-size:50pt;">連絡事項</font></u></i>　　　　　</h1></div>
 	</div>
 	<div align="center">
+	<img src="/staff_room/images/newswall.png" style="height: 300; width:100%">
+	<div style="position:absolute; top:600px; left:0px; width: 100%;">
 	<%
 		String value = null;
 		value = request.getParameter("news");
@@ -156,6 +158,7 @@ function show(a) {
 			out.println("</tr>");
 		}
 	%>
+	</div>
 	</div>
 </body>
 </html>
