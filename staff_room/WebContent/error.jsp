@@ -12,7 +12,7 @@
 		<div class="uk-panel uk-panel-box uk-text-danger uk-text-center">
 			<h1 class="uk-text-danger"><i class="uk-icon-exclamation-circle"></i>ログインを制限しました</h1>
 			<p>入力されたユーザとパスワードは5回連続して一致しなかったためログインを制限させていただきました。</p>
-			<p>セキュリティロックは30分後解除いたします。</p>
+			<p>セキュリティロックは5分後解除いたします。</p>
 		</div>
 	</div>
 </body>
