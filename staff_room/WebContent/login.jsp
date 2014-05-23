@@ -7,6 +7,7 @@
 	if(session.getAttribute("count") != null){
 		String str = String.valueOf(session.getAttribute("count"));
 		if(Integer.valueOf(str) > 4){
+			session.setMaxInactiveInterval(300);
 			response.sendRedirect("./error.jsp");
 		}
 	}

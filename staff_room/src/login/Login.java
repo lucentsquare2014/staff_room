@@ -55,7 +55,6 @@ public class Login extends HttpServlet {
 	    	// ログイン回数をプラスする
 	    	int n = Integer.valueOf(String.valueOf(session.getAttribute("count")));
 	    	session.setAttribute("count", ++n);
-	    	System.out.println(session.getCreationTime() + " : " + n);
 	    	String msg = "idまたはパスワードが正しくありません。";
 	    	request.setAttribute("error",msg);
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
