@@ -1,5 +1,5 @@
 body {
-	background-image: url("/staff_room/images/top.png");
+	background-image: url("/staff_room/images/top.jpg");
 }
 
 .main-container {
@@ -11,17 +11,20 @@ body {
 	float: left;
 	bottom: 50px;
 	overflow: scroll;
+	max-height: 350px;
+	background-color: #eee;
 }
 
-.changelog-tr{
-	position: relative;
+.changelog-ul{
+    list-style: none;
 }
 .changelog-title {
 	position: absolute;
 	float: left;
-	top: 250px;
+	top: 120px;
 	padding: 0;
 	background-color: #5bc0de;
+	border-radius: 10px;
 }
 
 .changelog-title h1 {
@@ -38,4 +41,5 @@ body {
 
 .page-title h1 {
 	font-size: 100px;
+	color: white;
 }

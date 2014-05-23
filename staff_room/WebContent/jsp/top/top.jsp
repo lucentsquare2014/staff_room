@@ -31,7 +31,7 @@
 						}
 					}
 				%>
-				<table>
+				<%-- 				<table>
 					<%
 						for (int i = 0; i < table.size(); i++) {
 							// 10こ表示したらループを止める
@@ -60,7 +60,29 @@
 					<%
 						}
 					%>
-				</table>
+				</table> --%>
+				<%
+					for (int i = 0; i < table.size(); i++) {
+						// 10こ表示したらループを止める
+						if (i == 10) {
+							break;
+						}
+						HashMap<String, String> row = table.get(i);
+				%>
+				<ul class="changelog-ul uk-panel-box">
+					<li>
+						<%
+							out.print(row.get("created"));
+							out.print("&nbsp;&nbsp;&nbsp;");
+							out.print(row.get("postname"));
+							out.print("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：");
+							out.print(row.get("title"));
+						%>
+					</li>
+				</ul>
+				<%
+					}
+				%>
 			</div>
 		</div>
 		<div class="page-title">

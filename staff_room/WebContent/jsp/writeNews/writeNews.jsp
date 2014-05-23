@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="dao.NewsDAO"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -39,7 +41,7 @@
 			$("#" + checkbox.attr("id")).attr("class", "uk-icon-square-o");
 		}
 	}
-	// 記事を削除するdeleteNews.jspに記事IDを渡す関数
+	// 記事を削除するdeleteNews.jspに記事にIDを渡す関数
 	function delete_news() {
 		// 削除をクリックされると確認ダイヤログを表示するOKが押されるとif文の中を実行
 		if (confirm('選択された記事をすべて削除してもいいですか?')) {
@@ -81,20 +83,32 @@
 		ele.style.display = (ele.style.display == "none") ? "block" : "none";
 	}
 </script>
-
+<style type="text/css">
+body{width: 100%;
+	height:656px;
+	background-attachment: fixed;
+	background-image: url(http://localhost:7348/staff_room/images/renraku.png);
+	background-size:100% auto;
+	 }
+</style>
 <title>管理編集</title>
 </head>
+
 <body>
+
+
     <jsp:include page="/jsp/header/header.jsp" />
-	<div class="content">
+    <div class="changelog" style="padding-top: 50px;"></div>
+	<div  class="content">
 		<p>
 		<h1>管理・編集</h1>
-		</p>
-		<form method="POST" action="updateForm.jsp">
-			<input type="submit" value="新規作成">
+     		<form method="POST" action="updateForm.jsp" align="right" style="margin-right:60px" style="margin-top:20px;">
+			<input type="submit" value="新規作成" align="right">
 		</form>
-		<div class="delete_button">
-			<button type="button" onclick="delete_news()">削除</button>
+		<p>          
+		</p>
+		<div class="delete_button" align="right" style="margin-right:60px" style="margin-top:30px;">
+			<button type="button" onclick="delete_news()"><big> 削除 </big></button>
 		</div>
 		<%
 			//配列
@@ -104,13 +118,14 @@
 			ArrayList<HashMap<String, String>> list = null;
 			list = dao
 					.getNews("select news_id,TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,post.post_id,postname,title,text,writer from news, post where news.post_id = post.post_id order by created desc");
-
-			out.println("<table border='1'>");
+			out.println("<table  border='3' width='80%' cellspacing='20' cellpadding'0'>");
 			for (int i = 0; i < list.size(); i++) {
 				HashMap<String, String> row = list.get(i);
+				//時刻がある記事だけの表示
 				if (!row.get("created").equals("")) {
 					out.println("<tr id=\"row" + row.get("news_id") + "\">");
 					out.println("<td>");
+					//チェックボックスの定義
 					out.println("<a flag=\"0\" class=\"uk-icon-square-o\" name=\"delete_check\" id=\""
 							+ row.get("news_id")
 							+ "\" onclick=\"del_checked(this.id)\">");
@@ -124,11 +139,14 @@
 					out.println("&nbsp;</td>");
 					out.println("<td>");
 		%>
+		<!-- title→タイトル -->
 		<h4><%=row.get("title")%></h4>
 		<dl>
 			<dt>
+			<!-- text→文章 -->
 				<pre><%=row.get("text")%></pre>
 			</dt>
+			//クリックしたら出てくる中身の文について
 			<dt style="display: none"></dt>
 		</dl>
 		<%
@@ -157,6 +175,7 @@
 					z++;
 				}
 			}
+			//時刻が入っていない記事の表示はここから
 			for (int i = 0; i < z; i++) {
 				HashMap<String, String> row = list.get(x.get(i));
 				out.println("<tr id=\"row" + row.get("news_id") + "\">");
@@ -204,5 +223,6 @@
 			out.println("</table>");
 		%>
 	</div>
+
 </body>
 </html>
