@@ -116,6 +116,9 @@ function show(a) {
 			out.println("&nbsp;</td>");
 			out.println("<td>");
 			%>
+			<h4><%= row.get("title") %></h4>
+		    <dl><%= row.get("text") %></dl>
+			<!--
 			<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
 				<div id="<%= row.get("news_id") %>" class="uk-modal">
     				<div class="uk-modal-dialog">
@@ -123,6 +126,7 @@ function show(a) {
         				<div class="uk-h3"><%= row.get("text") %></div>
     				</div>
 				</div>
+				-->
 			<%
 			out.println("&nbsp;</td>");
 			out.println("<td>");
