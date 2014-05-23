@@ -6,6 +6,7 @@
  		position: fixed;
  		opacity: 1;
  		 top: 0;
+ 		 z-index: 10000000;
  	}
  
 </style>
