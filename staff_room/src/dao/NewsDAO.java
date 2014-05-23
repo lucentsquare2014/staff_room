@@ -58,20 +58,21 @@ public class NewsDAO {
 			stmt = con.createStatement();
 
 			// SQL文を文字列としてsqlという変数に格納
-			String sql = "INSERT INTO news (postID, title, text, writer, filename, created, update) VALUES "
-					+ Newsdata.get("postID")
+			String sql = "INSERT INTO news (post_id, title, text, writer, filename, created, update) VALUES ("
+					+ Newsdata.get("post_id")
 					+ ", "
-					+ Newsdata.get("title")
+					+ "'"+Newsdata.get("title")+"'"
 					+ ", "
-					+ Newsdata.get("text")
+					+ "'"+Newsdata.get("text")+"'"
 					+ ", "
-					+ Newsdata.get("writer")
+					+ "'"+Newsdata.get("writer")+"'"
 					+ ", "
-					+ Newsdata.get("filename")
+					+ "'"+Newsdata.get("filename")+"'"
 					+ ", "
-					+ Newsdata.get("created")
+					+ "'"+Newsdata.get("created")+"'"
 					+ ", "
-					+ Newsdata.get("update");
+					+ "'"+Newsdata.get("created")+"')";
+			System.out.println(sql);
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			int num = stmt.executeUpdate(sql);
 			closeNewsDB(con);
