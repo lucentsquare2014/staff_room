@@ -59,7 +59,7 @@
 					$("#row" + news[n].getAttribute("id")).fadeOut();
 				}
 			}
-			
+
 			if (f == -1) {
 				window.alert("記事が選択されていません。");
 			} else {
@@ -87,7 +87,7 @@
 body{width: 100%;
 	height:656px;
 	background-attachment: fixed;
-	background-image: url(http://localhost:7348/staff_room/images/renraku.png);
+	background-image: url("/staff_room/images/renraku.png");
 	background-size:100% auto;
 	 }
 </style>
@@ -105,10 +105,10 @@ body{width: 100%;
      		<form method="POST" action="updateForm.jsp" align="right" style="margin-right:60px" style="margin-top:20px;">
 			<input type="submit" value="新規作成" align="right" style="width:200px; height:50px; color:black background:white;">
 		</form>
-		<p>          
+		<p>
 		</p>
 		<div class="delete_button" align="right" style="margin-right:75px" style="margin-top:30px;">
-			<button style="width:175px; height:50px; color:black; background-color:darkgray; 
+			<button style="width:175px; height:50px; color:black; background-color:darkgray;
 			font-weight:30; type="button" onclick="delete_news() ">
 			<big> 削除 </big>
 			</button>
@@ -166,7 +166,7 @@ body{width: 100%;
 
 			<input type="hidden" name="inputText" value="<%=row.get("text")%>">
 
-			<input type="hidden" name="inputWriter" 
+			<input type="hidden" name="inputWriter"
 				value="<%=row.get("writer")%>"> <input type="submit" style="width:200px; height:50px; color:black background:white;"
 				value="編集">
 		</form>
@@ -215,7 +215,7 @@ body{width: 100%;
 
 			<input type="hidden" name="inputText" value="<%=row.get("text")%>">
 
-			<input type="hidden" name="inputWriter" 
+			<input type="hidden" name="inputWriter"
 				value="<%=row.get("writer")%>"> <input type="submit" style="width:200px; height:50px; color:black background:white;"
 				value="編集">
 		</form>
