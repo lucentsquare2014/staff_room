@@ -16,10 +16,7 @@
 <body>
 	<h1>入力確認</h1>
 
-<%if(request.getParameter("inputTitle")==""||request.getParameter("inputText")==""){ %>
-	エラー！<br>
-	タイトルと本文は必ず入力してください！
-	<%}%>
+
 	<!-- 入力フォーム データ→確認画面-->
 
 
@@ -56,9 +53,12 @@
 				<td><%= jpn2unicode(request.getParameter("inputWriter"),"UTF-8") %></td>
 			</tr>
 			</table>
+<%if(request.getParameter("inputTitle")==""||request.getParameter("inputText")==""){ %>
+	エラー！<br>
+	タイトルと本文は必ず入力してください！
+	<%}else{%>
 
 			<!-- 決定ボタン   入力・編集フォームから渡されたデータ→write_finish.jsp-->
-	<%if(request.getParameter("inputTitle")==""||request.getParameter("inputText")==""){ %>
 	<form method="POST" action="	write_finish.jsp">
 
 		<!-- 管理編集画面→編集フォーム→確認画面と渡されたnews_idを渡すnewsWrite.jsp-->
