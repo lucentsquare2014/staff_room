@@ -6,6 +6,7 @@
 <html lang="ja">
 <head>
 <jsp:include page="/html/head.html" />
+<link rel="stylesheet" href="/staff_room/css/top.css">
 <title>スタッフルーム</title>
 </head>
 <body>
