@@ -15,9 +15,9 @@
 %>
 <tr>
 	<!-- フォーマットを変換した 更新日時を出力　-->
-	<td><%=format.format(date)%></td>
+	<td class="uk-text-center"><%=format.format(date)%></td>
 	
 	<!-- String型のファイル名を出力 -->
-	<td><a href="../jsp/<%=filename[i]%>"><%=filename[i]%></a></td>
+	<td class="uk-text-center"><a href="../jsp/<%=filename[i]%>"><%=filename[i]%></a></td>
 </tr>
 <%}%>
