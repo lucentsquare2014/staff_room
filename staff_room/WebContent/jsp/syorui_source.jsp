@@ -3,6 +3,16 @@
             java.text.SimpleDateFormat,
             java.util.Date,
             java.util.Locale,java.net.URLDecoder,java.net.URLEncoder"%>
+            
+<style type="text/css">
+ 	td#time {
+ 		font-size: 80%;
+ 		vertical-align: middle;
+ 	}
+ 	td#type {
+ 		background-color: #FAFAFA;
+ 	}
+</style>
 
 <%
 	File base_folder = new File(application.getRealPath(File.separator + "syorui_test"));//使用する親フォルダの場所を指定
@@ -17,14 +27,14 @@
 			Date date = new Date(lastModifytime);
 			DateFormat format = new SimpleDateFormat("GGGGyy年 MMMM d日 ", new Locale("ja", "JP", "JP"));
 %>
-<tr>
+<tr class="uk-text-center">
 	<!-- ファイル数の半分の時にのみ出力 -->
 	<%if (x == 0) {%>
-	<td rowspan=<%=filename.length%>><%=foldername[i]%></td>
+	<td id="type"rowspan=<%=filename.length%> class="uk-text-middle uk-text-bold"><%=foldername[i]%></td>
 	<%}%>
 	
 	<!-- フォーマットを変換した 更新日時を出力-->
-	<td><%=format.format(date)%></td>
+	<td id="time"><%=format.format(date)%></td>
 
 	<!-- String型のファイル名を出力 -->
 	<td><a href="../syorui_test/<%=URLEncoder.encode(foldername[i], "utf-8")%>/<%=URLEncoder.encode(filename[x], "utf-8")%>"><%=filename[x]%></a></td>
