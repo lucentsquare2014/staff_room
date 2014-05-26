@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="dao.NewsDAO"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
-<%@ page import="org.apache.commons.lang.math.NumberUtils" %>
+<%@ page import="org.apache.commons.lang.math.NumberUtils"%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -19,25 +19,21 @@ body {
 	background-size: 100% auto;
 }
 
+.contents {
+	padding-top: 100px;
+}
 </style>
 <title>管理編集</title>
 </head>
 
 <body>
-
-
 	<jsp:include page="/jsp/header/header.jsp" />
-	<div class="content uk-width-2-3 uk-container-center">
+	<div class="contents uk-width-2-3 uk-container-center">
 		<h1>管理・編集</h1>
-		<a href="/staff_room/jsp/writeNews/updateForm.jsp"
-			style="margin-top: 20px; width: 200px; height: 50px; color: black background:white;">
-			新規作成 </a>
-		<div  align="right" style="margin-right: 75px"
-			style="margin-top:30px;">
-			<button id="delete_button"
-				style="width: 175px; height: 50px; color: black; background-color: darkgray; font-weight: 30;">
-				削除
-			 </button>
+	     <div align="right">
+			<a href="/staff_room/jsp/writeNews/updateForm.jsp" class="uk-button">新規作成
+			</a>
+			<button id="delete_button" class="uk-button">削除</button>
 		</div>
 		<%
 			//配列
@@ -51,23 +47,25 @@ body {
 			from = "news, post";
 			where = "news.post_id = post.post_id";
 			order = "created desc";
-            limit = "10";
+			limit = "10";
 			String page_num = request.getParameter("page");
-			if(page_num ==null || !NumberUtils.isNumber(page_num)){
-				page_num="1";
+			if (page_num == null || !NumberUtils.isNumber(page_num)) {
+				page_num = "1";
 			}
 
 			// offsetにゲットパラメータで取得したページ数を代入
-			offset= String.valueOf((Integer.parseInt(page_num)*Integer.parseInt(limit))-9);
-			
-			String sql = "select "+select+" from "+from
-					    +" where "+where+" order by "+order
-					    +" offset "+offset+" limit "+limit;
+			offset = String.valueOf((Integer.parseInt(page_num) * Integer
+					.parseInt(limit)) - 9);
+
+			String sql = "select " + select + " from " + from + " where "
+					+ where + " order by " + order + " offset " + offset
+					+ " limit " + limit;
 			//System.out.println(sql);
 			list = dao.getNews(sql);
 			//System.out.println(list.size());
 		%>
-		<table class="uk-table uk-table-striped uk-text-center uk-width-medium-2-4 uk-panel-box" >
+		<table
+			class="uk-table uk-table-striped uk-text-center uk-width-medium-2-4 uk-panel-box">
 			<%
 				for (int i = 0; i < list.size(); i++) {
 					HashMap<String, String> row = list.get(i);
@@ -75,36 +73,31 @@ body {
 					if (!row.get("created").equals("")) {
 			%>
 			<tr id="row<%=row.get("news_id")%>">
-				<td>
-				<a flag="0" class="uk-icon-square-o" name="delete_check" id="<%=row.get("news_id")%>"></a>
-				</td>
-				<td><%=row.get("created")%>&nbsp;</td>
-				<td><%=row.get("postname")%>&nbsp;</td>
-				<td>
-					<!-- title→タイトル -->
-					<a t_id="<%=row.get("news_id") %>" class="body-title"><%=row.get("title")%></a>
-                    <dl>
-                        <dt id="text<%=row.get("news_id") %>" class="body-text">
-                            <!-- text→文章 -->
-                            <pre><%=row.get("text")%></pre>
-                        </dt>
-                        <dt style="display: none"></dt>
-                    </dl>
+				<td><a flag="0" class="uk-icon-square-o uk-text-center"
+					name="delete_check" id="<%=row.get("news_id")%>"></a></td>
+				<td nowrap><%=row.get("created")%>&nbsp;</td>
+				<td nowrap><%=row.get("postname")%>&nbsp;</td>
+				<td class="uk-text-left" nowrap>
+					<!-- title→タイトル --> <a t_id="<%=row.get("news_id")%>"
+					class="body-title"><%=row.get("title")%></a>
+					<dl>
+						<dt id="text<%=row.get("news_id")%>" class="body-text">
+							<!-- text→文章 -->
+							<pre><%=row.get("text")%></pre>
+						</dt>
+						<dt style="display: none"></dt>
+					</dl>
 				</td>
 				<td>
 					<form method="POST" action="updateForm.jsp">
 						<input type="hidden" name="inputNewsid"
-							value="<%=row.get("news_id")%>">
-						<input type="hidden"
-							name="inputPostid" value="<%=row.get("post_id")%>">
-						<input
+							value="<%=row.get("news_id")%>"> <input type="hidden"
+							name="inputPostid" value="<%=row.get("post_id")%>"> <input
 							type="hidden" name="inputTitle" value="<%=row.get("title")%>">
 						<input type="hidden" name="inputText" value="<%=row.get("text")%>">
 						<input type="hidden" name="inputWriter"
-							value="<%=row.get("writer")%>">
-						<input type="submit"
-							style="width: 200px; height: 50px; color: black background:white;"
-							value="編集">
+							value="<%=row.get("writer")%>"> <input type="submit"
+							class="uk-button" value="編集">
 					</form>
 				</td>
 			</tr>
@@ -119,40 +112,32 @@ body {
 					HashMap<String, String> row = list.get(x.get(i));
 			%>
 			<tr id="row<%=row.get("news_id")%>" class="uk-text-large">
-				<td>
-				<a flag="0" class="uk-icon-square-o"
-					name="delete_check" id="<%=row.get("news_id")%>">
-				</a>
+				<td><a flag="0" class="uk-icon-square-o" name="delete_check"
+					id="<%=row.get("news_id")%>"> </a></td>
+				<td nowrap><%=row.get("created")%>&nbsp;</td>
+				<td nowrap><%=row.get("postname")%>&nbsp;</td>
+				<td class="uk-text-left" nowrap>
+					<!-- title→タイトル --> <a t_id="<%=row.get("news_id")%>"
+					class="body-title"><%=row.get("title")%></a>
+					<dl>
+						<dt id="text<%=row.get("news_id")%>" class="body-text">
+							<!-- text→文章 -->
+							<pre class="uk-text-left"><%=row.get("text")%></pre>
+						</dt>
+						<dt style="display: none"></dt>
+					</dl>
 				</td>
-				<td><%=row.get("created")%>&nbsp;</td>
-				<td><%=row.get("postname")%>&nbsp;</td>
-				<td>
-					<!-- title→タイトル -->
-                    <a t_id="<%=row.get("news_id") %>" class="body-title"><%=row.get("title")%></a>
-                    <dl>
-                        <dt id="text<%=row.get("news_id") %>" class="body-text">
-                            <!-- text→文章 -->
-                            <pre><%=row.get("text")%></pre>
-                        </dt>
-                        <dt style="display: none"></dt>
-                    </dl>
- 
- 				</td>
 				<td>
 					<form method="POST" action="updateForm.jsp">
 
-                        <input type="hidden" name="inputNewsid"
-                            value="<%=row.get("news_id")%>">
-                        <input type="hidden"
-                            name="inputPostid" value="<%=row.get("post_id")%>">
-                        <input
-                            type="hidden" name="inputTitle" value="<%=row.get("title")%>">
-                        <input type="hidden" name="inputText" value="<%=row.get("text")%>">
-                        <input type="hidden" name="inputWriter"
-                            value="<%=row.get("writer")%>">
-                        <input type="submit"
-                            style="width: 200px; height: 50px; color: black background:white;"
-                            value="編集">
+						<input type="hidden" name="inputNewsid"
+							value="<%=row.get("news_id")%>"> <input type="hidden"
+							name="inputPostid" value="<%=row.get("post_id")%>"> <input
+							type="hidden" name="inputTitle" value="<%=row.get("title")%>">
+						<input type="hidden" name="inputText" value="<%=row.get("text")%>">
+						<input type="hidden" name="inputWriter"
+							value="<%=row.get("writer")%>"> <input type="submit"
+							class="uk-button" value="編集">
 					</form>
 				</td>
 			</tr>
@@ -160,13 +145,24 @@ body {
 				}
 			%>
 		</table>
-		<% 
+		<%
+			
 		%>
-		<div class="page-prev" style="<% if(page_num.equals("1")){out.print("display: none;");} %>">
-		<span><a href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num)-1%>">前へ</a></span>
-		</div>
-		<div class="page-next" style="<% if(list.size() < 10){out.print("display: none;");}%>">
-		<span><a href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num)+1%>">次へ</a></span>
+		<div class="uk-grid" style="padding-bottom: 50px;">
+			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left"
+				style="<%if (page_num.equals("1")) {
+				out.print("display: none;");
+			}%>">
+				<span><a
+					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) - 1%>">前へ&lt;&lt;</a></span>
+			</div>
+			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
+				style="<%if (list.size() < 10) {
+				out.print("display: none;");
+			}%>">
+				<span><a
+					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) + 1%>">次へ&gt;&gt;</a></span>
+			</div>
 		</div>
 	</div>
 
