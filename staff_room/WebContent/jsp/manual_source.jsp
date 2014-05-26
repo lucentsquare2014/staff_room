@@ -3,6 +3,18 @@
             java.text.SimpleDateFormat,
             java.util.Date,
             java.util.Locale,java.net.URLDecoder,java.net.URLEncoder"%>
+            
+<style type="text/css">
+ 	td#time {
+ 		font-size: 80%;
+ 		vertical-align: middle;
+ 	}
+ 	td#type {
+ 		background-color: #FAFAFA;
+ 	}
+ 	tr{white-space:nowrap;}
+</style>
+            
 <%
 	File folder = new File(application.getRealPath(File.separator + "jsp"));//使用するフォルダの場所を指定
 	String filename[] = folder.list();//String型の配列にファイル名を入れる

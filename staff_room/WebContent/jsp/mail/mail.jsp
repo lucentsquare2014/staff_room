@@ -7,7 +7,7 @@
 <title>メールリンク</title>
 </head>
 <body>
-<img src="/staff_room/images/sinseisyorui3.jpg" style="margin-bottom:20px;">
+<img src="/staff_room/images/mail3.jpg" style="margin-bottom:20px;">
     <jsp:include page="/jsp/header/header.jsp" />
     <div class="conetent"
         style="padding: 0; padding-top: 42px; height: 100%; width: 100%;">

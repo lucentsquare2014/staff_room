@@ -1,0 +1,16 @@
+body {
+	background-image: url("/staff_room/images/input.png");
+}
+label {
+	text-align: center;
+}
+dt {
+	padding: 5px 5px 5px 5px;
+	text-align: center;
+}
+dd {
+	padding: 5px 5px 5px 5px;
+}
+pre { 
+	border: 0px;
+}
