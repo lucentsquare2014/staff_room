@@ -9,7 +9,8 @@ body {
 .changelog-content {
 	position: absolute;
 	float: left;
-	top: 37%;
+	top: 230px;
+	left: 30px;
 	overflow: scroll;
 	max-height: 350px;
 	background-color: #eee;
@@ -21,7 +22,9 @@ body {
 .changelog-title {
 	position: absolute;
 	float: left;
-	top: 23%;
+	align: left;
+	left:30px;
+	top: 120px;
 	padding: 0;
 	background-color: #5bc0de;
 	border-radius: 10px;
