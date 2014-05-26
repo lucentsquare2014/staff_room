@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="dao.NewsDAO"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
-
+<%@ page import="org.apache.commons.lang.math.NumberUtils" %>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -51,16 +51,21 @@ body {
 			from = "news, post";
 			where = "news.post_id = post.post_id";
 			order = "created desc";
+            limit = "10";
+			String page_num = request.getParameter("page");
+			if(page_num ==null || !NumberUtils.isNumber(page_num)){
+				page_num="1";
+			}
+
 			// offsetにゲットパラメータで取得したページ数を代入
-			offset= request.getParameter("page");
-			// １ページだった場合は１を代入
-			if(offset==null){offset="1";}
-			limit = "10";
+			offset= String.valueOf((Integer.parseInt(page_num)*Integer.parseInt(limit))-9);
+			
 			String sql = "select "+select+" from "+from
 					    +" where "+where+" order by "+order
 					    +" offset "+offset+" limit "+limit;
-			System.out.println(sql);
+			//System.out.println(sql);
 			list = dao.getNews(sql);
+			//System.out.println(list.size());
 		%>
 		<table border='3' width='80%' cellspacing='20'cellpadding'0'>
 			<%
@@ -155,7 +160,14 @@ body {
 				}
 			%>
 		</table>
-		
+		<% 
+		%>
+		<div class="page-prev" style="<% if(page_num.equals("1")){out.print("display: none;");} %>">
+		<span><a href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num)-1%>">前へ</a></span>
+		</div>
+		<div class="page-next" style="<% if(list.size() < 10){out.print("display: none;");}%>">
+		<span><a href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num)+1%>">次へ</a></span>
+		</div>
 	</div>
 
 </body>
