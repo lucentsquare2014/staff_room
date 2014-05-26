@@ -1,6 +1,7 @@
 $(function(){
 	var flg = "input";
 	$("button").click(function(){
+		$("#alert").text("");
 		if(flg == "input"){
 			$("#select").text($("select[name='inputPostid'] option:selected").text());
 			$("#title").text($("input[name='inputTitle']").val());

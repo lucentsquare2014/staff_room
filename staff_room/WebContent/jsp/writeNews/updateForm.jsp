@@ -110,13 +110,13 @@
 			<dl class="uk-description-list uk-description-list-horizontal uk-text-large">
 				<dt class="uk-text-bold">分類：</dt>
 				<dd id="select"></dd>
-				<dt class=" uk-text-bold">タイトル：</dt>
+				<dt class="uk-text-bold">タイトル：</dt>
 				<dd id="title"></dd>
-				<dt class=" uk-text-bold">本文：</dt>
-				<dd class=""><pre id="text"></pre></dd>
-				<dt class=" uk-text-bold uk-text-large">添付：</dt>
-				<dd id="file" class=""></dd>
-				<dt class=" uk-text-bold">保存者：</dt>
+				<dt class="uk-text-bold">本文：</dt>
+				<dd><pre id="text"></pre></dd>
+				<dt class="uk-text-bold uk-text-large">添付：</dt>
+				<dd id="file"></dd>
+				<dt class="uk-text-bold">保存者：</dt>
 				<dd id="author"></dd>
 			</dl>
 			<div class="uk-form-row">
