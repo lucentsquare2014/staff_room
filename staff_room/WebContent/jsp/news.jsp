@@ -41,13 +41,15 @@ function show(a) {
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" /><br><br>
-	<img src="/staff_room/images/renraku2.jpg" style="height: 300; width:100%">
-	<div style="position:absolute; top:520px; left:80px; width: 100%;">
-	<div align="right"><h1><i><u><font color="#000000" face="HGP明朝E" style="font-size:50pt;">連絡事項</font></u></i>　　　　　</h1></div>
-	</div>
+	<img src="/staff_room/images/renraku4.jpg">
+	<div style="position:relative; top:-80px; left:0px; width: 100%;">
+
 	<div align="center">
-	<img src="/staff_room/images/newswall.png" style="height: 300; width:100%">
-	<div style="position:absolute; top:600px; left:0px; width: 100%;">
+<%-- 保留 後ろにNEWSの画像入れるなら
+<img src="/staff_room/images/newswall.png" style="position:relative;height: 600; width:100%">
+--%>
+	<div style="position:relative; top:60px; left:0px; width:100%" id="fittext1">
+
 	<%
 		String value = null;
 		value = request.getParameter("news");
@@ -85,7 +87,7 @@ function show(a) {
 		}
 		out.println("<br><br><br><br>");
 		System.out.print(list);
-		out.println("<table class=\" uk-text-center uk-width-medium-3-4\">");
+		out.println("<table class=\"uk-table  uk-table-striped uk-text-center uk-width-medium-2-4\">");
 		out.println("<tr>");
 		out.println("<td class=\"uk-h2 uk-width-medium-1-4\">");
 		out.println("日付");
@@ -102,13 +104,13 @@ function show(a) {
 			HashMap<String, String> row = list.get(i);
 			if (!row.get("created").equals("")) {
 				out.println("<tr>");
-				out.println("<td class=\"uk-h3 uk-width-medium-1-4 \">");
+				out.println("<td class=\"uk-h3  uk-width-medium-1-4 \">");
 				out.println(row.get("created"));
 				out.println("&nbsp;</td>");
 				out.println("<td class=\"uk-h3 uk-width-medium-2-4\">");
 				%>
 				<h4><%= row.get("title") %></h4>
-				<dl><pre><%= row.get("text") %></pre></dl>
+				<dl><pre><div class="uk-h3"><%= row.get("text") %></div></pre></dl>
 
 				<!--
 				<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
@@ -134,13 +136,13 @@ function show(a) {
 		for (int i = 0; i < z; i++) {
 			HashMap<String, String> row = list.get(x.get(i));
 			out.println("<tr>");
-			out.println("<td>");
+			out.println("<td class=\"uk-h3  uk-width-medium-1-4 \">");
 			out.println(row.get("created"));
 			out.println("&nbsp;</td>");
-			out.println("<td>");
+			out.println("<td class=\"uk-h3 uk-width-medium-2-4\">");
 			%>
 			<h4><%= row.get("title") %></h4>
-		    <dl><pre><%= row.get("text") %></pre></dl>
+		    <dl><pre><div class="uk-h3"><%= row.get("text") %></div></pre></dl>
 			<!--
 			<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
 				<div id="<%= row.get("news_id") %>" class="uk-modal">
@@ -152,7 +154,7 @@ function show(a) {
 				-->
 			<%
 			out.println("&nbsp;</td>");
-			out.println("<td>");
+			out.println("<td class=\"uk-h3 uk-width-medium-1-4\">");
 			out.println(row.get("writer"));
 			out.println("</td>");
 			out.println("</tr>");
@@ -160,5 +162,11 @@ function show(a) {
 	%>
 	</div>
 	</div>
+	</div>
+	<script src=”http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js”></script>
+	<script src=”jquery.fittext.js”></script>
+	<script>
+	$("#fittext1").fitText();  //対応させる部分の#id名
+	</script>
 </body>
 </html>
