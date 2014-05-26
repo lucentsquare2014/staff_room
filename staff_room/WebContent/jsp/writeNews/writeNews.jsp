@@ -18,6 +18,7 @@ body {
 	background-image: url("/staff_room/images/renraku.png");
 	background-size: 100% auto;
 }
+
 </style>
 <title>管理編集</title>
 </head>
@@ -26,8 +27,7 @@ body {
 
 
 	<jsp:include page="/jsp/header/header.jsp" />
-	<div class="changelog" style="padding-top: 50px;"></div>
-	<div class="content">
+	<div class="content uk-width-2-3 uk-container-center">
 		<h1>管理・編集</h1>
 		<a href="/staff_room/jsp/writeNews/updateForm.jsp"
 			style="margin-top: 20px; width: 200px; height: 50px; color: black background:white;">
@@ -67,7 +67,7 @@ body {
 			list = dao.getNews(sql);
 			//System.out.println(list.size());
 		%>
-		<table border='3' width='80%' cellspacing='20'cellpadding'0'>
+		<table class="uk-table uk-table-striped uk-text-center uk-width-medium-2-4 uk-panel-box" >
 			<%
 				for (int i = 0; i < list.size(); i++) {
 					HashMap<String, String> row = list.get(i);
@@ -118,7 +118,7 @@ body {
 				for (int i = 0; i < z; i++) {
 					HashMap<String, String> row = list.get(x.get(i));
 			%>
-			<tr id="row<%=row.get("news_id")%>">
+			<tr id="row<%=row.get("news_id")%>" class="uk-text-large">
 				<td>
 				<a flag="0" class="uk-icon-square-o"
 					name="delete_check" id="<%=row.get("news_id")%>">
