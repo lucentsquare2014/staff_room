@@ -10,6 +10,8 @@
 <jsp:include page="/html/head.html" />
 <!--  javascriptを外部ファイルに移動 -->
 <script src="/staff_room/script/writeNews.js"></script>
+<script type="text/javascript" src="/staff_room/script/notifIt.js"></script>
+<link rel="stylesheet" type="text/css" href="/staff_room/css/notifIt.css">
 <style type="text/css">
 body {
 	width: 100%;
@@ -21,6 +23,7 @@ body {
 
 .contents {
 	padding-top: 100px;
+	min-width: 950px;
 }
 </style>
 <title>管理編集</title>

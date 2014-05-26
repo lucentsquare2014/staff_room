@@ -43,7 +43,14 @@ $(function() {
 								}
 
 								if (f == -1) {
-									window.alert("記事が選択されていません。");
+									notif({
+										type: "error",
+										  msg: "記事が選択されていません!",
+										  position: "center",
+										  width: 500,
+										  height: 60,
+										  timeout: 2000
+									});
 								} else {
 									// IDを格納した配列をdeleteNews.jspにPOST送信
 									$.ajax({
@@ -55,7 +62,14 @@ $(function() {
 											"del_id" : "" + ids
 										}
 									}).done(function() {
-										window.alert("削除しました。");
+										notif({
+											type: "success",
+											  msg: "削除しました!",
+											  position: "center",
+											  width: 500,
+											  height: 60,
+											  timeout: 2000
+										});
 									});
 								}
 							}
