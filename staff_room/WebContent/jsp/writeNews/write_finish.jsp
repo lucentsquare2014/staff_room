@@ -15,13 +15,19 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.ResultSetMetaData" %>
 <%@ page import="java.sql.SQLException" %>
-<html>
+<html class="uk-height-1-1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="/html/head.html" />
+<style type="text/css">
+	body {
+		background-image: url("/staff_room/images/input.png");
+	}
+</style>
 <head>
 <title>保存完了</title>
 </head>
-<body>
-
+<body class="uk-height-1-1 uk-vertical-align uk-text-center">
+	<jsp:include page="/jsp/header/header.jsp" />
 	<%
 		//入力フォームから渡されたデータをHashMap型newsWriteに格納
 		HashMap<String, String> Newsdata = new HashMap<String, String>();
@@ -59,28 +65,12 @@
 		}
 
 	%>
-	記事の保存が完了しました。
-	<form method="POST" action="writeNews.jsp">
-		<input type="submit" value="管理・編集に戻る">
-	</form>
-
-	<%--テスト用 --%>
-	以下、テスト用<br>
-	DBにそれぞれ書き込む内容<br>
-	post_id：<%= Newsdata.get("post_id") %><br>
-	title：<%= Newsdata.get("title") %><br>
-	text：<pre><%= Newsdata.get("text") %></pre>
-	<%-- Newsdata.get("file") --%>
-	writer：<%= Newsdata.get("writer") %><br>
-	created：<%= Newsdata.get("created") %><br>
-	news_id：<%=request.getParameter("inputNewsid")%><br>
-	<%if(request.getParameter("inputNewsid").equals("null")){
-						out.println("記事の新規作成メソッドを選択");
-						 }else{
-						out.println("既存記事更新メソッドを選択");
-						 }
-						%>
-
-
+	<div class="uk-width-medium-1-2 uk-container-center uk-vertical-align-middle">
+		<div class="uk-panel uk-panel-box uk-text-center">
+			<h1 class="uk-text-success"><i class="uk-icon-smile-o"></i>記事の保存が完了しました。</h1>
+			<br>
+			<a href="writeNews.jsp" class="uk-button uk-button-success uk-button-large">管理・編集に戻る</a>
+		</div>
+	</div>
 </body>
 </html>

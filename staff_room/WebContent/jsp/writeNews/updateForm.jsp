@@ -10,30 +10,22 @@
 <html>
 <head>
 <jsp:include page="/html/head.html" />
+<script src="/staff_room/script/inputform.js"></script>
 <title>入力フォーム</title>
-<style type="text/css">
-	body {
-		background-image: url("/staff_room/images/input.png");
-	}
-	label {
-		text-align: center;
-	}
-</style>
+<link rel="stylesheet" href="/staff_room/css/inputform.css">
 </head>
 <body>
-	<jsp:include page="/jsp/header/header.jsp" />
-	<br><br><br><br>
-	<div class="uk-width-medium-3-5 uk-container-center">
+<jsp:include page="/jsp/header/header.jsp" />
+<br><br><br><br>
+<form class="uk-form uk-form-horizontal" method="post" action="write_finish.jsp">
+	<!-- 入力フォーム -->
+	<div class="uk-width-medium-3-5 uk-container-center confirm">
 		<div class="uk-h1 uk-text-center"><% if(request.getParameter("inputNewsid")==null){%>
 			新規記事の作成
 			<%}else{%>
 			既存記事の編集
 			<%}%>
 		</div><br>
-
-	<!-- 入力フォーム データ→確認画面-->
-
-	<form class="uk-form uk-form-horizontal" method="POST" action="inputCheck.jsp">
 		<div class="uk-form-row">
 			<label class="uk-form-label uk-text-bold uk-text-large">分類</label>
 			<% if(request.getParameter("inputPostid")==null){%>
@@ -103,18 +95,41 @@
 			}
 			%>
 			>
-		</div>	
-
-	<!-- 管理編集画面から渡されたinputNewsidをinputCheck.jspへ渡す -->
+		</div>
 		<div class="uk-form-row">
-			<% if(request.getParameter("inputNewsid")!=null){ %>
-			<input type="hidden" name="inputNewsid" value="<%=request.getParameter("inputNewsid") %>">
-			<% } %>
 			<div class="uk-width-3-4 uk-container-center uk-text-right">
-				<input class="uk-button uk-button-large uk-button-danger" type="submit" value="確認">
+				<button class="uk-button uk-button-large uk-button-primary" data-uk-toggle="{target:'.confirm'}">確認</button>
 			</div>
 		</div>
-	</form>
 	</div>
+	<!-- 確認画面 -->
+	<div class="uk-width-medium-3-5 uk-container-center confirm uk-hidden">
+		<div class="uk-h1 uk-text-center">入力確認</div>
+		<div class="uk-panel uk-panel-box">
+			<p class="uk-text-danger uk-text-large" id="alert"></p>
+			<dl class="uk-description-list uk-description-list-horizontal uk-text-large">
+				<dt class="uk-text-bold">分類：</dt>
+				<dd id="select"></dd>
+				<dt class=" uk-text-bold">タイトル：</dt>
+				<dd id="title"></dd>
+				<dt class=" uk-text-bold">本文：</dt>
+				<dd class=""><pre id="text"></pre></dd>
+				<dt class=" uk-text-bold uk-text-large">添付：</dt>
+				<dd id="file" class=""></dd>
+				<dt class=" uk-text-bold">保存者：</dt>
+				<dd id="author"></dd>
+			</dl>
+			<div class="uk-form-row">
+				<div class="uk-width-3-4 uk-container-center uk-text-right">
+					<button class="uk-button uk-button-large uk-button-primary" data-uk-toggle="{target:'.confirm'}">戻る</button>
+					<input class="uk-button uk-button-large uk-button-danger" type="submit" value="決定">
+				</div>
+			</div>
+		</div>
+	</div>
+	<% if(request.getParameter("inputNewsid")!=null){ %>
+	<input type="hidden" name="inputNewsid" value="<%=request.getParameter("inputNewsid") %>">
+	<% } %>
+</form>
 </body>
 </html>
