@@ -38,6 +38,11 @@ function show(a) {
 </script>
 
 <title>連絡事項</title>
+
+<style type="text/css">
+ 	tr{white-space:nowrap;}
+</style>
+
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" /><br><br>
@@ -48,7 +53,8 @@ function show(a) {
 <%-- 保留 後ろにNEWSの画像入れるなら
 <img src="/staff_room/images/newswall.png" style="position:relative;height: 600; width:100%">
 --%>
-	<div style="position:relative; top:60px; left:0px; width:100%" id="fittext1">
+
+	<div style="position:relative; top:60px; left:0px; width:100%">
 
 	<%
 		String value = null;
@@ -85,17 +91,18 @@ function show(a) {
 			out.println("</font>");
 			out.println("</div>");
 		}
-		out.println("<br><br><br><br>");
+		out.println("<br><br>");
 		System.out.print(list);
-		out.println("<table class=\"uk-table  uk-table-striped uk-text-center uk-width-medium-2-4\">");
-		out.println("<tr>");
-		out.println("<td class=\"uk-h2 uk-width-medium-1-4\">");
+		out.println("<div class=\"uk-width-1-1 uk-container-center\">");
+		out.println("<table class=\"uk-table  uk-table-striped uk-text-center uk-width-medium-1-1\">");
+		out.println("<tr class=\"uk-text-large\">");
+		out.println("<td class=\"uk-h2 uk-width-medium-2-10\">");
 		out.println("日付");
 		out.println("</td>");
-		out.println("<td class=\"uk-h2 uk-width-medium-2-4\">");
+		out.println("<td class=\"uk-h2 uk-width-medium-6-10\">");
 		out.println("件名");
 		out.println("</td>");
-		out.println("<td class=\"uk-h2 uk-width-medium-1-4\">");
+		out.println("<td class=\"uk-h2 uk-width-medium-2-10\">");
 		out.println("保存者");
 		out.println("</td>");
 		out.println("</tr>");
@@ -104,10 +111,10 @@ function show(a) {
 			HashMap<String, String> row = list.get(i);
 			if (!row.get("created").equals("")) {
 				out.println("<tr>");
-				out.println("<td class=\"uk-h3  uk-width-medium-1-4 \">");
+				out.println("<td class=\"uk-h3  uk-width-medium-2-10\">");
 				out.println(row.get("created"));
 				out.println("&nbsp;</td>");
-				out.println("<td class=\"uk-h3 uk-width-medium-2-4\">");
+				out.println("<td class=\"uk-h3 uk-width-medium-6-10\">");
 				%>
 				<h4><%= row.get("title") %></h4>
 				<dl><pre><div class="uk-h3"><%= row.get("text") %></div></pre></dl>
@@ -123,7 +130,7 @@ function show(a) {
 				-->
 				<%
 				out.println("&nbsp;</td>");
-				out.println("<td class=\"uk-h3 uk-width-medium-1-4\">");
+				out.println("<td class=\"uk-h3 uk-width-medium-2-10\">");
 				out.println(row.get("writer"));
 				out.println("</td>");
 				out.println("</tr>");
@@ -136,10 +143,10 @@ function show(a) {
 		for (int i = 0; i < z; i++) {
 			HashMap<String, String> row = list.get(x.get(i));
 			out.println("<tr>");
-			out.println("<td class=\"uk-h3  uk-width-medium-1-4 \">");
+			out.println("<td class=\"uk-h3  uk-width-medium-2-10\">");
 			out.println(row.get("created"));
 			out.println("&nbsp;</td>");
-			out.println("<td class=\"uk-h3 uk-width-medium-2-4\">");
+			out.println("<td class=\"uk-h3 uk-width-medium-6-10\">");
 			%>
 			<h4><%= row.get("title") %></h4>
 		    <dl><pre><div class="uk-h3"><%= row.get("text") %></div></pre></dl>
@@ -154,19 +161,15 @@ function show(a) {
 				-->
 			<%
 			out.println("&nbsp;</td>");
-			out.println("<td class=\"uk-h3 uk-width-medium-1-4\">");
+			out.println("<td class=\"uk-h3 uk-width-medium-2-10\">");
 			out.println(row.get("writer"));
 			out.println("</td>");
 			out.println("</tr>");
 		}
+		out.println("</div>");
 	%>
 	</div>
 	</div>
 	</div>
-	<script src=”http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js”></script>
-	<script src=”jquery.fittext.js”></script>
-	<script>
-	$("#fittext1").fitText();  //対応させる部分の#id名
-	</script>
 </body>
 </html>
