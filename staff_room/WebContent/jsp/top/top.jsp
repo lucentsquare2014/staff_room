@@ -11,12 +11,15 @@
 
 </head>
 <body>
+<nobr>
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="main-container uk-container uk-container-center">
 		<div class="changelog">
 			<div style="margin-botom:20px;" class="changelog-title" class="uk-panel-box">
 				<h1 class=" uk-text-bold ">更新履歴</h1>
 			</div>
+			</nobr>
+			
 			<nobr>
 			<div class="changelog-content" class="uk-panel-box" >
 				<%
