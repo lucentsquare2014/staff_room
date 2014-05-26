@@ -85,7 +85,7 @@ function show(a) {
 			out.println("<font face=\"HGP創英角ﾎﾟｯﾌﾟ体\">");
 			out.println("<font size =\"7\">");
 			out.println("<br><br><br>　　　　　");
-			out.println(raw.get("postname"));
+			out.println("<nonbr>"+raw.get("postname")+"</nonbr>");
 			out.println("<br>");
 			out.println("</font>");
 			out.println("</font>");
