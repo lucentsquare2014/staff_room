@@ -1,5 +1,5 @@
 body {
-	background-image: url("/staff_room/images/top.jpg");
+	background-image: url("/staff_room/images/top4.jpg");
 }
 
 .main-container {
@@ -9,7 +9,7 @@ body {
 .changelog-content {
 	position: absolute;
 	float: left;
-	bottom: 50px;
+	top: 37%;
 	overflow: scroll;
 	max-height: 350px;
 	background-color: #eee;
@@ -21,7 +21,7 @@ body {
 .changelog-title {
 	position: absolute;
 	float: left;
-	top: 120px;
+	top: 23%;
 	padding: 0;
 	background-color: #5bc0de;
 	border-radius: 10px;
