@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="/html/head.html" />
-<title>Insert title here</title>
+<title>エラー</title>
 </head>
 <body class="uk-height-1-1 uk-vertical-align uk-text-center">
 	<div class="uk-width-medium-1-2 uk-container-center uk-vertical-align-middle">

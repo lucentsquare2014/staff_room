@@ -34,7 +34,7 @@ body {
 	<div class="contents uk-width-2-3 uk-container-center">
 		<h1>管理・編集</h1>
 	     <div align="right">
-			<a href="/staff_room/jsp/writeNews/updateForm.jsp" class="uk-button">新規作成
+			<a href="/staff_room/jsp/writeNews/inputForm.jsp" class="uk-button">新規作成
 			</a>
 			<button id="delete_button" class="uk-button">削除</button>
 		</div>
