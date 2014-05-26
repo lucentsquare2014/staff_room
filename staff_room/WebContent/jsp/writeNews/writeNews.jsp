@@ -92,7 +92,7 @@ body {
 					</dl>
 				</td>
 				<td>
-					<form method="POST" action="updateForm.jsp">
+					<form method="POST" action="inputForm.jsp">
 						<input type="hidden" name="inputNewsid"
 							value="<%=row.get("news_id")%>"> <input type="hidden"
 							name="inputPostid" value="<%=row.get("post_id")%>"> <input
@@ -131,7 +131,7 @@ body {
 					</dl>
 				</td>
 				<td>
-					<form method="POST" action="updateForm.jsp">
+					<form method="POST" action="inputForm.jsp">
 
 						<input type="hidden" name="inputNewsid"
 							value="<%=row.get("news_id")%>"> <input type="hidden"
