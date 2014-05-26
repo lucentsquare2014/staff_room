@@ -12,6 +12,7 @@
  	td#type {
  		background-color: #FAFAFA;
  	}
+ 	tr{white-space:nowrap;}
 </style>
 
 <%
