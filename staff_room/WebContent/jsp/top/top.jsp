@@ -8,15 +8,17 @@
 <jsp:include page="/html/head.html" />
 <link rel="stylesheet" href="/staff_room/css/top.css">
 <title>スタッフルーム</title>
+
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="main-container uk-container uk-container-center">
 		<div class="changelog">
-			<div class="changelog-title uk-panel-box">
-				<h1 class=" uk-text-bold">更新履歴</h1>
+			<div style="margin-botom:20px;" class="changelog-title" class="uk-panel-box">
+				<h1 class=" uk-text-bold ">更新履歴</h1>
 			</div>
-			<div class="changelog-content uk-panel-box">
+			<nobr>
+			<div class="changelog-content" class="uk-panel-box" >
 				<%
 					NewsDAO dao = new NewsDAO();
 					// String sql = "select news_id, created, postname,title from news, post where news.post_id = post.post_id order by created desc limit '10'";
@@ -84,10 +86,9 @@
 					}
 				%>
 			</div>
+			</nobr>
 		</div>
-		<div class="page-title">
-			<h1>Staff Room</h1>
-		</div>
+		
 	</div>
 </body>
 </html>
