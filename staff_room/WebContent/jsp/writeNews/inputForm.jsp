@@ -6,10 +6,11 @@
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
 <%@ page import="org.apache.commons.codec.binary.StringUtils"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <jsp:include page="/html/head.html" />
+<script src="/staff_room/script/upload.js"></script>
 <script src="/staff_room/script/inputform.js"></script>
 <title>入力フォーム</title>
 <link rel="stylesheet" href="/staff_room/css/inputform.css">
@@ -77,15 +78,14 @@
 		</div>
 		<div class="uk-form-row">
 			<label class="uk-form-label uk-text-bold uk-text-large">添付</label>
-			<input type="text" disabled>
 			<div class="uk-form-file">
 				<button class="uk-button">ファイルを選択</button>
-				<input type="file" name="inputFile">
+				<input type="file" name="inputFile" id="upload-select" multiple>
+				<div id="progressbar" class="uk-progress uk-hidden" style="width: 500px;">
+    				<div class="uk-progress-bar" style="width: 0%;">...</div>
+				</div>
 			</div>
 		</div>
-			<!-- 添付ファイル いったん保留
-				<%= jpn2unicode(request.getParameter("file"),"UTF-8") %>
-			-->
 		<div class="uk-form-row">
 			<label class="uk-form-label uk-text-bold uk-text-large">保存者</label>
 			<input type="text" name="inputWriter"
