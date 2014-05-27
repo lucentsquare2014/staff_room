@@ -38,11 +38,11 @@ public class LoginFilter implements Filter {
 		HttpSession session = ((HttpServletRequest)request).getSession();
 		if(session == null) {
 			session = ((HttpServletRequest)request).getSession(true);
-	        ((HttpServletResponse)response).sendRedirect("../login.jsp");
+	        ((HttpServletResponse)response).sendRedirect("/staff_room/login.jsp");
 		} else {
 			Object loginCheck = session.getAttribute("login");
 			if(loginCheck == null) {
-				((HttpServletResponse)response).sendRedirect("../login.jsp");
+				((HttpServletResponse)response).sendRedirect("/staff_room/login.jsp");
 			}
 		}
 		chain.doFilter(request, response);
