@@ -46,7 +46,7 @@ function show(a) {
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" /><br><br>
-	<img src="/staff_room/images/renraku4.jpg">
+	<img src="/staff_room/images/renraku5.jpg">
 	<div style="position:relative; top:-80px; left:0px; width: 100%;">
 
 	<div align="center">
@@ -82,7 +82,7 @@ function show(a) {
 		for (int i = 0; i < name.size(); i++) {
 			HashMap<String, String> raw = name.get(i);
 			out.println("<div align=\"left\">");
-			out.println("<font face=\"HGP創英角ﾎﾟｯﾌﾟ体\">");
+			out.println("<font face=\"ＭＳ Ｐゴシック\">");
 			out.println("<font size =\"7\">");
 			out.println("<br><br><br>　　　　　");
 			out.println("<nonbr>"+raw.get("postname")+"</nonbr>");

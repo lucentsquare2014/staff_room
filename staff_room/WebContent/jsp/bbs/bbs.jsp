@@ -7,7 +7,7 @@
 <title>社内掲示板</title>
 </head>
 <body>
-<img src="/staff_room/images/bbs4.jpg" style="margin-bottom:20px;">
+<img src="/staff_room/images/bbs5.jpg" style="margin-bottom:20px;">
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="conetent"
 		style="padding: 0; padding-top: 42px; height: 100%; width: 100%;">
