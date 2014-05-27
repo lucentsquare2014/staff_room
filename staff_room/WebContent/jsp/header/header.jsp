@@ -58,7 +58,7 @@ $(window).resize(function(){
 				class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
-					<li><a href="/staff_room/jsp/shanai_s/schedule.jsp">社内スケジュール</a></li>
+					<li><a href="/staff_room/jsp/shanai_s/SystemSelect.jsp">社内スケジュール</a></li>
 					<li><a href="/staff_room/jsp/shanai_s/attendance.jsp">社内勤怠システム</a></li>
 					<li><a href="/staff_room/jsp/shanai_s/document.jsp">社内文書システム</a></li>
 					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
@@ -96,7 +96,7 @@ $(window).resize(function(){
 						href="http://www.lucentsquare.co.jp/staff/newstaff_2014/newstaff_index.html">新入社員紹介</a></li>
 				</ul>
 			</div></li>
-		
+
 	</ul>
 	<div class="uk-navbar-content uk-navbar-flip uk-hidden-small" id="logout">
     	<div class="uk-button-group">
