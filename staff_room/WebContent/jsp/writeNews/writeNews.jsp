@@ -3,7 +3,14 @@
 <%@ page import="dao.NewsDAO"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
 <%@ page import="org.apache.commons.lang.math.NumberUtils"%>
-
+<%
+	if(session.getAttribute("login") != null){
+		String user = String.valueOf(session.getAttribute("login"));
+		if (!user.equals("admin")){
+			response.sendRedirect("/staff_room/jsp/top/top.jsp");
+		}
+	}
+%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>

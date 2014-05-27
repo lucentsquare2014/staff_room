@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% String user = String.valueOf(session.getAttribute("login")); %>
 <style type="text/css">
 nav#header {
 	width: 100%;
@@ -47,8 +48,10 @@ $(window).resize(function(){
 					<li><a href="/staff_room/jsp/news.jsp?news=3">行事</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=4">開発企画</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=5">その他</a></li>
+					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
 					<li><a href="/staff_room/jsp/writeNews/writeNews.jsp">管理-連絡</a></li>
+					<% } %>
 				</ul>
 			</div></li>
 		<li class="uk-parent header" data-uk-dropdown><a>社内システム<i
@@ -59,8 +62,10 @@ $(window).resize(function(){
 					<li><a href="/staff_room/jsp/shanai_s/attendance.jsp">社内勤怠システム</a></li>
 					<li><a href="/staff_room/jsp/shanai_s/document.jsp">社内文書システム</a></li>
 					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
+					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
 					<li><a href="/staff_room/jsp/shanai_s/administer.jsp">管理-社内システム</a></li>
+					<% } %>
 				</ul>
 			</div></li>
 		<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
@@ -116,8 +121,10 @@ $(window).resize(function(){
 					<li><a href="/staff_room/jsp/news.jsp?news=3">行事</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=4">開発企画</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=5">その他</a></li>
+					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
 					<li><a href="/staff_room/jsp/writeNews/writeNews.jsp">管理-連絡</a></li>
+					<% } %>
 				</ul>
         	</li>
         	<li class="uk-parent">
@@ -127,8 +134,10 @@ $(window).resize(function(){
 					<li><a href="/staff_room/jsp/shanai_s/attendance.jsp">社内勤怠システム</a></li>
 					<li><a href="/staff_room/jsp/shanai_s/document.jsp">社内文書システム</a></li>
 					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
+					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
 					<li><a href="/staff_room/jsp/shanai_s/administer.jsp">管理-社内システム</a></li>
+					<% } %>
 				</ul>
         	</li>
         	<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
