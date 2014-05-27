@@ -10,8 +10,8 @@
 <img src="/staff_room/images/mail3.jpg" style="margin-bottom:20px;">
     <jsp:include page="/jsp/header/header.jsp" />
     <div class="conetent"
-        style="padding: 0; padding-top: 42px; height: 100%; width: 100%;">
-        <iframe width="100%" height="100%"
+        style="padding: 0; padding-top: 42px; height:600px;width:800px;margin-left:auto;margin-right:auto; ">
+        <iframe  style="height:100%;width:100%;"
             src="http://www.lucentsquare.co.jp/staff/mail_link.html">
         </iframe>
     </div>
