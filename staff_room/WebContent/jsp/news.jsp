@@ -73,7 +73,7 @@ function show(a) {
 		NewsDAO dao = new NewsDAO();
 		ArrayList<HashMap<String, String>> list = null;
 		list = dao
-				.getNews("select TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,news_id,title,text,writer from news where post_id = "
+				.getNews("select TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,news_id,title,filename,text,writer from news where post_id = "
 						+ value + " order by update desc");
 		ArrayList<HashMap<String, String>> name = null;
 		name = dao.getNews("select postname from post where post_id =" + value);
@@ -117,8 +117,11 @@ function show(a) {
 				out.println("<td class=\"uk-h3 uk-width-medium-6-10\">");
 				%>
 				<h4><%= row.get("title") %></h4>
-				<dl><pre><div class="uk-h3"><%= row.get("text") %></div></pre></dl>
-
+				<%if (!row.get("filename").equals("")){ %>
+				<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
+				<%} else{ %>
+				<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
+				<%} %>
 				<!--
 				<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
 				<div id="<%= row.get("news_id") %>" class="uk-modal">
@@ -149,7 +152,11 @@ function show(a) {
 			out.println("<td class=\"uk-h3 uk-width-medium-6-10\">");
 			%>
 			<h4><%= row.get("title") %></h4>
-		    <dl><pre><div class="uk-h3"><%= row.get("text") %></div></pre></dl>
+				<%if (!row.get("filename").equals("")){ %>
+				<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
+				<%} else{ %>
+				<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
+				<%} %>
 			<!--
 			<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
 				<div id="<%= row.get("news_id") %>" class="uk-modal">
