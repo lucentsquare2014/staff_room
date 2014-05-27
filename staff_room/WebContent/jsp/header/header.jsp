@@ -3,6 +3,7 @@
 <style type="text/css">
 nav#header {
 	width: 100%;
+	height: 42px;
 	position: fixed;
 	opacity: 1;
 	top: 0;
@@ -62,8 +63,8 @@ $(window).resize(function(){
 					<li><a href="/staff_room/jsp/shanai_s/administer.jsp">管理-社内システム</a></li>
 				</ul>
 			</div></li>
-		<li class="header"><a href="/staff_room/jsp/teisyutsusyorui.jsp">申請書類</a></li>
-		<li class="header"><a href="/staff_room/jsp/manual.jsp">マニュアル</a></li>
+		<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
+		<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">マニュアル</a></li>
 		<li class="header"><a href="/staff_room/jsp/mail/mail.jsp">Mail</a></li>
 		<li class="header"><a href="/staff_room/jsp/bbs/bbs.jsp">掲示板</a></li>
 		<li class="uk-parent header" data-uk-dropdown><a>Photo<i
@@ -130,8 +131,8 @@ $(window).resize(function(){
 					<li><a href="/staff_room/jsp/shanai_s/administer.jsp">管理-社内システム</a></li>
 				</ul>
         	</li>
-        	<li class="header"><a href="/staff_room/jsp/teisyutsusyorui.jsp">申請書類</a></li>
-			<li class="header"><a href="/staff_room/jsp/manual.jsp">マニュアル</a></li>
+        	<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
+			<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">マニュアル</a></li>
 			<li class="header"><a href="/staff_room/jsp/mail/mail.jsp">Mail</a></li>
 			<li class="header"><a href="/staff_room/jsp/bbs/bbs.jsp">掲示板</a></li>
 			<li class="uk-parent">
