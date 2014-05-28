@@ -37,10 +37,8 @@
 				jpn2unicode(request.getParameter("inputTitle"), "UTF-8"));
 		Newsdata.put("text",
 				jpn2unicode(request.getParameter("inputText"), "UTF-8"));
-
-		/*添付ファイル いったん保留
-		Newsdata.put("file", jpn2unicode(request.getParameter("inputFile"), "Windows-31J")); */
-
+		Newsdata.put("filename", 
+				jpn2unicode(request.getParameter("inputFiles"), "UTF-8"));
 		Newsdata.put("writer",
 				jpn2unicode(request.getParameter("inputWriter"), "UTF-8"));
 		// DAOからメソッドの呼び出し

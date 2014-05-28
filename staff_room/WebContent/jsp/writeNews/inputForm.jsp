@@ -135,6 +135,7 @@
 	<% if(request.getParameter("inputNewsid")!=null){ %>
 	<input type="hidden" name="inputNewsid" value="<%=request.getParameter("inputNewsid") %>">
 	<% } %>
+	<input type="hidden" name="inputFiles" value="">
 </form>
 </body>
 </html>

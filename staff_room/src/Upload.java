@@ -1,8 +1,5 @@
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +24,8 @@ public class Upload extends HttpServlet {
             fileSaveDir.mkdirs();
         }
     	for (Part part : request.getParts()) {
-                String name = getFilename(part);
-                part.write(uploadFilePath + File.separator + name);
+    		String name = getFilename(part);
+            part.write(uploadFilePath + File.separator + name);
         }
     	response.setContentType("text/html");
         request.setCharacterEncoding("utf-8");

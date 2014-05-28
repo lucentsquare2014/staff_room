@@ -1,3 +1,5 @@
+var name_str = "";
+
 $(function(){
 	
 	var flg = "input";
@@ -63,7 +65,9 @@ $(function(){
                 $("#cpl").addClass("uk-hidden");
             }, 3000);
             var files = $("#upload-select")[0].files;
+            //var name_str = "";
             for(var i = 0; files[i]; i++){
+            	name_str = name_str + files[i].name + ",";
             	$("#loop").append(function(){
             		return "<div class=\"uk-alert\">" + 
             		"<a href=\"\" class=\"uk-alert-close uk-close\"></a>" +
@@ -72,9 +76,8 @@ $(function(){
             	var txt = $("#file").html();
             	$("#file").html(txt.replace(/選択されていません/g,''));
             	$("#file").append("<a href=\"\">" + files[i].name + "</a>,&nbsp;");
-            	
-            	
             }
+            $("input[name='inputFiles']").val(name_str);
         }
     };
 
