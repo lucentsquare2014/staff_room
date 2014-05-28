@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -55,43 +56,54 @@ public class NewsDAO {
 		// ステートメントを作成
 		Statement stmt;
 		try {
-			stmt = con.createStatement();
+			//stmt = con.createStatement();
 
 			// SQL文を文字列としてsqlという変数に格納
 			String sql = "INSERT INTO news (post_id, title, text, writer, filename, created, update) VALUES ("
 					+ Newsdata.get("post_id")
 					+ ", "
-					+ "'"
-					+ Newsdata.get("title")
-					+ "'"
+					+ "?"//Newsdata.get("title")
 					+ ", "
-					+ "'"
-					+ Newsdata.get("text")
-					+ "'"
+					+ "?"//Newsdata.get("text")
 					+ ", "
-					+ "'"
-					+ Newsdata.get("writer")
-					+ "'"
+					+ "?"//Newsdata.get("writer")
 					+ ", "
-					+ "'"
-					+ Newsdata.get("filename")
-					+ "'"
+					+ "?"//Newsdata.get("filename")
 					+ ", "
 					+ "'"
 					+ Newsdata.get("created")
 					+ "'"
 					+ ", "
-					+ "'"
+					+ "'"					
 					+ Newsdata.get("created") + "')";
 			System.out.println(sql);
+			// preparedStatementでエスケープ処理
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, Newsdata.get("title"));
+			pstmt.setString(2, Newsdata.get("text"));
+			pstmt.setString(3, Newsdata.get("writer"));
+			pstmt.setString(4, Newsdata.get("filename"));
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
-			int num = stmt.executeUpdate(sql);
-			closeNewsDB(con);
+			int num = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e);
+		} finally {
+			closeNewsDB(con);
 		}
 	}
-
+	public void setPostIdSequence(){
+		String sql = "select setval('\"news_newsID_seq\"', (select max(news_id) from news));";
+		Connection con = openNewsDB();
+		Statement stmt;
+		try{
+			stmt = con.createStatement();
+			stmt.executeUpdate(sql);
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			closeNewsDB(con);
+		}
+	}
 	/* newsDBにある記事を編集するメソッド */
 	public void updateNews(HashMap<String, String> Newsdata) {
 		Connection con = openNewsDB();
@@ -105,35 +117,41 @@ public class NewsDAO {
 					+ "post_id=" 
 					+ Newsdata.get("post_id")
 					+ ", " 
-					+ "title=" 
-					+ "'"
+					+ "title=?" 
+/*					+ "'"
 					+ Newsdata.get("title")
 					+ "'"
-					+ ", "
-					+ "text=" 
-					+ "'"
+*/					+ ", "
+					+ "text=?" 
+/*					+ "'"
 					+ Newsdata.get("text") 
 					+ "'"
-					+ ", " 
-					+ "writer=" 
-					+ "'"
+*/					+ ", " 
+					+ "writer=?" 
+/*					+ "'"
 					+ Newsdata.get("writer")
 					+ "'"					
-					+ "," 
-					+ "filename=" 
-					+ "'"
+*/					+ "," 
+					+ "filename=?" 
+/*					+ "'"
 					+ Newsdata.get("filename") 
 					+ "'"					
-					+ ","
+*/					+ ","
 					+ "update=" 
 					+ "'"
 					+ Newsdata.get("update") 
 					+ "'"					
 					+ " WHERE news_id="
 					+ Newsdata.get("news_id");
-			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			System.out.println(sql);
-			int num = stmt.executeUpdate(sql);
+			// preparedStatementでエスケープ処理
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, Newsdata.get("title"));
+			pstmt.setString(2, Newsdata.get("text"));
+			pstmt.setString(3, Newsdata.get("writer"));
+			pstmt.setString(4, Newsdata.get("filename"));
+			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
+			int num = pstmt.executeUpdate();
 			closeNewsDB(con);
 		} catch (SQLException e) {
 			System.out.println(e);
