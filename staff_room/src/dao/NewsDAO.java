@@ -49,7 +49,20 @@ public class NewsDAO {
 			System.out.println("例外発生：" + e);
 		}
 	}
-
+	/* post_idのシーケンスを最新のものに更新する*/
+	public void setPostIdSequence(){
+		String sql = "select setval('\"news_newsID_seq\"', (select max(news_id) from news));";
+		Connection con = openNewsDB();
+		Statement stmt;
+		try{
+			stmt = con.createStatement();
+			stmt.executeUpdate(sql);
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			closeNewsDB(con);
+		}
+	}
 	/* newsDBに新規に書き込むメソッド */
 	public void writeNews(HashMap<String, String> Newsdata) {
 		Connection con = openNewsDB();
@@ -91,19 +104,7 @@ public class NewsDAO {
 			closeNewsDB(con);
 		}
 	}
-	public void setPostIdSequence(){
-		String sql = "select setval('\"news_newsID_seq\"', (select max(news_id) from news));";
-		Connection con = openNewsDB();
-		Statement stmt;
-		try{
-			stmt = con.createStatement();
-			stmt.executeUpdate(sql);
-		} catch(Exception e){
-			e.printStackTrace();
-		} finally{
-			closeNewsDB(con);
-		}
-	}
+	
 	/* newsDBにある記事を編集するメソッド */
 	public void updateNews(HashMap<String, String> Newsdata) {
 		Connection con = openNewsDB();
@@ -146,6 +147,7 @@ public class NewsDAO {
 			System.out.println(sql);
 			// preparedStatementでエスケープ処理
 			PreparedStatement pstmt = con.prepareStatement(sql);
+			// ここでsetした値がsql分の？と置き換わる
 			pstmt.setString(1, Newsdata.get("title"));
 			pstmt.setString(2, Newsdata.get("text"));
 			pstmt.setString(3, Newsdata.get("writer"));
