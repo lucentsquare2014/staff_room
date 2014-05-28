@@ -3,6 +3,7 @@
 <%@ page import="dao.NewsDAO"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
 <%@ page import="org.apache.commons.lang.math.NumberUtils"%>
+<%@ page import="org.apache.commons.lang3.StringEscapeUtils" %>
 <%
 	if(session.getAttribute("login") != null){
 		String user = String.valueOf(session.getAttribute("login"));
@@ -89,7 +90,7 @@ body {
 				<td nowrap><%=row.get("postname")%>&nbsp;</td>
 				<td class="uk-text-left" nowrap>
 					<!-- title→タイトル --> <a t_id="<%=row.get("news_id")%>"
-					class="body-title"><%=row.get("title")%></a>
+					class="body-title"><%=StringEscapeUtils.escapeHtml4(row.get("title")) %></a>
 					<dl>
 						<dt id="text<%=row.get("news_id")%>" class="body-text">
 							<!-- text→文章 -->
@@ -100,16 +101,12 @@ body {
 				</td>
 				<td>
 					<form method="POST" action="inputForm.jsp">
-						<input type="hidden" name="inputNewsid"
-							value="<%=row.get("news_id")%>"> <input type="hidden"
-							name="inputPostid" value="<%=row.get("post_id")%>">
-<%-- 							 <input　type="hidden" name="inputTitle" value="<%=row.get("title")%>">
- --%>							
-                        <input　type="hidden" name="inputTitle" value="<%=row.get("title")%>"> 
-						<input type="hidden" name="inputText" value="<%=row.get("text")%>">
-						<input type="hidden" name="inputWriter"
-							value="<%=row.get("writer")%>"> <input type="submit"
-							class="uk-button" value="編集">
+						<input type="hidden" name="inputNewsid" value="<%=row.get("news_id")%>">
+						<input type="hidden" name="inputPostid" value="<%=row.get("post_id")%>">
+						<input　type="hidden" name="inputTitle" value="<%=StringEscapeUtils.escapeHtml4(row.get("title")) %>">
+						<input type="hidden" name="inputText" value="<%=StringEscapeUtils.escapeHtml4(row.get("text")) %>">
+						<input type="hidden" name="inputWriter" value="<%=StringEscapeUtils.escapeHtml4(row.get("writer")) %>">
+						<input type="submit" class="uk-button" value="編集">
 					</form>
 				</td>
 			</tr>
@@ -129,8 +126,9 @@ body {
 				<td nowrap><%=row.get("created")%>&nbsp;</td>
 				<td nowrap><%=row.get("postname")%>&nbsp;</td>
 				<td class="uk-text-left" nowrap>
-					<!-- title→タイトル --> <a t_id="<%=row.get("news_id")%>"
-					class="body-title"><%=row.get("title")%></a>
+					<!-- title→タイトル -->
+					<a t_id="<%=row.get("news_id")%>"
+					class="body-title"><%=StringEscapeUtils.escapeHtml4(row.get("title")) %></a>
 					<dl>
 						<dt id="text<%=row.get("news_id")%>" class="body-text">
 							<!-- text→文章 -->
@@ -145,10 +143,11 @@ body {
 						<input type="hidden" name="inputNewsid"
 							value="<%=row.get("news_id")%>"> <input type="hidden"
 							name="inputPostid" value="<%=row.get("post_id")%>"> <input
-							type="hidden" name="inputTitle" value="<%=row.get("title")%>">
-						<input type="hidden" name="inputText" value="<%=row.get("text")%>">
+							type="hidden" name="inputTitle" value="<%=StringEscapeUtils.escapeHtml4(row.get("title")) %>">
+						<input type="hidden" name="inputText" value="<%=StringEscapeUtils.escapeHtml4(row.get("text")) %>">
 						<input type="hidden" name="inputWriter"
-							value="<%=row.get("writer")%>"> <input type="submit"
+							value="<%=StringEscapeUtils.escapeHtml4(row.get("writer")) %>">
+							 <input type="submit"
 							class="uk-button" value="編集">
 					</form>
 				</td>

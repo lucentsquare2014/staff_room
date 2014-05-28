@@ -66,30 +66,21 @@ public class NewsDAO {
 	/* newsDBに新規に書き込むメソッド */
 	public void writeNews(HashMap<String, String> Newsdata) {
 		Connection con = openNewsDB();
-		// ステートメントを作成
-		Statement stmt;
 		try {
-			//stmt = con.createStatement();
 
-			// SQL文を文字列としてsqlという変数に格納
+			// SQL文を文字列としてsqlという変数に格納			
 			String sql = "INSERT INTO news (post_id, title, text, writer, filename, created, update) VALUES ("
 					+ Newsdata.get("post_id")
-					+ ", "
-					+ "?"//Newsdata.get("title")
-					+ ", "
-					+ "?"//Newsdata.get("text")
-					+ ", "
-					+ "?"//Newsdata.get("writer")
-					+ ", "
-					+ "?"//Newsdata.get("filename")
-					+ ", "
+					+ ", ?, ?, ?, ?, "
 					+ "'"
 					+ Newsdata.get("created")
 					+ "'"
 					+ ", "
 					+ "'"					
-					+ Newsdata.get("created") + "')";
+					+ Newsdata.get("created")
+					+ "')";
 			System.out.println(sql);
+			// プリペアードステートメントを作成
 			// preparedStatementでエスケープ処理
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, Newsdata.get("title"));
@@ -97,7 +88,7 @@ public class NewsDAO {
 			pstmt.setString(3, Newsdata.get("writer"));
 			pstmt.setString(4, Newsdata.get("filename"));
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
-			int num = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e);
 		} finally {
@@ -108,36 +99,13 @@ public class NewsDAO {
 	/* newsDBにある記事を編集するメソッド */
 	public void updateNews(HashMap<String, String> Newsdata) {
 		Connection con = openNewsDB();
-		// ステートメントを作成
-		Statement stmt;
 		try {
-			stmt = con.createStatement();
-
 			// SQL文を文字列としてsqlという変数に格納
 			String sql = "UPDATE news SET " 
 					+ "post_id=" 
 					+ Newsdata.get("post_id")
 					+ ", " 
-					+ "title=?" 
-/*					+ "'"
-					+ Newsdata.get("title")
-					+ "'"
-*/					+ ", "
-					+ "text=?" 
-/*					+ "'"
-					+ Newsdata.get("text") 
-					+ "'"
-*/					+ ", " 
-					+ "writer=?" 
-/*					+ "'"
-					+ Newsdata.get("writer")
-					+ "'"					
-*/					+ "," 
-					+ "filename=?" 
-/*					+ "'"
-					+ Newsdata.get("filename") 
-					+ "'"					
-*/					+ ","
+					+ "title=?, text=?, writer=?, filename=?, " 
 					+ "update=" 
 					+ "'"
 					+ Newsdata.get("update") 
@@ -145,6 +113,7 @@ public class NewsDAO {
 					+ " WHERE news_id="
 					+ Newsdata.get("news_id");
 			System.out.println(sql);
+			// プリペアードステートメントを作成
 			// preparedStatementでエスケープ処理
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			// ここでsetした値がsql分の？と置き換わる
@@ -153,7 +122,7 @@ public class NewsDAO {
 			pstmt.setString(3, Newsdata.get("writer"));
 			pstmt.setString(4, Newsdata.get("filename"));
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
-			int num = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			closeNewsDB(con);
 		} catch (SQLException e) {
 			System.out.println(e);

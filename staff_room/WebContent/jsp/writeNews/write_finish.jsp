@@ -53,6 +53,8 @@
 	        Newsdata.put("created", sdf.format(date));
 
 		//データベースにhashMapから書き込み
+        // post_idのシーケンスを最新のものに更新
+        dao.setPostIdSequence();
 		dao.writeNews(Newsdata);
 		}else{
 			Newsdata.put("news_id",
@@ -61,8 +63,7 @@
 	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
 	        Newsdata.put("update", sdf.format(date));
 			//データベースにhashMapから更新
-		// post_idのシーケンスを最新のものに更新
-		dao.setPostIdSequence();
+
 		dao.updateNews(Newsdata);
 		}
 
