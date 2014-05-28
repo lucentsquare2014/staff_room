@@ -57,12 +57,14 @@ function show(a) {
 	<div style="position:relative; top:60px; left:0px; width:100%">
 
 	<%
-		String value = null;
+		String value = null,value2 = null;
 		value = request.getParameter("news");
+		value2 = request.getParameter("news_id");
 		if(value == null){
 			value = "1";
 		}
 		int flag = Integer.parseInt(value);
+		
 		if(!(flag == 1 || flag == 2 ||flag == 3 ||flag == 4 || flag == 5)){
 			value = "1";
 		}
@@ -81,46 +83,47 @@ function show(a) {
 
 		for (int i = 0; i < name.size(); i++) {
 			HashMap<String, String> raw = name.get(i);
-			out.println("<div align=\"left\">");
-			out.println("<font face=\"ＭＳ Ｐゴシック\">");
-			out.println("<font size =\"7\">");
-			out.println("<br><br><br>　　　　　");
-			out.println("<nonbr>"+raw.get("postname")+"</nonbr>");
-			out.println("<br>");
-			out.println("</font>");
-			out.println("</font>");
-			out.println("</div>");
-		}
-		out.println("<br><br>");
-		System.out.print(list);
-		out.println("<div class=\"uk-width-1-1 uk-container-center\">");
-		out.println("<table class=\"uk-table  uk-table-striped uk-text-center uk-width-medium-1-1\">");
-		out.println("<tr class=\"uk-text-large\">");
-		out.println("<td class=\"uk-h2 uk-width-medium-2-10\">");
-		out.println("日付");
-		out.println("</td>");
-		out.println("<td class=\"uk-h2 uk-width-medium-6-10\">");
-		out.println("件名");
-		out.println("</td>");
-		out.println("<td class=\"uk-h2 uk-width-medium-2-10\">");
-		out.println("保存者");
-		out.println("</td>");
-		out.println("</tr>");
-
+			%>
+			<div align="left">
+			<font face="ＭＳ Ｐゴシック">
+			<font size ="7">
+			<br><br><br>　　　　　
+			<nonbr><%=raw.get("postname")%></nonbr><br>
+			</font>
+			</font>
+			</div>
+		<%}%>
+		<br><br>
+		<%System.out.print(list);%>
+		<div class="uk-width-1-1 uk-container-center">
+		<table class="uk-table  uk-table-striped uk-text-center uk-width-medium-1-1">
+		<tr class="uk-text-large">
+		<td class="uk-h2 uk-width-medium-2-10">日付</td>
+		<td class="uk-h2 uk-width-medium-6-10">件名</td>
+		<td class="uk-h2 uk-width-medium-2-10">保存者</td>
+		</tr>
+		<%
 		for (int i = 0; i < list.size(); i++) {
 			HashMap<String, String> row = list.get(i);
 			if (!row.get("created").equals("")) {
-				out.println("<tr>");
-				out.println("<td class=\"uk-h3  uk-width-medium-2-10\">");
-				out.println(row.get("created"));
-				out.println("&nbsp;</td>");
-				out.println("<td class=\"uk-h3 uk-width-medium-6-10\">");
 				%>
-				<h4><%= row.get("title") %></h4>
-				<%if (!row.get("filename").equals("")){ %>
-				<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
-				<%} else{ %>
-				<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
+				<tr>
+				<td class="uk-h3  uk-width-medium-2-10"><%=row.get("created")%>&nbsp;</td>
+				<td class="uk-h3 uk-width-medium-6-10">
+				<%
+				//更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
+				if(row.get("news_id").equals(value2)){
+					%><a data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></a>
+					<div id="my-id" class="uk-text-left">
+						<pre class="uk-h3"><%= row.get("text") %></pre>
+					</div>
+				<%}else{%>
+					<h4><%= row.get("title") %></h4>
+					<%if (!row.get("filename").equals("")){ %>
+					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
+					<%} else{ %>
+					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
+					<%} %>
 				<%} %>
 				<!--
 				<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
@@ -131,26 +134,25 @@ function show(a) {
     				</div>
 				</div>
 				-->
-				<%
-				out.println("&nbsp;</td>");
-				out.println("<td class=\"uk-h3 uk-width-medium-2-10\">");
-				out.println(row.get("writer"));
-				out.println("</td>");
-				out.println("</tr>");
-
-			} else {
+				
+				&nbsp;</td>
+				<td class="uk-h3 uk-width-medium-2-10"><%=row.get("writer")%></td>
+				</tr>
+				
+			<%}else {
 				x.add(i);
 				z++;
 			}
 		}
 		for (int i = 0; i < z; i++) {
 			HashMap<String, String> row = list.get(x.get(i));
-			out.println("<tr>");
-			out.println("<td class=\"uk-h3  uk-width-medium-2-10\">");
-			out.println(row.get("created"));
-			out.println("&nbsp;</td>");
-			out.println("<td class=\"uk-h3 uk-width-medium-6-10\">");
 			%>
+			<tr>
+			<td class="uk-h3  uk-width-medium-2-10">
+			<%=row.get("created")%>
+			&nbsp;</td>
+			<td class="uk-h3 uk-width-medium-6-10">
+			
 			<h4><%= row.get("title") %></h4>
 				<%if (!row.get("filename").equals("")){ %>
 				<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
@@ -165,7 +167,7 @@ function show(a) {
         				<div class="uk-h3"><%= row.get("text") %></div>
     				</div>
 				</div>
-				-->
+			-->
 			<%
 			out.println("&nbsp;</td>");
 			out.println("<td class=\"uk-h3 uk-width-medium-2-10\">");
