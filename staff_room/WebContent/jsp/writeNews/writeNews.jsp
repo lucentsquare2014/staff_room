@@ -3,6 +3,7 @@
 <%@ page import="dao.NewsDAO"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
 <%@ page import="org.apache.commons.lang.math.NumberUtils"%>
+<%@ page import="org.apache.commons.lang3.StringEscapeUtils" %>
 <%
 	if(session.getAttribute("login") != null){
 		String user = String.valueOf(session.getAttribute("login"));
@@ -65,7 +66,7 @@ body {
 
 			// offsetにゲットパラメータで取得したページ数を代入
 			offset = String.valueOf((Integer.parseInt(page_num) * Integer
-					.parseInt(limit)) - 9);
+					.parseInt(limit)) - 10);
 
 			String sql = "select " + select + " from " + from + " where "
 					+ where + " order by " + order + " offset " + offset
@@ -83,13 +84,13 @@ body {
 					if (!row.get("created").equals("")) {
 			%>
 			<tr id="row<%=row.get("news_id")%>">
-				<td><a flag="0" class="uk-icon-square-o uk-text-center"
+				<td><a flag="0" class="uk-icon-square-o uk-text-center delete-box"
 					name="delete_check" id="<%=row.get("news_id")%>"></a></td>
 				<td nowrap><%=row.get("created")%>&nbsp;</td>
 				<td nowrap><%=row.get("postname")%>&nbsp;</td>
 				<td class="uk-text-left" nowrap>
 					<!-- title→タイトル --> <a t_id="<%=row.get("news_id")%>"
-					class="body-title"><%=row.get("title")%></a>
+					class="body-title"><%=StringEscapeUtils.escapeHtml4(row.get("title")) %></a>
 					<dl>
 						<dt id="text<%=row.get("news_id")%>" class="body-text">
 							<!-- text→文章 -->
@@ -100,14 +101,12 @@ body {
 				</td>
 				<td>
 					<form method="POST" action="inputForm.jsp">
-						<input type="hidden" name="inputNewsid"
-							value="<%=row.get("news_id")%>"> <input type="hidden"
-							name="inputPostid" value="<%=row.get("post_id")%>"> <input
-							type="hidden" name="inputTitle" value="<%=row.get("title")%>">
-						<input type="hidden" name="inputText" value="<%=row.get("text")%>">
-						<input type="hidden" name="inputWriter"
-							value="<%=row.get("writer")%>"> <input type="submit"
-							class="uk-button" value="編集">
+						<input type="hidden" name="inputNewsid" value="<%=row.get("news_id")%>">
+						<input type="hidden" name="inputPostid" value="<%=row.get("post_id")%>">
+						<input　type="hidden" name="inputTitle" value="<%=StringEscapeUtils.escapeHtml4(row.get("title")) %>">
+						<input type="hidden" name="inputText" value="<%=StringEscapeUtils.escapeHtml4(row.get("text")) %>">
+						<input type="hidden" name="inputWriter" value="<%=StringEscapeUtils.escapeHtml4(row.get("writer")) %>">
+						<input type="submit" class="uk-button" value="編集">
 					</form>
 				</td>
 			</tr>
@@ -122,13 +121,14 @@ body {
 					HashMap<String, String> row = list.get(x.get(i));
 			%>
 			<tr id="row<%=row.get("news_id")%>" class="uk-text-large">
-				<td><a flag="0" class="uk-icon-square-o" name="delete_check"
+				<td><a flag="0" class="uk-icon-square-o uk-text-center delete-box" name="delete_check"
 					id="<%=row.get("news_id")%>"> </a></td>
 				<td nowrap><%=row.get("created")%>&nbsp;</td>
 				<td nowrap><%=row.get("postname")%>&nbsp;</td>
 				<td class="uk-text-left" nowrap>
-					<!-- title→タイトル --> <a t_id="<%=row.get("news_id")%>"
-					class="body-title"><%=row.get("title")%></a>
+					<!-- title→タイトル -->
+					<a t_id="<%=row.get("news_id")%>"
+					class="body-title"><%=StringEscapeUtils.escapeHtml4(row.get("title")) %></a>
 					<dl>
 						<dt id="text<%=row.get("news_id")%>" class="body-text">
 							<!-- text→文章 -->
@@ -143,10 +143,11 @@ body {
 						<input type="hidden" name="inputNewsid"
 							value="<%=row.get("news_id")%>"> <input type="hidden"
 							name="inputPostid" value="<%=row.get("post_id")%>"> <input
-							type="hidden" name="inputTitle" value="<%=row.get("title")%>">
-						<input type="hidden" name="inputText" value="<%=row.get("text")%>">
+							type="hidden" name="inputTitle" value="<%=StringEscapeUtils.escapeHtml4(row.get("title")) %>">
+						<input type="hidden" name="inputText" value="<%=StringEscapeUtils.escapeHtml4(row.get("text")) %>">
 						<input type="hidden" name="inputWriter"
-							value="<%=row.get("writer")%>"> <input type="submit"
+							value="<%=StringEscapeUtils.escapeHtml4(row.get("writer")) %>">
+							 <input type="submit"
 							class="uk-button" value="編集">
 					</form>
 				</td>
@@ -163,14 +164,14 @@ body {
 				style="<%if (page_num.equals("1")) {
 				out.print("display: none;");
 			}%>">
-				<span><a
+				<span><a class="prev-page"
 					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) - 1%>">前へ&lt;&lt;</a></span>
 			</div>
 			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
 				style="<%if (list.size() < 10) {
 				out.print("display: none;");
 			}%>">
-				<span><a
+				<span><a class="next-page"
 					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) + 1%>">次へ&gt;&gt;</a></span>
 			</div>
 		</div>

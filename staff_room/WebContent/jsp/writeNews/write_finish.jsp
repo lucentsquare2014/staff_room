@@ -47,12 +47,14 @@
 		NewsDAO dao = new NewsDAO();
 
 		//確認画面から渡されたname="inputNewsid"がnullかどうかで呼ぶメソッドを判断 文字コード変換のせいでnullという文字列になっていることに注意
-		if(request.getParameter("inputNewsid").equals("null")){
+		if(request.getParameter("inputNewsid")==null || request.getParameter("inputNewsid").equals("null")){
 			Date date = new Date();
 	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
 	        Newsdata.put("created", sdf.format(date));
 
 		//データベースにhashMapから書き込み
+        // post_idのシーケンスを最新のものに更新
+        dao.setPostIdSequence();
 		dao.writeNews(Newsdata);
 		}else{
 			Newsdata.put("news_id",
@@ -61,6 +63,7 @@
 	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
 	        Newsdata.put("update", sdf.format(date));
 			//データベースにhashMapから更新
+
 		dao.updateNews(Newsdata);
 		}
 
