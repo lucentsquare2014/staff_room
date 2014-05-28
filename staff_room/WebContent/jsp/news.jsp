@@ -12,6 +12,7 @@
 <%@ page import="dao.NewsDAO"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.text.*"%>
+<%@ page import="org.apache.commons.lang.math.NumberUtils"%>
 <jsp:include page="/html/head.html" />
 <script type="text/javascript">
 var display_tag;
@@ -74,15 +75,21 @@ function show(a) {
 		int j=0,z=0;
 		NewsDAO dao = new NewsDAO();
 		ArrayList<HashMap<String, String>> list = null;
+		String page_num = request.getParameter("page");
+		if (page_num == null || !NumberUtils.isNumber(page_num)) {
+			page_num = "1";
+		}
+		// offsetにゲットパラメータで取得したページ数を代入
+					String limit = "10";
+					String offset = String.valueOf((Integer.parseInt(page_num) * Integer
+							.parseInt(limit)) - 10);
 		list = dao
-				.getNews("select TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,news_id,title,filename,text,writer from news where post_id = "
-						+ value + " order by update desc");
+		.getNews("select TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,news_id,title,filename,text,writer from news where post_id = "
+		+ value + " order by update desc " +" limit " + limit +" offset " + offset );
 		ArrayList<HashMap<String, String>> name = null;
 		name = dao.getNews("select postname from post where post_id =" + value);
 		System.out.print(name);
-
-		for (int i = 0; i < name.size(); i++) {
-			HashMap<String, String> raw = name.get(i);
+		HashMap<String, String> raw = name.get(0);
 			%>
 			<div align="left">
 			<font face="ＭＳ Ｐゴシック">
@@ -92,7 +99,7 @@ function show(a) {
 			</font>
 			</font>
 			</div>
-		<%}%>
+
 		<br><br>
 		<%System.out.print(list);%>
 		<div class="uk-width-1-1 uk-container-center">
@@ -168,17 +175,28 @@ function show(a) {
     				</div>
 				</div>
 			-->
-			<%
-			out.println("&nbsp;</td>");
-			out.println("<td class=\"uk-h3 uk-width-medium-2-10\">");
-			out.println(row.get("writer"));
-			out.println("</td>");
-			out.println("</tr>");
-		}
-		out.println("</div>");
-	%>
-	</div>
-	</div>
-	</div>
+			
+&nbsp;</td>
+<td class="uk-h3 uk-width-medium-2-10"><%=row.get("writer")%></td><%}%>
+</tr>
+</table>
+
+<div class="uk-grid" style="padding-bottom: 50px;">
+			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left"
+				style="<%if (page_num.equals("1")) {
+				out.print("display: none;");
+			}%>">
+				<span><a
+					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) - 1%>">前へ&lt;&lt;</a></span>
+			</div>
+			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
+				style="<%if (list.size() < 10) {
+				out.print("display: none;");
+			}%>">
+				<span><a
+					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) + 1%>">次へ&gt;&gt;</a></span>
+			</div>
+		</div>
+</div></div></div></div>
 </body>
 </html>
