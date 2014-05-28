@@ -1,5 +1,6 @@
 /**
- * 
+ * writeNewsのJavaScript。記事を削除するときにdeleteNews.jspにデータを送信する処理と
+ * 記事の表示非表示の処理を記述している。
  */
 
 $(function() {
@@ -43,40 +44,44 @@ $(function() {
 								}
 
 								if (f == -1) {
+									// 記事が選択されていない場合にエラーメッセージを表示する
 									notif({
-										type: "error",
-										  msg: "記事が選択されていません!",
-										  position: "center",
-										  width: 500,
-										  height: 60,
-										  timeout: 2000
+										type : "error",
+										msg : "記事が選択されていません!",
+										position : "center",
+										width : 500,
+										height : 60,
+										timeout : 2000
 									});
 								} else {
 									// IDを格納した配列をdeleteNews.jspにPOST送信
 									$.ajax({
 										type : "POST",
-										url : "deleteNews.jsp",
+										url : "/staff_room/jsp/writeNews/deleteNews.jsp",
+										cache: false,
 										data : {
 											// 配列を区切り文字","の文字列に変換
 											// 例:[1,2,3,]→"1,2,3"
 											"del_id" : "" + ids
 										}
+									// 送信に成功した時にする処理
 									}).done(function() {
 										notif({
-											type: "success",
-											  msg: "削除しました!",
-											  position: "center",
-											  width: 500,
-											  height: 60,
-											  timeout: 2000
+											type : "success",
+											msg : "削除しました!",
+											position : "center",
+											width : 500,
+											height : 60,
+											timeout : 2000
 										});
 									});
 								}
 							}
 						});
+				// タイトルをクリックした時の本文の表示非表示を行う処理
 				$(".body-text").css("display", "none");
 				$(".body-title").click(function() {
-					$("#text"+$(this).attr("t_id")).toggle();
+					$("#text" + $(this).attr("t_id")).toggle();
 				});
 			});
 

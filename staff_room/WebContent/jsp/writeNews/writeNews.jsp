@@ -84,7 +84,7 @@ body {
 					if (!row.get("created").equals("")) {
 			%>
 			<tr id="row<%=row.get("news_id")%>">
-				<td><a flag="0" class="uk-icon-square-o uk-text-center"
+				<td><a flag="0" class="uk-icon-square-o uk-text-center delete-box"
 					name="delete_check" id="<%=row.get("news_id")%>"></a></td>
 				<td nowrap><%=row.get("created")%>&nbsp;</td>
 				<td nowrap><%=row.get("postname")%>&nbsp;</td>
@@ -121,7 +121,7 @@ body {
 					HashMap<String, String> row = list.get(x.get(i));
 			%>
 			<tr id="row<%=row.get("news_id")%>" class="uk-text-large">
-				<td><a flag="0" class="uk-icon-square-o" name="delete_check"
+				<td><a flag="0" class="uk-icon-square-o uk-text-center delete-box" name="delete_check"
 					id="<%=row.get("news_id")%>"> </a></td>
 				<td nowrap><%=row.get("created")%>&nbsp;</td>
 				<td nowrap><%=row.get("postname")%>&nbsp;</td>
@@ -164,14 +164,14 @@ body {
 				style="<%if (page_num.equals("1")) {
 				out.print("display: none;");
 			}%>">
-				<span><a
+				<span><a class="prev-page"
 					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) - 1%>">前へ&lt;&lt;</a></span>
 			</div>
 			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
 				style="<%if (list.size() < 10) {
 				out.print("display: none;");
 			}%>">
-				<span><a
+				<span><a class="next-page"
 					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) + 1%>">次へ&gt;&gt;</a></span>
 			</div>
 		</div>
