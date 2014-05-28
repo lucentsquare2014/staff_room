@@ -65,7 +65,7 @@ body {
 
 			// offsetにゲットパラメータで取得したページ数を代入
 			offset = String.valueOf((Integer.parseInt(page_num) * Integer
-					.parseInt(limit)) - 9);
+					.parseInt(limit)) - 10);
 
 			String sql = "select " + select + " from " + from + " where "
 					+ where + " order by " + order + " offset " + offset
@@ -102,8 +102,10 @@ body {
 					<form method="POST" action="inputForm.jsp">
 						<input type="hidden" name="inputNewsid"
 							value="<%=row.get("news_id")%>"> <input type="hidden"
-							name="inputPostid" value="<%=row.get("post_id")%>"> <input
-							type="hidden" name="inputTitle" value="<%=row.get("title")%>">
+							name="inputPostid" value="<%=row.get("post_id")%>">
+<%-- 							 <input　type="hidden" name="inputTitle" value="<%=row.get("title")%>">
+ --%>							
+                        <input　type="hidden" name="inputTitle" value="<%=row.get("title")%>"> 
 						<input type="hidden" name="inputText" value="<%=row.get("text")%>">
 						<input type="hidden" name="inputWriter"
 							value="<%=row.get("writer")%>"> <input type="submit"
