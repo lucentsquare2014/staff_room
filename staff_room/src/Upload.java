@@ -1,5 +1,8 @@
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 @WebServlet(name = "Upload", urlPatterns = { "/upload" })
-@MultipartConfig(fileSizeThreshold = 5000000, maxFileSize = 700 * 1024 * 1024, location = "//global01/82_新人研修/2014年度新人用/10_個別/upload")
+@MultipartConfig(fileSizeThreshold = 5000000, maxFileSize = 700 * 1024 * 1024)
 public class Upload extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -17,11 +20,17 @@ public class Upload extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
     	response.setCharacterEncoding("utf-8");
+    	String applicationPath = request.getServletContext().getRealPath("");
+    	String uploadFilePath = applicationPath + File.separator + "upload";
+    	File fileSaveDir = new File(uploadFilePath);
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdirs();
+        }
     	for (Part part : request.getParts()) {
                 String name = getFilename(part);
-                part.write(name);
+                part.write(uploadFilePath + File.separator + name);
         }
-    	response.setContentType("application/json");
+    	response.setContentType("text/html");
         request.setCharacterEncoding("utf-8");
     }
     

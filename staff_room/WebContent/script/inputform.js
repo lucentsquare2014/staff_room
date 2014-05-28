@@ -7,8 +7,10 @@ $(function(){
 			$("#select").text($("select[name='inputPostid'] option:selected").text());
 			$("#title").text($("input[name='inputTitle']").val());
 			$("#text").text($("textarea[name='inputText']").val());
-			$("#file").text("選択されていません");
 			$("#author").text($("input[name='inputWriter']").val());
+			if($("#loop *").length == 0){
+				$("#file").text("選択されていません");
+			}
 			flg = "confirm";
 		}else{
 			flg = "input";
@@ -56,6 +58,23 @@ $(function(){
             setTimeout(function(){
                 progressbar.addClass("uk-hidden");
             }, 1500);
+            $(".uk-form-controls").prepend("<div class=\"uk-alert uk-alert-success\" id=\"cpl\">アップロードが完了しました。</div>");
+            setTimeout(function(){
+                $("#cpl").addClass("uk-hidden");
+            }, 3000);
+            var files = $("#upload-select")[0].files;
+            for(var i = 0; files[i]; i++){
+            	$("#loop").append(function(){
+            		return "<div class=\"uk-alert\">" + 
+            		"<a href=\"\" class=\"uk-alert-close uk-close\"></a>" +
+            		"<p>" + files[i].name + "</p></div>";
+            	});
+            	var txt = $("#file").html();
+            	$("#file").html(txt.replace(/選択されていません/g,''));
+            	$("#file").append("<a href=\"\">" + files[i].name + "</a>,&nbsp;");
+            	
+            	
+            }
         }
     };
 

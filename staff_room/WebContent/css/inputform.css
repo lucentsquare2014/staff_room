@@ -15,3 +15,6 @@ dd {
 pre { 
 	border: 0px;
 }
+.uk-alert {
+	width: 250px;
+}

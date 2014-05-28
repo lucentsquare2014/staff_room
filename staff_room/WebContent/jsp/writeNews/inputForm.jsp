@@ -76,7 +76,7 @@
 				<textarea class="uk-form-width-large" rows="10" name="inputText"><%= jpn2unicode(request.getParameter("inputText"),"UTF-8")%></textarea>
 			<% } %>
 		</div>
-		<div class="uk-form-row">
+		<div class="uk-form-row" id="uploaded">
 			<label class="uk-form-label uk-text-bold uk-text-large">添付</label>
 			<div class="uk-form-file">
 				<button class="uk-button">ファイルを選択</button>
@@ -84,6 +84,11 @@
 				<div id="progressbar" class="uk-progress uk-hidden" style="width: 500px;">
     				<div class="uk-progress-bar" style="width: 0%;">...</div>
 				</div>
+			</div>
+		</div>
+		<div class="uk-form-row">
+			<div class="uk-form-controls">
+				<div id="loop"></div>
 			</div>
 		</div>
 		<div class="uk-form-row">
