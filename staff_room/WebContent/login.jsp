@@ -50,5 +50,6 @@
 			</form>
 		</div>
 	</div>
+	<%out.println("\u6708\u5206\u7D66\u4E0E\u306B\u95A2\u3059\u308B\u304A\u77E5\u3089\u305B"); %>
 </body>
 </html>
