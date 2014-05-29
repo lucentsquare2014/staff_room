@@ -11,6 +11,7 @@ $(function(){
 			if($("#loop *").length == 0){
 				$("#file").text("選択されていません");
 			}else{
+				$("#file").text("");
 				var input_files = $("input[name='inputFiles']").val().split(",");
 				for(var i = 0; i < input_files.length; i++){
 					$("#file").append("<a href=\"\">" + input_files[i] + "</a>&nbsp;");

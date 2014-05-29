@@ -8,10 +8,12 @@
 
 <% 
 	List<String> file_list = new ArrayList<String>();
-	if(request.getParameter("inputFile") != null) {
+	
+	if(request.getParameter("inputFile") != "" && request.getParameter("inputFile") != null) {
 		String file_str = String.valueOf(request.getParameter("inputFile"));
 		file_list = Arrays.asList(file_str.split(","));
 	}
+	System.out.println(file_list.size());
 %>
 <!DOCTYPE html>
 <html>
@@ -152,7 +154,11 @@
 	<% if(request.getParameter("inputNewsid")!=null){ %>
 	<input type="hidden" name="inputNewsid" value="<%= request.getParameter("inputNewsid") %>">
 	<% } %>
+	<% if(request.getParameter("inputFile") != "" && request.getParameter("inputFile") != null){ %>
 	<input type="hidden" name="inputFiles" value="<%= request.getParameter("inputFile") %>">
+	<% }else{ %>
+	<input type="hidden" name="inputFiles" value="">
+	<% } %>
 </form>
 </body>
 </html>
