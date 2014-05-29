@@ -12,7 +12,7 @@
     <div class="conetent"
         style="padding: 0; padding-top: 42px; height:600px;width:800px;margin-left:auto;margin-right:auto; ">
         <iframe  style="height:100%;width:100%;"
-            src="http://www.lucentsquare.co.jp/staff/mail_link.html">
+            src="/staff_room/html/mail_link.html">
         </iframe>
     </div>
 </body>
