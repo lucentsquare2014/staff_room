@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <% String user = String.valueOf(session.getAttribute("login")); %>
 <style type="text/css">
+<link rel="stylesheet" href="/staff_room/css/uikit.header.css">
 nav#header {
 	width: 100%;
 	height: 42px;
@@ -10,6 +11,7 @@ nav#header {
 	top: 0;
  	z-index: 10000000;
 }
+nav#header >ul >li> a{text-decoration:none; color:white; font-size:1em;}
 #side,#logo {
 	display: none;
 }
@@ -33,13 +35,14 @@ $(window).resize(function(){
 	sidebar();
 });
 </script>
-<nav id="header" class="uk-navbar">
-	<ul class="uk-navbar-nav" id="nav">
+
+<nav id="header" class="uk-navbar" style="background-image:url(/staff_room/images/blackwhite.png); background-size:100% 100%;">
+	<ul class="uk-navbar-nav" id="nav" >
 		<li class="header"><a href="http://www.lucentsquare.co.jp/"
 			class="uk-navbar-brand"> <img src="/staff_room/images/Logo.png"
 				alt="会社のページに戻る" width="30" height="30"></img></a></li>
 		<li class="header"><a href="/staff_room/jsp/top/top.jsp">TOP</a></li>
-		<li class="uk-parent header" data-uk-dropdown><a>連絡<i
+		<li id="w" class="uk-parent header" data-uk-dropdown  ><a>連絡<i
 				class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
