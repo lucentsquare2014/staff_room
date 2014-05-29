@@ -113,12 +113,11 @@ window.onload = function() {
 
 		<br><br>
 		<%System.out.print(list);%>
-		<div class="uk-width-1-1 uk-container-center">
+		<div class="uk-width-3-4 uk-container-center">
 		<table class="uk-table  uk-table-striped uk-text-center uk-width-medium-1-1">
 		<tr class="uk-text-large">
-		<td class="uk-h2 uk-width-medium-2-10">日付</td>
-		<td class="uk-h2 uk-width-medium-6-10">件名</td>
-		<td class="uk-h2 uk-width-medium-2-10">保存者</td>
+		<td class="uk-h2 uk-width-medium-3-10">日付</td>
+		<td class="uk-h2 uk-width-medium-7-10">件名</td>
 		</tr>
 		<%
 		for (int i = 0; i < list.size(); i++) {
@@ -126,8 +125,8 @@ window.onload = function() {
 			if (!row.get("created").equals("")) {
 				%>
 				<tr>
-				<td class="uk-h3  uk-width-medium-2-10"><%=row.get("created")%>&nbsp;</td>
-				<td class="uk-h3 uk-width-medium-6-10">
+				<td class="uk-h3 uk-width-medium-3-10"><%=row.get("created")%>&nbsp;</td>
+				<td class="uk-h3 uk-width-medium-7-10">
 				<%
 				//更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
 				if(row.get("news_id").equals(value2)){
@@ -157,8 +156,7 @@ window.onload = function() {
 				</div>
 				-->
 
-				&nbsp;</td>
-				<td class="uk-h3 uk-width-medium-2-10"><%=row.get("writer")%></td>
+
 				</tr>
 
 			<%}else {
@@ -170,10 +168,10 @@ window.onload = function() {
 			HashMap<String, String> row = list.get(x.get(i));
 			%>
 			<tr>
-			<td class="uk-h3  uk-width-medium-2-10">
+			<td class="uk-h3 uk-width-medium-3-10">
 			<%=row.get("created")%>
 			&nbsp;</td>
-			<td class="uk-h3 uk-width-medium-6-10">
+			<td class="uk-h3 uk-width-medium-7-10">
 
                 <%
                 //更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
@@ -204,8 +202,7 @@ window.onload = function() {
 				</div>
 			-->
 
-&nbsp;</td>
-<td class="uk-h3 uk-width-medium-2-10"><%=row.get("writer")%></td><%}%>
+<%}%>
 </tr>
 </table>
 
