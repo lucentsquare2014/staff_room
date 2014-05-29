@@ -50,6 +50,7 @@ public class Login extends HttpServlet {
 	    boolean check = authUser(id, pwd);
 	    if(check) {
 	    	session.setAttribute("login", id);
+	    	session.setAttribute("password", pwd);
 	        response.sendRedirect("./jsp/top/top.jsp");
 	    } else {
 	    	// ログイン回数をプラスする
