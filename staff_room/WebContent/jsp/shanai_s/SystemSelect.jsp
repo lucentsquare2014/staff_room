@@ -25,7 +25,7 @@
 							<td class="tdMsj">
 							<center>
 							<form action="http://www.lucentsquare.co.jp:8080/kk_web/menu.jsp" method="post" name="MSJform">
-								<input type="hidden" name="id" value="a-tamashiro">
+								<input type="hidden" name="id" value="<%=session.getAttribute("login") %>">
 								<div class="pMsj"><input class="msj" type="submit" value="社内スケジュール"></div>
 							</form>
 							</center>
