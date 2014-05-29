@@ -76,7 +76,7 @@ window.onload = function() {
 			value = "1";
 		}
 		int flag = Integer.parseInt(value);
-		
+
 		if(!(flag == 1 || flag == 2 ||flag == 3 ||flag == 4 || flag == 5)){
 			value = "1";
 		}
@@ -134,7 +134,7 @@ window.onload = function() {
 					%><h4 data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></h4>
 					<div id="my-id" class="uk-text-left">
                     <%if (!row.get("filename").equals("")){ %>
-                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
+					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></div></pre></dl>
                     <%} else{ %>
                     <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
                     <%} %>
@@ -142,7 +142,7 @@ window.onload = function() {
 				<%}else{%>
 					<h4><%= row.get("title") %></h4>
 					<%if (!row.get("filename").equals("")){ %>
-					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
+                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></div></pre></dl>
 					<%} else{ %>
 					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
 					<%} %>
@@ -156,11 +156,11 @@ window.onload = function() {
     				</div>
 				</div>
 				-->
-				
+
 				&nbsp;</td>
 				<td class="uk-h3 uk-width-medium-2-10"><%=row.get("writer")%></td>
 				</tr>
-				
+
 			<%}else {
 				x.add(i);
 				z++;
@@ -174,14 +174,14 @@ window.onload = function() {
 			<%=row.get("created")%>
 			&nbsp;</td>
 			<td class="uk-h3 uk-width-medium-6-10">
-			
+
                 <%
                 //更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
                 if(row.get("news_id").equals(value2)){
                     %><h4 data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></h4>
                     <div id="my-id" class="uk-text-left">
                     <%if (!row.get("filename").equals("")){ %>
-                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
+					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></div></pre></dl>
                     <%} else{ %>
                     <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
                     <%} %>
@@ -189,7 +189,7 @@ window.onload = function() {
                 <%}else{%>
                     <h4><%= row.get("title") %></h4>
                     <%if (!row.get("filename").equals("")){ %>
-                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
+					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></div></pre></dl>
                     <%} else{ %>
                     <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
                     <%} %>
@@ -203,7 +203,7 @@ window.onload = function() {
     				</div>
 				</div>
 			-->
-			
+
 &nbsp;</td>
 <td class="uk-h3 uk-width-medium-2-10"><%=row.get("writer")%></td><%}%>
 </tr>
