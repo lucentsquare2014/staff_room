@@ -10,10 +10,9 @@
 	List<String> file_list = new ArrayList<String>();
 	
 	if(request.getParameter("inputFile") != "" && request.getParameter("inputFile") != null) {
-		String file_str = String.valueOf(request.getParameter("inputFile"));
+		String file_str = String.valueOf(jpn2unicode(request.getParameter("inputFile"),"UTF-8"));
 		file_list = Arrays.asList(file_str.split(","));
 	}
-	System.out.println(file_list.size());
 %>
 <!DOCTYPE html>
 <html>
@@ -101,7 +100,7 @@
 					<% if(!file_list.isEmpty()) { 
 						for(int i = 0; i < file_list.size(); i++){ %>
 						<div class="uk-alert">
-							<a href="" class="uk-alert-close uk-close"></a>
+							<a href="" class="uk-alert-close uk-close" data-uk-alert></a>
 							<p><%= file_list.get(i) %></p>
 						</div>
 					<% 	}
@@ -155,7 +154,7 @@
 	<input type="hidden" name="inputNewsid" value="<%= request.getParameter("inputNewsid") %>">
 	<% } %>
 	<% if(request.getParameter("inputFile") != "" && request.getParameter("inputFile") != null){ %>
-	<input type="hidden" name="inputFiles" value="<%= request.getParameter("inputFile") %>">
+	<input type="hidden" name="inputFiles" value="<%= jpn2unicode(request.getParameter("inputFile"),"UTF-8") %>">
 	<% }else{ %>
 	<input type="hidden" name="inputFiles" value="">
 	<% } %>
