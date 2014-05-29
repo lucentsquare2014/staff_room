@@ -24,7 +24,7 @@
 					<%
 						NewsDAO dao = new NewsDAO();
 						// String sql = "select news_id, created, postname,title from news, post where news.post_id = post.post_id order by created desc limit '10'";
-						String sql = "select news_id, TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,postname,news.post_id,title,news_id from news, post where news.post_id = post.post_id order by created desc";
+						String sql = "select news_id, TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,postname,news.post_id,title from news, post where news.post_id = post.post_id order by created desc";
 						ArrayList<HashMap<String, String>> table = dao.getNews(sql);
 						ArrayList<HashMap<String, String>> t_copy = new ArrayList<HashMap<String, String>>(
 								table);

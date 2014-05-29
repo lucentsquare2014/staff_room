@@ -23,19 +23,30 @@ window.onload = function() {
 	display_tag = document.getElementsByTagName("dl");		// 非表示させたい部分のタグ
 
 	for (var i = 0; i < change_tag.length; i++) {
-		// 非表示させたいタグの処理
-		display_tag.item(i).style.display = "none";
+		if(change_tag.item(i).getAttribute("data-uk-toggle")=="{target:'#my-id'}"){
+		}else{
 
-		// タイトルの文字を取得して表示切り替えのリンクに変更
-		var ele = change_tag.item(i);
-		var str = ele.innerText || ele.innerHTML;
-		ele.innerHTML = '<a href="javascript:show(' + i + ');">' + str + '<\/a>';
+	// 非表示させたいタグの処理
+				display_tag.item(i).style.display = "none";
+
+				// タイトルの文字を取得して表示切り替えのリンクに変更
+				var ele = change_tag.item(i);
+				var str = ele.innerText || ele.innerHTML;
+				ele.innerHTML = '<a href="javascript:show(' + i + ');">' + str
+						+ '<\/a>';
+			}
+		}
+	var $speed = 0; //スクロールのスピードを設定（ミリ秒）
+	var targetOffset = $('[data-uk-toggle="{target:\'#my-id\'}"]').offset().top; //ターゲットとなるdivを設定
+	//ページを読み込み0.8秒後にターゲットとなるdivまで自動スクロール
+	$("html,body").animate({scrollTop:targetOffset-50},$speed);
+	//setTimeout(function(){},800);
+
+	};
+	function show(a) {
+		var ele = display_tag.item(a);
+		ele.style.display = (ele.style.display == "none") ? "block" : "none";
 	}
-};
-function show(a) {
-	var ele = display_tag.item(a);
-	ele.style.display = (ele.style.display == "none") ? "block" : "none";
-}
 </script>
 
 <title>連絡事項</title>
@@ -120,9 +131,13 @@ function show(a) {
 				<%
 				//更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
 				if(row.get("news_id").equals(value2)){
-					%><a data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></a>
+					%><h4 data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></h4>
 					<div id="my-id" class="uk-text-left">
-						<pre class="uk-h3"><%= row.get("text") %></pre>
+                    <%if (!row.get("filename").equals("")){ %>
+                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
+                    <%} else{ %>
+                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
+                    <%} %>
 					</div>
 				<%}else{%>
 					<h4><%= row.get("title") %></h4>
@@ -160,12 +175,25 @@ function show(a) {
 			&nbsp;</td>
 			<td class="uk-h3 uk-width-medium-6-10">
 			
-			<h4><%= row.get("title") %></h4>
-				<%if (!row.get("filename").equals("")){ %>
-				<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
-				<%} else{ %>
-				<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
-				<%} %>
+                <%
+                //更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
+                if(row.get("news_id").equals(value2)){
+                    %><h4 data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></h4>
+                    <div id="my-id" class="uk-text-left">
+                    <%if (!row.get("filename").equals("")){ %>
+                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
+                    <%} else{ %>
+                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
+                    <%} %>
+                    </div>
+                <%}else{%>
+                    <h4><%= row.get("title") %></h4>
+                    <%if (!row.get("filename").equals("")){ %>
+                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<%= row.get("filename") %></div></pre></dl>
+                    <%} else{ %>
+                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
+                    <%} %>
+                <%} %>
 			<!--
 			<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
 				<div id="<%= row.get("news_id") %>" class="uk-modal">
@@ -187,14 +215,14 @@ function show(a) {
 				out.print("display: none;");
 			}%>">
 				<span><a
-					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) - 1%>">前へ&lt;&lt;</a></span>
+					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) - 1%>&news_id=<%=value2%>">&lt;&lt;前へ</a></span>
 			</div>
 			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
 				style="<%if (list.size() < 10) {
 				out.print("display: none;");
 			}%>">
 				<span><a
-					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) + 1%>">次へ&gt;&gt;</a></span>
+					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) + 1%>&news_id=<%=value2%>">次へ&gt;&gt;</a></span>
 			</div>
 		</div>
 </div></div></div></div>

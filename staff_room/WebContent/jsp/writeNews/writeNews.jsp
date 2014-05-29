@@ -164,7 +164,7 @@ body {
 				out.print("display: none;");
 			}%>">
 				<span><a class="prev-page"
-					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) - 1%>">前へ&lt;&lt;</a></span>
+					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) - 1%>">&lt;&lt;前へ</a></span>
 			</div>
 			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
 				style="<%if (list.size() < 10) {
