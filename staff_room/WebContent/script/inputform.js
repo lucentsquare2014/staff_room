@@ -1,3 +1,4 @@
+var name_str = $("input[name='inputFiles']").val();
 $(function(){
 	
 	var flg = "input";
@@ -69,18 +70,55 @@ $(function(){
                 $("#cpl").addClass("uk-hidden");
             }, 3000);
             var files = $("#upload-select")[0].files;
-            //var name_str = "";
             for(var i = 0; files[i]; i++){
             	name_str = name_str + files[i].name + ",";
             	$("#loop").append(function(){
             		return "<div class=\"uk-alert\">" + 
-            		"<a href=\"\" class=\"uk-alert-close uk-close\"></a>" +
+            		"<a href=\"\" class=\"uk-alert-close uk-close\" data-uk-alert></a>" +
             		"<p>" + files[i].name + "</p></div>";
+            	});
+            	$("#loop").find('a').click(function(){
+            		var deleted = $(this).next().text();
+            		var $close= $(this).parent();
+            			$.ajax({
+            				type: "POST",
+            				url: "/staff_room/Delete",
+            				data: {"deleteFile" : deleted},
+            				cache: false
+            			}).done(function(){
+            				$close.remove();
+            				var remove_name = deleted + ",";
+            				var s = $("input[name='inputFiles']").val().replace(remove_name,'');
+            				$("input[name='inputFiles']").val(s);
+            				name_str = $("input[name='inputFiles']").val();
+            			});
+            		//return false;
             	});
             }
             $("input[name='inputFiles']").val(name_str);
+            
         }
     };
 
     var select = new $.UIkit.upload.select($("#upload-select"), settings);
+});
+$(function(){
+	$(".uk-close").click(function(){
+		var deleted = $(this).next().text();
+		var $close= $(this).parent();
+			$.ajax({
+				type: "POST",
+				url: "/staff_room/Delete",
+				data: {"deleteFile" : deleted},
+				cache: false
+			}).done(function(){
+				$close.remove();
+				var remove_name = deleted + ",";
+				var s = $("input[name='inputFiles']").val().replace(remove_name,'');
+				$("input[name='inputFiles']").val(s);
+				name_str = $("input[name='inputFiles']").val();
+			});
+		//return false;
+	});
+	
 });
