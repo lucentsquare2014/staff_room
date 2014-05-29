@@ -1,5 +1,3 @@
-var name_str = "";
-
 $(function(){
 	
 	var flg = "input";
@@ -12,6 +10,11 @@ $(function(){
 			$("#author").text($("input[name='inputWriter']").val());
 			if($("#loop *").length == 0){
 				$("#file").text("選択されていません");
+			}else{
+				var input_files = $("input[name='inputFiles']").val().split(",");
+				for(var i = 0; i < input_files.length; i++){
+					$("#file").append("<a href=\"\">" + input_files[i] + "</a>&nbsp;");
+				}
 			}
 			flg = "confirm";
 		}else{
@@ -34,7 +37,7 @@ $(function(){
 });
 
 $(function(){
-	
+	var name_str = $("input[name='inputFiles']").val();
     var progressbar = $("#progressbar"),
         bar         = progressbar.find('.uk-progress-bar'),
         settings    = {
@@ -73,9 +76,6 @@ $(function(){
             		"<a href=\"\" class=\"uk-alert-close uk-close\"></a>" +
             		"<p>" + files[i].name + "</p></div>";
             	});
-            	var txt = $("#file").html();
-            	$("#file").html(txt.replace(/選択されていません/g,''));
-            	$("#file").append("<a href=\"\">" + files[i].name + "</a>,&nbsp;");
             }
             $("input[name='inputFiles']").val(name_str);
         }

@@ -3,9 +3,16 @@
 
 <%@ include file="code.jsp" %>
 <%@ page import="dao.NewsDAO"%>
-<%@ page import="java.util.ArrayList, java.util.HashMap"%>
+<%@ page import="java.util.ArrayList, java.util.HashMap, java.util.List, java.util.Arrays"%>
 <%@ page import="org.apache.commons.codec.binary.StringUtils"%>
 
+<% 
+	List<String> file_list = new ArrayList<String>();
+	if(request.getParameter("inputFile") != null) {
+		String file_str = String.valueOf(request.getParameter("inputFile"));
+		file_list = Arrays.asList(file_str.split(","));
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +95,17 @@
 		</div>
 		<div class="uk-form-row">
 			<div class="uk-form-controls">
-				<div id="loop"></div>
+				<div id="loop">
+					<% if(!file_list.isEmpty()) { 
+						for(int i = 0; i < file_list.size(); i++){ %>
+						<div class="uk-alert">
+							<a href="" class="uk-alert-close uk-close"></a>
+							<p><%= file_list.get(i) %></p>
+						</div>
+					<% 	}
+					}
+					%>
+				</div>
 			</div>
 		</div>
 		<div class="uk-form-row">
@@ -133,9 +150,9 @@
 		</div>
 	</div>
 	<% if(request.getParameter("inputNewsid")!=null){ %>
-	<input type="hidden" name="inputNewsid" value="<%=request.getParameter("inputNewsid") %>">
+	<input type="hidden" name="inputNewsid" value="<%= request.getParameter("inputNewsid") %>">
 	<% } %>
-	<input type="hidden" name="inputFiles" value="">
+	<input type="hidden" name="inputFiles" value="<%= request.getParameter("inputFile") %>">
 </form>
 </body>
 </html>
