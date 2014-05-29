@@ -61,10 +61,16 @@ $(window).resize(function(){
 				class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
-					<li><a href="/staff_room/jsp/shanai_s/SystemSelect.jsp">社内スケジュール</a></li>
+<!-- 					<li><a href="/staff_room/jsp/shanai_s/SystemSelect.jsp">社内スケジュール</a></li>
 					<li><a href="/staff_room/jsp/shanai_s/attendance.jsp">社内勤怠システム</a></li>
 					<li><a href="/staff_room/jsp/shanai_s/document.jsp">社内文書システム</a></li>
-					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
+ -->
+
+ 					<li><a href="/staff_room/jsp/shanai_s/SystemSelect.jsp">社内システム選択画面</a></li>
+                    
+ 					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
+ 					
+ 					
 					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
 					<li><a href="/staff_room/jsp/shanai_s/administer.jsp">管理-社内システム</a></li>
