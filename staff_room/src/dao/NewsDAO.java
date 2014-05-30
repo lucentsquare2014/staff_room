@@ -20,7 +20,7 @@ public class NewsDAO {
 	 * 
 	 * @return データベースとやりとりするコネクションクラス
 	 */
-	private static Connection openNewsDB() {
+	public static Connection openNewsDB() {
 		Connection con = null;
 		try {
 			// JDBCドライバの読み取り
@@ -40,7 +40,7 @@ public class NewsDAO {
 	}
 
 	/* newsDBへの接続を切断するメソッド */
-	private static void closeNewsDB(Connection con) {
+	public static void closeNewsDB(Connection con) {
 		try {
 			// データベース切断
 			con.close();
