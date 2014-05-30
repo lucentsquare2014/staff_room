@@ -79,11 +79,13 @@ $(function(){
             	});
             	$("#loop").find('a').click(function(){
             		var deleted = $(this).next().text();
+            		var news_id = $("input[name='inputNewsid']").val();
             		var $close= $(this).parent();
             			$.ajax({
             				type: "POST",
             				url: "/staff_room/Delete",
-            				data: {"deleteFile" : deleted},
+            				data: {"deleteFile" : deleted,
+            						"newsId" : news_id },
             				cache: false
             			}).done(function(){
             				$close.remove();
@@ -105,11 +107,13 @@ $(function(){
 $(function(){
 	$(".uk-close").click(function(){
 		var deleted = $(this).next().text();
+		var news_id = $("input[name='inputNewsid']").val();
 		var $close= $(this).parent();
 			$.ajax({
 				type: "POST",
 				url: "/staff_room/Delete",
-				data: {"deleteFile" : deleted},
+				data: {"deleteFile" : deleted,
+						"newsId" : news_id },
 				cache: false
 			}).done(function(){
 				$close.remove();
