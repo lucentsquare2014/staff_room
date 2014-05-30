@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <% String user = String.valueOf(session.getAttribute("login")); %>
 <style type="text/css">
-<link rel="stylesheet" href="/staff_room/css/uikit.header.css">
+
 nav#header {
 	width: 100%;
 	height: 42px;
@@ -10,6 +10,8 @@ nav#header {
 	opacity: 1;
 	top: 0;
  	z-index: 10000000;
+ 	background-image:url(/staff_room/images/blackwhite.png);
+ 	background-size:100% 100%;
 }
 nav#header >ul >li> a{text-decoration:none; color:white; font-size:1em;}
 #side,#logo {
@@ -36,7 +38,7 @@ $(window).resize(function(){
 });
 </script>
 
-<nav id="header" class="uk-navbar" style="background-image:url(/staff_room/images/blackwhite.png); background-size:100% 100%;">
+<nav id="header" class="uk-navbar">
 	<ul class="uk-navbar-nav" id="nav" >
 		<li class="header"><a href="http://www.lucentsquare.co.jp/"
 			class="uk-navbar-brand"> <img src="/staff_room/images/Logo.png"
