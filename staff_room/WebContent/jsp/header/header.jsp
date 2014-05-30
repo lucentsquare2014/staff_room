@@ -10,10 +10,16 @@ nav#header {
 	opacity: 1;
 	top: 0;
  	z-index: 10000000;
- 	background-image:url(/staff_room/images/blackwhite.png);
+ 	background-image:url(/staff_room/images/hcolorapple.png);
  	background-size:100% 100%;
+ 	
 }
-nav#header >ul >li> a{text-decoration:none; color:white; font-size:1em;}
+nav#header >ul >li> a{text-decoration:none; color:whitesmoke; font-size:1em; text-shadow:0px 0px black;}
+nav#header >ul >li  >div{background-image:url(/staff_room/images/hcolorapple.png);background-size:100% 100%; }
+nav#header >ul >li  >div >ul >li >a {color:whitesmoke; font-size:1.1em; text-shadow:1px 1px black;}
+nav#header >ul >li> a:active{background-color:gray; color:whitesmoke;}
+nav#header >ul >li> div >ul >li >a:hover{background-color:black; color:whitesmoke;}
+
 #side,#logo {
 	display: none;
 }
