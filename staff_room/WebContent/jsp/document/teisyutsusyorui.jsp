@@ -15,10 +15,10 @@
 <% if(user.equals("admin")){ //-----------管理者の申請書類ページ-----------%>
 	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-table-striped uk-width-1-1">
 		<tr class="uk-text-large">
-			<th style="background: -webkit-gradient(linear,left top,left bottom,from(rgba(240,240,240,0.3)),to(rgba(24,24,24,0.9)))" class=" uk-width-1-6 uk-text-center"><font color="white">種別</font></th>
-			<th style="background: -webkit-gradient(linear,left top,left bottom,from(rgba(240,240,240,0.3)),to(rgba(24,24,24,0.9)))" class=" uk-width-1-6 uk-text-center"><font color="white"></font></th>
-			<th style="background: -webkit-gradient(linear,left top,left bottom,from(rgba(240,240,240,0.3)),to(rgba(24,24,24,0.9)))" class=" uk-width-2-6 uk-text-center"><font color="white">更新日時</font></th>
-			<th style="background: -webkit-gradient(linear,left top,left bottom,from(rgba(240,240,240,0.3)),to(rgba(24,24,24,0.9)))" class=" uk-width-2-6 uk-text-center"><font color="white">ファイル名</font></th>
+			<th class=" uk-width-1-6 uk-text-center"><font color="#000000">種別</font></th>
+			<th class=" uk-width-1-6 uk-text-center"><font color="#000000"></font></th>
+			<th class=" uk-width-2-6 uk-text-center"><font color="#000000">更新日時</font></th>
+			<th class=" uk-width-2-6 uk-text-center"><font color="#000000">ファイル名</font></th>
 		</tr>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
 		<%@ include file="syorui_source.jsp"%>
@@ -27,9 +27,9 @@
 <%}else{ //-----------一般利用者の申請書類ページ----------%>
 	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-table-striped uk-width-1-1">
 		<tr class="uk-text-large">
-			<th style="background: -webkit-gradient(linear,left top,left bottom,from(rgba(240,240,240,0.3)),to(rgba(24,24,24,0.9)))" class=" uk-width-1-6 uk-text-center"><font color="white">種別</font></th>
-			<th style="background: -webkit-gradient(linear,left top,left bottom,from(rgba(240,240,240,0.3)),to(rgba(24,24,24,0.9)))" class=" uk-width-2-6 uk-text-center"><font color="white">更新日時</font></th>
-			<th style="background: -webkit-gradient(linear,left top,left bottom,from(rgba(240,240,240,0.3)),to(rgba(24,24,24,0.9)))" class=" uk-width-2-6 uk-text-center"><font color="white">ファイル名</font></th>
+			<th class=" uk-width-1-6 uk-text-center"><font color="#000000">種別</font></th>
+			<th class=" uk-width-2-6 uk-text-center"><font color="#000000">更新日時</font></th>
+			<th class=" uk-width-2-6 uk-text-center"><font color="#000000">ファイル名</font></th>
 		</tr>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
 		<%@ include file="syorui_source.jsp"%>
