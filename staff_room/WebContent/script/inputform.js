@@ -39,7 +39,7 @@ $(function(){
 });
 
 $(function(){
-	//var name_str = $("input[name='inputFiles']").val();
+	name_str = $("input[name='inputFiles']").val();
     var progressbar = $("#progressbar"),
         bar         = progressbar.find('.uk-progress-bar'),
         settings    = {
