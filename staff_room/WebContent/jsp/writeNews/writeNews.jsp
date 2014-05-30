@@ -76,7 +76,7 @@ body {
 			//System.out.println(list.size());
 		%>
 		<table
-			class="uk-table uk-table-striped uk-text-center uk-width-medium-2-4 uk-panel-box">
+			border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-striped uk-text-center uk-width-medium-2-4 uk-panel-box">
 			<%
 				for (int i = 0; i < list.size(); i++) {
 					HashMap<String, String> row = list.get(i);
