@@ -3,7 +3,7 @@
             java.text.SimpleDateFormat,
             java.util.Date,
             java.util.Locale,java.net.URLDecoder,java.net.URLEncoder"%>
-            
+<% String user2 = String.valueOf(session.getAttribute("login")); %>
 <style type="text/css">
  	td#time {
  		font-size: 80%;
@@ -33,6 +33,12 @@
 	<%if (x == 0) {%>
 	<td id="type"rowspan=<%=filename.length%> class="uk-text-middle uk-text-bold"><%=foldername[i]%></td>
 	<%}%>
+	
+	<!-- -----------管理者用チェックボックス作成----------- -->
+	<% if(user2.equals("admin")){%>
+	<td><input type="checkbox" name="aa" value="aaa"></td>
+	<%}%>
+	
 	
 	<!-- フォーマットを変換した 更新日時を出力-->
 	<td id="time"><%=format.format(date)%></td>
