@@ -42,6 +42,9 @@ $(function(){
 $(window).resize(function(){
 	sidebar();
 });
+function kk_web_submit(){
+    document.kk_web_form.submit();
+}
 </script>
 
 <nav id="header" class="uk-navbar">
@@ -74,7 +77,12 @@ $(window).resize(function(){
 					<li><a href="/staff_room/jsp/shanai_s/document.jsp">社内文書システム</a></li>
  -->
 
- 					<li><a href="/staff_room/jsp/shanai_s/SystemSelect.jsp">社内システム選択画面</a></li>
+                    <li><form name="kk_web_form" method="POST" action="/kk_web/ID_PW_Nyuryoku.jsp">
+                    <input type="hidden" name="id" value="<%=session.getAttribute("login") %>" />
+                    <input type="hidden" name="password" value="<%=session.getAttribute("password") %>" />
+                    </form>
+                    <a href="#" onClick="kk_web_submit()">社内システム選択画面</a>
+                    </li>
                     
  					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
  					
@@ -147,10 +155,13 @@ $(window).resize(function(){
         	<li class="uk-parent">
         		<a href="#">社内システム</a>
         		<ul class="uk-nav-sub">
-        			<li><a href="/staff_room/jsp/shanai_s/schedule.jsp">社内スケジュール</a></li>
-					<li><a href="/staff_room/jsp/shanai_s/attendance.jsp">社内勤怠システム</a></li>
-					<li><a href="/staff_room/jsp/shanai_s/document.jsp">社内文書システム</a></li>
-					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
+                    <li><form id="kk_web_side" method="POST" action="/kk_web/ID_PW_Nyuryoku.jsp">
+                    <input type="hidden" name="id" value="<%=session.getAttribute("login") %>" />
+                    <input type="hidden" name="password" value="<%=session.getAttribute("password") %>" />
+                    </form>
+                    <a href="#" onClick="kk_web_submit()">社内システム選択画面</a>                    
+                    </li>
+                    <li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
 					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
 					<li><a href="/staff_room/jsp/shanai_s/administer.jsp">管理-社内システム</a></li>
