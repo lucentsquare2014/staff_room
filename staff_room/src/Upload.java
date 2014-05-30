@@ -34,8 +34,15 @@ public class Upload extends HttpServlet {
     private String getFilename(Part part) {
         for (String cd : part.getHeader("Content-Disposition").split(";")) {
             if (cd.trim().startsWith("filename")) {
-                return cd.substring(cd.indexOf('=') + 1).trim()
-                        .replace("\"", "");
+            	if(cd.trim().indexOf("\\") == -1){
+            		return cd.substring(cd.indexOf('=') + 1).trim()
+                            .replace("\"", "");
+            	}else{
+            		cd = cd.substring(cd.indexOf('=') + 1).trim()
+                            .replace("\"", "");
+            		String[] str= cd.split("\\\\");
+            		return str[str.length - 1];
+            	}
             }
         }
         return null;
