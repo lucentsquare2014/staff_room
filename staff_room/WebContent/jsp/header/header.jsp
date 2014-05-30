@@ -45,6 +45,16 @@ $(window).resize(function(){
 function kk_web_submit(){
     document.kk_web_form.submit();
 }
+function kk_web_admin(){
+	document.kk_web_admin_form.submit();
+}
+function kk_web_admin_side_submit(){
+    document.kk_web_admin_side.submit();
+}
+function kk_web_side_submit(){
+    document.kk_web_side.submit();
+}
+
 </script>
 
 <nav id="header" class="uk-navbar">
@@ -89,8 +99,11 @@ function kk_web_submit(){
  					
 					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
-					<li><a href="/staff_room/jsp/shanai_s/administer.jsp">管理-社内システム</a></li>
-					<% } %>
+                    <li><form name="kk_web_admin_form" method="POST" action="/staff_room/jsp/shanai_s/administer.jsp">
+                    <input type="hidden" name="password" value="<%=session.getAttribute("password") %>" />
+                    </form>
+                    <li><a href="#" onClick="kk_web_admin()">管理-社内システム</a></li>
+                    <% } %>
 				</ul>
 			</div></li>
 		<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
@@ -155,16 +168,19 @@ function kk_web_submit(){
         	<li class="uk-parent">
         		<a href="#">社内システム</a>
         		<ul class="uk-nav-sub">
-                    <li><form id="kk_web_side" method="POST" action="/staff_room/jsp/shanai_s/SystemSelect.jsp">
+                    <li><form name="kk_web_side" method="POST" action="/staff_room/jsp/shanai_s/SystemSelect.jsp">
                     <input type="hidden" name="id" value="<%=session.getAttribute("login") %>" />
                     <input type="hidden" name="password" value="<%=session.getAttribute("password") %>" />
                     </form>
-                    <a href="#" onClick="kk_web_submit()">社内システム選択画面</a>                    
+                    <a href="#" onClick="kk_web_side_submit()">社内システム選択画面</a>                    
                     </li>
-                    <li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
+                    <li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
 					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
-					<li><a href="/staff_room/jsp/shanai_s/administer.jsp">管理-社内システム</a></li>
+                    <li><form name="kk_web_admin_side" method="POST" action="/staff_room/jsp/shanai_s/administer.jsp">
+                    <input type="hidden" name="password" value="<%=session.getAttribute("password") %>" />
+                    </form>
+                    <li><a href="#" onClick="kk_web_admin_side_submit()">管理-社内システム</a></li>
 					<% } %>
 				</ul>
         	</li>

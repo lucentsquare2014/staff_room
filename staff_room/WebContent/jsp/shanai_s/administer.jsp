@@ -9,14 +9,26 @@
 	}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang = "ja">
 <head>
-<jsp:include page="/html/head.html"></jsp:include>
-<title>管理 - 社内システム</title>
+<jsp:include page="/html/head.html" />
+<title>認証画面（システム管理）</title>
+<script type="text/javascript">
+window.onload = function() {
+    document.theform.submit();
+};
+function submit1() {
+    document.body.style.cursor = 'wait';
+    document.theform.aa.disabled = true;
+    document.theform.bb.disabled = true;
+    document.theform.submit();
+}
+</script>
 </head>
 <body>
-    <jsp:include page="/jsp/header/header.jsp" />
-<p style="padding-top: 60px;">管理 - 社内システムです。</p>
-
+<form method="POST" action="//www.lucentsquare.co.jp:8080/kk_web/c_checkpwsystem" name="theform">
+<input type="hidden" name="action" value="gate">
+<input type="hidden" name="Pwd"  value="<%if (request.getParameter("password") != null) {%><%=request.getParameter("password")%><%}%>" size="25">
+</form>
 </body>
 </html>
