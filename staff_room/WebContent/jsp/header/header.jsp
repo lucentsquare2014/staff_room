@@ -77,7 +77,7 @@ function kk_web_submit(){
 					<li><a href="/staff_room/jsp/shanai_s/document.jsp">社内文書システム</a></li>
  -->
 
-                    <li><form name="kk_web_form" method="POST" action="/kk_web/ID_PW_Nyuryoku.jsp">
+                    <li><form name="kk_web_form" method="POST" action="/staff_room/jsp/shanai_s/SystemSelect.jsp">
                     <input type="hidden" name="id" value="<%=session.getAttribute("login") %>" />
                     <input type="hidden" name="password" value="<%=session.getAttribute("password") %>" />
                     </form>
@@ -155,7 +155,7 @@ function kk_web_submit(){
         	<li class="uk-parent">
         		<a href="#">社内システム</a>
         		<ul class="uk-nav-sub">
-                    <li><form id="kk_web_side" method="POST" action="/kk_web/ID_PW_Nyuryoku.jsp">
+                    <li><form id="kk_web_side" method="POST" action="/staff_room/jsp/shanai_s/SystemSelect.jsp">
                     <input type="hidden" name="id" value="<%=session.getAttribute("login") %>" />
                     <input type="hidden" name="password" value="<%=session.getAttribute("password") %>" />
                     </form>
