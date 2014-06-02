@@ -224,9 +224,9 @@ public class NewsDAO {
 				// 取得したデータを","で区切った文字列に変換
 				while(rs.next()){
 					builder.append(rs.getString("news_id")).append(",");
+					// resultに","で連結させた文字列を格納
+					result =  builder.toString();
 				}
-				// resultに","で連結させた文字列を格納
-				result =  builder.substring(0, builder.length() - 1);
 		} catch (SQLException e) {
 			System.out.println(e);
 		}finally{
