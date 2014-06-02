@@ -61,7 +61,7 @@ public class Login extends HttpServlet {
 	    		updateReadCheck(kanri_info[2], new_ids, kanri_info[0]);
 	    		kanri_info[2] = kanri_info[2] + new_ids;
 	    	}
-	    	request.setAttribute("unread",kanri_info[2].split(","));
+	    	request.setAttribute("unread",kanri_info[2]);
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/top/top.jsp");
             dispatcher.forward(request, response);
 	    } else {
