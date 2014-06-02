@@ -58,7 +58,7 @@
 			Newsdata.put("news_id",
 	                request.getParameter("inputNewsid"));
 			Date date = new Date();
-	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm:ss");
 	        Newsdata.put("update", sdf.format(date));
 			//データベースにhashMapから更新
 
