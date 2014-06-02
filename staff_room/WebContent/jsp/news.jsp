@@ -14,46 +14,27 @@
 <%@ page import="java.text.*"%>
 <%@ page import="org.apache.commons.lang.math.NumberUtils"%>
 <jsp:include page="/html/head.html" />
-<script type="text/javascript">
-var display_tag;
-window.onload = function() {
-	if (!document.getElementsByTagName) return;
-
-	var change_tag = document.getElementsByTagName("h4");		// タイトルの部分のタグ
-	display_tag = document.getElementsByTagName("dl");		// 非表示させたい部分のタグ
-
-	for (var i = 0; i < change_tag.length; i++) {
-		if(change_tag.item(i).getAttribute("data-uk-toggle")=="{target:'#my-id'}"){
-		}else{
-
-	// 非表示させたいタグの処理
-				display_tag.item(i).style.display = "none";
-
-				// タイトルの文字を取得して表示切り替えのリンクに変更
-				var ele = change_tag.item(i);
-				var str = ele.innerText || ele.innerHTML;
-				ele.innerHTML = '<a href="javascript:show(' + i + ');">' + str
-						+ '<\/a>';
-			}
-		}
-	var $speed = 0; //スクロールのスピードを設定（ミリ秒）
-	var targetOffset = $('[data-uk-toggle="{target:\'#my-id\'}"]').offset().top; //ターゲットとなるdivを設定
-	//ページを読み込み0.8秒後にターゲットとなるdivまで自動スクロール
-	$("html,body").animate({scrollTop:targetOffset-50},$speed);
-	//setTimeout(function(){},800);
-
-	};
-	function show(a) {
-		var ele = display_tag.item(a);
-		ele.style.display = (ele.style.display == "none") ? "block" : "none";
-	}
-</script>
 
 <title>連絡事項</title>
 
 <style type="text/css">
  	tr{white-space:nowrap;}
 </style>
+<!-- クリックされた記事のnews_idをメソッドに送信するJavascript -->
+<script type=“text/javascript”>
+function news_id( value ){
+    var form = document.createElement( ‘form’ );
+    document.body.appendChild( form );
+    var input = document.createElement( ‘input’ );
+    input.setAttribute( ‘type’ , ‘hidden’ );
+    input.setAttribute( ‘name’ , ‘name’ );
+    input.setAttribute( ‘value’ , value );
+    form.appendChild( input );
+    form.setAttribute( ‘action’ , ‘送信したいメソッド名’ );
+    form.setAttribute( ‘method’ , ‘post or get’ );
+    form.submit();
+}
+</script>
 
 </head>
 <body>
@@ -69,9 +50,17 @@ window.onload = function() {
 	<div style="position:relative; top:60px; left:0px; width:100%">
 
 	<%
-		String value = null,value2 = null;
+		String value = null,value2 = null,value3 = null;
 		value = request.getParameter("news");
 		value2 = request.getParameter("news_id");
+		//未読記事のnews_idを受け取る
+		if(request.getAttribute("unread") !=""){
+			 value3 = String.valueOf(request.getAttribute("unread"));	
+		}
+		
+		//String news_id[] = request.getParameterValues("read_change");
+		
+		
 		if(value == null){
 			value = "1";
 		}
@@ -83,7 +72,6 @@ window.onload = function() {
 
 		//配列
 		ArrayList<Integer> x = new ArrayList<Integer>();
-		int j=0,z=0;
 		NewsDAO dao = new NewsDAO();
 		ArrayList<HashMap<String, String>> list = null;
 		String page_num = request.getParameter("page");
@@ -122,28 +110,41 @@ window.onload = function() {
 		<%
 		for (int i = 0; i < list.size(); i++) {
 			HashMap<String, String> row = list.get(i);
-			if (!row.get("created").equals("")) {
 				%>
 				<tr>
-				<td class="uk-h3 uk-width-medium-3-10"><%=row.get("created")%>&nbsp;</td>
-				<td class="uk-h3 uk-width-medium-7-10">
+				<td class="uk-h3 uk-width-medium-3-10 uk-text-center"><%=row.get("created")%>&nbsp;</td>
+				<td class="uk-h3 uk-width-medium-7-10 uk-text-left">
 				<%
 				//更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
 				if(row.get("news_id").equals(value2)){
-					%><h4 data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></h4>
+					if(value3.indexOf(row.get("news_id")+",") != -1){%>
+						<a href="javascript:news_id('<%= row.get("news_id")%>')" data-uk-toggle="{target:'#my-id'}"><font size="4" color="red"><b><%= row.get("title") %><right>new</right></b></font></a>
+					<%}else{
+					    %><a data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></a>
+					<%}%>
 					<div id="my-id" class="uk-text-left">
                     <%if (!row.get("filename").equals("")){ %>
-					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></div></pre></dl>
+						<div class="uk-h3 uk-text-left"><pre><%= row.get("text") %><br><br>添付ファイル：
+							<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%>
+								<a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
                     <%} else{ %>
-                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
+                    	<div class="uk-h3 uk-text-left"><pre><%= row.get("text") %></pre></div>
                     <%} %>
 					</div>
 				<%}else{%>
-					<h4><%= row.get("title") %></h4>
+					<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+						<a href="javascript:news_id('<%= row.get("news_id")%>')" data-uk-toggle="{target:'#my-id<%=i%>'}"><font size="4" color="red"><b><%= row.get("title") %><right>new</right></b></font></a>
+					<%}else{%>
+						<a data-uk-toggle="{target:'#my-id<%=i%>'}"><%= row.get("title") %></a>
+					<%}%>
+					<div id="my-id" class="uk-text-left">
 					<%if (!row.get("filename").equals("")){ %>
-                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></div></pre></dl>
-					<%} else{ %>
-					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
+                    <div id="my-id<%=i%>" class="uk-h3 uk-text-left uk-hidden">
+                    	<pre><%= row.get("text") %><br><br>添付ファイル：
+                    		<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%>
+                    			<a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
+					<%}else{ %>
+					<div id="my-id<%=i%>" class="uk-h3 uk-text-left uk-hidden"><pre><%= row.get("text") %></pre></div>
 					<%} %>
 				<%} %>
 				<!--
@@ -159,53 +160,10 @@ window.onload = function() {
 
 				</tr>
 
-			<%}else {
-				x.add(i);
-				z++;
-			}
-		}
-		for (int i = 0; i < z; i++) {
-			HashMap<String, String> row = list.get(x.get(i));
-			%>
-			<tr>
-			<td class="uk-h3 uk-width-medium-3-10">
-			<%=row.get("created")%>
-			&nbsp;</td>
-			<td class="uk-h3 uk-width-medium-7-10">
-
-                <%
-                //更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
-                if(row.get("news_id").equals(value2)){
-                    %><h4 data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></h4>
-                    <div id="my-id" class="uk-text-left">
-                    <%if (!row.get("filename").equals("")){ %>
-					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></div></pre></dl>
-                    <%} else{ %>
-                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
-                    <%} %>
-                    </div>
-                <%}else{%>
-                    <h4><%= row.get("title") %></h4>
-                    <%if (!row.get("filename").equals("")){ %>
-					<dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></div></pre></dl>
-                    <%} else{ %>
-                    <dl><pre><div class="uk-h3 uk-text-left"><%= row.get("text") %></div></pre></dl>
-                    <%} %>
-                <%} %>
-			<!--
-			<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
-				<div id="<%= row.get("news_id") %>" class="uk-modal">
-    				<div class="uk-modal-dialog">
-        				<a class="uk-modal-close uk-close"></a>
-        				<div class="uk-h3"><%= row.get("text") %></div>
-    				</div>
-				</div>
-			-->
-
-<%}%>
-</tr>
+			<%}%>		
 </table>
-
+<%=request.getAttribute("unread") %>
+<!-- 次へボタン、戻るボタンの処理　 -->
 <div class="uk-grid" style="padding-bottom: 50px;">
 			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left"
 				style="<%if (page_num.equals("1")) {
