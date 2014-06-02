@@ -47,7 +47,7 @@
 		//確認画面から渡されたname="inputNewsid"がnullかどうかで呼ぶメソッドを判断 文字コード変換のせいでnullという文字列になっていることに注意
 		if(request.getParameter("inputNewsid")==null || request.getParameter("inputNewsid").equals("null")){
 			Date date = new Date();
-	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm");
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd  hh:mm:ss");
 	        Newsdata.put("created", sdf.format(date));
 
 		//データベースにhashMapから書き込み

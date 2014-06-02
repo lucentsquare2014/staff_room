@@ -221,9 +221,6 @@ public class NewsDAO {
 				ResultSet rs = pstmt.executeQuery();
 				StringBuilder builder = new StringBuilder();
 				
-				// フィールドの列数を取得
-				int columnCount = pstmt.getMetaData().getColumnCount();
-
 				// 取得したデータを","で区切った文字列に変換
 				while(rs.next()){
 					builder.append(rs.getString("news_id")).append(",");
