@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -123,9 +125,10 @@ public class NewsDAO {
 			pstmt.setString(4, Newsdata.get("filename"));
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			pstmt.executeUpdate();
-			closeNewsDB(con);
 		} catch (SQLException e) {
 			System.out.println(e);
+		}finally{
+			closeNewsDB(con);
 		}
 	}
 
@@ -142,9 +145,10 @@ public class NewsDAO {
 				// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 				stmt.executeUpdate(sql);
 			}
-			closeNewsDB(con);
 		} catch (SQLException e) {
 			System.out.println(e);
+		}finally{
+			closeNewsDB(con);
 		}
 	}
 
@@ -185,10 +189,54 @@ public class NewsDAO {
 				// 1件分のデータを格納
 				list.add(hdata);
 			}
-			closeNewsDB(con);
 		} catch (SQLException e) {
 			System.out.println(e);
+		}finally{
+			closeNewsDB(con);
 		}
 		return list;
 	}
+	
+	/*
+	 * 引数に渡された日付よりも新しい作成日付のnews_idを","で区切った文字列で返す
+	 * 
+	 * @return String型の文字列
+	 */
+	public String getNewsFromLastLogin(String login_time){
+		Connection con = openNewsDB();
+		// return用の変数
+		String result = null;
+		// 最後にログインした時間よりも日付が新しい記事を取ってくるsql文
+		String sql = "select news_id from news where created > ?";
+		System.out.println(sql);
+		try {
+
+				// プリペアードステートメントを作成
+				// preparedStatementでエスケープ処理
+				PreparedStatement pstmt = con.prepareStatement(sql);
+
+				// ここでsetした値がsql分の？と置き換わる
+				pstmt.setTimestamp(1, java.sql.Timestamp.valueOf(login_time));
+				// executeUpdateメソッドで実行。未読のnews_idを返す
+				ResultSet rs = pstmt.executeQuery();
+				StringBuilder builder = new StringBuilder();
+				
+				// フィールドの列数を取得
+				int columnCount = pstmt.getMetaData().getColumnCount();
+
+				// 取得したデータを","で区切った文字列に変換
+				while(rs.next()){
+					builder.append(rs.getString("news_id")).append(",");
+				}
+				// resultに","で連結させた文字列を格納
+				result =  builder.substring(0, builder.length() - 1);
+		} catch (SQLException e) {
+			System.out.println(e);
+		}finally{
+			closeNewsDB(con);
+		}
+		System.out.println(result);
+		return result;
+	}
+
 }
