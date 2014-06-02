@@ -61,9 +61,8 @@ public class Login extends HttpServlet {
 	    		updateReadCheck(kanri_info[2], new_ids, kanri_info[0]);
 	    		kanri_info[2] = kanri_info[2] + new_ids;
 	    	}
-	    	request.setAttribute("unread",kanri_info[2]);
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/top/top.jsp");
-            dispatcher.forward(request, response);
+	    	session.setAttribute("unread",kanri_info[2]);
+	    	response.sendRedirect("./jsp/top/top.jsp");
 	    } else {
 	    	// ログイン回数をプラスする
 	    	int n = Integer.valueOf(String.valueOf(session.getAttribute("count")));
