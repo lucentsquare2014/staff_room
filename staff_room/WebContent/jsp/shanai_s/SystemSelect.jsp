@@ -1,6 +1,11 @@
 <%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=shift_JIS"
     pageEncoding="shift_JIS"%>
+<%
+    if(session.getAttribute("login") == null){
+            response.sendRedirect("/staff_room/jsp/top/top.jsp");
+    }
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="ja">
@@ -32,11 +37,11 @@
         <input type="hidden" name="action" value="gate">
         <input
             type="hidden" name="shainID"
-            value="<%if (request.getParameter("id") != null) {%><%=request.getParameter("id")%><%}%>"
+            value="<%if (session.getAttribute("login") != null) {%><%=session.getAttribute("login")%><%}%>"
             size="30" maxlength="20" class="text">
         <input type="hidden"
             name="Pwd"
-            value="<%if (request.getParameter("password") != null) {%><%=request.getParameter("password")%><%}%>"
+            value="<%if (session.getAttribute("password") != null) {%><%=session.getAttribute("password")%><%}%>"
             size="25" maxlength="20">
         <!--                    <table>
                         <tr>

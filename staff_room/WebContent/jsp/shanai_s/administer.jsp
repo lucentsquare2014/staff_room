@@ -28,7 +28,7 @@ function submit1() {
 <body>
 <form method="POST" action="//www.lucentsquare.co.jp:8080/kk_web/c_checkpwsystem" name="theform">
 <input type="hidden" name="action" value="gate">
-<input type="hidden" name="Pwd"  value="<%if (request.getParameter("password") != null) {%><%=request.getParameter("password")%><%}%>" size="25">
+<input type="hidden" name="Pwd"  value="<%if (session.getAttribute("password") != null) {%><%=session.getAttribute("password")%><%}%>" size="25">
 </form>
 </body>
 </html>
