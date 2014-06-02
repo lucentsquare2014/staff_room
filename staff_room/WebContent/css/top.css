@@ -5,13 +5,28 @@ body {
 .main-container {
 	padding-top: 50px;
 }
+.uk-subnav{position: absolute;
+	float: left;
+	top: 160px;
+	left: 300px;
+	}
+.uk-subnav >li>a{
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: white;
+	display: block;
+	text-decoration: none;
+	list-style-type: none;
+	background-color:#5BC0DE;}
+	
 
-.changelog-content {
+tbody {
 	position: absolute;
 	float: left;
 	top: 230px;
-	left: 30px;
+	left: 40px;
 	overflow: scroll;
+	max-width:650px;
 	max-height: 350px;
 	background-color: #eee;
 }
@@ -19,12 +34,16 @@ body {
 .changelog-ul{
     list-style: none;
 }
+.changelog-ul >td{
+    padding-left:8px;
+    padding-right:8px;
+}
 .changelog-title {
 	position: absolute;
 	float: left;
 	align: left;
-	left:30px;
-	top: 120px;
+	left:70px;
+	top: 130px;
 	padding: 0;
 	background-color: #5bc0de;
 	border-radius: 10px;
