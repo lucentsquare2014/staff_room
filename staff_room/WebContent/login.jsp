@@ -31,6 +31,10 @@
 			<h3 class="uk-panel-title uk-text-left">
 				<i class="uk-icon-user"></i>社員アカウントでログイン
 			</h3>
+			<p class="uk-text-success uk-text-left">
+				1.必要事項を入力し、ログインを押してください。<br>
+				2.全角カナは使用しないでください。
+			</p>
 			<p class="uk-text-danger" id="alert">
 				<% if(request.getAttribute("error") != null){ %>
 					<%= request.getAttribute("error")%>
@@ -42,6 +46,10 @@
 				</div>
 				<div class="uk-form-row">
 					<input type="password" placeholder="パスワード" name="password" class="uk-form-width-medium">
+				</div>
+				<div class="uk-form-row">
+					<input type="checkbox">
+					<label>ログイン状態を保持する</label>
 				</div>
 				<div class="uk-form-row">
 					<input type="submit" value="ログイン" class="uk-button uk-button-primary">
