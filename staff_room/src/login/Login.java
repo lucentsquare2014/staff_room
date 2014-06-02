@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import dao.NewsDAO;
 import dao.ShainDB;
 
 /**
@@ -51,7 +53,17 @@ public class Login extends HttpServlet {
 	    if(check) {
 	    	session.setAttribute("login", id);
 	    	session.setAttribute("password", pwd);
-	        response.sendRedirect("./jsp/top/top.jsp");
+	    	String[] kanri_info = getInfo(id);
+	    	String last_login = kanri_info[1].substring(0, kanri_info[1].indexOf("."));
+	    	NewsDAO news = new NewsDAO();
+	    	String new_ids = news.getNewsFromLastLogin(last_login);
+	    	if( new_ids != null){
+	    		updateReadCheck(kanri_info[2], new_ids, kanri_info[0]);
+	    		kanri_info[2] = kanri_info[2] + new_ids;
+	    	}
+	    	request.setAttribute("unread",kanri_info[2].split(","));
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/top/top.jsp");
+            dispatcher.forward(request, response);
 	    } else {
 	    	// ログイン回数をプラスする
 	    	int n = Integer.valueOf(String.valueOf(session.getAttribute("count")));
@@ -63,6 +75,7 @@ public class Login extends HttpServlet {
 	    }
 	}
 	
+	//idとpasswordは一致しているかをデータベースに照合
 	protected boolean authUser(String id, String pwd) {
 		if(id == null || id.length() == 0 || pwd == null || pwd.length() == 0) {
 			return false;
@@ -89,6 +102,49 @@ public class Login extends HttpServlet {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	//社員の管理情報を取得、今回のlogin_timeを更新
+	private String[] getInfo(String id){
+		String sql = "SELECT * FROM shainkanri WHERE shain_number = " +
+				"(SELECT number FROM shainmst WHERE id = '" + id + "')";
+		ShainDB shain = new ShainDB();
+		Connection con = shain.openShainDB();
+		Statement stmt;
+		String[] data = new String[4];
+		try {
+			stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				data[0] = rs.getString("shain_number");
+				data[1] = rs.getString("login_time");
+				data[2] = rs.getString("read_check");
+				data[3] = rs.getString("cookie");
+			}
+			String update_sql = "UPDATE shainkanri SET login_time = current_timestamp WHERE shain_number = '" + data[0] + "'";
+			stmt.executeUpdate(update_sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		shain.closeShainDB(con);
+		return data;
+	}
+	
+	//未読記事を更新する
+	private void updateReadCheck(String unread_ids,String new_ids,String number){
+		String update_ids = unread_ids + new_ids;
+		String sql = "UPDATE shainkanri SET read_check = '" + update_ids + 
+				"' WHERE shain_number = '" + number + "'";
+		ShainDB shain = new ShainDB();
+		Connection con = shain.openShainDB();
+		Statement stmt;
+		try {
+			stmt = con.createStatement();
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		shain.closeShainDB(con);
 	}
 
 }
