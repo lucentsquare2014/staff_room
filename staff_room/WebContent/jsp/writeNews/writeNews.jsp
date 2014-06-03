@@ -116,6 +116,7 @@ body {
 						<input type="hidden" name="inputFile" value="<%=StringEscapeUtils.escapeHtml4(row.get("filename")) %>">
 						<input type="hidden" name="inputWriter" value="<%=StringEscapeUtils.escapeHtml4(row.get("writer")) %>">
 
+
 						<input type="hidden" name="inputPrimary" value="<%=row.get("primary_flag")%>">
 
 						<input type="submit" class="uk-button uk-button-success" value="編集">
