@@ -28,7 +28,13 @@
 					<li class=""><a href="#">開発企画</a></li>
 					<li class=""><a href="#">その他</a></li>
 				</ul>
-				<%//データベースにアクセスしてデータをとってくる
+				<%
+				//未読のnews_idをvalueに入れる
+				String value3 = null;
+				if(session.getAttribute("unread") !=""){
+					 value3 = String.valueOf(session.getAttribute("unread"));
+				}
+				//データベースにアクセスしてデータをとってくる
 					NewsDAO dao = new NewsDAO();
 					ArrayList<HashMap<String, String>> table = dao
 							.getNews("select news_id, TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,postname,news.post_id,title from news, post where news.post_id = post.post_id order by created desc");
@@ -46,7 +52,11 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+								<%}else{%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%}%>
 							</tr><%}%>
 						</table></li>
 					<!-- 「総務」のテーブル -->	
@@ -59,7 +69,11 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+								<%}else{%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%}%>
 							</tr><%}}%>
 						</table></li>
 					<!-- 「人事」のテーブル -->	
@@ -72,8 +86,11 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<td><a
-									href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+								<%}else{%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%}%>
 							</tr><%}}%>
 						</table></li>
 					<!-- 「行事」のテーブル -->	
@@ -86,8 +103,11 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<td><a
-									href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+								<%}else{%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%}%>
 							</tr>
 							<%}}%>
 						</table></li>
@@ -101,8 +121,11 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<td><a
-									href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+								<%}else{%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%}%>
 							</tr>
 							<%}}%>
 						</table></li>
@@ -116,8 +139,11 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<td><a
-									href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+								<%}else{%>
+									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+								<%}%>
 							</tr>
 							<%}}%>
 						</table></li>

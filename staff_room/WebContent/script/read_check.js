@@ -8,6 +8,7 @@ $(function(){
 			cache: false
 		}).done(function(){
 			$("#" + news_id).removeClass();
+			$("#" + news_id).next().remove();
 		});
 	});
 });
