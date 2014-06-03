@@ -14,28 +14,12 @@
 <%@ page import="java.text.*"%>
 <%@ page import="org.apache.commons.lang.math.NumberUtils"%>
 <jsp:include page="/html/head.html" />
-
+<script src="/staff_room/script/read_check.js"></script>
 <title>連絡事項</title>
 
 <style type="text/css">
  	tr{white-space:nowrap;}
 </style>
-<!-- クリックされた記事のnews_idをメソッドに送信するJavascript -->
-<script type=“text/javascript”>
-function news_id( value ){
-    var form = document.createElement( ‘form’ );
-    document.body.appendChild( form );
-    var input = document.createElement( ‘input’ );
-    input.setAttribute( ‘type’ , ‘hidden’ );
-    input.setAttribute( ‘name’ , ‘name’ );
-    input.setAttribute( ‘value’ , value );
-    form.appendChild( input );
-    form.setAttribute( ‘action’ , ‘送信したいメソッド名’ );
-    form.setAttribute( ‘method’ , ‘post or get’ );
-    form.submit();
-}
-</script>
-
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" /><br><br>
@@ -54,11 +38,9 @@ function news_id( value ){
 		value = request.getParameter("news");
 		value2 = request.getParameter("news_id");
 		//未読記事のnews_idを受け取る
-		if(request.getAttribute("unread") !=""){
-			 value3 = String.valueOf(request.getAttribute("unread"));
+		if(session.getAttribute("unread") !=""){
+			 value3 = String.valueOf(session.getAttribute("unread"));
 		}
-
-		//String news_id[] = request.getParameterValues("read_change");
 
 
 		if(value == null){
@@ -118,7 +100,7 @@ function news_id( value ){
 				//更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
 				if(row.get("news_id").equals(value2)){
 					if(value3.indexOf(row.get("news_id")+",") != -1){%>
-						<a href="javascript:news_id('<%= row.get("news_id")%>')" data-uk-toggle="{target:'#my-id'}"><font size="4" color="red"><b><%= row.get("title") %><right>new</right></b></font></a>
+						<a id="<%= row.get("news_id") %>" href="" data-uk-toggle="{target:'#my-id'}"><font size="4" color="red"><b><%= row.get("title") %><right>new</right></b></font></a>
 					<%}else{
 					    %><a data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></a>
 					<%}%>
@@ -132,7 +114,7 @@ function news_id( value ){
 					</div>
 				<%}else{%>
 					<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
-						<a href="javascript:news_id('<%= row.get("news_id")%>')" data-uk-toggle="{target:'#my-id<%=i%>'}"><font size="4" color="red"><b><%= row.get("title") %><right>new</right></b></font></a>
+						<a id="<%= row.get("news_id") %>" href="" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %>new</a>
 					<%}else{%>
 						<a data-uk-toggle="{target:'#my-id<%=i%>'}"><%= row.get("title") %></a>
 					<%}%>
@@ -159,7 +141,6 @@ function news_id( value ){
 
 			<%}%>
 </table>
-<%=request.getAttribute("unread") %>
 <!-- 次へボタン、戻るボタンの処理　 -->
 <div class="uk-grid" style="padding-bottom: 50px;">
 			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left"
