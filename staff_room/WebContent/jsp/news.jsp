@@ -55,12 +55,12 @@ function news_id( value ){
 		value2 = request.getParameter("news_id");
 		//未読記事のnews_idを受け取る
 		if(request.getAttribute("unread") !=""){
-			 value3 = String.valueOf(request.getAttribute("unread"));	
+			 value3 = String.valueOf(request.getAttribute("unread"));
 		}
-		
+
 		//String news_id[] = request.getParameterValues("read_change");
-		
-		
+
+
 		if(value == null){
 			value = "1";
 		}
@@ -124,11 +124,10 @@ function news_id( value ){
 					<%}%>
 					<div id="my-id" class="uk-text-left">
                     <%if (!row.get("filename").equals("")){ %>
-						<div class="uk-h3 uk-text-left"><pre><%= row.get("text") %><br><br>添付ファイル：
-							<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%>
-								<a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
+						<div class="uk-h2 uk-text-left">
+						<pre><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
                     <%} else{ %>
-                    	<div class="uk-h3 uk-text-left"><pre><%= row.get("text") %></pre></div>
+                    	<div class="uk-h2 uk-text-left"><pre><%= row.get("text") %></pre></div>
                     <%} %>
 					</div>
 				<%}else{%>
@@ -139,12 +138,10 @@ function news_id( value ){
 					<%}%>
 					<div id="my-id" class="uk-text-left">
 					<%if (!row.get("filename").equals("")){ %>
-                    <div id="my-id<%=i%>" class="uk-h3 uk-text-left uk-hidden">
-                    	<pre><%= row.get("text") %><br><br>添付ファイル：
-                    		<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%>
-                    			<a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
+                    <div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden">
+                    	<pre><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
 					<%}else{ %>
-					<div id="my-id<%=i%>" class="uk-h3 uk-text-left uk-hidden"><pre><%= row.get("text") %></pre></div>
+					<div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden"><pre><%= row.get("text") %></pre></div>
 					<%} %>
 				<%} %>
 				<!--
@@ -160,7 +157,7 @@ function news_id( value ){
 
 				</tr>
 
-			<%}%>		
+			<%}%>
 </table>
 <%=request.getAttribute("unread") %>
 <!-- 次へボタン、戻るボタンの処理　 -->
