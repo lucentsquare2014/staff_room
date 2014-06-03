@@ -5,21 +5,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>パスワード変更</title>
-<link rel="stylesheet" href="/staff_room/css/inputform.css">
+<jsp:include page="/html/head.html" />
+<script src="/staff_room/script/pwcheck.js"></script>
+<style type="text/css">
+body {
+	width: 100%;
+	height: 656px;
+	background-attachment: fixed;
+	background-image: url("/staff_room/images/renraku.png");
+	background-size: 100% auto;
+	}
+</style>
 </head>
 <body>
-<form class="uk-form uk-form-horizontal" method="post" action="pwChange_finish.jsp">
-<div class="uk-form-row" align="center">
-			<label class="uk-form-label uk-text-bold uk-text-large">変更するパスワードを入力してください</label><br>
-			<input class="uk-form-width-medium"  value='' type="password" name="new_pw1" maxlength="20" required><br>
-			<label class="uk-form-label uk-text-bold uk-text-large">確認のためもう一度入力してください</label><br>
-			<input class="uk-form-width-medium"  value='' type="password" name="new_pw2" maxlength="20" required><br>
+<jsp:include page="/jsp/header/header.jsp" />
+<br><br><br><br>
+<div class="uk-h1 uk-text-center">
+ログインパスワード変更
 </div>
-<div class="uk-form-row" align="center">
-			<div class="uk-width-3-4 uk-container-center uk-text-right">
-				<button class="uk-button uk-button-large uk-button-primary" data-uk-toggle="{target:'.confirm'}">変更</button>
-			</div>
+<br><br><br><br>
+	<div class="uk-text-danger uk-text-center" id="alert"></div><br><br>
+	<form class="uk-form uk-form-horizontal" method="post"
+		action="pwChange_finish.jsp">
+		<div class="uk-form-row" align="center">
+			<div class="uk-h1 uk-text-center uk-text-large">変更するパスワードを入力してください</div><br><br>
+			<input class="uk-form-width-medium" value='' type="password" name="new_pw1" maxlength="20"><br><br>
+			<div class="uk-h1 uk-text-center uk-text-large">確認のためもう一度入力してください</div><br><br>
+			<input class="uk-form-width-medium" value=''type="password" name="new_pw2" maxlength="20"><br><br>
 		</div>
-</form>
+		<div class="uk-form-row" align="center">
+			<input type="submit"
+				class="uk-button uk-button-large uk-button-primary" value="変更">
+		</div>
+	</form>
 </body>
 </html>
