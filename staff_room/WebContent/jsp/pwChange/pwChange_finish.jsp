@@ -2,13 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%-- code.jsp＝jpn2unicodeメソッド 文字化け防止の文字コード変換メソッド --%>
 
-<%@ include file="code.jsp" %>
-<%@ page import="java.util.HashMap" %>
 <%@ page import="dao.ShainDB" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.Statement" %>
@@ -41,14 +36,16 @@
 			try {
 				String sql = "UPDATE shainmst SET "
 							+ "pw=?"
-							+ " WHERE id="
-							+ session.getAttribute("login");
+							+ " WHERE id=?";
 					System.out.println(sql);
 			// プリペアードステートメントを作成
 			// preparedStatementでエスケープ処理
 					PreparedStatement pstmt = con.prepareStatement(sql);
 			// ここでsetした値がsql分の？と置き換わる
-					pstmt.setString(1, DigestUtils.sha1Hex(jpn2unicode(request.getParameter("new_pw1"),"UTF-8")));
+					pstmt.setString(1, DigestUtils.sha1Hex(request.getParameter("new_pw1")));
+
+					String login_id = session.getAttribute("login").toString();
+					pstmt.setString(2,login_id);
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 					pstmt.executeUpdate();
 					dao.closeShainDB(con);
@@ -61,7 +58,7 @@
 		<div class="uk-panel uk-panel-box uk-text-center">
 			<h1 class="uk-text-success"><i class="uk-icon-smile-o"></i>パスワードの変更が完了しました。</h1>
 			<br>
-			<a href="top.jsp" class="uk-button uk-button-success uk-button-large">TOPに戻る</a>
+			<a href="/staff_room/jsp/top/top.jsp" class="uk-button uk-button-success uk-button-large">TOPに戻る</a>
 		</div>
 	</div>
 </body>
