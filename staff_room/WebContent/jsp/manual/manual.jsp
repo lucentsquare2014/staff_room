@@ -8,8 +8,8 @@
 <body>
 
 <jsp:include page="/jsp/header/header.jsp" />
-<div class="changelog" style="padding-top: 50px;">
-<img src="/staff_room/images/manyuaru5.jpg" style="margin-bottom:20px;">
+<div class="changelog" style="padding-top: 40px;">
+<img src="/staff_room/images/manyuaru6.jpg" style="margin-bottom:20px;">
 <!-- <span style="position:absolute;top:40em;left:1100px"><font size="7" color="red" face="ＭＳ 明朝,平成明朝">マニュアル</font></span>   -->
 <div class="uk-width-3-5 uk-container-center">
 <% if(user.equals("admin")){ //-----------管理者の申請書類ページ-----------%>
@@ -57,7 +57,7 @@
 			<button id="delete_button" class="uk-button"><b>  　  追加 　   </b></button>
 			<%} %>
 		<!------------------------->
-	
+
 </div>
 </div>
 <br><br><br><br><br><br><br><br>
