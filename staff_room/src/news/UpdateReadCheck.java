@@ -57,20 +57,23 @@ public class UpdateReadCheck extends HttpServlet {
 			// 文字列を一旦ArrayListに変換
 			// 現在は配列に変換しているが将来的には正規表現で返す（正規表現で返すとは言ってない）
 			List<String> read_check = this.toArrayList(unread, ",");
+			System.out.println(read_check);
 
-			/*
+			
 			// 要素を検索してその要素のインデックスを取得
 			int news_index = read_check.indexOf(news_id);
 			// インデックスの位置にある要素を削除
 			read_check.remove(news_index);
-			*/
+			System.out.println(read_check);
+			
 			// インデックスを取得せずに要素を検索して直接削除する
-			read_check.remove(news_id);
+			//read_check.remove(news_id);
 			
 			/* 再びカンマ区切りの文字列に変換
 			 * 正規表現は…誰かがするかも */
 			String update_str = StringUtils.join(read_check, ",");
-			
+			update_str  = new StringBuilder(update_str).append(",").toString();
+			System.out.println(update_str);
 			// DBのread_checkを更新
 			this.updateReadchk(update_str, login_id);
 			// セッションにある未読記事の情報を更新
