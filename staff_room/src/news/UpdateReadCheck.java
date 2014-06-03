@@ -48,11 +48,16 @@ public class UpdateReadCheck extends HttpServlet {
 		if(session == null) {
 			session = ((HttpServletRequest)request).getSession(true);
 		}
-		String shain_num = String.valueOf(session.getAttribute("login"));
+		// セッションに保存しているログインIDと未読記事のデータを取得
+		String login_id = String.valueOf(session.getAttribute("login"));
+		String unread = String.valueOf(session.getAttribute("unread"));
+		// 送信された記事IDを取得
 		String news_id = request.getParameter("news_id");
+
 		try {
-			// String型の配列を一旦ArrayListに変換
-			List<String> read_check = new ArrayList<String>(Arrays.asList(this.getReadchk(shain_num)));
+			// 文字列を一旦ArrayListに変換
+			// 現在は配列に変換しているが将来的には正規表現で返す（正規表現で返すとは言ってない）
+			List<String> read_check = this.toArrayList(unread, ",");
 
 			/*
 			// 要素を検索してその要素のインデックスを取得
@@ -68,7 +73,7 @@ public class UpdateReadCheck extends HttpServlet {
 			String update_str = StringUtils.join(read_check, ",");
 			
 			// read_checkを更新
-			this.updateReadchk(update_str);
+			this.updateReadchk(update_str, login_id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -76,41 +81,29 @@ public class UpdateReadCheck extends HttpServlet {
 	}
 	
 	/* read_checkを更新するメソッド */
-	private String updateReadchk(String read_check) throws SQLException{
+	private void updateReadchk(String read_check, String login_id) throws SQLException{
 		ShainDB shain = new ShainDB();
 		Connection con = shain.openShainDB();
 		// 未読記事を更新する
-		String sql = "update shainkanri set read_check=?";
+		String sql = "update shainkanri set read_check=? where shain_number ="
+				   + "(SELECT number FROM shainmst WHERE id = ?)";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, read_check);
+		pstmt.setString(2, login_id);
 		
 		pstmt.executeUpdate();
 		shain.closeShainDB(con);
-		return "";
 	}
 	
-	/* 現在のread_checkにはいってるデータを取得してカンマ区切り配列として返すメソッド
-	 * 
-	 * 現在は配列に変換して返しているが将来的には正規表現で返す（正規表現で返すとは言ってない）
+	/* 
+	 * 文字列をArrayList<String>に変換するメソッド
+	 *
+	 * @return ArrayList<String>を返す
 	 *  */
-	private String[] getReadchk(String id) throws SQLException{
-		ShainDB shain = new ShainDB();
-		Connection con = shain.openShainDB();
-		// 社員番号で誰の未読かを判別する
-		String sql = "select read_check from shainkanri where shain_number = "
-				   + "(SELECT number FROM shainmst WHERE id = ?)";
-		PreparedStatement pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, id);
-		ResultSet rs = pstmt.executeQuery();
-		String read_check = null;
-		// ResultSetのカーソルを先頭に持ってくる
-		rs.first();
-		while(rs.next()){
-			read_check = new StringBuilder(rs.getString("read_check")).toString();
-		}
-		//　取得した文字列をカンマで区切って配列に変換 → 例："1,2,3,4"を{1,2,3,4}に
-		String[] result = read_check.split(","); 
-		shain.closeShainDB(con);
+	private ArrayList<String> toArrayList(String str, String separate_char){
+		// 文字列を配列に変換 → 例："1,2,3,4"を{1,2,3,4}に
+		String[] strArray = str.split(separate_char);
+		ArrayList<String> result = new ArrayList<String>(Arrays.asList(strArray)); 
 		return result;
 	}
 
