@@ -17,8 +17,8 @@
 		response.sendRedirect("./jsp/top/top.jsp");
 	}
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html class="uk-height-1-1">
+<!DOCTYPE html>
+<html lang="ja" class="uk-height-1-1">
 <head>
 <jsp:include page="/html/head.html" />
 <script src="/staff_room/script/logincheck.js"></script>
