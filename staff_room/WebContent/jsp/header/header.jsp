@@ -12,7 +12,7 @@ nav#header {
  	z-index: 10000000;
  	background-image:url(/staff_room/images/hcolorapple.png);
  	background-size:100% 100%;
- 	
+
 }
 nav#header >ul >li> a{text-decoration:none; color:whitesmoke; font-size:1em; text-shadow:0px 0px black;}
 nav#header >ul >li  >div{background-image:url(/staff_room/images/hcolorapple.png);background-size:100% 100%; }
@@ -77,10 +77,10 @@ $(window).resize(function(){
                     <li>
                     <a href="/staff_room/jsp/shanai_s/SystemSelect.jsp">社内システム選択画面</a>
                     </li>
-                    
+
  					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
- 					
- 					
+
+
 					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
                     <li><a href="/staff_room/jsp/shanai_s/administer.jsp">管理-社内システム</a></li>
@@ -113,6 +113,8 @@ $(window).resize(function(){
 							meeting</a></li>
 					<li><a
 						href="http://www.lucentsquare.co.jp/staff/newstaff_2014/newstaff_index.html">新入社員紹介</a></li>
+					<li><a
+						href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
 				</ul>
 			</div></li>
 
@@ -150,7 +152,7 @@ $(window).resize(function(){
         		<a href="#">社内システム</a>
         		<ul class="uk-nav-sub">
                     <li>
-                    <a href="/staff_room/jsp/shanai_s/SystemSelect.jsp">社内システム選択画面</a>                    
+                    <a href="/staff_room/jsp/shanai_s/SystemSelect.jsp">社内システム選択画面</a>
                     </li>
                     <li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
 					<% if(user.equals("admin")){ %>
@@ -183,6 +185,8 @@ $(window).resize(function(){
 							meeting</a></li>
 					<li><a
 						href="http://www.lucentsquare.co.jp/staff/newstaff_2014/newstaff_index.html">新入社員紹介</a></li>
+					<li><a
+						href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
 				</ul>
 			</li>
 			<li class="header"><a href="/staff_room/Logout">ログアウト</a></li>
