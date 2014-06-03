@@ -80,9 +80,9 @@ body {
 		<table border="10" bordercolorlight="#000000"bordercolordark="#696969" class="uk-h4 uk-table uk-table-striped uk-table-condensed  uk-text-center uk-width-medium-2-4 uk-panel-box">
 			<tr>
 				<td Background="../../images/blackwhite1.png"></td>
-				<td Background="../../images/blackwhite1.png" class="uk-h3"><font color="#ffffff">作成日</font></td>
-				<td Background="../../images/blackwhite1.png" class="uk-h3"><font color="#ffffff">分類</font></td>
-				<td Background="../../images/blackwhite1.png" class="uk-h3 uk-text-left"><font color="#ffffff">タイトル</font></td>
+				<td Background="../../images/blackwhite1.png" class="uk-h3 uk-width-medium-1-10"><font color="#ffffff">作成日</font></td>
+				<td Background="../../images/blackwhite1.png" class="uk-h3 uk-width-medium-1-10"><font color="#ffffff">分類</font></td>
+				<td Background="../../images/blackwhite1.png" class="uk-h3 uk-width-medium-7-10 uk-text-left"><font color="#ffffff">タイトル</font></td>
 				<td Background="../../images/blackwhite1.png"></td>
 			</tr>
 			<%
@@ -115,8 +115,11 @@ body {
 						<input type="hidden" name="inputText" value="<%=StringEscapeUtils.escapeHtml4(row.get("text")) %>">
 						<input type="hidden" name="inputFile" value="<%=StringEscapeUtils.escapeHtml4(row.get("filename")) %>">
 						<input type="hidden" name="inputWriter" value="<%=StringEscapeUtils.escapeHtml4(row.get("writer")) %>">
+
 						<input type="hidden" name="inputPrimary" value="<%=row.get("primary_flag")%>">
-						<input type="submit" class="uk-button" value="編集">
+
+						<input type="submit" class="uk-button uk-button-success" value="編集">
+
 					</form>
 				</td>
 			</tr>
