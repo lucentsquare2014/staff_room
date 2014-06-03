@@ -3,7 +3,6 @@ package news;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,8 +71,10 @@ public class UpdateReadCheck extends HttpServlet {
 			 * 正規表現は…誰かがするかも */
 			String update_str = StringUtils.join(read_check, ",");
 			
-			// read_checkを更新
+			// DBのread_checkを更新
 			this.updateReadchk(update_str, login_id);
+			// セッションにある未読記事の情報を更新
+			session.setAttribute("unread", update_str);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
