@@ -41,6 +41,8 @@
 				jpn2unicode(request.getParameter("inputFiles"), "UTF-8"));
 		Newsdata.put("writer",
 				jpn2unicode(request.getParameter("inputWriter"), "UTF-8"));
+		Newsdata.put("primary_flag",
+				jpn2unicode(request.getParameter("inputPrimary"), "UTF-8"));
 		// DAOからメソッドの呼び出し
 		NewsDAO dao = new NewsDAO();
 

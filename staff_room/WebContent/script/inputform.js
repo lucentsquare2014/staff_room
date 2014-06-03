@@ -18,6 +18,15 @@ $(function(){
 					$("#file").append("<a href=\"\">" + input_files[i] + "</a>&nbsp;");
 				}
 			}
+			if($("input[name='inputPrimary']").prop('checked')){
+				$("#primary").addClass("uk-panel-badge uk-badge uk-badge-danger uk-text-large");
+				$("#primary").text("緊急");
+				$("input[name='inputPrimary']").val("1");
+			}else{
+				$("#primary").removeClass();
+				$("#primary").text("");
+				$("input[name='inputPrimary']").val("0");
+			}
 			flg = "confirm";
 		}else{
 			flg = "input";
