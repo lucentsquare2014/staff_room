@@ -48,7 +48,7 @@
 					<input type="password" placeholder="パスワード" name="password" class="uk-form-width-medium">
 				</div>
 				<div class="uk-form-row">
-					<input type="checkbox">
+					<input type="checkbox" name="remember_me" value="1">
 					<label>ログイン状態を保持する</label>
 				</div>
 				<div class="uk-form-row">

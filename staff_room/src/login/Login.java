@@ -6,10 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.UUID;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,23 +49,49 @@ public class Login extends HttpServlet {
 		// Login.jspからidとpasswordを取得する
 		String id = request.getParameter("id").trim();
 	    String pwd = request.getParameter("password").trim();
+	    
 	    HttpSession session = request.getSession(true);
 	    // idとパスワードが一致しているかチェックする
 	    boolean check = authUser(id, pwd);
 	    if(check) {
+/* クッキーでセッションが切れてもログイン情報を保持できる処理（作業中）
+ * 		    // ログイン情報を保持するにチェックがついていたらランダムな文字列を生成して
+		    // DBとクッキーに保存する.
+	    	String remember = request.getParameter("remember_me");
+		    if(remember.equals("1")){
+		    	String cookie_id = UUID.randomUUID().toString();
+		    	System.out.println("cookie: "+ cookie_id);
+		    	// クッキーを生成して追加
+		    	Cookie newcookie = new Cookie("cookie_id", cookie_id);
+		        newcookie.setMaxAge(60 * 60 * 24 * 3); // クッキーの有効期限１秒単位
+		        response.addCookie(newcookie);		    	
+		        
+		    }
+*/
+	    	// セッションにログインユーザーとパスワードを保存（パスワードは社内システムの改修時に削除予定）
 	    	session.setAttribute("login", id);
 	    	session.setAttribute("password", pwd);
+
+	    	// 現在の社員データを取得しlogin_timeを更新する
 	    	String[] kanri_info = getInfo(id);
+	    	// 最終ログインの時間を変数に格納
 	    	String last_login = kanri_info[1].substring(0, kanri_info[1].indexOf("."));
+	    	
+	    	// 最終ログイン時以降更新された記事のIDを取得
 	    	NewsDAO news = new NewsDAO();
 	    	String new_ids = news.getNewsFromLastLogin(last_login);
 	    	if( new_ids != null){
+	    		// 前回までの未読記事に今回取得した未読記事を追加してデータベースを更新する
 	    		updateReadCheck(kanri_info[2], new_ids, kanri_info[0]);
 	    		kanri_info[2] = kanri_info[2] + new_ids;
 	    	}
+
+	    	// 未読記事の情報をセッションに保存
 	    	session.setAttribute("unread",kanri_info[2]);
+	    	// top画面に遷移
 	    	response.sendRedirect("./jsp/top/top.jsp");
 	    } else {
+
 	    	// ログイン回数をプラスする
 	    	int n = Integer.valueOf(String.valueOf(session.getAttribute("count")));
 	    	session.setAttribute("count", ++n);
