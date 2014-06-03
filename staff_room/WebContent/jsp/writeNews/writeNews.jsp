@@ -42,9 +42,11 @@ body {
 	<div class="contents uk-width-2-3 uk-container-center">
 		<h1>管理・編集</h1>
 	     <div align="right">
-			<a href="/staff_room/jsp/writeNews/inputForm.jsp" class="uk-button">新規作成
-			</a>
-			<button id="delete_button" class="uk-button">削除</button>
+			<a href="/staff_room/jsp/writeNews/inputForm.jsp">
+				<button class="uk-button uk-button-primary">
+					<i class="uk-icon-pencil uk-icon-small"></i>　新規作成</button></a>
+			<button id="delete_button" class="uk-button uk-button-danger">
+				<i class="uk-icon-trash-o uk-icon-small"></i>　削除</button>
 		</div>
 		<%
 			//配列
@@ -75,8 +77,14 @@ body {
 			list = dao.getNews(sql);
 			//System.out.println(list.size());
 		%>
-		<table
-			border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-striped uk-text-center uk-width-medium-2-4 uk-panel-box">
+		<table border="10" bordercolorlight="#000000"bordercolordark="#696969" class="uk-h4 uk-table uk-table-striped uk-table-condensed  uk-text-center uk-width-medium-2-4 uk-panel-box">
+			<tr>
+				<td Background="../../images/blackwhite1.png"></td>
+				<td Background="../../images/blackwhite1.png" class="uk-h3"><font color="#ffffff">作成日</font></td>
+				<td Background="../../images/blackwhite1.png" class="uk-h3"><font color="#ffffff">分類</font></td>
+				<td Background="../../images/blackwhite1.png" class="uk-h3 uk-text-left"><font color="#ffffff">タイトル</font></td>
+				<td Background="../../images/blackwhite1.png"></td>
+			</tr>
 			<%
 				for (int i = 0; i < list.size(); i++) {
 					HashMap<String, String> row = list.get(i);
@@ -141,8 +149,8 @@ body {
 				<td>
 					<form method="POST" action="inputForm.jsp">
 
-						<input type="hidden" name="inputNewsid" value="<%=row.get("news_id")%>"> 
-						<input type="hidden" name="inputPostid" value="<%=row.get("post_id")%>"> 
+						<input type="hidden" name="inputNewsid" value="<%=row.get("news_id")%>">
+						<input type="hidden" name="inputPostid" value="<%=row.get("post_id")%>">
 						<input type="hidden" name="inputTitle" value="<%=StringEscapeUtils.escapeHtml4(row.get("title")) %>">
 						<input type="hidden" name="inputText" value="<%=StringEscapeUtils.escapeHtml4(row.get("text")) %>">
 						<input type="hidden" name="inputFile" value="<%=StringEscapeUtils.escapeHtml4(row.get("filename")) %>">
@@ -156,7 +164,7 @@ body {
 			%>
 		</table>
 		<%
-			
+
 		%>
 		<div class="uk-grid" style="padding-bottom: 50px;">
 			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left"
