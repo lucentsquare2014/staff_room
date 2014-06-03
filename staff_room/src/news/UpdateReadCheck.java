@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -43,7 +44,11 @@ public class UpdateReadCheck extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String shain_num = request.getParameter("shain_number");
+		HttpSession session = ((HttpServletRequest)request).getSession();
+		if(session == null) {
+			session = ((HttpServletRequest)request).getSession(true);
+		}
+		String shain_num = String.valueOf(session.getAttribute("login"));
 		String news_id = request.getParameter("news_id");
 		try {
 			// String型の配列を一旦ArrayListに変換
@@ -74,6 +79,7 @@ public class UpdateReadCheck extends HttpServlet {
 	private String updateReadchk(String read_check) throws SQLException{
 		ShainDB shain = new ShainDB();
 		Connection con = shain.openShainDB();
+		// 未読記事を更新する
 		String sql = "update shainkanri set read_check=?";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, read_check);
@@ -91,7 +97,8 @@ public class UpdateReadCheck extends HttpServlet {
 		ShainDB shain = new ShainDB();
 		Connection con = shain.openShainDB();
 		// 社員番号で誰の未読かを判別する
-		String sql = "select read_check from shainkanri where shain_number = ?";
+		String sql = "select read_check from shainkanri where shain_number = "
+				   + "(SELECT number FROM shainmst WHERE id = ?)";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, id);
 		ResultSet rs = pstmt.executeQuery();
