@@ -101,11 +101,9 @@
 				<%
 				//更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
 				if(row.get("news_id").equals(value2)){
-					if(read_check.indexOf(row.get("news_id")) != -1){%>
-						<a id="<%= row.get("news_id") %>" href="" data-uk-toggle="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %>new</a>
-					<%}else{
+					
 					    %><a data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></a>
-					<%}%>
+					
 					<div id="my-id" class="uk-text-left">
                     <%if (!row.get("filename").equals("")){ %>
 						<div class="uk-h2 uk-text-left">
@@ -121,7 +119,6 @@
 					<%}else{%>
 						<a data-uk-toggle="{target:'#my-id<%=i%>'}"><%= row.get("title") %></a>
 					<%}%>
-					<div id="my-id" class="uk-text-left">
 					<%if (!row.get("filename").equals("")){ %>
                     <div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden">
                     	<pre><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></pre></div>

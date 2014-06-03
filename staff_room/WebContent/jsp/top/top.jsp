@@ -8,6 +8,7 @@
 <head>
 <jsp:include page="/html/head.html" />
 <link rel="stylesheet" href="/staff_room/css/top.css">
+<script src="/staff_room/script/read_check.js"></script>
 <title>スタッフルーム</title>
 
 </head>
@@ -56,7 +57,7 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
 								<%}%>
@@ -73,7 +74,7 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
 								<%}%>
@@ -90,7 +91,7 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
 								<%}%>
@@ -107,7 +108,7 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
 								<%}%>
@@ -125,7 +126,7 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
 								<%}%>
@@ -143,7 +144,7 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
 								<%}%>
