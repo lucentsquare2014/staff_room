@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="dao.NewsDAO"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
+<%@ page import="java.util.List, java.util.Arrays"%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -31,8 +32,10 @@
 				<%
 				//未読のnews_idをvalueに入れる
 				String value3 = null;
+				List<String> read_check = null;
 				if(session.getAttribute("unread") !=""){
 					 value3 = String.valueOf(session.getAttribute("unread"));
+					 read_check = Arrays.asList(value3.split(","));
 				}
 				//データベースにアクセスしてデータをとってくる
 					NewsDAO dao = new NewsDAO();
@@ -52,7 +55,7 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
@@ -69,7 +72,7 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
@@ -86,7 +89,7 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
@@ -103,7 +106,7 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
@@ -121,7 +124,7 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
@@ -139,7 +142,7 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
-								<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
 									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>

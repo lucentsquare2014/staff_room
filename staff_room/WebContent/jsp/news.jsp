@@ -35,11 +35,13 @@
 
 	<%
 		String value = null,value2 = null,value3 = null;
+		List<String> read_check = null;
 		value = request.getParameter("news");
 		value2 = request.getParameter("news_id");
 		//未読記事のnews_idを受け取る
 		if(session.getAttribute("unread") !=""){
 			 value3 = String.valueOf(session.getAttribute("unread"));
+			 read_check = Arrays.asList(value3.split(","));
 		}
 
 
@@ -99,7 +101,7 @@
 				<%
 				//更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
 				if(row.get("news_id").equals(value2)){
-					if(value3.indexOf(row.get("news_id")+",") != -1){%>
+					if(read_check.indexOf(row.get("news_id")) != -1){%>
 						<a id="<%= row.get("news_id") %>" href="" data-uk-toggle="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %>new</a>
 					<%}else{
 					    %><a data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></a>
@@ -113,7 +115,7 @@
                     <%} %>
 					</div>
 				<%}else{%>
-					<%if(value3.indexOf(row.get("news_id")+",") != -1){%>
+					<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 						<a id="<%= row.get("news_id") %>" href="" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %></a>
 						&nbsp;<div class="uk-badge uk-badge-danger">new</div>
 					<%}else{%>
