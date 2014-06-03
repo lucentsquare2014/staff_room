@@ -120,6 +120,17 @@
 			>
 		</div>
 		<div class="uk-form-row">
+			<label class="uk-form-label"></label>
+			<% if(request.getParameter("inputPrimary") == null){ %>
+				<input type="checkbox" name="inputPrimary" value="">
+			<% }else if(request.getParameter("inputPrimary").equals("1")){ %>
+				<input type="checkbox" name="inputPrimary" value="" checked>
+			<% }else{ %>
+				<input type="checkbox" name="inputPrimary" value="">
+			<% } %>
+			<label class="uk-text-bold uk-text-large">緊急</label>
+		</div>
+		<div class="uk-form-row">
 			<div class="uk-width-3-4 uk-container-center uk-text-right">
 				<button class="uk-button uk-button-large uk-button-primary" data-uk-toggle="{target:'.confirm'}">確認</button>
 			</div>
@@ -129,6 +140,7 @@
 	<div class="uk-width-medium-3-5 uk-container-center confirm uk-hidden">
 		<div class="uk-h1 uk-text-center">入力確認</div>
 		<div class="uk-panel uk-panel-box">
+			<div id="primary"></div>
 			<p class="uk-text-danger uk-text-large" id="alert"></p>
 			<dl class="uk-description-list uk-description-list-horizontal uk-text-large">
 				<dt class="uk-text-bold">分類：</dt>

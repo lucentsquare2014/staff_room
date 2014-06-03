@@ -54,7 +54,7 @@ body {
 			ArrayList<HashMap<String, String>> list = null;
 			// 条件式ごとに文字列を分割
 			String select, from, where, order, offset, limit;
-			select = "news_id,TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,post.post_id,postname,title,text,filename,writer";
+			select = "news_id,TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,post.post_id,postname,title,text,filename,writer,primary_flag";
 			from = "news, post";
 			where = "news.post_id = post.post_id";
 			order = "created desc";
@@ -107,6 +107,7 @@ body {
 						<input type="hidden" name="inputText" value="<%=StringEscapeUtils.escapeHtml4(row.get("text")) %>">
 						<input type="hidden" name="inputFile" value="<%=StringEscapeUtils.escapeHtml4(row.get("filename")) %>">
 						<input type="hidden" name="inputWriter" value="<%=StringEscapeUtils.escapeHtml4(row.get("writer")) %>">
+						<input type="hidden" name="inputPrimary" value="<%=row.get("primary_flag")%>">
 						<input type="submit" class="uk-button" value="編集">
 					</form>
 				</td>
@@ -147,6 +148,7 @@ body {
 						<input type="hidden" name="inputText" value="<%=StringEscapeUtils.escapeHtml4(row.get("text")) %>">
 						<input type="hidden" name="inputFile" value="<%=StringEscapeUtils.escapeHtml4(row.get("filename")) %>">
 						<input type="hidden" name="inputWriter" value="<%=StringEscapeUtils.escapeHtml4(row.get("writer")) %>">
+						<input type="hidden" name="inputPrimary" value="<%=row.get("primary_flag")%>">
 						<input type="submit" class="uk-button" value="編集">
 					</form>
 				</td>

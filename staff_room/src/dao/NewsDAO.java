@@ -71,9 +71,9 @@ public class NewsDAO {
 		try {
 
 			// SQL文を文字列としてsqlという変数に格納			
-			String sql = "INSERT INTO news (post_id, title, text, writer, filename, created, update) VALUES ("
+			String sql = "INSERT INTO news (post_id, title, text, writer, filename, primary_flag, created, update) VALUES ("
 					+ Newsdata.get("post_id")
-					+ ", ?, ?, ?, ?, "
+					+ ", ?, ?, ?, ?, ?, "
 					+ "'"
 					+ Newsdata.get("created")
 					+ "'"
@@ -89,6 +89,7 @@ public class NewsDAO {
 			pstmt.setString(2, Newsdata.get("text"));
 			pstmt.setString(3, Newsdata.get("writer"));
 			pstmt.setString(4, Newsdata.get("filename"));
+			pstmt.setString(5, Newsdata.get("primary_flag"));
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -107,7 +108,7 @@ public class NewsDAO {
 					+ "post_id=" 
 					+ Newsdata.get("post_id")
 					+ ", " 
-					+ "title=?, text=?, writer=?, filename=?, " 
+					+ "title=?, text=?, writer=?, filename=?, primary_flag=?, " 
 					+ "update=" 
 					+ "'"
 					+ Newsdata.get("update") 
@@ -123,6 +124,7 @@ public class NewsDAO {
 			pstmt.setString(2, Newsdata.get("text"));
 			pstmt.setString(3, Newsdata.get("writer"));
 			pstmt.setString(4, Newsdata.get("filename"));
+			pstmt.setString(5, Newsdata.get("primary_flag"));
 			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
