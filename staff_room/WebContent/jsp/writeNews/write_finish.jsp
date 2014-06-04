@@ -26,8 +26,9 @@
 <head>
 <title>保存完了</title>
 </head>
-<body class="uk-height-1-1 uk-vertical-align uk-text-center">
+<body>
 	<jsp:include page="/jsp/header/header.jsp" />
+	<div class="uk-height-1-1 uk-vertical-align uk-text-center">
 	<%
 		//入力フォームから渡されたデータをHashMap型newsWriteに格納
 		HashMap<String, String> Newsdata = new HashMap<String, String>();
@@ -37,7 +38,7 @@
 				jpn2unicode(request.getParameter("inputTitle"), "UTF-8"));
 		Newsdata.put("text",
 				jpn2unicode(request.getParameter("inputText"), "UTF-8"));
-		Newsdata.put("filename", 
+		Newsdata.put("filename",
 				jpn2unicode(request.getParameter("inputFiles"), "UTF-8"));
 		Newsdata.put("writer",
 				jpn2unicode(request.getParameter("inputWriter"), "UTF-8"));
@@ -68,6 +69,7 @@
 		}
 
 	%>
+	<div style="position:relative; top:250px;">
 	<div class="uk-width-medium-1-2 uk-container-center uk-vertical-align-middle">
 		<div class="uk-panel uk-panel-box uk-text-center">
 			<h1 class="uk-text-success"><i class="uk-icon-smile-o"></i>記事の保存が完了しました。</h1>
@@ -75,5 +77,7 @@
 			<a href="writeNews.jsp" class="uk-button uk-button-success uk-button-large">管理・編集に戻る</a>
 		</div>
 	</div>
+</div>
+</div>
 </body>
 </html>
