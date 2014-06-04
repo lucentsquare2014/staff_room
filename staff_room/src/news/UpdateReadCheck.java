@@ -1,11 +1,13 @@
 package news;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -17,6 +19,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.google.gson.Gson;
+
+
+import dao.NewsDAO;
 import dao.ShainDB;
 
 /**
@@ -52,6 +58,7 @@ public class UpdateReadCheck extends HttpServlet {
 		String unread = String.valueOf(session.getAttribute("unread"));
 		// 送信された記事IDを取得
 		String news_id = request.getParameter("news_id");
+		//news_id = news_id.substring(news_id.indexOf("#") + 1, news_id.length());
 
 		try {
 			// 文字列を一旦ArrayListに変換
@@ -76,6 +83,17 @@ public class UpdateReadCheck extends HttpServlet {
 			this.updateReadchk(update_str, login_id);
 			// セッションにある未読記事の情報を更新
 			session.setAttribute("unread", update_str);
+			//記事の本文を取得
+			String sql = "select title, text, filename from news where news_id = '" + news_id + "'";
+			NewsDAO newsdao = new NewsDAO();
+			ArrayList<HashMap<String, String>> news = newsdao.getNews(sql);
+			HashMap<String, String> getNews = news.get(0);
+			//リクエストに記事の情報をjsonとして送る
+			Gson gson = new Gson();
+			String json = gson.toJson(getNews);
+			response.setContentType("application/json; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println(json);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
