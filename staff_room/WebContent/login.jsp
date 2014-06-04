@@ -1,9 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+    // 新しいセッションならば入力回数を０から始める
 	if(session.isNew()){
 		session.setAttribute("count", 0);
+	}else{
+		// 新しいセッションではなくとも入力回数がnullなら０から始める
+		if(session.getAttribute("count")==null){
+			session.setAttribute("count", 0);
+		}
 	}
+    // ５回入力に失敗するとエラーページに遷移させる
+    // ５分間入力できないようにする
 	if(session.getAttribute("count") != null){
 		String str = String.valueOf(session.getAttribute("count"));
 		if(Integer.valueOf(str) > 4){
