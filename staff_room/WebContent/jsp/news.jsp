@@ -43,8 +43,6 @@
 			 value3 = String.valueOf(session.getAttribute("unread"));
 			 read_check = Arrays.asList(value3.split(","));
 		}
-
-
 		if(value == null){
 			value = "1";
 		}
@@ -67,7 +65,7 @@
 					String offset = String.valueOf((Integer.parseInt(page_num) * Integer
 							.parseInt(limit)) - 10);
 		list = dao
-		.getNews("select TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,news_id,title,filename,text,writer from news where post_id = "
+		.getNews("select TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,news_id,title,filename,text,writer,primary_flag from news where post_id = "
 		+ value + " order by update desc " +" limit " + limit +" offset " + offset );
 		ArrayList<HashMap<String, String>> name = null;
 		name = dao.getNews("select postname from post where post_id =" + value);
@@ -98,51 +96,30 @@
 				<tr>
 				<td class="uk-h3 uk-width-medium-3-10 uk-text-center"><%=row.get("created")%>&nbsp;</td>
 				<td class="uk-h3 uk-width-medium-7-10 uk-text-left">
-				<%
-				//更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理
-				if(row.get("news_id").equals(value2)){
-					
-					    %><a data-uk-toggle="{target:'#my-id'}"><%= row.get("title") %></a>
-					
-					<div id="my-id" class="uk-text-left">
-                    <%if (!row.get("filename").equals("")){ %>
-						<div class="uk-h2 uk-text-left">
-						<pre><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
-                    <%} else{ %>
-                    	<div class="uk-h2 uk-text-left"><pre><%= row.get("text") %></pre></div>
-                    <%} %>
-					</div>
-				<%}else{%>
+				<!--更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理-->
 					<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-						<a id="<%= row.get("news_id") %>" href="" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %></a>
+						<a id="<%= row.get("news_id") %>" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %></a>	
 						&nbsp;<div class="uk-badge uk-badge-danger">new</div>
+						<%if(row.get("primary_flag").equals("1")){%>
+							&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
+						<%}%>
 					<%}else{%>
 						<a data-uk-toggle="{target:'#my-id<%=i%>'}"><%= row.get("title") %></a>
+						<%if(row.get("primary_flag").equals("1")){%>
+							&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
+						<%}%>
 					<%}%>
 					<%if (!row.get("filename").equals("")){ %>
-                    <div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden">
-                    	<pre><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
+                    	<div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden">
+                    		<pre><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%>
+                    			<a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
 					<%}else{ %>
 					<div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden"><pre><%= row.get("text") %></pre></div>
 					<%} %>
-				<%} %>
-				<!--
-				<a href="#<%= row.get("news_id") %>" data-uk-modal class="uk-h4"><%= row.get("title") %></a>
-				<div id="<%= row.get("news_id") %>" class="uk-modal">
-    				<div class="uk-modal-dialog">
-        				<a class="uk-modal-close uk-close"></a>
-        				<div class="uk-h3"><%= row.get("text") %></div>
-    				</div>
-				</div>
-				-->
-
-
-				</tr>
-
-			<%}%>
-</table>
-<!-- 次へボタン、戻るボタンの処理　 -->
-<div class="uk-grid" style="padding-bottom: 50px;">
+				<%} %>	
+		</table>
+		<!-- 次へボタン、戻るボタンの処理　 -->
+		<div class="uk-grid" style="padding-bottom: 50px;">
 			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left"
 				style="<%if (page_num.equals("1")) {
 				out.print("display: none;");
