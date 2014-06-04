@@ -23,8 +23,9 @@
 <head>
 <title>パスワード変更完了</title>
 </head>
-<body class="uk-height-1-1 uk-vertical-align uk-text-center">
+<body>
 	<jsp:include page="/jsp/header/header.jsp" />
+	<div class="uk-height-1-1 uk-vertical-align uk-text-center">
 	<%
 
 		// DAOからメソッドの呼び出し
@@ -54,12 +55,15 @@
 				}
 
 	%>
-	<div class="uk-width-medium-1-2 uk-container-center uk-vertical-align-middle">
-		<div class="uk-panel uk-panel-box uk-text-center">
-			<h1 class="uk-text-success"><i class="uk-icon-smile-o"></i>パスワードの変更が完了しました。</h1>
-			<br>
-			<a href="/staff_room/jsp/top/top.jsp" class="uk-button uk-button-success uk-button-large">TOPに戻る</a>
+	<div style="position:relative; top:250px;">
+		<div class="uk-width-medium-1-2 uk-container-center uk-vertical-align-middle">
+			<div class="uk-panel uk-panel-box uk-text-center">
+				<h1 class="uk-text-success"><i class="uk-icon-smile-o"></i>パスワードの変更が完了しました。</h1>
+				<br>
+				<a href="/staff_room/jsp/top/top.jsp" class="uk-button uk-button-success uk-button-large">TOPに戻る</a>
+			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>
