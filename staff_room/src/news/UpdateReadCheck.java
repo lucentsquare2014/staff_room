@@ -55,16 +55,14 @@ public class UpdateReadCheck extends HttpServlet {
 
 		try {
 			// 文字列を一旦ArrayListに変換
-			// 現在は配列に変換しているが将来的には正規表現で返す（正規表現で返すとは言ってない）
 			List<String> read_check = this.toArrayList(unread, ",");
 			System.out.println(read_check);
 
 			
-			// 要素を検索してその要素のインデックスを取得
-			int news_index = read_check.indexOf(news_id);
-			// インデックスの位置にある要素を削除
-			read_check.remove(news_index);
-			System.out.println(read_check);
+			// 要素を検索してその要素を削除
+			while(read_check.indexOf(news_id) != -1){
+				read_check.remove(read_check.indexOf(news_id));
+			}
 			
 			// インデックスを取得せずに要素を検索して直接削除する
 			//read_check.remove(news_id);
