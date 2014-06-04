@@ -13,8 +13,16 @@ $(function(){
 				$("#" + news_id).next().remove();
 				$("#title").text(msg.title);
 				$("#text").text(msg.text);
-				$("#filename").text("添付：" + msg.filename);
+				if(msg.filename != ""){
+					$("#filename").text("添付：" + msg.filename);
+				}
 			});
 		}
+	});
+	$('.uk-modal').on({
+	    'uk.modal.hide': function(){
+	        console.log("Element is not visible.");
+	        $("#title,#text,#filename").text("");
+	    }
 	});
 });
