@@ -57,9 +57,12 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									&nbsp;<div class="uk-badge uk-badge-danger">new</div>
+									</td>
 								<%}else{%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
+									</td>
 								<%}%>
 							</tr><%}%>
 						</table></li>
@@ -74,9 +77,10 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a></td>
 								<%}%>
 							</tr><%}}%>
 						</table></li>
@@ -91,9 +95,10 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a></td>
 								<%}%>
 							</tr><%}}%>
 						</table></li>
@@ -108,9 +113,10 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a></td>
 								<%}%>
 							</tr>
 							<%}}%>
@@ -126,9 +132,10 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a></td>
 								<%}%>
 							</tr>
 							<%}}%>
@@ -144,9 +151,9 @@
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
 								<%}else{%>
-									<td><a href="/staff_room/jsp/news.jsp?news=<%=row.get("post_id")%>&news_id=<%=row.get("news_id")%>"><%=row.get("title")%></a></td>
+									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a></td>
 								<%}%>
 							</tr>
 							<%}}%>
@@ -157,6 +164,13 @@
 
 		</div>
 	</nobr>
-
+	<div id="my-id" class="uk-modal">
+    	<div class="uk-modal-dialog">
+        	<a class="uk-modal-close uk-close"></a>
+        	<h3 id="title"></h3>
+        	<p><pre id="text"></pre></p>
+        	<p id="filename"></p>
+    	</div>
+	</div>
 </body>
 </html>
