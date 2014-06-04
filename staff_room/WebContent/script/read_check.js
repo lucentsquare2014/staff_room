@@ -1,5 +1,5 @@
 $(function(){
-	$("td > a").one("click", function(){
+	$("td > a").on("click", function(){
 		if(typeof $(this).attr("id") != 'undefined'){
 			var news_id = $(this).attr("id");
 			$.ajax({
@@ -10,7 +10,7 @@ $(function(){
 				cache: false
 			}).done(function(msg){
 				$("#" + news_id).removeClass();
-				$("#" + news_id).next().remove();
+				$("#" + news_id).next(".uk-badge-danger").remove();
 				$("#title").text(msg.title);
 				$("#text").text(msg.text);
 				if(msg.filename != ""){

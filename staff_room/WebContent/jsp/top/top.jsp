@@ -168,7 +168,7 @@
     	<div class="uk-modal-dialog">
         	<a class="uk-modal-close uk-close"></a>
         	<h3 id="title"></h3>
-        	<p><pre id="text"></pre></p>
+        	<pre id="text"></pre>
         	<p id="filename"></p>
     	</div>
 	</div>
