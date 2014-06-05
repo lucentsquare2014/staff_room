@@ -138,32 +138,6 @@ public class Login extends HttpServlet {
 		}
 	}
 	
-	//社員の管理情報を取得、今回のlogin_timeを更新
-	private String[] getInfo(String id){
-		String sql = "SELECT * FROM shainkanri WHERE shain_number = " +
-				"(SELECT number FROM shainmst WHERE id = '" + id + "')";
-		ShainDB shain = new ShainDB();
-		Connection con = shain.openShainDB();
-		Statement stmt;
-		String[] data = new String[4];
-		try {
-			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()){
-				data[0] = rs.getString("shain_number");
-				data[1] = rs.getString("access_time");
-				data[2] = rs.getString("read_check");
-				data[3] = rs.getString("cookie");
-			}
-			String update_sql = "UPDATE shainkanri SET access_time = current_timestamp WHERE shain_number = '" + data[0] + "'";
-			stmt.executeUpdate(update_sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		shain.closeShainDB(con);
-		return data;
-	}
-	
 	/* shainkanriのcookieに文字列を保存する */
 	private void saveCookie(String cookie, String id){
 		ShainDB shaindb = new ShainDB();
