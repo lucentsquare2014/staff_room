@@ -76,7 +76,7 @@
 			<font face="ＭＳ Ｐゴシック">
 			<font size ="7">
 			<br><br><br>　　　　　
-			<nonbr><%=raw.get("postname")%></nonbr><br>
+			<nobr><%=raw.get("postname")%></nobr><br>
 			</font>
 			</font>
 			</div>
@@ -96,7 +96,7 @@
 				<tr>
 				<td class="uk-h3 uk-width-medium-3-10 uk-text-center"><%=row.get("created")%>&nbsp;</td>
 				<td class="uk-h3 uk-width-medium-7-10 uk-text-left">
-				<!--更新履歴から選択された記事を表示状態で連絡画面へ飛ぶ処理-->
+				<!--記事のタイトルなどを表示-->
 					<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 						<a id="<%= row.get("news_id") %>" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %></a>	
 						&nbsp;<div class="uk-badge uk-badge-danger">new</div>

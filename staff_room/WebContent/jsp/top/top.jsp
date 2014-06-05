@@ -13,8 +13,7 @@
 
 </head>
 <body>
-	<nobr>
-		<jsp:include page="/jsp/header/header.jsp" />
+	<jsp:include page="/jsp/header/header.jsp" />
 		<div class="main-container uk-container uk-container-center">
 			<div class="changelog">
 				<div style="margin-botom: 20px;" class="changelog-title"
@@ -41,7 +40,7 @@
 				//データベースにアクセスしてデータをとってくる
 					NewsDAO dao = new NewsDAO();
 					ArrayList<HashMap<String, String>> table = dao
-							.getNews("select news_id, TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,postname,news.post_id,title from news, post where news.post_id = post.post_id order by created desc");
+							.getNews("select news_id, TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,postname,news.post_id,title,primary_flag from news, post where news.post_id = post.post_id order by created desc");
 					ArrayList<HashMap<String, String>> t_copy = new ArrayList<HashMap<String, String>>(
 							table);
 				%>
@@ -56,14 +55,17 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
+								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
 									&nbsp;<div class="uk-badge uk-badge-danger">new</div>
-									</td>
 								<%}else{%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
-									</td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
 								<%}%>
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
+								<%}%>
+								</td>
 							</tr><%}%>
 						</table></li>
 					<!-- 「総務」のテーブル -->	
@@ -76,12 +78,17 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
+								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
-									&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									&nbsp;<div class="uk-badge uk-badge-danger">new</div>
 								<%}else{%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a></td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
 								<%}%>
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
+								<%}%>
+								</td>
 							</tr><%}}%>
 						</table></li>
 					<!-- 「人事」のテーブル -->	
@@ -94,12 +101,17 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
+								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
-									&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									&nbsp;<div class="uk-badge uk-badge-danger">new</div>
 								<%}else{%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a></td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
 								<%}%>
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
+								<%}%>
+								</td>
 							</tr><%}}%>
 						</table></li>
 					<!-- 「行事」のテーブル -->	
@@ -112,12 +124,17 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
+								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
-									&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									&nbsp;<div class="uk-badge uk-badge-danger">new</div>
 								<%}else{%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a></td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
 								<%}%>
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
+								<%}%>
+								</td>
 							</tr>
 							<%}}%>
 						</table></li>
@@ -131,12 +148,17 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
+								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
-									&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									&nbsp;<div class="uk-badge uk-badge-danger">new</div>
 								<%}else{%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a></td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
 								<%}%>
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
+								<%}%>
+								</td>
 							</tr>
 							<%}}%>
 						</table></li>
@@ -150,20 +172,23 @@
 							<tr class="changelog-ul ">
 								<td><%=row.get("created")%></td>
 								<td><%=row.get("postname")%></td>
+								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>&nbsp;<div class="uk-badge uk-badge-danger">new</div></td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									&nbsp;<div class="uk-badge uk-badge-danger">new</div>
 								<%}else{%>
-									<td><a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a></td>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
 								<%}%>
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
+								<%}%>
+								</td>
 							</tr>
 							<%}}%>
 						</table></li>
 				</ul>
-
 			</div>
-
 		</div>
-	</nobr>
 	<div id="my-id" class="uk-modal">
     	<div class="uk-modal-dialog">
         	<a class="uk-modal-close uk-close"></a>

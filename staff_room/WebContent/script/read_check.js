@@ -9,8 +9,8 @@ $(function(){
 				data: {"news_id" : news_id},
 				cache: false
 			}).done(function(msg){
-				$("#" + news_id).removeClass();
-				$("#" + news_id).next(".uk-badge-danger").remove();
+				$("[id=" + news_id + "]").removeClass();
+				$("[id=" + news_id + "]").next(".uk-badge-danger").remove();
 				$("#title").text(msg.title);
 				$("#text").text(msg.text);
 				if(msg.filename != ""){
