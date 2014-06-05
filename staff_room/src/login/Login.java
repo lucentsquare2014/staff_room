@@ -91,25 +91,6 @@ public class Login extends HttpServlet {
 		        response.addCookie(pass_cookie);
 	    	}
 	    	//session.setAttribute("password", pwd);
-
-	    	// 現在の社員データを取得しlogin_timeを更新する
-	    	String[] kanri_info = getInfo(id);
-	    	// 最終ログインの時間を変数に格納
-	    	String last_login = kanri_info[1].substring(0, kanri_info[1].indexOf("."));
-	    	
-	    	// 最終ログイン時以降更新された記事のIDを取得
-	    	NewsDAO news = new NewsDAO();
-	    	String new_ids = news.getNewsFromLastLogin(last_login);
-	    	if( new_ids != null){
-	    		// 前回までの未読記事に今回取得した未読記事を追加してデータベースを更新する
-	    		updateReadCheck(kanri_info[2], new_ids, kanri_info[0]);
-	    		kanri_info[2] = kanri_info[2] + new_ids;
-	    	}
-
-	    	// 未読記事の情報をセッションに保存
-	    	session.setAttribute("unread",kanri_info[2]);
-	    	// top画面に遷移
-	    	
 	    	//RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/top/top.jsp");
             //dispatcher.forward(request, response);
 	    	response.sendRedirect("./jsp/top/top.jsp");
@@ -181,23 +162,6 @@ public class Login extends HttpServlet {
 		}
 		shain.closeShainDB(con);
 		return data;
-	}
-	
-	//未読記事を更新する
-	private void updateReadCheck(String unread_ids,String new_ids,String number){
-		String update_ids = unread_ids + new_ids;
-		String sql = "UPDATE shainkanri SET read_check = '" + update_ids + 
-				"' WHERE shain_number = '" + number + "'";
-		ShainDB shain = new ShainDB();
-		Connection con = shain.openShainDB();
-		Statement stmt;
-		try {
-			stmt = con.createStatement();
-			stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		shain.closeShainDB(con);
 	}
 	
 	/* shainkanriのcookieに文字列を保存する */

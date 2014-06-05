@@ -1,8 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="dao.NewsDAO"%>
+<%@ page import="dao.NewsDAO, news.ReadCheck"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
 <%@ page import="java.util.List, java.util.Arrays"%>
+
+<%
+	if(session.getAttribute("login") != null){
+		String id = String.valueOf(session.getAttribute("login"));
+		ReadCheck rc = new ReadCheck();
+		String unread = rc.getUnread(id);
+		session.setAttribute("unread", unread);
+	}
+%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>

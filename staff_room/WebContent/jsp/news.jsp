@@ -9,10 +9,18 @@
 <%@ page import="java.io.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.HashMap"%>
-<%@ page import="dao.NewsDAO"%>
+<%@ page import="dao.NewsDAO, news.ReadCheck"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="org.apache.commons.lang.math.NumberUtils"%>
+<%
+	if(session.getAttribute("login") != null){
+		String id = String.valueOf(session.getAttribute("login"));
+		ReadCheck rc = new ReadCheck();
+		String unread = rc.getUnread(id);
+		session.setAttribute("unread", unread);
+	}
+%>
 <jsp:include page="/html/head.html" />
 <script src="/staff_room/script/read_check.js"></script>
 <title>連絡事項</title>
