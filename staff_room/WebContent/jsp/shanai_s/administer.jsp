@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="login.GetCookie" %>
 <%
 	if(session.getAttribute("login") != null){
 		String user = String.valueOf(session.getAttribute("login"));
@@ -28,7 +29,10 @@ function submit1() {
 <body>
 <form method="POST" action="//www.lucentsquare.co.jp:8080/kk_web/c_checkpwsystem" name="theform">
 <input type="hidden" name="action" value="gate">
-<input type="hidden" name="Pwd"  value="<%if (session.getAttribute("password") != null) {%><%=session.getAttribute("password")%><%}%>" size="25">
+<%
+
+%>
+<input type="hidden" name="Pwd"  value="qqqq" size="25">
 </form>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="login.GetCookie" %>
 <%
     // 新しいセッションならば入力回数を０から始める
 	if(session.isNew()){
@@ -17,13 +18,22 @@
 		if(Integer.valueOf(str) > 4){
 			session.setMaxInactiveInterval(300);
 			response.sendRedirect("./error.jsp");
+			return;
 		}
 	}
 %>
-<% 
-	if(session.getAttribute("login") != null){
-		response.sendRedirect("./jsp/top/top.jsp");
+<%
+// クッキーがあればTop画面に遷移
+Cookie login_cookie = GetCookie.get("login_cookie", request);
+if(login_cookie!=null){
+	    response.sendRedirect("/staff_room/CookieChecked");
+	    return;
+}else{
+	// クッキーなくてもセッションが保存されていればTop画面に遷移
+	if(session.getAttribute("login")!=null){
+		response.sendRedirect("/staff_room/jsp/top/top.jsp");
 	}
+}
 %>
 <!DOCTYPE html>
 <html lang="ja" class="uk-height-1-1">

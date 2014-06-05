@@ -1,6 +1,7 @@
 <%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=shift_JIS"
     pageEncoding="shift_JIS"%>
+<%@ page import="login.GetCookie" %>
 <%
     if(session.getAttribute("login") == null){
             response.sendRedirect("/staff_room/jsp/top/top.jsp");
@@ -41,17 +42,8 @@
             size="30" maxlength="20" class="text">
         <input type="hidden"
             name="Pwd"
-            value="<%if (session.getAttribute("password") != null) {%><%=session.getAttribute("password")%><%}%>"
+            value="<%if (GetCookie.get("pass_cookie", request) != null) {%><%=GetCookie.get("pass_cookie", request).getValue()%><%}%>"
             size="25" maxlength="20">
-        <!--                    <table>
-                        <tr>
-                            <td><input type="submit" value="‚n‚j" class="button" name="aa"
-                                onClick="submit1()"></td>
-                            <td><input type="reset" value="CLEAR" class="button"
-                                name="bb"></td>
-                        </tr>
-                    </table>
- -->
     </form>
 </body>
 </html>
