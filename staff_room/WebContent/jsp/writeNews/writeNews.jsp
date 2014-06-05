@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="dao.NewsDAO"%>
+<%@ page import="dao.NewsDAO,
+				java.text.DateFormat,
+            	java.text.SimpleDateFormat,
+           		java.util.Date,
+            	java.util.Locale"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
 <%@ page import="org.apache.commons.lang.math.NumberUtils"%>
 <%@ page import="org.apache.commons.lang3.StringEscapeUtils" %>
@@ -56,7 +60,7 @@ body {
 			ArrayList<HashMap<String, String>> list = null;
 			// 条件式ごとに文字列を分割
 			String select, from, where, order, offset, limit;
-			select = "news_id,TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,post.post_id,postname,title,text,filename,writer,primary_flag";
+			select = "news_id,created,post.post_id,postname,title,text,filename,writer,primary_flag";
 			from = "news, post";
 			where = "news.post_id = post.post_id";
 			order = "created desc";
@@ -90,11 +94,15 @@ body {
 					HashMap<String, String> row = list.get(i);
 					//時刻がある記事だけの表示
 					if (!row.get("created").equals("")) {
+						SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+						Date date = format.parse(row.get("created"));
+						DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
+						
 			%>
 			<tr id="row<%=row.get("news_id")%>">
 				<td><a flag="0" class="uk-icon-square-o uk-text-center delete-box"
 					name="delete_check" id="<%=row.get("news_id")%>"></a></td>
-				<td nowrap><%=row.get("created")%>&nbsp;</td>
+				<td nowrap><%=dddate.format(date)%>&nbsp;</td>
 				<td nowrap><%=row.get("postname")%>&nbsp;</td>
 				<td class="uk-text-left" nowrap>
 					<!-- title→タイトル --> <a t_id="<%=row.get("news_id")%>"
@@ -129,45 +137,8 @@ body {
 						x.add(i);
 						z++;
 					}
-				}
-				//時刻が入っていない記事の表示はここから
-				for (int i = 0; i < z; i++) {
-					HashMap<String, String> row = list.get(x.get(i));
-			%>
-			<tr id="row<%=row.get("news_id")%>" class="uk-text-large">
-				<td><a flag="0" class="uk-icon-square-o uk-text-center delete-box" name="delete_check"
-					id="<%=row.get("news_id")%>"> </a></td>
-				<td nowrap><%=row.get("created")%>&nbsp;</td>
-				<td nowrap><%=row.get("postname")%>&nbsp;</td>
-				<td class="uk-text-left" nowrap>
-					<!-- title→タイトル -->
-					<a t_id="<%=row.get("news_id")%>"
-					class="body-title"><%=StringEscapeUtils.escapeHtml4(row.get("title")) %></a>
-					<dl>
-						<dt id="text<%=row.get("news_id")%>" class="body-text">
-							<!-- text→文章 -->
-							<pre class="uk-text-left"><%=row.get("text")%></pre>
-						</dt>
-						<dt style="display: none"></dt>
-					</dl>
-				</td>
-				<td>
-					<form method="POST" action="inputForm.jsp">
-
-						<input type="hidden" name="inputNewsid" value="<%=row.get("news_id")%>">
-						<input type="hidden" name="inputPostid" value="<%=row.get("post_id")%>">
-						<input type="hidden" name="inputTitle" value="<%=StringEscapeUtils.escapeHtml4(row.get("title")) %>">
-						<input type="hidden" name="inputText" value="<%=StringEscapeUtils.escapeHtml4(row.get("text")) %>">
-						<input type="hidden" name="inputFile" value="<%=StringEscapeUtils.escapeHtml4(row.get("filename")) %>">
-						<input type="hidden" name="inputWriter" value="<%=StringEscapeUtils.escapeHtml4(row.get("writer")) %>">
-						<input type="hidden" name="inputPrimary" value="<%=row.get("primary_flag")%>">
-						<input type="submit" class="uk-button" value="編集">
-					</form>
-				</td>
-			</tr>
-			<%
-				}
-			%>
+				}%>
+			
 		</table>
 		<%
 

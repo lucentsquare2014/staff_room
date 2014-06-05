@@ -65,7 +65,7 @@
 					String offset = String.valueOf((Integer.parseInt(page_num) * Integer
 							.parseInt(limit)) - 10);
 		list = dao
-		.getNews("select TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,news_id,title,filename,text,writer,primary_flag from news where post_id = "
+		.getNews("select created,news_id,title,filename,text,writer,primary_flag from news where post_id = "
 		+ value + " order by update desc " +" limit " + limit +" offset " + offset );
 		ArrayList<HashMap<String, String>> name = null;
 		name = dao.getNews("select postname from post where post_id =" + value);
@@ -92,9 +92,12 @@
 		<%
 		for (int i = 0; i < list.size(); i++) {
 			HashMap<String, String> row = list.get(i);
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = format.parse(row.get("created"));
+			DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
 				%>
 				<tr>
-				<td class="uk-h3 uk-width-medium-3-10 uk-text-center"><%=row.get("created")%>&nbsp;</td>
+				<td class="uk-h3 uk-width-medium-3-10 uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
 				<td class="uk-h3 uk-width-medium-7-10 uk-text-left">
 				<!--記事のタイトルなどを表示-->
 					<%if(read_check.indexOf(row.get("news_id")) != -1){%>
