@@ -29,9 +29,6 @@ function submit1() {
 <body>
 <form method="POST" action="//www.lucentsquare.co.jp:8080/kk_web/c_checkpwsystem" name="theform">
 <input type="hidden" name="action" value="gate">
-<%
-
-%>
 <input type="hidden" name="Pwd"  value="qqqq" size="25">
 </form>
 </body>
