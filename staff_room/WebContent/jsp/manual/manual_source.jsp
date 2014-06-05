@@ -14,7 +14,7 @@
  	}
  	tr{white-space:nowrap;}
 </style>
-            
+
 <%
 	File folder = new File(application.getRealPath(File.separator + "jsp"));//使用するフォルダの場所を指定
 	String filename[] = folder.list();//String型の配列にファイル名を入れる
@@ -28,13 +28,13 @@
 <tr class="uk-text-center">
     <!-- -----------管理者用チェックボックス作成----------- -->
 	<% if(user2.equals("admin")){%>
-	<td><input type="checkbox" name="aa" value="aaa"></td>
+	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="aaa"></td>
 	<%}%>
 
 	<!-- フォーマットを変換した 更新日時を出力　-->
-	<td class="uk-text-center"><%=format.format(date)%></td>
-	
+	<td bgcolor="#FFFFFF" class="uk-text-center"><%=format.format(date)%></td>
+
 	<!-- String型のファイル名を出力 -->
-	<td class="uk-text-center"><a href="../jsp/<%=filename[i]%>"><%=filename[i]%></a></td>
+	<td bgcolor="#FFFFFF" class="uk-text-center"><a href="../jsp/<%=filename[i]%>"><%=filename[i]%></a></td>
 </tr>
 <%}%>

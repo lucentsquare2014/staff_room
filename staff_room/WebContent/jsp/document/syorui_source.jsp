@@ -31,19 +31,19 @@
 <tr class="uk-text-center">
 	<!-- ファイル数の半分の時にのみ出力 -->
 	<%if (x == 0) {%>
-	<td id="type"rowspan=<%=filename.length%> class="uk-text-middle uk-text-bold"><%=foldername[i]%></td>
+	<td bgcolor="#FFFFFF" id="type"rowspan=<%=filename.length%> class="uk-text-middle uk-text-bold"><%=foldername[i]%></td>
 	<%}%>
-	
+
 	<!-- -----------管理者用チェックボックス作成----------- -->
 	<% if(user2.equals("admin")){%>
-	<td><input type="checkbox" name="aa" value="aaa"></td>
+	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="aaa"></td>
 	<%}%>
-	
-	
+
+
 	<!-- フォーマットを変換した 更新日時を出力-->
-	<td id="time"><%=format.format(date)%></td>
+	<td bgcolor="#FFFFFF" id="time"><%=format.format(date)%></td>
 
 	<!-- String型のファイル名を出力 -->
-	<td><a href="../syorui_test/<%=URLEncoder.encode(foldername[i], "utf-8")%>/<%=URLEncoder.encode(filename[x], "utf-8")%>"><%=filename[x]%></a></td>
+	<td bgcolor="#FFFFFF"><a href="../syorui_test/<%=URLEncoder.encode(foldername[i], "utf-8")%>/<%=URLEncoder.encode(filename[x], "utf-8")%>"><%=filename[x]%></a></td>
 </tr>
 <%}}%>
