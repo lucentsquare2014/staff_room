@@ -170,7 +170,7 @@ public class Login extends HttpServlet {
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				data[0] = rs.getString("shain_number");
-				data[1] = rs.getString("login_time");
+				data[1] = rs.getString("access_time");
 				data[2] = rs.getString("read_check");
 				data[3] = rs.getString("cookie");
 			}
