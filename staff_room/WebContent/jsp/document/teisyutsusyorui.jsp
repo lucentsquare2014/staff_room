@@ -25,10 +25,10 @@ body {
 <% if(user.equals("admin")){ //-----------管理者の申請書類ページ-----------%>
 	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-width-1-1">
 		<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class=" uk-width-1-6 uk-text-center"><font color="#FFFFFF">種別</font></th>
 			<th Background="../../images/blackwhite1.png" class=" uk-width-1-6 uk-text-center"><font color="#FFFFFF"></font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-2-6 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-1-6 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
 			<th Background="../../images/blackwhite1.png" class=" uk-width-2-6 uk-text-center"><font color="#FFFFFF">ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-2-6 uk-text-center"><font color="#FFFFFF">種別</font></th>
 		</tr>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
 		<%@ include file="syorui_source.jsp"%>
@@ -37,9 +37,9 @@ body {
 <%}else{ //-----------一般利用者の申請書類ページ----------%>
 	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-width-1-1">
 		<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class=" uk-width-1-6 uk-text-center"><font color="#FFFFFF">種別</font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-2-6 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-1-6 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
 			<th Background="../../images/blackwhite1.png" class=" uk-width-2-6 uk-text-center"><font color="#FFFFFF">ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-2-6 uk-text-center"><font color="#FFFFFF">種別</font></th>
 		</tr>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
 		<%@ include file="syorui_source.jsp"%>
