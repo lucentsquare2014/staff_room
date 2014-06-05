@@ -48,11 +48,21 @@ body {
 	　<%} %>　　　　　　
 	<!--------------  管理者用　 ----------------->　
 	<% if(user.equals("admin")){ %>
+	<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
 	<div class="uk-grid">
 		<div class="uk-width-1-2 uk-text-left">
 			<button id="delete_button" class="uk-button uk-button-danger">
 			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button></div>
+		
 		<div class="uk-width-1-2 uk-text-right">
+			<select name="category">
+				<option value="1">変更等届書類</option>
+				<option value="2">申請書類</option>
+				<option value="3">金銭に関係する書類</option>
+				<option value="4">APシートに関する書類</option>
+				<option value="5">規程集</option>
+				<option value="6">育児介護</option>
+			</select>
 			<input class ="uk-container-right" type="text" placeholder="">
 			<div class="uk-form-file">
 				<button class="uk-button uk-button-success">
@@ -71,6 +81,7 @@ body {
 			<i class="uk-icon-upload uk-icon-small"></i><b>　追加</b></button>
 		</div>
 	</div>
+	</form>
 	<%} %>
 	</div>
 	<br><br>
