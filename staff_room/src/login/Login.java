@@ -174,7 +174,7 @@ public class Login extends HttpServlet {
 				data[2] = rs.getString("read_check");
 				data[3] = rs.getString("cookie");
 			}
-			String update_sql = "UPDATE shainkanri SET login_time = current_timestamp WHERE shain_number = '" + data[0] + "'";
+			String update_sql = "UPDATE shainkanri SET access_time = current_timestamp WHERE shain_number = '" + data[0] + "'";
 			stmt.executeUpdate(update_sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
