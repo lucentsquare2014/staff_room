@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="dao.NewsDAO, news.ReadCheck"%>
+<%@ page import="dao.NewsDAO,
+                 news.ReadCheck,
+                 java.text.DateFormat,
+            	 java.text.SimpleDateFormat,
+           		 java.util.Date,
+            	 java.util.Locale"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap"%>
 <%@ page import="java.util.List, java.util.Arrays"%>
 
@@ -49,7 +54,7 @@
 				//データベースにアクセスしてデータをとってくる
 					NewsDAO dao = new NewsDAO();
 					ArrayList<HashMap<String, String>> table = dao
-							.getNews("select news_id, TO_CHAR(created,'yyyy\"年\"mm\"月\"dd\"日\"') as created,postname,news.post_id,title,primary_flag from news, post where news.post_id = post.post_id order by created desc");
+							.getNews("select news_id,created,postname,news.post_id,title,primary_flag from news, post where news.post_id = post.post_id order by created desc");
 					ArrayList<HashMap<String, String>> t_copy = new ArrayList<HashMap<String, String>>(
 							table);
 				%>
@@ -60,9 +65,12 @@
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
+									SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+									Date date = format.parse(row.get("created"));
+									DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td><%=row.get("created")%></td>
+								<td><%=dddate.format(date)%></td>
 								<td><%=row.get("postname")%></td>
 								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
@@ -83,9 +91,12 @@
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
 									if (row.get("post_id").equals("1")) {
+										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+										Date date = format.parse(row.get("created"));
+										DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td><%=row.get("created")%></td>
+								<td><%=dddate.format(date)%></td>
 								<td><%=row.get("postname")%></td>
 								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
@@ -106,9 +117,12 @@
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
 									if (row.get("post_id").equals("2")) {
+										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+										Date date = format.parse(row.get("created"));
+										DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td><%=row.get("created")%></td>
+								<td><%=dddate.format(date)%></td>
 								<td><%=row.get("postname")%></td>
 								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
@@ -129,9 +143,12 @@
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
 									if (row.get("post_id").equals("3")) {
+										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+										Date date = format.parse(row.get("created"));
+										DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td><%=row.get("created")%></td>
+								<td><%=dddate.format(date)%></td>
 								<td><%=row.get("postname")%></td>
 								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
@@ -153,9 +170,12 @@
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
 									if (row.get("post_id").equals("4")) {
+										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+										Date date = format.parse(row.get("created"));
+										DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td><%=row.get("created")%></td>
+								<td><%=dddate.format(date)%></td>
 								<td><%=row.get("postname")%></td>
 								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
@@ -177,9 +197,12 @@
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
 									if (row.get("post_id").equals("5")) {
+										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+										Date date = format.parse(row.get("created"));
+										DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td><%=row.get("created")%></td>
+								<td><%=dddate.format(date)%></td>
 								<td><%=row.get("postname")%></td>
 								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
