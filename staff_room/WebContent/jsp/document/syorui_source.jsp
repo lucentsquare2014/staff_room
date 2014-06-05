@@ -29,12 +29,18 @@
 			DateFormat format = new SimpleDateFormat("GGGGyy年 MMMM d日 ", new Locale("ja", "JP", "JP"));
 %>
 <tr class="uk-text-center">
-
-
 	<!-- -----------管理者用チェックボックス作成----------- -->
 	<% if(user2.equals("admin")){%>
 	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="aaa"></td>
 	<%}%>
+
+
+	<!-- ファイル数の半分の時にのみ出力 -->
+	<%if (x == 0) {%>
+	<td bgcolor="#FFFFFF" id="type"rowspan=<%=filename.length%> class="uk-text-middle uk-text-bold"><%=foldername[i]%></td>
+	<%}%>
+
+
 
 
 	<!-- フォーマットを変換した 更新日時を出力-->
@@ -42,8 +48,5 @@
 
 	<!-- String型のファイル名を出力 -->
 	<td bgcolor="#FFFFFF"><a href="../syorui_test/<%=URLEncoder.encode(foldername[i], "utf-8")%>/<%=URLEncoder.encode(filename[x], "utf-8")%>"><%=filename[x]%></a></td>
-<!-- ファイル数の半分の時にのみ出力 -->
-<%if (x == 0) {%>
-<td bgcolor="#FFFFFF" id="type"rowspan=<%=filename.length%> class="uk-text-middle uk-text-bold"><%=foldername[i]%></td>
-<%}}}%>
 </tr>
+<%}}%>

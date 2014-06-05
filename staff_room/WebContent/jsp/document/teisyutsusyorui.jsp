@@ -25,10 +25,10 @@ body {
 <% if(user.equals("admin")){ //-----------管理者の申請書類ページ-----------%>
 	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-width-1-1">
 		<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class=" uk-width-1-6 uk-text-center"><font color="#FFFFFF"></font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-1-6 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-2-6 uk-text-center"><font color="#FFFFFF">ファイル名</font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-2-6 uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-text-center"><font color="#FFFFFF">　　</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-6-10 uk-text-center"><font color="#FFFFFF">ファイル名</font></th>
 		</tr>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
 		<%@ include file="syorui_source.jsp"%>
@@ -37,9 +37,9 @@ body {
 <%}else{ //-----------一般利用者の申請書類ページ----------%>
 	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-width-1-1">
 		<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class=" uk-width-1-6 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-2-6 uk-text-center"><font color="#FFFFFF">ファイル名</font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-2-6 uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-6-10 uk-text-center"><font color="#FFFFFF">ファイル名</font></th>
 		</tr>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
 		<%@ include file="syorui_source.jsp"%>
@@ -47,31 +47,30 @@ body {
 	</table>
 	　<%} %>　　　　　　
 	<!--------------  管理者用　 ----------------->　
-	<% if(user.equals("admin")){ %>　　　　　　　　　　　 　
-	<button id="delete_button" class="uk-button"><b> 　削除　 </b></button>
-	<%for(int i = 0;i<90;i++){
-		%>&nbsp;<%
-		}%>
+	<% if(user.equals("admin")){ %>
+	<div class="uk-grid">
+		<div class="uk-width-1-2 uk-text-left">
+			<button id="delete_button" class="uk-button uk-button-danger"><b> 削除 </b></button></div>
+		<div class="uk-width-1-2 uk-text-right">
 			<input class ="uk-container-right" type="text" placeholder="">
 			<div class="uk-form-file">
-				<button class="uk-button"><b>　 添付 　</b></button>
+				<button class="uk-button uk-button-success"><b> 添付 </b></button>
 				<input type="file" name="inputFile" id="upload-select" multiple>
 				<div id="progressbar" class="uk-progress uk-hidden" style="width: 500px;">
     				<div class="uk-progress-bar" style="width: 0%;">...</div>
 				</div>
 			</div>
-			<br><br>
-			<%for(int i = 0;i<197;i++){
-		%>&nbsp;<%
-		}%>
-			<button id="delete_button" class="uk-button"><b>  　  追加 　   </b></button>
-			<%} %>
-		<!------------------------->
-
-
 		</div>
+	</div>
+	<br>
+	<div class="uk-grid">
+		<div class="uk-width-1-1 uk-text-right">
+			<button id="delete_button" class="uk-button uk-button-primary"><b>    追加    </b></button>
+		</div>
+	</div>
+	<%} %>
+	</div>
+	<br>
 </div>
-</div>
-<br>
 </body>
 </html>
