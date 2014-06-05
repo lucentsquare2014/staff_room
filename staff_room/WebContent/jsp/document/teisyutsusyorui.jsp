@@ -50,11 +50,13 @@ body {
 	<% if(user.equals("admin")){ %>
 	<div class="uk-grid">
 		<div class="uk-width-1-2 uk-text-left">
-			<button id="delete_button" class="uk-button uk-button-danger"><b> 削除 </b></button></div>
+			<button id="delete_button" class="uk-button uk-button-danger">
+			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button></div>
 		<div class="uk-width-1-2 uk-text-right">
 			<input class ="uk-container-right" type="text" placeholder="">
 			<div class="uk-form-file">
-				<button class="uk-button uk-button-success"><b> 添付 </b></button>
+				<button class="uk-button uk-button-success">
+				<i class="uk-icon-file-text uk-icon-small"></i><b>　添付</b></button>
 				<input type="file" name="inputFile" id="upload-select" multiple>
 				<div id="progressbar" class="uk-progress uk-hidden" style="width: 500px;">
     				<div class="uk-progress-bar" style="width: 0%;">...</div>
@@ -65,12 +67,13 @@ body {
 	<br>
 	<div class="uk-grid">
 		<div class="uk-width-1-1 uk-text-right">
-			<button id="delete_button" class="uk-button uk-button-primary"><b>    追加    </b></button>
+			<button id="delete_button" class="uk-button uk-button-primary">
+			<i class="uk-icon-upload uk-icon-small"></i><b>　追加</b></button>
 		</div>
 	</div>
 	<%} %>
 	</div>
-	<br>
+	<br><br>
 </div>
 </body>
 </html>
