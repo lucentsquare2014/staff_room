@@ -18,7 +18,8 @@
  	tr{white-space:nowrap;}
 </style>
     <%
-      	File file = new File("C:/workspace/pj/src/Javajava/Address3.txt");
+      	File file = new File(application.getRealPath("/jsp/mail/Address3.txt"));
+         System.out.println(application.getRealPath("/jsp/mail/Address3.txt"));
 
         if(checkBeforeReadfile(file))
         {
