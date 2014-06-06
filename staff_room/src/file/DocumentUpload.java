@@ -3,7 +3,6 @@ package file;
 import java.io.File;
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -20,21 +19,34 @@ public class DocumentUpload extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-    	//System.out.println(request.getParameter("type"));
+    	// ページ名を取得
+    	String page = request.getParameter("page");
     	String applicationPath = request.getServletContext().getRealPath("");
-    	String uploadFilePath = applicationPath + File.separator + "document";
+    	String uploadFilePath = applicationPath + File.separator + page;
+    	// 申請書類の場合はカテゴリを取得。
+    	// マニュアルもカテゴリあれば、このif文はいらない。
+    	if(page.equals("document")){
+    		String category = new String(request.getParameter("category").getBytes("ISO-8859-1"),"UTF-8");
+    		uploadFilePath = uploadFilePath + File.separator + category;
+    	}
     	File fileSaveDir = new File(uploadFilePath);
         if (!fileSaveDir.exists()) {
             fileSaveDir.mkdirs();
         }
     	for (Part part : request.getParts()) {
-    		String name = getFilename(part);
-            part.write(uploadFilePath + File.separator + name);
+    		if(part.getName().equals("inputFile")){
+    			String name = getFilename(part);
+    			part.write(uploadFilePath + File.separator + name);
+    		}
         }
-    	RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/document/teisyutsusyorui.jsp");
-        dispatcher.forward(request, response);
+    	if(page.equals("document")){
+    		response.sendRedirect("/staff_room/jsp/document/teisyutsusyorui.jsp");
+    	}else{
+    		response.sendRedirect("/staff_room/jsp/manual/manual.jsp");
+    	}
     }
     
+    // ファイルの名前を取得
     private String getFilename(Part part) {
         for (String cd : part.getHeader("Content-Disposition").split(";")) {
             if (cd.trim().startsWith("filename")) {
@@ -51,4 +63,5 @@ public class DocumentUpload extends HttpServlet {
         }
         return null;
     }
+
 }

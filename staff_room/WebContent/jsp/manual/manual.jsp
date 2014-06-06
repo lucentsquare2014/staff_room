@@ -45,6 +45,7 @@ body {
 <%} %>
 	<!--------------  管理者用　 ----------------->　
 	<% if(user.equals("admin")){ %>
+	<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
 	<div class="uk-grid">
 		<div class="uk-width-1-2 uk-text-left">
 			<button id="delete_button" class="uk-button uk-button-danger">
@@ -69,6 +70,8 @@ body {
 		<i class="uk-icon-upload uk-icon-small"></i><b>　追加</b></button>
 		</div>
 	</div>
+	<input type="hidden" name="page" value="manual">
+	</form>
 	<%} %>
 </div>
 </div>
