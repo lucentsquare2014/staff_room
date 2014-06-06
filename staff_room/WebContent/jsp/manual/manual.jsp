@@ -3,6 +3,7 @@
 <html style="overflow-x:auto; white-space:nowrap;">
 <head>
 <jsp:include page="/html/head.html" />
+<script src="/staff_room/script/document.js"></script>
 <style>
 body {
 	width: 100%;
@@ -52,7 +53,7 @@ body {
 			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button>
 		</div>
 		<div class="uk-width-1-2 uk-text-right">
-			<input class ="uk-container-right" type="text" placeholder="">
+			<input name="select_files" class ="uk-container-right" type="text" disabled>
 			<div class="uk-form-file">
 				<button class="uk-button uk-button-success">
 				<i class="uk-icon-file-text uk-icon-small"></i><b>　添付</b></button>

@@ -3,6 +3,7 @@
 <html style="overflow-x:auto; white-space:nowrap;">
 <head>
 <jsp:include page="/html/head.html" />
+<script src="/staff_room/script/document.js"></script>
  <style>
 body {
 	width: 100%;
@@ -10,6 +11,9 @@ body {
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/shinseisyorui01.jpg");
 	background-size: 100% auto;
+}
+textarea {
+	width: 180px;
 }
 </style>
 <title>申請書類</title>
@@ -62,7 +66,7 @@ body {
 				<option value="育児介護">育児介護</option>
 			</select>
 			<input type="hidden" name="page" value="document">
-			<input class ="uk-container-right" type="text" placeholder="">
+			<input name="select_files" type="text" class ="uk-container-right" disabled>
 			<div class="uk-form-file">
 				<button class="uk-button uk-button-success">
 				<i class="uk-icon-file-text uk-icon-small"></i><b>　添付</b></button>
