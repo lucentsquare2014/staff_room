@@ -14,7 +14,6 @@
  	}
  	tr{white-space:nowrap;}
 </style>
-
 <%
 	File base_folder = new File(application.getRealPath(File.separator + "document"));//使用する親フォルダの場所を指定
 	if(!base_folder.exists()){
@@ -34,7 +33,7 @@
 <tr class="uk-text-center">
 	<!-- -----------管理者用チェックボックス作成----------- -->
 	<% if(user2.equals("admin")){%>
-	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="aaa"></td>
+	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="<%=foldername[i]%>/<%=filename[x]%>"></td>
 	<%}%>
 
 
