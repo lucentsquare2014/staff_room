@@ -129,8 +129,7 @@
 					<%}%>
 					<%if (!row.get("filename").equals("")){ %>
                     	<div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden">
-                    		<pre><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%>
-                    			<a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
+                    		<pre><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
 					<%}else{ %>
 					<div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden"><pre><%= row.get("text") %></pre></div>
 					<%} %>
@@ -142,7 +141,7 @@
 				<%if (page_num.equals("1")) {
 					out.print("　");
 				} else {%>
-				<span><a
+				<span><a class="prev-page uk-button uk-button-primary"
 					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) - 1%>&news_id=<%=value2%>">&lt;&lt;前へ</a></span>
 			<%}%>
 			</div>
@@ -150,7 +149,7 @@
 				style="<%if (list.size() < 10) {
 				out.print("display: none;");
 			}%>">
-				<span><a
+				<span><a class="next-page uk-button uk-button-primary"
 					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) + 1%>&news_id=<%=value2%>">次へ&gt;&gt;</a></span>
 			</div>
 		</div>
