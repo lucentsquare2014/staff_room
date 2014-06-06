@@ -17,6 +17,9 @@
 
 <%
 	File folder = new File(application.getRealPath(File.separator + "manual"));//使用するフォルダの場所を指定
+	if(!folder.exists()){
+		folder.mkdirs();
+	}
 	String filename[] = folder.list();//String型の配列にファイル名を入れる
 	File[] filedate = folder.listFiles();//File型の配列にファイル名を入れる
 	for (int i = 0; i < filename.length; i++) {

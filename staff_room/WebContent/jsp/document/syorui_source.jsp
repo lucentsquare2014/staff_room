@@ -17,7 +17,9 @@
 
 <%
 	File base_folder = new File(application.getRealPath(File.separator + "document"));//使用する親フォルダの場所を指定
-	//System.out.println(application.getRealPath(""));
+	if(!base_folder.exists()){
+		base_folder.mkdirs();
+	}
 	String foldername[] = base_folder.list();//String型の配列にファイル名を入れる
 	for (int i = 0; i < foldername.length; i++) {
 		File folder = new File(application.getRealPath(File.separator + "document" + File.separator + foldername[i]));//使用する子フォルダの場所を指定
