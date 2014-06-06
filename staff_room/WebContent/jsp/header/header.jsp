@@ -89,7 +89,7 @@ $(window).resize(function(){
 			</div></li>
 		<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
 		<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">規定・書類</a></li>
-		<li class="header"><a href="/staff_room/jsp/mail/mail.jsp">Mail</a></li>
+		<li class="header"><a href="/staff_room/jsp/mail/checkbox.jsp">Mail</a></li>
 		<li class="header"><a href="/staff_room/jsp/bbs/bbs.jsp">掲示板</a></li>
 		<li class="uk-parent header" data-uk-dropdown><a>Photo<i
 				class="uk-icon-caret-down"></i></a>
@@ -163,7 +163,7 @@ $(window).resize(function(){
         	</li>
         	<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
 			<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">マニュアル</a></li>
-			<li class="header"><a href="/staff_room/jsp/mail/mail.jsp">Mail</a></li>
+			<li class="header"><a href="/staff_room/jsp/mail/checkbox.jsp">Mail</a></li>
 			<li class="header"><a href="/staff_room/jsp/bbs/bbs.jsp">掲示板</a></li>
 			<li class="uk-parent">
 				<a href="#">Photo</a>

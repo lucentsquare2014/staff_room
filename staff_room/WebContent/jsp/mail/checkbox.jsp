@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="dao.NewsDAO,
-				java.util.ArrayList, 
+				java.util.ArrayList,
 				java.util.HashMap,
 				org.apache.commons.lang3.StringEscapeUtils"
 %>
@@ -20,19 +20,18 @@
 	ArrayList<Integer> x = new ArrayList<Integer>();
 	Mail.GetShainDB Mail = new Mail.GetShainDB();
 	ArrayList<HashMap<String, String>> Maillist = null;
-	String sql = "select id,name,mail from shainmst where zaiseki_flg='1' order by name desc";
+	String sql = "select id,name,mail,hurigana from shainmst where zaiseki_flg='1' order by hurigana asc";
 	Maillist = Mail.getShain(sql);
-	
-	for (int i = 0; i < Maillist.size(); i++) {
-			HashMap<String, String> Mailmap = Maillist.get(i);
-%>
+	//ホントノヤツ　for (int i = 0; i < Maillist.size(); i++) {
+	for (int i = 0; i < 20; i++) {
+			HashMap<String, String> Mailmap = Maillist.get(i);%>
 <table>
 	<tr>
 		<td><a flag="0"
 			class="uk-icon-square-o uk-text-center delete-box"
 			name="check" id="<%=Mailmap.get("id")%>"></a></td>
 			<td><%=Mailmap.get("name")%></td>
-			<%-- <td><%=Mailmap.get("hurigana")%></td>--%>
+			<td><%=Mailmap.get("hurigana")%></td>
 			<td><%=Mailmap.get("mail")%></td>
 	</tr>
 	<%}%>
