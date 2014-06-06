@@ -16,10 +16,11 @@
 </style>
 
 <%
-	File base_folder = new File(application.getRealPath(File.separator + "syorui_test"));//使用する親フォルダの場所を指定
+	File base_folder = new File(application.getRealPath(File.separator + "document"));//使用する親フォルダの場所を指定
+	//System.out.println(application.getRealPath(""));
 	String foldername[] = base_folder.list();//String型の配列にファイル名を入れる
 	for (int i = 0; i < foldername.length; i++) {
-		File folder = new File(application.getRealPath(File.separator + "syorui_test" + File.separator + foldername[i]));//使用する子フォルダの場所を指定
+		File folder = new File(application.getRealPath(File.separator + "document" + File.separator + foldername[i]));//使用する子フォルダの場所を指定
 		String filename[] = folder.list();//String型の配列にファイル名を入れる
 		File[] filedate = folder.listFiles();//File型の配列にファイル名を入れる
 		for (int x = 0; x < filename.length; x++) {
