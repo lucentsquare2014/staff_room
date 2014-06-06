@@ -16,7 +16,7 @@ import dao.ShainDB;
 	 * 
 	 * @return ArrayList<HashMap<String,String>>型の検索結果を格納したリスト
 	 */
-public class Mail {
+public class GetShainDB {
 	public ArrayList<HashMap<String, String>> getShain(String sql) {
 		ShainDB dao = new ShainDB();
 		Connection con = dao.openShainDB();
