@@ -9,7 +9,7 @@ body {
 	width: 100%;
 	height: 656px;
 	background-attachment: fixed;
-	background-image: url("/staff_room/images/manyuaru5-2.jpg");
+	background-image: url("/staff_room/images/manual01.jpg");
 	background-size: 100% auto;
 }
 </style>
@@ -51,7 +51,7 @@ body {
 			<button id="delete" class="uk-button uk-button-danger">
 			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button>
 		</div>
-		
+
 		<div class="uk-width-1-2 uk-text-right">
 		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
 			<input name="select_files" class ="uk-container-right" type="text" disabled>
