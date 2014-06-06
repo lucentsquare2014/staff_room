@@ -6,14 +6,14 @@ $(function(){
 			file_str += files[i].name + "\n";
 		}
 		$("input[name='select_files']").val(file_str);
-		$("#add").removeAttr("disabled");
+		$("#add").prop('disabled',false);
 	});
 	
 	$(".uk-table :checkbox").click(function(){
 		if($(".uk-table :checked").length > 0){
-			$("#delete").attr('disabled', false);
+			$("#delete").prop('disabled', false);
 		}else{
-			$("#delete").attr('disabled', true);
+			$("#delete").prop('disabled', true);
 		}
 	});
 	
