@@ -27,11 +27,18 @@
 
 <style type="text/css">
  	tr{white-space:nowrap;}
+  	body {
+		width: 100%;
+		height: 656px;
+		background-attachment: fixed;
+		background-image: url("/staff_room/images/renraku01.jpg");
+		background-size: 100% auto;
+	}
 </style>
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" /><br><br>
-	<img src="/staff_room/images/renraku5.jpg">
+<!--	<img src="/staff_room/images/renraku5.jpg"> -->
 	<div style="position:relative; top:-80px; left:0px; width: 100%;">
 
 	<div align="center">
@@ -80,22 +87,22 @@
 		System.out.print(name);
 		HashMap<String, String> raw = name.get(0);
 			%>
-			<div align="left">
+			<div style="position:fixed; top:220px; left:80px;">
+			<div class="uk-grid">
+			<div class="uk-width-1-4 uk-pull-1-6 uk-text-center">
 			<font face="ＭＳ Ｐゴシック">
-			<font size ="7">
-			<br><br><br>　　　　　
-			<nobr><%=raw.get("postname")%></nobr><br>
+			<span style="font-size: 32px;">
+			<nobr><%=raw.get("postname")%></nobr><br></span>
 			</font>
-			</font>
-			</div>
+			</div></div></div>
 
-		<br><br>
+		<br><br><br><br><br><br>
 		<%System.out.print(list);%>
-		<div class="uk-width-3-4 uk-container-center">
-		<table class="uk-table  uk-table-striped uk-text-center uk-width-medium-1-1">
+		<div class="uk-width-2-3 uk-container-center">
+		<table border="5" class="uk-table uk-text-center uk-width-medium-1-1">
 		<tr class="uk-text-large">
-		<td class="uk-h2 uk-width-medium-3-10">日付</td>
-		<td class="uk-h2 uk-width-medium-7-10">件名</td>
+		<td Background="../images/blackwhite1.png" class="uk-h2 uk-width-medium-2-10"><font color="#ffffff">日付</font></td>
+		<td Background="../images/blackwhite1.png" class="uk-h2 uk-width-medium-8-10"><font color="#ffffff">件名</font></td>
 		</tr>
 		<%
 		for (int i = 0; i < list.size(); i++) {
@@ -105,11 +112,11 @@
 			DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
 				%>
 				<tr>
-				<td class="uk-h3 uk-width-medium-3-10 uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
-				<td class="uk-h3 uk-width-medium-7-10 uk-text-left">
+				<td bgcolor="#FFFFFF" class="uk-h3 uk-width-medium-2-10 uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
+				<td bgcolor="#FFFFFF" class="uk-h3 uk-width-medium-8-10 uk-text-left">
 				<!--記事のタイトルなどを表示-->
 					<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-						<a id="<%= row.get("news_id") %>" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %></a>	
+						<a id="<%= row.get("news_id") %>" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %></a>
 						&nbsp;<div class="uk-badge uk-badge-danger">new</div>
 						<%if(row.get("primary_flag").equals("1")){%>
 							&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
@@ -127,16 +134,17 @@
 					<%}else{ %>
 					<div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden"><pre><%= row.get("text") %></pre></div>
 					<%} %>
-				<%} %>	
+				<%} %>
 		</table>
 		<!-- 次へボタン、戻るボタンの処理　 -->
 		<div class="uk-grid" style="padding-bottom: 50px;">
-			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left"
-				style="<%if (page_num.equals("1")) {
-				out.print("display: none;");
-			}%>">
+			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left">
+				<%if (page_num.equals("1")) {
+					out.print("　");
+				} else {%>
 				<span><a
 					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) - 1%>&news_id=<%=value2%>">&lt;&lt;前へ</a></span>
+			<%}%>
 			</div>
 			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
 				style="<%if (list.size() < 10) {

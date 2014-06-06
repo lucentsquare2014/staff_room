@@ -97,7 +97,7 @@ body {
 						SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 						Date date = format.parse(row.get("created"));
 						DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
-						
+
 			%>
 			<tr id="row<%=row.get("news_id")%>">
 				<td><a flag="0" class="uk-icon-square-o uk-text-center delete-box"
@@ -138,25 +138,26 @@ body {
 						z++;
 					}
 				}%>
-			
+
 		</table>
 		<%
 
 		%>
 		<div class="uk-grid" style="padding-bottom: 50px;">
-			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left"
-				style="<%if (page_num.equals("1")) {
-				out.print("display: none;");
-			}%>">
-				<span><a class="prev-page"
-					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) - 1%>">&lt;&lt;前へ</a></span>
+			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left">
+				<%if (page_num.equals("1")) {
+					out.print("　");
+				} else {%>
+				<span><a class="prev-page uk-button uk-button-primary"
+					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) - 1%>"><b>&lt;&lt;前へ</b></a></span>
+			<%}%>
 			</div>
 			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
 				style="<%if (list.size() < 10) {
 				out.print("display: none;");
 			}%>">
-				<span><a class="next-page"
-					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) + 1%>">次へ&gt;&gt;</a></span>
+				<span><a class="next-page uk-button uk-button-primary"
+					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) + 1%>"><b>次へ&gt;&gt;</b></a></span>
 			</div>
 		</div>
 	</div>
