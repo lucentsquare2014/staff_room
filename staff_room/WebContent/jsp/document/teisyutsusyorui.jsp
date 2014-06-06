@@ -52,12 +52,12 @@ textarea {
 	　<%} %>　　　　　　
 	<!--------------  管理者用　 ----------------->　
 	<% if(user.equals("admin")){ %>
-	<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
 	<div class="uk-grid">
 		<div class="uk-width-1-2 uk-text-left">
-			<button id="delete_button" class="uk-button uk-button-danger">
-			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button></div>
-		
+			<button id="delete" class="uk-button uk-button-danger">
+			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button>
+		</div>
+		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
 		<div class="uk-width-1-2 uk-text-right">
 			<select name="category">
 				<option value="変更等届書類">変更等届書類</option>
@@ -76,15 +76,13 @@ textarea {
 				</div>
 			</div>
 		</div>
-	</div>
-	<br>
-	<div class="uk-grid">
+		<br>
 		<div class="uk-width-1-1 uk-text-right">
-			<button id="delete_button" class="uk-button uk-button-primary">
+			<button id="add" class="uk-button uk-button-primary" disabled>
 			<i class="uk-icon-upload uk-icon-small"></i><b>　追加</b></button>
 		</div>
-	</div>
 	</form>
+	</div>
 	<%} %>
 	</div>
 	<br><br>

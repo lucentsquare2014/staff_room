@@ -46,13 +46,14 @@ body {
 <%} %>
 	<!--------------  管理者用　 ----------------->　
 	<% if(user.equals("admin")){ %>
-	<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
 	<div class="uk-grid">
 		<div class="uk-width-1-2 uk-text-left">
-			<button id="delete_button" class="uk-button uk-button-danger">
+			<button id="delete" class="uk-button uk-button-danger">
 			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button>
 		</div>
+		
 		<div class="uk-width-1-2 uk-text-right">
+		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
 			<input name="select_files" class ="uk-container-right" type="text" disabled>
 			<div class="uk-form-file">
 				<button class="uk-button uk-button-success">
@@ -62,17 +63,14 @@ body {
     				<div class="uk-progress-bar" style="width: 0%;">...</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<br>
-	<div class="uk-grid">
+		<br><br>
 		<div class="uk-width-1-1 uk-text-right">
-		<button id="delete_button" class="uk-button uk-button-primary">
-		<i class="uk-icon-upload uk-icon-small"></i><b>　追加</b></button>
+			<button id="add" class="uk-button uk-button-primary" disabled>
+			<i class="uk-icon-upload uk-icon-small"></i><b>　追加</b></button>
 		</div>
-	</div>
 	<input type="hidden" name="page" value="manual">
 	</form>
+	</div>
 	<%} %>
 </div>
 </div>

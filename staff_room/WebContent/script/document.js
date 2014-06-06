@@ -6,5 +6,6 @@ $(function(){
 			file_str += files[i].name + "\n";
 		}
 		$("input[name='select_files']").val(file_str);
+		$("#add").removeAttr("disabled");
 	});
 });
