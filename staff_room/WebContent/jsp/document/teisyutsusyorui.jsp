@@ -54,7 +54,7 @@ textarea {
 	<% if(user.equals("admin")){ %>
 	<div class="uk-grid">
 		<div class="uk-width-1-2 uk-text-left">
-			<button id="delete" class="uk-button uk-button-danger">
+			<button id="delete" class="uk-button uk-button-danger" disabled="disabled">
 			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button>
 		</div>
 		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
