@@ -9,6 +9,16 @@
 <html>
 <head>
 <jsp:include page="/html/head.html" />
+<title>メール</title>
+<style type="text/css">
+body {
+	width: 100%;
+	height: 656px;
+	background-attachment: fixed;
+	background-image: url("/staff_room/images/mail4.jpg");
+	background-size: 100% auto;
+}
+</style>
 </head>
 <body>
 <jsp:include page="/jsp/header/header.jsp" />
@@ -21,23 +31,36 @@
 	Mail.GetShainDB Mail = new Mail.GetShainDB();
 	ArrayList<HashMap<String, String>> Maillist = null;
 	String sql = "select id,name,mail,hurigana from shainmst where zaiseki_flg='1' order by hurigana asc";
-	Maillist = Mail.getShain(sql);
-	//ホントノヤツ　for (int i = 0; i < Maillist.size(); i++) {
-	for (int i = 0; i < 20; i++) {
+	Maillist = Mail.getShain(sql);%>
+
+<div class="uk-width-2-3 uk-container-center uk-text-center">
+	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-width-1-1">
+	<tr class="uk-text-large">
+			<th Background="../../images/blackwhite1.png" class=" uk-text-center"><font color="#FFFFFF"></font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-3-10 uk-text-center"><font color="#FFFFFF">氏名</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-3-10 uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-4-10 uk-text-center"><font color="#FFFFFF">メールアドレス</font></th>
+		</tr>
+		<%
+		//ホントノヤツfor (int i = 0; i < Maillist.size(); i++) {
+						for (int i = 0; i < 20; i++) {
 			HashMap<String, String> Mailmap = Maillist.get(i);%>
-<table>
-	<tr>
-		<td><a flag="0"
+
+
+		<tr>
+			<td bgcolor="#FFFFFF"><a flag="0"
 			class="uk-icon-square-o uk-text-center delete-box"
 			name="check" id="<%=Mailmap.get("id")%>"></a></td>
-			<td><%=Mailmap.get("name")%></td>
-			<td><%=Mailmap.get("hurigana")%></td>
-			<td><%=Mailmap.get("mail")%></td>
-	</tr>
+			<td bgcolor="#FFFFFF"><%=Mailmap.get("name")%></td>
+			<td bgcolor="#FFFFFF"><%=Mailmap.get("hurigana")%></td>
+			<td bgcolor="#FFFFFF"><%=Mailmap.get("mail")%></td>
+		</tr>
 	<%}%>
-</table>
-<a href="mailto:" id="mail"> 確定</a>
+	</table>
 
+<a class="uk-button uk-button-primary" href="mailto:" id="mail"> メール作成</a>
+</div>
+<br><br>
 <%--/チェックボックス部 --%>
 
 <script>
