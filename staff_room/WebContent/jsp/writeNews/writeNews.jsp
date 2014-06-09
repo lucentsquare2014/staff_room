@@ -64,7 +64,7 @@ body {
 			from = "news, post";
 			where = "news.post_id = post.post_id";
 			order = "created desc";
-			limit = "10";
+			limit = "100";
 			String page_num = request.getParameter("page");
 			if (page_num == null || !NumberUtils.isNumber(page_num)) {
 				page_num = "1";
@@ -72,7 +72,7 @@ body {
 
 			// offsetにゲットパラメータで取得したページ数を代入
 			offset = String.valueOf((Integer.parseInt(page_num) * Integer
-					.parseInt(limit)) - 10);
+					.parseInt(limit)) - 100);
 
 			String sql = "select " + select + " from " + from + " where "
 					+ where + " order by " + order + " offset " + offset
@@ -153,7 +153,7 @@ body {
 			<%}%>
 			</div>
 			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
-				style="<%if (list.size() < 10) {
+				style="<%if (list.size() < 100) {
 				out.print("display: none;");
 			}%>">
 				<span><a class="next-page uk-button uk-button-primary"
