@@ -24,7 +24,7 @@ textarea {
 <div class="changelog" style="padding-top: 40px;">
 <!-- <img src="/staff_room/images/sinseisyorui5-2.jpg" width="100%" height="100%" style="position:absolute; margin-bottom:20px; filter: progid:DXImageTransform.Microsoft.alpha (style=0, opacity=50)"> -->
 <!-- <span style="position:absolute;top:40em;left:1100px"><font size="7" color="red" face="ＭＳ 明朝,平成明朝">申請書類</font></span>   -->
-<div class="uk-width-2-3 uk-container-center">
+<div class="uk-width-3-5 uk-container-center">
 <br><br><br><br>
 <% if(user.equals("admin")){ //-----------管理者の申請書類ページ-----------%>
 	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-width-1-1">
@@ -53,12 +53,12 @@ textarea {
 	<!--------------  管理者用　 ----------------->　
 	<% if(user.equals("admin")){ %>
 	<div class="uk-grid">
-		<div class="uk-width-1-2 uk-text-left">
+		<div class="uk-width-1-4 uk-text-left">
 			<button id="delete" class="uk-button uk-button-danger" disabled="disabled">
 			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button>
 		</div>
+		<div class="uk-width-3-4 uk-text-right">
 		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
-		<div class="uk-width-1-2 uk-text-right">
 			<select name="category">
 				<option value="変更等届書類">変更等届書類</option>
 				<option value="申請書類">申請書類</option>
@@ -77,7 +77,7 @@ textarea {
 			</div>
 		</div>
 		<br>
-		<div class="uk-width-1-1 uk-text-right">
+		<div class="uk-width-1-1 uk-text-right"><br>
 			<button id="add" class="uk-button uk-button-primary" disabled>
 			<i class="uk-icon-upload uk-icon-small"></i><b>　追加</b></button>
 		</div>
