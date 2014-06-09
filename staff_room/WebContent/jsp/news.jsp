@@ -76,9 +76,9 @@
 			page_num = "1";
 		}
 		// offsetにゲットパラメータで取得したページ数を代入
-					String limit = "10";
+					String limit = "100";
 					String offset = String.valueOf((Integer.parseInt(page_num) * Integer
-							.parseInt(limit)) - 10);
+							.parseInt(limit)) - 100);
 		list = dao
 		.getNews("select created,news_id,title,filename,text,writer,primary_flag from news where post_id = "
 		+ value + " order by update desc " +" limit " + limit +" offset " + offset );
@@ -109,7 +109,7 @@
 			HashMap<String, String> row = list.get(i);
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = format.parse(row.get("created"));
-			DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
+			DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd",new Locale("JP", "JP", "JP"));
 				%>
 				<tr>
 				<td bgcolor="#FFFFFF" class="uk-h3 uk-width-medium-2-10 uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
@@ -145,7 +145,7 @@
 			<%}%>
 			</div>
 			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
-				style="<%if (list.size() < 10) {
+				style="<%if (list.size() < 100) {
 				out.print("display: none;");
 			}%>">
 				<span><a class="next-page uk-button uk-button-primary"
