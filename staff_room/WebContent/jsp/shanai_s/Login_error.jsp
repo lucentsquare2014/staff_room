@@ -13,8 +13,8 @@
 <body>
 <center>
 <div class="location"><div class="location2">
-<font class="error">ＩＤ・パスワードを確認して再入力してください</font><br><br>
-<button onClick="history.back()">再入力</button>
+<font class="error">このアカウントでは利用できません</font><br><br>
+<button onClick="history.back()">戻る</button>
 </div></div>
 </center>
 </body>
