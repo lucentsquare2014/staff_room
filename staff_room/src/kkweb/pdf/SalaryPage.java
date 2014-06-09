@@ -118,9 +118,9 @@ public class SalaryPage extends HttpServlet {
 		// ブラウザに出力するストリーム
 		ServletOutputStream out = null;
 		// エラー用ページURL
-		String disp = "/PayslipError.jsp";
+		String disp = "/jsp/shanai_s/PayslipError.jsp";
 //		String url = "http://www.lucentsquare.co.jp:8080/kk_web";
-		String url = "http://localhost:8080/kk_web";
+		String url = "//localhost:8080/staff_room";
 		// エラー用ページへのディスパッチャー
 		RequestDispatcher dispatch = request.getRequestDispatcher(disp);
 		HttpSession session = request.getSession();

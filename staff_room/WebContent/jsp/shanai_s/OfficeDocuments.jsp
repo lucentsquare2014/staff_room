@@ -1,6 +1,6 @@
 
 <%@ page import="java.sql.Date"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=shift-jis"
 	pageEncoding="UTF-8"%>
 <%@ page import="kkweb.beans.B_ShainMST"%>
 <%@ page
@@ -25,7 +25,7 @@ String selectAction(String name){
 <head>
 
 <script type="text/javascript" src="javascript/officedocuments.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
 <link rel="stylesheet" href="css/officedocuments.css" type="text/css">
 <link rel="stylesheet" href="Syanaibunshou.css" type="text/css">
 <%
@@ -165,7 +165,7 @@ String selectAction(String name){
 						<tr>
 							<td colspan=2>
 								<!-- 新着情報のテーブル -->
-								<form name=newinfoselect method="post">
+								<form name="newinfoselect" method="post">
 								<input type="hidden" value="" name="position">
 								</form>
 									<div id="newinfodiv">
@@ -181,6 +181,7 @@ String selectAction(String name){
 												<%-- 新着情報作成のループ開始 --%>
 												<%
 													// statuses have name, comments, yearmonth
+													System.out.println(statuses.size());
 													for (int i = 0; i < statuses.size(); i++) {
 														String name = statuses.get(i).getName();
 												%>
