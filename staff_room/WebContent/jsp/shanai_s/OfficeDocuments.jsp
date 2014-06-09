@@ -328,7 +328,7 @@ String selectAction(String name){
 						</tr>
 						<tr>
 							<td colspan=2><div align="right">
-									<font size="2"><a href="SystemSelect.jsp">[システム選択に戻る]</a></font>
+									<font size="2"><a href="/staff_room">[スタッフルームトップへ]</a></font>
 								</div></td>
 						</tr>
 

@@ -54,7 +54,7 @@ public class S_Login extends C_ChangePageBase {
 
 		try{
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String shainName = request.getParameter("shainID").trim();
 
@@ -98,7 +98,7 @@ public class S_Login extends C_ChangePageBase {
 
 		try{
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String PassWord = request.getParameter("Pwd").trim();
 
@@ -139,7 +139,7 @@ public class S_Login extends C_ChangePageBase {
 
 		try{
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String ShainID = request.getParameter("shainID").trim();
 			String PassWord = request.getParameter("Pwd").trim();

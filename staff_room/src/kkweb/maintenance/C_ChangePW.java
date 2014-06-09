@@ -90,7 +90,7 @@ public class C_ChangePW extends C_ChangePageBase {
 		Statement stmt = null;
 
 		try{
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 			C_CheckWord word = new C_CheckWord();
 
 			String id = request.getParameter("id");
@@ -108,7 +108,7 @@ public class C_ChangePW extends C_ChangePageBase {
 				return "未入力の項目があります。";
 
 			}
-			String pw2 = DigestUtils.shaHex(pw);
+			String pw2 = DigestUtils.sha1Hex(pw);
 			String sql = " where id = '"+id+"' and pw = '"+pw2+"'";
 			LoginDAO ldao = new LoginDAO();
 
@@ -129,7 +129,7 @@ public class C_ChangePW extends C_ChangePageBase {
 			}
 
 			int kousin = 0;
-			String New_Password = DigestUtils.shaHex(new_pw1);
+			String New_Password = DigestUtils.sha1Hex(new_pw1);
 			//System.out.println("ハッシュ"+New_Password);
 	//		sql = " update shainMST set pw = '"+new_pw1+"' where id = '"+id+"' and pw = '"+pw+"'";
 			sql = " update shainMST set pw = '"+New_Password+"' where id = '"+id+"' and pw = '"+pw2+"'";

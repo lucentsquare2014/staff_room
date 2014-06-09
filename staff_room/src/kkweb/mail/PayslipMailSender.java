@@ -175,7 +175,7 @@ public class PayslipMailSender extends HttpServlet {
 							+ br);
 
 					sb.append("URL : " + url
-							+ DigestUtils.shaHex(s.getNumber()+d.toString()) + br);
+							+ DigestUtils.sha1Hex(s.getNumber()+d.toString()) + br);
 					sb.append("-------------------------------------------------------------------"+ br);
 					cal.setTime(d);
 					cal.add(Calendar.MONTH, 2); // 支給日から2ヵ月後

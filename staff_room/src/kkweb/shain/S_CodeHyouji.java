@@ -34,7 +34,7 @@ public class S_CodeHyouji extends C_ChangePageBase {
 	public void doMain(HttpServletRequest request){
 
 		try{
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			HttpSession session = request.getSession(true);
 

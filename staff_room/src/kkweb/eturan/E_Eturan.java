@@ -13,7 +13,7 @@ public class E_Eturan extends C_ChangePageBase {
 	public String nextPage(HttpServletRequest request){
 
 		try{
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String nextpage = "/jsp/shanai_s/Escape_Eturan.jsp";
 			String check = request.getParameter("check");

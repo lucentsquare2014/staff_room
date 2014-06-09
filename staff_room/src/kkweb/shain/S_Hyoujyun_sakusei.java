@@ -37,7 +37,7 @@ public class S_Hyoujyun_sakusei extends C_ChangePageBase {
 
 		try{
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			HttpSession session = request.getSession(true);
 

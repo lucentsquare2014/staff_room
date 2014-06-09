@@ -96,7 +96,7 @@ public class S_Kinmu_hozon extends C_ChangePageBase {
 		try{
 //			long time11 = System.currentTimeMillis();
 			C_CheckWord word = new C_CheckWord();
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			HttpSession session = request.getSession(true);
 

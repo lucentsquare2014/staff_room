@@ -44,7 +44,7 @@ public class C_Holiday_tuika extends C_ChangePageBase {
 
 		try {
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 			C_CheckWord word = new C_CheckWord();
 			String month = request.getParameter("month");
 			month = word.checks(month);

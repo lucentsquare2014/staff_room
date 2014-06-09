@@ -71,7 +71,7 @@ public class C_Project_kousin extends  C_ChangePageBase {
 		Statement stmt = null;
 
 		try{
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String p_size = request.getParameter("p_size");
 			int size = Integer.parseInt(p_size);
