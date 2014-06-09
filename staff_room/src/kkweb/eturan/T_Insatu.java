@@ -18,15 +18,15 @@ public class T_Insatu  extends C_ChangePageBase {
 			String id2 = (String)session.getAttribute("key2");
 			if(id2 == null || id2.equals("false")){
 				
-				nextpage = "/Pw_Nyuryoku_system.jsp";
+				nextpage = "/jsp/shanai_s/Pw_Nyuryoku_system.jsp";
 			}else{
-				nextpage = "/Taishokusha_Gamen_Insatu.jsp";
+				nextpage = "/jsp/shanai_s/Taishokusha_Gamen_Insatu.jsp";
 				
 			}			
 			return nextpage;
 
 		}catch(Exception e){
-			String nextpage = "/ID_PW_Nyuryoku.jsp";
+			String nextpage = "/jsp/shanai_s/ID_PW_Nyuryoku.jsp";
 			
 			return nextpage;
 			//e.printStackTrace();
@@ -35,7 +35,7 @@ public class T_Insatu  extends C_ChangePageBase {
 
 	public String backPage(HttpServletRequest request){
 		try{
-			String nextpage = "/Login_error.jsp";
+			String nextpage = "/jsp/shanai_s/Login_error.jsp";
 			return nextpage;
 
 		}catch(Exception e){

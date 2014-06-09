@@ -19,7 +19,7 @@ public class S_Kinmu_houkoku extends C_ChangePageBase {
 
 		try{
 
-		String nextpage = "/Shouninirai.jsp";
+		String nextpage = "/jsp/shanai_s/Shouninirai.jsp";
 		return nextpage;
 
 		}catch(Exception e){

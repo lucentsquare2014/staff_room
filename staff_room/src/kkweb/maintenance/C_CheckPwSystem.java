@@ -41,7 +41,7 @@ public class C_CheckPwSystem extends C_ChangePageBase {
 			HttpSession hs = request.getSession(true);    
 			hs.setAttribute("key2",Key);
 			
-			String nextpage = "/SystemKanri_MenuGamen.jsp";
+			String nextpage = "/jsp/shanai_s/SystemKanri_MenuGamen.jsp";
 			return nextpage;
 
 		}catch(Exception e){
@@ -53,7 +53,7 @@ public class C_CheckPwSystem extends C_ChangePageBase {
 	public String backPage(HttpServletRequest request){
 
 		try{
-			String nextpage ="/SystemLoginError.jsp";
+			String nextpage ="/jsp/shanai_s/SystemLoginError.jsp";
 			return nextpage;
 
 		}catch(Exception e){

@@ -43,7 +43,7 @@ public class S_Login extends C_ChangePageBase {
 			//return null;
 
 
-			String nextpage="/ID_PW_Nyuryoku.jsp";
+			String nextpage="/jsp/shanai_s/ID_PW_Nyuryoku.jsp";
 			return nextpage;
 
 		}
@@ -199,7 +199,7 @@ public class S_Login extends C_ChangePageBase {
 
 		try{
 
-			String nextpage ="/Login_error.jsp";
+			String nextpage ="/jsp/shanai_s/Login_error.jsp";
 			return nextpage;
 
 		}catch(Exception e){

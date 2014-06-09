@@ -34,7 +34,7 @@ public class C_Project_tuika extends  C_ChangePageBase {
 
 		try{
 
-			String nextpage = "/Project_Maintenance.jsp";
+			String nextpage = "/jsp/shanai_s/Project_Maintenance.jsp";
 
 			return nextpage;
 
@@ -49,7 +49,7 @@ public class C_Project_tuika extends  C_ChangePageBase {
 
 		try{
 
-			String backpage = "/Maintenance_error.jsp";
+			String backpage = "/jsp/shanai_s/Maintenance_error.jsp";
 
 			return backpage;
 

@@ -15,12 +15,12 @@ public class E_Eturan extends C_ChangePageBase {
 		try{
 			request.setCharacterEncoding("Windows-31J");
 
-			String nextpage = "/Escape_Eturan.jsp";
+			String nextpage = "/jsp/shanai_s/Escape_Eturan.jsp";
 			String check = request.getParameter("check");
 
 			if(check != null && !check.equals("")){
 
-				nextpage = "/Escape_Insatu.jsp";
+				nextpage = "/jsp/shanai_s/Escape_Insatu.jsp";
 			}
 			return nextpage;
 
@@ -34,7 +34,7 @@ public class E_Eturan extends C_ChangePageBase {
 	public String backPage(HttpServletRequest request){
 
 		try{
-			String nextpage = "/Nyuryoku_file_error.jsp";
+			String nextpage = "/jsp/shanai_s/Nyuryoku_file_error.jsp";
 			return nextpage;
 		}catch(Exception e){
 			//e.printStackTrace();

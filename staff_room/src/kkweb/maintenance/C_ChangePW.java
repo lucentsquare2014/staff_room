@@ -56,7 +56,7 @@ public class C_ChangePW extends C_ChangePageBase {
 	public String nextPage(HttpServletRequest request){
 
 		try{
-			String nextpage = "/PW_Change_kanryou.jsp";
+			String nextpage = "/jsp/shanai_s/PW_Change_kanryou.jsp";
 
 			return nextpage;
 
@@ -74,7 +74,7 @@ public class C_ChangePW extends C_ChangePageBase {
 			//String nextpage ="/Shain_tuika_error.jsp";
 			/// 2013/07/12 新井　変更
 			/// 目的 : エラー画面を変更するため
-			String nextpage ="/PW_Change_error.jsp";
+			String nextpage ="/jsp/shanai_s/PW_Change_error.jsp";
 			return nextpage;
 
 		}catch(Exception e){

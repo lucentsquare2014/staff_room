@@ -2,26 +2,26 @@ package kkweb.common;
 
 public class C_Sengetu {
 
-	public String sengetu_month(String month){
+	public String sengetu_month(String month) {
 
 		int m = Integer.parseInt(month);
 
-		if(m==1){
+		if (m == 1) {
 
 			return "12";
 
-		}else{
+		} else {
 
-			return Integer.toString(m-1);
+			return Integer.toString(m - 1);
 
 		}
 	}
 
-	public String sengetu_year(String year,String month){
+	public String sengetu_year(String year, String month) {
 
 		int y = Integer.parseInt(year);
 
-		if(sengetu_month(month).equals("12")){
+		if (sengetu_month(month).equals("12")) {
 
 			y--;
 

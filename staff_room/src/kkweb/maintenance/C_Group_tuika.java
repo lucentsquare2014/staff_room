@@ -15,7 +15,7 @@ public class C_Group_tuika extends C_ChangePageBase {
 
 		try{
 
-			String nextpage = "/Group_Maintenance.jsp";
+			String nextpage = "/jsp/shanai_s/Group_Maintenance.jsp";
 
 			return nextpage;
 
@@ -31,7 +31,7 @@ public class C_Group_tuika extends C_ChangePageBase {
 
 		try{
 
-			String backpage = "/Maintenance_error.jsp";
+			String backpage = "/jsp/shanai_s/Maintenance_error.jsp";
 
 			return backpage;
 

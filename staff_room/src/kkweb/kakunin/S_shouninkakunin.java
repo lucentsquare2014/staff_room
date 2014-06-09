@@ -61,7 +61,7 @@ public class S_shouninkakunin extends C_ChangePageBase {
 
 		try{
 			
-			String nextpage = "/Shouninkanryou.jsp";
+			String nextpage = "/jsp/shanai_s/Shouninkanryou.jsp";
 
 			return nextpage;
 
@@ -79,7 +79,7 @@ public class S_shouninkakunin extends C_ChangePageBase {
 
 		try{
 			
-			String nextpage = "/Shounin_error.jsp";
+			String nextpage = "/jsp/shanai_s/Shounin_error.jsp";
 
 			return nextpage;
 

@@ -133,13 +133,13 @@ public class S_Kinmuhoukoku_Nyuryoku extends C_ChangePageBase {
 
 			if(flg.equals("0")){
 				
-				nextpage = "/Syounin_zumi.jsp";
+				nextpage = "/jsp/shanai_s/Syounin_zumi.jsp";
 			}else if(flg.equals("error")){
 				
-				nextpage = "/ID_PW_Nyuryoku.jsp";
+				nextpage = "/jsp/shanai_s/ID_PW_Nyuryoku.jsp";
 			}else{
 				
-				nextpage = "/Kinmu_nyuryoku.jsp";
+				nextpage = "/jsp/shanai_s/Kinmu_nyuryoku.jsp";
 			}
 			
 			return nextpage;
@@ -156,7 +156,7 @@ public class S_Kinmuhoukoku_Nyuryoku extends C_ChangePageBase {
 
 		try{
 			
-			String nextpage = "/Nyuryoku_file_error.jsp";
+			String nextpage = "/jsp/shanai_s/Nyuryoku_file_error.jsp";
 
 			return nextpage;
 

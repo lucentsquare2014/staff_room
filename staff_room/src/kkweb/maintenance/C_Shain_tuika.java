@@ -55,7 +55,7 @@ public class C_Shain_tuika extends C_ChangePageBase {
 	public String nextPage(HttpServletRequest request){
 
 		try{
-			String nextpage = "/Shain_tuika_kanryou.jsp";
+			String nextpage = "/jsp/shanai_s/Shain_tuika_kanryou.jsp";
 
 			return nextpage;
 
@@ -70,7 +70,7 @@ public class C_Shain_tuika extends C_ChangePageBase {
 	public String backPage(HttpServletRequest request){
 
 		try{
-			String nextpage ="/Shain_tuika_error.jsp";
+			String nextpage ="/jsp/shanai_s/Shain_tuika_error.jsp";
 			return nextpage;
 
 		}catch(Exception e){

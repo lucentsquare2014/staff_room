@@ -21,7 +21,7 @@ public class S_CodeHyouji extends C_ChangePageBase {
 	public String nextPage(HttpServletRequest request){
 
 		try{
-			String nextpage = "/Kinmu_nyuryoku.jsp";
+			String nextpage = "/jsp/shanai_s/Kinmu_nyuryoku.jsp";
 
 			return nextpage;
 

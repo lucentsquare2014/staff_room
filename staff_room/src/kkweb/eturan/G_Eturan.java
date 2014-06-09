@@ -57,7 +57,7 @@ public class G_Eturan extends C_ChangePageBase{
 	public String nextPage(HttpServletRequest request){
 
 		try{
-			String nextpage = "/Eturan_Gamen.jsp";
+			String nextpage = "/jsp/shanai_s/Eturan_Gamen.jsp";
 
 			return nextpage;
 
@@ -73,7 +73,7 @@ public class G_Eturan extends C_ChangePageBase{
 
 		try{
 
-			String nextpage = "/Nyuryoku_file_error.jsp";
+			String nextpage = "/jsp/shanai_s/Nyuryoku_file_error.jsp";
 
 			return nextpage;
 

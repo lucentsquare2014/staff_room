@@ -16,7 +16,7 @@ public class C_Shain_Jyouhou extends C_ChangePageBase {
 	public String nextPage(HttpServletRequest request){
 
 		try{
-			String nextpage = "/Shain_data.jsp";
+			String nextpage = "/jsp/shanai_s/Shain_data.jsp";
 			return nextpage;
 
 		}catch(Exception e){

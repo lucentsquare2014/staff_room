@@ -55,7 +55,7 @@
 </table>
 <div style="text-align: right; margin-right: 10px;"><a href="ChangePW.jsp" class="link"><font class="link" Style="font-size:10px;">＊パスワード変更</font></a></div></div>
 </form><br>
-<a href="http://www.lucentsquare.co.jp/staff/staff_main.html" class="link"><font class="link"><small>[ スタッフルームへ戻る ]</small></font></a></div>
+<a href="//www.lucentsquare.co.jp/staff/staff_main.html" class="link"><font class="link"><small>[ スタッフルームへ戻る ]</small></font></a></div>
 </center>
 </body>
 <%--

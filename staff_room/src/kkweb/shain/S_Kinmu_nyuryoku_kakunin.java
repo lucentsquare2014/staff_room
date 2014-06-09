@@ -62,7 +62,7 @@ public class S_Kinmu_nyuryoku_kakunin extends C_ChangePageBase {
 
 		try{
 
-			String nextpage = "/Kinmu_nyuryoku_kakunin.jsp";
+			String nextpage = "/jsp/shanai_s/Kinmu_nyuryoku_kakunin.jsp";
 
 			return nextpage;
 
@@ -76,7 +76,7 @@ public class S_Kinmu_nyuryoku_kakunin extends C_ChangePageBase {
 	public String backPage(HttpServletRequest request){
 
 		try{
-			String nextpage ="/Kinmu_hozon_error.jsp";
+			String nextpage ="/jsp/shanai_s/Kinmu_hozon_error.jsp";
 			return nextpage;
 
 		}catch(Exception e){

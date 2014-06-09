@@ -23,7 +23,7 @@ public class T_Sakusei extends C_ChangePageBase {
 	public String nextPage(HttpServletRequest request){
 
 		try{
-			String nextpage = "/Taishokusha_Gamen_Insatu.jsp";
+			String nextpage = "/jsp/shanai_s/Taishokusha_Gamen_Insatu.jsp";
 			return nextpage;
 
 		}catch(Exception e){
@@ -35,7 +35,7 @@ public class T_Sakusei extends C_ChangePageBase {
 
 	public String backPage(HttpServletRequest request){
 		try{
-			String nextpage = "/Login_error.jsp";
+			String nextpage = "/jsp/shanai_s/Login_error.jsp";
 			return nextpage;
 
 		}catch(Exception e){

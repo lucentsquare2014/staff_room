@@ -79,9 +79,9 @@ public class S_Joukyou extends C_ChangePageBase{
 			String id2 = (String)session.getAttribute("key");
 			if(id2 == null || id2.equals("false")){
 				
-				nextpage = "/ID_PW_Nyuryoku.jsp";
+				nextpage = "/jsp/shanai_s/ID_PW_Nyuryoku.jsp";
 			}else{
-				nextpage = "/Shouninjoukyou_Itiran.jsp";
+				nextpage = "/jsp/shanai_s/Shouninjoukyou_Itiran.jsp";
 				
 			}	
 			
@@ -91,7 +91,7 @@ public class S_Joukyou extends C_ChangePageBase{
 		}catch(Exception e){
 
 
-			String nextpage = "/ID_PW_Nyuryoku.jsp";
+			String nextpage = "/jsp/shanai_s/ID_PW_Nyuryoku.jsp";
 			
 			return nextpage;
 			
@@ -102,7 +102,7 @@ public class S_Joukyou extends C_ChangePageBase{
 
 		try{
 
-			String nextpage = "/Nyuryoku_file_error.jsp";
+			String nextpage = "/jsp/shanai_s/Nyuryoku_file_error.jsp";
 
 			return nextpage;
 

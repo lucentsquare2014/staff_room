@@ -14,7 +14,7 @@ public class C_Holiday_tuika extends C_ChangePageBase {
 
 		try{
 
-			String nextpage = "/Holiday_Maintenance.jsp";
+			String nextpage = "/jsp/shanai_s/Holiday_Maintenance.jsp";
 
 			return nextpage;
 
@@ -29,7 +29,7 @@ public class C_Holiday_tuika extends C_ChangePageBase {
 
 		try{
 
-			String backpage = "/Maintenance_error.jsp";
+			String backpage = "/jsp/shanai_s/Maintenance_error.jsp";
 
 			return backpage;
 

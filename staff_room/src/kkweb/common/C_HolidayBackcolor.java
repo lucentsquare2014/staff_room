@@ -2,24 +2,24 @@ package kkweb.common;
 
 public class C_HolidayBackcolor {
 
-	public String holidaycolor(String youbi,String holiday){
+	public String holidaycolor(String youbi, String holiday) {
 
-		try{
+		try {
 			String bgcolor = "";
 
-			if(youbi.equals("土")){
+			if (youbi.equals("土")) {
 
 				bgcolor = "#6495ED";
 
-			}else if(youbi.equals("日")){
+			} else if (youbi.equals("日")) {
 
 				bgcolor = "#FA8072";
 
-			}else if(!holiday.equals("")){
+			} else if (!holiday.equals("")) {
 
 				bgcolor = "#FA8072";
 
-			}else{
+			} else {
 
 				bgcolor = "#F5F5F5";
 
@@ -27,7 +27,7 @@ public class C_HolidayBackcolor {
 
 			return bgcolor;
 
-		}catch(Exception e){
+		} catch (Exception e) {
 
 			e.printStackTrace();
 

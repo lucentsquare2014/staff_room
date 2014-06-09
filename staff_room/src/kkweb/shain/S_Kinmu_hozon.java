@@ -59,7 +59,7 @@ public class S_Kinmu_hozon extends C_ChangePageBase {
 	public String nextPage(HttpServletRequest request){
 
 		try{
-			String nextpage = "/Kinmu_hozon.jsp";
+			String nextpage = "/jsp/shanai_s/Kinmu_hozon.jsp";
 			//HttpSession session = request.getSession();
 			//B_ShainMST shainmst = (B_ShainMST)session.getAttribute("ShainMST");
 			return nextpage;
@@ -76,7 +76,7 @@ public class S_Kinmu_hozon extends C_ChangePageBase {
 	public String backPage(HttpServletRequest request){
 
 		try{
-			String nextpage ="/Kinmu_hozon_error.jsp";
+			String nextpage ="/jsp/shanai_s/Kinmu_hozon_error.jsp";
 			return nextpage;
 
 		}catch(Exception e){
