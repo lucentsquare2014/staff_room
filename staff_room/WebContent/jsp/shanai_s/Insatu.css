@@ -1,0 +1,37 @@
+@page{
+	margin: 10mm 15mm;
+	page-break-inside: avoid;
+}
+@media print{
+	body {
+		/zoom: 1;	/* IE6,7 */
+	}
+	html>/**/body {
+		zoom /***/:100%9;
+	}
+	*:first-child+html body{
+		zoom:100%;
+	}
+	html>/**/body #wrapper {	/* IE6,7 以外 */
+		display: table;
+	}
+	html>/**/body #contents {	/* IE6,7 以外 */
+		display: table-cell;
+		float: none;
+		vertical-align: top;
+	}　
+	html>/**/body #sidebar {	/* IE6,7 以外 */
+		display: table-cell;
+		float: none;
+		vertical-align: top;
+	}　
+	#contents {
+		/zoom: 1;	/* IE6,7 */
+	}　
+	#sidebar {
+		/zoom: 1;	/* IE6,7 */
+	}
+	.noprint{
+		display:none;
+	}　	
+}

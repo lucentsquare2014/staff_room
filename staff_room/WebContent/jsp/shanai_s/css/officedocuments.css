@@ -1,0 +1,156 @@
+@CHARSET "UTF-8";
+table.frame {
+	background-color: #f0f8ff;
+	border-color: #008080;
+	border-width: 2px;
+	border-style: solid;
+	rules: none;
+	width: 800px;
+	padding: 10px 0px;
+}
+
+table.newtable {
+	background-color: white;
+	border-color: #008080;
+	border-style: solid;
+	width: 100%;
+	border-width: 0px;
+}
+
+table.syounintable {
+	background-color: white;
+	border-color: #008080;
+	border-style: solid;
+	width: 100%;
+	border-width: 0px;
+}
+
+table.coment {
+	border-width: 0px;
+	background-color: #f0f8ff;
+	font-size: small;
+}
+
+table.newtable tbody tr:HOVER {
+	background-color: rgb(255,255,120);
+	cursor: default;
+}
+
+table.syounintable tbody tr:HOVER {
+	background-color: rgb(255,255,120);
+	cursor: default;
+}
+
+table.syounintable tbody tr:ACTIVE {
+	background-color: rgb(120,255,255);
+	cursor: default;
+}
+
+td {
+	text-align: center;
+	
+}
+
+td.newinfot {
+	text-align: right;
+}
+
+td.syounininfot {
+	text-align: right;
+}
+
+td.date {
+	text-align: center;
+	width: 20%;
+}
+
+td.type {
+	text-align: left;
+	width: 40%;
+}
+
+td.status {
+	text-align: left;
+	width: 40%;
+}
+
+td.salary {
+	text-align: left;
+	width: 120px;
+}
+
+td.yearmonth {
+	text-align: left;
+}
+
+td.user_name {
+	text-align: right;
+}
+
+td.tyuui1 {
+	text-align: center;
+	color: red;
+}
+
+td.tyuui {
+	text-align: left;
+}
+
+div#newinfodiv {
+	float: center;
+	width: 800px;
+	height: 200px;
+	max-height: 200px;
+	overflow-y: scroll;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	border-color: #008080;
+	border-width: 2px;
+	border-style: solid;
+	background-color: white;
+}
+
+div#syounininfodiv {
+	float: center;
+	width: 800px;
+	height: 200px;
+	max-height: 200px;
+	overflow-y: scroll;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	border-color: #008080;
+	border-width: 2px;
+	border-style: solid;
+	background-color: white;
+}
+
+h1 {
+	font-size: 25px;
+}
+
+th {
+	height: 30px;
+	text-align: center;
+	border-bottom-style: solid;
+	border-bottom-color: #008080;
+	border-bottom-width: 2px;
+}
+
+a {
+	text-decoration: none;
+}
+
+select.salaryselect1 {
+		width:22%;
+	
+}
+select.salaryselect2 {
+		width:22%;
+	
+}
+select.docuselect {
+	width:22%;
+}
+

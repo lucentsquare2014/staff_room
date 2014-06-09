@@ -1,0 +1,51 @@
+@CHARSET "windows-31j";
+
+body {
+	background-color: #F0F8FF;
+	text-align: center;
+	position: center;
+}
+
+table {
+	background-color: #f5f5f5;
+	border-color: #008080;
+	border-width: 3px;
+	border-style: solid;
+}
+
+table.main {
+	rules: noneS;
+	width: 800px;
+	height: 300px;
+}
+
+
+hr {
+	/*
+	size: 3px;
+	color: #008080;
+	*/
+	/*border: inset 1px #008080;*/
+}
+
+font.title {
+	font-size: 30px;
+	font-family: sans-serif
+}
+
+a.a1 {
+	text-decoration: none; /*テキストの下線を消す*/
+	border-left: 8px solid #008080; /*文字の横に付箋のようなマークを入れる*/
+	border-bottom: solid 1px #008080; /*文字の下に点線を入れる設定*/
+	width: 20px; /*見出しの横幅*/
+	line-height: 45px; /*高さ設定*/
+	padding-top: 5px; /*外側上方向の余白を指定*/
+	padding-left: 10px; /*文字の左にスペース*/
+	padding-bottom: 5px; /*外側下方向の余白を指定*/
+	border-left: solid 15px #008080; /*左ボーダーのスタイル・太さ・色を指定する*/
+	color: #190808; /*文字の色*/
+}
+
+a.a2 {
+	text-decoration: none;
+}

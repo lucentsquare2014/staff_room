@@ -1,0 +1,122 @@
+@CHARSET "UTF-8";
+td {
+	text-align: center;
+}
+
+table.for {
+	background-color: white;
+	width: 100%;
+	border-width: 0px;
+}
+
+table.sendform {
+	width: 100%;
+	border-width: 0px;
+}
+
+table.sendform td.reselect{
+	width: 50%;
+	text-align: left;
+}
+
+td.reselect{
+	width: 50%;
+	text-align: left;
+}
+
+table.sendform td.submit{
+	width: 50%;
+	text-align: right;
+}
+
+td.submit{
+	width: 50%;
+	text-align: right;
+}
+table.sendform tr.home{
+	text-align: right;
+}
+
+td.mail{
+	text-align: left;
+}
+
+td.name{
+	text-align: center;
+}
+
+
+input.button {
+	width: 150px;
+}
+
+a {
+	font-size: small;
+	text-decoration: none;
+}
+
+div#sendlist {
+	width: 800px;
+	height: 150px;
+	max-height: 150px;
+	overflow-y: scroll;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	border-width: 2px;
+	border-color: #008080;
+	border-style: solid;
+	background-color: white;
+}
+
+div#sendformdiv {
+	width: 800px;
+}
+
+tr.home td {
+	text-align: right;
+}
+
+td.logUnsend {
+	color: red;
+}
+
+td.logSended {
+	color: blue;
+}
+
+table.mailtmp {
+	background-color: white;
+	width: 100%;
+	border-width: 2px;
+}
+
+table.mailtmp td {
+	text-align: left;
+}
+
+table.mailtmp td.midasi {
+	text-align: center;
+	color: blue;
+	padding-top: 10px;
+}
+
+font.rewritable {
+	font-style: italic;
+	color: green;
+}
+
+font.selectable {
+	font-style: italic;
+	color: navy;
+}
+
+td.groupFilterTd {
+	text-align: right;
+}
+
+hr.underline {
+	background-color : #008080;
+	border-width: 0px;
+}
+
