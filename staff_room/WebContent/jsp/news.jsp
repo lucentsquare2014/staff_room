@@ -115,17 +115,16 @@
 				<td bgcolor="#FFFFFF" class="uk-h3 uk-width-medium-2-10 uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
 				<td bgcolor="#FFFFFF" class="uk-h3 uk-width-medium-8-10 uk-text-left">
 				<!--記事のタイトルなどを表示-->
+				<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
+								<%}%>
 					<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+					<div class="uk-badge uk-badge-danger">new</div>
 						<a id="<%= row.get("news_id") %>" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %></a>
-						&nbsp;<div class="uk-badge uk-badge-danger">new</div>
-						<%if(row.get("primary_flag").equals("1")){%>
-							&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
-						<%}%>
+						&nbsp;
 					<%}else{%>
 						<a data-uk-toggle="{target:'#my-id<%=i%>'}"><%= row.get("title") %></a>
-						<%if(row.get("primary_flag").equals("1")){%>
-							&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
-						<%}%>
+
 					<%}%>
 					<%if (!row.get("filename").equals("")){ %>
                     	<div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden">
