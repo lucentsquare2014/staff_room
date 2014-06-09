@@ -31,7 +31,7 @@
 <tr class="uk-text-center">
     <!-- -----------管理者用チェックボックス作成----------- -->
 	<% if(user2.equals("admin")){%>
-	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="aaa"></td>
+	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="<%=filename[i]%>"></td>
 	<%}%>
 
 	<!-- フォーマットを変換した 更新日時を出力　-->
