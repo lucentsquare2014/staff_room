@@ -19,9 +19,9 @@ $(function(){
 	
 	$("#delete").click(function(){
 		var page = $("input[name='page']").val();
-		var filenames = [];
+		var filenames = "";
 		$(".uk-table :checked").each(function(){
-			filenames.push($(this).val());
+			filenames += $(this).val() + ",";
 			console.log($(this).val());
 		});
 		$.ajax({
