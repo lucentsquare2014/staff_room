@@ -1,0 +1,222 @@
+@CHARSET "UTF-8";
+
+input.bt {
+	width: 150px;
+}
+table.main {
+	width : 900px;
+}
+
+table.selectTable {
+	background-color: white;
+	border-width: 0px;
+	width: 100%;
+}
+table.selectedTable {
+	background-color: white;
+	border-width: 0px;
+	width: 100%;
+}
+
+div#selectTableDiv {
+	width: 100%;
+	min-height: 150px;
+	max-height: 150px;
+	overflow-y: scroll;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	border-width: 2px;
+	border-color: #008080;
+	border-style: solid;
+	background-color: white;
+}
+
+div#selectedTableDiv {
+	width: 100%;
+	max-height: 150px;
+	min-height: 150px;
+	overflow-y: scroll;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	border-width: 2px;
+	border-color: #008080;
+	border-style: solid;
+	background-color: white;
+}
+
+div#attentionDiv {
+	width: 100%;
+	text-align: center;
+}
+
+div#attentionDiv tbody {
+	text-align: left;
+	font-size: small;
+}
+div#attentionDiv thead {
+	color: red;
+}
+
+div#selectTableDiv thead {
+	text-align: center;
+	cursor: default;
+}
+
+div#attentionDiv table {
+	border-width: 0px;
+	font-size: small;
+}
+
+div#attentionDiv tr.at td {
+	text-align: left;
+}
+
+div#attentionDiv th.0{
+	font-size: medium;
+}
+
+div#selectedTableDiv td.group {
+	text-align: center;
+	cursor: default;
+	width: 10%;
+}
+div#selectedTableDiv td.syainbangou {
+	text-align: center;
+	cursor: default;
+	width: 10%;
+}
+div#selectedTableDiv td.name {
+	text-align: center;
+	cursor: default;
+	width: 20%;
+}
+
+div#selectedTableDiv td.mail {
+	text-align: left;
+	cursor: default;
+	width: 30%;
+}
+div#selectedTableDiv td.date {
+	text-align: left;
+	cursor: default;
+	width: 15%;
+	font-size: small;
+}
+div#selectedTableDiv td.log {
+	text-align: left;
+	cursor: default;
+	width: 15%;
+}
+
+
+
+
+
+
+div#selectTableDiv td.check {
+	text-align: left;
+	cursor: default;
+	width: 2%;
+}
+div#selectTableDiv td.group {
+	text-align: center;
+	cursor: default;
+	width: 10%;
+}
+div#selectTableDiv td.syainbangou {
+	text-align: center;
+	cursor: default;
+	width: 10%;
+}
+div#selectTableDiv td.name {
+	text-align: center;
+	cursor: default;
+	width: 20%;
+}
+
+div#selectTableDiv td.mail {
+	text-align: left;
+	cursor: default;
+	width: 30%;
+}
+
+div#selectTableDiv td.date {
+	text-align: left;
+	cursor: default;
+	width: 14%;
+	font-size: small;
+}
+div#selectTableDiv td.log {
+	text-align: left;
+	cursor: default;
+	width: 12%;
+}
+
+
+a {
+	font-size: small;
+	text-decoration: none;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
+tr.filterTr td {
+	text-align: center;
+}
+
+tr.home td {
+	text-align: right;
+}
+
+div#selectTableDiv table.selectTable tbody tr:HOVER {
+	background-color: rgb(255,255,120);
+	cursor: default;
+}
+td.logUnsend {
+	color: red;
+}
+
+td.logSended {
+	color: blue;
+}
+td.groupFilterTd {
+	text-align: right;
+}
+table.mailtmp {
+	background-color: white;
+	width: 100%;
+	border-width: 2px;
+}
+
+table.mailtmp td {
+	text-align: left;
+}
+
+table.mailtmp td.midasi {
+	text-align: center;
+	color: blue;
+	padding-top: 10px;
+}
+
+
+font.rewritable {
+	font-style: italic;
+	color: green;
+}
+
+font.selectable {
+	font-style: italic;
+	color: navy;
+}
+hr.underline {
+	background-color : #008080;
+	border-width: 0px;
+}

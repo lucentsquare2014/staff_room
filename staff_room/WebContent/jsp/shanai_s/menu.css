@@ -1,0 +1,139 @@
+@CHARSET "windows-31j";
+body{
+	background-color:#F0F8FF;
+}
+table.ichiran{
+	border:inset 10px #008080;
+}
+td.ichiran{
+	padding-top:5;
+	padding-right:0;
+	padding-left:0;
+	width:800px;
+}
+font.title1{
+	font-size: xx-large;
+	font-family:serif ;
+}
+font.title2{
+	font-size: 30px;
+	font-family:serif ;
+}
+font.index1{
+	font-size: large;
+	font-family:serif ;
+}
+font.index2{
+	font-size: x-large;
+	font-family:serif ;
+}
+font.ichiran{
+	font-size:12px;
+}
+font.link{
+	color:blue;
+}
+font.memo1{
+	font-size: 12px ;
+	align: left ;
+}
+a.link{
+	text-decoration:none;
+	position	:	relative;
+	top		:	5px;
+}
+input.botton1{
+	cursor: pointer;
+}
+input.botton2{
+	width:200px;
+	cursor: pointer;
+	
+}
+input.botton3{
+	width:165px;
+	cursor: pointer;
+	font-size:12px;
+}
+ul{
+	list-style-type: none;
+	margin: 0 0 10px;
+}
+li{
+	display: block;
+	margin-bottom: 1px;
+	padding: 5px 0 5px 10px;
+	width: 550px;
+	text-decoration: none;
+	text-align: left ;
+	border-left: 10px solid #008080;
+	border-bottom: 1px solid #008080;
+	color: #000000;
+}
+select.year{
+	width: 60px;
+	height: 20px;
+	font-size: 12px;
+}
+select.month{
+	width: 50px;
+	height: 20px;
+	font-size: 12px;
+}
+select.group{
+	width: 140px;
+	height: 20px;
+	font-size: 12px;
+}
+div.box1 {
+	width: 710px;
+	height: 350px;
+	background-color: #f5f5f5;
+	position: relative;
+	left: 0px;
+	bottom: 300px;
+	padding-top:5px;
+	border-top:3px solid #008080;
+	border-right:3px solid #008080;
+	border-left:3px solid #008080;
+	border-bottom:3px solid #008080;
+}
+div.box2 {
+	width: 710px;
+	height: 300px;
+	background-color: #f5f5f5;
+	position: relative;
+	left: 0px;
+	bottom: 300px;
+	padding-top:5px;
+	border-top:3px solid #008080;
+	border-right:3px solid #008080;
+	border-left:3px solid #008080;
+	border-bottom:3px solid #008080;
+}
+div.box3 {
+	width: 710px;
+	height: 300px;
+	background-color: #f5f5f5;
+	position: relative;
+	bottom: 300px;
+	margin-top: 60px;
+}
+div.box4 {
+	width: 710px;
+	height: 350px;
+	background-color: #696969;
+	position: relative;
+	top: 75px;
+	left: 15px;
+	padding-top:5px;
+}
+div.box5 {
+	width: 710px;
+	height: 300px;
+	background-color: #696969;
+	position: relative;
+	top: 25px;
+	left: 15px;
+	padding-top:5px;
+}

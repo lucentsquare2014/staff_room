@@ -1,47 +1,75 @@
-<%@page import="java.util.Enumeration"%>
-<%@ page language="java" contentType="text/html; charset=shift_JIS"
-	pageEncoding="shift_JIS"%>
-<%@ page import="login.GetCookie"%>
-<%
-	if (session.getAttribute("login") == null) {
-		response.sendRedirect("/staff_room/jsp/top/top.jsp");
-	}
-%>
+<%@ page language="java" contentType="text/html; charset=shift-jis"
+	pageEncoding="utf-8"%>
+<%@ page import="kkweb.dao.*"%>
+<%@ page import="kkweb.beans.*"%>
+<jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<html lang="ja">
+<%	
+	String id2 = (String)session.getAttribute("key");
+	if(id2 != null ? id2.equals("鍵") : false){	
+%>
+
+<html>
 <head>
-<script type="text/javascript">
-	window.onload = function() {
-		document.theform.submit();
-	};
-	window.onunload = function() {
-		document.body.style.cursor = 'auto';
-		document.theform.aa.disabled = false;
-		document.theform.bb.disabled = false;
-	}
-	function submit1() {
-		document.body.style.cursor = 'wait';
-		document.theform.aa.disabled = true;
-		document.theform.bb.disabled = true;
-		document.theform.submit();
-	}
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
-<meta http-equiv="Content-Language" content="ja">
-<link rel="stylesheet" href="login.css" type="text/css">
-<title>�F�؉��</title>
+<link rel="stylesheet" href="Syanaibunshou.css" type="text/css">
+<link rel="stylesheet" href="css/systemselect.css" type="text/css">
+
+<%!// リンク用文字列
+	//String kintai_login = "http://localhost:8080/kk_local/ID_PW_Nyuryoku.jsp";
+	//String kintai_login = "http://www.lucentsquare.co.jp:8080/kk_web/ID_PW_Nyuryoku.jsp";
+	String kintai_login = "ID_PW_Nyuryoku.jsp";
+	//String officedocuments = "OfficeDocuments.jsp";
+	//String officedocuments = "http://www.lucentsquare.co.jp:8080/pc_web/OfficeDocuments.jsp";
+	String officedocuments = "OfficeDocuments.jsp";
+	//String kintai_menu = "http://localhost:8080/kk_local/Menu_Gamen.jsp";
+	//String kintai_menu = "http://www.lucentsquare.co.jp:8080/kk_web/Menu_Gamen.jsp";
+	String kintai_menu = "Menu_Gamen.jsp";
+	String msj = "menu.jsp";%>
+
+<title>システム選択画面</title>
 </head>
 <body>
-	<form method="POST"
-		action="//www.lucentsquare.co.jp:8080/kk_web/s_login" name="theform">
-		<input type="hidden" name="action" value="gate"> <input
-			type="hidden" name="shainID"
-			value="<%if (session.getAttribute("login") != null) {%><%=session.getAttribute("login")%><%}%>"
-			size="30" maxlength="20" class="text"> <input type="hidden"
-			name="Pwd"
-			value="<%if (GetCookie.get("pass_cookie", request) != null) {%><%=GetCookie.get("pass_cookie", request).getValue()%><%}%>"
-			size="25" maxlength="20">
-	</form>
+	<center>
+		<div class=main>
+			<div class="shadowbox">
+				<div class="mainbox">
+					<table class="main">
+						<tr>
+							<th><font class=title>システム選択</font>
+								<hr></th>
+						</tr>
+						<tr>
+							<td class="tdMsj">
+							<center>
+							<form action="<%=msj%>" method="post" name="MSJform">
+								<input type="hidden" name="id" value="<%=ShainMST.getId()%>">
+								<div class="pMsj"><input class="msj" type="submit" value="社内スケジュール" ></div>
+							</form>
+							</center>
+							</td>
+						</tr>
+						<tr>
+							<td><a class=a1
+								href="<%=kintai_menu%>">社内勤怠システム
+									&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+						</tr>
+						<tr>
+							<td><a class=a1 href="<%=officedocuments%>">社内文書システム
+									&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+						</tr>
+						<tr>
+							<td class=b><a class=a2
+								href="http://www.lucentsquare.co.jp/staff/staff_main.html">［スタッフルームに戻る］
+							</a></td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+		</div>
+	</center>
 </body>
 </html>
+<%}%>

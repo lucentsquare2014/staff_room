@@ -1,0 +1,84 @@
+@CHARSET "windows-31j";
+
+body {
+	background-color: #F0F8FF;
+}
+
+input.button {
+	cursor: pointer;
+	width: 100px;
+}
+
+input.text {
+	ime-mode: disabled;
+}
+
+font.title {
+	font-size: x-large;
+	font-family: serif;
+}
+
+font.link {
+	color: blue;
+}
+
+a.link {
+	text-decoration: none;
+}
+
+div.box1 {
+	width: 710px;
+	height: 380px;
+	background-color: #f5f5f5;
+	position: relative;
+	left: 0;
+	bottom: 320px;
+	padding-top: 5px;
+	border-top: 3px solid #008080;
+	border-right: 3px solid #008080;
+	border-left: 3px solid #008080;
+	border-bottom: 3px solid #008080;
+}
+
+div.box2 {
+	width: 400px;
+	height: 100px;
+	background-color: #B0E0E6;
+	position: static;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-top: 2px solid #008080;
+	border-right: 2px solid #008080;
+	border-left: 2px solid #008080;
+	border-bottom: 2px solid #008080;
+}
+
+div.box3 {
+	width: 710px;
+	height: 380px;
+	background-color: #696969;
+	position: relative;
+	top: 80px;
+	left: 15px;
+	padding-top: 5px;
+}
+
+div.box4 {
+	width: 400px;
+	height: 150px;
+	background-color: #B0E0E6;
+	position: relative;
+	top: 40px;
+	left: 0;
+	padding-top: 10px;
+}
+
+div.box5 {
+	width: 400px;
+	height: 195px;
+	background-color: #B0E0E6;
+	position: relative;
+	top: 100px;
+	left: 0;
+	padding-top: 10px;
+}

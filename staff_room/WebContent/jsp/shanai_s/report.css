@@ -1,0 +1,24 @@
+@CHARSET "windows-31j";
+table.houkoku{
+	border:solid 1px #008080;
+	width:800px;
+}
+th.t-koumoku{
+	background-color:#008080;
+}
+td.biko{
+	width:200px;
+}
+font.f-koumoku{
+	color:#F5F5F5;
+}
+font.biko{
+	font-size:10px;
+}
+td.cell{
+	height:30px;
+}
+td.cell2{
+	width:5px;
+	
+}
