@@ -8,7 +8,7 @@ public class C_DBConnection {
 
  	//private final static String DRIVER_URL = "jdbc:postgresql://192.36.253.8:5432/kintaikanri";
 	// ローカル
-	//private final static String DRIVER_URL = "jdbc:postgresql://127.0.0.1:5432/kintaikanri";
+	//private final static String DRIVER_URL = "jdbc:postgresql://localhost:5432/kintaikanri";
 	// 本番
 	//private final static String DRIVER_URL = "jdbc:postgresql://192.168.101.26:5432/kintaikanri";
 	// テストサーバー

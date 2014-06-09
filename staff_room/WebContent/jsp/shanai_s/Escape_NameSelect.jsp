@@ -5,7 +5,7 @@
 	String id1 = (String)session.getAttribute("key");
 	String id2 = (String)session.getAttribute("key2");
 		if((id1 == null || id1.equals("false")) && (id2 == null || id2.equals("false"))){
-			pageContext.forward("/ID_PW_Nyuryoku.jsp");
+			pageContext.forward("/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp");
 		}else{%>
 <html>
 <head>

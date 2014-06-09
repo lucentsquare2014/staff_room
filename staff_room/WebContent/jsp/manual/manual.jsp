@@ -4,6 +4,8 @@
 <head>
 <jsp:include page="/html/head.html" />
 <script src="/staff_room/script/document.js"></script>
+<script type="text/javascript" src="/staff_room/script/notifIt.js"></script>
+<link rel="stylesheet" type="text/css" href="/staff_room/css/notifIt.css">
 <style>
 body {
 	width: 100%;
