@@ -12,6 +12,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/postgresql-9.2-1002.jdbc4.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.2.4.jar"/>
+    <classpathentry kind="lib" path="WebContent/WEB-INF/lib/mail.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/cos.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/iText-5.0.6.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/iTextAsian.jar"/>
