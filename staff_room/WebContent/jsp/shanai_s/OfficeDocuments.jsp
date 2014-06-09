@@ -228,7 +228,7 @@ String selectAction(String name){
 						</tr>
 						<tr>
 							<td colspan=2>
-								<form name=syounininfoselect method="post">
+								<form name="syounininfoselect" method="post">
 									<div id="syounininfodiv">
 										<table id="syounininfobox" class="syounintable">
 											<thead>
