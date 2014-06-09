@@ -16,6 +16,12 @@ body {
 	background-size: 100% auto;
 	}
 </style>
+<%@ page import="dao.NewsDAO,
+				java.util.ArrayList,
+				java.util.HashMap,
+				org.apache.commons.lang3.StringEscapeUtils"
+%>
+<%@ page import="org.apache.commons.codec.digest.DigestUtils" %>
 </head>
 <body>
 <jsp:include page="/jsp/header/header.jsp" />
@@ -24,10 +30,20 @@ body {
 ログインパスワード変更
 </div>
 <br><br><br><br>
+<div class="uk-text-center">
+			<p class="uk-text-danger" id="alert">
+				<% if(request.getAttribute("error") != null){ %>
+					<%= request.getAttribute("error")%>
+				<% } %>
+			</p>
 	<div class="uk-text-danger uk-text-center" id="alert"></div><br><br>
+	</div>
 	<form class="uk-form uk-form-horizontal" method="post"
 		action="pwChange_finish.jsp">
 		<div class="uk-form-row" align="center">
+			<div class="uk-h1 uk-text-center uk-text-large">現在のパスワードを入力してください</div><br><br>
+			<input class="uk-form-width-medium" value='' type="password" name="now_pw1" maxlength="20"><br><br><br><br><br><br>
+			<input value='<%=session.getAttribute("login")%>' type="hidden" name="id">
 			<div class="uk-h1 uk-text-center uk-text-large">変更するパスワードを入力してください</div><br><br>
 			<input class="uk-form-width-medium" value='' type="password" name="new_pw1" maxlength="20"><br><br>
 			<div class="uk-h1 uk-text-center uk-text-large">確認のためもう一度入力してください</div><br><br>

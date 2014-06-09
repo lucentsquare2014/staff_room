@@ -26,33 +26,45 @@
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="uk-height-1-1 uk-vertical-align uk-text-center">
+
 	<%
+		String pwd = DigestUtils.sha1Hex(request.getParameter("now_pw1"));
+		String id = session.getAttribute("login").toString();
+		ShainDB shain = new ShainDB();
+	Connection con = shain.openShainDB();
+	String sql = "SELECT * FROM shainmst WHERE id = ? AND pw = ?";
+	try {
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+	    pstmt.setString(2, pwd);
+	    ResultSet rs = pstmt.executeQuery();
+	    if(!rs.next()){
+	    	String msg = "現在のパスワードが間違っています。もう一度入力してください。";
+	    	request.setAttribute("error",msg);
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/pwChange/pwChange.jsp");
+	    		dispatcher.forward(request, response);
+	    	shain.closeShainDB(con);
+	    }else{
+	    	String update = "UPDATE shainmst SET "
+					+ "pw=?"
+					+ " WHERE id=?";
+			System.out.println(update);
+	// プリペアードステートメントを作成
+	// preparedStatementでエスケープ処理
+			pstmt = con.prepareStatement(update);
+	// ここでsetした値がsql分の？と置き換わる
+			pstmt.setString(1, DigestUtils.sha1Hex(request.getParameter("new_pw1")));
 
-		// DAOからメソッドの呼び出し
-		ShainDB dao = new ShainDB();
-		//データベースに接続
-		//dao.openShainDB();
-		Connection con = dao.openShainDB();
-			//データベースを更新
-			try {
-				String sql = "UPDATE shainmst SET "
-							+ "pw=?"
-							+ " WHERE id=?";
-					System.out.println(sql);
-			// プリペアードステートメントを作成
-			// preparedStatementでエスケープ処理
-					PreparedStatement pstmt = con.prepareStatement(sql);
-			// ここでsetした値がsql分の？と置き換わる
-					pstmt.setString(1, DigestUtils.sha1Hex(request.getParameter("new_pw1")));
+			String login_id = session.getAttribute("login").toString();
+			pstmt.setString(2,login_id);
+	// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
+			pstmt.executeUpdate();
+			shain.closeShainDB(con);
+	    }
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
 
-					String login_id = session.getAttribute("login").toString();
-					pstmt.setString(2,login_id);
-			// executeUpdateメソッドで実行。書き込んだフィールドの数を返す。
-					pstmt.executeUpdate();
-					dao.closeShainDB(con);
-					} catch (SQLException e) {
-						System.out.println(e);
-				}
 
 	%>
 	<div style="position:relative; top:250px;">
