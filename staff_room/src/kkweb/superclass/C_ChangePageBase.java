@@ -16,7 +16,6 @@ public class C_ChangePageBase extends HttpServlet {
 		"SystemSelect"
 	};
 	private final static String url = "//localhost:8080/kk_web";
-//	private final static String url = "http://localhost:8080/kk_web";
 //	private final static String url = "http://www.lucentsquare.co.jp:8080/kk_web";
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response){
