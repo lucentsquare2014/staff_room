@@ -45,7 +45,7 @@ public class C_Holiday_kousin extends C_ChangePageBase{
 
 		try {
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String h_size = request.getParameter("h_size");
 

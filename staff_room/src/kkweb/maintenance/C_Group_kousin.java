@@ -45,7 +45,7 @@ public class C_Group_kousin extends C_ChangePageBase{
 
 		try {
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String g_size = request.getParameter("g_size");
 

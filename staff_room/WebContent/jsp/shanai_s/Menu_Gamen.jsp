@@ -125,8 +125,8 @@
 				<ul>
 					<li><b><font class="index1" style="word-spacing: 50px;">承認状況確認</font></b>
 						<input type="submit" value="　表示　" class="botton1"
-						onClick="submit3()" name="cc"><select class="year"
-						name="year">
+						onClick="submit3()" name="cc">
+						<select class="year" name="year">
 							<%
 								y = cal.get(Calendar.YEAR);
 									for (int j = 2001; y > j; y--) {
@@ -170,9 +170,9 @@
 					</select></li>
 				</ul>
 			</form>
-			<br> <a href="SystemSelect.jsp"
+			<br> <a href="/staff_room/"
 				class="link"><font class="link"><small>[
-						システム選択へ戻る ]</small></font></a>
+						スタッフルームトップへ ]</small></font></a>
 		</div>
 		<%
 			if (ShainMST.getChecked().equals("1")) {

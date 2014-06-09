@@ -54,7 +54,7 @@ public class G_Insatu extends C_ChangePageBase {
 
 	public void doMain (HttpServletRequest request){
 		try{
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String number = request.getParameter("number");
 			String this_year_month = request.getParameter("year_month");

@@ -115,8 +115,8 @@ td.a {
 		<%--
 				<INPUT TYPE="button" VALUE="ログアウト" STYLE="width:150" onClick="window.location.replace('login.html')">
 				 --%>
-		<INPUT TYPE="button" VALUE="システム選択に戻る" STYLE="width: 150px"
-			onClick="window.location.replace('SystemSelect.jsp')">
+		<INPUT TYPE="button" VALUE="スタッフルームトップへ" STYLE="width: 150px"
+			onClick="window.location.replace('/staff_room')">
 
 	</FORM>
 	<HR WIDTH="50%" SIZE="5" COLOR="GOLD">

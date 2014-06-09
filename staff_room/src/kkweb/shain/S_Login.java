@@ -54,7 +54,7 @@ public class S_Login extends C_ChangePageBase {
 
 		try{
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String shainName = request.getParameter("shainID").trim();
 
@@ -98,7 +98,7 @@ public class S_Login extends C_ChangePageBase {
 
 		try{
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String PassWord = request.getParameter("Pwd").trim();
 
@@ -139,7 +139,7 @@ public class S_Login extends C_ChangePageBase {
 
 		try{
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			String ShainID = request.getParameter("shainID").trim();
 			String PassWord = request.getParameter("Pwd").trim();
@@ -182,7 +182,11 @@ public class S_Login extends C_ChangePageBase {
 			String np = (String)hs.getAttribute("target"); // 次に遷移するページ
 			hs.removeAttribute("target");
 			//System.out.println("target : "+np);
-			String nextpage = "/SystemSelect.jsp";
+			String nextpage = "/jsp/shanai_s/SystemSelect.jsp";
+			
+			// modeのパラメータで選択するシステムを決定する 2014-06-09
+			String mode = "?mode="+request.getParameter("mode").toString();
+			nextpage += mode;
 			if(np != null && np.length() > 0){
 				nextpage = np;
 			}

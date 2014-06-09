@@ -87,7 +87,7 @@ public class C_Shain_tuika extends C_ChangePageBase {
 
 
 		try{
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 //			HttpSession session = request.getSession(true);
 			C_CheckWord word = new C_CheckWord();

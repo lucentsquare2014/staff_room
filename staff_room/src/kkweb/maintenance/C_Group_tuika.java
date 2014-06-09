@@ -46,7 +46,7 @@ public class C_Group_tuika extends C_ChangePageBase {
 
 		try {
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			C_CheckWord word = new C_CheckWord();
 			String group_number = request.getParameter("group_number");

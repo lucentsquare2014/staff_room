@@ -75,7 +75,7 @@ public class S_Kinmuhoukoku_Nyuryoku extends C_ChangePageBase {
 
 		try{
 			
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 			C_CheckWord word = new C_CheckWord();
 			String this_year = request.getParameter("year");
 			String this_month = request.getParameter("month");
@@ -190,7 +190,7 @@ public class S_Kinmuhoukoku_Nyuryoku extends C_ChangePageBase {
 		try{
 			//System.out.println("処理時間2=");
 //			long time11 = System.currentTimeMillis();
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			HttpSession session = request.getSession(true);
 

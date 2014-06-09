@@ -1,10 +1,15 @@
 package kkweb.dao;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-import kkweb.beans.*;
-import kkweb.common.*;
+import kkweb.beans.B_ShainMST;
+import kkweb.common.C_DBConnection;
 
 public class LoginDAO {
 
@@ -112,5 +117,29 @@ public class LoginDAO {
 		}finally{
 			dbcon.closeConection(con);
 		}
+	}
+	
+	public HashMap<String, String> loginInfo(String login_id){
+		HashMap<String,String> result = new HashMap<String,String>();
+		C_DBConnection dbcon = new C_DBConnection();
+		Connection con = null;
+		
+		con = dbcon.createConnection();
+		String sql = "select id, pw from shainmst where id = ?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, login_id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				result.put("id", rs.getString("id"));
+				result.put("password", rs.getString("pw"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			dbcon.closeConection(con);
+		}
+		return result;
 	}
 }

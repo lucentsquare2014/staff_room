@@ -68,7 +68,7 @@ public class C_Project_tuika extends  C_ChangePageBase {
 
 		try {
 
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 
 			C_CheckWord word = new C_CheckWord();
 

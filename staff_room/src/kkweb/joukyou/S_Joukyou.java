@@ -25,7 +25,7 @@ public class S_Joukyou extends C_ChangePageBase{
 	public void doMain(HttpServletRequest request){
 
 		try{
-			request.setCharacterEncoding("windows-31j");
+			request.setCharacterEncoding("UTF-8");
 
 			HttpSession session = request.getSession(true);
 
