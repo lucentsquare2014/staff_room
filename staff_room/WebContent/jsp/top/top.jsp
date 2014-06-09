@@ -23,6 +23,14 @@
 <jsp:include page="/html/head.html" />
 <link rel="stylesheet" href="/staff_room/css/top.css">
 <script src="/staff_room/script/read_check.js"></script>
+<script src="/staff_room/script/print.js"></script>
+<script>
+$(function() {
+	$('#btn_print').click(function(){
+	    $.jPrintArea("#my-id");
+	  });
+});
+</script>
 <title>スタッフルーム</title>
 
 </head>
@@ -233,9 +241,10 @@
 	<div id="my-id" class="uk-modal">
     	<div class="uk-modal-dialog">
         	<a class="uk-modal-close uk-close"></a>
-        	<h3 id="title"></h3>
-        	<pre id="text"></pre>
+        	<div id="title" class="uk-h3"></div>
+        	<pre id="text" class="uk-overflow-container"></pre>
         	<p id="filename"></p>
+        	<a href="#" id="btn_print"><i class="uk-icon-print"></i></a>
     	</div>
 	</div>
 </body>

@@ -23,6 +23,8 @@
 %>
 <jsp:include page="/html/head.html" />
 <script src="/staff_room/script/read_check.js"></script>
+<script src="/staff_room/script/print.js"></script>
+
 <title>連絡事項</title>
 
 <style type="text/css">
@@ -113,7 +115,7 @@
 				%>
 				<tr>
 				<td bgcolor="#FFFFFF" class="uk-h3 uk-width-medium-2-10 uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
-				<td bgcolor="#FFFFFF" class="uk-h3 uk-width-medium-8-10 uk-text-left">
+				<td id="print<%=row.get("news_id") %>" bgcolor="#FFFFFF" class="uk-h3 uk-width-medium-8-10 uk-text-left">
 				<!--記事のタイトルなどを表示-->
 				<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
@@ -121,18 +123,38 @@
 					<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 					<div class="uk-badge uk-badge-danger">new</div>
 						<a id="<%= row.get("news_id") %>" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %></a>
-						&nbsp;
+						&nbsp;<a href="#" id="btn_print<%=row.get("news_id") %>"><i class="uk-icon-print"></i></a>
 					<%}else{%>
 						<a data-uk-toggle="{target:'#my-id<%=i%>'}"><%= row.get("title") %></a>
-
+						&nbsp;<a href="#" id="btn_print<%=row.get("news_id") %>"><i class="uk-icon-print"></i></a>
 					<%}%>
 					<%if (!row.get("filename").equals("")){ %>
-                    	<div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden">
-                    		<pre><%= row.get("text") %><br><br>添付ファイル：<br><%String arr[] = row.get("filename").split( "," );for (int f = 0; f<arr.length; f++){%><a href=""><%out.println(arr[f]);%></a><%}%></pre></div>
+                    	<div id="my-id<%=i%>" class="uk-h4 uk-text-left uk-hidden">
+                    		<pre><%= row.get("text") %></pre>
+                    		<p>添付ファイル：
+                    			<% 
+                    				String arr[] = row.get("filename").split( "," );
+                    				for (int f = 0; f<arr.length; f++){ 
+                    			%>
+                    			<a href=""><%out.println(arr[f]);%></a>
+                    			<% } %>
+                    		</p>
+                    		<a href="#" id="btn_print<%=row.get("news_id") %>"><i class="uk-icon-print"></i></a>
+                    	</div>
 					<%}else{ %>
-					<div id="my-id<%=i%>" class="uk-h2 uk-text-left uk-hidden"><pre><%= row.get("text") %></pre></div>
+					<div id="my-id<%=i%>" class="uk-h4 uk-text-left uk-hidden">
+						<pre><%= row.get("text") %></pre>
+					</div>
 					<%} %>
+					<script>
+						$(function() {
+							$('#btn_print' + <%=row.get("news_id") %>).click(function(){
+	    						$.jPrintArea("#print" + <%=row.get("news_id") %>);
+	  						});
+						});
+					</script>
 				<%} %>
+			</td>
 		</table>
 		<!-- 次へボタン、戻るボタンの処理　 -->
 		<div class="uk-grid" style="padding-bottom: 50px;">
