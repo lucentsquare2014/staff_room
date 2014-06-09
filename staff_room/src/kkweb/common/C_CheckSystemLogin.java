@@ -11,7 +11,7 @@ public class C_CheckSystemLogin {
 		boolean flag = true;
 
 		LoginDAO dao = new LoginDAO();
-		String Password2 = DigestUtils.shaHex(Password);
+		String Password2 = DigestUtils.sha1Hex(Password);
 		
 		String sql = " where pw ='"+Password2+"' AND id = 'admin'";
 		flag = dao.isThereTbl(sql);

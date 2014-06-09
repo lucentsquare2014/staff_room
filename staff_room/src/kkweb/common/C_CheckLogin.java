@@ -8,7 +8,7 @@ public class C_CheckLogin {
 
 	private boolean checkIsThereshain(String shainId,String Password){
 		
-		String Password1 = DigestUtils.shaHex(Password);
+		String Password1 = DigestUtils.sha1Hex(Password);
 		boolean flag = true;
 		LoginDAO dao = new LoginDAO();
 		
