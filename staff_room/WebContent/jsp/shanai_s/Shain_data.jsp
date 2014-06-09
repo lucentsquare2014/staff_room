@@ -14,9 +14,10 @@
 <!--
 	function form_submitA(){
 		//adrs ="http://www1.lucentsquare.co.jp/kintaikanri/Group_ichiran.jsp"
-		adrs ="http://www.lucentsquare.co.jp:8080/kk_web/Group_ichiran.jsp"
-		LinkWin=window.open("","NewPage",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,width=400,height=500')
-		LinkWin.location.href=adrs
+		//adrs ="//www.lucentsquare.co.jp:8080/kk_web/Group_ichiran.jsp"
+		adrs="/staff_room/jsp/shanai_s/Group_ichiran.jsp";
+		LinkWin=window.open("","NewPage",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,width=400,height=500');
+		LinkWin.location.href=adrs;
 	}
 	function check(){
 		var p = document.form1.f_name.value;

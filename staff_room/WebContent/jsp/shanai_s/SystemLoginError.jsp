@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
 		if(id2 == null || id2.equals("false")){	
-			pageContext.forward("/Pw_Nyuryoku_system.jsp");
+			pageContext.forward("/staff_room/jsp/shanai_s/Pw_Nyuryoku_system.jsp");
 		}else{	%>
 <html>
 <head>
