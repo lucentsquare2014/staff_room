@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*,java.util.Date,java.text.*,java.lang.*" %>
 <%
 	String filePassword = "qqqq";	

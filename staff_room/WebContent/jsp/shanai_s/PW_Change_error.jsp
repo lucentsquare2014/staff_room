@@ -1,24 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
 <jsp:useBean id="errmsg" scope="session" class="kkweb.beans.B_Errmsg"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-/// 2013/07/12 Vˆä ’Ç‰Á
-/// –Ú“I : ƒpƒXƒ[ƒh•ÏXƒGƒ‰[—p‚ÉV‹Kì¬
-/// TODO : ƒR[ƒfƒBƒ“ƒOƒXƒ^ƒCƒ‹‚©‚çˆí’E‚µ‚Ä‚¢‚é‚Ì‚ÅƒGƒ‰[ƒy[ƒW‚Ì‹¤—L‰»‚ðŒŸ“¢‚·‚é•K—v‚ ‚è
+/// 2013/07/12 æ–°äº• è¿½åŠ 
+/// ç›®çš„ : ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å¤‰æ›´ã‚¨ãƒ©ãƒ¼ç”¨ã«æ–°è¦ä½œæˆ
+/// TODO : ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚¹ã‚¿ã‚¤ãƒ«ã‹ã‚‰é€¸è„±ã—ã¦ã„ã‚‹ã®ã§ã‚¨ãƒ©ãƒ¼ãƒšãƒ¼ã‚¸ã®å…±æœ‰åŒ–ã‚’æ¤œè¨Žã™ã‚‹å¿…è¦ã‚ã‚Š
 if(errmsg == null || errmsg.getErrmsg() == null){
 	pageContext.forward("/ID_PW_Nyuryoku.jsp");
 }else{%>
 <html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="message.css" type="text/css">
-<title>ƒGƒ‰[</title>
+<title>ã‚¨ãƒ©ãƒ¼</title>
 </head>
 <body>
 <center>
 <div class="location"><div class="location2"><font class="error"><%= errmsg.getErrmsg() %></font>
 <%	session.removeAttribute("errmsg");%><br><br>
-<button onClick="history.back()">Ä“ü—Í</button></div></div>
+<button onClick="history.back()">å†å…¥åŠ›</button></div></div>
 </center>
 </body>
 </html>

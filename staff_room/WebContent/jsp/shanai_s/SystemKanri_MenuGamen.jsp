@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
 		if(id2 == null || id2.equals("false")){
@@ -6,9 +6,9 @@
 		}else{%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="menu.css" type="text/css">
-<title>ƒ}ƒXƒ^ƒƒ“ƒeƒiƒ“ƒXƒƒjƒ…[</title>
+<title>ãƒžã‚¹ã‚¿ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ãƒ¡ãƒ‹ãƒ¥ãƒ¼</title>
 </head>
 <body>
 <center>
@@ -22,24 +22,24 @@
 <tr>
 <td>
 <form method="post" action="Shain_Ichiran.jsp">
-<input type="submit" value="ŽÐˆõƒ}ƒXƒ^ƒƒ“ƒeƒiƒ“ƒX" class="botton2">
+<input type="submit" value="ç¤¾å“¡ãƒžã‚¹ã‚¿ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹" class="botton2">
 </form>
 </td>
 <td>
 <form method="post" action="Project_Maintenance.jsp">
-<input type="submit" value="ƒvƒƒWƒFƒNƒgƒ}ƒXƒ^ƒƒ“ƒeƒiƒ“ƒX" class="botton2">
+<input type="submit" value="ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆãƒžã‚¹ã‚¿ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹" class="botton2">
 </form>
 </td>
 </tr>
 <tr>
 <td>
 <form method="post" action="Group_Maintenance.jsp">
-<input type="submit" value="ƒOƒ‹[ƒvƒ}ƒXƒ^ƒƒ“ƒeƒiƒ“ƒX" class="botton2">
+<input type="submit" value="ã‚°ãƒ«ãƒ¼ãƒ—ãƒžã‚¹ã‚¿ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹" class="botton2">
 </form>
 </td>
 <td>
 <form method="post" action="Holiday_Maintenance.jsp">
-<input type="submit" value="j“úƒ}ƒXƒ^ƒƒ“ƒeƒiƒ“ƒX" class="botton2">
+<input type="submit" value="ç¥æ—¥ãƒžã‚¹ã‚¿ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹" class="botton2">
 </form>
 </td>
 </tr>
@@ -48,13 +48,13 @@
 <tr>
 <td>
 <form method="post" action="Escape_NameSelect.jsp">
-<input type="submit" value="‘ÞEŽÒ‹Î–±•ñ‘" class="botton2">
+<input type="submit" value="é€€è·è€…å‹¤å‹™å ±å‘Šæ›¸" class="botton2">
 <input type="hidden" name="escapeflg" id="escapeflg" value="1">
 </form>
 </td>
 </tr>
 </table><br>
-<a href="ID_PW_Nyuryoku.jsp" class="link"><font class="link"><small>[ IDEƒpƒXƒ[ƒh“ü—Í‚Ö–ß‚é ]</small></font></a></div>
+<a href="ID_PW_Nyuryoku.jsp" class="link"><font class="link"><small>[ IDãƒ»ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰å…¥åŠ›ã¸æˆ»ã‚‹ ]</small></font></a></div>
 </center>
 </body>
 </html>

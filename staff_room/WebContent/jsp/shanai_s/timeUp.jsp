@@ -1,84 +1,84 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.* , java.util.Vector" %>
 <%!
-// �����G���R�[�h���s���܂��B
+// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal==null){
 		return (null);
 	}else{
-		return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
 <%
-/* �C���_ */
-// 02-08-05 ���E�T�E���ƃt�@�C���𕪂��Ă������̂����������A�t���O�ɂ���ď����𕪂�����@
-// 02-08-15 �]�v�ȃv���O�������Ȃ�
-// 02-09-04 �ڍ׉�ʂ̕\������ւ�������������B�����N���N���b�N����ƒP�����Ɉړ�����B
-// 02-09-05 �ڍ׉�ʂ̕\������ւ�������ύX�B�����N���N���b�N����Ƒo�����Ɉړ�����B
+/* 修正点 */
+// 02-08-05 月・週・日とファイルを分けていたものを結合させ、フラグによって処理を分ける方法
+// 02-08-15 余計なプログラムを省く
+// 02-09-04 詳細画面の表示入れ替え処理を加える。リンクをクリックすると単方向に移動する。
+// 02-09-05 詳細画面の表示入れ替え処理を変更。リンクをクリックすると双方向に移動する。
 
-/* �ǉ��_ */
-// 02-09-03 ���L�҃v���O�������O���t�@�C���Ƃ��Ď�荞�ށB
+/* 追加点 */
+// 02-09-03 共有者プログラムを外部ファイルとして取り込む。
 
-// ���O�C���������[�U�̎Ј��ԍ���ϐ�[ID]�Ɋi�[
+// ログインしたユーザの社員番号を変数[ID]に格納
 String ID = strEncode(request.getParameter("id"));
 
-// �p�����[�^�̎擾[���p�p�����[�^]
+// パラメータの取得[共用パラメータ]
 String NO = strEncode(request.getParameter("no"));
 String DA = strEncode(request.getParameter("s_date"));
 String GR = request.getParameter("group");
 
-// �p�����[�^�̎擾[pubs�g�p]
+// パラメータの取得[pubs使用]
 String BS = strEncode(request.getParameter("b_start"));
 String AC = strEncode(request.getParameter("act"));
 
-// �\���̎�ނ𔻕ʂ���p�����[�^
+// 表示の種類を判別するパラメータ
 String KD = request.getParameter("kind");
 
-// �J�n�����̕���
+// 開始時刻の分割
 String ST = strEncode(request.getParameter("s_start"));
 int S_Shour  = Integer.parseInt(ST.substring(0,2));
 int S_Smini1 = Integer.parseInt(ST.substring(2,3));
 int S_Smini2 = Integer.parseInt(ST.substring(3,4));
 
-// JDBC�h���C�o�̃��[�h
+// JDBCドライバのロード
 Class.forName("org.postgresql.Driver");
 
-// ���[�U�F�؏��̐ݒ�
+// ユーザ認証情報の設定
 String user = "georgir";
 String password = "georgir";
 
-// Connection�I�u�W�F�N�g�̐���
+// Connectionオブジェクトの生成
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 
-// Statement�I�u�W�F�N�g�̐���
+// Statementオブジェクトの生成
 Statement stmt = con.createStatement();
 
-// SQL���s�E�\�����ǂݏo��
-ResultSet YOTEI = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE �敪 = '1'");
+// SQL実行・予定情報を読み出す
+ResultSet YOTEI = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE 区分 = '1'");
 
-// hitList�̐���
+// hitListの生成
 Vector hitYOTEI = new Vector();
 
-// ���ʃZ�b�g���������܂��B
+// 結果セットを処理します。
 while(YOTEI.next()){
-	String basyo = YOTEI.getString("�ꏊ");
+	String basyo = YOTEI.getString("場所");
 	hitYOTEI.addElement(basyo.trim());
 }
 
-// hitList�ɓ����Ă��������
+// hitListに入っている個数を代入
 int cntYOTEI = hitYOTEI.size();
 
-// ResultSet�����
+// ResultSetを閉じる
 YOTEI.close();
 
-// SQL���s�E�ꏊ����ǂݏo��
-ResultSet BASYO = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE �敪 = '2'");
+// SQL実行・場所情報を読み出す
+ResultSet BASYO = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE 区分 = '2'");
 
 Vector hitBASYO = new Vector();
 
 while(BASYO.next()){
-	String basyo = BASYO.getString("�ꏊ");
+	String basyo = BASYO.getString("場所");
 	hitBASYO.addElement(basyo.trim());
 }
 
@@ -86,11 +86,11 @@ int cntBASYO = hitBASYO.size();
 
 BASYO.close();
 
-/* ���O���[�v�ł��邩���r���邽�߂Ɏg�p���� */
-// SQL���s�E�O���[�v���[�{�l]
+/* 同グループであるかを比較するために使用する */
+// SQL実行・グループ情報[本人]
 ResultSet GROUPID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
-// ���������s���Ă���
+// 初期化を行っている
 String group_id = "";
 
 while(GROUPID.next()){
@@ -99,7 +99,7 @@ while(GROUPID.next()){
 
 GROUPID.close();
 
-// SQL���s�E�O���[�v���[���̃��[�U]
+// SQL実行・グループ情報[他のユーザ]
 ResultSet GROUPNO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 String group_no = "";
@@ -110,32 +110,32 @@ while(GROUPNO.next()){
 
 GROUPNO.close();
 
-/* [ID]��[NO]�̎�����ǂݏo���܂��B */
-// SQL�̎��s�E�l���[�{�l]
+/* [ID]と[NO]の氏名を読み出します。 */
+// SQLの実行・個人情報[本人]
 ResultSet NAMEID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
 String name_id = "";
 
 while(NAMEID.next()){
-	name_id = NAMEID.getString("K_����");
+	name_id = NAMEID.getString("K_氏名");
 }
 
 NAMEID.close();
 
-// SQL�̎��s�E�l���NO[���̃��[�U]
+// SQLの実行・個人情報NO[他のユーザ]
 ResultSet NAMENO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 String name_no = "";
 
 while(NAMENO.next()){
-	name_no = NAMENO.getString("K_����");
+	name_no = NAMENO.getString("K_氏名");
 }
 
 NAMENO.close();
 
-// SQL�̎��s
-// �I�����ꂽ�Ј��ԍ��ƈ�v����X�P�W���[���������o��SQL
-ResultSet SSCHEDULE = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_�Ј�NO = '" + NO + "' and S_DATE = '" + DA + "' and S_START = '" + ST + "'");
+// SQLの実行
+// 選択された社員番号と一致するスケジュール情報を取り出すSQL
+ResultSet SSCHEDULE = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + NO + "' and S_DATE = '" + DA + "' and S_START = '" + ST + "'");
 
 String s_end = "";
 String s_plan = "";
@@ -157,7 +157,7 @@ s_tou = SSCHEDULE.getString("S_TOUROKU");
 s_zai = SSCHEDULE.getString("S_ZAISEKI");
 }
 
-// �����APLAN2.PLACE2.MEMO�ɉ��������Ă��Ȃ��ꍇ�́A���p�X�y�[�X�����鏈��
+// もし、PLAN2.PLACE2.MEMOに何も入っていない場合は、半角スペースを入れる処理
 if(s_plan2 == null){
 	s_plan2 = "";
 }
@@ -167,22 +167,22 @@ if(s_place2 == null){
 if(s_memo == null){
 	s_memo = "";
 }
-// �I�������̕���
+// 終了時刻の分割
 int S_Ehour = Integer.parseInt(s_end.substring(0,2));
 int S_Emini1 = Integer.parseInt(s_end.substring(2,3));
 int S_Emini2 = Integer.parseInt(s_end.substring(3,4));
 
 SSCHEDULE.close();
 
-/* �O���[�v�R�[�h�E�O���[�v�����R���{�{�b�N�X�ɕ\�����邽�߂̏��� */
-// SQL�̎��s�E�O���[�v���
+/* グループコード・グループ名をコンボボックスに表示するための処理 */
+// SQLの実行・グループ情報
 ResultSet GROUP = stmt.executeQuery("SELECT * FROM KINMU.GRU");
 
-// hitList�̍쐬
+// hitListの作成
 Vector hitGRUNUM = new Vector();
 Vector hitGRUNUAM = new Vector();
 
-// �O���[�v�e�[�u���ɃA�N�Z�X
+// グループテーブルにアクセス
 while(GROUP.next()){
   String gnum = strEncode(GROUP.getString("G_GRUNO"));
   String gnam = GROUP.getString("G_GRNAME");
@@ -192,25 +192,25 @@ while(GROUP.next()){
 
 int cntGRU = hitGRUNUM.size();
 
-// ResultSet�����
+// ResultSetを閉じる
 GROUP.close();
 
-// Calendar �C���X�^���X�𐶐�
+// Calendar インスタンスを生成
 Calendar now = Calendar.getInstance();
 
-// ���݂̎������擾
+// 現在の時刻を取得
 Date dat = now.getTime();
 
-// �\���`����ݒ�
+// 表示形式を設定
 SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 
-// �ϐ��錾
+// 変数宣言
 int i=0;
 
 %>
 <HTML>
 	<HEAD>
-		<TITLE>�ڍ׉��</TITLE>
+		<TITLE>詳細画面</TITLE>
 		<meta http-equiv="content-language" content="ja">
 		<meta http-equiv="pragma" content="no-cache">
 		<meta name="author" content="roq">
@@ -295,7 +295,7 @@ int i=0;
 					<td bgcolor="#ffffff" width="20" rowspan="2">
 					<center>
 						<a href="#" onClick="return movemn1();" STYLE="text-decoration:none">
-							<b>��<p><font size="2">�X<br>�P<br>�W<br>��<br>�b<br>��<br>��<br>�X<br>��<br>��</font></p>��</b>
+							<b>⇔<p><font size="2">ス<br>ケ<br>ジ<br>ュ<br>｜<br>ル<br>変<br>更<br>画<br>面</font></p>⇔</b>
 						</a>
 					</center>
 					</td>
@@ -309,12 +309,12 @@ int i=0;
 							<INPUT TYPE="hidden" NAME="kind" VALUE="<%= KD %>">
 							<SPAN CLASS="shadow">
 								<FONT COLOR="white">
-									�悤�����B<%= name_id %>����B<br><%= name_no %>�����<br>�ڍ׽��ޭ�ق����Ă��܂��B<br>
+									ようこそ。<%= name_id %>さん。<br><%= name_no %>さんの<br>詳細ｽｹｼﾞｭｰﾙを見ています。<br>
 									<%
 									if(group_id.equals(group_no) || group_id.equals("900")){
-										%>�E���ޭ�ق�ύX�ł��܂��B<%
+										%>・ｽｹｼﾞｭｰﾙを変更できます。<%
 									}else{
-										%>�E���ޭ�ق͕ύX�ł��܂���B<%
+										%>・ｽｹｼﾞｭｰﾙは変更できません。<%
 									}
 									%>
 								</FONT>
@@ -322,7 +322,7 @@ int i=0;
 							<table border="1" style="width: 100%;">
 								<tr>
 									<td bgcolor="#D6FFFF" align="center" style="width:20%;">
-										<small>�{����<br>���t</small>
+										<small>本日の<br>日付</small>
 									</td>
 									<%
 									if(DA == null){%>
@@ -336,7 +336,7 @@ int i=0;
 									}%>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" rowspan="3" align="center">����</td>
+									<td bgcolor="#D6FFFF" rowspan="3" align="center">時刻</td>
 									<td>
 										<SELECT NAME="starth" STYLE="width:28%;"><%
 											for(i = 0; i < 24; i++){
@@ -362,7 +362,7 @@ int i=0;
 													}
 												}
 											}%>
-										</SELECT><small>��</small>
+										</SELECT><small>時</small>
 										<SELECT NAME="startm1" STYLE="width:25%;"><%
 											for(i = 0; i<6; i++){
 												if(S_Smini1 == i){%>
@@ -387,11 +387,11 @@ int i=0;
 													</option><%
 												}
 											}%>
-										</SELECT><small>��</small>
+										</SELECT><small>分</small>
 									</td>
 								</tr>
 								<tr>
-									<td align="center">��</td>
+									<td align="center">∫</td>
 								</tr>
 								<tr>
 									<td>
@@ -419,7 +419,7 @@ int i=0;
 													}
 												}
 											}%>
-										</SELECT><small>��</small>
+										</SELECT><small>時</small>
 										<SELECT NAME="endm1" STYLE="width:25%;"><%
 											for(i = 0; i<6; i++){
 												if(S_Emini1 == i){%>
@@ -444,11 +444,11 @@ int i=0;
 													</option><%
 												}
 											}%>
-										</SELECT><small>��</small>
+										</SELECT><small>分</small>
 									</td>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" align="center">�\��</td>
+									<td bgcolor="#D6FFFF" align="center">予定</td>
 									<td>
 										<SELECT NAME="plan" STYLE="width:100%">
 											<OPTION VALUE="--">--</OPTION>
@@ -468,7 +468,7 @@ int i=0;
 									</td>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" align="center">�\��ڍ�</td>
+									<td bgcolor="#D6FFFF" align="center">予定詳細</td>
 									<td><%
 										if(s_plan2.equals("")){%>
 											<INPUT TYPE="text" style="ime-mode:active; width: 100%;" NAME="plan2" SIZE="20" MAXLENGTH="30"><%
@@ -478,7 +478,7 @@ int i=0;
 									</td>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" align="center">�ꏊ</td>
+									<td bgcolor="#D6FFFF" align="center">場所</td>
 									<td>
 										<SELECT NAME="place" STYLE="width:100%;">
 											<OPTION VALUE="--">--</OPTION><%
@@ -497,7 +497,7 @@ int i=0;
 									</td>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" align="center">�ꏊ�ڍ�</td>
+									<td bgcolor="#D6FFFF" align="center">場所詳細</td>
 									<td><%
 										if(s_place2.equals("")){%>
 											<INPUT TYPE="text" NAME="place2" SIZE="20" MAXLENGTH="30" style="width: 100%;"><%
@@ -507,7 +507,7 @@ int i=0;
 									</td>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" align="center">����<BR><small>(50���܂�)</small></td>
+									<td bgcolor="#D6FFFF" align="center">メモ<BR><small>(50字まで)</small></td>
 									<td><%
 										if(s_memo.equals("")){%>
 											<TEXTAREA NAME="memo" ROWS="4" COLS="30" MAXLENGTH="50" STYLE="width:100%;"></TEXTAREA><%
@@ -518,21 +518,21 @@ int i=0;
 								</tr>
 							</table><%
 							if(s_zai.equals("1")){%>
-								<INPUT TYPE="radio" NAME="pre" VALUE="1" CHECKED>�ݐ�<%
+								<INPUT TYPE="radio" NAME="pre" VALUE="1" CHECKED>在席<%
 							}else{%>
-								<INPUT TYPE="radio" NAME="pre" VALUE="1">�ݐ�<%
+								<INPUT TYPE="radio" NAME="pre" VALUE="1">在席<%
 							}
 							if(s_zai.equals("0")){%>
-								<INPUT TYPE="radio" NAME="pre" VALUE="0" CHECKED>�s��<%
+								<INPUT TYPE="radio" NAME="pre" VALUE="0" CHECKED>不在<%
 							}else{%>
-								<INPUT TYPE="radio" NAME="pre" VALUE="0">�s��<%
+								<INPUT TYPE="radio" NAME="pre" VALUE="0">不在<%
 							}%>
 							<P><%
 							if(group_id.equals(group_no) || group_id.equals("900")){%>
 							<center>
-								<INPUT TYPE="submit" NAME="act" VALUE="�ύX" style="width: 30%;">
-								<INPUT TYPE="reset" VALUE="���ɖ߂�" style="width: 30%;">
-								<INPUT TYPE="submit" NAME="act" VALUE="�폜" style="width: 30%;">
+								<INPUT TYPE="submit" NAME="act" VALUE="変更" style="width: 30%;">
+								<INPUT TYPE="reset" VALUE="元に戻す" style="width: 30%;">
+								<INPUT TYPE="submit" NAME="act" VALUE="削除" style="width: 30%;">
 							</center>
 						</FORM><%
 							}else{%>

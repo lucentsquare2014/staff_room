@@ -1,41 +1,41 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.*" %>
 
 <%!
-// •¶šƒGƒ“ƒR[ƒh‚ğs‚¢‚Ü‚·B
+// æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã„ã¾ã™ã€‚
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 		if(strVal==null){
 			return (null);
 		}
 		else{
-			return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+			return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 		}
 }
 %>
 <%
-/* C³“_ */
-// 02-08-13 V‹KƒXƒPƒWƒ…[ƒ‹“o˜^EƒXƒPƒWƒ…[ƒ‹•ÏXEƒoƒi[ƒXƒPƒWƒ…[ƒ‹•ÏX‚Æƒtƒ‰ƒO‚É‚æ‚èØ‚è‘Ö‚¦‚é
-// 02-09-04 ƒpƒ‰ƒ|ƒ^‚Ì’Ç‰Á
+/* ä¿®æ­£ç‚¹ */
+// 02-08-13 æ–°è¦ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç™»éŒ²ãƒ»ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å¤‰æ›´ãƒ»ãƒãƒŠãƒ¼ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«å¤‰æ›´ã¨ãƒ•ãƒ©ã‚°ã«ã‚ˆã‚Šåˆ‡ã‚Šæ›¿ãˆã‚‹
+// 02-09-04 ãƒ‘ãƒ©ãƒ¡âˆ’ã‚¿ã®è¿½åŠ 
 
-// ƒƒOƒCƒ“‚µ‚½ƒ†[ƒU‚ÌĞˆõ”Ô†‚ğ•Ï”[ID]‚ÉŠi”[
+// ãƒ­ã‚°ã‚¤ãƒ³ã—ãŸãƒ¦ãƒ¼ã‚¶ã®ç¤¾å“¡ç•ªå·ã‚’å¤‰æ•°[ID]ã«æ ¼ç´
 String ID = strEncode(request.getParameter("id"));
 String GR = request.getParameter("group");
 
-// •\¦‚Ìí—Ş‚ğ”»•Ê‚·‚éƒpƒ‰ƒ[ƒ^
+// è¡¨ç¤ºã®ç¨®é¡ã‚’åˆ¤åˆ¥ã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 String KD = strEncode(request.getParameter("kind"));
 
-// Calender ƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬
+// Calender ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆ
 Calendar now = Calendar.getInstance();
 
-// Œ»İ‚Ì‚ğæ“¾
+// ç¾åœ¨ã®æ™‚åˆ»ã‚’å–å¾—
 Date dat = now.getTime();
 
-// •\¦Œ`®‚ğİ’è
+// è¡¨ç¤ºå½¢å¼ã‚’è¨­å®š
 SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 
 %>
 <HTML>
-<HEAD><TITLE>ƒXƒPƒWƒ…[ƒ‹ŠÇ—</TITLE></HEAD>
+<HEAD><TITLE>ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç®¡ç†</TITLE></HEAD>
 <FRAMESET COLS="75%,25%" FRAMEBORDER="0">
 	<FRAME SRC="TestExample34.jsp?id=<%= ID %>&s_date=<%= sFmt.format(dat) %>&group=<%= GR %>" NAME="main" noresize>
 	<FRAME SRC="timeIn.jsp?id=<%= ID %>&no=<%= ID %>&s_date=<%= sFmt.format(dat) %>&s_start=&b_start=&group=<%= GR %>&kind=<%= KD %>&act=" NAME="sub02" scrolling="no" noresize>

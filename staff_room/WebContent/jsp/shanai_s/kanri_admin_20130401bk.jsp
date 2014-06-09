@@ -1,18 +1,18 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*,java.util.Date,java.text.*,java.lang.*" %>
 <%!
-// �����G���R�[�h���s���܂��B
+// 文字エンコードを行います。
 	public String strEncode(String strVal) throws UnsupportedEncodingException{
 			if(strVal==null){
 				return (null);
 			}
 			else{
-				return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+				return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 			}
 	}
 %>
 <%
-	//sql������
+	//sql文準備
 	String table_select = "";
 	String sql_select = "";
 	String sql = "";
@@ -30,21 +30,21 @@
 	}
 	String inpPassword = request.getParameter("pass");
 
-	// JDBC�h���C�o�̃��[�h
+	// JDBCドライバのロード
 	Class.forName("org.postgresql.Driver");
 
-	// �f�[�^�x�[�X�֐ڑ�
-	//String user = "kinmu";     // �f�[�^�x�[�X�ɃA�N�Z�X���邽�߂̃��[�U��
-	//String password = "kinmu"; // �f�[�^�x�[�X�ɃA�N�Z�X���邽�߂̃p�X���[�h
-	String user = "georgir";     // �f�[�^�x�[�X�ɃA�N�Z�X���邽�߂̃��[�U��
-	String password = "georgir"; // �f�[�^�x�[�X�ɃA�N�Z�X���邽�߂̃p�X���[�h
+	// データベースへ接続
+	//String user = "kinmu";     // データベースにアクセスするためのユーザ名
+	//String password = "kinmu"; // データベースにアクセスするためのパスワード
+	String user = "georgir";     // データベースにアクセスするためのユーザ名
+	String password = "georgir"; // データベースにアクセスするためのパスワード
 
 
 	Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir", user, password);
 	Statement stmt = con.createStatement();
 	Statement upData = con.createStatement();
 
-	//�O���[�v
+	//グループ
 	ResultSet rs = stmt.executeQuery(" select * from GRU order by G_GRUNO");
 	//ResultSet rs = stmt.executeQuery(" select * from kinmu.GRU order by G_GRUNO");
 
@@ -56,24 +56,24 @@
 		group_count++;
 	}
 
-	rs = stmt.executeQuery("select * from KOJIN order by K_PASS2,K_�Ј�NO");
-	//rs = stmt.executeQuery("select * from kinmu.KOJIN order by K_PASS2,K_�Ј�NO");
+	rs = stmt.executeQuery("select * from KOJIN order by K_PASS2,K_社員NO");
+	//rs = stmt.executeQuery("select * from kinmu.KOJIN order by K_PASS2,K_社員NO");
 	String[][] kojin = new String[7][500];
 	int kojin_count = 0;
 	while(rs.next()){
-		kojin[0][kojin_count] = rs.getString("K_�Ј�NO");	
-		kojin[1][kojin_count] = rs.getString("K_���FLV");	
+		kojin[0][kojin_count] = rs.getString("K_社員NO");	
+		kojin[1][kojin_count] = rs.getString("K_承認LV");	
 		kojin[2][kojin_count] = rs.getString("K_ID");	
 		kojin[3][kojin_count] = rs.getString("K_PASS");	
-		kojin[4][kojin_count] = rs.getString("K_����");	
+		kojin[4][kojin_count] = rs.getString("K_氏名");	
 		kojin[5][kojin_count] = rs.getString("K_GRUNO");	
 		kojin[6][kojin_count] = rs.getString("K_MAIL");
 		kojin_count++;
 	}
 
-	//�\��
-	//rs = stmt.executeQuery("select * from YOTEI order by ����");
-	rs = stmt.executeQuery("select * from kinmu.YOTEI order by ����");
+	//予定
+	//rs = stmt.executeQuery("select * from YOTEI order by 順番");
+	rs = stmt.executeQuery("select * from kinmu.YOTEI order by 順番");
 	String[][] yotei = new String[3][200];
 	int[][] junban = new int[50][2];
 	int tenji_junban = 0;
@@ -82,9 +82,9 @@
 	String sup_kubun = "1";
 	int yotei_count = 0;
 	while(rs.next()){
-		yotei[0][yotei_count] = rs.getString("�敪");	
-		yotei[1][yotei_count] = rs.getString("�ꏊ");	
-		yotei[2][yotei_count] = rs.getString("����");
+		yotei[0][yotei_count] = rs.getString("区分");	
+		yotei[1][yotei_count] = rs.getString("場所");	
+		yotei[2][yotei_count] = rs.getString("順番");
 		while(sw_junban.equals("1") || sup_junban == 50){
 			if(Integer.parseInt(yotei[2][yotei_count]) == sup_junban){
 				sw_junban = "0";
@@ -117,21 +117,21 @@
 		int a_count = 0;
 		Calendar cal = null;
 		
-		// ���U
+		// 元旦
 		shuku_day[a_count] = select_year + "0101";
-		shuku_name[a_count] = "���U";
-		// �j���𒲂ׂ�
+		shuku_name[a_count] = "元旦";
+		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,0,1);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
 			a_count++;
 			shuku_day[a_count] = select_year + "0102";
-			shuku_name[a_count] = "�U�֋x��";
+			shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
-		// ���l�̓�
+		// 成人の日
 		
-		// ��2���j���ɂȂ肤����͂W?�P�S���Ȃ̂ŁA�W?�P�S���ԂŌ��j���̓������l�̓��ƂȂ�
+		// 第2月曜日になりうる日は８?１４日なので、８?１４日間で月曜日の日が成人の日となる
 		for(int n = 8;n <= 14;n++){
 			cal = new GregorianCalendar(intYear,0,n);
 			if(cal.get(cal.DAY_OF_WEEK) == 2){
@@ -141,118 +141,118 @@
 				  	sup_day = Integer.toString(n);
 			  	}
 				shuku_day[a_count] = select_year + "01" + sup_day;
-				shuku_name[a_count] = "���l�̓�";			  
+				shuku_name[a_count] = "成人の日";			  
 				a_count++;
 				break;
 		  }
 		}
 		
-		// �����L�O��
+		// 建国記念日
 		shuku_day[a_count] = select_year + "0211";
-		shuku_name[a_count] = "�����L�O��";
-		// �j���𒲂ׂ�
+		shuku_name[a_count] = "建国記念日";
+		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,1,11);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
 			a_count++;
 			shuku_day[a_count] = select_year + "0212";
-			shuku_name[a_count] = "�U�֋x��";
+			shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
-		// �t���̓�
+		// 春分の日
 		sup_day = Long.toString(Math.round(20.8431+0.242194*(intYear-1980) - (intYear-1980)/4 - 0.5));
 		shuku_day[a_count] = select_year + "03" + sup_day;
-		shuku_name[a_count] = "�t���̓�";
-		// �j���𒲂ׂ�
+		shuku_name[a_count] = "春分の日";
+		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,2,Integer.parseInt(sup_day));
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
 			a_count++;
 			shuku_day[a_count] = select_year + "03" + Integer.toString(Integer.parseInt(sup_day) + 1);
-			shuku_name[a_count] = "�U�֋x��";
+			shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
-		// �݂ǂ�̓�
+		// みどりの日
 		shuku_day[a_count] = select_year + "0429";
-		shuku_name[a_count] = "�݂ǂ�̓�";
-		// �j���𒲂ׂ�
+		shuku_name[a_count] = "みどりの日";
+		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,3,29);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
 			a_count++;
 			shuku_day[a_count] = select_year + "0430";
-			shuku_name[a_count] = "�U�֋x��";
+			shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 
-		// ���@�L�O��
+		// 憲法記念日
 		shuku_day[a_count] = select_year + "0503";
-		shuku_name[a_count] = "���@�L�O��";
+		shuku_name[a_count] = "憲法記念日";
 		a_count++;
 		
-		// �����̋x��
+		// 国民の休日
 		shuku_day[a_count] = select_year + "0504";
-		shuku_name[a_count] = "�����̋x��";
+		shuku_name[a_count] = "国民の休日";
 		a_count++;
 		
-		// ���ǂ��̓�
+		// こどもの日
 		shuku_day[a_count] = select_year + "0505";
-		shuku_name[a_count] = "���ǂ��̓�";
-		// �j���𒲂ׂ�
+		shuku_name[a_count] = "こどもの日";
+		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,4,5);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
 			a_count++;
 			shuku_day[a_count] = select_year + "0506";
-			shuku_name[a_count] = "�U�֋x��";
+			shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 
 		
-		// �C�̓�
-		  // ��R���j���̏ꍇ
-		  // ��R���j���ɂȂ肤����͂P�T?�Q�P���Ȃ̂ŁA�P�T?�Q�P���ԂŌ��j���̓����C�̓��ƂȂ�
+		// 海の日
+		  // 第３月曜日の場合
+		  // 第３月曜日になりうる日は１５?２１日なので、１５?２１日間で月曜日の日が海の日となる
 		for(int n = 15;n <= 21;n++){
 			cal = new GregorianCalendar(intYear,6,n);
 			if(cal.get(cal.DAY_OF_WEEK) == 2){
 				sup_day = Integer.toString(n);
 				shuku_day[a_count] = select_year + "07" + sup_day;
-				shuku_name[a_count] = "�C�̓�";			  
+				shuku_name[a_count] = "海の日";			  
 				a_count++;
 				break;
 			}
 		}
 		
-		// �h�V�̓�
-		// 2003�N����͑�R���j���ƂȂ�
-		  // ��R���j���̏ꍇ
-		  // ��R���j���ɂȂ肤����͂P�T?�Q�P���Ȃ̂ŁA�P�T?�Q�P���ԂŌ��j���̓����h�V�̓��ƂȂ�
+		// 敬老の日
+		// 2003年からは第３月曜日となる
+		  // 第３月曜日の場合
+		  // 第３月曜日になりうる日は１５?２１日なので、１５?２１日間で月曜日の日が敬老の日となる
 		for(int n = 15;n <= 21;n++){
 			cal = new GregorianCalendar(intYear,8,n);
 			if(cal.get(cal.DAY_OF_WEEK) == 2){
 				sup_day = Integer.toString(n);
 				shuku_day[a_count] = select_year + "09" + sup_day;
-				shuku_name[a_count] = "�h�V�̓�";			  
+				shuku_name[a_count] = "敬老の日";			  
 				a_count++;
 				break;
 			}
 		}
 		
 		
-		// �H���̓�
+		// 秋分の日
 		sup_day = Long.toString(Math.round(23.2488+0.242194*(intYear-1980) - (intYear-1980)/4 - 0.5));
 		shuku_day[a_count] = select_year + "09" + sup_day;
-		shuku_name[a_count] = "�H���̓�";
-		// �j���𒲂ׂ�
+		shuku_name[a_count] = "秋分の日";
+		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,8,Integer.parseInt(sup_day));
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
 			a_count++;
 			shuku_day[a_count] = select_year + "09" + Integer.toString(Integer.parseInt(sup_day) + 1);
-			shuku_name[a_count] = "�U�֋x��";
+			shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
-		// �̈�̓�
+		// 体育の日
 		
-		// ��2���j���ɂȂ肤����͂W?�P�S���Ȃ̂ŁA�W?�P�S���ԂŌ��j���̓����̈�̓��ƂȂ�
+		// 第2月曜日になりうる日は８?１４日なので、８?１４日間で月曜日の日が体育の日となる
 		for(int n = 8;n <= 14;n++){
 			cal = new GregorianCalendar(intYear,9,n);
 			if(cal.get(cal.DAY_OF_WEEK) == 2){
@@ -262,45 +262,45 @@
 				  	sup_day = Integer.toString(n);
 			  	}
 				shuku_day[a_count] = select_year + "10" + sup_day;
-				shuku_name[a_count] = "�̈�̓�";			  
+				shuku_name[a_count] = "体育の日";			  
 				a_count++;
 				break;
 		  }
 		}
 				
-		// �����̓�
+		// 文化の日
 		shuku_day[a_count] = select_year + "1103";
-		shuku_name[a_count] = "�����̓�";
-		// �j���𒲂ׂ�
+		shuku_name[a_count] = "文化の日";
+		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,10,3);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
 			a_count++;
 			shuku_day[a_count] = select_year + "1104";
-			shuku_name[a_count] = "�U�֋x��";
+			shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
-		// �ΘJ���ӂ̓�
+		// 勤労感謝の日
 		shuku_day[a_count] = select_year + "1123";
-		shuku_name[a_count] = "�ΘJ���ӂ̓�";
-		// �j���𒲂ׂ�
+		shuku_name[a_count] = "勤労感謝の日";
+		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,10,23);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
 			a_count++;
 			shuku_day[a_count] = select_year + "1124";
-			shuku_name[a_count] = "�U�֋x��";
+			shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
-		// �V�c�a����
+		// 天皇誕生日
 		shuku_day[a_count] = select_year + "1223";
-		shuku_name[a_count] = "�V�c�a����";
-		// �j���𒲂ׂ�
+		shuku_name[a_count] = "天皇誕生日";
+		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,10,23);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
 			a_count++;
 			shuku_day[a_count] = select_year + "1224";
-			shuku_name[a_count] = "�U�֋x��";
+			shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
@@ -360,11 +360,11 @@
 				}
 			}
 			if(teishi_flg.equals("0")){
-				sql = "insert into KOJIN(K_�Ј�No,K_���FLV,K_ID,K_PASS,K_����,K_GRUNo,K_MAIL) values('" + k_no + "','" + k_lv + "','" + k_id + "','" + k_pass + "','" + k_name + "','" + k_gruno + "','" + k_mail + "')";
+				sql = "insert into KOJIN(K_社員No,K_承認LV,K_ID,K_PASS,K_氏名,K_GRUNo,K_MAIL) values('" + k_no + "','" + k_lv + "','" + k_id + "','" + k_pass + "','" + k_name + "','" + k_gruno + "','" + k_mail + "')";
 			}
 		}else if(sql_select.equals("del")){
 			String k_no = request.getParameter("user_del");
-			sql = "delete from KOJIN where K_�Ј�NO='" + k_no + "'";
+			sql = "delete from KOJIN where K_社員NO='" + k_no + "'";
 		}else if(sql_select.equals("upd")){
 			String k_lv = "";
 			if((request.getParameter("ex1") == null || request.getParameter("ex1").equals("")) 
@@ -399,7 +399,7 @@
 				k_mail = request.getParameter("new_mail");
 			}
 			if(teishi_flg.equals("0")){
-				sql = "update KOJIN set K_���FLv='" + k_lv + "',K_ID='" + k_id + "',K_PASS='" + k_pass + "',K_����='" + k_name + "',K_GRUNo='" + k_gruno + "',K_MAIL='" + k_mail + "' where K_�Ј�NO='" + k_no + "'";
+				sql = "update KOJIN set K_承認Lv='" + k_lv + "',K_ID='" + k_id + "',K_PASS='" + k_pass + "',K_氏名='" + k_name + "',K_GRUNo='" + k_gruno + "',K_MAIL='" + k_mail + "' where K_社員NO='" + k_no + "'";
 			}			
 		}
 	}
@@ -472,19 +472,19 @@
 		}else if(sql_select.equals("del")){
 			String y_kubun = request.getParameter("y_kubun");
 			String y_naiyou = strEncode(request.getParameter("y_basyo"));
-			sql = "delete from yotei where �敪='" + y_kubun + "' and �ꏊ='" + y_naiyou + "'";
+			sql = "delete from yotei where 区分='" + y_kubun + "' and 場所='" + y_naiyou + "'";
 		}
 	}
 
 	if(!table_select.equals("") && !table_select.equals("holiday") && teishi_flg.equals("0")){
 		upData.execute(sql);
 	}else if(!table_select.equals("") && !teishi_flg.equals("0")){
-		// �ڑ�����
+		// 接続解除
 		rs.close();
 		stmt.close();
 		con.close();
 %>
-		//�G���[�y�[�W�ɔ��
+		//エラーページに飛ぶ
 		<jsp:forward page="kanri_error.jsp">
 		<jsp:param name="error" value="<%= teishi_flg %>" />
 		</jsp:forward>
@@ -492,7 +492,7 @@
 	}
 
 	if(table_select.equals("gru") && teishi_flg.equals("0")){
-		//�O���[�v
+		//グループ
 		//rs = stmt.executeQuery("select * from GRU order by G_GRUNO");
 		rs = stmt.executeQuery("select * from kinmu.GRU order by G_GRUNO");
 		group = new String[2][200];
@@ -503,24 +503,24 @@
 			group_count++;
 		}
 	}else if(table_select.equals("user") && teishi_flg.equals("0")){
-		//rs = stmt.executeQuery("select * from KOJIN order by K_PASS2,K_�Ј�NO");
-		rs = stmt.executeQuery("select * from kinmu.KOJIN order by K_PASS2,K_�Ј�NO");
+		//rs = stmt.executeQuery("select * from KOJIN order by K_PASS2,K_社員NO");
+		rs = stmt.executeQuery("select * from kinmu.KOJIN order by K_PASS2,K_社員NO");
 		kojin = new String[7][500];
 		kojin_count = 0;
 		while(rs.next()){
-			kojin[0][kojin_count] = rs.getString("K_�Ј�NO");	
-			kojin[1][kojin_count] = rs.getString("K_���FLV");	
+			kojin[0][kojin_count] = rs.getString("K_社員NO");	
+			kojin[1][kojin_count] = rs.getString("K_承認LV");	
 			kojin[2][kojin_count] = rs.getString("K_ID");	
 			kojin[3][kojin_count] = rs.getString("K_PASS");	
-			kojin[4][kojin_count] = rs.getString("K_����");	
+			kojin[4][kojin_count] = rs.getString("K_氏名");	
 			kojin[5][kojin_count] = rs.getString("K_GRUNO");	
 			kojin[6][kojin_count] = rs.getString("K_MAIL");
 			kojin_count++;
 		}
 	}else if(table_select.equals("yotei") && teishi_flg.equals("0")){
-		//�\��
-		//rs = stmt.executeQuery("select * from YOTEI order by ����");
-		rs = stmt.executeQuery("select * from kinmu.YOTEI order by ����");
+		//予定
+		//rs = stmt.executeQuery("select * from YOTEI order by 順番");
+		rs = stmt.executeQuery("select * from kinmu.YOTEI order by 順番");
 		yotei = new String[3][200];
 		junban = new int[50][2];
 		tenji_junban = 0;
@@ -529,9 +529,9 @@
 		sup_kubun = "1";
 		yotei_count = 0;
 		while(rs.next()){
-			yotei[0][yotei_count] = rs.getString("�敪");	
-			yotei[1][yotei_count] = rs.getString("�ꏊ");	
-			yotei[2][yotei_count] = rs.getString("����");
+			yotei[0][yotei_count] = rs.getString("区分");	
+			yotei[1][yotei_count] = rs.getString("場所");	
+			yotei[2][yotei_count] = rs.getString("順番");
 			while(sw_junban.equals("1") || sup_junban == 50){
 				if(Integer.parseInt(yotei[2][yotei_count]) == sup_junban){
 					sw_junban = "0";
@@ -556,15 +556,15 @@
 		}
 	}
 
-	// �ڑ�����
+	// 接続解除
 	rs.close();
 	stmt.close();
 	con.close();
 %>
 <html>
 <head>
-	<meta HTTP-EQUIV=Content-Type CONTENT=text/html;Charset=Shift_Jis>
-	<title>�Ǘ����</title>
+	<meta HTTP-EQUIV=Content-Type CONTENT=text/html;Charset=UTF-8>
+	<title>管理画面</title>
 	
 	<script type="text/javascript"><!--
 		function back_main() {
@@ -597,7 +597,7 @@
 </head>
 <body style="bgcolor:#F5F5F5;link:#000099;alink:00FFFF;vlink:000099">
 <form NAME="MyForm">
-	<input type="button" style="background-color:#FFFFFF;width:50" value="�߂�" onClick="location.href='http://www.lucentsquare.co.jp/kinmu_db/top.html'">
+	<input type="button" style="background-color:#FFFFFF;width:50" value="戻る" onClick="location.href='http://www.lucentsquare.co.jp/kinmu_db/top.html'">
 </form>
 
 <center>
@@ -605,20 +605,20 @@
 	<table>
 		<tr>
 			<td>
-				<INPUT TYPE="button" STYLE="background-color:#FFFFFF;width:100" VALUE="���[�U�[�ꗗ" onClick="location.href='#USER'">
+				<INPUT TYPE="button" STYLE="background-color:#FFFFFF;width:100" VALUE="ユーザー一覧" onClick="location.href='#USER'">
 			</td>
 			<TD>
-				<INPUT TYPE="button" STYLE="background-color:#FFFFFF;width:100" VALUE="�O���[�v�o�^" onClick="location.href='#GROUP'">
+				<INPUT TYPE="button" STYLE="background-color:#FFFFFF;width:100" VALUE="グループ登録" onClick="location.href='#GROUP'">
 			</TD>
 			<td>
-				<INPUT TYPE="button" STYLE="background-color:#FFFFFF;width:100" VALUE="�\��敪�o�^" onClick="location.href='#YOTEI'">
+				<INPUT TYPE="button" STYLE="background-color:#FFFFFF;width:100" VALUE="予定区分登録" onClick="location.href='#YOTEI'">
 			</TD>
 			<TD>
 				<INPUT TYPE="hidden" NAME="action" VALUE="get_holiday">
 				<INPUT TYPE="hidden" NAME="table_select" VALUE="holiday">
 				<INPUT TYPE="hidden" NAME="sql_select" VALUE="ins">
 				<INPUT TYPE="hidden" NAME="pass" VALUE="<%= inpPassword %>">
-				<INPUT TYPE="submit" VALUE="�j��" STYLE="background-color:#FFFFFF;width:100">
+				<INPUT TYPE="submit" VALUE="祝日" STYLE="background-color:#FFFFFF;width:100">
 				<SELECT NAME="year">
 <%
 Calendar calendar = new GregorianCalendar();
@@ -643,7 +643,7 @@ for(int x = intTodayY;x <= intTodayY + 1;x++){
 	<TABLE STYLE="width:100%">
 		<TR>
 			<TH bgcolor="#000099">
-				<FONT color="#FFFFFF"><B>1. ���[�U�[�o�^</B></FONT>
+				<FONT color="#FFFFFF"><B>1. ユーザー登録</B></FONT>
 			</TH>
 		</TR>
 	</TABLE>
@@ -653,12 +653,12 @@ for(int x = intTodayY;x <= intTodayY + 1;x++){
 			<TABLE>
 				<TR>
 					<TD>
-						<SMALL>1.�Ǘ��҂̕��͐ӔC�������ĊǗ����ĉ������B</SMALL>
+						<SMALL>1.管理者の方は責任を持って管理して下さい。</SMALL>
 					</TD>
 				</TR>
 				<TR>
 					<TD>
-						<SMALL>2.���F���闧��̐l�́A���F�҂̗��Ƀ`�F�b�N���ĉ������B</SMALL>
+						<SMALL>2.承認する立場の人は、承認者の欄にチェックして下さい。</SMALL>
 					</TD>
 				</TR>
 			</TABLE>
@@ -671,35 +671,35 @@ for(int x = intTodayY;x <= intTodayY + 1;x++){
 				<INPUT TYPE="hidden" NAME="pass" VALUE="<%= inpPassword %>">
 				<TABLE>
 					<TR>
-						<TD align="center">���F��</TD>
-						<TD align="center" colspan="3">-�P<INPUT TYPE="checkbox" NAME="ex1">-�@�@-�Q<INPUT TYPE="checkbox" NAME="ex2">-</TD>
+						<TD align="center">承認者</TD>
+						<TD align="center" colspan="3">-１<INPUT TYPE="checkbox" NAME="ex1">-　　-２<INPUT TYPE="checkbox" NAME="ex2">-</TD>
 					</TR>
 					<TR>
-						<TD align="center">�h�@�c</TD>
+						<TD align="center">Ｉ　Ｄ</TD>
 						<TD align="center">
 							<INPUT TYPE="text" NAME="usrid" SIZE="20">
 						</TD>
-						<TD align="center">Ұٱ��ڽ</TD>
+						<TD align="center">ﾒｰﾙｱﾄﾞﾚｽ</TD>
 						<TD align="center">
 							<INPUT TYPE="text" SIZE="30" NAME="mail">
 						</TD>
 					</TR>
 					<TR>
-						<TD align="center">�߽ܰ��</TD>
+						<TD align="center">ﾊﾟｽﾜｰﾄﾞ</TD>
 						<TD align="center">
 							<INPUT TYPE="text" NAME="usrpw" SIZE="20">
 						</TD>
-						<TD align="center">�Ј��ԍ�</TD>
+						<TD align="center">社員番号</TD>
 						<TD align="left">
 							<INPUT TYPE="text" SIZE="16" NAME="number" maxlength="20">
 						</TD>
 					</TR>
 					<TR>
-						<TD align="center">���@��</TD>
+						<TD align="center">氏　名</TD>
 						<TD align="center">
 							<INPUT TYPE="text" NAME="usrname" SIZE="20">
 						</TD>
-						<TD align="center">���@��</TD>
+						<TD align="center">所　属</TD>
 						<TD align="left">
 							<SELECT NAME="group">
 <%
@@ -714,8 +714,8 @@ for(int x = 1;x < group_count;x++){
 					</TR>
 					<TR>
 						<TD COLSPAN="4" align="center">
-							<INPUT TYPE="submit" STYLE="background-color:#FFFFFF;width:50" VALUE="   �n�j   ">
-							<INPUT TYPE="reset" STYLE="background-color:#FFFFFF;width:50" VALUE="�b��������">
+							<INPUT TYPE="submit" STYLE="background-color:#FFFFFF;width:50" VALUE="   ＯＫ   ">
+							<INPUT TYPE="reset" STYLE="background-color:#FFFFFF;width:50" VALUE="Ｃｌｅａｒ">
 						</TD>
 					</TR>
 				</TABLE>
@@ -724,7 +724,7 @@ for(int x = 1;x < group_count;x++){
 		
 		<BR>
 		<FORM NAME="MyForm2">
-			<INPUT TYPE="button" STYLE="background-color:#FFFFFF;width:50" VALUE="�߂�" onClick="location.href='http://www.lucentsquare.co.jp/kinmu_db/top.html'">
+			<INPUT TYPE="button" STYLE="background-color:#FFFFFF;width:50" VALUE="戻る" onClick="location.href='http://www.lucentsquare.co.jp/kinmu_db/top.html'">
 		</FORM>
 
 		<A NAME="USER"></A>
@@ -733,30 +733,30 @@ for(int x = 1;x < group_count;x++){
 			<TABLE STYLE="width:100%">
 				<TR>
 					<TH bgcolor="#000099">
-						<FONT color="#FFFFFF"><B>2. ���[�U�[�ꗗ�\ ��</B></FONT>
+						<FONT color="#FFFFFF"><B>2. ユーザー一覧表 示</B></FONT>
 					</TH>
 				</TR>
 			</TABLE>
 
 			<HR SIZE="3" color="000099">
-					���� <B><%= kojin_count %></B>���̓o�^������܂�
+					現在 <B><%= kojin_count %></B>件の登録があります
 
 				<TABLE border="1">
 					<tr>
-						<th STYLE="width:75" align="center">���O</th>
-						<th align="center" NOWRAP>���F��</th>
-						<th align="center">�ύX</th>
-						<th align="center">�폜</th>
+						<th STYLE="width:75" align="center">名前</th>
+						<th align="center" NOWRAP>承認者</th>
+						<th align="center">変更</th>
+						<th align="center">削除</th>
 						<td></td>
-						<th STYLE="width:75" align="center">���O</th>
-						<th align="center" NOWRAP>���F��</th>
-						<th align="center">�ύX</th>
-						<th align="center">�폜</th>
+						<th STYLE="width:75" align="center">名前</th>
+						<th align="center" NOWRAP>承認者</th>
+						<th align="center">変更</th>
+						<th align="center">削除</th>
 						<td></td>
-						<th STYLE="width:75" align="center">���O</th>
-						<th align="center" NOWRAP>���F��</th>
-						<th align="center">�ύX</th>
-						<th align="center">�폜</th>
+						<th STYLE="width:75" align="center">名前</th>
+						<th align="center" NOWRAP>承認者</th>
+						<th align="center">変更</th>
+						<th align="center">削除</th>
 					</tr>
 					<TR>
 <%
@@ -786,7 +786,7 @@ for(int x = 1;x < group_count;x++){
 								<INPUT TYPE="hidden" NAME="sql_select" VALUE="upd">
 								<INPUT TYPE="hidden" NAME="number" VALUE="<%= kojin[0][y] %>">
 								<INPUT TYPE="hidden" NAME="pass" VALUE="<%= inpPassword %>">
-								<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" VALUE="�ύX">
+								<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" VALUE="変更">
 							</TD>
 						</FORM>
 						<FORM action="kanri_admin.jsp" method="POST">
@@ -796,7 +796,7 @@ for(int x = 1;x < group_count;x++){
 								<INPUT TYPE="hidden" NAME="sql_select" VALUE="del">
 								<INPUT TYPE="hidden" NAME="pass" VALUE="<%= inpPassword %>">
 								<INPUT TYPE="hidden" NAME="user_del" value="<%= kojin[0][y] %>">
-								<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" value="�폜">
+								<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" value="削除">
 							</TD>
 						</FORM>
 <%
@@ -808,7 +808,7 @@ for(int x = 1;x < group_count;x++){
 		</CENTER>
 
 		<form NAME="MyForm">
-			<input type="button" style="background-color:#FFFFFF;width:50" value="�߂�" onClick="location.href='http://www.lucentsquare.co.jp/kinmu_db/top.html'">
+			<input type="button" style="background-color:#FFFFFF;width:50" value="戻る" onClick="location.href='http://www.lucentsquare.co.jp/kinmu_db/top.html'">
 		</form>
 
 
@@ -818,22 +818,22 @@ for(int x = 1;x < group_count;x++){
 			<TABLE STYLE="width:100%">
 				<TR>
 					<TH bgcolor="#000099">
-						<FONT color="#FFFFFF"><B>4. �O���[�v�o�^</B></FONT>
+						<FONT color="#FFFFFF"><B>4. グループ登録</B></FONT>
 					</TH>
 				</TR>
 			</TABLE>
 
-			<HR SIZE="3" color="000099">�O���[�v�o�^
+			<HR SIZE="3" color="000099">グループ登録
 			<FORM action="kanri_admin.jsp" method="POST">
 				<TABLE>
 					<TR>
-						<TD>�O���[�v�R�[�h</TD>
+						<TD>グループコード</TD>
 						<TD>
 							<INPUT TYPE="text" NAME="gr_code" SIZE="10">
 						</TD>
 					</TR>
 					<TR>
-						<TD>�O���[�v��</TD>
+						<TD>グループ名</TD>
 						<TD>
 							<INPUT TYPE=text NAME="gr_name" SIZE="30">
 						</TD>
@@ -843,13 +843,13 @@ for(int x = 1;x < group_count;x++){
 				<INPUT TYPE="hidden" NAME="table_select" VALUE="gru">
 				<INPUT TYPE="hidden" NAME="sql_select" VALUE="ins">
 				<INPUT TYPE="hidden" NAME="pass" VALUE="<%= inpPassword %>">
-				<INPUT TYPE="submit" STYLE="background-color:#FFFFFF;width:50" VALUE="�o�^">
+				<INPUT TYPE="submit" STYLE="background-color:#FFFFFF;width:50" VALUE="登録">
 			</FORM>
 			<BR>
 			<TABLE border="1">
 				<TR>
-					<TD align="center"><B>�O���[�v�R�[�h</B></TD>
-					<TD align="center"><B>�O���[�v��</B></TD>
+					<TD align="center"><B>グループコード</B></TD>
+					<TD align="center"><B>グループ名</B></TD>
 					<TD COLSPAN="3" align="center"><B>Function</B></TD>
 				</TR>
 <%
@@ -866,7 +866,7 @@ for(int x = 1;x < group_count;x++){
 							<INPUT TYPE="hidden" NAME="table_select" VALUE="gru">
 							<INPUT TYPE="hidden" NAME="sql_select" VALUE="upd">
   							<INPUT TYPE="hidden" NAME="pass" VALUE="<%=inpPassword %>">
-  							<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" VALUE="�ύX">
+  							<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" VALUE="変更">
   						</TD>
  				  	</FORM>
   					<FORM action="kanri_admin.jsp" method="POST">
@@ -877,7 +877,7 @@ for(int x = 1;x < group_count;x++){
   							<INPUT TYPE="hidden" NAME="table_select" VALUE="gru">
 							<INPUT TYPE="hidden" NAME="sql_select" VALUE="del">
   							<INPUT TYPE="hidden" NAME="pass" VALUE="<%= inpPassword %>">
-  							<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" VALUE="�폜">
+  							<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" VALUE="削除">
   						</TD>
    					</FORM>
   				</TR>
@@ -889,7 +889,7 @@ for(int x = 1;x < group_count;x++){
 		<BR>
 		
 		<FORM NAME="MyForm2">
-			<INPUT TYPE="button" STYLE="background-color:#FFFFFF;width:50" VALUE="�߂�" onClick="location.href='http://www.lucentsquare.co.jp/kinmu_db/top.html'">
+			<INPUT TYPE="button" STYLE="background-color:#FFFFFF;width:50" VALUE="戻る" onClick="location.href='http://www.lucentsquare.co.jp/kinmu_db/top.html'">
 		</FORM>
 		
 		<A NAME="YOTEI"></A>
@@ -897,20 +897,20 @@ for(int x = 1;x < group_count;x++){
 			<TABLE STYLE="width:100%">
 				<TR>
 					<TH bgcolor="#000099">
-						<FONT color="#FFFFFF"><B>5. �\��敪�o�^</B></FONT>
+						<FONT color="#FFFFFF"><B>5. 予定区分登録</B></FONT>
 					</TH>
 				</TR>
 			</TABLE>
 
-			<HR SIZE="3" color="000099">�\��敪�o�^
+			<HR SIZE="3" color="000099">予定区分登録
 			<FORM action="kanri_admin.jsp" method="POST" name="formYotei">
 				<TABLE>
 					<TR>
-						<TD>�敪</TD>
+						<TD>区分</TD>
 						<TD>
 							<SELECT NAME="kubun" onChange="change_junban(this.value)" style="float:left">
-								<OPTION VALUE="1">�\��</OPTION>
-								<OPTION VALUE="2">�ꏊ</OPTION>
+								<OPTION VALUE="1">予定</OPTION>
+								<OPTION VALUE="2">場所</OPTION>
 							</SELECT>
 							<SELECT NAME="y_junban" style="display:block">
 <%
@@ -937,7 +937,7 @@ for(int x = 1;x < group_count;x++){
 						</TD>
 					</TR>
 					<TR>
-						<TD>���e</TD>
+						<TD>内容</TD>
 						<TD>
 							<INPUT TYPE="text" NAME="y_data" SIZE="30">
 						</TD>
@@ -947,7 +947,7 @@ for(int x = 1;x < group_count;x++){
 				<INPUT TYPE="hidden" NAME="sql_select" VALUE="ins">
 				<INPUT TYPE="hidden" NAME="action" VALUE="yotei_input">
 				<INPUT TYPE="hidden" NAME="pass" VALUE="<%= inpPassword %>">
-				<INPUT TYPE="submit" STYLE="background-color:#FFFFFF;width:50" VALUE="�o�^">
+				<INPUT TYPE="submit" STYLE="background-color:#FFFFFF;width:50" VALUE="登録">
 			</FORM>
 			<BR>
 
@@ -955,7 +955,7 @@ for(int x = 1;x < group_count;x++){
 				<TD valign="TOP">
 					<TABLE border="1">
 						<TR>
-							<TD align="center"><B>�\����e</B></TD>
+							<TD align="center"><B>予定内容</B></TD>
 							<TD align="center"><B>Function</B></TD>
 						</TR>
 <%
@@ -972,7 +972,7 @@ for(int x = 1;x < group_count;x++){
     								<INPUT TYPE="hidden" NAME="table_select" VALUE="yotei">
 									<INPUT TYPE="hidden" NAME="sql_select" VALUE="del">
        								<INPUT TYPE="hidden" NAME="pass" VALUE="<%= inpPassword %>">
-    								<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" VALUE="�폜">
+    								<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" VALUE="削除">
     							</TD>
     						</FORM>
     					</TR>
@@ -987,7 +987,7 @@ for(int x = 1;x < group_count;x++){
 				<TD valign="TOP">
 					<TABLE border="1">
 						<TR>
-							<TD align="center"><B>�ꏊ</B></TD>
+							<TD align="center"><B>場所</B></TD>
 							<TD align="center"><B>Function</B></TD>
 						</TR>
 <%
@@ -1004,7 +1004,7 @@ for(int x = 1;x < group_count;x++){
 									<INPUT TYPE="hidden" NAME="table_select" VALUE="yotei">
 									<INPUT TYPE="hidden" NAME="sql_select" VALUE="del">
     								<INPUT TYPE="hidden" NAME="pass" VALUE="<%= inpPassword %>">
-    								<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" VALUE="�폜">
+    								<INPUT TYPE="submit" STYLE="background-color:#FFFFFF" VALUE="削除">
    								</TD>
      						</FORM>
     					</TR>
@@ -1017,7 +1017,7 @@ for(int x = 1;x < group_count;x++){
 			</TABLE>
 		</CENTER>
 		<form NAME="MyForm">
-			<input type="button" style="background-color:#FFFFFF;width:50" value="�߂�" onClick="location.href='http://www.lucentsquare.co.jp/kinmu_db/top.html'">
+			<input type="button" style="background-color:#FFFFFF;width:50" value="戻る" onClick="location.href='http://www.lucentsquare.co.jp/kinmu_db/top.html'">
 		</form>
 		</body>
 	</html>

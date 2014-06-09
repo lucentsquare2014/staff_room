@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"
-	pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="kkweb.mail.C_MailSend"%><%@ page import="java.util.*"%><%@ page
 	import="kkweb.beans.*"%><%@ page import="kkweb.dao.*"%>
 <jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST" /><jsp:useBean
@@ -36,21 +36,21 @@
 %><jsp:setProperty name="mailsend"
 	property="to" value="<%=b_shain.getMail()%>" />
 <jsp:setProperty name="mailsend" property="subject"
-	value="���Ζ��񍐁��Ζ��񍐏��F�˗�" /><jsp:setProperty name="mailsend"
+	value="＜勤務報告＞勤務報告承認依頼" /><jsp:setProperty name="mailsend"
 	property="body" value="<%=body%>" />
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="message.css" type="text/css">
-<title>���F�˗�����</title>
+<title>承認依頼完了</title>
 </head>
 <body>
 	<center>
 		<div class="location">
 			<div class="location2">
-				<font class="msg">���F�˗�����</font><BR>
+				<font class="msg">承認依頼完了</font><BR>
 				<br> <a href="Menu_Gamen.jsp" class="link"><font
-					class="link">[ ���j���[�֖߂� ]</font></a>
+					class="link">[ メニューへ戻る ]</font></a>
 			</div>
 		</div>
 		<%

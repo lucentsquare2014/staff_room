@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"
-	pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%><%@ page import="kkweb.beans.*"%><%@ page
 	import="kkweb.dao.*"%><%@ page import="kkweb.maintenance.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,7 +11,7 @@
 %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css">
 <link rel="stylesheet" href="report.css" type="text/css">
@@ -36,7 +36,7 @@
 				| h.indexOf(bb) != -1 | h.indexOf(cc) != -1
 				| h.indexOf(dd) != -1 | h.indexOf(ee) != -1
 				| h.indexOf(ff) != -1) {
-			alert("\"\'\<>\`‚Í“ü—Í‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B");
+			alert("\"\'\<>\`ã¯å…¥åŠ›ã—ãªã„ã§ãã ã•ã„ã€‚");
 			return false;
 		} else {
 			return true;
@@ -44,18 +44,18 @@
 	}
 // -->
 </SCRIPT>
-<title>ƒvƒƒWƒFƒNƒgƒ}ƒXƒ^ƒƒ“ƒeƒiƒ“ƒX</title>
+<title>ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆãƒžã‚¹ã‚¿ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹</title>
 </head>
 <body>
 	<center>
-		<font class="title">ƒvƒƒWƒFƒNƒgƒ}ƒXƒ^ƒƒ“ƒeƒiƒ“ƒX</font><br>
+		<font class="title">ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆãƒžã‚¹ã‚¿ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹</font><br>
 		<hr color="#008080">
 		<table>
 			<tr>
-				<td align="left"><small>1.’Ç‰Á‚·‚éê‡‚Íã‚ÌŽO‚Â‚Ìƒ{ƒbƒNƒX‘S‚Ä‚ð‹L“ü‚µ‚ÄuŽžŠÔ‹L“üvƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B</small></td>
+				<td align="left"><small>1.è¿½åŠ ã™ã‚‹å ´åˆã¯ä¸Šã®ä¸‰ã¤ã®ãƒœãƒƒã‚¯ã‚¹å…¨ã¦ã‚’è¨˜å…¥ã—ã¦ã€Œæ™‚é–“è¨˜å…¥ã€ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚</small></td>
 			</tr>
 			<tr>
-				<td align="left"><small>2.‰{——EXVEíœ‚·‚éê‡‚ÍŠY“–‚·‚éƒvƒƒWƒFƒNƒg–¼‚ð‘I‘ð‚µ‚ÄuŽŸ‚Övƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B</small></td>
+				<td align="left"><small>2.é–²è¦§ãƒ»æ›´æ–°ãƒ»å‰Šé™¤ã™ã‚‹å ´åˆã¯è©²å½“ã™ã‚‹ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆåã‚’é¸æŠžã—ã¦ã€Œæ¬¡ã¸ã€ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚</small></td>
 			</tr>
 		</table>
 		<hr color="#008080">
@@ -64,9 +64,9 @@
 			name="form1" onSubmit="return aboutbox()">
 			<TABLE BORDER="1" class="mainte">
 				<TR>
-					<TH class="t-koumoku"><font color="white">ƒvƒƒWƒFƒNƒgƒR[ƒh</font></TH>
-					<TH class="t-koumoku"><font color="white">ƒvƒƒWƒFƒNƒg–¼Ì</font></TH>
-					<TH class="t-koumoku"><font color="white">êŠ</font></TH>
+					<TH class="t-koumoku"><font color="white">ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚³ãƒ¼ãƒ‰</font></TH>
+					<TH class="t-koumoku"><font color="white">ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆåç§°</font></TH>
+					<TH class="t-koumoku"><font color="white">å ´æ‰€</font></TH>
 				</TR>
 				<tr>
 					<td><input type="text" size="30" name="p_code"
@@ -77,7 +77,7 @@
 			</TABLE>
 			<TABLE>
 				<TR>
-					<TD colspan="3"><INPUT TYPE="submit" VALUE="@ŽžŠÔ‹L“ü@"
+					<TD colspan="3"><INPUT TYPE="submit" VALUE="ã€€æ™‚é–“è¨˜å…¥ã€€"
 						class="bottom"></TD>
 				</TR>
 			</TABLE>
@@ -86,7 +86,7 @@
 		<FORM method="post" action="Project_Maintenance_nextpage.jsp">
 			<table border="1" class="mainte" width="60%">
 				<tr>
-					<th colspan="2" class="t-koumoku"><font color="white">‘ÎÛƒvƒƒWƒFƒNƒg‘I‘ð</font></th>
+					<th colspan="2" class="t-koumoku"><font color="white">å¯¾è±¡ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆé¸æŠž</font></th>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -103,7 +103,7 @@
 											//z++;
 											bcode = (B_Projectname) projectlist.get(i);
 								%>
-								<option value="<%=bcode.getPROJECTcode()%>"><%=bcode.getPROJECTcode() + "@"
+								<option value="<%=bcode.getPROJECTcode()%>"><%=bcode.getPROJECTcode() + "ã€€"
 							+ bcode.getPROJECTname()%></option>
 								<%
 									}//System.out.println(z);
@@ -115,13 +115,13 @@
 			</table>
 			<TABLE>
 				<TR>
-					<TD colspan="3"><INPUT TYPE="submit" VALUE="@ŽŸ‚Ö@"
+					<TD colspan="3"><INPUT TYPE="submit" VALUE="ã€€æ¬¡ã¸ã€€"
 						class="bottom"></TD>
 				</TR>
 			</TABLE>
 		</FORM>
 		<br> <a href="SystemKanri_MenuGamen.jsp" class="link"><font
-			class="link"><small>[ ƒƒjƒ…[‚Ö–ß‚é ]</small></font></a>
+			class="link"><small>[ ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹ ]</small></font></a>
 	</center>
 </body>
 </html>

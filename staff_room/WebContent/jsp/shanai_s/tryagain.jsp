@@ -1,42 +1,42 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.*,java.sql.*,java.util.Date,java.io.*,java.text.*" %>
 <%!
-// •¶šƒGƒ“ƒR[ƒh‚ğs‚¢‚Ü‚·B
+// æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã„ã¾ã™ã€‚
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal == null){
 		return (null);
 	}
 	else{
-		return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
 <%
-/* C³“_ */
-// 02-08-12 ƒpƒ‰ƒ[ƒ^‚Ì‘—‚èæ‚ğ•ÏX[ŠeƒtƒŒ[ƒ€‚Ö‘—M sub01,sub02]
-// 02-08-15 ’N‚àŠ‘®‚µ‚Ä‚¢‚È‚¢ƒOƒ‹[ƒvƒR[ƒh‚ğ‘I‘ğ‚µ‚½‚ÉA‘SĞˆõ‚ªŒÂl–¼ƒRƒ“ƒ{ƒ{ƒbƒNƒX‚É•\¦‚³‚ê‚Ä‚µ‚Ü‚¤Œ»Û‚ğC³B
-// 02-08-16 ƒpƒ‰ƒ[ƒ^‚ğC³
-// 02-09-02 ƒpƒ‰ƒ[ƒ^‚Ì‘—‚èæ‚Ì•ÏX[‚Q‰æ–Ê‚É•ÏX‚µ‚½‚Ì‚ÅAsub02‚É‚Ì‚İ‘—‚é]
-// 13-06-18 ƒoƒi[‚ğ–¢‹L“ü‚Å“ü—Í‚·‚é‚Æ•ÏXAíœ‚ª‚Å‚«‚È‚¢Œ»Û‚ğC³B
+/* ä¿®æ­£ç‚¹ */
+// 02-08-12 ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®é€ã‚Šå…ˆã‚’å¤‰æ›´[å„ãƒ•ãƒ¬ãƒ¼ãƒ ã¸é€ä¿¡ sub01,sub02]
+// 02-08-15 èª°ã‚‚æ‰€å±ã—ã¦ã„ãªã„ã‚°ãƒ«ãƒ¼ãƒ—ã‚³ãƒ¼ãƒ‰ã‚’é¸æŠã—ãŸæ™‚ã«ã€å…¨ç¤¾å“¡ãŒå€‹äººåã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã«è¡¨ç¤ºã•ã‚Œã¦ã—ã¾ã†ç¾è±¡ã‚’ä¿®æ­£ã€‚
+// 02-08-16 ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ä¿®æ­£
+// 02-09-02 ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®é€ã‚Šå…ˆã®å¤‰æ›´[ï¼’ç”»é¢ã«å¤‰æ›´ã—ãŸã®ã§ã€sub02ã«ã®ã¿é€ã‚‹]
+// 13-06-18 ãƒãƒŠãƒ¼ã‚’æœªè¨˜å…¥ã§å…¥åŠ›ã™ã‚‹ã¨å¤‰æ›´ã€å‰Šé™¤ãŒã§ããªã„ç¾è±¡ã‚’ä¿®æ­£ã€‚
 		
-/* ’Ç‰Á“_ */
-// 02-08-15 ‹x‚İŠÖ˜A‚Ì—\’è‚ğ‘I‘ğ‚µ‚½‚ÉAƒoƒi[ƒXƒPƒWƒ…[ƒ‹‚ÌF‚ğ•ÏX‚·‚éB
-// 02-08-30 –{“ú‚Ì“ú•t‚ğ“_–Å‚·‚éB
+/* è¿½åŠ ç‚¹ */
+// 02-08-15 ä¼‘ã¿é–¢é€£ã®äºˆå®šã‚’é¸æŠã—ãŸæ™‚ã«ã€ãƒãƒŠãƒ¼ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®è‰²ã‚’å¤‰æ›´ã™ã‚‹ã€‚
+// 02-08-30 æœ¬æ—¥ã®æ—¥ä»˜ã‚’ç‚¹æ»…ã™ã‚‹ã€‚
 
-// ƒƒOƒCƒ“‚µ‚½ƒ†[ƒU‚ÌĞˆõ”Ô†‚ğ•Ï”[ID]‚ÉŠi”[
+// ãƒ­ã‚°ã‚¤ãƒ³ã—ãŸãƒ¦ãƒ¼ã‚¶ã®ç¤¾å“¡ç•ªå·ã‚’å¤‰æ•°[ID]ã«æ ¼ç´
 String ID = strEncode(request.getParameter("id"));
 
-// ƒpƒ‰ƒ[ƒ^‚Ìó‚¯æ‚è
+// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å—ã‘å–ã‚Š
 String reqNo = strEncode(request.getParameter("no"));
 String name = strEncode(request.getParameter("kojin"));
 String konohito = strEncode(request.getParameter("slkname"));
 String post = request.getParameter("group");
 String strReturn = request.getParameter("s_date");
 
-// JDBCƒhƒ‰ƒCƒo‚Ìƒ[ƒh
+// JDBCãƒ‰ãƒ©ã‚¤ãƒã®ãƒ­ãƒ¼ãƒ‰
 Class.forName("org.postgresql.Driver");
 
-// ƒf[ƒ^ƒx[ƒX‚ÖÚ‘±
+// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸æ¥ç¶š
 String user = "georgir";
 String password = "georgir";
 
@@ -48,13 +48,13 @@ if(reqNo == null){
 	reqNo = ID;
 }
 
-// SQLÀsFƒ†[ƒU‚Ì–¼‘O‚Ìæ“¾
+// SQLå®Ÿè¡Œï¼šãƒ¦ãƒ¼ã‚¶ã®åå‰ã®å–å¾—
 ResultSet NAME = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + reqNo +"'");
 
-// Ğˆõ”Ô†‚ğĞˆõ–¼‚É•ÏŠ·
+// ç¤¾å“¡ç•ªå·ã‚’ç¤¾å“¡åã«å¤‰æ›
 if( name == null ){
 	while(NAME.next()){
-		name = NAME.getString("K_–¼");
+		name = NAME.getString("K_æ°å");
 	}
 
 	NAME.close();
@@ -62,7 +62,7 @@ if( name == null ){
 	name = konohito;
 }
 
-// ƒXƒPƒWƒ…[ƒ‹—p•Ï”
+// ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ç”¨å¤‰æ•°
 String s_date = "";
 String s_start = "";
 String s_end = "";
@@ -83,33 +83,33 @@ String memo = "";
 					<FORM ACTION="tryagain.jsp" METHOD="POST">
 						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
 						<INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>">
-						<INPUT TYPE="submit" VALUE="Œ•\¦" title="Œ•\¦‚ÉˆÚ“®‚µ‚Ü‚·B">
+						<INPUT TYPE="submit" VALUE="æœˆè¡¨ç¤º" title="æœˆè¡¨ç¤ºã«ç§»å‹•ã—ã¾ã™ã€‚">
 					</FORM>
 				</TD>
 				<TD>
 					<FORM ACTION="TestExample34.jsp" METHOD="POST">
 						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
 						<INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>">
-						<INPUT TYPE="submit" VALUE="T•\¦" title="T•\¦‚ÉˆÚ“®‚µ‚Ü‚·B">
+						<INPUT TYPE="submit" VALUE="é€±è¡¨ç¤º" title="é€±è¡¨ç¤ºã«ç§»å‹•ã—ã¾ã™ã€‚">
 					</FORM>
 				</TD>
 				<TD>
 					<FORM ACTION="h_hyoji.jsp" METHOD="POST">
 						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
 						<INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>">
-						<INPUT TYPE="submit" VALUE="“ú•\¦" title="“ú•\¦‚ÉˆÚ“®‚µ‚Ü‚·B">
+						<INPUT TYPE="submit" VALUE="æ—¥è¡¨ç¤º" title="æ—¥è¡¨ç¤ºã«ç§»å‹•ã—ã¾ã™ã€‚">
 					</FORM>
 				</TD>
 				<TD>
 					<FORM ACTION="menu.jsp" METHOD="POST" TARGET="_top">
 						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-						<INPUT TYPE="submit" VALUE="ƒƒCƒ“ƒƒjƒ…[‚Ö–ß‚é" title="ƒƒCƒ“ƒƒjƒ…[‚É–ß‚è‚Ü‚·B">
+						<INPUT TYPE="submit" VALUE="ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹" title="ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«æˆ»ã‚Šã¾ã™ã€‚">
 					</FORM>
 				</TD>
 			</TR>
 		</TABLE>
 		<%
-		// ‚c‚aƒOƒ‹[ƒv–¼.ƒRƒ“ƒ{
+		// ï¼¤ï¼¢ã‚°ãƒ«ãƒ¼ãƒ—å.ã‚³ãƒ³ãƒœ
 		ResultSet rs2 = stmt.executeQuery("SELECT * FROM KINMU.GRU ORDER BY G_GRUNO");
 
 		Vector hitList1 = new Vector();
@@ -132,16 +132,16 @@ String memo = "";
 		int i = 0;
 		int j = -1;
 
-		// ƒXƒPƒWƒ…[ƒ‹ƒJƒEƒ“ƒg—p•Ï”
+		// ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚«ã‚¦ãƒ³ãƒˆç”¨å¤‰æ•°
 		int mincnt = 0;
 		int xxx = 0;
 
-		// ƒJƒŒƒ“ƒ_[ŒÄ‚Ño‚µ
+		// ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼å‘¼ã³å‡ºã—
 		GregorianCalendar cal = new GregorianCalendar();
-		int calYear = Integer.parseInt(""+ cal.get(Calendar.YEAR)); // ¡”N:calYear
+		int calYear = Integer.parseInt(""+ cal.get(Calendar.YEAR)); // ä»Šå¹´:calYear
 		int calMonth = Integer.parseInt(""+ (cal.get(Calendar.MONTH) + 1));
 
-		// “_–Å—pF–{“ú‚Ì“ú•t‚ğ“Ç‚İo‚µ‚Ü‚·B
+		// ç‚¹æ»…ç”¨ï¼šæœ¬æ—¥ã®æ—¥ä»˜ã‚’èª­ã¿å‡ºã—ã¾ã™ã€‚
 		Date kyo = cal.getTime();
 
 		String strTuki = request.getParameter("count");
@@ -156,7 +156,7 @@ String memo = "";
 			intYear = calYear;
 		}
 
-		// Œ‚ğ‚Ü‚½‚¢‚¾‚É
+		// æœˆã‚’ã¾ãŸã„ã æ™‚ã«
 		if(strTuki != null){
 			intTuki = Integer.parseInt(strTuki);
 		}else{
@@ -180,32 +180,32 @@ String memo = "";
 		}
 
 		cal.set( intYear, intTuki - 1, 1);
-		int sWeek = cal.get( Calendar.DAY_OF_WEEK ); // Œ‰‚Ì—j“ú:sWeek
+		int sWeek = cal.get( Calendar.DAY_OF_WEEK ); // æœˆåˆã®æ›œæ—¥:sWeek
 
 		cal.set( intYear, intTuki, 0 );
-		int eWeek = cal.get( Calendar.DAY_OF_WEEK ); // Œ––‚Ì—j“ú:eWeek
-		int eDay = cal.get( Calendar.DATE );         // Œ––‚Ì“ú  :eDay
+		int eWeek = cal.get( Calendar.DAY_OF_WEEK ); // æœˆæœ«ã®æ›œæ—¥:eWeek
+		int eDay = cal.get( Calendar.DATE );         // æœˆæœ«ã®æ—¥  :eDay
 
 		cal.set( intYear, intTuki - 1, 0 );
-		int zengetu = cal.get( Calendar.DATE );      // ‘OŒ‚ÌÅI“ú:zengetu
+		int zengetu = cal.get( Calendar.DATE );      // å‰æœˆã®æœ€çµ‚æ—¥:zengetu
 		zengetu = zengetu + 1;
 
 		%>
 
-		<%--  ƒOƒ‹[ƒv–¼‚ÌƒRƒ“ƒ{ƒ{ƒbƒNƒX  --%>
+		<%--  ã‚°ãƒ«ãƒ¼ãƒ—åã®ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹  --%>
 		<table>
 			<tr>
 				<form action="tryagain.jsp" method="post">
 					<td>
 						<FONT COLOR="white">
 							<SPAN CLASS="shadow">
-								ƒOƒ‹[ƒv–¼
+								ã‚°ãƒ«ãƒ¼ãƒ—å
 							</SPAN>
 						</FONT>
 					</td>
 					<td valign="top">
 						<select name=group style=width:200>
-							<option value="all">‘SĞˆõ</option>
+							<option value="all">å…¨ç¤¾å“¡</option>
 							<%
 							if(post == null){
 								post = post;
@@ -226,18 +226,18 @@ String memo = "";
 						<input type="hidden" name="kojin" value="<%= name %>">
 						<input type="hidden" name="count" value="<%= intTuki %>">
 						<input type="hidden" name="countY" value="<%= intYear %>">
-						<input type="submit" value="‘I‘ğ" title="¶‹L‚ÌƒOƒ‹[ƒv‚ğ‰E‚É•\¦‚µ‚Ü‚·B">
+						<input type="submit" value="é¸æŠ" title="å·¦è¨˜ã®ã‚°ãƒ«ãƒ¼ãƒ—ã‚’å³ã«è¡¨ç¤ºã—ã¾ã™ã€‚">
 					</td>
 				</form>
 				<%
-				ResultSet rs4 = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_GRUNO = '"+ post +"' ORDER BY K_PASS2 , K_ĞˆõNO");
+				ResultSet rs4 = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_GRUNO = '"+ post +"' ORDER BY K_PASS2 , K_ç¤¾å“¡NO");
 
 				Vector hitList3 = new Vector();
 
 				String kname = "";
 
 				while(rs4.next()){
-					kname = rs4.getString("K_–¼");
+					kname = rs4.getString("K_æ°å");
 					hitList3.addElement(kname);
 				}
 
@@ -245,14 +245,14 @@ String memo = "";
 
 				rs4.close();
 
-				ResultSet rs8 = stmt.executeQuery("SELECT * FROM KINMU.KOJIN ORDER BY K_PASS2 , K_ĞˆõNO");
+				ResultSet rs8 = stmt.executeQuery("SELECT * FROM KINMU.KOJIN ORDER BY K_PASS2 , K_ç¤¾å“¡NO");
 
 				Vector hitList5 = new Vector();
 
 				String minname = "";
 
 				while(rs8.next()){
-					minname = rs8.getString("K_–¼");
+					minname = rs8.getString("K_æ°å");
 					hitList5.addElement(minname);
 				}
 
@@ -265,7 +265,7 @@ String memo = "";
 					<td>
 						<FONT COLOR="white">
 							<SPAN CLASS="shadow">
-								ŒÂl–¼
+								å€‹äººå
 							</SPAN>
 						</FONT>
 					</td>
@@ -299,7 +299,7 @@ String memo = "";
 						<input type="hidden" name="kojin" value="<%= name %>">
 						<input type="hidden" name="count" value="<%= intTuki %>">
 						<input type="hidden" name="countY" value="<%= intYear %>">
-						<input type="submit" value="•\¦" title="¶‹L‚Ìl‚ÌƒXƒPƒWƒ…[ƒ‹‚ğ•\¦‚µ‚Ü‚·B">
+						<input type="submit" value="è¡¨ç¤º" title="å·¦è¨˜ã®äººã®ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚">
 					</td>
 				</form>
 			</tr>
@@ -307,7 +307,7 @@ String memo = "";
 		<center>
 			<table>
 				<tr>
-					<%--  ‘OŒ‚ÉˆÚ“®‚·‚éƒRƒ}ƒ“ƒhƒ{ƒ^ƒ“  --%>
+					<%--  å‰æœˆã«ç§»å‹•ã™ã‚‹ã‚³ãƒãƒ³ãƒ‰ãƒœã‚¿ãƒ³  --%>
 					<form action="tryagain.jsp" method="post">
 						<td>
 							<input type="hidden" name="group" value="<%= post %>">
@@ -315,7 +315,7 @@ String memo = "";
 							<input type="hidden" name="kojin" value="<%= name %>">
 							<input type="hidden" name="count" value="<%= intTuki - 1 %>">
 							<input type="hidden" name="countY" value="<%= intYear %>">
-							<input type="submit" name="zengetu" value="‘OŒ" title="‘O‚ÌŒ‚ÉˆÚ“®‚µ‚Ü‚·B">
+							<input type="submit" name="zengetu" value="å‰æœˆ" title="å‰ã®æœˆã«ç§»å‹•ã—ã¾ã™ã€‚">
 						</td>
 					</form>
 					<td>
@@ -323,14 +323,14 @@ String memo = "";
 							<font size="6" color="white">
 								<b><i>
 								<%
-								// ¡“ú‚Ì”N‚ÆŒ•\¦ƒ‰ƒxƒ‹
-								out.print(intYear + "”N" + intTuki + "Œ");
+								// ä»Šæ—¥ã®å¹´ã¨æœˆè¡¨ç¤ºãƒ©ãƒ™ãƒ«
+								out.print(intYear + "å¹´" + intTuki + "æœˆ");
 								%>
 								</i></b>
 							</font>
 						</SPAN>
 					</td>
-					<%--  ŸŒ‚ÉˆÚ“®‚·‚éƒRƒ}ƒ“ƒhƒ{ƒ^ƒ“  --%>
+					<%--  æ¬¡æœˆã«ç§»å‹•ã™ã‚‹ã‚³ãƒãƒ³ãƒ‰ãƒœã‚¿ãƒ³  --%>
 					<form action="tryagain.jsp" method="post">
 						<td>
 							<input type="hidden" name="group" value="<%= post %>">
@@ -338,44 +338,44 @@ String memo = "";
 							<input type="hidden" name="kojin" value="<%= name %>">
 							<input type="hidden" name="count" value="<%= intTuki + 1 %>">
 							<input type="hidden" name="countY" value="<%= intYear %>">
-							<input type="submit" name="jigetu" value="—‚Œ" title="Ÿ‚ÌŒ‚ÉˆÚ“®‚µ‚Ü‚·B">
+							<input type="submit" name="jigetu" value="ç¿Œæœˆ" title="æ¬¡ã®æœˆã«ç§»å‹•ã—ã¾ã™ã€‚">
 						</td>
 					</form>
 				</tr>
 			</table>
 		</center>
 
-		<%--  ƒJƒŒƒ“ƒ_[ì¬  --%>
+		<%--  ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ä½œæˆ  --%>
 		<table width="100%" border="1" cellspacing="0" cellpadding="1"><br>
 			<tr bgcolor="black">
 				<td width="13%" bgcolor="pink">
 					<center>
-						<font color="red">“ú</font>
+						<font color="red">æ—¥</font>
 					</center>
 				</td>
 				<td width="13%" bgcolor="white">
-					<center>Œ</center>
+					<center>æœˆ</center>
 				</td>
 				<td width="13%" bgcolor="white">
-					<center>‰Î</center>
+					<center>ç«</center>
 				</td>
 				<td width="13%" bgcolor="white">
-					<center>…</center>
+					<center>æ°´</center>
 				</td>
 				<td width="13%" bgcolor="white">
-					<center>–Ø</center>
+					<center>æœ¨</center>
 				</td>
 				<td width="13%" bgcolor="white">
-					<center>‹à</center>
+					<center>é‡‘</center>
 				</td>
 				<td width="13%" bgcolor="skyblue">
 					<center>
-						<font color="blue">“y</font>
+						<font color="blue">åœŸ</font>
 					</center>
 				</td>
 			</tr>
 			<%
-			// ƒe[ƒuƒ‹€–Úæ‚è‚İ—p•Ï”‚Ì‰Šú‰»
+			// ãƒ†ãƒ¼ãƒ–ãƒ«é …ç›®å–ã‚Šè¾¼ã¿ç”¨å¤‰æ•°ã®åˆæœŸåŒ–
 			String bana = "";
 			String b_plan = "";
 			String b_plan2 = "";
@@ -384,9 +384,9 @@ String memo = "";
 			String b_start = "";
 			String bmemo = "";
 			String iro = "";
-			// ƒXƒPƒWƒ…[ƒ‹‚ÌŒÄ‚Ño‚µ
-			// Ğˆõ–¼‚ğĞˆõ”Ô†‚É•ÏŠ·
-			ResultSet rs5 = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_–¼ = '"+ name +"'");
+			// ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‘¼ã³å‡ºã—
+			// ç¤¾å“¡åã‚’ç¤¾å“¡ç•ªå·ã«å¤‰æ›
+			ResultSet rs5 = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_æ°å = '"+ name +"'");
 
 			String no = "";
 			while(rs5.next()){
@@ -400,7 +400,7 @@ String memo = "";
 			i = 0;
 			SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 			String kyo2 = sFmt.format(kyo);
-			// Œ‰‚ß‚ğ‹ó”’‚É
+			// æœˆåˆã‚ã‚’ç©ºç™½ã«
 			nen = intYear;
 			tuki = intTuki - 2;
 
@@ -427,10 +427,10 @@ String memo = "";
 					calWeek = cal.get( Calendar.DAY_OF_WEEK );
 					String yasumi = "";
 
-					ResultSet rs7 = stmt.executeQuery("SELECT * FROM KINMU.HOLIDAY WHERE H_”NŒ“ú = '"+ sFmt.format(thisMonth) +"'");
+					ResultSet rs7 = stmt.executeQuery("SELECT * FROM KINMU.HOLIDAY WHERE H_å¹´æœˆæ—¥ = '"+ sFmt.format(thisMonth) +"'");
 
 					while(rs7.next()){
-						yasumi = rs7.getString("H_‹x“ú–¼");
+						yasumi = rs7.getString("H_ä¼‘æ—¥å");
 					}
 
 					rs7.close();
@@ -438,9 +438,9 @@ String memo = "";
 					cal.set( nen, tuki, zengetu );
 					today = cal.getTime();
 
-					// —j“ú–ˆ‚ÉƒoƒbƒNƒOƒ‰ƒ“ƒh‚ÌF‚ğ•ÏX‚·‚é
+					// æ›œæ—¥æ¯ã«ãƒãƒƒã‚¯ã‚°ãƒ©ãƒ³ãƒ‰ã®è‰²ã‚’å¤‰æ›´ã™ã‚‹
 					if(sFmt.format(today).equals(kyo2)){
-					// ¡“ú
+					// ä»Šæ—¥
 						%><td height="50" align="left" valign="top" bgcolor="lavender"><%
 					}else if(calWeek == 1){
 						%><td bgcolor="pink" height="50" align="left" valign="top"><%
@@ -450,17 +450,17 @@ String memo = "";
 						%><td bgcolor="white" height="50" align="left" valign="top"><%
 					}
 					%>
-					<A HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act=" TARGET="sub02" title="V‹K“o˜^‚Å‚«‚Ü‚·B" oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
+					<A HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act=" TARGET="sub02" title="æ–°è¦ç™»éŒ²ã§ãã¾ã™ã€‚" oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
 						<%= zengetu %>
 					</A>
 					<font color="red"><%= yasumi %></font><br>
 					<%
-					ResultSet rs3 = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_ĞˆõNO = '"+ no +"' AND B_START <= '"+ sFmt.format(thisMonth) +"' AND '"+ sFmt.format(thisMonth) +"' <= B_END");
+					ResultSet rs3 = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_ç¤¾å“¡NO = '"+ no +"' AND B_START <= '"+ sFmt.format(thisMonth) +"' AND '"+ sFmt.format(thisMonth) +"' <= B_END");
 					while(rs3.next()){
 						b_start = rs3.getString("B_START");
 						b_start = b_start.substring(0,10);
 						b_plan = rs3.getString("B_PLAN").trim();
-						if(b_plan.equals("‹x‚İ") || b_plan.equals("‰Ä‹x")){
+						if(b_plan.equals("ä¼‘ã¿") || b_plan.equals("å¤ä¼‘")){
 							iro = "orange";
 						}else{
 							iro = "yellow";
@@ -503,15 +503,15 @@ String memo = "";
 									}
 									
 									
-								    // 2013-06-18 •ÏXÒ:—é–Ø—ºq 21304
+								    // 2013-06-18 å¤‰æ›´è€…:éˆ´æœ¨äº®å­ 21304
 									//if(b_plan == "" && b_plan2 == null && b_place == "" && b_place2 == null){
 									if(b_plan.length() == 0 && b_plan2.length() == 0 && b_place.length() == 0 && b_place2.length() == 0){
-										bana = "ƒoƒi[<BR>Ú×î•ñ‚È‚µ";
+										bana = "ãƒãƒŠãƒ¼<BR>è©³ç´°æƒ…å ±ãªã—";
 									}
 									if( bmemo == null || bmemo.equals("") ){
 										bmemo = "";
 									}else{
-										bmemo = "<b><ƒƒ‚></b><BR>"+ bmemo +"";
+										bmemo = "<b><ãƒ¡ãƒ¢></b><BR>"+ bmemo +"";
 									}
 									
 									
@@ -519,17 +519,17 @@ String memo = "";
 									
 									/*
 									if( bmemo != null ){
-										bmemo = "<b><ƒƒ‚></b><BR>"+ bmemo +"";
+										bmemo = "<b><ãƒ¡ãƒ¢></b><BR>"+ bmemo +"";
 
 									}else{
 										bmemo = "";
 									}
 
-									/*      20130111  ã‹LC³
+									/*      20130111  ä¸Šè¨˜ä¿®æ­£
 									if(bmemo == null){
 										bmemo = "";
 									}else{
-										bmemo = "ƒƒ‚“à—e<BR>"+ bmemo +"";
+										bmemo = "ãƒ¡ãƒ¢å†…å®¹<BR>"+ bmemo +"";
 									}
 									*/
 									%>
@@ -539,7 +539,7 @@ String memo = "";
 										</font>
 									</A>
 									<%
-								}else{%>@<%}
+								}else{%>ã€€<%}
 								%>
 								</td>
 							</tr>
@@ -548,24 +548,24 @@ String memo = "";
 					}
 					rs3.close();
 					sFmt = new SimpleDateFormat("yyyyMMdd");
-					// ƒXƒPƒWƒ…[ƒ‹‚ÌŒÄ‚Ño‚µ
-					ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_ĞˆõNO = '"+ no +"'");
+					// ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‘¼ã³å‡ºã—
+					ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_ç¤¾å“¡NO = '"+ no +"'");
 					while(rs6.next()){
-						String s_place = rs6.getString("S_PLACE").trim();		//êŠæ“¾
-						String s_place2 = rs6.getString("S_PLACE2");			//êŠÚ×æ“¾
-						String s_plan = rs6.getString("S_PLAN").trim();			//—\’èæ“¾
-						String s_plan2 = rs6.getString("S_PLAN2");				//—\’èÚ×æ“¾
+						String s_place = rs6.getString("S_PLACE").trim();		//å ´æ‰€å–å¾—
+						String s_place2 = rs6.getString("S_PLACE2");			//å ´æ‰€è©³ç´°å–å¾—
+						String s_plan = rs6.getString("S_PLAN").trim();			//äºˆå®šå–å¾—
+						String s_plan2 = rs6.getString("S_PLAN2");				//äºˆå®šè©³ç´°å–å¾—
 
 						s_date = rs6.getString("S_DATE").substring(0,10);
 						s_start = rs6.getString("S_START");
 						s_end = rs6.getString("S_END");
 						memo = rs6.getString("S_MEMO");
-						String S_sTimeM = s_start.substring(2,4);				//ŠJn‚ğu•ªv‚Æ
-						String S_sTimeH = s_start.substring(0,2);				//          uv‚É•ªŠ„
-						String S_eTimeM = s_end.substring(2,4);					//I—¹‚ğu•ªv‚Æ
-						String S_eTimeH = s_end.substring(0,2);					//          uv‚É•ªŠ„
+						String S_sTimeM = s_start.substring(2,4);				//é–‹å§‹æ™‚åˆ»ã‚’ã€Œåˆ†ã€ã¨
+						String S_sTimeH = s_start.substring(0,2);				//          ã€Œæ™‚ã€ã«åˆ†å‰²
+						String S_eTimeM = s_end.substring(2,4);					//çµ‚äº†æ™‚åˆ»ã‚’ã€Œåˆ†ã€ã¨
+						String S_eTimeH = s_end.substring(0,2);					//          ã€Œæ™‚ã€ã«åˆ†å‰²
 
-						String sche = "<b>" + "<" + S_sTimeH + ":" + S_sTimeM + "`" + S_eTimeH + ":" + S_eTimeM + ">" + "</b>" + "<br>";
+						String sche = "<b>" + "<" + S_sTimeH + ":" + S_sTimeM + "ã€œ" + S_eTimeH + ":" + S_eTimeM + ">" + "</b>" + "<br>";
 
 						if(s_plan.equals("--")){
 							s_plan = "";
@@ -597,20 +597,20 @@ String memo = "";
 						if( memo == null || memo.equals("")){
 							memo = "";
 						}else{
-							memo = "<b><ƒƒ‚></b><BR>"+ memo +"";
+							memo = "<b><ãƒ¡ãƒ¢></b><BR>"+ memo +"";
 						}
 						/*
 						if( memo != null ){
-							memo = "<b><ƒƒ‚></b><BR>"+ memo +"";
+							memo = "<b><ãƒ¡ãƒ¢></b><BR>"+ memo +"";
 
 						}else{
 							memo = "";
 						}
-						/*      20130111  ã‹LC³
+						/*      20130111  ä¸Šè¨˜ä¿®æ­£
 						if(memo == null){
 							memo = "";
 						}else{
-							memo = "<b><ƒƒ‚></b><BR>"+ memo +"";
+							memo = "<b><ãƒ¡ãƒ¢></b><BR>"+ memo +"";
 						}
 						*/
 						%>
@@ -630,7 +630,7 @@ String memo = "";
 							return true;
 						}
 						function send<%= mincnt %>(id,no,date,start){
-							alert("ƒXƒPƒWƒ…[ƒ‹‚ğƒRƒs[‚µ‚Ü‚·B");
+							alert("ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚³ãƒ”ãƒ¼ã—ã¾ã™ã€‚");
 							var charid = id;
 							var charno = no;
 							var charde = date;
@@ -640,15 +640,15 @@ String memo = "";
 							document.cookie = "no="+charno+";";
 							document.cookie = "s_date="+charde+";";
 							document.cookie = "s_start="+charst+";";
-							// ƒŠƒ_ƒCƒŒƒNƒgˆ—
+							// ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆå‡¦ç†
 							parent.main.location.href = "tryagain.jsp?id=<%= ID %>&no=<%= no %>&s_date="+ charde +"&s_start=<%= s_start %>&group=<%= post %>&kind=Month";
 						}
 						function miseru<%= xxx %>(no,date,kd){
-							alert("ƒXƒPƒWƒ…[ƒ‹‚ğ“\‚è‚Â‚¯‚µ‚Ü‚·B");
+							alert("ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è²¼ã‚Šã¤ã‘ã—ã¾ã™ã€‚");
 							var charno = no;
 							var charde = date;
 							var charkd = kd;
-							// JavaScript‚É‚æ‚éCookie‚©‚ç‚Ì”²‚«o‚µ
+							// JavaScriptã«ã‚ˆã‚‹Cookieã‹ã‚‰ã®æŠœãå‡ºã—
 							theCookie = document.cookie + ";";
 							Sid = theCookie.indexOf("id");
 							Sno = theCookie.indexOf("no");
@@ -687,7 +687,7 @@ String memo = "";
 			for(i = 1;i <= eDay;i++){
 				cal.set(intYear, intTuki - 1, i);
 				int calWeek = cal.get(Calendar.DAY_OF_WEEK);
-				// w’è‚µ‚½“ú‚ğ”äŠr‚Å‚«‚é‚æ‚¤‚É
+				// æŒ‡å®šã—ãŸæ—¥ã‚’æ¯”è¼ƒã§ãã‚‹ã‚ˆã†ã«
 				sFmt = new SimpleDateFormat("yyyyMMdd");
 				cal.set(intYear,intTuki - 1,i);
 				Date thisMonth = cal.getTime();
@@ -695,13 +695,13 @@ String memo = "";
 				String yasumi = "";
 				String kyujitu = sFmt.format(thisMonth);
 
-				ResultSet rs7 = stmt.executeQuery("SELECT * FROM KINMU.HOLIDAY WHERE H_”NŒ“ú = '"+ sFmt.format(thisMonth) +"'");
+				ResultSet rs7 = stmt.executeQuery("SELECT * FROM KINMU.HOLIDAY WHERE H_å¹´æœˆæ—¥ = '"+ sFmt.format(thisMonth) +"'");
 
 				while(rs7.next()){
-					yasumi = rs7.getString("H_‹x“ú–¼");
+					yasumi = rs7.getString("H_ä¼‘æ—¥å");
 				}
 				rs7.close();
-				// “ú—j“ú‚ªÅ‰‚È‚Ì‚Ås‚Ìæ“ª‚ğ‚ ‚ç‚í‚·<tr>ƒ^ƒO‚ğİ’è
+				// æ—¥æ›œæ—¥ãŒæœ€åˆãªã®ã§è¡Œã®å…ˆé ­ã‚’ã‚ã‚‰ã‚ã™<tr>ã‚¿ã‚°ã‚’è¨­å®š
 				if(calWeek == 1){
 					%>
 					<tr>
@@ -710,47 +710,47 @@ String memo = "";
 				sFmt = new SimpleDateFormat("yyyy-MM-dd");
 				cal.set(nen,tuki,i);
 				today = cal.getTime();
-				// —j“ú–ˆ‚ÉƒoƒbƒNƒOƒ‰ƒ“ƒh‚ÌF‚ğ•ÏX‚·‚é
+				// æ›œæ—¥æ¯ã«ãƒãƒƒã‚¯ã‚°ãƒ©ãƒ³ãƒ‰ã®è‰²ã‚’å¤‰æ›´ã™ã‚‹
 				if(sFmt.format(today).equals(kyo2)){
-					// ¡“ú
+					// ä»Šæ—¥
 					%>
 					<td height="50" align="left" valign="top" bgcolor="lavender">
 					<%
 				}else if(calWeek == 1){
-					// “ú—j“ú
+					// æ—¥æ›œæ—¥
 					%>
 					<td height="50" align="left" valign="top" bgcolor="pink">
 					<%
 				}else if(yasumi != ""){
-					// j“ú
+					// ç¥æ—¥
 					%>
 					<td height="50" align="left" valign="top" bgcolor="pink">
 					<%
 				}else if(calWeek == 7){
-					// “y—j“ú
+					// åœŸæ›œæ—¥
 					%>
 					<td height="50" align="left" valign="top" bgcolor="skyblue">
 					<%
 				}else{
-					// •½“ú
+					// å¹³æ—¥
 					%>
 					<td height="50" align="left" valign="top" bgcolor="white">
 					<%
 				}
 				%>
-				<A HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act=" TARGET="sub02" title="V‹K“o˜^‚Å‚«‚Ü‚·B" oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
+				<A HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act=" TARGET="sub02" title="æ–°è¦ç™»éŒ²ã§ãã¾ã™ã€‚" oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
 					<%= i %>
 				</A>
 				<font color=red>
 					<%= yasumi %>
 				</font><br>
 				<%
-				ResultSet rs3 = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_ĞˆõNO = '"+ no +"' AND B_START <= '"+ sFmt.format(thisMonth) +"' AND '"+ sFmt.format(thisMonth) +"' <= B_END");
+				ResultSet rs3 = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_ç¤¾å“¡NO = '"+ no +"' AND B_START <= '"+ sFmt.format(thisMonth) +"' AND '"+ sFmt.format(thisMonth) +"' <= B_END");
 				while(rs3.next()){
 					b_start = rs3.getString("B_START");
 					b_start = b_start.substring(0,10);
 					b_plan = rs3.getString("B_PLAN").trim();
-					if(b_plan.equals("‹x‚İ") || b_plan.equals("‰Ä‹x")){
+					if(b_plan.equals("ä¼‘ã¿") || b_plan.equals("å¤ä¼‘")){
 						iro = "orange";
 					}else{
 						iro = "yellow";
@@ -772,8 +772,8 @@ String memo = "";
 								if(b_place.equals("--")){
 									b_place = "";
 								}
-								///// 2013-06-18 •ÏXÒ:—é–Ø—ºq 21304
-								/*//// 2013-06-18 ¶‹L‚Ì“ú‚É‚¨‚¯‚éƒIƒŠƒWƒiƒ‹ƒR[ƒh ŠJn
+								///// 2013-06-18 å¤‰æ›´è€…:éˆ´æœ¨äº®å­ 21304
+								/*//// 2013-06-18 å·¦è¨˜ã®æ—¥æ™‚ã«ãŠã‘ã‚‹ã‚ªãƒªã‚¸ãƒŠãƒ«ã‚³ãƒ¼ãƒ‰ é–‹å§‹
 								if(b_plan != "" && b_plan2 != null){
 									bana = b_plan + "<b>" + " : " + "</b>" + b_plan2 + "<BR>";
 								}else if(b_plan != "" && b_plan2 == null){
@@ -793,14 +793,14 @@ String memo = "";
 									bana = bana + "<BR>";
 								}
 								if(b_plan == "" && b_plan2 == null && b_place == "" && b_place2 == null){
-									bana = "ƒoƒi[<BR>Ú×î•ñ‚È‚µ";
+									bana = "ãƒãƒŠãƒ¼<BR>è©³ç´°æƒ…å ±ãªã—";
 								}
 								if( bmemo == null || bmemo.equals("")){
 									bmemo = "";
 								}else{
-									bmemo = "<b><ƒƒ‚></b><BR>"+ bmemo +"";
+									bmemo = "<b><ãƒ¡ãƒ¢></b><BR>"+ bmemo +"";
 								}
-								//*/// 2013-06-18 ¶‹L‚Ì“ú‚É‚¨‚¯‚éƒIƒŠƒWƒiƒ‹ƒR[ƒh I—¹
+								//*/// 2013-06-18 å·¦è¨˜ã®æ—¥æ™‚ã«ãŠã‘ã‚‹ã‚ªãƒªã‚¸ãƒŠãƒ«ã‚³ãƒ¼ãƒ‰ çµ‚äº†
 								
 								if(b_plan.length() > 0 && b_plan2 != null){
 									bana = b_plan + "<b>" + " : " + "</b>" + b_plan2 + "<BR>";
@@ -822,26 +822,26 @@ String memo = "";
 								}
 								
 								if(b_plan.length() == 0 && b_plan2.length() == 0 && b_place.length() == 0 && b_place2.length() == 0){
-									bana = "ƒoƒi[<BR>Ú×î•ñ‚È‚µ";
+									bana = "ãƒãƒŠãƒ¼<BR>è©³ç´°æƒ…å ±ãªã—";
 								}
 								if( bmemo == null || bmemo.equals("")){
 									bmemo = "";
 								}else{
-									bmemo = "<b><ƒƒ‚></b><BR>"+ bmemo +"";
+									bmemo = "<b><ãƒ¡ãƒ¢></b><BR>"+ bmemo +"";
 								}
 								
 								/*
 								if( bmemo != null ){
-									bmemo = "<b><ƒƒ‚></b><BR>"+ bmemo +"";
+									bmemo = "<b><ãƒ¡ãƒ¢></b><BR>"+ bmemo +"";
 
 								}else{
 									bmemo = "";
 								}
-								/*      20130111  ã‹LC³
+								/*      20130111  ä¸Šè¨˜ä¿®æ­£
 								if(bmemo == null){
 									bmemo = "";
 								}else{
-									bmemo = "<b><ƒƒ‚></b><BR>"+ bmemo +"";
+									bmemo = "<b><ãƒ¡ãƒ¢></b><BR>"+ bmemo +"";
 								}
 								*/
 								%>
@@ -851,7 +851,7 @@ String memo = "";
 									</font>
 								</A>
 								<%
-							}else{%>@<%}
+							}else{%>ã€€<%}
 							%>
 							</TD>
 						</TR>
@@ -861,23 +861,23 @@ String memo = "";
 				rs3.close();
 				sFmt = new SimpleDateFormat("yyyyMMdd");
 
-				// ƒXƒPƒWƒ…[ƒ‹‚ÌŒÄ‚Ño‚µ
-				ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_ĞˆõNO = '"+ no +"'");
+				// ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‘¼ã³å‡ºã—
+				ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_ç¤¾å“¡NO = '"+ no +"'");
 				while(rs6.next()){
-					String s_place = rs6.getString("S_PLACE").trim();		//êŠæ“¾
-					String s_place2 = rs6.getString("S_PLACE2");			//êŠÚ×æ“¾
-					String s_plan = rs6.getString("S_PLAN").trim();			//—\’èæ“¾
-					String s_plan2 = rs6.getString("S_PLAN2");				//—\’èÚ×æ“¾
+					String s_place = rs6.getString("S_PLACE").trim();		//å ´æ‰€å–å¾—
+					String s_place2 = rs6.getString("S_PLACE2");			//å ´æ‰€è©³ç´°å–å¾—
+					String s_plan = rs6.getString("S_PLAN").trim();			//äºˆå®šå–å¾—
+					String s_plan2 = rs6.getString("S_PLAN2");				//äºˆå®šè©³ç´°å–å¾—
 					s_date = rs6.getString("S_DATE").substring(0,10);
 					s_start = rs6.getString("S_START");
 					s_end = rs6.getString("S_END");
 					memo = rs6.getString("S_MEMO");
-					String S_sTimeM = s_start.substring(2,4);				//ŠJn‚ğu•ªv‚Æ
-					String S_sTimeH = s_start.substring(0,2);				//          uv‚É•ªŠ„
-					String S_eTimeM = s_end.substring(2,4);					//I—¹‚ğu•ªv‚Æ
-					String S_eTimeH = s_end.substring(0,2);					//          uv‚É•ªŠ„
+					String S_sTimeM = s_start.substring(2,4);				//é–‹å§‹æ™‚åˆ»ã‚’ã€Œåˆ†ã€ã¨
+					String S_sTimeH = s_start.substring(0,2);				//          ã€Œæ™‚ã€ã«åˆ†å‰²
+					String S_eTimeM = s_end.substring(2,4);					//çµ‚äº†æ™‚åˆ»ã‚’ã€Œåˆ†ã€ã¨
+					String S_eTimeH = s_end.substring(0,2);					//          ã€Œæ™‚ã€ã«åˆ†å‰²
 
-					String sche = "<b>" + "<" + S_sTimeH + ":" + S_sTimeM + "`" + S_eTimeH + ":" + S_eTimeM + ">" + "</b>" + "<br>";
+					String sche = "<b>" + "<" + S_sTimeH + ":" + S_sTimeM + "ã€œ" + S_eTimeH + ":" + S_eTimeM + ">" + "</b>" + "<br>";
 
 						if(s_plan.equals("--")){
 							s_plan = "";
@@ -910,20 +910,20 @@ String memo = "";
 					if( memo == null || memo.equals("")){
 						memo = "";
 					}else{
-						memo = "<b><ƒƒ‚></b><BR>"+ memo +"";
+						memo = "<b><ãƒ¡ãƒ¢></b><BR>"+ memo +"";
 					}
 					/*
 					if( memo != null ){
-						memo = "<b><ƒƒ‚></b><BR>"+ memo +"";
+						memo = "<b><ãƒ¡ãƒ¢></b><BR>"+ memo +"";
 
 					}else{
 						memo = "";
 					}
-					/*      20121228  ã‹LC³
+					/*      20121228  ä¸Šè¨˜ä¿®æ­£
 					if(memo == null){
 						memo = "";
 					}else{
-						memo = "<b><ƒƒ‚></b><BR>"+ memo +"";
+						memo = "<b><ãƒ¡ãƒ¢></b><BR>"+ memo +"";
 					}
 					*/
 					%>
@@ -943,7 +943,7 @@ String memo = "";
 						return true;
 					}
 					function send<%= mincnt %>(id,no,date,start){
-						alert("ƒXƒPƒWƒ…[ƒ‹‚ğƒRƒs[‚µ‚Ü‚·B");
+						alert("ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚³ãƒ”ãƒ¼ã—ã¾ã™ã€‚");
 						var charid = id;
 						var charno = no;
 						var charde = date;
@@ -953,15 +953,15 @@ String memo = "";
 						document.cookie = "no="+charno+";";
 						document.cookie = "s_date="+charde+";";
 						document.cookie = "s_start="+charst+";";
-						// ƒŠƒ_ƒCƒŒƒNƒgˆ—
+						// ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆå‡¦ç†
 						parent.main.location.href = "tryagain.jsp?id=<%= ID %>&no=<%= no %>&s_date="+ charde +"&s_start=<%= s_start %>&group=<%= post %>&kind=Month";
 					}
 					function miseru<%= xxx %>(no,date,kd){
-						alert("ƒXƒPƒWƒ…[ƒ‹‚ğ“\‚è‚Â‚¯‚µ‚Ü‚·B");
+						alert("ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è²¼ã‚Šã¤ã‘ã—ã¾ã™ã€‚");
 						var charno = no;
 						var charde = date;
 						var charkd = kd;
-						// JavaScript‚É‚æ‚éCookie‚©‚ç‚Ì”²‚«o‚µ
+						// JavaScriptã«ã‚ˆã‚‹Cookieã‹ã‚‰ã®æŠœãå‡ºã—
 						theCookie = document.cookie + ";";
 						Sid = theCookie.indexOf("id");
 						Sno = theCookie.indexOf("no");
@@ -991,23 +991,23 @@ String memo = "";
 				mincnt = mincnt + 1;
 				xxx = xxx + 1;
 				calWeek++;
-				// “ú•t—pƒJƒ‰ƒ€‚ÌI—¹ƒ^ƒO‚ğİ’è
+				// æ—¥ä»˜ç”¨ã‚«ãƒ©ãƒ ã®çµ‚äº†ã‚¿ã‚°ã‚’è¨­å®š
 				%>
 				</td>
 				<%
 
-				// “y—j“ú‚Ìê‡:1s‚ğ</tr>ƒ^ƒO‚Å•Â‚¶‚Ä
-				// ˆêTŠÔ•ª‚Ì•\¦ƒf[ƒ^‚ğƒNƒ‰ƒCƒAƒ“ƒg‚É‘—M‚·‚é
+				// åœŸæ›œæ—¥ã®å ´åˆ:1è¡Œã‚’</tr>ã‚¿ã‚°ã§é–‰ã˜ã¦
+				// ä¸€é€±é–“åˆ†ã®è¡¨ç¤ºãƒ‡ãƒ¼ã‚¿ã‚’ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã«é€ä¿¡ã™ã‚‹
 				if(calWeek > 7){
 				%>
 				</tr>
 				<%
 				}
-				// —j“ú‚ğˆê‚Â‘‚â‚·
+				// æ›œæ—¥ã‚’ä¸€ã¤å¢—ã‚„ã™
 				calWeek = ++calWeek % 8;
 			}
 			j = 1;
-			// Œ––‹ó—“•”•ª‚Ì•\¦
+			// æœˆæœ«ç©ºæ¬„éƒ¨åˆ†ã®è¡¨ç¤º
 			nen = intYear;
 			tuki = intTuki;
 			if(eWeek != 7){
@@ -1022,18 +1022,18 @@ String memo = "";
 				int calWeek = cal.get(Calendar.DAY_OF_WEEK);
 					calWeek = cal.get(Calendar.DAY_OF_WEEK);
 					String yasumi = "";
-					ResultSet rs7 = stmt.executeQuery("SELECT * FROM KINMU.HOLIDAY WHERE H_”NŒ“ú = '"+ sFmt.format(thisMonth) +"'");
+					ResultSet rs7 = stmt.executeQuery("SELECT * FROM KINMU.HOLIDAY WHERE H_å¹´æœˆæ—¥ = '"+ sFmt.format(thisMonth) +"'");
 
 					while(rs7.next()){
-						yasumi = rs7.getString("H_‹x“ú–¼");
+						yasumi = rs7.getString("H_ä¼‘æ—¥å");
 					}
 					rs7.close();
 					sFmt = new SimpleDateFormat("yyyy-MM-dd");
 					cal.set(nen,tuki,j);
 					today = cal.getTime();
-					// —j“ú–ˆ‚ÉƒoƒbƒNƒOƒ‰ƒ“ƒh‚ÌF‚ğ•ÏX‚·‚é
+					// æ›œæ—¥æ¯ã«ãƒãƒƒã‚¯ã‚°ãƒ©ãƒ³ãƒ‰ã®è‰²ã‚’å¤‰æ›´ã™ã‚‹
 					if(sFmt.format(today).equals(kyo2)){
-						// ¡“ú
+						// ä»Šæ—¥
 						%>
 						<td height="50" align="left" valign="top" bgcolor="lavender">
 						<%
@@ -1051,20 +1051,20 @@ String memo = "";
 						<%
 					}
 					%>
-					<A HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act=" TARGET="sub02" title="V‹K“o˜^‚Å‚«‚Ü‚·B" oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
+					<A HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act=" TARGET="sub02" title="æ–°è¦ç™»éŒ²ã§ãã¾ã™ã€‚" oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
 						<%= j %>
 					</A>
 					<font color="red">
 						<%= yasumi %>
 					</font><br>
 					<%
-					ResultSet rs3 = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_ĞˆõNO = '"+ no +"' AND B_START <= '"+ sFmt.format(thisMonth) +"' AND '"+ sFmt.format(thisMonth) +"' <= B_END");
+					ResultSet rs3 = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_ç¤¾å“¡NO = '"+ no +"' AND B_START <= '"+ sFmt.format(thisMonth) +"' AND '"+ sFmt.format(thisMonth) +"' <= B_END");
 					while(rs3.next()){
 						b_start = rs3.getString("B_START");
-						// ƒf[ƒ^ƒx[ƒX‚©‚çæ“¾‚µ‚½“ú•t‚Ì—]•ª‚È•”•ª‚ğœ‚­
+						// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰å–å¾—ã—ãŸæ—¥ä»˜ã®ä½™åˆ†ãªéƒ¨åˆ†ã‚’é™¤ã
 						b_start = b_start.substring(0,10);
 						b_plan = rs3.getString("B_PLAN").trim();
-						if(b_plan.equals("‹x‚İ") || b_plan.equals("‰Ä‹x")){
+						if(b_plan.equals("ä¼‘ã¿") || b_plan.equals("å¤ä¼‘")){
 							iro = "orange";
 						}else{
 							iro = "yellow";
@@ -1105,28 +1105,28 @@ String memo = "";
 										bana = bana + "<BR>";
 									}
 									
-								    // 2013-06-18 •ÏXÒ:—é–Ø—ºq 21304
+								    // 2013-06-18 å¤‰æ›´è€…:éˆ´æœ¨äº®å­ 21304
 									//if(b_plan == "" && b_plan2 == null && b_place == "" && b_place2 == null){
 									if(b_plan.length() == 0 && b_plan2.length() == 0 && b_place.length() == 0 && b_place2.length() == 0){
 									
-										bana = "ƒoƒi[<BR>Ú×î•ñ‚È‚µ";
+										bana = "ãƒãƒŠãƒ¼<BR>è©³ç´°æƒ…å ±ãªã—";
 									}
 									if( bmemo == null || bmemo.equals("")){
 										bmemo = "";
 									}else{
-										bmemo = "<b><ƒƒ‚></b><BR>"+ bmemo +"";
+										bmemo = "<b><ãƒ¡ãƒ¢></b><BR>"+ bmemo +"";
 									}
 									/*
 									if( bmemo != null ){
-										bmemo = "<b><ƒƒ‚></b><BR>"+ bmemo +"";
+										bmemo = "<b><ãƒ¡ãƒ¢></b><BR>"+ bmemo +"";
 									}else{
 										bmemo = "";
 									}
-									/*      20130111  ã‹LC³
+									/*      20130111  ä¸Šè¨˜ä¿®æ­£
 									if(bmemo == null){
 										bmemo = "";
 									}else{
-										bmemo = "<b><ƒƒ‚></b><BR>"+ bmemo +"";
+										bmemo = "<b><ãƒ¡ãƒ¢></b><BR>"+ bmemo +"";
 									}
 									*/
 									%>
@@ -1136,7 +1136,7 @@ String memo = "";
 										</font>
 									</A>
 									<%
-								}else{%>@<%}
+								}else{%>ã€€<%}
 								%>
 								</td>
 							</tr>
@@ -1145,23 +1145,23 @@ String memo = "";
 					}
 					rs3.close();
 					sFmt = new SimpleDateFormat("yyyyMMdd");
-					// ƒXƒPƒWƒ…[ƒ‹‚ÌŒÄ‚Ño‚µ
-					ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_ĞˆõNO = '"+ no +"'");
+					// ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‘¼ã³å‡ºã—
+					ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_ç¤¾å“¡NO = '"+ no +"'");
 					while(rs6.next()){
-						String s_place = rs6.getString("S_PLACE").trim();		//êŠæ“¾
-						String s_place2 = rs6.getString("S_PLACE2");			//êŠÚ×æ“¾
-						String s_plan = rs6.getString("S_PLAN").trim();			//—\’èæ“¾
-						String s_plan2 = rs6.getString("S_PLAN2");				//—\’èÚ×æ“¾
+						String s_place = rs6.getString("S_PLACE").trim();		//å ´æ‰€å–å¾—
+						String s_place2 = rs6.getString("S_PLACE2");			//å ´æ‰€è©³ç´°å–å¾—
+						String s_plan = rs6.getString("S_PLAN").trim();			//äºˆå®šå–å¾—
+						String s_plan2 = rs6.getString("S_PLAN2");				//äºˆå®šè©³ç´°å–å¾—
 						s_date = rs6.getString("S_DATE").substring(0,10);
 						s_start = rs6.getString("S_START");
 						s_end = rs6.getString("S_END");
 						memo = rs6.getString("S_MEMO");
-						String S_sTimeM = s_start.substring(2,4);				//ŠJn‚ğu•ªv‚Æ
-						String S_sTimeH = s_start.substring(0,2);				//          uv‚É•ªŠ„
-						String S_eTimeM = s_end.substring(2,4);					//I—¹‚ğu•ªv‚Æ
-						String S_eTimeH = s_end.substring(0,2);					//          uv‚É•ªŠ„
+						String S_sTimeM = s_start.substring(2,4);				//é–‹å§‹æ™‚åˆ»ã‚’ã€Œåˆ†ã€ã¨
+						String S_sTimeH = s_start.substring(0,2);				//          ã€Œæ™‚ã€ã«åˆ†å‰²
+						String S_eTimeM = s_end.substring(2,4);					//çµ‚äº†æ™‚åˆ»ã‚’ã€Œåˆ†ã€ã¨
+						String S_eTimeH = s_end.substring(0,2);					//          ã€Œæ™‚ã€ã«åˆ†å‰²
 
-						String sche = "<b>" + "<" + S_sTimeH + ":" + S_sTimeM + "`" + S_eTimeH + ":" + S_eTimeM + ">" + "</b>" + "<br>";
+						String sche = "<b>" + "<" + S_sTimeH + ":" + S_sTimeM + "ã€œ" + S_eTimeH + ":" + S_eTimeM + ">" + "</b>" + "<br>";
 
 						if(s_plan.equals("--")){
 							s_plan = "";
@@ -1193,20 +1193,20 @@ String memo = "";
 						if( memo == null || memo.equals("")){
 							memo = "";
 						}else{
-							memo = "<b><ƒƒ‚></b><BR>"+ memo +"";
+							memo = "<b><ãƒ¡ãƒ¢></b><BR>"+ memo +"";
 						}
 						/*
 						if( memo != null ){
-							memo = "<b><ƒƒ‚></b><BR>"+ memo +"";
+							memo = "<b><ãƒ¡ãƒ¢></b><BR>"+ memo +"";
 
 						}else{
 							memo = "";
 						}
-						/*      20130111  ã‹LC³
+						/*      20130111  ä¸Šè¨˜ä¿®æ­£
 						if(memo == null){
 							memo = "";
 						}else{
-							memo = "<b><ƒƒ‚></b><BR>"+ memo +"";
+							memo = "<b><ãƒ¡ãƒ¢></b><BR>"+ memo +"";
 						}
 						*/
 						%>
@@ -1226,7 +1226,7 @@ String memo = "";
 							return true;
 						}
 						function send<%= mincnt %>(id,no,date,start){
-							alert("ƒXƒPƒWƒ…[ƒ‹‚ğƒRƒs[‚µ‚Ü‚·B");
+							alert("ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ã‚³ãƒ”ãƒ¼ã—ã¾ã™ã€‚");
 							var charid = id;
 							var charno = no;
 							var charde = date;
@@ -1236,15 +1236,15 @@ String memo = "";
 							document.cookie = "no="+charno+";";
 							document.cookie = "s_date="+charde+";";
 							document.cookie = "s_start="+charst+";";
-							// ƒŠƒ_ƒCƒŒƒNƒgˆ—
+							// ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆå‡¦ç†
 							parent.main.location.href = "tryagain.jsp?id=<%= ID %>&no=<%= no %>&s_date="+ charde +"&s_start=<%= s_start %>&group=<%= post %>&kind=Month";
 						}
 						function miseru<%= xxx %>(no,date,kd){
-							alert("ƒXƒPƒWƒ…[ƒ‹‚ğ“\‚è‚Â‚¯‚µ‚Ü‚·B");
+							alert("ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è²¼ã‚Šã¤ã‘ã—ã¾ã™ã€‚");
 							var charno = no;
 							var charde = date;
 							var charkd = kd;
-							// JavaScript‚É‚æ‚éCookie‚©‚ç‚Ì”²‚«o‚µ
+							// JavaScriptã«ã‚ˆã‚‹Cookieã‹ã‚‰ã®æŠœãå‡ºã—
 							theCookie = document.cookie + ";";
 							Sid = theCookie.indexOf("id");
 							Sno = theCookie.indexOf("no");

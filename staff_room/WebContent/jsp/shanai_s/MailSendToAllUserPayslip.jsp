@@ -1,8 +1,8 @@
 <%@page import="kkweb.mail.C_MailSend"%>
 <%@page
 	import="kkweb.dao.*,kkweb.beans.*,java.util.Enumeration,java.util.ArrayList,java.sql.Date,org.apache.commons.codec.digest.DigestUtils"%>
-<%@ page language="java" contentType="text/html; charset=shift-jis"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
@@ -16,7 +16,7 @@
 %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="Syanaibunshou.css" type="text/css">
 <link rel="stylesheet" href="css/mailsendtoalluserpayslip.css"
 	type="text/css">
@@ -55,7 +55,7 @@
 
 </script>
 <%
-	request.setCharacterEncoding("shift-jis");
+	request.setCharacterEncoding("UTF-8");
 	String flag = request.getParameter("pagefrom");
 
 	// 給与明細書が登録されている在籍社員情報の取得

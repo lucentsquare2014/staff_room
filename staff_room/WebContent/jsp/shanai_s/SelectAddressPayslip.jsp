@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift-jis"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="utf-8"%>
 <%@page
 	import="kkweb.dao.*,kkweb.beans.*,java.util.ArrayList,java.sql.Date,org.apache.commons.codec.digest.DigestUtils"%>
@@ -15,7 +15,7 @@
 %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="Syanaibunshou.css" type="text/css">
 <link rel="stylesheet" href="css/selectaddresspayslip.css"
 	type="text/css">
@@ -35,7 +35,7 @@
 <title>送信者選択</title>
 </head>
 <%
-		request.setCharacterEncoding("shift-jis");
+		request.setCharacterEncoding("UTF-8");
 		String flag = request.getParameter("pagefrom");
 		// 在籍する社員情報を取得
 		SendList sendlist = new SendListDAO().payslipSendList();

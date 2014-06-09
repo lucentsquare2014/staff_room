@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*" %>
 <%!
 public String strEncode(String strVal)
@@ -7,49 +7,49 @@ public String strEncode(String strVal)
                  return(null);
          }
          else{
-                 return(new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+                 return(new String(strVal.getBytes("8859_1"),"UTF-8"));
          }
 }
 %>
 <%
-/* �C���_ */
-// 02-08-13 �󂯎�����p�����[�^�Ə����̈�v����G���[���b�Z�[�W��\��
-// 02-09-21 �G���[�̎�ނ𑝂₷
+/* 修正点 */
+// 02-08-13 受け取ったパラメータと条件の一致するエラーメッセージを表示
+// 02-09-21 エラーの種類を増やす
 
-	// ���O�C���������[�U�̎Ј��ԍ���ϐ�[ID]�Ɋi�[
+	// ログインしたユーザの社員番号を変数[ID]に格納
 	String ID = strEncode(request.getParameter("id"));
 	String NO = request.getParameter("no");
 	String FG = request.getParameter("flag");
 
-	// JDBC�h���C�o�̃��[�h
+	// JDBCドライバのロード
 	Class.forName("org.postgresql.Driver");
 
-	// ���[�U�F�؏��̐ݒ�
+	// ユーザ認証情報の設定
 	String user = "georgir";
 	String password = "georgir";
 
-	// Connection�I�u�W�F�N�g�̐���
+	// Connectionオブジェクトの生成
 	Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 
-	// Statement�I�u�W�F�N�g�̐���
+	// Statementオブジェクトの生成
 	Statement stmt = con.createStatement();
 
-	// SQL���s�E�l���
+	// SQL実行・個人情報
 	ResultSet rs_ko = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
 	String name_ko = "";
 
 	while(rs_ko.next()){
-		name_ko = rs_ko.getString("K_����");
+		name_ko = rs_ko.getString("K_氏名");
 	}
 
-	// SQL���s�E�l���
+	// SQL実行・個人情報
 	ResultSet rs_no = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 	String name_no = "";
 
 	while(rs_no.next()){
-		name_no = rs_no.getString("K_����");
+		name_no = rs_no.getString("K_氏名");
 	}
 %>
 <html>
@@ -59,44 +59,44 @@ public String strEncode(String strVal)
 <%
 	if(FG.equals("0")){
 	%>
-	�����ȏ������s��ꂽ�\��������܂��B<br>
+	無効な処理が行われた可能性があります。<br>
 	<form>
-	 <input type="button" value="�߂�" onClick="history.back()">
+	 <input type="button" value="戻る" onClick="history.back()">
 	</form>
 	<%
 	}
 	else if(FG.equals("1")){
 	%>
-	���ɑI������Ă��܂��B<br>
-	<form><input type='button' value='�߂�' onClick='history.back()'></form>
+	既に選択されています。<br>
+	<form><input type='button' value='戻る' onClick='history.back()'></form>
 	<%
 	}
 	else if(FG.equals("2")){
 	%>
-	�o�^�҂ƂȂ���́A�I�����鎖���o���܂���B<br>
-	<form><input type='button' value='�߂�' onClick='history.back()'></form>
+	登録者となる方は、選択する事が出来ません。<br>
+	<form><input type='button' value='戻る' onClick='history.back()'></form>
 	<%
 	}
 	else if(FG.equals("3")){
 	%>
-	<B><%= name_ko %></B>����́A
-	<B><%= name_no %></B>����̃X�P�W���[����o�^�E�ύX�E�폜�͍s���܂���B<br>
-	�����炩��߂�܂��B<br>
+	<B><%= name_ko %></B>さんは、
+	<B><%= name_no %></B>さんのスケジュールを登録・変更・削除は行えません。<br>
+	こちらから戻れます。<br>
 	<form>
-	<input type="button" value="�߂�" onClick="history.back()">
+	<input type="button" value="戻る" onClick="history.back()">
 	</form>
 	<%
 	}
 	else if(FG.equals("4")){
 	%>
-	�d�����Ă���X�P�W���[��������܂��B<BR>
-	<form><input type="button" value="�߂�" onClick="history.back()"></form>
+	重複しているスケジュールがあります。<BR>
+	<form><input type="button" value="戻る" onClick="history.back()"></form>
 	<%
 	}
 	else if(FG.equals("5")){
 	%>
-	���L�҂��܂߂��X�P�W���[���̓o�^�́A�o���܂���B<BR>
-	<form><input type="button" value="�߂�" onClick="history.back()"></form>
+	共有者を含めたスケジュールの登録は、出来ません。<BR>
+	<form><input type="button" value="戻る" onClick="history.back()"></form>
 	<%
 	}
 rs_no.close();

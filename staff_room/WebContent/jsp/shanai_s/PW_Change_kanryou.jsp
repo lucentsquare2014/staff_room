@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%-- <%	String id2 = (String)session.getAttribute("key2");
 		if(id2 == null || id2.equals("false")){
 			pageContext.forward("/Pw_Nyuryoku_system.jsp");
 		}else{%> --%>
 <%
-/// 2013/07/12 �V�� �ǉ�
-/// �ړI:�p�X���[�h�ύX�������̂ݕ\���ł���悤�ɂ��邽��
+/// 2013/07/12 新井 追加
+/// 目的:パスワード変更成功時のみ表示できるようにするため
 String changedpw = (String)session.getAttribute("changedpw");
 if( changedpw == null || changedpw.equals("false")
   ){
@@ -15,15 +15,15 @@ if( changedpw == null || changedpw.equals("false")
 %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="message.css" type="text/css">
-<title>�p�X���[�h�ύX����</title>
+<title>パスワード変更完了</title>
 </head>
 <body>
 <center><div class="location">
 <center><div class="location2">
-<font class="msg">�p�X���[�h������ɕύX����܂����B</font><br><br>
-<a href="ID_PW_Nyuryoku.jsp" class="link"><font class="link">[ ID�E�p�X���[�h���֖͂߂� ]</font></a>
+<font class="msg">パスワードが正常に変更されました。</font><br><br>
+<a href="ID_PW_Nyuryoku.jsp" class="link"><font class="link">[ ID・パスワード入力へ戻る ]</font></a>
 </div></center></div></center>
 </body>
 </html>

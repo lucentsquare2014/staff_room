@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
 		if(id2 == null || id2.equals("false")){	
@@ -6,13 +6,13 @@
 		}else{%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css"><link rel="stylesheet" href="report.css" type="text/css">
 <script type="text/javascript">
 <!--
 	function form_submitA(){
 	//adrs ="http://www1.lucentsquare.co.jp/kintaikanri/Group_ichiran.jsp"
-	//�ڍs��͈ȉ����g�p
+	//移行後は以下を使用
 	adrs ="http://www.lucentsquare.co.jp:8080/kk_web/Group_ichiran.jsp"
 	LinkWin=window.open("","NewPage",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,width=400,height=500')
 	LinkWin.location.href=adrs
@@ -36,7 +36,7 @@
 			i.indexOf(aa) != -1 | i.indexOf(bb) != -1 | i.indexOf(cc) != -1 | i.indexOf(dd) != -1 | i.indexOf(ee) != -1 | i.indexOf(ff) != -1 |
 			t.indexOf(aa) != -1 | t.indexOf(bb) != -1 | t.indexOf(cc) != -1 | t.indexOf(dd) != -1 | t.indexOf(ee) != -1 | t.indexOf(ff) != -1 |
 			y.indexOf(aa) != -1 | y.indexOf(bb) != -1 | y.indexOf(cc) != -1 | y.indexOf(dd) != -1 | y.indexOf(ee) != -1 | y.indexOf(ff) != -1){
-			alert("\"\'\<>\`�͓��͂��Ȃ��ł��������B");
+			alert("\"\'\<>\`は入力しないでください。");
 			return false;
 		}else{	
 			return true;			
@@ -44,29 +44,29 @@
 	}
 -->
 </script>
-<title>�Ј��ǉ�</title>
+<title>社員追加</title>
 </head>
 <body>
 <center>
-<font class="title">�Ј��ǉ�</font><br><hr color ="#008080">
+<font class="title">社員追加</font><br><hr color ="#008080">
 <table>
-<tr><td align="left"><small>1.���O�ȊO�̍��ڂ͑S�Ĕ��p�p�����œ��͂��Ă��������B</small></td></tr>
-<tr><td align="left"><small>2.���F�҂ł���ꍇ�͏��F�҃`�F�b�N����"1"����͂��Ă��������B</small></td></tr>
-<tr><td align="left"><small>3.�폳�F�҂ł���ꍇ�͏��F�҃`�F�b�N����"0"����͂��Ă��������B</small></td></tr>
-<tr><td align="left"><small>4.�����ԍ���<a  onClick="form_submitA()" style="cursor: pointer;"><font class="link">�O���[�v�ꗗ</font></a>���m�F���Ă��������B</small></td></tr>
+<tr><td align="left"><small>1.名前以外の項目は全て半角英数字で入力してください。</small></td></tr>
+<tr><td align="left"><small>2.承認者である場合は承認者チェック欄に"1"を入力してください。</small></td></tr>
+<tr><td align="left"><small>3.被承認者である場合は承認者チェック欄に"0"を入力してください。</small></td></tr>
+<tr><td align="left"><small>4.所属番号は<a  onClick="form_submitA()" style="cursor: pointer;"><font class="link">グループ一覧</font></a>より確認してください。</small></td></tr>
 </table><hr color ="#008080"><br>
 <FORM method="post" action="c_shain_tuika" name="form1" onSubmit="return aboutbox()" >
 <TABLE BORDER="1" class="mainte">
 <TR>
-<TH class="t-koumoku"><font color="white">��</font></TH>
-<TH class="t-koumoku"><font color="white">��</font></TH>
+<TH class="t-koumoku"><font color="white">姓</font></TH>
+<TH class="t-koumoku"><font color="white">名</font></TH>
 <TH class="t-koumoku"><font color="white">ID</font></TH>
-<TH class="t-koumoku"><font color="white">�p�X���[�h</font></TH>
-<TH class="t-koumoku"><font color="white">�Ј��ԍ�</font></TH>
-<TH class="t-koumoku"><font color="white">�O���[�v�ԍ�</font></TH>
-<TH class="t-koumoku"><font color="white">���F�҃`�F�b�N</font></TH>
-<TH class="t-koumoku"><font color="white">���F�ҕ\������</font></TH>
-<TH class="t-koumoku"><font color="white">��E</font></TH>
+<TH class="t-koumoku"><font color="white">パスワード</font></TH>
+<TH class="t-koumoku"><font color="white">社員番号</font></TH>
+<TH class="t-koumoku"><font color="white">グループ番号</font></TH>
+<TH class="t-koumoku"><font color="white">承認者チェック</font></TH>
+<TH class="t-koumoku"><font color="white">承認者表示順序</font></TH>
+<TH class="t-koumoku"><font color="white">役職</font></TH>
 </TR>
 <TR>
 <TD><INPUT TYPE="text" SIZE="7"  NAME="f_name" ></TD>
@@ -79,14 +79,14 @@
 <TD><INPUT TYPE="text" SIZE="5"  NAME="hyouzijun" ></TD>
 <TD><INPUT TYPE="text" SIZE="5"  NAME="yakusyoku" ></TD>
 </TR>
-<tr><TH class="t-koumoku" colspan="7"><font color="white">���[���A�h���X</font></TH></tr>
+<tr><TH class="t-koumoku" colspan="7"><font color="white">メールアドレス</font></TH></tr>
 <tr><TD colspan="7"><INPUT TYPE="text" SIZE="85"  NAME="mail" style="ime-mode: disabled;">@lucentsquare.co.jp</TD></tr>
 </TABLE><br>
 <TABLE>
-<TR><TD><INPUT TYPE="submit" VALUE="�@�ǉ��@" class="bottom" ></TD></TR>
+<TR><TD><INPUT TYPE="submit" VALUE="　追加　" class="bottom" ></TD></TR>
 </TABLE>
 </FORM><br>
-<a href="SystemKanri_MenuGamen.jsp" class="link"><font class="link"><small>[ ���j���[�֖߂� ]</small></font></a>
+<a href="SystemKanri_MenuGamen.jsp" class="link"><font class="link"><small>[ メニューへ戻る ]</small></font></a>
 </center>
 </body>
 </html>

@@ -1,13 +1,13 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*,java.util.Date,java.text.*,java.lang.*" %>
 <%!
-// •¶šƒGƒ“ƒR[ƒh‚ğs‚¢‚Ü‚·B
+// æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã„ã¾ã™ã€‚
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 		if(strVal==null){
 			return (null);
 		}
 		else{
-			return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+			return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 		}
 }
 %>
@@ -21,12 +21,12 @@ long diff2 = 0;
 long diff3 = 0;
 
 o_start = System.currentTimeMillis();
-// JDBCƒhƒ‰ƒCƒo‚Ìƒ[ƒh
+// JDBCãƒ‰ãƒ©ã‚¤ãƒã®ãƒ­ãƒ¼ãƒ‰
 Class.forName("org.postgresql.Driver");
 
-// ƒf[ƒ^ƒx[ƒX‚ÖÚ‘±
-String user = "georgir";     // ƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚Ìƒ†[ƒU–¼
-String password = "georgir"; // ƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌƒpƒXƒ[ƒh
+// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸æ¥ç¶š
+String user = "georgir";     // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®ãƒ¦ãƒ¼ã‚¶å
+String password = "georgir"; // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir", user, password);
 
 Statement stmt = con.createStatement();
@@ -41,7 +41,7 @@ String myid = "";
 
 while(rs.next()){
 		myid = strEncode(rs.getString("K_ID"));
-		myname = strEncode(rs.getString("K_ĞˆõNO"));
+		myname = strEncode(rs.getString("K_ç¤¾å“¡NO"));
 	}
 
 
@@ -51,7 +51,7 @@ while(rs.next()){
 			<div>ID : <%= myid %></div>
 			<div>NO : <%= myname %></div><br>
 	<%
-// Ú‘±‰ğœ
+// æ¥ç¶šè§£é™¤
 rs.close();
 stmt.close();
 con.close();

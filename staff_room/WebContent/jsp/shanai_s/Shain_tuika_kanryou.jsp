@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
 		if(id2 == null || id2.equals("false")){	
@@ -6,14 +6,14 @@
 		}else{%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="message.css" type="text/css">
-<title>‘‚«ž‚ÝŠ®—¹</title>
+<title>æ›¸ãè¾¼ã¿å®Œäº†</title>
 </head>
 <body>
 <center>
-<div class="location"><div class="location2"><font class="msg">‘‚«ž‚ÝŠ®—¹</font><br><br>
-<a href="SystemKanri_MenuGamen.jsp" class="link"><font class="link">[ ƒƒjƒ…[‚Ö–ß‚é ]</font></a></div></div>
+<div class="location"><div class="location2"><font class="msg">æ›¸ãè¾¼ã¿å®Œäº†</font><br><br>
+<a href="SystemKanri_MenuGamen.jsp" class="link"><font class="link">[ ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹ ]</font></a></div></div>
 </center>
 </body>
 </html>

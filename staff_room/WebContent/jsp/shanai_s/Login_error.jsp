@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = request.getParameter("shainID");
 		if(id2 == null || id2.equals("false")){
@@ -6,15 +6,15 @@
 		}else{%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="message.css" type="text/css">
-<title>ƒGƒ‰[</title>
+<title>ã‚¨ãƒ©ãƒ¼</title>
 </head>
 <body>
 <center>
 <div class="location"><div class="location2">
-<font class="error">‚h‚cEƒpƒXƒ[ƒh‚ðŠm”F‚µ‚ÄÄ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢</font><br><br>
-<button onClick="history.back()">Ä“ü—Í</button>
+<font class="error">ï¼©ï¼¤ãƒ»ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ç¢ºèªã—ã¦å†å…¥åŠ›ã—ã¦ãã ã•ã„</font><br><br>
+<button onClick="history.back()">å†å…¥åŠ›</button>
 </div></div>
 </center>
 </body>

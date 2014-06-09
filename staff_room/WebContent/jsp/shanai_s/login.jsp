@@ -1,38 +1,38 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*,java.util.Date,java.text.*" %>
 <%!
-// •¶ŽšƒGƒ“ƒR[ƒh‚ðs‚¢‚Ü‚·B
+// æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã„ã¾ã™ã€‚
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 		if(strVal==null){
 			return (null);
 		}
 		else{
-			return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+			return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 		}
 }
 %>
 <%
-// “ü—Í‚³‚ê‚½ƒ†[ƒUID‚ðString•Ï”[ID]‚ÉŠi”[
+// å…¥åŠ›ã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶IDã‚’Stringå¤‰æ•°[ID]ã«æ ¼ç´
 String ID = strEncode(request.getParameter("id"));
-// “ü—Í‚³‚ê‚½ƒpƒXƒ[ƒh‚ðString•Ï”[PASS]‚ÉŠi”[
+// å…¥åŠ›ã•ã‚ŒãŸãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’Stringå¤‰æ•°[PASS]ã«æ ¼ç´
 String PASS = strEncode(request.getParameter("pass"));
-// •ªŠò
+// åˆ†å²
 boolean flag = false;
 
-// JDBCƒhƒ‰ƒCƒo‚Ìƒ[ƒhorg.postgresql.Driver
+// JDBCãƒ‰ãƒ©ã‚¤ãƒã®ãƒ­ãƒ¼ãƒ‰org.postgresql.Driver
 Class.forName("org.postgresql.Driver");
 
-// ƒf[ƒ^ƒx[ƒX‚ÖÚ‘±
-String user = "georgir";     // ƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚Ìƒ†[ƒU–¼
-String password = "georgir"; // ƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌƒpƒXƒ[ƒh
+// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸æŽ¥ç¶š
+String user = "georgir";     // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®ãƒ¦ãƒ¼ã‚¶å
+String password = "georgir"; // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir", user, password);
 
-// SQLŽÀs
+// SQLå®Ÿè¡Œ
 Statement stmt = con.createStatement();
 Statement upDate = con.createStatement();
 ResultSet rs = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "' AND K_PASS = '" + PASS + "'");
 
-// Œ‹‰ÊŽæ“¾
+// çµæžœå–å¾—
 if(rs.next()){
 	flag = true;
 }
@@ -42,8 +42,8 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 GregorianCalendar cal = new GregorianCalendar();
 
 if(flag){
-	//ƒXƒPƒWƒ…[ƒ‹‚Ìíœ
-	ResultSet rs2 = stmt.executeQuery("SELECT * FROM PE_TABLE WHERE K_ŽÐˆõNO = '"+ ID +"'");
+	//ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å‰Šé™¤
+	ResultSet rs2 = stmt.executeQuery("SELECT * FROM PE_TABLE WHERE K_ç¤¾å“¡NO = '"+ ID +"'");
 	while(rs2.next()){
 		strSche = strEncode(rs2.getString("PE_SCHEDULE"));
 		if(strSche != null){
@@ -63,8 +63,8 @@ if(flag){
 				}
 			cal.add(Calendar.MONTH, - pe_sche);
 			Date today = cal.getTime();
-			upDate.execute("DELETE FROM S_TABLE WHERE GO_ŽÐˆõNO = '"+ ID +"' AND S_DATE <= '"+ sFmt.format(today) +"'");
-			upDate.execute("DELETE FROM B_TABLE WHERE K_ŽÐˆõNO = '"+ ID +"' AND B_END <= '"+ sFmt.format(today) +"'");
+			upDate.execute("DELETE FROM S_TABLE WHERE GO_ç¤¾å“¡NO = '"+ ID +"' AND S_DATE <= '"+ sFmt.format(today) +"'");
+			upDate.execute("DELETE FROM B_TABLE WHERE K_ç¤¾å“¡NO = '"+ ID +"' AND B_END <= '"+ sFmt.format(today) +"'");
 		}
 	}
 	rs2.close();
@@ -81,7 +81,7 @@ else{
 	</jsp:forward>
 	<%
 }
-// Ú‘±‰ðœ
+// æŽ¥ç¶šè§£é™¤
 rs.close();
 stmt.close();
 con.close();

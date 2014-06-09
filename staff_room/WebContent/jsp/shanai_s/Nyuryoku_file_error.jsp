@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key");
 		if(id2 == null || id2.equals("false")){
@@ -6,16 +6,16 @@
 		}else{%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="message.css" type="text/css">
-<title>‹Î–±•ñ‘³”F’†</title>
+<title>å‹¤å‹™å ±å‘Šæ›¸æ‰¿èªä¸­</title>
 </head>
 <body>
 <center>
 <div class="location">
 <div class="location2">
-<font class="error">‘I‘ð‚³‚ê‚½‹Î–±•ñ‘‚Í‘ü¡³”Fì‹Æ’†‚Å‚·<br>“à—e‚Í<a href="/kk_web/Escape_NameSelect.jsp?escapeflg=0" class="link"><font class="link">‚±‚¿‚ç</font></a>‚©‚ç‚²Šm”F‚­‚¾‚³‚¢</font><br><br>
-<a href="Menu_Gamen.jsp" class="link"><font class="link">[ ƒƒjƒ…[‚Ö–ß‚é ]</font></a></div></div>
+<font class="error">é¸æŠžã•ã‚ŒãŸå‹¤å‹™å ±å‘Šæ›¸ã¯åªä»Šæ‰¿èªä½œæ¥­ä¸­ã§ã™<br>å†…å®¹ã¯<a href="/kk_web/Escape_NameSelect.jsp?escapeflg=0" class="link"><font class="link">ã“ã¡ã‚‰</font></a>ã‹ã‚‰ã”ç¢ºèªãã ã•ã„</font><br><br>
+<a href="Menu_Gamen.jsp" class="link"><font class="link">[ ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹ ]</font></a></div></div>
 </center>
 </body>
 </html>

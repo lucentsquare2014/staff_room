@@ -1,21 +1,21 @@
-<%@ page contentType="text/html; charset=Shift_JIS"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*,java.io.*,java.util.*" %>
 <%!
-// •¶ŽšƒGƒ“ƒR[ƒh‚ðs‚¢‚Ü‚·B
+// æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã„ã¾ã™ã€‚
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal == null){
 		return (null);
 	}
 	else{
-		return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
 <%
-/* C³“_ */
-// 0-09-06 ƒpƒ‰ƒ[ƒ^‚ÌC³B
+/* ä¿®æ­£ç‚¹ */
+// 0-09-06 ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ä¿®æ­£ã€‚
 
-// ƒƒOƒCƒ“‚µ‚½ƒ†[ƒU‚ÌŽÐˆõ”Ô†‚ð•Ï”[ID]‚ÉŠi”[
+// ãƒ­ã‚°ã‚¤ãƒ³ã—ãŸãƒ¦ãƒ¼ã‚¶ã®ç¤¾å“¡ç•ªå·ã‚’å¤‰æ•°[ID]ã«æ ¼ç´
 String ID = strEncode(request.getParameter("id"));
 String sho = strEncode(request.getParameter("show"));
 String gno = strEncode(request.getParameter("gruno"));
@@ -41,21 +41,21 @@ if(gno.equals("")){
 	<%
 }else{
 	
-	// ƒ†[ƒU”FØî•ñ‚ÌÝ’è
+	// ãƒ¦ãƒ¼ã‚¶èªè¨¼æƒ…å ±ã®è¨­å®š
 	String user = "georgir";
 	String password = "georgir";
 	
-	// JDBCƒhƒ‰ƒCƒo‚Ìƒ[ƒh
+	// JDBCãƒ‰ãƒ©ã‚¤ãƒã®ãƒ­ãƒ¼ãƒ‰
 	Class.forName("org.postgresql.Driver");
 	Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir", user, password);
 	
-	// StatementƒIƒuƒWƒFƒNƒg‚ð¶¬‚µ‚Ü‚·B
+	// Statementã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	Statement stmt = con.createStatement();
 	
-	// SQLŽÀs
-	stmt.execute("UPDATE PE_TABLE SET K_ŽÐˆõNO = '" + ID + "',PE_GRUNO = '" + gno + "',PE_START = '" + sho + "',PE_SCHEDULE = '" + del + "' WHERE K_ŽÐˆõNO = '" + ID + "'");
+	// SQLå®Ÿè¡Œ
+	stmt.execute("UPDATE PE_TABLE SET K_ç¤¾å“¡NO = '" + ID + "',PE_GRUNO = '" + gno + "',PE_START = '" + sho + "',PE_SCHEDULE = '" + del + "' WHERE K_ç¤¾å“¡NO = '" + ID + "'");
 	
-	// Statement.ConnectionƒIƒuƒWƒFƒNƒg‚ð•Â‚¶‚é
+	// Statement.Connectionã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’é–‰ã˜ã‚‹
 	stmt.close();
 	con.close();
 	

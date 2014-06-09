@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift-jis"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="utf-8"%>
 <%@ page import="kkweb.dao.*"%>
 <%@ page import="kkweb.beans.*"%>
@@ -12,7 +12,7 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="Syanaibunshou.css" type="text/css">
 <link rel="stylesheet" href="css/systemselect.css" type="text/css">
 

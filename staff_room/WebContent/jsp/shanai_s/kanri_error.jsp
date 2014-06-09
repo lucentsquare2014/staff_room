@@ -1,13 +1,13 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*,java.util.Date,java.text.*,java.lang.*" %>
 <%!
-// •¶ŽšƒGƒ“ƒR[ƒh‚ðs‚¢‚Ü‚·B
+// æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã„ã¾ã™ã€‚
 	public String strEncode(String strVal) throws UnsupportedEncodingException{
 			if(strVal==null){
 				return (null);
 			}
 			else{
-				return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+				return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 			}
 	}
 %>
@@ -18,55 +18,55 @@
 	
 	switch(num_error){
 	case 1:
-		Msg_error = "ƒpƒXƒ[ƒh‚ªˆá‚¢‚Ü‚·";
+		Msg_error = "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒé•ã„ã¾ã™";
 		break;
 	case 2:
-		Msg_error = "“ü—Í‚à‚ê‚ª‚ ‚è‚Ü‚·";
+		Msg_error = "å…¥åŠ›ã‚‚ã‚ŒãŒã‚ã‚Šã¾ã™";
 		break;
 	case 3:
-		Msg_error = "‚±‚ÌŽÐˆõ”Ô†‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·";
+		Msg_error = "ã“ã®ç¤¾å“¡ç•ªå·ã¯æ—¢ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™";
 		break;
 	case 4:
-		Msg_error = "‚±‚ÌŽ–¼‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·";
+		Msg_error = "ã“ã®æ°åã¯æ—¢ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™";
 		break;
 	case 5:
-		Msg_error = "‚±‚Ì‚h‚c‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·";
+		Msg_error = "ã“ã®ï¼©ï¼¤ã¯æ—¢ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™";
 		break;
 	case 6:
-		Msg_error = "‚±‚ÌƒpƒXƒ[ƒh‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·";
+		Msg_error = "ã“ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯æ—¢ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™";
 		break;
 	case 7:
-		Msg_error = "‚h‚c‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ";
+		Msg_error = "ï¼©ï¼¤ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã›ã‚“";
 		break;
 	case 8:
-		Msg_error = "ƒpƒXƒ[ƒh‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ";
+		Msg_error = "ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã›ã‚“";
 		break;
 	case 9:
-		Msg_error = "ƒ[ƒ‹ƒAƒhƒŒƒX‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ";
+		Msg_error = "ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã›ã‚“";
 		break;
 	case 10:
-		Msg_error = "Ž–¼‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ";
+		Msg_error = "æ°åãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã›ã‚“";
 		break;
 	case 11:
-		Msg_error = "‚±‚ÌƒOƒ‹[ƒvƒR[ƒh‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·";
+		Msg_error = "ã“ã®ã‚°ãƒ«ãƒ¼ãƒ—ã‚³ãƒ¼ãƒ‰ã¯æ—¢ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™";
 		break;
 	case 12:
-		Msg_error = "‚±‚ÌƒOƒ‹[ƒv–¼‚ÍŠù‚É“o˜^‚³‚ê‚Ä‚¢‚Ü‚·";
+		Msg_error = "ã“ã®ã‚°ãƒ«ãƒ¼ãƒ—åã¯æ—¢ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™";
 		break;
 	case 13:
-		Msg_error = "ƒOƒ‹[ƒv–¼‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ";
+		Msg_error = "ã‚°ãƒ«ãƒ¼ãƒ—åãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã›ã‚“";
 		break;
 	case 14:
-		Msg_error = "ƒOƒ‹[ƒvƒR[ƒh‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ";
+		Msg_error = "ã‚°ãƒ«ãƒ¼ãƒ—ã‚³ãƒ¼ãƒ‰ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã›ã‚“";
 		break;
 	default:
-		Msg_error = "—\Šú‚¹‚ÊƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½BŠÇ—ŽÒ‚É•ñ‚µ‚Ä‚­‚¾‚³‚¢";
+		Msg_error = "äºˆæœŸã›ã¬ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚ç®¡ç†è€…ã«å ±å‘Šã—ã¦ãã ã•ã„";
 		break;	
 	}
 %>
 	<html>
 		<HEAD>
-			<META HTTP-EQUIV=Content-Type CONTENT=text/html;Charset=Shift_Jis>
+			<META HTTP-EQUIV=Content-Type CONTENT=text/html;Charset=UTF-8>
 			<TITLE></TITLE>
 		</HEAD>
 		<BODY bgcolor=#F5F5F5 text=#000000 link=#008080 alink=#00CCCC vlink=#008080>

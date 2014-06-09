@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"
-	pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="kkweb.beans.B_GamenInsatu"%><%@ page
 	import="kkweb.beans.B_ZangyouMST"%><%@ page import="kkweb.beans.B_Year_month"%><%@ page
 	import="javax.servlet.*"%><%@ page import="kkweb.beans.B_HolidayMST"%>
@@ -47,18 +47,18 @@
 		document.B.submit()
 	}
 </SCRIPT>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css">
 <link rel="stylesheet" href="report.css" type="text/css">
 <link rel="stylesheet" href="Insatu.css" type="text/css">
-<title>‹Î–±•ñ‘‰{——</title>
+<title>å‹¤å‹™å ±å‘Šæ›¸é–²è¦§</title>
 </head>
 <body>
 	<center>
-		<font class="title">‹Î–±•ñ‘</font>
+		<font class="title">å‹¤å‹™å ±å‘Šæ›¸</font>
 		<%
-			request.setCharacterEncoding("shift_JIS");
+			request.setCharacterEncoding("UTF-8");
 			String escapeflg =request.getParameter("escapeflg");
 					String STRAT = "";
 					String END = "";
@@ -68,7 +68,7 @@
 		<br>
 		<hr width="400">
 		<div align="center">
-			<font color="#8B0000"><big>‘ÎÛÒ‘I‘ğ‚©‚ç‚â‚è’¼‚µ‚Ä‚­‚¾‚³‚¢</big></font>
+			<font color="#8B0000"><big>å¯¾è±¡è€…é¸æŠã‹ã‚‰ã‚„ã‚Šç›´ã—ã¦ãã ã•ã„</big></font>
 		</div>
 		<hr width="400">
 		<%
@@ -80,7 +80,7 @@
 					<tr>
 						<td>
 							<form method="post" action="Menu_Gamen.jsp" name="A">
-								<input type="submit" value="ƒƒjƒ…[‰æ–Ê‚Ö–ß‚é"
+								<input type="submit" value="ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”»é¢ã¸æˆ»ã‚‹"
 									STYLE="cursor: pointer; width: 120px;" name="aa"
 									onClick="submit1()"> <br>
 							</form>
@@ -90,7 +90,7 @@
 					<tr>
 						<td>
 							<form method="post" action="SystemKanri_MenuGamen.jsp" name="A">
-								<input type="submit" value="ƒƒjƒ…[‰æ–Ê‚Ö–ß‚é"
+								<input type="submit" value="ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”»é¢ã¸æˆ»ã‚‹"
 									STYLE="cursor: pointer; width: 120px;" name="aa"
 									onClick="submit1()"> <br>
 							</form>
@@ -98,7 +98,7 @@
 						<%} %>
 						<td>
 							<form method="post" action="Escape_NameSelect.jsp" name="B">
-								<input type="submit" value="‘ÎÛÒ‘I‘ğ‚Ö–ß‚é"
+								<input type="submit" value="å¯¾è±¡è€…é¸æŠã¸æˆ»ã‚‹"
 									STYLE="cursor: pointer; width: 120px;" name="bb"
 									onClick="submit3()"> <input type="hidden"
 									id="escapeflg" name="escapeflg" value="<%=escapeflg %>">
@@ -112,7 +112,7 @@
 									}else {
 								%>
 								<div align="left">
-									<b>ƒƒ³”FŒo˜H„„</b>
+									<b>ï¼œï¼œæ‰¿èªçµŒè·¯ï¼ï¼</b>
 								</div>
 								<div align="left"><%= S1 %></div>
 								<%
@@ -123,27 +123,27 @@
 												C_CheckMonth mont = new C_CheckMonth();
 								%>
 								<div align="right">
-									<br />ˆóü‚Í<a onClick="form_submitA()"
-										style="cursor: pointer;"><font color="blue">‚±‚¿‚ç</font></a>‚©‚ç‚¨Šè‚¢‚µ‚Ü‚·B
+									<br />å°åˆ·ã¯<a onClick="form_submitA()"
+										style="cursor: pointer;"><font color="blue">ã“ã¡ã‚‰</font></a>ã‹ã‚‰ãŠé¡˜ã„ã—ã¾ã™ã€‚
 								</div>
 								<br />
 								<center>
-									<font size="4"><b><%= ym.substring( 0 , 4 ) %>”N<%= mont.MonthCheck(ym.substring( 4 , 6 )) %>Œ
-											F <%= year_month.getName() %></b></font><br>
+									<font size="4"><b><%= ym.substring( 0 , 4 ) %>å¹´<%= mont.MonthCheck(ym.substring( 4 , 6 )) %>æœˆ
+											ï¼š <%= year_month.getName() %></b></font><br>
 									<table border="0" width="800px">
 										<tr>
 											<td>
 												<table border="1" cellspacing="0" class="houkoku">
 													<tr>
-														<th class="t-koumoku"><font class="f-koumoku"><B>“ú</B></font></th>
-														<th class="t-koumoku"><font class="f-koumoku"><B>—j“ú</B></font></th>
-														<th class="t-koumoku"><font class="f-koumoku"><B>PƒR[ƒh</B></font></th>
-														<th class="t-koumoku"><font class="f-koumoku"><B>o‹ÎŠÔ</B></font></th>
-														<th class="t-koumoku"><font class="f-koumoku"><B>‘Ş‹ÎŠÔ</B></font></th>
-														<th class="t-koumoku"><font class="f-koumoku"><B>’´‰ßŠÔ</B></font></th>
-														<th class="t-koumoku"><font class="f-koumoku"><B>[–éŠÔ</B></font></th>
-														<th class="t-koumoku"><font class="f-koumoku"><B>’¼ÚŠÔ</B></font></th>
-														<th class="t-koumoku"><font class="f-koumoku"><B>”õl</B></font></th>
+														<th class="t-koumoku"><font class="f-koumoku"><B>æ—¥</B></font></th>
+														<th class="t-koumoku"><font class="f-koumoku"><B>æ›œæ—¥</B></font></th>
+														<th class="t-koumoku"><font class="f-koumoku"><B>Pã‚³ãƒ¼ãƒ‰</B></font></th>
+														<th class="t-koumoku"><font class="f-koumoku"><B>å‡ºå‹¤æ™‚é–“</B></font></th>
+														<th class="t-koumoku"><font class="f-koumoku"><B>é€€å‹¤æ™‚é–“</B></font></th>
+														<th class="t-koumoku"><font class="f-koumoku"><B>è¶…éæ™‚é–“</B></font></th>
+														<th class="t-koumoku"><font class="f-koumoku"><B>æ·±å¤œæ™‚é–“</B></font></th>
+														<th class="t-koumoku"><font class="f-koumoku"><B>ç›´æ¥æ™‚é–“</B></font></th>
+														<th class="t-koumoku"><font class="f-koumoku"><B>å‚™è€ƒ</B></font></th>
 													</tr>
 													<%
 														String holiday = "";
@@ -263,16 +263,16 @@
 											<td>
 												<table border="1" class="houkoku" cellspacing="0">
 													<tr>
-														<th class="t-koumoku"><font class="f-koumoku">’´‰ßŠÔ</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">[–éŠÔ</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">•s˜JŠÔ</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">‹xo“ú”</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">‘ã‹x“ú”</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">”N‹x“ú”</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">Œ‡‹Î“ú”</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">‚`‹xŒv</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">‚a‹xŒv</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">‡ŒvŠÔ</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">è¶…éæ™‚é–“</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">æ·±å¤œæ™‚é–“</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">ä¸åŠ´æ™‚é–“</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">ä¼‘å‡ºæ—¥æ•°</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">ä»£ä¼‘æ—¥æ•°</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">å¹´ä¼‘æ—¥æ•°</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">æ¬ å‹¤æ—¥æ•°</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">ï¼¡ä¼‘è¨ˆ</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">ï¼¢ä¼‘è¨ˆ</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">åˆè¨ˆæ™‚é–“</font></th>
 													</tr>
 													<%B_GamenInsatu tuki = (B_GamenInsatu)EscapeDATA.get(0);%>
 													<tr>
@@ -304,12 +304,12 @@
 																	if (kotosi == s || (kotosi - 1) == s) {
 													%>
 													<tr>
-														<th class="t-koumoku"><font class="f-koumoku">“–”N•t—^“ú”</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">ŒJ‰z”N‹x“ú”</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">g—p”N‹x“ú”</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">c”N‹x“ú”</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">ŒŠÔc‹ÆŠÔ</font></th>
-														<th class="t-koumoku"><font class="f-koumoku">”NŠÔ—İÏc‹ÆŠÔ</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">å½“å¹´ä»˜ä¸æ—¥æ•°</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">ç¹°è¶Šå¹´ä¼‘æ—¥æ•°</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">ä½¿ç”¨å¹´ä¼‘æ—¥æ•°</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">æ®‹å¹´ä¼‘æ—¥æ•°</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">æœˆé–“æ®‹æ¥­æ™‚é–“</font></th>
+														<th class="t-koumoku"><font class="f-koumoku">å¹´é–“ç´¯ç©æ®‹æ¥­æ™‚é–“</font></th>
 													</tr>
 													<tr>
 														<td align="center"><%=  tuki.getNenkyu_fuyo()  %></td>
@@ -317,13 +317,13 @@
 														<td align="center"><%=  tuki.getNenkyu_year()  %></td>
 														<td align="center"><%=  tuki.getNenkyu_all()  %></td>
 														<%
-															comment = "¦”N‹xƒf[ƒ^‚ÍÅV‚Ì‹Î–±•ñ‘‚Ì‚İ•\¦‚µ‚Ü‚·Bi’A‚µÅV‚©‚ç‚Ğ‚ÆŒ‘O‚Ì‹Î–±•ñ‘‚É‚à”N‹xƒf[ƒ^‚ª•\¦‚³‚ê‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·B—á‚¦‚Î‚WŒ‚Ì‹Î–±•ñ‘‚ğ‚WŒ’†‚É³”FŠ®—¹‚µ‚½ê‡A‚WŒ’†‚Í‚WŒ‚Ì‹Î–±•ñ‘‚Æ‚VŒ‚Ì‹Î–±•ñ‘‚É”N‹xƒf[ƒ^‚ª•\¦‚³‚ê‚Ü‚·B)";
+															comment = "â€»å¹´ä¼‘ãƒ‡ãƒ¼ã‚¿ã¯æœ€æ–°ã®å‹¤å‹™å ±å‘Šæ›¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚ï¼ˆä½†ã—æœ€æ–°ã‹ã‚‰ã²ã¨æœˆå‰ã®å‹¤å‹™å ±å‘Šæ›¸ã«ã‚‚å¹´ä¼‘ãƒ‡ãƒ¼ã‚¿ãŒè¡¨ç¤ºã•ã‚Œã‚‹ã“ã¨ãŒã‚ã‚Šã¾ã™ã€‚ä¾‹ãˆã°ï¼˜æœˆã®å‹¤å‹™å ±å‘Šæ›¸ã‚’ï¼˜æœˆä¸­ã«æ‰¿èªå®Œäº†ã—ãŸå ´åˆã€ï¼˜æœˆä¸­ã¯ï¼˜æœˆã®å‹¤å‹™å ±å‘Šæ›¸ã¨ï¼—æœˆã®å‹¤å‹™å ±å‘Šæ›¸ã«å¹´ä¼‘ãƒ‡ãƒ¼ã‚¿ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚)";
 																		} else {
 														%><tr>
 														<th align="center" class="t-koumoku"><font
-															class="f-koumoku">ŒŠÔc‹ÆŠÔ</font></th>
+															class="f-koumoku">æœˆé–“æ®‹æ¥­æ™‚é–“</font></th>
 														<th align="center" class="t-koumoku"><font
-															class="f-koumoku">”NŠÔ—İÏc‹ÆŠÔ</font></th>
+															class="f-koumoku">å¹´é–“ç´¯ç©æ®‹æ¥­æ™‚é–“</font></th>
 													</tr>
 													<tr>
 														<%
@@ -369,7 +369,7 @@
 								<SCRIPT TYPE="text/javascript">
 function form_submitA(){
 	adrs ="/kk_web/e_eturan?number=<%= number %>&yearmonth=<%= y %>&check=1";
-	//ˆÚsŒã‚ÍˆÈ‰º‚ğg—p
+	//ç§»è¡Œå¾Œã¯ä»¥ä¸‹ã‚’ä½¿ç”¨
 	//adrs ="http://www1.lucentsquare.co.jp/kintaikanri/e_eturan?number=<%= number %>&yearmonth=<%= y %>&check=1";
 	LinkWin=window.open("","NewPage",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,width=400,height=500')
 	LinkWin.location.href=adrs;
@@ -381,7 +381,7 @@ function form_submitA(){
 										<tr>
 											<td>
 												<form method="post" action="Menu_Gamen.jsp" name="A">
-													<input type="submit" value="ƒƒjƒ…[‰æ–Ê‚Ö–ß‚é"
+													<input type="submit" value="ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”»é¢ã¸æˆ»ã‚‹"
 														STYLE="cursor: pointer; width: 120px;" name="aa"
 														onClick="submit1()">
 												</form>
@@ -392,7 +392,7 @@ function form_submitA(){
 											<td>
 												<form method="post" action="SystemKanri_MenuGamen.jsp"
 													name="A">
-													<input type="submit" value="ƒƒjƒ…[‰æ–Ê‚Ö–ß‚é"
+													<input type="submit" value="ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”»é¢ã¸æˆ»ã‚‹"
 														STYLE="cursor: pointer; width: 120px;" name="aa"
 														onClick="submit1()">
 												</form>
@@ -400,7 +400,7 @@ function form_submitA(){
 											<%}%>
 											<td>
 												<form method="post" action="Escape_NameSelect.jsp" name="B">
-													<input type="submit" value="‘ÎÛÒ‘I‘ğ‚Ö–ß‚é"
+													<input type="submit" value="å¯¾è±¡è€…é¸æŠã¸æˆ»ã‚‹"
 														STYLE="cursor: pointer; width: 120px;" name="bb"
 														onClick="submit2()"> <input type="hidden"
 														id="escapeflg" name="escapeflg" value="<%=escapeflg %>">

@@ -1,6 +1,6 @@
 <%@page
 	import="java.util.*,kkweb.beans.*,kkweb.common.*,kkweb.mail.*,org.apache.commons.codec.digest.DigestUtils"%>
-<%@ page language="java" contentType="text/html; charset=shift-jis"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="SendList" scope="session" class="kkweb.beans.SendList" />
 <jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST" />
@@ -11,7 +11,7 @@
 %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="Syanaibunshou.css" type="text/css">
 <link rel="stylesheet" href="css/mailsendtoselecteduserpayslip.css" type="text/css">
 <title>給与明細書URL送信完了</title>

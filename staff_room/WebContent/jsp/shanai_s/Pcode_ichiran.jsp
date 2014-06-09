@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %><%@ page import = "kkweb.beans.B_Code" %><%@ page import = "kkweb.dao.CodeDAO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key");
@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=shift_JIS"><meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css"><link rel="stylesheet" href="report.css" type="text/css">
-<title>Pコード一覧表</title>
+<title>P繧ｳ繝ｼ繝我ｸ隕ｧ陦ｨ</title>
 <script type="text/javascript">
 <!--
 window.focus();
@@ -19,9 +19,9 @@ window.focus();
 <body>
 <table border="1" width="380px" >
 <tr>
-<th class="t-koumoku" ><font class="f-koumoku">Ｐコード</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">名称</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">場所</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">�ｼｰ繧ｳ繝ｼ繝�</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">蜷咲ｧｰ</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">蝣ｴ謇</font></th>
 </tr>
 <%	CodeDAO cdao = new CodeDAO();
 	String sql = " select * from codeMST where KINMUcode = '1' AND flg = '0' order by projectcode asc";

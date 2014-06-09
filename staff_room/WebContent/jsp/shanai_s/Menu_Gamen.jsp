@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"
-	pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="java.text.DecimalFormat"%><%@ page import="java.util.*"%><%@ page
 	import="kkweb.beans.B_ShainMST"%>
 <%@ page import="kkweb.beans.B_GroupMST"%><%@ page
@@ -20,7 +20,7 @@
 %>
 <html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="menu.css" type="text/css">
 <script type="text/javascript">
@@ -60,7 +60,7 @@
 		document.d.submit()
 	}
 </script>
-<title>���j���[���</title>
+<title>メニュー画面</title>
 </head>
 <body>
 
@@ -72,20 +72,20 @@
 			<br>
 			<form method="post" action="s_kinmuhoukoku_nyuryoku" name="a">
 				<ul>
-					<li><b><font class="index1">�Ζ��񍐓���</font></b> <input
-						type="submit" value="�@���́@" class="botton1" onClick="submit1()"
+					<li><b><font class="index1">勤務報告入力</font></b> <input
+						type="submit" value="　入力　" class="botton1" onClick="submit1()"
 						name="aa"> <select class="year" name="year">
 							<%
 								Calendar cal = Calendar.getInstance();
 									int y = cal.get(Calendar.YEAR);
 							%>
-							<option value="<%=y%>" selected="<%=y%>"><%=y%>�N
+							<option value="<%=y%>" selected="<%=y%>"><%=y%>年
 							</option>
 							<%
 								y--;
 									for (int i = 2001; y > i; y--) {
 							%>
-							<option value="<%=y%>"><%=y%>�N
+							<option value="<%=y%>"><%=y%>年
 							</option>
 							<%
 								}
@@ -97,12 +97,12 @@
 									for (int m = 1; m < 13; m++) {
 										if (m == now_m) {
 							%>
-							<option value="<%=m%>" selected="<%=m%>"><%=m%>��
+							<option value="<%=m%>" selected="<%=m%>"><%=m%>月
 							</option>
 							<%
 								} else {
 							%>
-							<option value="<%=m%>"><%=m%>��
+							<option value="<%=m%>"><%=m%>月
 							</option>
 							<%
 								}
@@ -114,8 +114,8 @@
 			<br>
 			<form method="post" action="Escape_NameSelect.jsp" name="b">
 				<ul>
-					<li><b><font class="index1" style="word-spacing: 30px;">�Ζ��񍐉{��</font></b>
-						<input type="submit" value="�@�{���@" class="botton1"
+					<li><b><font class="index1" style="word-spacing: 30px;">勤務報告閲覧</font></b>
+						<input type="submit" value="　閲覧　" class="botton1"
 						onClick="submit2()" name="bb"><input type="hidden"
 						name="escapeflg" id="escapeflg" value="0"></li>
 				</ul>
@@ -123,15 +123,15 @@
 			<br>
 			<form method="post" action="s_joukyou" name="c">
 				<ul>
-					<li><b><font class="index1" style="word-spacing: 50px;">���F�󋵊m�F</font></b>
-						<input type="submit" value="�@�\���@" class="botton1"
+					<li><b><font class="index1" style="word-spacing: 50px;">承認状況確認</font></b>
+						<input type="submit" value="　表示　" class="botton1"
 						onClick="submit3()" name="cc"><select class="year"
 						name="year">
 							<%
 								y = cal.get(Calendar.YEAR);
 									for (int j = 2001; y > j; y--) {
 							%>
-							<option value="<%=y%>"><%=y%>�N
+							<option value="<%=y%>"><%=y%>年
 							</option>
 							<%
 								}
@@ -141,19 +141,19 @@
 								for (int m2 = 1; m2 < 13; m2++) {
 										if (m2 == now_m) {
 							%>
-							<option value="<%=m2%>" selected="<%=m2%>"><%=m2%>��
+							<option value="<%=m2%>" selected="<%=m2%>"><%=m2%>月
 							</option>
 							<%
 								} else {
 							%>
-							<option value="<%=m2%>"><%=m2%>��
+							<option value="<%=m2%>"><%=m2%>月
 							</option>
 							<%
 								}
 									}
 							%>
 					</select> <select class="group" name="group" style="width: 180px">
-							<option value=" �S�O���[�v ">�S�O���[�v</option>
+							<option value=" 全グループ ">全グループ</option>
 							<%
 								GroupDAO group = new GroupDAO();
 									String sql = "";
@@ -172,19 +172,19 @@
 			</form>
 			<br> <a href="SystemSelect.jsp"
 				class="link"><font class="link"><small>[
-						�V�X�e���I���֖߂� ]</small></font></a>
+						システム選択へ戻る ]</small></font></a>
 		</div>
 		<%
 			if (ShainMST.getChecked().equals("1")) {
 		%>
 		<div class="box3">
-			<font class="title2">���F�˗�</font><br>
+			<font class="title2">承認依頼</font><br>
 			<table>
 				<tr>
-					<td align="left"><font class="memo1">�E����̎Ј����畡���̏��F�˗������Ă���ꍇ�A�Â����̂��珳�F�����肢���܂��B</font></td>
+					<td align="left"><font class="memo1">・同一の社員から複数の承認依頼が来ている場合、古いものから承認をお願いします。</font></td>
 				</tr>
 				<tr>
-					<td align="left"><font class="memo1">�E�ߋ��̋Ζ��񍐏��̏��F��Ƃ��s�����ꍇ�A����ȍ~�̋Ζ��񍐏��̏C�����K�v�ƂȂ�܂��B�ΏێЈ��֍Ē�o���˗����Ă��������B</font></td>
+					<td align="left"><font class="memo1">・過去の勤務報告書の承認作業を行った場合、それ以降の勤務報告書の修正が必要となります。対象社員へ再提出を依頼してください。</font></td>
 				</tr>
 			</table>
 			<TABLE border="3" bordercolor="#008080" class="ichiran">
@@ -254,7 +254,7 @@
 								<TD>
 									<FORM method="post" action="Shouninhoukoku.jsp" name="d">
 										<INPUT TYPE="submit"
-											VALUE="<%=YEAR%>�N<%=MONTH %>���@<%=b_shain.getName()%> "
+											VALUE="<%=YEAR%>年<%=MONTH %>月　<%=b_shain.getName()%> "
 											class="botton3" name="dd"> <INPUT TYPE="hidden"
 											NAME="iraisha_number" VALUE="<%=b_shain.getNumber()%>">
 										<INPUT TYPE="hidden" NAME="iraisha_name"

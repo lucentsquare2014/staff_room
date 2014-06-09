@@ -1,89 +1,89 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.* , java.util.Vector" %>
 <%!
-// �����G���R�[�h���s���܂��B
+// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal==null){
 		return (null);
 	}
 	else{
-		return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
 <%
-/* �C���_ */
-// 02-08-05 ���E�T�E���ƃt�@�C���𕪂��Ă������̂����������A�t���O�ɂ���ď����𕪂�����@�֏C��
-// 02-08-15 �]�v�ȃv���O�������Ȃ�
-// 02-09-04 �ڍ׉�ʂ̕\������ւ�������������B�����N���N���b�N����ƒP�����Ɉړ�����B
-// 02-09-05 �ڍ׉�ʂ̕\������ւ�������ύX�B�����N���N���b�N����Ƒo�����Ɉړ�����B
-// 02-09-18 ����e�X�g���ԁc�o�O����  275�s�� ���t�̃p�����[�^�̋L�q����B
+/* 修正点 */
+// 02-08-05 月・週・日とファイルを分けていたものを結合させ、フラグによって処理を分ける方法へ修正
+// 02-08-15 余計なプログラムを省く
+// 02-09-04 詳細画面の表示入れ替え処理を加える。リンクをクリックすると単方向に移動する。
+// 02-09-05 詳細画面の表示入れ替え処理を変更。リンクをクリックすると双方向に移動する。
+// 02-09-18 動作テスト期間…バグ発見  275行目 日付のパラメータの記述もれ。
 
-/* �ǉ��_ */
-// 02-09-03 ���L�҃v���O�������O���t�@�C���Ƃ��Ď�荞�ށB
+/* 追加点 */
+// 02-09-03 共有者プログラムを外部ファイルとして取り込む。
 
-// ���O�C���������[�U�̎Ј��ԍ���ϐ�[ID]�Ɋi�[
+// ログインしたユーザの社員番号を変数[ID]に格納
 String ID = strEncode(request.getParameter("id"));
 
-// �p�����[�^�̎擾[���p�p�����[�^]
+// パラメータの取得[共用パラメータ]
 String NO = strEncode(request.getParameter("no"));
 String GR = request.getParameter("group");
 
-// �p�����[�^�̎擾[pubs�g�p]
+// パラメータの取得[pubs使用]
 String DA = strEncode(request.getParameter("s_date"));
 String ST = strEncode(request.getParameter("s_start"));
 String AC = strEncode(request.getParameter("act"));
 
-// �\���̎�ނ𔻕ʂ���p�����[�^
+// 表示の種類を判別するパラメータ
 String KD = strEncode(request.getParameter("kind"));
 
-// �I�����ꂽ���t(�J�n��)�̕���
+// 選択された日付(開始日)の分割
 String BS = request.getParameter("b_start");
-int BSy = Integer.parseInt(BS.substring(0,4));  // �N
-int BSm = Integer.parseInt(BS.substring(5,7));  // ��
-int BSd = Integer.parseInt(BS.substring(8,10)); // ��
+int BSy = Integer.parseInt(BS.substring(0,4));  // 年
+int BSm = Integer.parseInt(BS.substring(5,7));  // 月
+int BSd = Integer.parseInt(BS.substring(8,10)); // 日
 
-// b_start�Ŏ擾�������t�Ɂu-�v��t����
+// b_startで取得した日付に「-」を付ける
 BS = BS.substring(0,4) +"-"+ BS.substring(5,7) +"-"+ BS.substring(8,10);
 
-// JDBC�h���C�o�̃��[�h
+// JDBCドライバのロード
 Class.forName("org.postgresql.Driver");
 
-// ���[�U�F�؏��̐ݒ�
+// ユーザ認証情報の設定
 String user = "georgir";
 String password = "georgir";
 
-// Connection�I�u�W�F�N�g�̐���
+// Connectionオブジェクトの生成
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 
-// Statement�I�u�W�F�N�g�̐���
+// Statementオブジェクトの生成
 Statement stmt = con.createStatement();
 
-// SQL���s�E�\�����ǂݏo��
-ResultSet YOTEI = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE �敪 = '1'");
+// SQL実行・予定情報を読み出す
+ResultSet YOTEI = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE 区分 = '1'");
 
-// hitList�̐���
+// hitListの生成
 Vector hitYOTEI = new Vector();
 
-// ���ʃZ�b�g���������܂��B
+// 結果セットを処理します。
 while(YOTEI.next()){
-	String basyo = YOTEI.getString("�ꏊ");
+	String basyo = YOTEI.getString("場所");
 	hitYOTEI.addElement(basyo.trim());
 }
 
-// hitList�ɓ����Ă��������
+// hitListに入っている個数を代入
 int cntYOTEI = hitYOTEI.size();
 
-// ResultSet�����
+// ResultSetを閉じる
 YOTEI.close();
 
-// SQL���s�E�ꏊ����ǂݏo��
-ResultSet BASYO = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE �敪 = '2'");
+// SQL実行・場所情報を読み出す
+ResultSet BASYO = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE 区分 = '2'");
 
 Vector hitBASYO = new Vector();
 
 while(BASYO.next()){
-	String basyo = BASYO.getString("�ꏊ");
+	String basyo = BASYO.getString("場所");
 	hitBASYO.addElement(basyo.trim());
 }
 
@@ -91,11 +91,11 @@ int cntBASYO = hitBASYO.size();
 
 BASYO.close();
 
-/* ���O���[�v�ł��邩���r���邽�߂Ɏg�p���� */
-// SQL���s�E�O���[�v���[�{�l]
+/* 同グループであるかを比較するために使用する */
+// SQL実行・グループ情報[本人]
 ResultSet GROUPID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
-// ���������s���Ă���
+// 初期化を行っている
 String group_id = "";
 
 while(GROUPID.next()){
@@ -104,7 +104,7 @@ while(GROUPID.next()){
 
 GROUPID.close();
 
-// SQL���s�E�O���[�v���[���̃��[�U]
+// SQL実行・グループ情報[他のユーザ]
 ResultSet GROUPNO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 String group_no = "";
@@ -115,9 +115,9 @@ while(GROUPNO.next()){
 
 GROUPNO.close();
 
-// SQL�̎��s
-// �I�����ꂽ�Ј��ԍ��ƈ�v����X�P�W���[���������o��SQL
-ResultSet BSCHEDULE = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_�Ј�NO = '" + NO + "' and B_START = '" + BS + "'");
+// SQLの実行
+// 選択された社員番号と一致するスケジュール情報を取り出すSQL
+ResultSet BSCHEDULE = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_社員NO = '" + NO + "' and B_START = '" + BS + "'");
 
 String b_end = "";
 String b_plan = "";
@@ -139,7 +139,7 @@ while(BSCHEDULE.next()){
 	b_zai = BSCHEDULE.getString("B_ZAISEKI");
 }
 
-// �����APLAN2.PLACE2.MEMO�ɉ��������Ă��Ȃ��ꍇ�́A�󔒂����鏈��
+// もし、PLAN2.PLACE2.MEMOに何も入っていない場合は、空白を入れる処理
 if(b_plan2 == null){
 	b_plan2 = "";
 }
@@ -152,43 +152,43 @@ if(b_memo == null){
 
 BSCHEDULE.close();
 
-/* �I�����𕪊����� */
-int eBSy = Integer.parseInt(b_end.substring(0,4));  // �N
-int eBSm = Integer.parseInt(b_end.substring(5,7));  // ��
-int eBSd = Integer.parseInt(b_end.substring(8,10)); // ��
+/* 終了日を分割する */
+int eBSy = Integer.parseInt(b_end.substring(0,4));  // 年
+int eBSm = Integer.parseInt(b_end.substring(5,7));  // 月
+int eBSd = Integer.parseInt(b_end.substring(8,10)); // 日
 
-/* [ID]��[NO]�̎�����ǂݏo���܂��B */
-// SQL�̎��s�E�l���[�{�l]
+/* [ID]と[NO]の氏名を読み出します。 */
+// SQLの実行・個人情報[本人]
 ResultSet NAMEID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
 String name_id = "";
 
 while(NAMEID.next()){
-	name_id = NAMEID.getString("K_����");
+	name_id = NAMEID.getString("K_氏名");
 }
 
 NAMEID.close();
 
-// SQL�̎��s�E�l���NO[���̃��[�U]
+// SQLの実行・個人情報NO[他のユーザ]
 ResultSet NAMENO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 String name_no = "";
 
 while(NAMENO.next()){
-	name_no = NAMENO.getString("K_����");
+	name_no = NAMENO.getString("K_氏名");
 }
 
 NAMENO.close();
 
-/* �O���[�v�R�[�h�E�O���[�v�����R���{�{�b�N�X�ɕ\�����邽�߂̏��� */
-// SQL�̎��s�E�O���[�v���
+/* グループコード・グループ名をコンボボックスに表示するための処理 */
+// SQLの実行・グループ情報
 ResultSet GROUP = stmt.executeQuery("SELECT * FROM KINMU.GRU");
 
-// hitList�̍쐬
+// hitListの作成
 Vector hitGRUNUM = new Vector();
 Vector hitGRUNUAM = new Vector();
 
-// �O���[�v�e�[�u���ɃA�N�Z�X
+// グループテーブルにアクセス
 while(GROUP.next()){
 	String gnum = strEncode(GROUP.getString("G_GRUNO"));
 	String gnam = GROUP.getString("G_GRNAME");
@@ -198,22 +198,22 @@ while(GROUP.next()){
 
 int cntGRU = hitGRUNUM.size();
 
-// ResultSet�����
+// ResultSetを閉じる
 GROUP.close();
 
-// Calendar �C���X�^���X�𐶐�
+// Calendar インスタンスを生成
 Calendar now = Calendar.getInstance();
 
-// ���݂̎������擾
+// 現在の時刻を取得
 Date dat = now.getTime();
 
-// �\���`����ݒ�
+// 表示形式を設定
 SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 
 %>
 <HTML>
 	<HEAD>
-		<TITLE>�ڍ׉��</TITLE>
+		<TITLE>詳細画面</TITLE>
 		<meta http-equiv="content-language" content="ja">
 		<meta http-equiv="pragma" content="no-cache">
 		<meta name="author" content="roq">
@@ -266,7 +266,7 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 				<tr>
 					<td bgcolor="#ffffff" width="20" rowspan="2">
 					<center>
-						<a href="#" onClick="return movemn1();" STYLE="text-decoration:none"><b>��<p><font size="2">�o<br>�i<br>�b<br>�X<br>�P<br>�W<br>��<br>�b<br>��<br>��<br>�X<br>��<br>��</font></p>��</b></a>
+						<a href="#" onClick="return movemn1();" STYLE="text-decoration:none"><b>⇔<p><font size="2">バ<br>ナ<br>｜<br>ス<br>ケ<br>ジ<br>ュ<br>｜<br>ル<br>変<br>更<br>画<br>面</font></p>⇔</b></a>
 					</center>
 					</td>
 					<td bgcolor="#99A5FF" height="604" width="215" colspan="2">
@@ -280,19 +280,19 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 							<INPUT TYPE="hidden" NAME="kind" VALUE="<%= KD %>">
 							<SPAN CLASS="shadow">
 								<FONT COLOR="white">
-									�悤�����B<%= name_id %>����B<br><%= name_no %>�����<br>�ڍ׽��ޭ�ق����Ă��܂��B<br>
+									ようこそ。<%= name_id %>さん。<br><%= name_no %>さんの<br>詳細ｽｹｼﾞｭｰﾙを見ています。<br>
 									<%
 									if(group_id.equals(group_no) || group_id.equals("900")){
-										%>�E���ޭ�ق�ύX�ł��܂��B<%
+										%>・ｽｹｼﾞｭｰﾙを変更できます。<%
 									}else{
-										%>�E���ޭ�ق͕ύX�ł��܂���B<%
+										%>・ｽｹｼﾞｭｰﾙは変更できません。<%
 									}
 									%>
 								</FONT>
 							</SPAN>
 							<table border="1" style="width:100%;">
 								<TR>
-									<TD bgcolor="#D6FFFF" rowspan="3" align="center" style="width:20%;">���t</TD>
+									<TD bgcolor="#D6FFFF" rowspan="3" align="center" style="width:20%;">日付</TD>
 									<TD>
 										<SELECT NAME="syear" STYLE="width:80%">
 										<%
@@ -300,7 +300,7 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 											%><OPTION VALUE="<%= BSy + i %>"><%= BSy + i %></OPTION><%
 										}
 										%>
-										</SELECT> �N<BR>
+										</SELECT> 年<BR>
 										<SELECT NAME="smonth" STYLE="width:80%">
 										<%
 										for(int i = 1; i <= 12;i++){
@@ -319,7 +319,7 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 											}
 										}
 										%>
-										</SELECT> ��<BR>
+										</SELECT> 月<BR>
 										<SELECT NAME="sday" STYLE="width:80%">
 										<%
 										for(int i = 1; i <= 31;i++){
@@ -338,11 +338,11 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 											}
 										}
 										%>
-										</SELECT> ��<BR>
+										</SELECT> 日<BR>
 									</TD>
 								</TR>
 								<TR>
-									<TD align="center" valign="middle">��</TD>
+									<TD align="center" valign="middle">∫</TD>
 								</TR>
 								<TR>
 									<TD>
@@ -352,7 +352,7 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 											%><OPTION VALUE="<%= eBSy + i%>"><%= eBSy + i%></OPTION><%
 										}
 										%>
-										</SELECT> �N<BR>
+										</SELECT> 年<BR>
 										<SELECT NAME="emonth" STYLE="width:80%">
 										<%
 										for(int i = 1; i <= 12;i++){
@@ -371,7 +371,7 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 											}
 										}
 										%>
-										</SELECT> ��<BR>
+										</SELECT> 月<BR>
 										<SELECT NAME="eday" STYLE="width:80%">
 										<%
 										for(int i = 1; i <= 31;i++){
@@ -390,11 +390,11 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 											}
 										}
 										%>
-										</SELECT> ��<BR>
+										</SELECT> 日<BR>
 									</TD>
 								</TR>
 								<TR>
-									<TD bgcolor="#D6FFFF" align="center">�\��</TD>
+									<TD bgcolor="#D6FFFF" align="center">予定</TD>
 									<TD>
 										<SELECT NAME="plan" STYLE="width:100%">
 										<OPTION value="--" SELECTED>--</OPTION>
@@ -411,7 +411,7 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 									</TD>
 								</TR>
 								<TR>
-									<TD bgcolor="#D6FFFF" align="center">�\��ڍ�</TD>
+									<TD bgcolor="#D6FFFF" align="center">予定詳細</TD>
 									<TD>
 									<%
 									if(b_plan2.equals("")){
@@ -423,7 +423,7 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 									</TD>
 								</TR>
 								<TR>
-									<TD bgcolor="#D6FFFF" align="center">�ꏊ</TD>
+									<TD bgcolor="#D6FFFF" align="center">場所</TD>
 									<TD>
 										<SELECT NAME="place" STYLE="width:100%">
 										<OPTION VALUE="--">--</OPTION>
@@ -440,7 +440,7 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 									</TD>
 								</TR>
 								<TR>
-									<TD bgcolor="#D6FFFF" align="center">�ꏊ�ڍ�</TD>
+									<TD bgcolor="#D6FFFF" align="center">場所詳細</TD>
 									<TD>
 									<%
 									if(b_place2.equals("")){
@@ -452,7 +452,7 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 									</TD>
 								</TR>
 								<TR>
-									<TD bgcolor="#D6FFFF" align="center">����</TD>
+									<TD bgcolor="#D6FFFF" align="center">メモ</TD>
 									<TD>
 									<%
 									if(b_memo.equals("")){
@@ -466,14 +466,14 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 							</table>
 							<%
 							if(b_zai.equals("1")){
-								%><INPUT TYPE="radio" NAME="pre" VALUE="1" CHECKED>�ݐ�<%
+								%><INPUT TYPE="radio" NAME="pre" VALUE="1" CHECKED>在席<%
 							}else{
-								%><INPUT TYPE="radio" NAME="pre" VALUE="1">�ݐ�<%
+								%><INPUT TYPE="radio" NAME="pre" VALUE="1">在席<%
 							}
 							if(b_zai.equals("0")){
-								%><INPUT TYPE="radio" NAME="pre" VALUE="0" CHECKED>�s��<%
+								%><INPUT TYPE="radio" NAME="pre" VALUE="0" CHECKED>不在<%
 							}else{
-								%><INPUT TYPE="radio" NAME="pre" VALUE="0">�s��<%
+								%><INPUT TYPE="radio" NAME="pre" VALUE="0">不在<%
 							}
 							%>
 							<P>
@@ -481,9 +481,9 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 							if(group_id.equals(group_no) || group_id.equals("900")){
 							%>
 							<center>
-							<INPUT TYPE="submit" NAME="act" VALUE="�ύX" style="width: 30%;">
-							<INPUT TYPE="reset" VALUE="���ɖ߂�" style="width: 30%;">
-							<INPUT TYPE="submit" NAME="act" VALUE="�폜" style="width: 30%;">
+							<INPUT TYPE="submit" NAME="act" VALUE="変更" style="width: 30%;">
+							<INPUT TYPE="reset" VALUE="元に戻す" style="width: 30%;">
+							<INPUT TYPE="submit" NAME="act" VALUE="削除" style="width: 30%;">
 							</center>
 						</FORM>
 						<%

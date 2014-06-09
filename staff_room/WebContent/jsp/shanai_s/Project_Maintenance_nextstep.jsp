@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %><%@ page import="kkweb.beans.*" %><%@ page import="kkweb.dao.*" %><%@ page import="kkweb.maintenance.*" %><%@ page import="kkweb.common.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
@@ -7,7 +7,7 @@
 		}else{%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; Charset=Shift_JIS"><meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; Charset=UTF-8"><meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css"><link rel="stylesheet" href="report.css" type="text/css">
 <script type="text/javascript">
 	window.onunload=function(){};
@@ -32,7 +32,7 @@
 		}else{}
 <%	}%>
 		if(A==1){
-			alert("\"\'\<>\`‚Í“ü—Í‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B");
+			alert("\"\'\<>\`ã¯å…¥åŠ›ã—ãªã„ã§ãã ã•ã„ã€‚");
 			return false;
 		}else{	
 			return true;
@@ -40,7 +40,7 @@
 	}	
 // -->
 </SCRIPT>
-<title>ƒvƒƒWƒFƒNƒg’Ç‰Á</title>
+<title>ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆè¿½åŠ </title>
 </head>
 <%	request.setCharacterEncoding("Windows-31J");
 	C_CheckWord word = new C_CheckWord();
@@ -54,44 +54,44 @@
 	CodeDAO kensaku = new CodeDAO();
 	if(project_no_code == ""){%>
 <center>
-<hr width="400"><font color="#8B0000"><big>ƒvƒƒWƒFƒNƒgƒR[ƒh‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢</big></font><hr width="400"><br>
-<INPUT type="button" onClick='history.back();return false;' value="Ä“ü—Í">
+<hr width="400"><font color="#8B0000"><big>ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚³ãƒ¼ãƒ‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„</big></font><hr width="400"><br>
+<INPUT type="button" onClick='history.back();return false;' value="å†å…¥åŠ›">
 </center>
 <%	}else if( project_no_namae == ""){%>
 <center>
-<hr width="400"><font color="#8B0000"><big>ƒvƒƒWƒFƒNƒg–¼‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢</big></font><hr width="400"><br>
-<INPUT type="button" onClick='history.back();return false;' value="Ä“ü—Í">
+<hr width="400"><font color="#8B0000"><big>ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆåã‚’å…¥åŠ›ã—ã¦ãã ã•ã„</big></font><hr width="400"><br>
+<INPUT type="button" onClick='history.back();return false;' value="å†å…¥åŠ›">
 </center>
 <%	}else if( kensaku.isThereTbl(sql) ){%>
 <center>
-<hr width="400"><font color="#8B0000"><big>ƒvƒƒWƒFƒNƒgƒR[ƒh‚ªd•¡‚µ‚Ä‚¢‚Ü‚·</big></font><hr width="400"><br>
-<INPUT type="button" onClick='history.back();return false;' value="Ä“ü—Í" >
+<hr width="400"><font color="#8B0000"><big>ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚³ãƒ¼ãƒ‰ãŒé‡è¤‡ã—ã¦ã„ã¾ã™</big></font><hr width="400"><br>
+<INPUT type="button" onClick='history.back();return false;' value="å†å…¥åŠ›" >
 </center>
 <%	}else{%>
 <body>
 <center>
-<font class="title">ƒvƒƒWƒFƒNƒgƒ}ƒXƒ^ƒƒ“ƒeƒiƒ“ƒX</font><br><hr color = "#008080">
+<font class="title">ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆãƒžã‚¹ã‚¿ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹</font><br><hr color = "#008080">
 <table>
-<tr><td align="left"><small>1.•K—v‚È€–Ú‚ð‹L“üŒãu’Ç‰Ávƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢B</small></td></tr>
-<tr><td align="left"><small>E”õl—“‚Í•K—v‚É‰ž‚¶‚ÄíœE•ÏX‚ðs‚Á‚Ä‚­‚¾‚³‚¢B</small></td></tr>
-<tr><td align="left"><small>E”õl–¼Ì‚Æ”õlƒR[ƒh‚ª–³‚¯‚ê‚Î‚»‚Ì—“‚Íƒf[ƒ^ƒx[ƒX‚É”½‰f‚³‚ê‚Ü‚¹‚ñB</small></td></tr>
-<tr><td align="left"><small>EŠJŽnEI—¹ŽžŠÔ‚ª24ŽžŠÔˆÈã‚â60•ªˆÈãA”¼Šp”Žš‚Å‚Í‚È‚¢ê‡‚Í³‚µ‚­‹Lq‚³‚ê‚Ü‚¹‚ñB</small></td></tr>
-<tr><td align="left"><small>E<%= project_no_namae %>‚ÌŠJŽnEI—¹ŽžŠÔ‚Í0900(9Žž)‚â1830(18Žž30•ª)‚Ì—l‚ÉA‹xŒeŽžŠÔ‚Í60(60•ª)‚Ì—l‚É‹LÚ‚µ‚Ä‚­‚¾‚³‚¢B</small></td></tr>
-<tr><td align="left"><small>E‹x‚Ý‚È‚ÇŽžŠÔ‚ð‹L“ü‚·‚é•K—v‚ª‚È‚¢ê‡‚ÍAŽžŠÔ˜g‚ð‹ó—“‚É‚µ‚Ä‚­‚¾‚³‚¢B</small></td></tr>
+<tr><td align="left"><small>1.å¿…è¦ãªé …ç›®ã‚’è¨˜å…¥å¾Œã€Œè¿½åŠ ã€ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ãã ã•ã„ã€‚</small></td></tr>
+<tr><td align="left"><small>ãƒ»å‚™è€ƒæ¬„ã¯å¿…è¦ã«å¿œã˜ã¦å‰Šé™¤ãƒ»å¤‰æ›´ã‚’è¡Œã£ã¦ãã ã•ã„ã€‚</small></td></tr>
+<tr><td align="left"><small>ãƒ»å‚™è€ƒåç§°ã¨å‚™è€ƒã‚³ãƒ¼ãƒ‰ãŒç„¡ã‘ã‚Œã°ãã®æ¬„ã¯ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«åæ˜ ã•ã‚Œã¾ã›ã‚“ã€‚</small></td></tr>
+<tr><td align="left"><small>ãƒ»é–‹å§‹ãƒ»çµ‚äº†æ™‚é–“ãŒ24æ™‚é–“ä»¥ä¸Šã‚„60åˆ†ä»¥ä¸Šã€åŠè§’æ•°å­—ã§ã¯ãªã„å ´åˆã¯æ­£ã—ãè¨˜è¿°ã•ã‚Œã¾ã›ã‚“ã€‚</small></td></tr>
+<tr><td align="left"><small>ãƒ»<%= project_no_namae %>ã®é–‹å§‹ãƒ»çµ‚äº†æ™‚é–“ã¯0900(9æ™‚)ã‚„1830(18æ™‚30åˆ†)ã®æ§˜ã«ã€ä¼‘æ†©æ™‚é–“ã¯60(60åˆ†)ã®æ§˜ã«è¨˜è¼‰ã—ã¦ãã ã•ã„ã€‚</small></td></tr>
+<tr><td align="left"><small>ãƒ»ä¼‘ã¿ãªã©æ™‚é–“ã‚’è¨˜å…¥ã™ã‚‹å¿…è¦ãŒãªã„å ´åˆã¯ã€æ™‚é–“æž ã‚’ç©ºæ¬„ã«ã—ã¦ãã ã•ã„ã€‚</small></td></tr>
 </table><hr color = "#008080"><br>
 <form method="post" action="c_project_tuika" name="form1" onSubmit="return aboutbox()">
 <table BORDER="1"  class="mainte">
 <tr>
-<TH class="t-koumoku"><font color="white">”õl–¼Ì</font></TH>
-<TH class="t-koumoku"><font color="white">”õlƒR[ƒh</font></TH>
-<TH class="t-koumoku"><font color="white">ŠJŽnŽžŠÔ</font></TH>
-<TH class="t-koumoku"><font color="white">I—¹ŽžŠÔ</font></TH>
-<TH class="t-koumoku"><font color="white">‹xŒeŽžŠÔ</font></TH>
+<TH class="t-koumoku"><font color="white">å‚™è€ƒåç§°</font></TH>
+<TH class="t-koumoku"><font color="white">å‚™è€ƒã‚³ãƒ¼ãƒ‰</font></TH>
+<TH class="t-koumoku"><font color="white">é–‹å§‹æ™‚é–“</font></TH>
+<TH class="t-koumoku"><font color="white">çµ‚äº†æ™‚é–“</font></TH>
+<TH class="t-koumoku"><font color="white">ä¼‘æ†©æ™‚é–“</font></TH>
 </tr>
 <%	ArrayList bikouran = new ArrayList();
-	bikouran.add("”N‹x");bikouran.add("–{ŽÐ");bikouran.add("Œ‡‹Î");bikouran.add("“Á•Ê‹x‰É");
-	bikouran.add("‘ã‹x");bikouran.add("Œß‘O”¼‹x");bikouran.add("ŒßŒã”¼‹x");bikouran.add("‹xo(’´‰ß)");
-	bikouran.add("‹xo(U‹x—L)");bikouran.add("");bikouran.add("");
+	bikouran.add("å¹´ä¼‘");bikouran.add("æœ¬ç¤¾");bikouran.add("æ¬ å‹¤");bikouran.add("ç‰¹åˆ¥ä¼‘æš‡");
+	bikouran.add("ä»£ä¼‘");bikouran.add("åˆå‰åŠä¼‘");bikouran.add("åˆå¾ŒåŠä¼‘");bikouran.add("ä¼‘å‡º(è¶…éŽ)");
+	bikouran.add("ä¼‘å‡º(æŒ¯ä¼‘æœ‰)");bikouran.add("");bikouran.add("");
 	ArrayList bikoucode = new ArrayList();
 	bikoucode.add("n");bikoucode.add("1");bikoucode.add("k");bikoucode.add("50");bikoucode.add("88");bikoucode.add("90");
 	bikoucode.add("93");bikoucode.add("96");bikoucode.add("97");bikoucode.add("");bikoucode.add("");
@@ -127,13 +127,13 @@
 <table>
 <tr>
 <td>
-<input TYPE="submit" VALUE="@’Ç‰Á@"   class="bottom">
+<input TYPE="submit" VALUE="ã€€è¿½åŠ ã€€"   class="bottom">
 <input TYPE="hidden"  NAME="p_size" VALUE="1">
 </td>
 </tr>
 </table>
 </form><br>
-<a href="SystemKanri_MenuGamen.jsp" class="link"><font class="link"><small>[ ƒƒjƒ…[‚Ö–ß‚é ]</small></font></a>
+<a href="SystemKanri_MenuGamen.jsp" class="link"><font class="link"><small>[ ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹ ]</small></font></a>
 </center>
 </body>
 <%	}%>

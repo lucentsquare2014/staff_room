@@ -1,61 +1,61 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.* , java.util.Vector" %>
 <%!
-// ï∂éöÉGÉìÉRÅ[ÉhÇçsÇ¢Ç‹Ç∑ÅB
+// ÊñáÂ≠ó„Ç®„É≥„Ç≥„Éº„Éâ„ÇíË°å„ÅÑ„Åæ„Åô„ÄÇ
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal==null){
 		return (null);
 	}
 	else{
-		return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
 <%
-/* èCê≥ì_ */
-// 06-06-14 çÌèúÉ{É^ÉìÇâüÇµÇΩç€Ç…ÅAã§óLé“Ç∂Ç·Ç»Ç¢êlÇÃó\íËÇÅAçÌèúÇµÇƒÇµÇ‹Ç§Ç±Ç∆Ç™Ç†ÇÈÇÃÇèCê≥
-// 02-09-20 ã§óLé“ÇÃí«â¡ÅEçÌèúÇçsÇ§ÉtÉ@ÉCÉãÇ∆ÇµÇƒçÏê¨
+/* ‰øÆÊ≠£ÁÇπ */
+// 06-06-14 ÂâäÈô§„Éú„Çø„É≥„ÇíÊäº„Åó„ÅüÈöõ„Å´„ÄÅÂÖ±ÊúâËÄÖ„Åò„ÇÉ„Å™„ÅÑ‰∫∫„ÅÆ‰∫àÂÆö„Çí„ÄÅÂâäÈô§„Åó„Å¶„Åó„Åæ„ÅÜ„Åì„Å®„Åå„ÅÇ„Çã„ÅÆ„Çí‰øÆÊ≠£
+// 02-09-20 ÂÖ±ÊúâËÄÖ„ÅÆËøΩÂä†„ÉªÂâäÈô§„ÇíË°å„ÅÜ„Éï„Ç°„Ç§„É´„Å®„Åó„Å¶‰ΩúÊàê
 
-// ÉçÉOÉCÉìÇµÇΩÉÜÅ[ÉUÇÃé–àıî‘çÜÇïœêî[ID]Ç…äiî[
+// „É≠„Ç∞„Ç§„É≥„Åó„Åü„É¶„Éº„Ç∂„ÅÆÁ§æÂì°Áï™Âè∑„ÇíÂ§âÊï∞[ID]„Å´Ê†ºÁ¥ç
 String ID = strEncode(request.getParameter("id"));
 
-// ÉpÉâÉÅÅ[É^ÇÃéÊìæ[ã§ópÉpÉâÉÅÅ[É^]
+// „Éë„É©„É°„Éº„Çø„ÅÆÂèñÂæó[ÂÖ±Áî®„Éë„É©„É°„Éº„Çø]
 String NO = request.getParameter("no");
 String DA = strEncode(request.getParameter("s_date"));
 String GR = request.getParameter("group");
 
-// ÉpÉâÉÅÅ[É^ÇÃéÊìæ[pubségóp]
+// „Éë„É©„É°„Éº„Çø„ÅÆÂèñÂæó[pubs‰ΩøÁî®]
 String ST = strEncode(request.getParameter("s_start"));
 String BS = strEncode(request.getParameter("b_start"));
 String AC = strEncode(request.getParameter("act"));
 
-// ï\é¶ÇÃéÌóﬁÇîªï Ç∑ÇÈÉpÉâÉÅÅ[É^
+// Ë°®Á§∫„ÅÆÁ®ÆÈ°û„ÇíÂà§Âà•„Åô„Çã„Éë„É©„É°„Éº„Çø
 String KD = request.getParameter("kind");
 
 %>
 <html>
-<head><title>ÉGÉâÅ[</title></head>
+<head><title>„Ç®„É©„Éº</title></head>
 <body BGCOLOR="#99A5FF">
 <%
 
-// JDBCÉhÉâÉCÉoÇÃÉçÅ[Éh
+// JDBC„Éâ„É©„Ç§„Éê„ÅÆ„É≠„Éº„Éâ
 Class.forName("org.postgresql.Driver");
 
-// ÉÜÅ[ÉUîFèÿèÓïÒÇÃê›íË
+// „É¶„Éº„Ç∂Ë™çË®ºÊÉÖÂ†±„ÅÆË®≠ÂÆö
 String user = "georgir";
 String password = "georgir";
 
-// ConnectionÉIÉuÉWÉFÉNÉgÇÃê∂ê¨
+// Connection„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅÆÁîüÊàê
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 
-// StatementÉIÉuÉWÉFÉNÉgÇÃê∂ê¨
+// Statement„Ç™„Éñ„Ç∏„Çß„ÇØ„Éà„ÅÆÁîüÊàê
 Statement stmt = con.createStatement();
 
-/* ìØÉOÉãÅ[ÉvÇ≈Ç†ÇÈÇ©Çî‰ärÇ∑ÇÈÇΩÇﬂÇ…égópÇ∑ÇÈ */
-// SQLé¿çsÅEÉOÉãÅ[ÉvèÓïÒ[ñ{êl]
+/* Âêå„Ç∞„É´„Éº„Éó„Åß„ÅÇ„Çã„Åã„ÇíÊØîËºÉ„Åô„Çã„Åü„ÇÅ„Å´‰ΩøÁî®„Åô„Çã */
+// SQLÂÆüË°å„Éª„Ç∞„É´„Éº„ÉóÊÉÖÂ†±[Êú¨‰∫∫]
 ResultSet GROUPID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
-// èâä˙âªÇçsÇ¡ÇƒÇ¢ÇÈ
+// ÂàùÊúüÂåñ„ÇíË°å„Å£„Å¶„ÅÑ„Çã
 String group_id = "";
 
 while(GROUPID.next()){
@@ -64,7 +64,7 @@ while(GROUPID.next()){
 
 GROUPID.close();
 
-// SQLé¿çsÅEÉOÉãÅ[ÉvèÓïÒ[ëºÇÃÉÜÅ[ÉU]
+// SQLÂÆüË°å„Éª„Ç∞„É´„Éº„ÉóÊÉÖÂ†±[‰ªñ„ÅÆ„É¶„Éº„Ç∂]
 ResultSet GROUPNO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 String group_no = "";
@@ -75,20 +75,20 @@ while(GROUPNO.next()){
 
 GROUPNO.close();
 
-/* í«â¡ÉäÉXÉgèàóù Ç±Ç±Ç©ÇÁ */
+/* ËøΩÂä†„É™„Çπ„ÉàÂá¶ÁêÜ „Åì„Åì„Åã„Çâ */
 
-// èdï°É`ÉFÉbÉNópflag
+// ÈáçË§á„ÉÅ„Çß„ÉÉ„ÇØÁî®flag
 boolean check = false;
 
-// ã§óLé“ÇÃçÌèúÇ∆ÉXÉPÉWÉÖÅ[ÉãÇÃçÌèúÇ™çsÇÌÇÍÇΩéûÇ…êÿÇËë÷ÇÌÇÈflag
+// ÂÖ±ÊúâËÄÖ„ÅÆÂâäÈô§„Å®„Çπ„Ç±„Ç∏„É•„Éº„É´„ÅÆÂâäÈô§„ÅåË°å„Çè„Çå„ÅüÊôÇ„Å´Âàá„ÇäÊõø„Çè„Çãflag
 boolean MWD = false;
 
-if(AC.equals("í«â¡") && (group_id.equals(group_no) || group_id.equals("900"))){
+if(AC.equals("ËøΩÂä†") && (group_id.equals(group_no) || group_id.equals("900"))){
 	String[] addlist = request.getParameterValues("add");
 	if(ID.equals(NO)){
 		if((addlist != null) && (addlist[0].length() != 0)){
 			for(int i = 0; i < addlist.length; i++){
-				// ëIëÇ≥ÇÍÇΩçÄñ⁄Ç…ñ{êlÇ™ä‹Ç‹ÇÍÇƒÇ¢ÇΩÇÁÅAÉGÉâÅ[Ç∆Ç∑ÇÈÅB
+				// ÈÅ∏Êäû„Åï„Çå„ÅüÈ†ÖÁõÆ„Å´Êú¨‰∫∫„ÅåÂê´„Åæ„Çå„Å¶„ÅÑ„Åü„Çâ„ÄÅ„Ç®„É©„Éº„Å®„Åô„Çã„ÄÇ
 				if(addlist[i].equals(ID)){
 					%>
 					<jsp:forward page="error.jsp">
@@ -96,8 +96,8 @@ if(AC.equals("í«â¡") && (group_id.equals(group_no) || group_id.equals("900"))){
 					</jsp:forward>
 					<%
 				}else{
-					// èdï°É`ÉFÉbÉNópSQLÇÃé¿çs
-					ResultSet CHECK = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE K_é–àıNO = '" + addlist[i] + "' AND K_é–àıNO2 = '" + ID + "' AND KY_FLAG = '0'");
+					// ÈáçË§á„ÉÅ„Çß„ÉÉ„ÇØÁî®SQL„ÅÆÂÆüË°å
+					ResultSet CHECK = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE K_Á§æÂì°NO = '" + addlist[i] + "' AND K_Á§æÂì°NO2 = '" + ID + "' AND KY_FLAG = '0'");
 					
 					while(CHECK.next()){
 						check = true;
@@ -106,7 +106,7 @@ if(AC.equals("í«â¡") && (group_id.equals(group_no) || group_id.equals("900"))){
 					CHECK.close();
 					
 					if(!check){
-						stmt.execute("INSERT INTO KY_TABLE(K_é–àıNO,K_é–àıNO2,KY_FLAG) VALUES('" + addlist[i] + "','" + ID + "','0')");
+						stmt.execute("INSERT INTO KY_TABLE(K_Á§æÂì°NO,K_Á§æÂì°NO2,KY_FLAG) VALUES('" + addlist[i] + "','" + ID + "','0')");
 					}
 				}
 			}
@@ -120,7 +120,7 @@ if(AC.equals("í«â¡") && (group_id.equals(group_no) || group_id.equals("900"))){
 	}else{
 		if((addlist != null) && (addlist[0].length() != 0)){
 			for(int i = 0; i < addlist.length; i++){
-				// ëIëÇ≥ÇÍÇΩçÄñ⁄Ç…ñ{êlÇ™ä‹Ç‹ÇÍÇƒÇ¢ÇΩÇÁÅAÉGÉâÅ[Ç∆Ç∑ÇÈÅB
+				// ÈÅ∏Êäû„Åï„Çå„ÅüÈ†ÖÁõÆ„Å´Êú¨‰∫∫„ÅåÂê´„Åæ„Çå„Å¶„ÅÑ„Åü„Çâ„ÄÅ„Ç®„É©„Éº„Å®„Åô„Çã„ÄÇ
 				if(addlist[i].equals(NO)){
 					%>
 					<jsp:forward page="error.jsp">
@@ -128,8 +128,8 @@ if(AC.equals("í«â¡") && (group_id.equals(group_no) || group_id.equals("900"))){
 					</jsp:forward>
 					<%
 				}else{
-					// èdï°É`ÉFÉbÉNópSQLÇÃé¿çs
-					ResultSet CHECK = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE K_é–àıNO = '" + addlist[i] + "' AND K_é–àıNO2 = '" + NO + "' AND KY_FLAG = '0'");
+					// ÈáçË§á„ÉÅ„Çß„ÉÉ„ÇØÁî®SQL„ÅÆÂÆüË°å
+					ResultSet CHECK = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE K_Á§æÂì°NO = '" + addlist[i] + "' AND K_Á§æÂì°NO2 = '" + NO + "' AND KY_FLAG = '0'");
 					
 					while(CHECK.next()){
 						check = true;
@@ -138,7 +138,7 @@ if(AC.equals("í«â¡") && (group_id.equals(group_no) || group_id.equals("900"))){
 					CHECK.close();
 					
 					if(!check){
-						stmt.execute("INSERT INTO KY_TABLE(K_é–àıNO,K_é–àıNO2,KY_FLAG) VALUES('" + addlist[i] + "','" + NO + "','0')");
+						stmt.execute("INSERT INTO KY_TABLE(K_Á§æÂì°NO,K_Á§æÂì°NO2,KY_FLAG) VALUES('" + addlist[i] + "','" + NO + "','0')");
 					}
 				}
 			}
@@ -227,21 +227,21 @@ if(AC.equals("í«â¡") && (group_id.equals(group_no) || group_id.equals("900"))){
 		<%
 	}
 }
-/* í«â¡ÉäÉXÉgèàóù Ç±Ç±Ç‹Ç≈ */
+/* ËøΩÂä†„É™„Çπ„ÉàÂá¶ÁêÜ „Åì„Åì„Åæ„Åß */
 
-/* çÌèúÉäÉXÉgèàóù Ç±Ç±Ç©ÇÁ */
-else if(AC.equals("çÌèú") && (group_id.equals(group_no) || group_id.equals("900"))){
+/* ÂâäÈô§„É™„Çπ„ÉàÂá¶ÁêÜ „Åì„Åì„Åã„Çâ */
+else if(AC.equals("ÂâäÈô§") && (group_id.equals(group_no) || group_id.equals("900"))){
 	String[] dellist = request.getParameterValues("del");
 	if(ID.equals(NO)){
 		if((dellist != null) && (dellist[0].length() != 0)){
 			for(int i = 0; i < dellist.length; i++){
-				stmt.execute("DELETE FROM KY_TABLE WHERE (K_é–àıNO = '" + dellist[i] + "' AND ((S_DATE = '" + DA + "' AND S_START = '" + ST + "') OR (B_START = '" + BS + "')) AND KY_FLAG = '1') OR (K_é–àıNO = '" + dellist[i] + "' AND KY_FLAG = '0')");
+				stmt.execute("DELETE FROM KY_TABLE WHERE (K_Á§æÂì°NO = '" + dellist[i] + "' AND ((S_DATE = '" + DA + "' AND S_START = '" + ST + "') OR (B_START = '" + BS + "')) AND KY_FLAG = '1') OR (K_Á§æÂì°NO = '" + dellist[i] + "' AND KY_FLAG = '0')");
 				if(!ST.equals("")){
 					MWD = true;
-					stmt.execute("DELETE FROM S_TABLE WHERE GO_é–àıNO = '" + dellist[i] + "' AND S_DATE = '" + DA + "' AND S_START = '" + ST + "' AND S_TOUROKU = '0' ");
+					stmt.execute("DELETE FROM S_TABLE WHERE GO_Á§æÂì°NO = '" + dellist[i] + "' AND S_DATE = '" + DA + "' AND S_START = '" + ST + "' AND S_TOUROKU = '0' ");
 				}else if(!BS.equals("")){
 					MWD = true;
-					stmt.execute("DELETE FROM B_TABLE WHERE K_é–àıNO = '" + dellist[i] + "' AND B_START = '" + BS + "' AND B_TOUROKU = '0' ");
+					stmt.execute("DELETE FROM B_TABLE WHERE K_Á§æÂì°NO = '" + dellist[i] + "' AND B_START = '" + BS + "' AND B_TOUROKU = '0' ");
 				}
 			}
 			if(MWD && KD.equals("Month")){
@@ -336,11 +336,11 @@ else if(AC.equals("çÌèú") && (group_id.equals(group_no) || group_id.equals("900"
 	}else{
 		if((dellist != null) && (dellist[0].length() != 0)){
 			for(int i = 0; i < dellist.length; i++){
-				stmt.execute("DELETE FROM KY_TABLE WHERE (K_é–àıNO = '" + dellist[i] + "' AND ((S_DATE = '" + DA + "' AND S_START = '" + ST + "') OR (B_START = '" + BS + "')) AND KY_FLAG = '1') OR (K_é–àıNO = '" + dellist[i] + "' AND KY_FLAG = '0')");
+				stmt.execute("DELETE FROM KY_TABLE WHERE (K_Á§æÂì°NO = '" + dellist[i] + "' AND ((S_DATE = '" + DA + "' AND S_START = '" + ST + "') OR (B_START = '" + BS + "')) AND KY_FLAG = '1') OR (K_Á§æÂì°NO = '" + dellist[i] + "' AND KY_FLAG = '0')");
 				if(!ST.equals("")){
-					stmt.execute("DELETE FROM S_TABLE WHERE GO_é–àıNO = '" + dellist[i] + "' AND S_DATE = '" + DA + "' AND S_START = '" + ST + "' AND S_TOUROKU = '0' ");
+					stmt.execute("DELETE FROM S_TABLE WHERE GO_Á§æÂì°NO = '" + dellist[i] + "' AND S_DATE = '" + DA + "' AND S_START = '" + ST + "' AND S_TOUROKU = '0' ");
 				}else if(!BS.equals("")){
-					stmt.execute("DELETE FROM B_TABLE WHERE K_é–àıNO = '" + dellist[i] + "' AND B_START = '" + BS + "' AND B_TOUROKU = '0' ");
+					stmt.execute("DELETE FROM B_TABLE WHERE K_Á§æÂì°NO = '" + dellist[i] + "' AND B_START = '" + BS + "' AND B_TOUROKU = '0' ");
 				}
 			}
 			if(MWD && KD.equals("Month")){
@@ -434,7 +434,7 @@ else if(AC.equals("çÌèú") && (group_id.equals(group_no) || group_id.equals("900"
 		}
 	}
 }
-/* çÌèúÉäÉXÉgèàóù Ç±Ç±Ç‹Ç≈ */
+/* ÂâäÈô§„É™„Çπ„ÉàÂá¶ÁêÜ „Åì„Åì„Åæ„Åß */
 
 else{
 	%>

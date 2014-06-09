@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"
-	pageEncoding="shift_JIS" session="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" session="true"%>
 <%@ page import="kkweb.mail.C_MailSend"%><%@ page import="java.util.*"%>
 <%@ page import="kkweb.beans.*"%><%@ page import="kkweb.dao.*"%><%@ page import="java.sql.*"%>
 <jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST" />
@@ -26,10 +26,10 @@
 	name="mailsend" property="from" value="<%=login_mail%>" /><jsp:setProperty
 	name="mailsend" property="to" value="<%=mail%>" />
 <%
-	int i = root.indexOf("¨");
+	int i = root.indexOf("â†’");
 		if (i == -1) {
 %><jsp:setProperty name="mailsend" property="subject"
-	value="ƒ‹Î–±•ñ„C³’Ê’m" />
+	value="ï¼œå‹¤å‹™å ±å‘Šï¼žä¿®æ­£é€šçŸ¥" />
 <%
 	} else {
 %><jsp:setProperty name="mailsend" property="subject"
@@ -40,18 +40,18 @@
 	value="<%=body%>" />
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="message.css" type="text/css">
-<title>ƒ[ƒ‹‘—M</title>
+<title>ãƒ¡ãƒ¼ãƒ«é€ä¿¡</title>
 </head>
 <body>
 	<center>
 		<div class="location">
 			<div class="location2">
-				<font class="msg">‘—MŠ®—¹</font><br>
+				<font class="msg">é€ä¿¡å®Œäº†</font><br>
 				<br> <a href="Menu_Gamen.jsp" class="link"><font
-					class="link">[ ƒƒjƒ…[‚Ö–ß‚é ]</font></a>
+					class="link">[ ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹ ]</font></a>
 			</div>
 		</div>
 		<%

@@ -1,42 +1,42 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.*" %>
 <%!
-// •¶ŽšƒGƒ“ƒR[ƒh‚ðs‚¢‚Ü‚·B
+// æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã„ã¾ã™ã€‚
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 		if(strVal==null){
 			return (null);
 		}
 		else{
-			return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+			return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 		}
 }
 %>
 <%
-/* C³“_ */
-// 02-08-12 •\Ž¦Œ`Ž®‚ðŒÂlÝ’è‚Å‘I‘ð‚µ‚½ƒ†[ƒU‚ÍA‚»‚Ìî•ñ‚ð“Ç‚Ýo‚µÅ—Dæ‚Æ‚·‚é
-// 02-09-04 ƒpƒ‰ƒ[ƒ^‚Ì’Ç‰Á
-// 02-09-18 “®ìƒeƒXƒgŠúŠÔcƒoƒO”­Œ©   48s–Ú`58s–Ú ƒOƒ‹[ƒvƒR[ƒh‚Ì’Šo‚·‚éƒe[ƒuƒ‹–¼‚ð‹LqŠÔˆá‚¢B
-// 02-10-01 ƒoƒO”­Œ©  
+/* ä¿®æ­£ç‚¹ */
+// 02-08-12 è¡¨ç¤ºå½¢å¼ã‚’å€‹äººè¨­å®šã§é¸æŠžã—ãŸãƒ¦ãƒ¼ã‚¶ã¯ã€ãã®æƒ…å ±ã‚’èª­ã¿å‡ºã—æœ€å„ªå…ˆã¨ã™ã‚‹
+// 02-09-04 ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®è¿½åŠ 
+// 02-09-18 å‹•ä½œãƒ†ã‚¹ãƒˆæœŸé–“â€¦ãƒã‚°ç™ºè¦‹   48è¡Œç›®ã€œ58è¡Œç›® ã‚°ãƒ«ãƒ¼ãƒ—ã‚³ãƒ¼ãƒ‰ã®æŠ½å‡ºã™ã‚‹ãƒ†ãƒ¼ãƒ–ãƒ«åã‚’è¨˜è¿°é–“é•ã„ã€‚
+// 02-10-01 ãƒã‚°ç™ºè¦‹  
 	
-	// ƒƒOƒCƒ“‚µ‚½ƒ†[ƒU‚ÌŽÐˆõ”Ô†‚ð•Ï”[ID]‚ÉŠi”[
+	// ãƒ­ã‚°ã‚¤ãƒ³ã—ãŸãƒ¦ãƒ¼ã‚¶ã®ç¤¾å“¡ç•ªå·ã‚’å¤‰æ•°[ID]ã«æ ¼ç´
 	String ID = strEncode(request.getParameter("id"));
 	
-	// JDBCƒhƒ‰ƒCƒo‚Ìƒ[ƒh
+	// JDBCãƒ‰ãƒ©ã‚¤ãƒã®ãƒ­ãƒ¼ãƒ‰
 	Class.forName("org.postgresql.Driver");
 	
-	// ƒ†[ƒU”FØî•ñ‚ÌÝ’è
+	// ãƒ¦ãƒ¼ã‚¶èªè¨¼æƒ…å ±ã®è¨­å®š
 	String user = "georgir";
 	String password = "georgir";
 	
-	// ConnectionƒIƒuƒWƒFƒNƒg‚Ì¶¬
+	// Connectionã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆ
 	Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 	
-	// StatementƒIƒuƒWƒFƒNƒg‚Ì¶¬
+	// Statementã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆ
 	Statement stmt = con.createStatement();
 	
-	// SQL‚ÌŽÀs
-	// ‘I‘ð‚³‚ê‚½ŽÐˆõ”Ô†‚Æˆê’v‚·‚éŒÂlÝ’èî•ñ‚ðŽæ‚èo‚·SQL
-	ResultSet rs_pe = stmt.executeQuery("SELECT * FROM PE_TABLE WHERE K_ŽÐˆõNO = '" + ID + "'");
+	// SQLã®å®Ÿè¡Œ
+	// é¸æŠžã•ã‚ŒãŸç¤¾å“¡ç•ªå·ã¨ä¸€è‡´ã™ã‚‹å€‹äººè¨­å®šæƒ…å ±ã‚’å–ã‚Šå‡ºã™SQL
+	ResultSet rs_pe = stmt.executeQuery("SELECT * FROM PE_TABLE WHERE K_ç¤¾å“¡NO = '" + ID + "'");
 	
 	String pe_st = "";
 	
@@ -48,10 +48,10 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 	
 	boolean flag = false;
 	
-	// SQLŽÀsEƒOƒ‹[ƒvî•ñ[ŒÂlÝ’è‚Ås‚Á‚½ƒOƒ‹[ƒv‚ð’Šo]
-	ResultSet GROUPID = stmt.executeQuery("SELECT * FROM PE_TABLE WHERE K_ŽÐˆõNO = '" + ID + "'");
+	// SQLå®Ÿè¡Œãƒ»ã‚°ãƒ«ãƒ¼ãƒ—æƒ…å ±[å€‹äººè¨­å®šã§è¡Œã£ãŸã‚°ãƒ«ãƒ¼ãƒ—ã‚’æŠ½å‡º]
+	ResultSet GROUPID = stmt.executeQuery("SELECT * FROM PE_TABLE WHERE K_ç¤¾å“¡NO = '" + ID + "'");
 	
-	// ‰Šú‰»‚ðs‚Á‚Ä‚¢‚é
+	// åˆæœŸåŒ–ã‚’è¡Œã£ã¦ã„ã‚‹
 	String group_id = "";
 	
 	while(GROUPID.next()){
@@ -99,7 +99,7 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 		<%
 	}
 	else if(pe_st.equals("")){
-	// ‘I‘ð‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍAŒŽ•\Ž¦‚ðs‚¤B
+	// é¸æŠžã•ã‚Œã¦ã„ãªã„å ´åˆã¯ã€æœˆè¡¨ç¤ºã‚’è¡Œã†ã€‚
 		%>
 		<jsp:forward page="Schedule-Month.jsp">
 			<jsp:param name="id" value="<%= ID %>" />

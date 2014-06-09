@@ -1,84 +1,84 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.* , java.util.Vector" %>
 <%!
-// •¶ŽšƒGƒ“ƒR[ƒh‚ðs‚¢‚Ü‚·B
+// ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½Rï¿½[ï¿½hï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal==null){
 		return (null);
 	}else{
-		return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
 <%
-/* C³“_ */
-// 02-08-05 ŒŽETE“ú‚Æƒtƒ@ƒCƒ‹‚ð•ª‚¯‚Ä‚¢‚½‚à‚Ì‚ðŒ‹‡‚³‚¹Aƒtƒ‰ƒO‚É‚æ‚Á‚Äˆ—‚ð•ª‚¯‚é•û–@
-// 02-08-15 —]Œv‚ÈƒvƒƒOƒ‰ƒ€‚ðÈ‚­
-// 02-09-04 Ú×‰æ–Ê‚Ì•\Ž¦“ü‚ê‘Ö‚¦ˆ—‚ð‰Á‚¦‚éBƒŠƒ“ƒN‚ðƒNƒŠƒbƒN‚·‚é‚Æ’P•ûŒü‚ÉˆÚ“®‚·‚éB
-// 02-09-05 Ú×‰æ–Ê‚Ì•\Ž¦“ü‚ê‘Ö‚¦ˆ—‚ð•ÏXBƒŠƒ“ƒN‚ðƒNƒŠƒbƒN‚·‚é‚Æ‘o•ûŒü‚ÉˆÚ“®‚·‚éB
+/* ï¿½Cï¿½ï¿½ï¿½_ */
+// 02-08-05 ï¿½ï¿½ï¿½Eï¿½Tï¿½Eï¿½ï¿½Æƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ð•ª‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½tï¿½ï¿½ï¿½Oï¿½É‚ï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½ð•ª‚ï¿½ï¿½ï¿½ï¿½@
+// 02-08-15 ï¿½]ï¿½vï¿½Èƒvï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½
+// 02-09-04 ï¿½Ú×‰ï¿½Ê‚Ì•\ï¿½ï¿½ï¿½ï¿½ï¿½Ö‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½Æ’Pï¿½ï¿½ï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½B
+// 02-09-05 ï¿½Ú×‰ï¿½Ê‚Ì•\ï¿½ï¿½ï¿½ï¿½ï¿½Ö‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏXï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½ï¿½ï¿½ï¿½Æ‘oï¿½ï¿½ï¿½ÉˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½B
 
-/* ’Ç‰Á“_ */
-// 02-09-03 ‹¤—LŽÒƒvƒƒOƒ‰ƒ€‚ðŠO•”ƒtƒ@ƒCƒ‹‚Æ‚µ‚ÄŽæ‚èž‚ÞB
+/* ï¿½Ç‰ï¿½ï¿½_ */
+// 02-09-03 ï¿½ï¿½ï¿½Lï¿½Òƒvï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ÄŽï¿½èžï¿½ÞB
 
-// ƒƒOƒCƒ“‚µ‚½ƒ†[ƒU‚ÌŽÐˆõ”Ô†‚ð•Ï”[ID]‚ÉŠi”[
+// ï¿½ï¿½ï¿½Oï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Uï¿½ÌŽÐˆï¿½ï¿½Ôï¿½ï¿½ï¿½Ïï¿½[ID]ï¿½ÉŠiï¿½[
 String ID = strEncode(request.getParameter("id"));
 
-// ƒpƒ‰ƒ[ƒ^‚ÌŽæ“¾[‹¤—pƒpƒ‰ƒ[ƒ^]
+// ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½ÌŽæ“¾[ï¿½ï¿½ï¿½pï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^]
 String NO = strEncode(request.getParameter("no"));
 String DA = strEncode(request.getParameter("s_date"));
 String GR = request.getParameter("group");
 
-// ƒpƒ‰ƒ[ƒ^‚ÌŽæ“¾[pubsŽg—p]
+// ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½ÌŽæ“¾[pubsï¿½gï¿½p]
 String BS = strEncode(request.getParameter("b_start"));
 String AC = strEncode(request.getParameter("act"));
 
-// •\Ž¦‚ÌŽí—Þ‚ð”»•Ê‚·‚éƒpƒ‰ƒ[ƒ^
+// ï¿½\ï¿½ï¿½ï¿½ÌŽï¿½Þ‚ð”»•Ê‚ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^
 String KD = request.getParameter("kind");
 
-// ŠJŽnŽž‚Ì•ªŠ„
+// ï¿½Jï¿½nï¿½ï¿½ï¿½ï¿½ï¿½Ì•ï¿½ï¿½ï¿½
 String ST = strEncode(request.getParameter("s_start"));
 int S_Shour  = Integer.parseInt(ST.substring(0,2));
 int S_Smini1 = Integer.parseInt(ST.substring(2,3));
 int S_Smini2 = Integer.parseInt(ST.substring(3,4));
 
-// JDBCƒhƒ‰ƒCƒo‚Ìƒ[ƒh
+// JDBCï¿½hï¿½ï¿½ï¿½Cï¿½oï¿½Ìƒï¿½ï¿½[ï¿½h
 Class.forName("org.postgresql.Driver");
 
-// ƒ†[ƒU”FØî•ñ‚ÌÝ’è
+// ï¿½ï¿½ï¿½[ï¿½Uï¿½Fï¿½Øï¿½ï¿½ÌÝ’ï¿½
 String user = "georgir";
 String password = "georgir";
 
-// ConnectionƒIƒuƒWƒFƒNƒg‚Ì¶¬
+// Connectionï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 
-// StatementƒIƒuƒWƒFƒNƒg‚Ì¶¬
+// Statementï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ìï¿½ï¿½ï¿½
 Statement stmt = con.createStatement();
 
-// SQLŽÀsE—\’èî•ñ‚ð“Ç‚Ýo‚·
-ResultSet YOTEI = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE ‹æ•ª = '1'");
+// SQLï¿½ï¿½ï¿½sï¿½Eï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚Ýoï¿½ï¿½
+ResultSet YOTEI = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE ï¿½æ•ª = '1'");
 
-// hitList‚Ì¶¬
+// hitListï¿½Ìï¿½ï¿½ï¿½
 Vector hitYOTEI = new Vector();
 
-// Œ‹‰ÊƒZƒbƒg‚ðˆ—‚µ‚Ü‚·B
+// ï¿½ï¿½ï¿½ÊƒZï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
 while(YOTEI.next()){
-	String basyo = YOTEI.getString("êŠ");
+	String basyo = YOTEI.getString("ï¿½êŠ");
 	hitYOTEI.addElement(basyo.trim());
 }
 
-// hitList‚É“ü‚Á‚Ä‚¢‚éŒÂ”‚ð‘ã“ü
+// hitListï¿½É“ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Âï¿½ï¿½ï¿½ï¿½ï¿½
 int cntYOTEI = hitYOTEI.size();
 
-// ResultSet‚ð•Â‚¶‚é
+// ResultSetï¿½ï¿½Â‚ï¿½ï¿½ï¿½
 YOTEI.close();
 
-// SQLŽÀsEêŠî•ñ‚ð“Ç‚Ýo‚·
-ResultSet BASYO = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE ‹æ•ª = '2'");
+// SQLï¿½ï¿½ï¿½sï¿½Eï¿½êŠï¿½ï¿½ï¿½ï¿½Ç‚Ýoï¿½ï¿½
+ResultSet BASYO = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE ï¿½æ•ª = '2'");
 
 Vector hitBASYO = new Vector();
 
 while(BASYO.next()){
-	String basyo = BASYO.getString("êŠ");
+	String basyo = BASYO.getString("ï¿½êŠ");
 	hitBASYO.addElement(basyo.trim());
 }
 
@@ -86,11 +86,11 @@ int cntBASYO = hitBASYO.size();
 
 BASYO.close();
 
-/* “¯ƒOƒ‹[ƒv‚Å‚ ‚é‚©‚ð”äŠr‚·‚é‚½‚ß‚ÉŽg—p‚·‚é */
-// SQLŽÀsEƒOƒ‹[ƒvî•ñ[–{l]
+/* ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½[ï¿½vï¿½Å‚ï¿½ï¿½é‚©ï¿½ï¿½ï¿½rï¿½ï¿½ï¿½é‚½ï¿½ß‚ÉŽgï¿½pï¿½ï¿½ï¿½ï¿½ */
+// SQLï¿½ï¿½ï¿½sï¿½Eï¿½Oï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½[ï¿½{ï¿½l]
 ResultSet GROUPID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
-// ‰Šú‰»‚ðs‚Á‚Ä‚¢‚é
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
 String group_id = "";
 
 while(GROUPID.next()){
@@ -99,7 +99,7 @@ while(GROUPID.next()){
 
 GROUPID.close();
 
-// SQLŽÀsEƒOƒ‹[ƒvî•ñ[‘¼‚Ìƒ†[ƒU]
+// SQLï¿½ï¿½ï¿½sï¿½Eï¿½Oï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½U]
 ResultSet GROUPNO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 String group_no = "";
@@ -110,32 +110,32 @@ while(GROUPNO.next()){
 
 GROUPNO.close();
 
-/* [ID]‚Æ[NO]‚ÌŽ–¼‚ð“Ç‚Ýo‚µ‚Ü‚·B */
-// SQL‚ÌŽÀsEŒÂlî•ñ[–{l]
+/* [ID]ï¿½ï¿½[NO]ï¿½ÌŽï¿½ï¿½ï¿½ï¿½ï¿½Ç‚Ýoï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B */
+// SQLï¿½ÌŽï¿½ï¿½sï¿½Eï¿½Âlï¿½ï¿½ï¿½[ï¿½{ï¿½l]
 ResultSet NAMEID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
 String name_id = "";
 
 while(NAMEID.next()){
-	name_id = NAMEID.getString("K_Ž–¼");
+	name_id = NAMEID.getString("K_ï¿½ï¿½ï¿½ï¿½");
 }
 
 NAMEID.close();
 
-// SQL‚ÌŽÀsEŒÂlî•ñNO[‘¼‚Ìƒ†[ƒU]
+// SQLï¿½ÌŽï¿½ï¿½sï¿½Eï¿½Âlï¿½ï¿½ï¿½NO[ï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½U]
 ResultSet NAMENO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 String name_no = "";
 
 while(NAMENO.next()){
-	name_no = NAMENO.getString("K_Ž–¼");
+	name_no = NAMENO.getString("K_ï¿½ï¿½ï¿½ï¿½");
 }
 
 NAMENO.close();
 
-// SQL‚ÌŽÀs
-// ‘I‘ð‚³‚ê‚½ŽÐˆõ”Ô†‚Æˆê’v‚·‚éƒXƒPƒWƒ…[ƒ‹î•ñ‚ðŽæ‚èo‚·SQL
-ResultSet SSCHEDULE = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_ŽÐˆõNO = '" + NO + "' and S_DATE = '" + DA + "' and S_START = '" + ST + "'");
+// SQLï¿½ÌŽï¿½ï¿½s
+// ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Ðˆï¿½ï¿½Ôï¿½ï¿½Æˆï¿½vï¿½ï¿½ï¿½ï¿½Xï¿½Pï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½SQL
+ResultSet SSCHEDULE = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_ï¿½Ðˆï¿½NO = '" + NO + "' and S_DATE = '" + DA + "' and S_START = '" + ST + "'");
 
 String s_end = "";
 String s_plan = "";
@@ -157,7 +157,7 @@ s_tou = SSCHEDULE.getString("S_TOUROKU");
 s_zai = SSCHEDULE.getString("S_ZAISEKI");
 }
 
-// ‚à‚µAPLAN2.PLACE2.MEMO‚É‰½‚à“ü‚Á‚Ä‚¢‚È‚¢ê‡‚ÍA”¼ŠpƒXƒy[ƒX‚ð“ü‚ê‚éˆ—
+// ï¿½ï¿½ï¿½ï¿½ï¿½APLAN2.PLACE2.MEMOï¿½É‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ê‡ï¿½ÍAï¿½ï¿½ï¿½pï¿½Xï¿½yï¿½[ï¿½Xï¿½ï¿½ï¿½ï¿½éˆï¿½ï¿½
 if(s_plan2 == null){
 	s_plan2 = "";
 }
@@ -167,22 +167,22 @@ if(s_place2 == null){
 if(s_memo == null){
 	s_memo = "";
 }
-// I—¹Žž‚Ì•ªŠ„
+// ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì•ï¿½ï¿½ï¿½
 int S_Ehour = Integer.parseInt(s_end.substring(0,2));
 int S_Emini1 = Integer.parseInt(s_end.substring(2,3));
 int S_Emini2 = Integer.parseInt(s_end.substring(3,4));
 
 SSCHEDULE.close();
 
-/* ƒOƒ‹[ƒvƒR[ƒhEƒOƒ‹[ƒv–¼‚ðƒRƒ“ƒ{ƒ{ƒbƒNƒX‚É•\Ž¦‚·‚é‚½‚ß‚Ìˆ— */
-// SQL‚ÌŽÀsEƒOƒ‹[ƒvî•ñ
+/* ï¿½Oï¿½ï¿½ï¿½[ï¿½vï¿½Rï¿½[ï¿½hï¿½Eï¿½Oï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½ï¿½ï¿½{ï¿½{ï¿½bï¿½Nï¿½Xï¿½É•\ï¿½ï¿½ï¿½ï¿½ï¿½é‚½ï¿½ß‚Ìï¿½ï¿½ï¿½ */
+// SQLï¿½ÌŽï¿½ï¿½sï¿½Eï¿½Oï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½
 ResultSet GROUP = stmt.executeQuery("SELECT * FROM KINMU.GRU");
 
-// hitList‚Ìì¬
+// hitListï¿½Ìì¬
 Vector hitGRUNUM = new Vector();
 Vector hitGRUNUAM = new Vector();
 
-// ƒOƒ‹[ƒvƒe[ƒuƒ‹‚ÉƒAƒNƒZƒX
+// ï¿½Oï¿½ï¿½ï¿½[ï¿½vï¿½eï¿½[ï¿½uï¿½ï¿½ï¿½ÉƒAï¿½Nï¿½Zï¿½X
 while(GROUP.next()){
   String gnum = strEncode(GROUP.getString("G_GRUNO"));
   String gnam = GROUP.getString("G_GRNAME");
@@ -192,25 +192,25 @@ while(GROUP.next()){
 
 int cntGRU = hitGRUNUM.size();
 
-// ResultSet‚ð•Â‚¶‚é
+// ResultSetï¿½ï¿½Â‚ï¿½ï¿½ï¿½
 GROUP.close();
 
-// Calendar ƒCƒ“ƒXƒ^ƒ“ƒX‚ð¶¬
+// Calendar ï¿½Cï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½Xï¿½ð¶ï¿½
 Calendar now = Calendar.getInstance();
 
-// Œ»Ý‚ÌŽž‚ðŽæ“¾
+// ï¿½ï¿½ï¿½Ý‚ÌŽï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾
 Date dat = now.getTime();
 
-// •\Ž¦Œ`Ž®‚ðÝ’è
+// ï¿½\ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½Ý’ï¿½
 SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 
-// •Ï”éŒ¾
+// ï¿½Ïï¿½ï¿½éŒ¾
 int i=0;
 
 %>
 <HTML>
 	<HEAD>
-		<TITLE>Ú×‰æ–Ê</TITLE>
+		<TITLE>ï¿½Ú×‰ï¿½ï¿½</TITLE>
 		<meta http-equiv="content-language" content="ja">
 		<meta http-equiv="pragma" content="no-cache">
 		<meta name="author" content="roq">
@@ -295,7 +295,7 @@ int i=0;
 					<td bgcolor="#ffffff" width="20" rowspan="2">
 					<center>
 						<a href="#" onClick="return movemn1();" STYLE="text-decoration:none">
-							<b>Ì<p><font size="2">ƒX<br>ƒP<br>ƒW<br>ƒ…<br>b<br>ƒ‹<br>•Ï<br>X<br>‰æ<br>–Ê</font></p>Ì</b>
+							<b>ï¿½ï¿½<p><font size="2">ï¿½X<br>ï¿½P<br>ï¿½W<br>ï¿½ï¿½<br>ï¿½b<br>ï¿½ï¿½<br>ï¿½ï¿½<br>ï¿½X<br>ï¿½ï¿½<br>ï¿½ï¿½</font></p>ï¿½ï¿½</b>
 						</a>
 					</center>
 					</td>
@@ -309,12 +309,12 @@ int i=0;
 							<INPUT TYPE="hidden" NAME="kind" VALUE="<%= KD %>">
 							<SPAN CLASS="shadow">
 								<FONT COLOR="white">
-									‚æ‚¤‚±‚»B<%= name_id %>‚³‚ñB<br><%= name_no %>‚³‚ñ‚Ì<br>Ú×½¹¼Þ­°Ù‚ðŒ©‚Ä‚¢‚Ü‚·B<br>
+									ï¿½æ‚¤ï¿½ï¿½ï¿½ï¿½ï¿½B<%= name_id %>ï¿½ï¿½ï¿½ï¿½B<br><%= name_no %>ï¿½ï¿½ï¿½ï¿½ï¿½<br>ï¿½Ú×½ï¿½ï¿½Þ­ï¿½Ù‚ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½B<br>
 									<%
 									if(group_id.equals(group_no) || group_id.equals("900")){
-										%>E½¹¼Þ­°Ù‚ð•ÏX‚Å‚«‚Ü‚·B<%
+										%>ï¿½Eï¿½ï¿½ï¿½Þ­ï¿½Ù‚ï¿½ÏXï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½B<%
 									}else{
-										%>E½¹¼Þ­°Ù‚Í•ÏX‚Å‚«‚Ü‚¹‚ñB<%
+										%>ï¿½Eï¿½ï¿½ï¿½Þ­ï¿½Ù‚Í•ÏXï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½B<%
 									}
 									%>
 								</FONT>
@@ -322,7 +322,7 @@ int i=0;
 							<table border="1" style="width: 100%;">
 								<tr>
 									<td bgcolor="#D6FFFF" align="center" style="width:20%;">
-										<small>–{“ú‚Ì<br>“ú•t</small>
+										<small>ï¿½{ï¿½ï¿½ï¿½<br>ï¿½ï¿½t</small>
 									</td>
 									<%
 									if(DA == null){%>
@@ -336,7 +336,7 @@ int i=0;
 									}%>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" rowspan="3" align="center">Žž</td>
+									<td bgcolor="#D6FFFF" rowspan="3" align="center">ï¿½ï¿½ï¿½ï¿½</td>
 									<td>
 										<SELECT NAME="starth" STYLE="width:28%;"><%
 											for(i = 0; i < 24; i++){
@@ -362,7 +362,7 @@ int i=0;
 													}
 												}
 											}%>
-										</SELECT><small>Žž</small>
+										</SELECT><small>ï¿½ï¿½</small>
 										<SELECT NAME="startm1" STYLE="width:25%;"><%
 											for(i = 0; i<6; i++){
 												if(S_Smini1 == i){%>
@@ -387,11 +387,11 @@ int i=0;
 													</option><%
 												}
 											}%>
-										</SELECT><small>•ª</small>
+										</SELECT><small>ï¿½ï¿½</small>
 									</td>
 								</tr>
 								<tr>
-									<td align="center">ç</td>
+									<td align="center">ï¿½ï¿½</td>
 								</tr>
 								<tr>
 									<td>
@@ -419,7 +419,7 @@ int i=0;
 													}
 												}
 											}%>
-										</SELECT><small>Žž</small>
+										</SELECT><small>ï¿½ï¿½</small>
 										<SELECT NAME="endm1" STYLE="width:25%;"><%
 											for(i = 0; i<6; i++){
 												if(S_Emini1 == i){%>
@@ -444,11 +444,11 @@ int i=0;
 													</option><%
 												}
 											}%>
-										</SELECT><small>•ª</small>
+										</SELECT><small>ï¿½ï¿½</small>
 									</td>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" align="center">—\’è</td>
+									<td bgcolor="#D6FFFF" align="center">ï¿½\ï¿½ï¿½</td>
 									<td>
 										<SELECT NAME="plan" STYLE="width:100%">
 											<OPTION VALUE="--">--</OPTION>
@@ -468,7 +468,7 @@ int i=0;
 									</td>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" align="center">—\’èÚ×</td>
+									<td bgcolor="#D6FFFF" align="center">ï¿½\ï¿½ï¿½Úï¿½</td>
 									<td><%
 										if(s_plan2.equals("")){%>
 											<INPUT TYPE="text" style="ime-mode:active; width: 100%;" NAME="plan2" SIZE="20" MAXLENGTH="30"><%
@@ -478,7 +478,7 @@ int i=0;
 									</td>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" align="center">êŠ</td>
+									<td bgcolor="#D6FFFF" align="center">ï¿½êŠ</td>
 									<td>
 										<SELECT NAME="place" STYLE="width:100%;">
 											<OPTION VALUE="--">--</OPTION><%
@@ -497,7 +497,7 @@ int i=0;
 									</td>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" align="center">êŠÚ×</td>
+									<td bgcolor="#D6FFFF" align="center">ï¿½êŠï¿½Úï¿½</td>
 									<td><%
 										if(s_place2.equals("")){%>
 											<INPUT TYPE="text" NAME="place2" SIZE="20" MAXLENGTH="30" style="width: 100%;"><%
@@ -507,7 +507,7 @@ int i=0;
 									</td>
 								</tr>
 								<tr>
-									<td bgcolor="#D6FFFF" align="center">ƒƒ‚<BR><small>(50Žš‚Ü‚Å)</small></td>
+									<td bgcolor="#D6FFFF" align="center">ï¿½ï¿½ï¿½ï¿½<BR><small>(50ï¿½ï¿½ï¿½Ü‚ï¿½)</small></td>
 									<td><%
 										if(s_memo.equals("")){%>
 											<TEXTAREA NAME="memo" ROWS="4" COLS="30" MAXLENGTH="50" STYLE="width:100%;"></TEXTAREA><%
@@ -518,21 +518,21 @@ int i=0;
 								</tr>
 							</table><%
 							if(s_zai.equals("1")){%>
-								<INPUT TYPE="radio" NAME="pre" VALUE="1" CHECKED>ÝÈ<%
+								<INPUT TYPE="radio" NAME="pre" VALUE="1" CHECKED>ï¿½Ýï¿½<%
 							}else{%>
-								<INPUT TYPE="radio" NAME="pre" VALUE="1">ÝÈ<%
+								<INPUT TYPE="radio" NAME="pre" VALUE="1">ï¿½Ýï¿½<%
 							}
 							if(s_zai.equals("0")){%>
-								<INPUT TYPE="radio" NAME="pre" VALUE="0" CHECKED>•sÝ<%
+								<INPUT TYPE="radio" NAME="pre" VALUE="0" CHECKED>ï¿½sï¿½ï¿½<%
 							}else{%>
-								<INPUT TYPE="radio" NAME="pre" VALUE="0">•sÝ<%
+								<INPUT TYPE="radio" NAME="pre" VALUE="0">ï¿½sï¿½ï¿½<%
 							}%>
 							<P><%
 							if(group_id.equals(group_no) || group_id.equals("900")){%>
 							<center>
-								<INPUT TYPE="submit" NAME="act" VALUE="•ÏX" style="width: 30%;">
-								<INPUT TYPE="reset" VALUE="Œ³‚É–ß‚·" style="width: 30%;">
-								<INPUT TYPE="submit" NAME="act" VALUE="íœ" style="width: 30%;">
+								<INPUT TYPE="submit" NAME="act" VALUE="ï¿½ÏX" style="width: 30%;">
+								<INPUT TYPE="reset" VALUE="ï¿½ï¿½ï¿½É–ß‚ï¿½" style="width: 30%;">
+								<INPUT TYPE="submit" NAME="act" VALUE="ï¿½íœ" style="width: 30%;">
 							</center>
 						</FORM><%
 							}else{%>

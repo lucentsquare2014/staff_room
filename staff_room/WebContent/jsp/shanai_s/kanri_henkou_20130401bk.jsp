@@ -1,13 +1,13 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*,java.util.Date,java.text.*,java.lang.*" %>
 <%!
-// •¶šƒGƒ“ƒR[ƒh‚ğs‚¢‚Ü‚·B
+// æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã„ã¾ã™ã€‚
 	public String strEncode(String strVal) throws UnsupportedEncodingException{
 			if(strVal==null){
 				return (null);
 			}
 			else{
-				return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+				return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 			}
 	}
 %>
@@ -26,20 +26,20 @@
   		gr_name = strEncode(request.getParameter("gr_name"));
   	}
   	
-	// JDBCƒhƒ‰ƒCƒo‚Ìƒ[ƒh
+	// JDBCãƒ‰ãƒ©ã‚¤ãƒã®ãƒ­ãƒ¼ãƒ‰
 	Class.forName("org.postgresql.Driver");
 
 
-	// ƒf[ƒ^ƒx[ƒX‚ÖÚ‘±
-	//String user = "kinmu";     // ƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚Ìƒ†[ƒU–¼
-	//String password = "kinmu"; // ƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌƒpƒXƒ[ƒh
-	String user = "georgir";     // ƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚Ìƒ†[ƒU–¼
-	String password = "georgir"; // ƒf[ƒ^ƒx[ƒX‚ÉƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌƒpƒXƒ[ƒh
+	// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸æ¥ç¶š
+	//String user = "kinmu";     // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®ãƒ¦ãƒ¼ã‚¶å
+	//String password = "kinmu"; // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
+	String user = "georgir";     // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®ãƒ¦ãƒ¼ã‚¶å
+	String password = "georgir"; // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
 
 	Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir", user, password);
 	Statement stmt = con.createStatement();
 
-	//ƒOƒ‹[ƒv
+	//ã‚°ãƒ«ãƒ¼ãƒ—
 	ResultSet rs = stmt.executeQuery("select * from GRU order by G_GRUNO");
 	//ResultSet rs = stmt.executeQuery("select * from kinmu.GRU order by G_GRUNO");
 
@@ -51,7 +51,7 @@
 		group_count++;
 	}
 
-	//ŒÂl‚Ì“Á’è
+	//å€‹äººã®ç‰¹å®š
 	String k_lv = "";
 	String k_id = "";
 	String k_pass = "";
@@ -59,19 +59,19 @@
 	String k_group = "";
 	String k_mail = "";
 	if(table_select.equals("user")){
-		rs = stmt.executeQuery("select * from KOJIN where K_ĞˆõNO='" + k_no + "'");
-		//rs = stmt.executeQuery("select * from kinmu.KOJIN where K_ĞˆõNO='" + k_no + "'");
+		rs = stmt.executeQuery("select * from KOJIN where K_ç¤¾å“¡NO='" + k_no + "'");
+		//rs = stmt.executeQuery("select * from kinmu.KOJIN where K_ç¤¾å“¡NO='" + k_no + "'");
 		if(rs.next()){
-			k_lv = rs.getString("K_³”FLV");
+			k_lv = rs.getString("K_æ‰¿èªLV");
 			k_id = rs.getString("K_ID");
 			k_pass = rs.getString("K_PASS");
-			k_name = rs.getString("K_–¼");
+			k_name = rs.getString("K_æ°å");
 			k_group = rs.getString("K_GRUNO");
 			k_mail = rs.getString("K_MAIL");
 		}
 	}
 	
-	// Ú‘±‰ğœ
+	// æ¥ç¶šè§£é™¤
 	rs.close();
 	stmt.close();
 	con.close();
@@ -82,7 +82,7 @@
 		<BODY bgcolor="#F5F5F5">
 			<TABLE WIDTH="100%">
 				<TR>
-					<TH bgcolor="#000099"><FONT color="#FFFFFF">ƒ†[ƒU[î•ñ•ÏX</FONT></TH>
+					<TH bgcolor="#000099"><FONT color="#FFFFFF">ãƒ¦ãƒ¼ã‚¶ãƒ¼æƒ…å ±å¤‰æ›´</FONT></TH>
 				</TR>
 			</TABLE>
 			
@@ -97,7 +97,7 @@
 					<INPUT TYPE="hidden" NAME="sql_select" VALUE="upd">
 					<TABLE>
 						<TR>
-							<TD>³”FÒ</TD>
+							<TD>æ‰¿èªè€…</TD>
 <%
 	String ex1_checked = "";
 	String ex2_checked = "";
@@ -107,33 +107,33 @@
 		ex2_checked = "checked";
 	}
 %>
-							<TD align="center" colspan="3">-‚P<INPUT TYPE="checkbox" NAME="ex1" <%= ex1_checked %>>-@@-‚Q<INPUT TYPE="checkbox" NAME="ex2" <%= ex1_checked %>>-</TD>
+							<TD align="center" colspan="3">-ï¼‘<INPUT TYPE="checkbox" NAME="ex1" <%= ex1_checked %>>-ã€€ã€€-ï¼’<INPUT TYPE="checkbox" NAME="ex2" <%= ex1_checked %>>-</TD>
 
 						</TR>
 						<TR>
-							<TD>‚h@‚c</TD>
+							<TD>ï¼©ã€€ï¼¤</TD>
 							<TD>
 								<INPUT TYPE="text" NAME="new_id" SIZE="26" VALUE="<%= k_id %>">
 							</TD>
-							<TD>Ò°Ù±ÄŞÚ½</TD>
+							<TD>ï¾’ï½°ï¾™ï½±ï¾„ï¾ï¾šï½½</TD>
 							<TD>
 								<INPUT TYPE="text" SIZE="30" NAME="new_mail" VALUE="<%= k_mail %>">
 							</TD>
 						</TR>
 						<TR>
-							<TD>Êß½Ü°ÄŞ</TD>
+							<TD>ï¾Šï¾Ÿï½½ï¾œï½°ï¾„ï¾</TD>
 							<TD>
 								<INPUT TYPE="password" NAME="new_pw" SIZE="20" VALUE="<%= k_pass %>">
 							</TD>
-							<TD>Ğˆõ”Ô†</TD>
+							<TD>ç¤¾å“¡ç•ªå·</TD>
 							<TD align="left"><%= k_no %></TD>
 						</TR>
 						<TR>
-							<TD>@–¼</TD>
+							<TD>æ°ã€€å</TD>
 							<TD>
 								<INPUT TYPE="text" NAME="new_name" SIZE="26" VALUE="<%= k_name %>">
 							</TD>
-							<TD>Š@‘®</TD>
+							<TD>æ‰€ã€€å±</TD>
 							<TD align="left">
 								<SELECT NAME="new_gr">
 <%
@@ -157,14 +157,14 @@
 					<TABLE>
 						<TR>
 							<TD>
-								<INPUT TYPE="submit" VALUE="@XV@" STYLE="background-color:#FFFFFF;width:50">
+								<INPUT TYPE="submit" VALUE="ã€€æ›´æ–°ã€€" STYLE="background-color:#FFFFFF;width:50">
 							</TD>
 						</FORM>
 						<FORM action="kanri_admin.jsp" method="POST">
 							<TD>
 								<INPUT TYPE="hidden" NAME="action" VALUE="admin">
 								<INPUT TYPE="hidden" NAME="pass" VALUE="<%= kn_pass %>">
-								<INPUT TYPE="submit" VALUE="@–ß‚é@" STYLE="background-color:#FFFFFF;width:50">
+								<INPUT TYPE="submit" VALUE="ã€€æˆ»ã‚‹ã€€" STYLE="background-color:#FFFFFF;width:50">
 							</TD>
 						</TR>
 					</TABLE>
@@ -179,7 +179,7 @@
 		<BODY bgcolor="#F5F5F5">
 			<TABLE WIDTH="100%">
 				<TR>
-					<TH bgcolor="#000099"><FONT color="#FFFFFF">ƒOƒ‹[ƒv•ÏX</FONT></TH>
+					<TH bgcolor="#000099"><FONT color="#FFFFFF">ã‚°ãƒ«ãƒ¼ãƒ—å¤‰æ›´</FONT></TH>
 				</TR>
 			</TABLE>
 			
@@ -195,28 +195,28 @@
 					<INPUT TYPE="hidden" NAME="sql_select" VALUE="upd">
 					<TABLE>
 						<TR>
-							<TD>ƒOƒ‹[ƒvƒR[ƒh</TD>
+							<TD>ã‚°ãƒ«ãƒ¼ãƒ—ã‚³ãƒ¼ãƒ‰</TD>
 							<TD>
 								<INPUT TYPE="text" NAME="n_gr_num" VALUE="<%= gr_num %>" SIZE="10">
 							</TD>
 						</TR>
 						<TR>
-							<TD>ƒOƒ‹[ƒv–¼</TD>
+							<TD>ã‚°ãƒ«ãƒ¼ãƒ—å</TD>
 							<TD>
 								<INPUT TYPE="text" NAME="n_gr_name" VALUE="<%= gr_name %>" SIZE="30">
 							</TD>
 						</TR>
 					</TABLE>
 
-					<INPUT TYPE="submit" STYLE="background-color:#FFFFFF;width:50" VALUE="•ÏX">
+					<INPUT TYPE="submit" STYLE="background-color:#FFFFFF;width:50" VALUE="å¤‰æ›´">
 				</FORM>
 
 				<BR><BR>
 
 				<TABLE border="1">
 					<TR>
-						<TD align="center"><B>ƒOƒ‹[ƒvƒR[ƒh</B></TD>
-						<TD align="center"><B>ƒOƒ‹[ƒv–¼</B></TD>
+						<TD align="center"><B>ã‚°ãƒ«ãƒ¼ãƒ—ã‚³ãƒ¼ãƒ‰</B></TD>
+						<TD align="center"><B>ã‚°ãƒ«ãƒ¼ãƒ—å</B></TD>
 					</TR>
 <%
 for(int n = 0;n < group_count;n++){

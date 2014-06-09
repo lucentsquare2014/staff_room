@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"pageEncoding="shift_JIS"session="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"session="true"%>
 <%@ page import="java.util.*" %><%@ page import="kkweb.beans.*" %><%@ page import="kkweb.dao.*" %><%@ page import="kkweb.common.*" %><%@ page import = "kkweb.dao.HolidayDAO" %>
 <jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST" /><%@ page import = "kkweb.beans.B_HolidayMST" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,7 +8,7 @@
 		}else{%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS"><meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css"><link rel="stylesheet" href="report.css" type="text/css">
 <script type="text/javascript">
 	window.onunload=function(){
@@ -29,14 +29,14 @@
 		document.b.submit()
 	}	
 </script>
-<title>³”FˆË—Š’†‚Ì‹Î–±•ñ‘</title>
+<title>æ‰¿èªä¾é ¼ä¸­ã®å‹¤å‹™å ±å‘Šæ›¸</title>
 </head>
 <BODY>
 <CENTER>
-<font class="title">‹Î–±•ñ‘i³”FˆË—Š’†j</font><BR><hr color = "#008080">
+<font class="title">å‹¤å‹™å ±å‘Šæ›¸ï¼ˆæ‰¿èªä¾é ¼ä¸­ï¼‰</font><BR><hr color = "#008080">
 <table>
-<tr><td align="left"><small>1.u³”Fv‚ð‰Ÿ‚µ‚½ŒãAŽŸ‚Ìƒy[ƒW‚Å³”F‚ðŠ®—¹A‚à‚µ‚­‚ÍÄ³”FˆË—Š‚ð‚µ‚Ä‚­‚¾‚³‚¢B</small></td></tr>
-<tr><td align="left"><small>2.u•Ô‹pv‚ð‰Ÿ‚·‚ÆA“ü—ÍŽÒA‚à‚µ‚­‚Í³”FŒo˜H‚Ì‘OŽÒ‚Éƒ[ƒ‹‚ð‘—M‚µ‚Ü‚·B</small></td></tr>
+<tr><td align="left"><small>1.ã€Œæ‰¿èªã€ã‚’æŠ¼ã—ãŸå¾Œã€æ¬¡ã®ãƒšãƒ¼ã‚¸ã§æ‰¿èªã‚’å®Œäº†ã€ã‚‚ã—ãã¯å†æ‰¿èªä¾é ¼ã‚’ã—ã¦ãã ã•ã„ã€‚</small></td></tr>
+<tr><td align="left"><small>2.ã€Œè¿”å´ã€ã‚’æŠ¼ã™ã¨ã€å…¥åŠ›è€…ã€ã‚‚ã—ãã¯æ‰¿èªçµŒè·¯ã®å‰è€…ã«ãƒ¡ãƒ¼ãƒ«ã‚’é€ä¿¡ã—ã¾ã™ã€‚</small></td></tr>
 </table>
 </CENTER><hr color = "#008080"><br>
 <%	request.setCharacterEncoding("Windows-31J");
@@ -50,7 +50,7 @@
 	golist = goukeidao.selectTbl(sql);
 	B_GoukeiMST b_goukei = new B_GoukeiMST();
 	b_goukei = (B_GoukeiMST)golist.get(0);%>
-<B>ƒƒ³”FŒo˜H„„</B>
+<B>ï¼œï¼œæ‰¿èªçµŒè·¯ï¼žï¼ž</B>
 <TABLE>
 <TR>
 <TD><%= b_goukei.getSyouninRoot() %><BR></TD>
@@ -61,18 +61,18 @@
 	String month =iraisha_year_month.substring(4);
 	month = ccm.MonthCheck(month);%>
 <CENTER>
-<FONT size="4"><B><%= iraisha_name %> F <%=year%>”N@<%=month%>ŒŽ</B></FONT><BR>
+<FONT size="4"><B><%= iraisha_name %> ï¼š <%=year%>å¹´ã€€<%=month%>æœˆ</B></FONT><BR>
 <table border="1"  cellspacing="0" class="houkoku">
 <TR>
-<TH class="t-koumoku" ><font class="f-koumoku">“ú</font></TH>
-<TH class="t-koumoku" ><font class="f-koumoku">—j“ú</font></TH>
-<TH class="t-koumoku" ><font class="f-koumoku">‚oƒR[ƒh</font></TH>
-<TH class="t-koumoku" ><font class="f-koumoku">o‹ÎŽžŠÔ</font></TH>
-<TH class="t-koumoku" ><font class="f-koumoku">‘Þ‹ÎŽžŠÔ</font></TH>
-<TH class="t-koumoku" ><font class="f-koumoku">’´‰ßŽžŠÔ</font></TH>
-<TH class="t-koumoku" ><font class="f-koumoku">[–éŽžŠÔ</font></TH>
-<TH class="t-koumoku" ><font class="f-koumoku">’¼ÚŽžŠÔ</font></TH>
-<TH class="t-koumoku" ><font class="f-koumoku">”õl</font></TH>
+<TH class="t-koumoku" ><font class="f-koumoku">æ—¥</font></TH>
+<TH class="t-koumoku" ><font class="f-koumoku">æ›œæ—¥</font></TH>
+<TH class="t-koumoku" ><font class="f-koumoku">ï¼°ã‚³ãƒ¼ãƒ‰</font></TH>
+<TH class="t-koumoku" ><font class="f-koumoku">å‡ºå‹¤æ™‚é–“</font></TH>
+<TH class="t-koumoku" ><font class="f-koumoku">é€€å‹¤æ™‚é–“</font></TH>
+<TH class="t-koumoku" ><font class="f-koumoku">è¶…éŽæ™‚é–“</font></TH>
+<TH class="t-koumoku" ><font class="f-koumoku">æ·±å¤œæ™‚é–“</font></TH>
+<TH class="t-koumoku" ><font class="f-koumoku">ç›´æŽ¥æ™‚é–“</font></TH>
+<TH class="t-koumoku" ><font class="f-koumoku">å‚™è€ƒ</font></TH>
 </TR>
 <%	String holiday = "";
 	String day = "";
@@ -136,16 +136,16 @@
 <br />
 <table border="1"class="houkoku" cellspacing="0">
 <tr>
-<th class="t-koumoku"><font class="f-koumoku">’´‰ßŽžŠÔ</font></th>
-<th class="t-koumoku"><font class="f-koumoku">[–éŽžŠÔ</font></th>
-<th class="t-koumoku"><font class="f-koumoku">•s˜JŽžŠÔ</font></th>
-<th class="t-koumoku"><font class="f-koumoku">‹xo“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">‘ã‹x“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">”N‹x“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">Œ‡‹Î“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">‚`‹xŒv</font></th>
-<th class="t-koumoku"><font class="f-koumoku">‚a‹xŒv</font></th>
-<th class="t-koumoku"><font class="f-koumoku">‡ŒvŽžŠÔ</font></th>
+<th class="t-koumoku"><font class="f-koumoku">è¶…éŽæ™‚é–“</font></th>
+<th class="t-koumoku"><font class="f-koumoku">æ·±å¤œæ™‚é–“</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ä¸åŠ´æ™‚é–“</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ä¼‘å‡ºæ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ä»£ä¼‘æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">å¹´ä¼‘æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">æ¬ å‹¤æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ï¼¡ä¼‘è¨ˆ</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ï¼¢ä¼‘è¨ˆ</font></th>
+<th class="t-koumoku"><font class="f-koumoku">åˆè¨ˆæ™‚é–“</font></th>
 </tr>
 <TR>
 <TD align="right"><%= ccg.checkgoukei(b_goukei.getCyoukaMONTH()) %></TD>
@@ -164,12 +164,12 @@
 <CENTER>
 <table border="1"class="houkoku" cellspacing="0">
 <tr>
-<th class="t-koumoku"><font class="f-koumoku">“–”N•t—^“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">ŒJ‰z”N‹x“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">Žg—p”N‹x“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">Žc”N‹x“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">ŒŽŠÔŽc‹ÆŽžŠÔ</font></th>
-<th class="t-koumoku"><font class="f-koumoku">”NŠÔ—ÝÏŽc‹ÆŽžŠÔ</font></th>
+<th class="t-koumoku"><font class="f-koumoku">å½“å¹´ä»˜ä¸Žæ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ç¹°è¶Šå¹´ä¼‘æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ä½¿ç”¨å¹´ä¼‘æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">æ®‹å¹´ä¼‘æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">æœˆé–“æ®‹æ¥­æ™‚é–“</font></th>
+<th class="t-koumoku"><font class="f-koumoku">å¹´é–“ç´¯ç©æ®‹æ¥­æ™‚é–“</font></th>
 </tr>
 <TR>
 <%	NenkyuDAO_work ndao_work = new NenkyuDAO_work();
@@ -205,7 +205,7 @@
 <TR>
 <TD>
 <FORM method="post" action="Shouninkakunin.jsp" name="a" >
-<INPUT TYPE="submit"  VALUE="@³”F@"STYLE="cursor: pointer;" name="aa" onClick="submit1()">
+<INPUT TYPE="submit"  VALUE="ã€€æ‰¿èªã€€"STYLE="cursor: pointer;" name="aa" onClick="submit1()">
 <INPUT TYPE="hidden"  NAME="iraisha_number" VALUE="<%=iraisha_number %>">
 <INPUT TYPE="hidden"  NAME="iraisha_name" VALUE="<%=iraisha_name%>">
 <INPUT TYPE="hidden"  NAME="iraisha_year_month" VALUE="<%=iraisha_year_month%>">
@@ -219,7 +219,7 @@
 	B_ShainMST b_shain = new B_ShainMST();
 	b_shain = (B_ShainMST)sylist.get(0);%>
 <FORM method="post" action="MailNyuryoku_Gamen.jsp" name="b">
-<INPUT TYPE="submit"  VALUE="@•Ô‹p@"STYLE="cursor: pointer;" name="bb" onClick="submit2()">
+<INPUT TYPE="submit"  VALUE="ã€€è¿”å´ã€€"STYLE="cursor: pointer;" name="bb" onClick="submit2()">
 <INPUT TYPE="hidden"  NAME="okurisaki_mail" VALUE="<%=b_shain.getMail() %>">
 <INPUT TYPE="hidden"  NAME="okurisaki_name" VALUE="<%=b_shain.getName() %>">
 <INPUT TYPE="hidden"  NAME="iraisha_number" VALUE="<%=iraisha_number %>">
@@ -230,7 +230,7 @@
 </TD>
 </TR>
 </TABLE><br>
-<a href="Menu_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ƒƒjƒ…[‚Ö–ß‚é ]</small></font></a>
+<a href="Menu_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹ ]</small></font></a>
 </CENTER>
 </body>
 </html>

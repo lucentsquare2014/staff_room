@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
 <%@ page import = "kkweb.eturan.G_Eturan"  %><%@ page import = "kkweb.dao.*" %><%@ page import = "kkweb.beans.*" %><%@ page import = "java.util.*"%><%@ page import = "kkweb.common.C_CheckMonth" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key");
@@ -8,7 +8,7 @@
 <jsp:useBean id="namenengetuDATA" scope="session" type="java.util.ArrayList"/>
 <html lang = "ja">
 <Head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css">
 <script type="text/javascript" src="/javascript/chainedselects.js"></script>
@@ -57,10 +57,10 @@
 			var element<%=i%> = document.createElement("option");
 			if (<%=bEturan.getFlg()%>== "0"){
 				element<%=i%>.value = "<%=bEturan.getYear_month() %>";
-				element<%=i%>.innerHTML = "<%=ym.substring( 0 , 4 ) %>�N�@<%=mont.MonthCheck(ym.substring( 4 , 6 )) %>��";
+				element<%=i%>.innerHTML = "<%=ym.substring( 0 , 4 ) %>年　<%=mont.MonthCheck(ym.substring( 4 , 6 )) %>月";
 			}else{
 				element<%=i%>.value = "<%=bEturan.getYear_month() %>";
-				element<%=i%>.innerHTML = "<%=ym.substring( 0 , 4 ) %>�N�@<%=mont.MonthCheck(ym.substring( 4 , 6 )) %>��(���F��ƒ�)";
+				element<%=i%>.innerHTML = "<%=ym.substring( 0 , 4 ) %>年　<%=mont.MonthCheck(ym.substring( 4 , 6 )) %>月(承認作業中)";
 			}
 			newCategory3.appendChild(element<%=i%>);
 		}
@@ -70,18 +70,18 @@
 	}
 <!--selectionCategory2(category1);-->
 </script>
-<title>�Ζ��񍐏��{��</title>
+<title>勤務報告書閲覧</title>
 </Head>
 <body>
 <center>
-<font  class="title">���F��ƒ��E���F��ƏI���̋Ζ��񍐉{��</font>
+<font  class="title">承認作業中・承認作業終了の勤務報告閲覧</font>
 <div class="box4">
 <Form name="formKensaku" method="POST" action="g_insatu" >
 <div class="box1">
-<font class="eturan">? �ΏۃO���[�v�I��</font>
+<font class="eturan">? 対象グループ選択</font>
 <hr color = "#008080">
 <select id="group" name="group"  onchange="selectionCategory2(this);">
-<option value="000">�S�O���[�v</option>
+<option value="000">全グループ</option>
 <%	GroupDAO gDao = new GroupDAO();
 	ArrayList gList = new ArrayList();
 	B_GroupMST bgroup = new B_GroupMST();
@@ -94,7 +94,7 @@
 			e.printStackTrace();
 		}
 	}%>	</select></div><div class="box2">
-<font class="eturan">? �ΏێґI��</font>
+<font class="eturan">? 対象者選択</font>
 <hr color = "#008080">
 <select id="number" name="number"  onchange="selectionCategory3(this);">
 <option value="00 00">---</option>
@@ -106,23 +106,23 @@
 	for(int i = 0; i < sList.size(); i++){
 		try{
 			bshain = (B_ShainMST)sList.get(i);%>
-<option value="<%=bshain.getGROUPnumber() %> <%=bshain.getNumber() %>"><%=bshain.getNumber()%>�@<%=bshain.getName() %></option>
+<option value="<%=bshain.getGROUPnumber() %> <%=bshain.getNumber() %>"><%=bshain.getNumber()%>　<%=bshain.getName() %></option>
 <%		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}%>	</select></div><div class="box3">
-<font class="eturan">? �Ώ۔N���I��</font>
+<font class="eturan">? 対象年月選択</font>
 <hr color = "#008080">
 <select id="year_month" name="year_month" class="input_size_200">
 <option value="0">---</option>
 </select></div>
-<input type="submit"  value="�@�\���@" STYLE="cursor: pointer; ">
+<input type="submit"  value="　表示　" STYLE="cursor: pointer; ">
 </FORM><br><br>
 <form method="post" action="Escape_NameSelect.jsp">
-<input type="submit" value="�ˁ@javascript���Ή��̕��͂����炩��" style="cursor: pointer;background:none;border:none;color:blue;text-decoration:underline">
+<input type="submit" value="⇒　javascript未対応の方はこちらから" style="cursor: pointer;background:none;border:none;color:blue;text-decoration:underline">
 <input type="hidden" name="escapeflg" id="escapeflg" value="0">
 </form><br>
-<a href="Menu_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ���j���[�֖߂� ]</small></font></a></div>
+<a href="Menu_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ メニューへ戻る ]</small></font></a></div>
 </CENTER>
 </BODY>
 </HTML>

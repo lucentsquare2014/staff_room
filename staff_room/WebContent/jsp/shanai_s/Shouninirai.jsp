@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"pageEncoding="shift_JIS"session="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"session="true"%>
 <%@ page import="java.util.*" %><%@ page import="kkweb.beans.*" %><%@ page import="kkweb.dao.*" %>
 <jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST" /><jsp:useBean id="Year_month" scope="session" class="kkweb.beans.B_Year_month"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,20 +24,20 @@
 		documentform.submit();
 	}
 </script>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS"><meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css">
-<title>���F�˗��I���m�F</title>
+<title>承認依頼終了確認</title>
 </head>
 <body>
 <center>
-<font class="title">���F�˗�</font><br><br>
+<font class="title">承認依頼</font><br><br>
 <%  String iraisha_number = ShainMST.getNumber();
-	// ��E���Ƀ\�[�g����ꍇ�Ɏg�p����C���f�b�N�X�z��
-	// �Ј��ԍ����E����̕�����L�q����
+	// 役職順にソートする場合に使用するインデックス配列
+	// 社員番号を役職が上の方から記述する
 	/*String[] sort_index = 
 	{
 		
-		"18901", // �В�
+		"18901", // 社長
 		"20101", // GM
 		"20308", // GM
 		"20626", // GM
@@ -98,7 +98,7 @@
 	String iraisha_year_month = Year_month.getYear_month();
 	if(ShainMST.getChecked().equals("1")){%>
 <form method="post" action="s_shouninkakunin" name="C">
-<input TYPE="submit" VALUE="���F��ƏI��" STYLE="cursor: pointer;width:100px;background-color:aqua" name="cc">
+<input TYPE="submit" VALUE="承認作業終了" STYLE="cursor: pointer;width:100px;background-color:aqua" name="cc">
 <input TYPE="hidden" NAME="iraisha_number" VALUE="<%=iraisha_number%>">
 <input TYPE="hidden" NAME="iraisha_year_month" VALUE="<%=iraisha_year_month%>">
 </form><br>
@@ -119,7 +119,7 @@
 <%	m = 1;}%>
 <TD align="center" valign="top" class="ichiran" width="154">
 
-<FONT class="ichiran"><strong><%= grouptbl.getGROUPname()%></strong><br>�@</FONT>
+<FONT class="ichiran"><strong><%= grouptbl.getGROUPname()%></strong><br>　</FONT>
 <%//	String sql_2 = " where GROUPnumber='"+grouptbl.getGROUPnumber()+"' AND number !='"+ShainMST.getNumber()+"'";
 String sql_2 = " where GROUPnumber='"+grouptbl.getGROUPnumber()+"'";
 	SyouninshaDAO sdao = new SyouninshaDAO();
@@ -134,17 +134,17 @@ String sql_2 = " where GROUPnumber='"+grouptbl.getGROUPnumber()+"'";
 		String target = sort_index[i];
 		for(int k = 0; k < slist.size() ; k++){
 			B_SyouninshaMST tmp = (B_SyouninshaMST)slist.get(k);
-			// target �Ɠ����Ј��ԍ�������tmp��slist_sorted�ɒǉ�
+			// target と同じ社員番号をもつtmpをslist_sortedに追加
 			if(target.equals(tmp.getNumber())){
 				slist_sorted.add(tmp);
 			}
 		}
 	}
-	// ��E�������Ȃ�����ǉ�
+	// 役職を持たない方を追加
 	
 	for(int i = 0; i < slist.size(); i++){
 		B_SyouninshaMST tmp = (B_SyouninshaMST)slist.get(i);
-		// sort_index�ɎЈ��ԍ��������ꍇ
+		// sort_indexに社員番号が無い場合
 		if(tmp.equals(sort_index)) {
 			
 		}else if(!tmp.equals(sort_index)) {
@@ -154,7 +154,7 @@ String sql_2 = " where GROUPnumber='"+grouptbl.getGROUPnumber()+"'";
 	}
 	
 	
-	// �u������
+	// 置き換え
 	slist = slist_sorted;
 	
 	*/
@@ -171,7 +171,7 @@ String sql_2 = " where GROUPnumber='"+grouptbl.getGROUPnumber()+"'";
 <INPUT TYPE="hidden" NAME="shouninsha_mail" VALUE="<%= bsyounin.getMail() %>">
 <INPUT TYPE="hidden" NAME="shouninsha_name" VALUE="<%= bsyounin.getName() %>">
 <INPUT TYPE="hidden" NAME="shouninsha_number" VALUE="<%= bsyounin.getNumber() %>">
-<INPUT TYPE="hidden" NAME="body" VALUE="�@<%= bsyounin.getName() %>�����  �Ζ��񍐏��̏��F�����肢���܂��B<%= ShainMST.getName() %>��� http://www.lucentsquare.co.jp:8080/kk_web/Menu_Gamen.jsp"/>
+<INPUT TYPE="hidden" NAME="body" VALUE="　<%= bsyounin.getName() %>さんへ  勤務報告書の承認をお願いします。<%= ShainMST.getName() %>より http://www.lucentsquare.co.jp:8080/kk_web/Menu_Gamen.jsp"/>
 </FORM>
 	
 	<%	}
@@ -185,7 +185,7 @@ String sql_2 = " where GROUPnumber='"+grouptbl.getGROUPnumber()+"'";
 </form>
 </TR>
 </TABLE><br>
-<a href="Menu_Gamen.jsp" class="link"><font class="link"><small>[ ���j���[�֖߂� ]</small></font></a>
+<a href="Menu_Gamen.jsp" class="link"><font class="link"><small>[ メニューへ戻る ]</small></font></a>
 </center>
 </body>
 </html>

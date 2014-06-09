@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
 <%@ page import = "kkweb.beans.B_GamenInsatu" %><%@ page import = "kkweb.beans.B_ZangyouMST" %><%@ page import = "javax.servlet.*" %>
 <%@ page import = "kkweb.dao.ZangyouDAO" %><%@ page import = "kkweb.common.*" %><%@ page import = "kkweb.common.C_CheckGoukei" %>
 <%@ page import = "kkweb.common.C_HolidayBackcolor" %><%@ page import = "kkweb.common.C_CheckMonth" %><%@ page import = "java.util.ArrayList" %>
@@ -11,7 +11,7 @@
 <jsp:useBean id="InsatuDATA" scope="session" type="java.util.ArrayList"/>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS"><meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css" media="all"><link rel="stylesheet" href="Insatu.css" type="text/css" media="print"> 
 <SCRIPT TYPE="text/javascript">
 	function PrintPage(){
@@ -20,41 +20,41 @@
 		}
 	}
 </SCRIPT>
-<title>‘ÞEŽÒ‹Î–±•ñ‘</title>
+<title>é€€è·è€…å‹¤å‹™å ±å‘Šæ›¸</title>
 </head>
 <body>
 <center><div class="noprint">
-<font class="title">‹Î–±•ñ‘</font>
+<font class="title">å‹¤å‹™å ±å‘Šæ›¸</font>
 <%	request.setCharacterEncoding("windows-31j");
 	if (InsatuDATA == null || InsatuDATA.size() == 0 ){%><br><br><hr width="400">
-<p><font color="#8B0000"><big>‘O‰æ–Ê‚É–ß‚Á‚Ä‘I‘ð‚µ’¼‚µ‚Ä‚­‚¾‚³‚¢</big></font></p><hr width="400">
+<p><font color="#8B0000"><big>å‰ç”»é¢ã«æˆ»ã£ã¦é¸æŠžã—ç›´ã—ã¦ãã ã•ã„</big></font></p><hr width="400">
 <%	}else{
 	B_GamenInsatu syouninroot = (B_GamenInsatu)InsatuDATA.get(0);
 	String S1 = (String)syouninroot.getSyouninroot();
 	if (S1 == null || S1.equals("")){%><br>
 <%	}else{%>
 </center>
-<center><br/><br/><A HREF="javascript:PrintPage()">ˆóü</A>
-</center><div align="left">ƒƒ³”FŒo˜H„„</div><div align="left"><%= S1 %></div>
+<center><br/><br/><A HREF="javascript:PrintPage()">å°åˆ·</A>
+</center><div align="left">ï¼œï¼œæ‰¿èªçµŒè·¯ï¼žï¼ž</div><div align="left"><%= S1 %></div>
 <center>
 <%	}B_GamenInsatu year_month = (B_GamenInsatu)InsatuDATA.get(0);
 	String ym = (String)year_month.getYear_month();
 	C_CheckMonth mont = new C_CheckMonth();%>
-<font size="4"><%= ym.substring( 0 , 4 ) %>”N<%= mont.MonthCheck(ym.substring( 4 , 6 )) %>ŒŽ F <%= year_month.getName() %></font><br>
+<font size="4"><%= ym.substring( 0 , 4 ) %>å¹´<%= mont.MonthCheck(ym.substring( 4 , 6 )) %>æœˆ ï¼š <%= year_month.getName() %></font><br>
 <table border="0" width="800px">
 <tr>
 <td>
 <table border="1"width="800px">
 <tr>
-<th nowrap="nowrap">“ú</th>
-<th nowrap="nowrap">—j“ú</th>
-<th nowrap="nowrap">PƒR[ƒh</th>
-<th nowrap="nowrap">o‹ÎŽžŠÔ</th>
-<th nowrap="nowrap">‘Þ‹ÎŽžŠÔ</th>
-<th nowrap="nowrap">’´‰ßŽžŠÔ</th>
-<th nowrap="nowrap">[–éŽžŠÔ</th>
-<th nowrap="nowrap">’¼ÚŽžŠÔ</th>
-<th nowrap="nowrap">”õl</th>
+<th nowrap="nowrap">æ—¥</th>
+<th nowrap="nowrap">æ›œæ—¥</th>
+<th nowrap="nowrap">Pã‚³ãƒ¼ãƒ‰</th>
+<th nowrap="nowrap">å‡ºå‹¤æ™‚é–“</th>
+<th nowrap="nowrap">é€€å‹¤æ™‚é–“</th>
+<th nowrap="nowrap">è¶…éŽæ™‚é–“</th>
+<th nowrap="nowrap">æ·±å¤œæ™‚é–“</th>
+<th nowrap="nowrap">ç›´æŽ¥æ™‚é–“</th>
+<th nowrap="nowrap">å‚™è€ƒ</th>
 </tr>
 <%	C_CheckGoukei gou = new C_CheckGoukei();
 	C_HolidayBackcolor color = new C_HolidayBackcolor();
@@ -88,16 +88,16 @@
 <td>
 <table border="1"width="800px">
 <tr>
-<th align="center">’´‰ßŽžŠÔ</th>
-<th align="center">[–éŽžŠÔ</th>
-<th align="center">•s˜JŽžŠÔ</th>
-<th align="center">‹xo“ú”</th>
-<th align="center">‘ã‹x“ú”</th>
-<th align="center">”N‹x“ú”</th>
-<th align="center">Œ‡‹Î“ú”</th>
-<th align="center">‚`‹xŒv</th>
-<th align="center">‚a‹xŒv</th>
-<th align="center">‡ŒvŽžŠÔ</th>
+<th align="center">è¶…éŽæ™‚é–“</th>
+<th align="center">æ·±å¤œæ™‚é–“</th>
+<th align="center">ä¸åŠ´æ™‚é–“</th>
+<th align="center">ä¼‘å‡ºæ—¥æ•°</th>
+<th align="center">ä»£ä¼‘æ—¥æ•°</th>
+<th align="center">å¹´ä¼‘æ—¥æ•°</th>
+<th align="center">æ¬ å‹¤æ—¥æ•°</th>
+<th align="center">ï¼¡ä¼‘è¨ˆ</th>
+<th align="center">ï¼¢ä¼‘è¨ˆ</th>
+<th align="center">åˆè¨ˆæ™‚é–“</th>
 </tr>
 <%	B_GamenInsatu tuki = (B_GamenInsatu)InsatuDATA.get(0);%>
 <tr>
@@ -129,12 +129,12 @@
 	int s = Integer.parseInt(ym);
 		if (kotosi == s || (kotosi - 1) == s){%>
 <tr>
-<th align="center" >“–”N•t—^“ú”</th>
-<th align="center" >ŒJ‰z”N‹x“ú”</th>
-<th align="center">Žg—p”N‹x“ú”</th>
-<th align="center" >Žc”N‹x“ú”</th>
-<th align="center" >ŒŽŠÔŽc‹ÆŽžŠÔ</th>
-<th align="center" >”NŠÔ—ÝÏŽc‹ÆŽžŠÔ</th>
+<th align="center" >å½“å¹´ä»˜ä¸Žæ—¥æ•°</th>
+<th align="center" >ç¹°è¶Šå¹´ä¼‘æ—¥æ•°</th>
+<th align="center">ä½¿ç”¨å¹´ä¼‘æ—¥æ•°</th>
+<th align="center" >æ®‹å¹´ä¼‘æ—¥æ•°</th>
+<th align="center" >æœˆé–“æ®‹æ¥­æ™‚é–“</th>
+<th align="center" >å¹´é–“ç´¯ç©æ®‹æ¥­æ™‚é–“</th>
 </tr>
 <tr>
 <td align="center"><%=  tuki.getNenkyu_fuyo()  %></td>
@@ -143,8 +143,8 @@
 <td align="center"><%=  tuki.getNenkyu_all()  %></td>
 <%	}else{%>
 <tr>
-<th align="center">ŒŽŠÔŽc‹ÆŽžŠÔ</th>
-<th align="center">”NŠÔ—ÝÏŽc‹ÆŽžŠÔ</th>
+<th align="center">æœˆé–“æ®‹æ¥­æ™‚é–“</th>
+<th align="center">å¹´é–“ç´¯ç©æ®‹æ¥­æ™‚é–“</th>
 </tr><tr>
 <%	}ZangyouDAO zdao = new ZangyouDAO();
 	year_month = (B_GamenInsatu)InsatuDATA.get(0);
@@ -172,10 +172,10 @@
 </center><br><center><div class="noprint">
 <table>
 <tr>
-<td><a href="SystemKanri_MenuGamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ƒƒjƒ…[‚Ö–ß‚é ]</small></font></a></td>
+<td><a href="SystemKanri_MenuGamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹ ]</small></font></a></td>
 <td STYLE="cursor: default;"></td>
 <%	}session.removeAttribute("InsatuDATA");%>
-<td><a href="Taishokusha_Eturan_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ‘I‘ð‰æ–Ê‚Ö–ß‚é ]</small></font></a></td>
+<td><a href="Taishokusha_Eturan_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ é¸æŠžç”»é¢ã¸æˆ»ã‚‹ ]</small></font></a></td>
 </tr>
 </table></div>
 </center>

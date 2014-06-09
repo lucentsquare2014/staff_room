@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
 <%@ page import = "kkweb.eturan.T_Eturan"  %><%@ page import = "kkweb.dao.*" %><%@ page import = "kkweb.beans.*" %><%@ page import = "java.util.*"%><%@ page import = "kkweb.common.C_CheckMonth" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
@@ -8,7 +8,7 @@
 <jsp:useBean id="namaenengetuDATA" scope="session" type="java.util.ArrayList"/>
 <html lang = "ja">
 <Head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS"><meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css">
 <script type="text/javascript" src="/javascript/chainedselects.js"></script>
 <script type="text/javascript">
@@ -57,7 +57,7 @@
 		if(selectValue == "<%=bEturan.getGroupnumber() %> <%=bEturan.getNumber() %>"){
 			var element<%=i%> = document.createElement("option");
 			element<%=i%>.value = "<%=bEturan.getYear_month() %>";
-			element<%=i%>.innerHTML = "<%=ym.substring( 0 , 4 ) %>�N�@<%=mont.MonthCheck(ym.substring( 4 , 6 )) %>��";
+			element<%=i%>.innerHTML = "<%=ym.substring( 0 , 4 ) %>年　<%=mont.MonthCheck(ym.substring( 4 , 6 )) %>月";
 			newCategory3.appendChild(element<%=i%>);
 		}
 <%	}%>
@@ -66,13 +66,13 @@
 	}
 //-->
 </script>
-<title>�ސE�ҋΖ��񍐉{��</title>
+<title>退職者勤務報告閲覧</title>
 </Head>
 <body>
 <center>
-<font class="title">�ސE�҂̏��F��ƏI���̋Ζ��񍐉{��</font><div class="box4">
+<font class="title">退職者の承認作業終了の勤務報告閲覧</font><div class="box4">
 <Form name="formKensaku" method="POST" action="t_insatu" ><div class="box5">
-<font class="eturan">�@?�ΏێґI��</font><hr color = "#008080">
+<font class="eturan">　?対象者選択</font><hr color = "#008080">
 <select id="number" name="number"  onchange="selectionCategory3(this);">
 <option value="0 0">---</option>
 <%	LoginDAO lDao = new LoginDAO();
@@ -82,17 +82,17 @@
 	for(int i = 0; i < sList.size(); i++){
 		try{
 			bshain = (B_ShainMST)sList.get(i);%>
-<option value="<%=bshain.getGROUPnumber() %> <%=bshain.getNumber() %>"><%= bshain.getNumber()%>�@<%=bshain.getName() %></option>
+<option value="<%=bshain.getGROUPnumber() %> <%=bshain.getNumber() %>"><%= bshain.getNumber()%>　<%=bshain.getName() %></option>
 <%		}catch(Exception e){
 			e.printStackTrace();}}%>
 </select></div>
-<div class="box6"><font class="eturan">?�Ώ۔N���I��</font><hr color = "#008080">
+<div class="box6"><font class="eturan">?対象年月選択</font><hr color = "#008080">
 <select id="year_month" name="year_month" class="input_size_200">
 <option value="0">---</option>
 </select></div>
-<input type="submit"  value="�@�\���@" STYLE="cursor: pointer; ">
+<input type="submit"  value="　表示　" STYLE="cursor: pointer; ">
 </FORM><br><br>
-<a href="SystemKanri_MenuGamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ���j���[�֖߂� ]</small></font></a></div>
+<a href="SystemKanri_MenuGamen.jsp" style="text-decoration:none;"><font class="link"><small>[ メニューへ戻る ]</small></font></a></div>
 </CENTER>
 </BODY>
 </HTML>

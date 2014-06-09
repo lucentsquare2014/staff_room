@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
 <%@ page import = "kkweb.beans.B_GamenInsatu" %><%@ page import = "kkweb.beans.B_ZangyouMST" %><%@ page import = "kkweb.beans.B_Year_month" %><%@ page import = "javax.servlet.*" %><%@ page import = "kkweb.beans.B_HolidayMST" %>
 <%@ page import = "kkweb.dao.ZangyouDAO" %><%@ page import = "kkweb.common.*" %><%@ page import = "kkweb.common.C_CheckGoukei" %><%@ page import = "kkweb.dao.HolidayDAO" %>
 <%@ page import = "kkweb.common.C_HolidayBackcolor" %><%@ page import = "kkweb.common.C_CheckMonth" %><%@ page import = "java.util.ArrayList" %>
@@ -14,18 +14,18 @@ function PrintPage(){
 	}
 }
 </SCRIPT>		
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css">
 <link rel="stylesheet" href="report.css" type="text/css">
 <link rel="stylesheet" href="Insatu.css" type="text/css">
-<title>‹Î–±•ñ‘‰{——</title>
+<title>å‹¤å‹™å ±å‘Šæ›¸é–²è¦§</title>
 </head>
 <body>
 <center>			
-<font class="title">‹Î–±•ñ‘</font>
+<font class="title">å‹¤å‹™å ±å‘Šæ›¸</font>
 <div class="noprint">			
-<%	request.setCharacterEncoding("shift_JIS");
+<%	request.setCharacterEncoding("UTF-8");
 	String escapeflg =request.getParameter("escapeflg");
 	String STRAT="";
 	String END="";
@@ -34,29 +34,29 @@ function PrintPage(){
 		if (S1 == null || S1.equals("")){%><br>		
 <%		}else{%>
 <center>
-<br/><br/><A HREF="javascript:PrintPage()">ˆóü</A><br/> 
+<br/><br/><A HREF="javascript:PrintPage()">å°åˆ·</A><br/> 
 </center>
-</div><div align="left"><b>ƒƒ³”FŒo˜H„„</b></div><div align="left"><%= S1 %></div>		
+</div><div align="left"><b>ï¼œï¼œæ‰¿èªçµŒè·¯ï¼žï¼ž</b></div><div align="left"><%= S1 %></div>		
 <%		}
 	B_GamenInsatu year_month = (B_GamenInsatu)EscapeDATA.get(0);
 	String ym = (String)year_month.getYear_month();
 	C_CheckMonth mont = new C_CheckMonth();%>
 <center>
-<font size="4"><b><%= ym.substring( 0 , 4 ) %>”N<%= mont.MonthCheck(ym.substring( 4 , 6 )) %>ŒŽ F <%= year_month.getName() %></b></font><br>
+<font size="4"><b><%= ym.substring( 0 , 4 ) %>å¹´<%= mont.MonthCheck(ym.substring( 4 , 6 )) %>æœˆ ï¼š <%= year_month.getName() %></b></font><br>
 <table border="0" width="800px">
 <tr>
 <td>
 <table border="1" class="houkoku">
 <tr>
-<th class="t-koumoku"><font class="f-koumoku"><B>“ú</B></font></th>
-<th class="t-koumoku"><font class="f-koumoku"><B>—j“ú</B></font></th>
-<th class="t-koumoku"><font class="f-koumoku"><B>PƒR[ƒh</B></font></th>
-<th class="t-koumoku"><font class="f-koumoku"><B>o‹ÎŽžŠÔ</B></font></th>
-<th class="t-koumoku"><font class="f-koumoku"><B>‘Þ‹ÎŽžŠÔ</B></font></th>
-<th class="t-koumoku"><font class="f-koumoku"><B>’´‰ßŽžŠÔ</B></font></th>
-<th class="t-koumoku"><font class="f-koumoku"><B>[–éŽžŠÔ</B></font></th>
-<th class="t-koumoku"><font class="f-koumoku"><B>’¼ÚŽžŠÔ</B></font></th>
-<th class="t-koumoku"><font class="f-koumoku"><B>”õl</B></font></th>
+<th class="t-koumoku"><font class="f-koumoku"><B>æ—¥</B></font></th>
+<th class="t-koumoku"><font class="f-koumoku"><B>æ›œæ—¥</B></font></th>
+<th class="t-koumoku"><font class="f-koumoku"><B>Pã‚³ãƒ¼ãƒ‰</B></font></th>
+<th class="t-koumoku"><font class="f-koumoku"><B>å‡ºå‹¤æ™‚é–“</B></font></th>
+<th class="t-koumoku"><font class="f-koumoku"><B>é€€å‹¤æ™‚é–“</B></font></th>
+<th class="t-koumoku"><font class="f-koumoku"><B>è¶…éŽæ™‚é–“</B></font></th>
+<th class="t-koumoku"><font class="f-koumoku"><B>æ·±å¤œæ™‚é–“</B></font></th>
+<th class="t-koumoku"><font class="f-koumoku"><B>ç›´æŽ¥æ™‚é–“</B></font></th>
+<th class="t-koumoku"><font class="f-koumoku"><B>å‚™è€ƒ</B></font></th>
 </tr>			
 <%	String holiday = "";
 	String day = "";
@@ -126,16 +126,16 @@ function PrintPage(){
 <td>
 <table border="1"class="houkoku">
 <tr>
-<th class="t-koumoku"><font class="f-koumoku">’´‰ßŽžŠÔ</font></th>
-<th class="t-koumoku"><font class="f-koumoku">[–éŽžŠÔ</font></th>
-<th class="t-koumoku"><font class="f-koumoku">•s˜JŽžŠÔ</font></th>
-<th class="t-koumoku"><font class="f-koumoku">‹xo“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">‘ã‹x“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">”N‹x“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">Œ‡‹Î“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">‚`‹xŒv</font></th>
-<th class="t-koumoku"><font class="f-koumoku">‚a‹xŒv</font></th>
-<th class="t-koumoku"><font class="f-koumoku">‡ŒvŽžŠÔ</font></th>
+<th class="t-koumoku"><font class="f-koumoku">è¶…éŽæ™‚é–“</font></th>
+<th class="t-koumoku"><font class="f-koumoku">æ·±å¤œæ™‚é–“</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ä¸åŠ´æ™‚é–“</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ä¼‘å‡ºæ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ä»£ä¼‘æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">å¹´ä¼‘æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">æ¬ å‹¤æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ï¼¡ä¼‘è¨ˆ</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ï¼¢ä¼‘è¨ˆ</font></th>
+<th class="t-koumoku"><font class="f-koumoku">åˆè¨ˆæ™‚é–“</font></th>
 </tr>
 <%	B_GamenInsatu tuki = (B_GamenInsatu)EscapeDATA.get(0);%>
 <tr>
@@ -167,12 +167,12 @@ function PrintPage(){
 	int s = Integer.parseInt(ym);				
 	if (kotosi == s || (kotosi - 1) == s){%>
 <tr>
-<th class="t-koumoku"><font class="f-koumoku">“–”N•t—^“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">ŒJ‰z”N‹x“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">Žg—p”N‹x“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">Žc”N‹x“ú”</font></th>
-<th class="t-koumoku"><font class="f-koumoku">ŒŽŠÔŽc‹ÆŽžŠÔ</font></th>
-<th class="t-koumoku"><font class="f-koumoku">”NŠÔ—ÝÏŽc‹ÆŽžŠÔ</font></th>
+<th class="t-koumoku"><font class="f-koumoku">å½“å¹´ä»˜ä¸Žæ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ç¹°è¶Šå¹´ä¼‘æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">ä½¿ç”¨å¹´ä¼‘æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">æ®‹å¹´ä¼‘æ—¥æ•°</font></th>
+<th class="t-koumoku"><font class="f-koumoku">æœˆé–“æ®‹æ¥­æ™‚é–“</font></th>
+<th class="t-koumoku"><font class="f-koumoku">å¹´é–“ç´¯ç©æ®‹æ¥­æ™‚é–“</font></th>
 </tr>	
 <tr>
 <td align="center"><%=  tuki.getNenkyu_fuyo()  %></td>
@@ -181,8 +181,8 @@ function PrintPage(){
 <td align="center"><%=  tuki.getNenkyu_all()  %></td>				
 <%	}else{%>
 <tr>
-<th align="center" class="t-koumoku"><font class="f-koumoku">ŒŽŠÔŽc‹ÆŽžŠÔ</font></th>
-<th align="center" class="t-koumoku"><font class="f-koumoku">”NŠÔ—ÝÏŽc‹ÆŽžŠÔ</font></th>
+<th align="center" class="t-koumoku"><font class="f-koumoku">æœˆé–“æ®‹æ¥­æ™‚é–“</font></th>
+<th align="center" class="t-koumoku"><font class="f-koumoku">å¹´é–“ç´¯ç©æ®‹æ¥­æ™‚é–“</font></th>
 </tr><tr>
 <%	} 
 	ZangyouDAO zdao = new ZangyouDAO();

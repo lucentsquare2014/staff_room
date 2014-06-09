@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.* , java.util.Vector" %>
 <%!
 public String strEncode(String strVal) throws UnsupportedEncodingException{
@@ -6,71 +6,71 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 		return(null);
 	}
 	else{
-		return(new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+		return(new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
 <%
-/* C³“_ */
-// 02-08-05 ŒETE“ú‚Æƒtƒ@ƒCƒ‹‚ğ•ª‚¯‚Ä‚¢‚½‚à‚Ì‚ğŒ‹‡‚³‚¹Aƒtƒ‰ƒO‚É‚æ‚Á‚Äˆ—‚ğ•ª‚¯‚é•û–@
-// 02-08-15 —]Œv‚ÈƒvƒƒOƒ‰ƒ€‚ğÈ‚­
-// 02-09-03 “o˜^ˆ—I—¹ŒãAÄ“Ç‚İ‚İ‚·‚é‚½‚ß‚ÌƒvƒƒOƒ‰ƒ€‚ğC³B
-// 02-09-18 “®ìƒeƒXƒgŠúŠÔcƒoƒO”­Œ©   43s–Ú “ú•t‚Ìƒpƒ‰ƒ[ƒ^‚ÌŒë·C³B
-//                    231s–Ú/243s–Ú/255s–Ú ƒŠƒ_ƒCƒŒƒNƒgˆ—‚Å‘—M‚·‚éƒpƒ‰ƒ[ƒ^‚Ì•¶š—ñC³B
-// 02-09-24 ƒoƒO”­Œ©c  180s–Ú SQL•¶‚Åg—p‚µ‚Ä‚¢‚½ƒ†[ƒUID•Ï”‚ªŠÔˆá‚Á‚Ä‚¢‚½B
+/* ä¿®æ­£ç‚¹ */
+// 02-08-05 æœˆãƒ»é€±ãƒ»æ—¥ã¨ãƒ•ã‚¡ã‚¤ãƒ«ã‚’åˆ†ã‘ã¦ã„ãŸã‚‚ã®ã‚’çµåˆã•ã›ã€ãƒ•ãƒ©ã‚°ã«ã‚ˆã£ã¦å‡¦ç†ã‚’åˆ†ã‘ã‚‹æ–¹æ³•
+// 02-08-15 ä½™è¨ˆãªãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çœã
+// 02-09-03 ç™»éŒ²å‡¦ç†çµ‚äº†å¾Œã€å†èª­ã¿è¾¼ã¿ã™ã‚‹ãŸã‚ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’ä¿®æ­£ã€‚
+// 02-09-18 å‹•ä½œãƒ†ã‚¹ãƒˆæœŸé–“â€¦ãƒã‚°ç™ºè¦‹   43è¡Œç›® æ—¥ä»˜ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®èª¤å·®ä¿®æ­£ã€‚
+//                    231è¡Œç›®/243è¡Œç›®/255è¡Œç›® ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆå‡¦ç†ã§é€ä¿¡ã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®æ–‡å­—åˆ—ä¿®æ­£ã€‚
+// 02-09-24 ãƒã‚°ç™ºè¦‹â€¦  180è¡Œç›® SQLæ–‡ã§ä½¿ç”¨ã—ã¦ã„ãŸãƒ¦ãƒ¼ã‚¶IDå¤‰æ•°ãŒé–“é•ã£ã¦ã„ãŸã€‚
 
-/* ’Ç‰Á“_ */
-// 02-08-13 ‹¤—LÒ‰æ–Ê‚Å‘I‘ğ‚³‚ê‚½ƒƒ“ƒo[‚É“o˜^Ò‚Æ“¯‚¶ƒXƒPƒWƒ…[ƒ‹‚ğˆêŠ‡“o˜^‚·‚éˆ—
+/* è¿½åŠ ç‚¹ */
+// 02-08-13 å…±æœ‰è€…ç”»é¢ã§é¸æŠã•ã‚ŒãŸãƒ¡ãƒ³ãƒãƒ¼ã«ç™»éŒ²è€…ã¨åŒã˜ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ä¸€æ‹¬ç™»éŒ²ã™ã‚‹å‡¦ç†
 
-// ƒƒOƒCƒ“‚µ‚½ƒ†[ƒU‚ÌĞˆõ”Ô†‚ğ•Ï”[ID]‚ÉŠi”[
+// ãƒ­ã‚°ã‚¤ãƒ³ã—ãŸãƒ¦ãƒ¼ã‚¶ã®ç¤¾å“¡ç•ªå·ã‚’å¤‰æ•°[ID]ã«æ ¼ç´
 String ID = strEncode(request.getParameter("id"));
 
-// [timeIn]‚Å“ü—Í‚³‚ê‚½Še€–Ú‚ğƒpƒ‰ƒ[ƒ^‚Æ‚µ‚Äæ“¾
+// [timeIn]ã§å…¥åŠ›ã•ã‚ŒãŸå„é …ç›®ã‚’ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦å–å¾—
 String NO = request.getParameter("no");
 String DA = request.getParameter("s_date");
 String GR = request.getParameter("group");
 
-// •\¦‚Ìí—Ş‚ğ”»•Ê‚·‚éƒpƒ‰ƒ[ƒ^
+// è¡¨ç¤ºã®ç¨®é¡ã‚’åˆ¤åˆ¥ã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 String KD = request.getParameter("kind");
 
-// ŠJn“ú‚Ìæ“¾
-String SY = request.getParameter("syear");			// ”N
-String SM = request.getParameter("smonth");			// Œ
-String SD = request.getParameter("sday");			// “ú
+// é–‹å§‹æ—¥ã®å–å¾—
+String SY = request.getParameter("syear");			// å¹´
+String SM = request.getParameter("smonth");			// æœˆ
+String SD = request.getParameter("sday");			// æ—¥
 %>
 <%
 
-int BSDAy = Integer.parseInt(SY);				// ”N
-int BSDAm = Integer.parseInt(SM);				// Œ
-int BSDAd = Integer.parseInt(SD);				// “ú
-boolean BSUru = false;//‚¤‚é‚¤”N‚È‚çtrue‚Ö
+int BSDAy = Integer.parseInt(SY);				// å¹´
+int BSDAm = Integer.parseInt(SM);				// æœˆ
+int BSDAd = Integer.parseInt(SD);				// æ—¥
+boolean BSUru = false;//ã†ã‚‹ã†å¹´ãªã‚‰trueã¸
 if((BSDAy % 4) == 0){
 	BSUru = true;
 }
 
 
-// ŠJn“ú‚ÌŒ‹‡ —áF20020815
+// é–‹å§‹æ—¥ã®çµåˆ ä¾‹ï¼š20020815
 String start = SY + SM + SD;
 
-// ŠJn“ú‚ÌƒRƒs|(ƒpƒ‰ƒ[ƒ^‚Æ‚µ‚ÄA³Šm‚Éó‚¯æ‚ê‚é‚æ‚¤ƒnƒCƒtƒ“‚ğ•¶š—ñ˜AŒ‹‚³‚¹‚é)
-// —áF2002-08-15
+// é–‹å§‹æ—¥ã®ã‚³ãƒ”âˆ’(ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¨ã—ã¦ã€æ­£ç¢ºã«å—ã‘å–ã‚Œã‚‹ã‚ˆã†ãƒã‚¤ãƒ•ãƒ³ã‚’æ–‡å­—åˆ—é€£çµã•ã›ã‚‹)
+// ä¾‹ï¼š2002-08-15
 String start_cpy = SY +"-"+ SM +"-"+ SD;
 
-// I—¹“ú‚Ìæ“¾
-String EY = request.getParameter("eyear");			// ”N
-String EM = request.getParameter("emonth");			// Œ
-String ED = request.getParameter("eday");			// “ú
+// çµ‚äº†æ—¥ã®å–å¾—
+String EY = request.getParameter("eyear");			// å¹´
+String EM = request.getParameter("emonth");			// æœˆ
+String ED = request.getParameter("eday");			// æ—¥
 
-int BEDAy = Integer.parseInt(EY);				// ”N
-int BEDAm = Integer.parseInt(EM);				// Œ
-int BEDAd = Integer.parseInt(ED);				// “ú
-boolean BEUru = false;//‚¤‚é‚¤”N‚È‚çtrue‚Ö
+int BEDAy = Integer.parseInt(EY);				// å¹´
+int BEDAm = Integer.parseInt(EM);				// æœˆ
+int BEDAd = Integer.parseInt(ED);				// æ—¥
+boolean BEUru = false;//ã†ã‚‹ã†å¹´ãªã‚‰trueã¸
 if((BEDAy % 4) == 0){
 	BEUru = true;
 }
 
 
-// I—¹“ú‚ÌŒ‹‡ —áF20020815
+// çµ‚äº†æ—¥ã®çµåˆ ä¾‹ï¼š20020815
 String end = EY + EM + ED;
 
 String plan = strEncode(request.getParameter("plan"));
@@ -82,69 +82,69 @@ String pre = request.getParameter("pre");
 String act = strEncode(request.getParameter("act"));
 %>
 <html>
-<head><title>ƒGƒ‰[</title></head>
+<head><title>ã‚¨ãƒ©ãƒ¼</title></head>
 <body BGCOLOR="#99A5FF">
 <%
 	if(ID.equals("")){
-		out.println("ƒ†[ƒU‚h‚c‚ª‚ ‚è‚Ü‚¹‚ñB");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("ãƒ¦ãƒ¼ã‚¶ï¼©ï¼¤ãŒã‚ã‚Šã¾ã›ã‚“ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if(NO.equals("")){
-		out.println("‘I‘ğ‚³‚ê‚½ƒ†[ƒU‚h‚c‚ª‚ ‚è‚Ü‚¹‚ñB");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("é¸æŠã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶ï¼©ï¼¤ãŒã‚ã‚Šã¾ã›ã‚“ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if(Integer.parseInt(SY) > Integer.parseInt(EY)){
-		out.println("ŠJn“úE”N‚ªI—¹“úE”N‚æ‚è‚à‘å‚«‚¢‚Å‚·B");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("é–‹å§‹æ—¥ãƒ»å¹´ãŒçµ‚äº†æ—¥ãƒ»å¹´ã‚ˆã‚Šã‚‚å¤§ãã„ã§ã™ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if(BSDAm<1 || BSDAm>12){
-		out.println("ƒoƒi[ŠJn“ú‚ÉŒë‚è‚ª‚ ‚è‚Ü‚·B");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("ãƒãƒŠãƒ¼é–‹å§‹æ—¥ã«èª¤ã‚ŠãŒã‚ã‚Šã¾ã™ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if(BSDAd<1 || BSDAd>31){
-		out.println("ƒoƒi[ŠJn“ú‚ÉŒë‚è‚ª‚ ‚è‚Ü‚·B");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("ãƒãƒŠãƒ¼é–‹å§‹æ—¥ã«èª¤ã‚ŠãŒã‚ã‚Šã¾ã™ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if((BSDAm == 4 && BSDAd == 31) || (BSDAm == 6 && BSDAd == 31) || (BSDAm == 9 && BSDAd == 31) || (BSDAm == 11 && BSDAd == 31)){
-		out.println("ƒoƒi[ŠJn“ú‚ÉŒë‚è‚ª‚ ‚è‚Ü‚·B");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("ãƒãƒŠãƒ¼é–‹å§‹æ—¥ã«èª¤ã‚ŠãŒã‚ã‚Šã¾ã™ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if((BSDAm == 2 && BSDAd > 28 && BSUru == false) || (BSDAm == 2 && BSDAd > 29 && BSUru == true)){
-		out.println("ƒoƒi[ŠJn“ú‚ÉŒë‚è‚ª‚ ‚è‚Ü‚·B");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("ãƒãƒŠãƒ¼é–‹å§‹æ—¥ã«èª¤ã‚ŠãŒã‚ã‚Šã¾ã™ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if(BEDAm<1 || BEDAm>12){
-		out.println("ƒoƒi[I—¹“ú‚ÉŒë‚è‚ª‚ ‚è‚Ü‚·B");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("ãƒãƒŠãƒ¼çµ‚äº†æ—¥ã«èª¤ã‚ŠãŒã‚ã‚Šã¾ã™ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if(BEDAd<1 || BEDAd>31){
-		out.println("ƒoƒi[I—¹“ú‚ÉŒë‚è‚ª‚ ‚è‚Ü‚·B");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("ãƒãƒŠãƒ¼çµ‚äº†æ—¥ã«èª¤ã‚ŠãŒã‚ã‚Šã¾ã™ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if((BEDAm == 4 && BEDAd == 31) || (BEDAm == 6 && BEDAd == 31) || (BEDAm == 9 && BEDAd == 31) || (BEDAm == 11 && BEDAd == 31)){
-		out.println("ƒoƒi[I—¹“ú‚ÉŒë‚è‚ª‚ ‚è‚Ü‚·B");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("ãƒãƒŠãƒ¼çµ‚äº†æ—¥ã«èª¤ã‚ŠãŒã‚ã‚Šã¾ã™ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if((BEDAm == 2 && BEDAd > 28 && BEUru == false) || (BEDAm == 2 && BEDAd > 29 && BEUru == true)){
-		out.println("ƒoƒi[I—¹“ú‚ÉŒë‚è‚ª‚ ‚è‚Ü‚·B");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("ãƒãƒŠãƒ¼çµ‚äº†æ—¥ã«èª¤ã‚ŠãŒã‚ã‚Šã¾ã™ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if(plan.equals("")){
-		out.println("—\’è‚ª‘I‘ğ‚³‚ê‚Ä‚Ü‚¹‚ñB");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("äºˆå®šãŒé¸æŠã•ã‚Œã¦ã¾ã›ã‚“ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else if(memo.length() >= 50){
-		out.println("•¶š”‚ğ’´‚¦‚Ä‚¢‚Ü‚·B");
-		out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+		out.println("æ–‡å­—æ•°ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚");
+		out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 	}else{
 
-		// JDBCƒhƒ‰ƒCƒo‚Ìƒ[ƒh
+		// JDBCãƒ‰ãƒ©ã‚¤ãƒã®ãƒ­ãƒ¼ãƒ‰
 		Class.forName("org.postgresql.Driver");
 
-		// ƒf[ƒ^ƒx[ƒX‚ÉƒƒOƒCƒ“‚·‚é‚½‚ß‚Ìî•ñ
+		// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹ãŸã‚ã®æƒ…å ±
 		String user = "georgir";
 		String password = "georgir";
 
-		// ƒf[ƒ^ƒx[ƒX‚ÉÚ‘±
+		// ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«æ¥ç¶š
 		Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 
-		// ƒXƒe[ƒgƒƒ“ƒg‚Ì¶¬
+		// ã‚¹ãƒ†ãƒ¼ãƒˆãƒ¡ãƒ³ãƒˆã®ç”Ÿæˆ
 		Statement stmt = con.createStatement();
 		Statement stmt2 = con.createStatement();
 		
-		/* “¯ƒOƒ‹[ƒv‚Å‚ ‚é‚©‚ğ”äŠr‚·‚é‚½‚ß‚Ég—p‚·‚é */
-		// SQLÀsEƒOƒ‹[ƒvî•ñ[–{l]
+		/* åŒã‚°ãƒ«ãƒ¼ãƒ—ã§ã‚ã‚‹ã‹ã‚’æ¯”è¼ƒã™ã‚‹ãŸã‚ã«ä½¿ç”¨ã™ã‚‹ */
+		// SQLå®Ÿè¡Œãƒ»ã‚°ãƒ«ãƒ¼ãƒ—æƒ…å ±[æœ¬äºº]
 		ResultSet GROUPID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
-		// ‰Šú‰»‚ğs‚Á‚Ä‚¢‚é
+		// åˆæœŸåŒ–ã‚’è¡Œã£ã¦ã„ã‚‹
 		String group_id = "";
 
 		while(GROUPID.next()){
@@ -153,7 +153,7 @@ String act = strEncode(request.getParameter("act"));
 
 		GROUPID.close();
 
-		// SQLÀsEƒOƒ‹[ƒvî•ñ[‘¼‚Ìƒ†[ƒU]
+		// SQLå®Ÿè¡Œãƒ»ã‚°ãƒ«ãƒ¼ãƒ—æƒ…å ±[ä»–ã®ãƒ¦ãƒ¼ã‚¶]
 		ResultSet GROUPNO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 		String group_no = "";
@@ -164,18 +164,18 @@ String act = strEncode(request.getParameter("act"));
 
 		GROUPNO.close();
 
-		// d•¡ƒ`ƒFƒbƒN—pflag
+		// é‡è¤‡ãƒã‚§ãƒƒã‚¯ç”¨flag
 		boolean check = false;
-		// ‹¤—LÒd•¡ƒ`ƒFƒbƒN—pflag
+		// å…±æœ‰è€…é‡è¤‡ãƒã‚§ãƒƒã‚¯ç”¨flag
 		boolean ky_check = false;
 		
 		String Blendy = "";
 		
-		// SQLÀs
-		if(act.equals("“o˜^") && (group_id.equals(group_no) || group_id.equals("900"))){
+		// SQLå®Ÿè¡Œ
+		if(act.equals("ç™»éŒ²") && (group_id.equals(group_no) || group_id.equals("900"))){
 			if(ID.equals(NO)){
-				// V‹K“o˜^‚·‚éÛ‚ÉA‘¼‚Ìƒoƒi[ƒXƒPƒWƒ…[ƒ‹‚Æd•¡‚µ‚Ä‚¢‚È‚¢‚©’²‚×‚Ü‚·
-				ResultSet CHECK = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_ĞˆõNO = '" + ID + "' AND (('" + start + "' <= B_START AND '" + end + "' >= B_START) OR ('" + start + "' <= B_END AND '" + end + "' >= B_END) OR (B_START <= '"+ start +"' and '"+ end +"' <= B_END ))");
+				// æ–°è¦ç™»éŒ²ã™ã‚‹éš›ã«ã€ä»–ã®ãƒãƒŠãƒ¼ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨é‡è¤‡ã—ã¦ã„ãªã„ã‹èª¿ã¹ã¾ã™
+				ResultSet CHECK = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_ç¤¾å“¡NO = '" + ID + "' AND (('" + start + "' <= B_START AND '" + end + "' >= B_START) OR ('" + start + "' <= B_END AND '" + end + "' >= B_END) OR (B_START <= '"+ start +"' and '"+ end +"' <= B_END ))");
 
 				while(CHECK.next()){
 					check = true;
@@ -183,11 +183,11 @@ String act = strEncode(request.getParameter("act"));
 
 				CHECK.close();
 				
-				// ‹¤—LÒƒoƒi[ƒXƒPƒWƒ…[ƒ‹‚Ìd•¡ƒ`ƒFƒbƒN
-				ResultSet GOGOTea = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE KY_FLAG = '0' AND K_ĞˆõNO2 = '" + ID + "'");
+				// å…±æœ‰è€…ãƒãƒŠãƒ¼ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é‡è¤‡ãƒã‚§ãƒƒã‚¯
+				ResultSet GOGOTea = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE KY_FLAG = '0' AND K_ç¤¾å“¡NO2 = '" + ID + "'");
 				while(GOGOTea.next()){
-					Blendy = GOGOTea.getString("K_ĞˆõNO");
-					ResultSet KY_CHECK = stmt2.executeQuery("SELECT * FROM B_TABLE WHERE K_ĞˆõNO = '" + Blendy + "' AND (('" + start + "' <= B_START AND '" + end + "' >= B_START) OR ('" + start + "' <= B_END AND '" + end + "' >= B_END) OR (B_START <= '"+ start +"' and '"+ end +"' <= B_END ))");
+					Blendy = GOGOTea.getString("K_ç¤¾å“¡NO");
+					ResultSet KY_CHECK = stmt2.executeQuery("SELECT * FROM B_TABLE WHERE K_ç¤¾å“¡NO = '" + Blendy + "' AND (('" + start + "' <= B_START AND '" + end + "' >= B_START) OR ('" + start + "' <= B_END AND '" + end + "' >= B_END) OR (B_START <= '"+ start +"' and '"+ end +"' <= B_END ))");
 					while(KY_CHECK.next()){
 						ky_check = true;
 					}
@@ -197,46 +197,46 @@ String act = strEncode(request.getParameter("act"));
 
 				if(!check){
 				if(!ky_check){
-					stmt.execute("INSERT INTO B_TABLE(K_ĞˆõNO,B_START,B_END,B_PLAN,B_PLAN2,B_PLACE,B_PLACE2,B_MEMO,B_TOUROKU,B_ZAISEKI) VALUES('" + ID + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
+					stmt.execute("INSERT INTO B_TABLE(K_ç¤¾å“¡NO,B_START,B_END,B_PLAN,B_PLAN2,B_PLACE,B_PLACE2,B_MEMO,B_TOUROKU,B_ZAISEKI) VALUES('" + ID + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
 
-					// ‹¤—LÒî•ñ‚Ì“ú•t‚ÆŠJn‚ğXV
-					stmt.execute("UPDATE KY_TABLE SET B_START = '" + start_cpy + "', KY_FLAG = '1' WHERE K_ĞˆõNO2 = '" + ID + "' AND KY_FLAG = '0'");
+					// å…±æœ‰è€…æƒ…å ±ã®æ—¥ä»˜ã¨é–‹å§‹æ™‚åˆ»ã‚’æ›´æ–°
+					stmt.execute("UPDATE KY_TABLE SET B_START = '" + start_cpy + "', KY_FLAG = '1' WHERE K_ç¤¾å“¡NO2 = '" + ID + "' AND KY_FLAG = '0'");
 
-					/* ‚±‚±‚©‚ç‹¤—LÒ‚ğƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚Ö‚Æ‘}“ü‚µ‚Ü‚·B */
-					ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE B_START = '" + start_cpy + "' AND K_ĞˆõNO2 = '" + ID + "'");
+					/* ã“ã“ã‹ã‚‰å…±æœ‰è€…ã‚’ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã¸ã¨æŒ¿å…¥ã—ã¾ã™ã€‚ */
+					ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE B_START = '" + start_cpy + "' AND K_ç¤¾å“¡NO2 = '" + ID + "'");
 
-					// hitList‚Ìì¬
+					// hitListã®ä½œæˆ
 					Vector hitCHECK = new Vector();
 
 					while(KYOYU.next()){
-						String seId = KYOYU.getString("K_ĞˆõNO");
+						String seId = KYOYU.getString("K_ç¤¾å“¡NO");
 						hitCHECK.addElement(seId);
 					}
 
 					int cntCHECK = hitCHECK.size();
 
 					for(int i = 0; i < cntCHECK; i++){
-						stmt.execute("INSERT INTO B_TABLE(K_ĞˆõNO,B_START,B_END,B_PLAN,B_PLAN2,B_PLACE,B_PLACE2,B_MEMO,B_TOUROKU,B_ZAISEKI) VALUES('" + hitCHECK.elementAt(i) + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
+						stmt.execute("INSERT INTO B_TABLE(K_ç¤¾å“¡NO,B_START,B_END,B_PLAN,B_PLAN2,B_PLACE,B_PLACE2,B_MEMO,B_TOUROKU,B_ZAISEKI) VALUES('" + hitCHECK.elementAt(i) + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
 					}
 
 					KYOYU.close();
-					/* ‚±‚±‚Ü‚Å */
+					/* ã“ã“ã¾ã§ */
 
 				}}
 			}
 			else{
-				// ‘¼‚Ìƒ†[ƒU‚Ìƒoƒi[ƒXƒPƒWƒ…[ƒ‹‚ğ“o˜^ˆ—
-				ResultSet CHECK = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_ĞˆõNO = '" + NO + "' AND (('" + start + "' <= B_START AND '" + end + "' >= B_START) OR ('" + start + "' <= B_END AND '" + end + "' >= B_END) OR (B_START <= '"+ start +"' and '"+ end +"' <= B_END ))");
+				// ä»–ã®ãƒ¦ãƒ¼ã‚¶ã®ãƒãƒŠãƒ¼ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’ç™»éŒ²å‡¦ç†
+				ResultSet CHECK = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_ç¤¾å“¡NO = '" + NO + "' AND (('" + start + "' <= B_START AND '" + end + "' >= B_START) OR ('" + start + "' <= B_END AND '" + end + "' >= B_END) OR (B_START <= '"+ start +"' and '"+ end +"' <= B_END ))");
 				while(CHECK.next()){
 					check = true;
 				}
 				CHECK.close();
 				
-				// ‹¤—LÒƒoƒi[ƒXƒPƒWƒ…[ƒ‹‚Ìd•¡ƒ`ƒFƒbƒN
-				ResultSet GOGOTea = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE KY_FLAG = '0' AND K_ĞˆõNO2 = '" + NO + "'");
+				// å…±æœ‰è€…ãƒãƒŠãƒ¼ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ã®é‡è¤‡ãƒã‚§ãƒƒã‚¯
+				ResultSet GOGOTea = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE KY_FLAG = '0' AND K_ç¤¾å“¡NO2 = '" + NO + "'");
 				while(GOGOTea.next()){
-					Blendy = GOGOTea.getString("K_ĞˆõNO");
-					ResultSet KY_CHECK = stmt2.executeQuery("SELECT * FROM B_TABLE WHERE K_ĞˆõNO = '" + Blendy + "' AND (('" + start + "' <= B_START AND '" + end + "' >= B_START) OR ('" + start + "' <= B_END AND '" + end + "' >= B_END) OR (B_START <= '"+ start +"' and '"+ end +"' <= B_END ))");
+					Blendy = GOGOTea.getString("K_ç¤¾å“¡NO");
+					ResultSet KY_CHECK = stmt2.executeQuery("SELECT * FROM B_TABLE WHERE K_ç¤¾å“¡NO = '" + Blendy + "' AND (('" + start + "' <= B_START AND '" + end + "' >= B_START) OR ('" + start + "' <= B_END AND '" + end + "' >= B_END) OR (B_START <= '"+ start +"' and '"+ end +"' <= B_END ))");
 					while(KY_CHECK.next()){
 						ky_check = true;
 					}
@@ -246,30 +246,30 @@ String act = strEncode(request.getParameter("act"));
 
 				if(!check){
 				if(!ky_check){
-					stmt.execute("INSERT INTO B_TABLE(K_ĞˆõNO,B_START,B_END,B_PLAN,B_PLAN2,B_PLACE,B_PLACE2,B_MEMO,B_TOUROKU,B_ZAISEKI) VALUES('" + NO + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
+					stmt.execute("INSERT INTO B_TABLE(K_ç¤¾å“¡NO,B_START,B_END,B_PLAN,B_PLAN2,B_PLACE,B_PLACE2,B_MEMO,B_TOUROKU,B_ZAISEKI) VALUES('" + NO + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
 
-					// ‹¤—LÒî•ñ‚Ì“ú•t‚ÆŠJn‚ğXV
-					stmt.execute("UPDATE KY_TABLE SET B_START = '" + start_cpy + "', KY_FLAG = '1' WHERE K_ĞˆõNO2 = '" + NO + "' AND KY_FLAG = '0'");
+					// å…±æœ‰è€…æƒ…å ±ã®æ—¥ä»˜ã¨é–‹å§‹æ™‚åˆ»ã‚’æ›´æ–°
+					stmt.execute("UPDATE KY_TABLE SET B_START = '" + start_cpy + "', KY_FLAG = '1' WHERE K_ç¤¾å“¡NO2 = '" + NO + "' AND KY_FLAG = '0'");
 
-					/* ‚±‚±‚©‚ç‹¤—LÒ‚ğƒXƒPƒWƒ…[ƒ‹ƒe[ƒuƒ‹‚Ö‚Æ‘}“ü‚µ‚Ü‚·B */
-					ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE B_START = '" + start_cpy + "' AND K_ĞˆõNO2 = '" + NO + "'");
+					/* ã“ã“ã‹ã‚‰å…±æœ‰è€…ã‚’ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã¸ã¨æŒ¿å…¥ã—ã¾ã™ã€‚ */
+					ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE B_START = '" + start_cpy + "' AND K_ç¤¾å“¡NO2 = '" + NO + "'");
 
-					// hitList‚Ìì¬
+					// hitListã®ä½œæˆ
 					Vector hitCHECK = new Vector();
 
 					while(KYOYU.next()){
-						String seId = KYOYU.getString("K_ĞˆõNO");
+						String seId = KYOYU.getString("K_ç¤¾å“¡NO");
 						hitCHECK.addElement(seId);
 					}
 
 					int cntCHECK = hitCHECK.size();
 
 					for(int i = 0; i < cntCHECK; i++){
-						stmt.execute("INSERT INTO B_TABLE(K_ĞˆõNO,B_START,B_END,B_PLAN,B_PLAN2,B_PLACE,B_PLACE2,B_MEMO,B_TOUROKU,B_ZAISEKI) VALUES('" + hitCHECK.elementAt(i) + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
+						stmt.execute("INSERT INTO B_TABLE(K_ç¤¾å“¡NO,B_START,B_END,B_PLAN,B_PLAN2,B_PLACE,B_PLACE2,B_MEMO,B_TOUROKU,B_ZAISEKI) VALUES('" + hitCHECK.elementAt(i) + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
 					}
 
 					KYOYU.close();
-					/* ‚±‚±‚Ü‚Å */
+					/* ã“ã“ã¾ã§ */
 
 				}}
 			}
@@ -284,50 +284,50 @@ String act = strEncode(request.getParameter("act"));
 			<%
 		}
 
-		// Ú‘±‰ğœ
+		// æ¥ç¶šè§£é™¤
 		stmt.close();
 		con.close();
 
 		if(check){
-			out.println("ƒoƒi[ƒXƒPƒWƒ…[ƒ‹‚ªd•¡‚µ‚Ä‚¢‚Ü‚·B");
-			out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+			out.println("ãƒãƒŠãƒ¼ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒé‡è¤‡ã—ã¦ã„ã¾ã™ã€‚");
+			out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 		}else if(ky_check){
-			out.println("‹¤—LÒ‚Ìƒoƒi[ƒXƒPƒWƒ…[ƒ‹‚ªd•¡‚µ‚Ä‚¢‚Ü‚·B<BR>");
-			out.println("<form><input type=button value=–ß‚é onClick=history.back()></form>");
+			out.println("å…±æœ‰è€…ã®ãƒãƒŠãƒ¼ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒé‡è¤‡ã—ã¦ã„ã¾ã™ã€‚<BR>");
+			out.println("<form><input type=button value=æˆ»ã‚‹ onClick=history.back()></form>");
 		}else{
 			if(KD.equals("Month")){
 				%>
 				<SCRIPT LANGUAGE="JAVASCRIPT">
-<!-- ˆÚ“®‹Ö~ -->
+<!-- ç§»å‹•ç¦æ­¢ -->
 <!--
 				parent.main.location.href='tryagain.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 				parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= start_cpy %>&b_start=<%= start_cpy %>&group=<%= GR %>&kind=<%= KD + "-b" %>&act=';
 // -->
-<!-- ˆÚ“®‹Ö~ -->
+<!-- ç§»å‹•ç¦æ­¢ -->
 				</SCRIPT>
 				<%
 			}
 			else if(KD.equals("Week")){
 				%>
 				<SCRIPT LANGUAGE="JAVASCRIPT">
-<!-- ˆÚ“®‹Ö~ -->
+<!-- ç§»å‹•ç¦æ­¢ -->
 <!--
 				parent.main.location.href='TestExample34.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 				parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= start_cpy %>&b_start=<%= start_cpy %>&group=<%= GR %>&kind=<%= KD + "-b" %>&act=';
 // -->
-<!-- ˆÚ“®‹Ö~ -->
+<!-- ç§»å‹•ç¦æ­¢ -->
 				</SCRIPT>
 				<%
 			}
 			else if(KD.equals("Day")){
 				%>
 				<SCRIPT LANGUAGE="JAVASCRIPT">
-<!-- ˆÚ“®‹Ö~ -->
+<!-- ç§»å‹•ç¦æ­¢ -->
 <!--
 				parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 				parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= start_cpy %>&b_start=<%= start_cpy %>&group=<%= GR %>&kind=<%= KD + "-b" %>&act=';
 // -->
-<!-- ˆÚ“®‹Ö~ -->
+<!-- ç§»å‹•ç¦æ­¢ -->
 				</SCRIPT>
 				<%
 			}

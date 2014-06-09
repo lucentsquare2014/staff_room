@@ -1,23 +1,23 @@
-<%@ page contentType = "text/html; charset=Shift_JIS" %>
+<%@ page contentType = "text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*" %>
 <%!
-// •¶šƒGƒ“ƒR[ƒh‚ğs‚¢‚Ü‚·B
+// æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã„ã¾ã™ã€‚
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 		if(strVal == null){
 			return (null);
 		}
 		else{
-			return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+			return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 		}
 }
 %>
 <%
-// ƒƒOƒCƒ“‚µ‚½ƒ†[ƒU‚ÌĞˆõ”Ô†‚ğ•Ï”[ID]‚ÉŠi”[
+// ãƒ­ã‚°ã‚¤ãƒ³ã—ãŸãƒ¦ãƒ¼ã‚¶ã®ç¤¾å“¡ç•ªå·ã‚’å¤‰æ•°[ID]ã«æ ¼ç´
 String ID = strEncode(request.getParameter("id"));
 %>
 <HTML>
 <HEAD>
-<TITLE>“o˜^Š®—¹‰æ–Ê</TITLE>
+<TITLE>ç™»éŒ²å®Œäº†ç”»é¢</TITLE>
 <STYLE TYPE="text/css">
 
 .shadow{filter:shadow(color=black,direction=135);position:relative;height:50;width:100%;}
@@ -28,12 +28,12 @@ String ID = strEncode(request.getParameter("id"));
 <CENTER>
 <FONT COLOR="#ffffff">
 <SPAN CLASS="shadow">
-<H1>“o˜^‚µ‚Ü‚µ‚½</H1><br>
+<H1>ç™»éŒ²ã—ã¾ã—ãŸ</H1><br>
 </FONT>
 </SPAN>
 <FORM ACTION="menu.jsp" METHOD="Post">
 <INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-<INPUT TYPE="submit" VALUE="ƒƒCƒ“ƒƒjƒ…[‚Ö–ß‚é">
+<INPUT TYPE="submit" VALUE="ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹">
 </FORM>
 </CENTER>
 </BODY>

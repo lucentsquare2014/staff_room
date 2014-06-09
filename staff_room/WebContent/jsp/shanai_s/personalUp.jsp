@@ -1,49 +1,49 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*" %>
 <%!
-// •¶ŽšƒGƒ“ƒR[ƒh‚ðs‚¢‚Ü‚·B
+// æ–‡å­—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰ã‚’è¡Œã„ã¾ã™ã€‚
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal == null){
 		return (null);
 	}
 	else{
-		return (new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
 <%
-/* C³“_ */
-// 02-08-16 —]Œv‚ÈƒvƒƒOƒ‰ƒ€‚Ì”rœ
+/* ä¿®æ­£ç‚¹ */
+// 02-08-16 ä½™è¨ˆãªãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®æŽ’é™¤
 
-// ƒƒOƒCƒ“‚µ‚½ƒ†[ƒU‚ÌŽÐˆõ”Ô†‚ð•Ï”[ID]‚ÉŠi”[
+// ãƒ­ã‚°ã‚¤ãƒ³ã—ãŸãƒ¦ãƒ¼ã‚¶ã®ç¤¾å“¡ç•ªå·ã‚’å¤‰æ•°[ID]ã«æ ¼ç´
 String ID = strEncode(request.getParameter("id"));
 
-// JDBCƒhƒ‰ƒCƒo‚Ìƒ[ƒh
+// JDBCãƒ‰ãƒ©ã‚¤ãƒã®ãƒ­ãƒ¼ãƒ‰
 Class.forName("org.postgresql.Driver");
 
-// ƒ†[ƒU”FØî•ñ‚ÌÝ’è
+// ãƒ¦ãƒ¼ã‚¶èªè¨¼æƒ…å ±ã®è¨­å®š
 String user = "georgir";
 String password = "georgir";
 
-// ConnectionƒIƒuƒWƒFƒNƒg‚Ì¶¬
+// Connectionã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆ
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 
-// StatementƒIƒuƒWƒFƒNƒg‚Ì¶¬
+// Statementã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆ
 Statement stmt = con.createStatement();
 
-// SQLŽÀsEŒÂlî•ñ
+// SQLå®Ÿè¡Œãƒ»å€‹äººæƒ…å ±
 ResultSet KOJIN = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
 String name = "";
 
 while(KOJIN.next()){
-	name = KOJIN.getString("K_Ž–¼");
+	name = KOJIN.getString("K_æ°å");
 }
 
 KOJIN.close();
 
-// SQL‚ÌŽÀsEŒÂlÝ’èî•ñ‚Ì“Ç‚Ýo‚µ
-ResultSet KOJININFO = stmt.executeQuery("SELECT * FROM PE_TABLE WHERE K_ŽÐˆõNO='" + ID + "'");
+// SQLã®å®Ÿè¡Œãƒ»å€‹äººè¨­å®šæƒ…å ±ã®èª­ã¿å‡ºã—
+ResultSet KOJININFO = stmt.executeQuery("SELECT * FROM PE_TABLE WHERE K_ç¤¾å“¡NO='" + ID + "'");
 
 String n_gno = "";
 String n_pes = "";
@@ -56,7 +56,7 @@ while(KOJININFO.next()){
 }
 KOJININFO.close();
 
-// SQLŽÀsEƒOƒ‹[ƒvî•ñ‚Ì“Ç‚Ýo‚µ
+// SQLå®Ÿè¡Œãƒ»ã‚°ãƒ«ãƒ¼ãƒ—æƒ…å ±ã®èª­ã¿å‡ºã—
 ResultSet GROUP = stmt.executeQuery("SELECT * FROM KINMU.GRU ORDER BY G_GRUNO");
 
 Vector hitGRUNO = new Vector();
@@ -76,7 +76,7 @@ GROUP.close();
 %>
 <HTML>
 	<HEAD>
-		<TITLE>ŒÂlÝ’è</TITLE>
+		<TITLE>å€‹äººè¨­å®š</TITLE>
 			<STYLE TYPE="text/css">
 				.shadow{filter:shadow(color=black,direction=135);position:relative;height:50;width:100%;}
 			</STYLE>
@@ -85,11 +85,11 @@ GROUP.close();
 		<CENTER>
 			<SPAN CLASS="shadow">
 				<FONT COLOR="#FFFFFF">
-					<H1>ŒÂlÝ’è</H1>
-					‚¨–¼‘OF<%= name %><br>
+					<H1>å€‹äººè¨­å®š</H1>
+					ãŠåå‰ï¼š<%= name %><br>
 				</FONT>
 			</SPAN>
-			<FONT SIZE="2">¦•ÏXŒã‚©‚ç‘I‘ð‚³‚ê‚½“à—e‚ªÅ—Dæ‚³‚ê‚Ü‚·B</FONT>
+			<FONT SIZE="2">â€»å¤‰æ›´å¾Œã‹ã‚‰é¸æŠžã•ã‚ŒãŸå†…å®¹ãŒæœ€å„ªå…ˆã•ã‚Œã¾ã™ã€‚</FONT>
 			<TABLE BORDER="5" CELLPADDING="0" CELLSPACING="5" WIDTH="600" BORDERCOLOR="#D6FFFF">
 				<TR>
 					<TD>
@@ -97,32 +97,32 @@ GROUP.close();
 							<TR>
 								<FORM ACTION="./personalUpdate.jsp" METHOD="Post">
 								<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-								<TD COLSPAN="4" BGCOLOR="#FFFFFF">- ‰Šú‰æ–ÊÝ’è -</TD>
+								<TD COLSPAN="4" BGCOLOR="#FFFFFF">- åˆæœŸç”»é¢è¨­å®š -</TD>
 							</TR>
 							<TR>
-								<TD BGCOLOR="#D6FFFF">•\Ž¦Œ`Ž®</TD>
+								<TD BGCOLOR="#D6FFFF">è¡¨ç¤ºå½¢å¼</TD>
 								<TD>
 									<SELECT NAME="show">
 									<%
 									if(n_pes.equals("1")){
-										%><OPTION VALUE="1" SELECTED>ŒŽ•\Ž¦</OPTION><%
+										%><OPTION VALUE="1" SELECTED>æœˆè¡¨ç¤º</OPTION><%
 									}else{
-										%><OPTION VALUE="1">ŒŽ•\Ž¦</OPTION><%
+										%><OPTION VALUE="1">æœˆè¡¨ç¤º</OPTION><%
 									}
 									if(n_pes.equals("2")){
-										%><OPTION VALUE="2" SELECTED>T•\Ž¦</OPTION><%
+										%><OPTION VALUE="2" SELECTED>é€±è¡¨ç¤º</OPTION><%
 									}else{
-										%><OPTION VALUE="2">T•\Ž¦</OPTION><%
+										%><OPTION VALUE="2">é€±è¡¨ç¤º</OPTION><%
 									}
 									if(n_pes.equals("3")){
-										%><OPTION VALUE="3" SELECTED>“ú•\Ž¦</OPTION><%
+										%><OPTION VALUE="3" SELECTED>æ—¥è¡¨ç¤º</OPTION><%
 									}else{
-										%><OPTION VALUE="3">“ú•\Ž¦</OPTION><%
+										%><OPTION VALUE="3">æ—¥è¡¨ç¤º</OPTION><%
 									}
 									%>
 									</SELECT>
 								</TD>
-								<TD BGCOLOR="#D6FFFF">Š‘®</TD>
+								<TD BGCOLOR="#D6FFFF">æ‰€å±ž</TD>
 								<TD>
 									<SELECT NAME="gruno" STYLE="width:200">
 									<%
@@ -138,54 +138,54 @@ GROUP.close();
 								</TD>
 							</TR>
 							<TR>
-								<TD COLSPAN="4" BGCOLOR="#FFFFFF">- ‰ß‹ŽƒXƒPƒWƒ…[ƒ‹•ÛŽŠúŠÔ -</TD>
+								<TD COLSPAN="4" BGCOLOR="#FFFFFF">- éŽåŽ»ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«ä¿æŒæœŸé–“ -</TD>
 							</TR>
 							<TR>
 								<TD COLSPAN="4">
 								<%
 								if(n_sce.equals("0")){
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="0" CHECKED>‚Pƒ–ŒŽ<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="0" CHECKED>ï¼‘ãƒ¶æœˆ<%
 								}else{
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="0">‚Pƒ–ŒŽ<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="0">ï¼‘ãƒ¶æœˆ<%
 								}
 								if(n_sce.equals("1")){
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="1" CHECKED>‚Rƒ–ŒŽ<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="1" CHECKED>ï¼“ãƒ¶æœˆ<%
 								}else{
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="1">‚Rƒ–ŒŽ<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="1">ï¼“ãƒ¶æœˆ<%
 								}
 								if(n_sce.equals("2")){
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="2" CHECKED>‚Uƒ–ŒŽ<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="2" CHECKED>ï¼–ãƒ¶æœˆ<%
 								}else{
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="2">‚Uƒ–ŒŽ<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="2">ï¼–ãƒ¶æœˆ<%
 								}
 								if(n_sce.equals("3")){
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="3" CHECKED>‚P”N<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="3" CHECKED>ï¼‘å¹´<%
 								}else{
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="3">‚P”N<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="3">ï¼‘å¹´<%
 								}
 								if(n_sce.equals("4")){
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="4" CHECKED>‚Q”N<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="4" CHECKED>ï¼’å¹´<%
 								}else{
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="4">‚Q”N<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="4">ï¼’å¹´<%
 								}
 								if(n_sce.equals("5")){
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="5" CHECKED>‚R”N<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="5" CHECKED>ï¼“å¹´<%
 								}else{
-									%><INPUT TYPE="radio" NAME="delsch" VALUE="5">‚R”N<%
+									%><INPUT TYPE="radio" NAME="delsch" VALUE="5">ï¼“å¹´<%
 								}
 								%>
 								</TD>
 							</TR>
 							<TR>
 								<TD COLSPAN="3" ALIGN="right" VALIGN="middle">
-									<INPUT TYPE="submit" VALUE="•ÏX" STYLE="width:70">
-									<INPUT TYPE="reset" VALUE="Žæ‚èÁ‚µ" STYLE="width:70">
+									<INPUT TYPE="submit" VALUE="å¤‰æ›´" STYLE="width:70">
+									<INPUT TYPE="reset" VALUE="å–ã‚Šæ¶ˆã—" STYLE="width:70">
 								</TD>
 								</FORM>
 								<FORM ACTION="menu.jsp" METHOD="Post">
 									<TD ALIGN="center" VALIGN="middle">
 										<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-										<INPUT TYPE="submit" VALUE="ƒƒCƒ“ƒƒjƒ…[‚Ö–ß‚é">
+										<INPUT TYPE="submit" VALUE="ãƒ¡ã‚¤ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹">
 									</TD>
 								</FORM>
 							</TR>

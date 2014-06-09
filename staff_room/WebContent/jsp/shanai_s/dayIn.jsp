@@ -1,87 +1,87 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.* , java.util.Vector" %>
 
 <%!
-// ∙╤▌ ┐G┐⌠┐R│[┐h┌П█s┌╓
+// Ф√┤Е╜≈Ц┌╗Ц┐ЁЦ┌ЁЦ┐╪Ц┐┴Ц┌▓Х║▄Ц│├
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal == null){
 		return(null);
 	}
 	else{
-		return(new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+		return(new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
 <%
-/* ▐C░Ё⌠_ */
-// 02-08-05 ▄▌│E▐T│E⌠З┌ф┐t┐@┐C┐▀┌П∙╙┌╞┌д┌╒┌╫┌Ю┌л┌П▄▀█┤┌Ё┌╧│A┐t┐┴┐O┌и┌Ф┌а┌д▐┬≈²┌П▄▌│E▐T│E⌠З┌ж┌ф░ь┌Х▒ж┌М┌И∙Ш√@┌и┬з█s
-// 02-08-15 ≈]▄v┌х┐v┐█┐O┐┴┐─┌П▐х┌╜
-// 02-08-26 ▒I▒П┌Ё┌Й┌╫⌠З∙t┌╘┌Г┬Й▐T┼т░i┌ъ┌╫⌠З∙t┌П▐I≈╧⌠З┌и▒Ц⌠Э┌╣┌д┌╒┌╫┌л┌П┌х┌╜┌╥│B
-// 02-09-04 ▐з█в┴Ф√й┌л∙\▌╕⌠Э┌Й▒ж┌╕▐┬≈²┌П┴а┌╕┌И│B┐┼┐⌠┐N┌П┐N┐┼┐b┐N┌╥┌И┌ф▓P∙Ш▄Э┌и┬з⌠╝┌╥┌И│B
-// 02-09-05 ▐з█в┴Ф√й┌л∙\▌╕⌠Э┌Й▒ж┌╕▐┬≈²┌П∙о█X│B┐┼┐⌠┐N┌П┐N┐┼┐b┐N┌╥┌И┌ф▒o∙Ш▄Э┌и┬з⌠╝┌╥┌И│B
+/* Д©╝Ф╜ёГ┌╧ */
+// 02-08-05 Ф°┬Ц┐╩И─╠Ц┐╩Ф≈╔Ц│╗Ц┐∙Ц┌║Ц┌╓Ц┐╚Ц┌▓Е┬├Ц│▒Ц│╕Ц│└Ц│÷Ц┌┌Ц│╝Ц┌▓Г╣░Е░┬Ц│∙Ц│⌡Ц─│Ц┐∙Ц┐╘Ц┌╟Ц│╚Ц┌┬Ц│ёЦ│╕Е┤╕Г░├Ц┌▓Ф°┬Ц┐╩И─╠Ц┐╩Ф≈╔Ц│╦Ц│╗Е┬┤Ц┌┼Ф⌡©Ц┌▐Ц┌▀Ф√╧ФЁ∙Ц│╚Г╖╩Х║▄
+// 02-08-15 Д╫≥Х╗┬Ц│╙Ц┐≈Ц┐╜Ц┌╟Ц┐╘Ц┐═Ц┌▓Г°│Ц│▐
+// 02-08-26 И│╦Ф┼·Ц│∙Ц┌▄Ц│÷Ф≈╔Д╩≤Ц│▀Ц┌┴Д╦─И─╠И√⌠И─╡Ц┌│Ц│÷Ф≈╔Д╩≤Ц┌▓Г╣┌Д╨├Ф≈╔Ц│╚Д╩ёЕ┘╔Ц│≈Ц│╕Ц│└Ц│÷Ц│╝Ц┌▓Ц│╙Ц│▐Ц│≥Ц─┌
+// 02-09-04 Х╘ЁГ╢╟Г■╩И²╒Ц│╝Х║╗Г╓╨Е┘╔Ц┌▄Ф⌡©Ц│┬Е┤╕Г░├Ц┌▓Е┼═Ц│┬Ц┌▀Ц─┌Ц┐╙Ц┐ЁЦ┌╞Ц┌▓Ц┌╞Ц┐╙Ц┐┐Ц┌╞Ц│≥Ц┌▀Ц│╗Е█≤Ф√╧Е░▒Ц│╚Г╖╩Е▀∙Ц│≥Ц┌▀Ц─┌
+// 02-09-05 Х╘ЁГ╢╟Г■╩И²╒Ц│╝Х║╗Г╓╨Е┘╔Ц┌▄Ф⌡©Ц│┬Е┤╕Г░├Ц┌▓Е╓┴Ф⌡╢Ц─┌Ц┐╙Ц┐ЁЦ┌╞Ц┌▓Ц┌╞Ц┐╙Ц┐┐Ц┌╞Ц│≥Ц┌▀Ц│╗Е▐▄Ф√╧Е░▒Ц│╚Г╖╩Е▀∙Ц│≥Ц┌▀Ц─┌
 
-/* ▓г┴а⌠_ */
-// 02-09-03 ▀╓≈L▌р┐v┐█┐O┐┴┐─┌П┼O∙■┐t┐@┐C┐▀┌ф┌╣┌д▌Ф┌Х█·┌ч│B
+/* Х©╫Е┼═Г┌╧ */
+// 02-09-03 Е┘╠Ф°┴Х─┘Ц┐≈Ц┐╜Ц┌╟Ц┐╘Ц┐═Ц┌▓Е╓√И┐╗Ц┐∙Ц┌║Ц┌╓Ц┐╚Ц│╗Ц│≈Ц│╕Е▐√Ц┌┼Х╬╪Ц┌─Ц─┌
 
-// ┐█┐O┐C┐⌠┌╣┌╫┐├│[┐U┌л▌п┬У■т█├┌П∙о░■[ID]┌и┼i■[
+// Ц┐╜Ц┌╟Ц┌╓Ц┐ЁЦ│≈Ц│÷Ц┐╕Ц┐╪Ц┌╤Ц│╝Г╓╬Е⌠║Г∙╙Е▐╥Ц┌▓Е╓┴Ф∙╟[ID]Ц│╚Ф═╪Г╢█
 String ID = strEncode(request.getParameter("id"));
 
-// ┐p┐┴┐││[┐^┌л▌Ф⌠╬[▀╓≈p┐p┐┴┐││[┐^]
+// Ц┐▒Ц┐╘Ц┐║Ц┐╪Ц┌©Ц│╝Е▐√Е╬≈[Е┘╠Г■╗Ц┐▒Ц┐╘Ц┐║Ц┐╪Ц┌©]
 String NO = request.getParameter("no");
 String GR = request.getParameter("group");
 
-// ┐p┐┴┐││[┐^┌л▌Ф⌠╬[pubs▌g≈p]
+// Ц┐▒Ц┐╘Ц┐║Ц┐╪Ц┌©Ц│╝Е▐√Е╬≈[pubsД╫©Г■╗]
 String DA = strEncode(request.getParameter("s_date"));
 String ST = strEncode(request.getParameter("s_start"));
 String AC = strEncode(request.getParameter("act"));
 
-// ∙\▌╕┌л▌М≈ч┌П■╩∙й┌╥┌И┐p┐┴┐││[┐^
+// Х║╗Г╓╨Ц│╝Г╗╝И║·Ц┌▓Е┬╓Е┬╔Ц│≥Ц┌▀Ц┐▒Ц┐╘Ц┐║Ц┐╪Ц┌©
 String KD = request.getParameter("kind");
 
-// ▒I▒П┌Ё┌Й┌╫⌠З∙t┌л∙╙┼└
+// И│╦Ф┼·Ц│∙Ц┌▄Ц│÷Ф≈╔Д╩≤Ц│╝Е┬├Е┴╡
 String BS = request.getParameter("b_start");
-int BSy = Integer.parseInt(BS.substring(0,4));  // ■N
-int BSm = Integer.parseInt(BS.substring(5,7));  // ▄▌
-int BSd = Integer.parseInt(BS.substring(8,10)); // ⌠З
+int BSy = Integer.parseInt(BS.substring(0,4));  // Е╧╢
+int BSm = Integer.parseInt(BS.substring(5,7));  // Ф°┬
+int BSd = Integer.parseInt(BS.substring(8,10)); // Ф≈╔
 
-// JDBC┐h┐┴┐C┐o┌л┐█│[┐h
+// JDBCЦ┐┴Ц┐╘Ц┌╓Ц┐░Ц│╝Ц┐╜Ц┐╪Ц┐┴
 Class.forName("org.postgresql.Driver");
 
-// ┐f│[┐^┐x│[┐X┌ж┌л┐█┐O┐C┐⌠▐Н∙Я
+// Ц┐┤Ц┐╪Ц┌©Ц┐≥Ц┐╪Ц┌╧Ц│╦Ц│╝Ц┐╜Ц┌╟Ц┌╓Ц┐ЁФ┐┘Е═╠
 String user = "georgir";
 String password = "georgir";
 
-// Connection ┐I┐u┐W┐F┐N┐g┌П░╤░╛
+// Connection Ц┌╙Ц┐√Ц┌╦Ц┌╖Ц┌╞Ц┐┬Ц┌▓Г■÷Ф┬░
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 
-// Statement┐I┐u┐W┐F┐N┐g┌л░╤░╛
+// StatementЦ┌╙Ц┐√Ц┌╦Ц┌╖Ц┌╞Ц┐┬Ц│╝Г■÷Ф┬░
 Statement stmt = con.createStatement();
 
-// SQL▌ю█s│E≈\▓Х▐Н∙Я┌П⌠г┌щ▐o┌╥
-ResultSet YOTEI = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE ▀Ф∙╙ = '1'");
+// SQLЕ╝÷Х║▄Ц┐╩Д╨┬Е╝ Ф┐┘Е═╠Ц┌▓Х╙╜Ц│©Е┤╨Ц│≥
+ResultSet YOTEI = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE Е▄╨Е┬├ = '1'");
 
-// hitList┌л░╤░╛
+// hitListЦ│╝Г■÷Ф┬░
 Vector hitYOTEI = new Vector();
 
-// ▄▀┴й┐Z┐b┐g┌П▐┬≈²┌╣┌э┌╥│B
+// Г╣░Ф·°Ц┌╩Ц┐┐Ц┐┬Ц┌▓Е┤╕Г░├Ц│≈Ц│╬Ц│≥Ц─┌
 while(YOTEI.next()){
-	String basyo = YOTEI.getString("▐Й▐┼");
+	String basyo = YOTEI.getString("Е═╢Ф┴─");
 	hitYOTEI.addElement(basyo.trim());
 }
 
-// hitList┌и⌠Э┌а┌д┌╒┌И▄б░■┌П▒Ц⌠Э
+// hitListЦ│╚Е┘╔Ц│ёЦ│╕Ц│└Ц┌▀Е─▀Ф∙╟Ц┌▓Д╩ёЕ┘╔
 int cntYOTEI = hitYOTEI.size();
 
-// ResultSet┌П∙б┌╤┌И
+// ResultSetЦ┌▓И√┴Ц│≤Ц┌▀
 YOTEI.close();
 
-// SQL▌ю█s│E▐Й▐┼▐Н∙Я┌П⌠г┌щ▐o┌╥
-ResultSet BASYO = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE ▀Ф∙╙ = '2'");
+// SQLЕ╝÷Х║▄Ц┐╩Е═╢Ф┴─Ф┐┘Е═╠Ц┌▓Х╙╜Ц│©Е┤╨Ц│≥
+ResultSet BASYO = stmt.executeQuery("SELECT * FROM KINMU.YOTEI WHERE Е▄╨Е┬├ = '2'");
 
 Vector hitBASYO = new Vector();
 
 while(BASYO.next()){
-	String basyo = BASYO.getString("▐Й▐┼");
+	String basyo = BASYO.getString("Е═╢Ф┴─");
 	hitBASYO.addElement(basyo.trim());
 }
 
@@ -89,11 +89,11 @@ int cntBASYO = hitBASYO.size();
 
 BASYO.close();
 
-/* ⌠╞┐O┐▀│[┐v┌е┌═┌И┌╘┌П■Д┼r┌╥┌И┌╫┌ъ┌и▌g≈p┌╥┌И */
-// SQL▌ю█s│E┐O┐▀│[┐v▐Н∙Я[√{░l]
+/* Е░▄Ц┌╟Ц┐╚Ц┐╪Ц┐≈Ц│╖Ц│┌Ц┌▀Ц│▀Ц┌▓Ф╞■Х╪┐Ц│≥Ц┌▀Ц│÷Ц┌│Ц│╚Д╫©Г■╗Ц│≥Ц┌▀ */
+// SQLЕ╝÷Х║▄Ц┐╩Ц┌╟Ц┐╚Ц┐╪Ц┐≈Ф┐┘Е═╠[Ф°╛Д╨╨]
 ResultSet GROUPID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
-// ▐┴┼З┴╩┌П█s┌а┌д┌╒┌И
+// Е┬²Ф°÷Е▄√Ц┌▓Х║▄Ц│ёЦ│╕Ц│└Ц┌▀
 String group_id = "";
 
 while(GROUPID.next()){
@@ -102,7 +102,7 @@ while(GROUPID.next()){
 
 GROUPID.close();
 
-// SQL▌ю█s│E┐O┐▀│[┐v▐Н∙Я[▒╪┌л┐├│[┐U]
+// SQLЕ╝÷Х║▄Ц┐╩Ц┌╟Ц┐╚Ц┐╪Ц┐≈Ф┐┘Е═╠[Д╩√Ц│╝Ц┐╕Ц┐╪Ц┌╤]
 ResultSet GROUPNO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 String group_no = "";
@@ -113,38 +113,38 @@ while(GROUPNO.next()){
 
 GROUPNO.close();
 
-/* [ID]┌ф[NO]┌л▌│√╪┌П⌠г┌щ▐o┌╣┌э┌╥│B */
-// SQL┌л▌ю█s│E▄б░l▐Н∙Я[√{░l]
+/* [ID]Ц│╗[NO]Ц│╝Ф╟▐Е░█Ц┌▓Х╙╜Ц│©Е┤╨Ц│≈Ц│╬Ц│≥Ц─┌ */
+// SQLЦ│╝Е╝÷Х║▄Ц┐╩Е─▀Д╨╨Ф┐┘Е═╠[Ф°╛Д╨╨]
 ResultSet NAMEID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
 String name_id = "";
 
 while(NAMEID.next()){
-	name_id = NAMEID.getString("K_▌│√╪");
+	name_id = NAMEID.getString("K_Ф╟▐Е░█");
 }
 
 NAMEID.close();
 
-// SQL┌л▌ю█s│E▄б░l▐Н∙ЯNO[▒╪┌л┐├│[┐U]
+// SQLЦ│╝Е╝÷Х║▄Ц┐╩Е─▀Д╨╨Ф┐┘Е═╠NO[Д╩√Ц│╝Ц┐╕Ц┐╪Ц┌╤]
 ResultSet NAMENO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO + "'");
 
 String name_no = "";
 
 while(NAMENO.next()){
-	name_no = NAMENO.getString("K_▌│√╪");
+	name_no = NAMENO.getString("K_Ф╟▐Е░█");
 }
 
 NAMENO.close();
 
-/* ┐O┐▀│[┐v┐R│[┐h│E┐O┐▀│[┐v√╪┌П┐R┐⌠┐{┐{┐b┐N┐X┌и∙\▌╕┌╥┌И┌╫┌ъ┌л▐┬≈² */
-// SQL┌л▌ю█s│E┐O┐▀│[┐v▐Н∙Я
+/* Ц┌╟Ц┐╚Ц┐╪Ц┐≈Ц┌ЁЦ┐╪Ц┐┴Ц┐╩Ц┌╟Ц┐╚Ц┐╪Ц┐≈Е░█Ц┌▓Ц┌ЁЦ┐ЁЦ┐°Ц┐°Ц┐┐Ц┌╞Ц┌╧Ц│╚Х║╗Г╓╨Ц│≥Ц┌▀Ц│÷Ц┌│Ц│╝Е┤╕Г░├ */
+// SQLЦ│╝Е╝÷Х║▄Ц┐╩Ц┌╟Ц┐╚Ц┐╪Ц┐≈Ф┐┘Е═╠
 ResultSet GROUP = stmt.executeQuery("SELECT * FROM KINMU.GRU");
 
-// hitList┌л█Л░╛
+// hitListЦ│╝Д╫°Ф┬░
 Vector hitGRUNUM = new Vector();
 Vector hitGRUNUAM = new Vector();
 
-// ┐O┐▀│[┐v┐e│[┐u┐▀┌и┐A┐N┐Z┐X
+// Ц┌╟Ц┐╚Ц┐╪Ц┐≈Ц┐├Ц┐╪Ц┐√Ц┐╚Ц│╚Ц┌╒Ц┌╞Ц┌╩Ц┌╧
 while(GROUP.next()){
 	String gnum = strEncode(GROUP.getString("G_GRUNO"));
 	String gnam = GROUP.getString("G_GRNAME");
@@ -154,13 +154,13 @@ while(GROUP.next()){
 
 int cntGRU = hitGRUNUM.size();
 
-// ResultSet┌П∙б┌╤┌И
+// ResultSetЦ┌▓И√┴Ц│≤Ц┌▀
 GROUP.close();
 
 %>
 <HTML>
 	<HEAD>
-		<TITLE>▐з█в┴Ф√й</TITLE>
+		<TITLE>Х╘ЁГ╢╟Г■╩И²╒</TITLE>
 		<meta http-equiv="content-language" content="ja">
 		<meta http-equiv="pragma" content="no-cache">
 		<meta name="author" content="roq">
@@ -213,7 +213,7 @@ GROUP.close();
 				<tr>
 					<td bgcolor="#ffffff" width="20" rowspan="2">
 					<center>
-						<a href="#" onClick="return movemn1();" STYLE="text-decoration:none"><b>│л<p><font size="2">┐o<br>┐i<br>│b<br>┐X<br>┐P<br>┐W<br>┐┘<br>│b<br>┐▀<br>⌠o<br>≤^<br>┴Ф<br>√й</font></p>│л</b></a>
+						<a href="#" onClick="return movemn1();" STYLE="text-decoration:none"><b>Б┤■<p><font size="2">Ц┐░<br>Ц┐┼<br>О╫°<br>Ц┌╧<br>Ц┌╠<br>Ц┌╦<br>Ц┐╔<br>О╫°<br>Ц┐╚<br>Г≥╩<br>И▄╡<br>Г■╩<br>И²╒</font></p>Б┤■</b></a>
 					</center>
 					</td>
 					<td bgcolor="#99A5FF" height="604" width="100%" colspan="2">
@@ -227,28 +227,28 @@ GROUP.close();
 							<INPUT TYPE="hidden" NAME="kind" VALUE="<%= KD %>">
 							<SPAN CLASS="shadow">
 								<FONT COLOR="white">
-									┌Ф┌╓┌╠┌╩│B<%= name_id %>┌Ё┌Я│B<br>
+									Ц┌┬Ц│├Ц│⌠Ц│²Ц─┌<%= name_id %>Ц│∙Ц┌⌠Ц─┌<br>
 									<%
 									if(group_id.equals(group_no) || group_id.equals("900")){
-										%><%= name_no %>┌Ё┌Я┌л<br>йче╟╫╧╪ч╜╟ы┌П⌠o≤^┌е┌╚┌э┌╥│B<%
+										%><%= name_no %>Ц│∙Ц┌⌠Ц│╝<br>О╬┼О╬·О╬┘О╫╟О╫╫О╫╧О╫╪О╬·О╫╜О╫╟О╬≥Ц┌▓Г≥╩И▄╡Ц│╖Ц│█Ц│╬Ц│≥Ц─┌<%
 									}else{
-										%><%= name_no %>┌Ё┌Я┌л<br>йче╟╫╧╪ч╜╟ы┌м⌠o≤^┌е┌╚┌э┌╧┌Я│B<%
+										%><%= name_no %>Ц│∙Ц┌⌠Ц│╝<br>О╬┼О╬·О╬┘О╫╟О╫╫О╫╧О╫╪О╬·О╫╜О╫╟О╬≥Ц│╞Г≥╩И▄╡Ц│╖Ц│█Ц│╬Ц│⌡Ц┌⌠Ц─┌<%
 									}
 									%>
 								</FONT>
 							</SPAN>
 							<TABLE BORDER="1" style="width:100%;">
 								<TR>
-									<TD bgcolor="#D6FFFF" rowspan="3" align="center" style="width:20%;">⌠З∙t</TD>
+									<TD bgcolor="#D6FFFF" rowspan="3" align="center" style="width:20%;">Ф≈╔Д╩≤</TD>
 									<TD>
 										<SELECT NAME="syear" STYLE="width:80%">
 										<%
-										// ▄╩█щ┌л■N┌╘┌Г▄э■N▄Ц┌э┌е▐o≈м┌╥┌И┌Ф┌╓┌и┌╣┌д┌╒┌э┌╥│B
+										// Г▐╬Е°╗Ц│╝Е╧╢Ц│▀Ц┌┴Д╨■Е╧╢Е╬▄Ц│╬Ц│╖Е┤╨Е┼⌡Ц│≥Ц┌▀Ц┌┬Ц│├Ц│╚Ц│≈Ц│╕Ц│└Ц│╬Ц│≥Ц─┌
 										for(int i = 0; i < 5;i++){
 											%><OPTION VALUE="<%= BSy + i %>"><%= BSy + i %></OPTION><%
 										}
 										%>
-										</SELECT> ■N<BR>
+										</SELECT> Е╧╢<BR>
 										<SELECT NAME="smonth" STYLE="width:80%">
 										<%
 										for(int i = 1; i <= 12;i++){
@@ -267,7 +267,7 @@ GROUP.close();
 											}
 										}
 										%>
-										</SELECT> ▄▌<BR>
+										</SELECT> Ф°┬<BR>
 										<SELECT NAME="sday" STYLE="width:80%">
 										<%
 										for(int i = 1; i <= 31;i++){
@@ -286,11 +286,11 @@ GROUP.close();
 											}
 										}
 										%>
-										</SELECT> ⌠З<BR>
+										</SELECT> Ф≈╔<BR>
 									</TD>
 								</TR>
 								<TR>
-									<TD align="center" valign="middle">│Г</TD>
+									<TD align="center" valign="middle">Б┬╚</TD>
 								</TR>
 								<TR>
 									<TD>
@@ -300,7 +300,7 @@ GROUP.close();
 											%><OPTION VALUE="<%= BSy + i%>"><%= BSy + i%></OPTION><%
 										}
 										%>
-										</SELECT> ■N<BR>
+										</SELECT> Е╧╢<BR>
 										<SELECT NAME="emonth" STYLE="width:80%">
 										<%
 										for(int i = 1; i <= 12;i++){
@@ -319,7 +319,7 @@ GROUP.close();
 											}
 										}
 										%>
-										</SELECT> ▄▌<BR>
+										</SELECT> Ф°┬<BR>
 										<SELECT NAME="eday" STYLE="width:80%">
 										<%
 										for(int i = 1; i <= 31;i++){
@@ -338,11 +338,11 @@ GROUP.close();
 											}
 										}
 										%>
-										</SELECT> ⌠З<BR>
+										</SELECT> Ф≈╔<BR>
 									</TD>
 								</TR>
 								<TR>
-									<TD bgcolor="#D6FFFF" style="text-align:center;">≈\▓Х</TD>
+									<TD bgcolor="#D6FFFF" style="text-align:center;">Д╨┬Е╝ </TD>
 									<TD>
 										<SELECT NAME="plan" STYLE="width:100%">
 											<OPTION value="--" SELECTED>--</OPTION>
@@ -355,13 +355,13 @@ GROUP.close();
 									</TD>
 								</TR>
 								<TR>
-									<TD bgcolor="#D6FFFF" align="center">≈\▓Х▐з█в</TD>
+									<TD bgcolor="#D6FFFF" align="center">Д╨┬Е╝ Х╘ЁГ╢╟</TD>
 									<TD>
 										<INPUT TYPE="text" NAME="plan2" SIZE="23" MAXLENGTH="30" style="width:100%">
 									</TD>
 								</TR>
 								<TR>
-									<TD bgcolor="#D6FFFF" style="text-align:center;">▐Й▐┼</TD>
+									<TD bgcolor="#D6FFFF" style="text-align:center;">Е═╢Ф┴─</TD>
 									<TD>
 										<SELECT NAME="place" STYLE="width:100%">
 											<OPTION value="--" SELECTED>--</OPTION>
@@ -374,26 +374,26 @@ GROUP.close();
 									</TD>
 								</TR>
 								<TR>
-									<TD bgcolor="#D6FFFF" align="center">▐Й▐┼▐з█в</TD>
+									<TD bgcolor="#D6FFFF" align="center">Е═╢Ф┴─Х╘ЁГ╢╟</TD>
 									<TD>
 										<INPUT TYPE="text" NAME="place2" SIZE="23" MAXLENGTH="30" style="width:100%">
 									</TD>
 								</TR>
 								<TR>
-									<TD bgcolor="#D6FFFF" style="text-align:center;">┐│┐┌</TD>
+									<TD bgcolor="#D6FFFF" style="text-align:center;">Ц┐║Ц┐╒</TD>
 									<TD>
 										<TEXTAREA NAME="memo" ROWS="3" COLS="30" MAXLENGTH="50" STYLE="width:100%; ime-mode:active;"></TEXTAREA>
 									</TD>
 								</TR>
 							</TABLE>
-							<INPUT TYPE="radio" NAME="pre" VALUE="1">█щ░х
-							<INPUT TYPE="radio" NAME="pre" VALUE="0" CHECKED>∙s█щ<P>
+							<INPUT TYPE="radio" NAME="pre" VALUE="1">Е°╗Е╦╜
+							<INPUT TYPE="radio" NAME="pre" VALUE="0" CHECKED>Д╦█Е°╗<P>
 							<%
 							if(group_id.equals(group_no) || group_id.equals("900")){
 							%>
 							<center>
-							<INPUT TYPE="submit" NAME="act" VALUE="⌠o≤^" style="width:45%">
-							<INPUT TYPE="reset" VALUE="▄Ё┌и√ъ┌╥" style="width:45%">
+							<INPUT TYPE="submit" NAME="act" VALUE="Г≥╩И▄╡" style="width:45%">
+							<INPUT TYPE="reset" VALUE="Е┘┐Ц│╚Ф┬╩Ц│≥" style="width:45%">
 							</center>
 						</FORM>
 						<P>
@@ -407,7 +407,7 @@ GROUP.close();
 							<INPUT TYPE="hidden" NAME="kind" VALUE="<%= KD %>">
 							<INPUT TYPE="hidden" NAME="act" VALUE="">
 							<center>
-							<INPUT TYPE="submit" VALUE="┐X┐P┐W┐┘│[┐▀⌠o≤^┌ж┬з⌠╝" STYLE="width:95%">
+							<INPUT TYPE="submit" VALUE="Ц┌╧Ц┌╠Ц┌╦Ц┐╔Ц┐╪Ц┐╚Г≥╩И▄╡Ц│╦Г╖╩Е▀∙" STYLE="width:95%">
 							</center>
 						</FORM>
 						<%

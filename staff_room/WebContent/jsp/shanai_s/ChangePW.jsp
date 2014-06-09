@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="login.css" type="text/css">
 <SCRIPT Language="JavaScript">
 		<!--
@@ -24,7 +24,7 @@
 				|| n.indexOf(bb) != -1 || n.indexOf(cc) != -1
 				|| n.indexOf(dd) != -1 || n.indexOf(ee) != -1
 				|| n.indexOf(ff) != -1) {
-			alert("\"\'\<>\`�͓��͂��Ȃ��ł��������B");
+			alert("\"\'\<>\`は入力しないでください。");
 			return false;
 		}else {
 			document.form1.submit();
@@ -33,33 +33,33 @@
 	}
 // -->
 </SCRIPT>
-<title>�p�X���[�h�ύX</title>
+<title>パスワード変更</title>
 </head>
 <body>
 <center>
-<font class="title">�p�X���[�h�ύX</font>
+<font class="title">パスワード変更</font>
 <form method="post" action="c_changepw" name="form1" onSubmit="return aboutbox()">
 <div class="box4">
-<ul><li>���݂�ID�ƃp�X���[�h����͂��Ă�������</li></ul>
+<ul><li>現在のIDとパスワードを入力してください</li></ul>
 <table>
 <tr>
 <td align="center">I D</td>
 <td align="left"><input type="text"  name="id"  value='' size="30" maxlength="20" class="text"></td>
 </tr>
 <tr>
-<td align="center">�߽ܰ��</td>
+<td align="center">ﾊﾟｽﾜｰﾄﾞ</td>
 <td align="left"><input type="password" name="pw"  value='' size="25" maxlength="20"></td>
 </tr>
 </table>
 </div>
 <div class="box5">
-<ul><li><font>�ύX����p�X���[�h����͂��Ă�������</font></li></ul>
+<ul><li><font>変更するパスワードを入力してください</font></li></ul>
 <input type="password" name="new_pw1"  value='' size="25" maxlength="20"><br>
-<ul><li><font>�m�F�̂��߂�����x���͂��Ă�������</font></li></ul>
+<ul><li><font>確認のためもう一度入力してください</font></li></ul>
 <input type="password" name="new_pw2"  value='' size="25" maxlength="20"><br><br>
-<!-- <input type="submit"  value="�@�ύX�@"  style="cursor: pointer;"><br><br> -->
-<input type="button"  value="�@�ύX�@" onclick="aboutbox()" style="cursor: pointer;"><br><br>
-<a href="ID_PW_Nyuryoku.jsp" class="link"><font class="link"><small>[ ID�E�p�X���[�h���֖͂߂� ]</small></font></a>
+<!-- <input type="submit"  value="　変更　"  style="cursor: pointer;"><br><br> -->
+<input type="button"  value="　変更　" onclick="aboutbox()" style="cursor: pointer;"><br><br>
+<a href="ID_PW_Nyuryoku.jsp" class="link"><font class="link"><small>[ ID・パスワード入力へ戻る ]</small></font></a>
 </div>
 </form>
 </center>

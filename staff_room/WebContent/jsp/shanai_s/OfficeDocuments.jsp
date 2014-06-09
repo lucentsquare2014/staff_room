@@ -1,6 +1,6 @@
 
 <%@ page import="java.sql.Date"%>
-<%@ page language="java" contentType="text/html; charset=shift-jis"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="kkweb.beans.B_ShainMST"%>
 <%@ page
@@ -25,7 +25,7 @@ String selectAction(String name){
 <head>
 
 <script type="text/javascript" src="javascript/officedocuments.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/officedocuments.css" type="text/css">
 <link rel="stylesheet" href="Syanaibunshou.css" type="text/css">
 <%

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"pageEncoding="shift_JIS"session="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"session="true"%>
 <%@ page import="java.util.*" %><%@ page import="kkweb.beans.*" %><%@ page import="kkweb.dao.*" %>
 <jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,23 +8,23 @@
 		}else{%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS"><meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css">
-<title>³”Fì‹ÆI—¹Šm”F</title>
+<title>æ‰¿èªä½œæ¥­çµ‚äº†ç¢ºèª</title>
 </head>
 <body>
 <center>
-<font class="title">³”Fì‹ÆI—¹Šm”F</font><br><hr color = "#008080">
+<font class="title">æ‰¿èªä½œæ¥­çµ‚äº†ç¢ºèª</font><br><hr color = "#008080">
 <table>
-<tr><td align="left"><small>1.u³”Fì‹ÆI—¹vƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚Ä³”Fì‹Æ‚ðŠ®—¹‚³‚¹‚Ä‚­‚¾‚³‚¢B</small></td></tr>
-<tr><td align="left"><small>2. Ä“x³”FˆË—Š‚ðs‚¤ê‡‚Í‰º•\‚Ì³”FŽÒˆê——‚©‚ç‘I‘ð‚µ‚Ä‚­‚¾‚³‚¢B</small></td></tr>
+<tr><td align="left"><small>1.ã€Œæ‰¿èªä½œæ¥­çµ‚äº†ã€ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦æ‰¿èªä½œæ¥­ã‚’å®Œäº†ã•ã›ã¦ãã ã•ã„ã€‚</small></td></tr>
+<tr><td align="left"><small>2. å†åº¦æ‰¿èªä¾é ¼ã‚’è¡Œã†å ´åˆã¯ä¸‹è¡¨ã®æ‰¿èªè€…ä¸€è¦§ã‹ã‚‰é¸æŠžã—ã¦ãã ã•ã„ã€‚</small></td></tr>
 </table><hr color = "#008080"><br>
 <%	request.setCharacterEncoding("Windows-31J");
 	String iraisha_number = request.getParameter("iraisha_number");
 	String iraisha_year_month = request.getParameter("iraisha_year_month");
 	String iraisha_name = request.getParameter("iraisha_name");%>
 <FORM method="post" action="s_shouninkakunin">
-<INPUT TYPE="submit" VALUE="³”Fì‹ÆI—¹" STYLE="cursor: pointer; width:90;background-color:aqua">
+<INPUT TYPE="submit" VALUE="æ‰¿èªä½œæ¥­çµ‚äº†" STYLE="cursor: pointer; width:90;background-color:aqua">
 <INPUT TYPE="hidden"  NAME="iraisha_number" VALUE="<%=iraisha_number %>">
 <INPUT TYPE="hidden"  NAME="iraisha_year_month" VALUE="<%=iraisha_year_month %>">
 </FORM><br>
@@ -62,7 +62,7 @@
 <INPUT TYPE="hidden" NAME="iraisha_number"VALUE="<%=iraisha_number %>" >
 <INPUT TYPE="hidden" NAME="iraisha_name" VALUE="<%=iraisha_name %>">
 <INPUT TYPE="hidden" NAME="iraisha_year_month"VALUE="<%=iraisha_year_month %>" >
-<INPUT TYPE="hidden" NAME="body" VALUE=" <%= b_syouninsha.getName() %> ‚³‚ñ‚Ö <%= iraisha_name %> ‚³‚ñ‚Ì‹Î–±•ñ‘‚Ì³”F‚ð‚¨Šè‚¢‚µ‚Ü‚·B <%= ShainMST.getName() %> ‚æ‚è@http://www.lucentsquare.co.jp:8080/kk_web/Menu_Gamen.jsp"/>
+<INPUT TYPE="hidden" NAME="body" VALUE=" <%= b_syouninsha.getName() %> ã•ã‚“ã¸ <%= iraisha_name %> ã•ã‚“ã®å‹¤å‹™å ±å‘Šæ›¸ã®æ‰¿èªã‚’ãŠé¡˜ã„ã—ã¾ã™ã€‚ <%= ShainMST.getName() %> ã‚ˆã‚Šã€€http://www.lucentsquare.co.jp:8080/kk_web/Menu_Gamen.jsp"/>
 </FORM>
 </TD>
 </TR>
@@ -72,7 +72,7 @@
 <%m++;}%>
 </TR>
 </TABLE><br>
-<a href="Menu_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ƒƒjƒ…[‚Ö–ß‚é ]</small></font></a>
+<a href="Menu_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹ ]</small></font></a>
 </center>
 </body>
 </html>

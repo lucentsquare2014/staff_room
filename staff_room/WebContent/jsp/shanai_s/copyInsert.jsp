@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=Shift_JIS" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*" %>
 <%!
 public String strEncode(String strVal) throws UnsupportedEncodingException{
@@ -6,22 +6,22 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 		return(null);
 	}
 	else{
-		return(new String(strVal.getBytes("8859_1"),"Shift_JIS"));
+		return(new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
 <%
-/* í«â¡ì_ */
-// 02-09-13 ÉRÉsÅ[ã@î\ÇÃÉXÉPÉWÉÖÅ[Éãìoò^ÇçsÇ§
+/* ËøΩÂä†ÁÇπ */
+// 02-09-13 „Ç≥„Éî„ÉºÊ©üËÉΩ„ÅÆ„Çπ„Ç±„Ç∏„É•„Éº„É´ÁôªÈå≤„ÇíË°å„ÅÜ
 
-// ÉçÉOÉCÉìÇµÇΩÉÜÅ[ÉUÇÃé–àıî‘çÜÇïœêî[ID]Ç…äiî[
+// „É≠„Ç∞„Ç§„É≥„Åó„Åü„É¶„Éº„Ç∂„ÅÆÁ§æÂì°Áï™Âè∑„ÇíÂ§âÊï∞[ID]„Å´Ê†ºÁ¥ç
 String ID = strEncode(request.getParameter("id"));
 
-/* ì¸óÕÇ≥ÇÍÇΩäeçÄñ⁄ÇÉpÉâÉÅÅ[É^Ç∆ÇµÇƒéÊìæ */
-// ÉRÉsÅ[èàóùÇÃéûÇ…éÊìæÇµÇΩÅunoÅvÇ…ÇÕÅAÉRÉsÅ[ëŒè€Ç∆Ç»ÇÈÉÜÅ[ÉUIDÇ™ì¸Ç¡ÇƒÇ¢ÇÈ
+/* ÂÖ•Âäõ„Åï„Çå„ÅüÂêÑÈ†ÖÁõÆ„Çí„Éë„É©„É°„Éº„Çø„Å®„Åó„Å¶ÂèñÂæó */
+// „Ç≥„Éî„ÉºÂá¶ÁêÜ„ÅÆÊôÇ„Å´ÂèñÂæó„Åó„Åü„Äåno„Äç„Å´„ÅØ„ÄÅ„Ç≥„Éî„ÉºÂØæË±°„Å®„Å™„Çã„É¶„Éº„Ç∂ID„ÅåÂÖ•„Å£„Å¶„ÅÑ„Çã
 String NO = strEncode(request.getParameter("no"));
 
-// ì\ÇËïtÇØèàóùÇÃéûÇ…éÊìæÇµÇΩÅuno2ÅvÇ…ÇÕÅAì\ÇËïtÇØëŒè€Ç∆Ç»ÇÈÉÜÅ[ÉUIDÇ™ì¸Ç¡ÇƒÇ¢ÇÈ
+// Ë≤º„Çä‰ªò„ÅëÂá¶ÁêÜ„ÅÆÊôÇ„Å´ÂèñÂæó„Åó„Åü„Äåno2„Äç„Å´„ÅØ„ÄÅË≤º„Çä‰ªò„ÅëÂØæË±°„Å®„Å™„Çã„É¶„Éº„Ç∂ID„ÅåÂÖ•„Å£„Å¶„ÅÑ„Çã
 String NO2 = strEncode(request.getParameter("no2"));
 String DA = strEncode(request.getParameter("s_date"));
 String DA2 = strEncode(request.getParameter("s_date2"));
@@ -32,25 +32,25 @@ String KD = strEncode(request.getParameter("kind"));
 
 %>
 <html>
-<head><title>ÉGÉâÅ[</title></head>
+<head><title>„Ç®„É©„Éº</title></head>
 <body BGCOLOR="#99A5FF">
 <%
 
-// JDBCÉhÉâÉCÉoÇÃÉçÅ[Éh
+// JDBC„Éâ„É©„Ç§„Éê„ÅÆ„É≠„Éº„Éâ
 Class.forName("org.postgresql.Driver");
 
-// ÉfÅ[É^ÉxÅ[ÉXÇ…ÉçÉOÉCÉìÇ∑ÇÈÇΩÇﬂÇÃèÓïÒ
+// „Éá„Éº„Çø„Éô„Éº„Çπ„Å´„É≠„Ç∞„Ç§„É≥„Åô„Çã„Åü„ÇÅ„ÅÆÊÉÖÂ†±
 String user = "georgir";
 String password = "georgir";
 
-// ÉfÅ[É^ÉxÅ[ÉXÇ…ê⁄ë±
+// „Éá„Éº„Çø„Éô„Éº„Çπ„Å´Êé•Á∂ö
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 
-// ÉXÉeÅ[ÉgÉÅÉìÉgÇÃê∂ê¨
+// „Çπ„ÉÜ„Éº„Éà„É°„É≥„Éà„ÅÆÁîüÊàê
 Statement stmt = con.createStatement();
 
-// SQLé¿çsÅEÉRÉsÅ[ã@î\
-ResultSet SCOPY = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_é–àıNO = '" + NO + "' AND S_DATE = '" + DA + "' AND S_START = '" + ST + "'");
+// SQLÂÆüË°å„Éª„Ç≥„Éî„ÉºÊ©üËÉΩ
+ResultSet SCOPY = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_Á§æÂì°NO = '" + NO + "' AND S_DATE = '" + DA + "' AND S_START = '" + ST + "'");
 
 String cpyEND = "";
 String cpyPLAN = "";
@@ -89,11 +89,11 @@ while(SCOPY.next()){
 
 SCOPY.close();
 
-/* ìØÉOÉãÅ[ÉvÇ≈Ç†ÇÈÇ©Çî‰ärÇ∑ÇÈÇΩÇﬂÇ…égópÇ∑ÇÈ */
-// SQLé¿çsÅEÉOÉãÅ[ÉvèÓïÒ[ñ{êl]
+/* Âêå„Ç∞„É´„Éº„Éó„Åß„ÅÇ„Çã„Åã„ÇíÊØîËºÉ„Åô„Çã„Åü„ÇÅ„Å´‰ΩøÁî®„Åô„Çã */
+// SQLÂÆüË°å„Éª„Ç∞„É´„Éº„ÉóÊÉÖÂ†±[Êú¨‰∫∫]
 ResultSet GROUPID = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 
-// èâä˙âªÇçsÇ¡ÇƒÇ¢ÇÈ
+// ÂàùÊúüÂåñ„ÇíË°å„Å£„Å¶„ÅÑ„Çã
 String group_id = "";
 
 while(GROUPID.next()){
@@ -102,7 +102,7 @@ while(GROUPID.next()){
 
 GROUPID.close();
 
-// SQLé¿çsÅEÉOÉãÅ[ÉvèÓïÒ[ëºÇÃÉÜÅ[ÉU]
+// SQLÂÆüË°å„Éª„Ç∞„É´„Éº„ÉóÊÉÖÂ†±[‰ªñ„ÅÆ„É¶„Éº„Ç∂]
 ResultSet GROUPNO = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + NO2 + "'");
 
 String group_no = "";
@@ -113,13 +113,13 @@ while(GROUPNO.next()){
 
 GROUPNO.close();
 
-// èdï°É`ÉFÉbÉNópflag
+// ÈáçË§á„ÉÅ„Çß„ÉÉ„ÇØÁî®flag
 boolean check = false;
 
-// SQLé¿çs
+// SQLÂÆüË°å
 if(group_id.equals(group_no) || group_id.equals("900")){
-	// èdï°ÉXÉPÉWÉÖÅ[ÉãÇÃÉ`ÉFÉbÉN
-	ResultSet CHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_é–àıNO = '" + NO2 + "' AND S_DATE = '" + DA2 + "' AND (('" + ST + "' < S_START AND '" + cpyEND + "' > S_START) OR ('" + ST + "' < S_END AND '" + cpyEND + "' > S_END) OR (S_START < '"+ ST +"' and '"+ cpyEND +"' < S_END ) OR (S_START = '"+ ST +"' and S_END = '"+ cpyEND +"'))");
+	// ÈáçË§á„Çπ„Ç±„Ç∏„É•„Éº„É´„ÅÆ„ÉÅ„Çß„ÉÉ„ÇØ
+	ResultSet CHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_Á§æÂì°NO = '" + NO2 + "' AND S_DATE = '" + DA2 + "' AND (('" + ST + "' < S_START AND '" + cpyEND + "' > S_START) OR ('" + ST + "' < S_END AND '" + cpyEND + "' > S_END) OR (S_START < '"+ ST +"' and '"+ cpyEND +"' < S_END ) OR (S_START = '"+ ST +"' and S_END = '"+ cpyEND +"'))");
 
 	while(CHECK.next()){
 		check = true;
@@ -128,7 +128,7 @@ if(group_id.equals(group_no) || group_id.equals("900")){
 	CHECK.close();
 
 	if(!check){
-		stmt.execute("INSERT INTO S_TABLE(GO_é–àıNO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + NO2 + "','" + DA2 + "','" + ST + "','" + cpyEND + "','" + cpyPLAN + "','" + cpyPLAN2 + "','" + cpyPLACE + "','" + cpyPLACE2 + "','" + cpyMEMO + "','" + cpyTOUROKU + "','" + cpyZAISEKI + "')");
+		stmt.execute("INSERT INTO S_TABLE(GO_Á§æÂì°NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + NO2 + "','" + DA2 + "','" + ST + "','" + cpyEND + "','" + cpyPLAN + "','" + cpyPLAN2 + "','" + cpyPLACE + "','" + cpyPLACE2 + "','" + cpyMEMO + "','" + cpyTOUROKU + "','" + cpyZAISEKI + "')");
 	}
 	else{
 	%>

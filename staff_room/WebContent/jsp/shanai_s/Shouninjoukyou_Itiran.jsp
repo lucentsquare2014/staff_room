@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "kkweb.dao.*" %><%@ page import = "kkweb.dao.GroupDAO" %><%@ page import = "kkweb.joukyou.S_Joukyou" %><%@ page import = "kkweb.common.C_DBConnection" %>
 <%@ page import = "kkweb.beans.B_Shouninjoukyou" %><%@ page import = "kkweb.beans.B_GroupMST" %><%@ page import = "kkweb.beans.B_GoukeiMST" %>
 <%@ page import = "kkweb.beans.B_ShainMST" %><%@ page import="java.sql.*"%><%@ page import = "java.util.ArrayList"%>
@@ -10,31 +10,31 @@
 		}else{%>
 <html lang="ja">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css"><link rel="stylesheet" href="report.css" type="text/css">
-<title>³”Fó‹µˆê——</title>
+<title>æ‰¿èªçŠ¶æ³ä¸€è¦§</title>
 </head>
 <BODY>
 <CENTER>
-<%	if (Year_month_group.getGroupname().equals(" ‘SƒOƒ‹[ƒv ")){%>
-	<font class="title">³”Fó‹µˆê——</font><br><br>
-	<BIG><B><%= Year_month_group.getYear() %>”N@<%= Year_month_group.getMonth() %>ŒŽ<BR></B></BIG>
+<%	if (Year_month_group.getGroupname().equals(" å…¨ã‚°ãƒ«ãƒ¼ãƒ— ")){%>
+	<font class="title">æ‰¿èªçŠ¶æ³ä¸€è¦§</font><br><br>
+	<BIG><B><%= Year_month_group.getYear() %>å¹´ã€€<%= Year_month_group.getMonth() %>æœˆ<BR></B></BIG>
 	<TABLE border="1" bordercolor="#008080" style=" border:inset 5px #008080; width:900px;" >
 	<TR>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>Ž@–¼</B></font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>Ží@—Þ</B></font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>³”Fó‹µ</B></font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>³”FŒo˜H</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ°ã€€å</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>ç¨®ã€€é¡ž</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ‰¿èªçŠ¶æ³</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ‰¿èªçµŒè·¯</B></font></th>
 	<TD style="border-style:none;" class="cell2"></TD>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>Ž@–¼</B></font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>Ží@—Þ</B></font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>³”Fó‹µ</B></font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>³”FŒo˜H</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ°ã€€å</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>ç¨®ã€€é¡ž</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ‰¿èªçŠ¶æ³</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ‰¿èªçµŒè·¯</B></font></th>
 	<TD style="border-style:none;" class="cell2"></TD>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>Ž@–¼</B></font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>Ží@—Þ</B></font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>³”Fó‹µ</B></font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>³”FŒo˜H</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ°ã€€å</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>ç¨®ã€€é¡ž</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ‰¿èªçŠ¶æ³</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ‰¿èªçµŒè·¯</B></font></th>
 	</TR>
 	<TR>
 	<%	String flg = "";
@@ -69,9 +69,9 @@
 	 		}
 			if (flg != null && flg.equals("0")){%>
 				<TD nowrap class="cell" align="center" STYLE="font-size:12px"><%= smst.getName() %></TD>
-				<TD nowrap class="cell" align="center" STYLE="font-size:12px">‹Î–±•ñ‘</TD>
-				<TD class="cell" align="center" STYLE="background-color:aqua;font-size:12px">³”FI—¹</TD>
-				<TD class="cell" align="center" STYLE="font-size:10px"><%=gmst.getSyouninRoot()%>@</TD>
+				<TD nowrap class="cell" align="center" STYLE="font-size:12px">å‹¤å‹™å ±å‘Šæ›¸</TD>
+				<TD class="cell" align="center" STYLE="background-color:aqua;font-size:12px">æ‰¿èªçµ‚äº†</TD>
+				<TD class="cell" align="center" STYLE="font-size:10px"><%=gmst.getSyouninRoot()%>ã€€</TD>
 				<%			if (c != null && c.equals("0")){%>
 				<TD class="cell" style="border-style:none;"></TD>
 				<% 				c = "1";
@@ -84,9 +84,9 @@
 							}
 			}else if (flg != null && flg.equals("1")){%>
 				<TD nowrap class="cell" align="center" STYLE="font-size:12px"><%= smst.getName() %></TD>
-				<TD nowrap class="cell" align="center" STYLE="font-size:12px">‹Î–±•ñ‘</TD>
-				<TD class="cell" align="center" STYLE="background-color:yellow;font-size:12px">³”F’†</TD>
-				<TD class="cell" align="center" STYLE="font-size:10px"><%=gmst.getSyouninRoot()%>@</TD>
+				<TD nowrap class="cell" align="center" STYLE="font-size:12px">å‹¤å‹™å ±å‘Šæ›¸</TD>
+				<TD class="cell" align="center" STYLE="background-color:yellow;font-size:12px">æ‰¿èªä¸­</TD>
+				<TD class="cell" align="center" STYLE="font-size:10px"><%=gmst.getSyouninRoot()%>ã€€</TD>
 				<%			if (c != null && c.equals("0")){%>
 				<TD class="cell" style="border-style:none;"></TD>
 				<% 				c = "1" ;
@@ -98,9 +98,9 @@
 				<% 				c = "0" ; }
 						}else if (flg != null && flg.equals("2")){%>
 				<TD nowrap class="cell" align="center" STYLE="font-size:12px"><%= smst.getName() %></TD>
-				<TD nowrap class="cell" align="center" STYLE="font-size:12px">@</TD>
-				<TD class="cell" align="center" STYLE="font-size:12px">@</TD>
-				<TD class="cell" align="center" STYLE="font-size:10px">@</TD>
+				<TD nowrap class="cell" align="center" STYLE="font-size:12px">ã€€</TD>
+				<TD class="cell" align="center" STYLE="font-size:12px">ã€€</TD>
+				<TD class="cell" align="center" STYLE="font-size:10px">ã€€</TD>
 				<%			if (c != null && c.equals("0")){%>
 				<TD class="cell" style="border-style:none;"></TD>
 				<%				 c = "1" ;
@@ -112,9 +112,9 @@
 				<% 				c = "0" ; }
 						}else if (flg == null || flg.equals("")){%>
 				<TD nowrap class="cell" align="center" STYLE="font-size:12px"><%= smst.getName() %></TD>
-				<TD nowrap class="cell" align="center" STYLE="font-size:12px">@</TD>
-				<TD class="cell" align="center" STYLE="font-size:12px">@</TD>
-				<TD class="cell" align="center" STYLE="font-size:10px">@</TD>
+				<TD nowrap class="cell" align="center" STYLE="font-size:12px">ã€€</TD>
+				<TD class="cell" align="center" STYLE="font-size:12px">ã€€</TD>
+				<TD class="cell" align="center" STYLE="font-size:10px">ã€€</TD>
 				<%			if (c != null && c.equals("0")){%>
 				<TD class="cell" style="border-style:none;"></TD>
 				<% 				c = "1" ;
@@ -131,24 +131,24 @@
 				</TR>
 				</TABLE>
 <%}else{ %>
-	<font class="title">³”Fó‹µˆê——</font><br><br>
-	<BIG><B><%= Year_month_group.getYear() %>”N@ <%= Year_month_group.getMonth() %>ŒŽ@ <%= Year_month_group.getGroupname() %></B></BIG><br>
+	<font class="title">æ‰¿èªçŠ¶æ³ä¸€è¦§</font><br><br>
+	<BIG><B><%= Year_month_group.getYear() %>å¹´ã€€ <%= Year_month_group.getMonth() %>æœˆã€€ <%= Year_month_group.getGroupname() %></B></BIG><br>
 	<TABLE border="1" bordercolor="#008080" style =" border:inset 5px #008080; width:800px;">
 	<TR>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku">Ž@–¼</font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku">Ží@—Þ</font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku">³”Fó‹µ</font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>³”FŒo˜H</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku">æ°ã€€å</font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku">ç¨®ã€€é¡ž</font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku">æ‰¿èªçŠ¶æ³</font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ‰¿èªçµŒè·¯</B></font></th>
 	<TD style="border-style:none;" class="cell2"></TD>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku">Ž@–¼</font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku">Ží@—Þ</font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku">³”Fó‹µ</font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>³”FŒo˜H</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku">æ°ã€€å</font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku">ç¨®ã€€é¡ž</font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku">æ‰¿èªçŠ¶æ³</font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ‰¿èªçµŒè·¯</B></font></th>
 	<TD style="border-style:none;" class="cell2"></TD>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku">Ž@–¼</font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku">Ží@—Þ</font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku">³”Fó‹µ</font></th>
-	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>³”FŒo˜H</B></font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku">æ°ã€€å</font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku">ç¨®ã€€é¡ž</font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku">æ‰¿èªçŠ¶æ³</font></th>
+	<th nowrap class="t-koumoku" ><font class="f-koumoku"><B>æ‰¿èªçµŒè·¯</B></font></th>
 	</TR>
 	<TR>
 <%
@@ -185,9 +185,9 @@
 	 		}
 		if(flg != null && flg.equals("0")){ %>
 <TD nowrap class="cell" align="center" STYLE="font-size:12px"><%= smst.getName() %></TD>
-<TD nowrap class="cell" align="center" STYLE="font-size:12px">‹Î–±•ñ‘</TD>
-<TD class="cell" align="center" STYLE="background-color:aqua;font-size:12px">³”FI—¹</TD>
-<TD class="cell" align="center" STYLE="font-size:12px"><%=gmst.getSyouninRoot()%>@</TD>
+<TD nowrap class="cell" align="center" STYLE="font-size:12px">å‹¤å‹™å ±å‘Šæ›¸</TD>
+<TD class="cell" align="center" STYLE="background-color:aqua;font-size:12px">æ‰¿èªçµ‚äº†</TD>
+<TD class="cell" align="center" STYLE="font-size:12px"><%=gmst.getSyouninRoot()%>ã€€</TD>
 <% 			if(c != null && c.equals("0")){%>
 <TD class="cell" style="border-style:none;"></TD>
 <% 				c = "1" ;
@@ -200,9 +200,9 @@
 	 		}
 		}else if (flg != null && flg.equals("1")){ %>
 <TD nowrap class="cell" align="center" STYLE="font-size:12px"><%= smst.getName() %></TD>
-<TD nowrap class="cell" align="center" STYLE="font-size:12px">‹Î–±•ñ‘</TD>
-<TD class="cell" align="center" STYLE="background-color:yellow;font-size:12px">³”F’†</TD>
-<TD class="cell" align="center" STYLE="font-size:12px"><%=gmst.getSyouninRoot()%>@</TD>
+<TD nowrap class="cell" align="center" STYLE="font-size:12px">å‹¤å‹™å ±å‘Šæ›¸</TD>
+<TD class="cell" align="center" STYLE="background-color:yellow;font-size:12px">æ‰¿èªä¸­</TD>
+<TD class="cell" align="center" STYLE="font-size:12px"><%=gmst.getSyouninRoot()%>ã€€</TD>
 <% 			if (c != null && c.equals("0")){%>
 <TD class="cell" style="border-style:none;"></TD>
 <% 				c = "1" ;
@@ -216,8 +216,8 @@
 		}else if (flg != null && flg.equals("2")){ %>
 <TD nowrap class="cell" align="center" STYLE="font-size:12px"><%= smst.getName() %></TD>
 <TD nowrap class="cell" align="center" STYLE="font-size:12px">	</TD>
-<TD class="cell" align="center" STYLE="font-size:12px">@</TD>
-<TD class="cell" align="center" STYLE="font-size:12px">@</TD>
+<TD class="cell" align="center" STYLE="font-size:12px">ã€€</TD>
+<TD class="cell" align="center" STYLE="font-size:12px">ã€€</TD>
 <% 			if (c != null && c.equals("0")){%>
 <TD class="cell" style="border-style:none;"></TD>
 <% 				c = "1" ;
@@ -230,9 +230,9 @@
 	 		}%>
 <%		}else if (flg == null || flg.equals("")){ %>
 <TD nowrap class="cell" align="center" STYLE="font-size:12px"><%= smst.getName() %></TD>
-<TD nowrap class="cell" align="center" STYLE="font-size:12px">@</TD>
-<TD class="cell" align="center" STYLE="font-size:12px">@</TD>
-<TD class="cell" align="center" STYLE="font-size:12px">@</TD>
+<TD nowrap class="cell" align="center" STYLE="font-size:12px">ã€€</TD>
+<TD class="cell" align="center" STYLE="font-size:12px">ã€€</TD>
+<TD class="cell" align="center" STYLE="font-size:12px">ã€€</TD>
 <% 			if (c != null && c.equals("0")){%>
 <TD class="cell" style="border-style:none;"></TD>
 <% c = "1" ;
@@ -246,7 +246,7 @@
 </TR>
 </TABLE>
 <%	}%><br>
-<a href="Menu_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ƒƒjƒ…[‚Ö–ß‚é ]</small></font></a>
+<a href="Menu_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¸æˆ»ã‚‹ ]</small></font></a>
 </CENTER>
 </BODY>
 </HTML>

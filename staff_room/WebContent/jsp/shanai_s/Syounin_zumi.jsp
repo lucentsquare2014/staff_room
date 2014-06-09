@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %><%@ page import = "kkweb.common.C_CheckTime" %><%@ page import = "kkweb.common.C_CheckGoukei" %>
 <%@ page import = "kkweb.common.C_JikanKeisan" %><%@ page import = "kkweb.common.C_HolidayBackcolor" %><%@ page import = "kkweb.common.C_Holiday" %>
 <%@ page import = "kkweb.common.C_Lastday" %><%@ page import = "kkweb.common.C_GetWeekday" %><%@ page import = "kkweb.beans.B_ShainMST" %>
@@ -13,29 +13,29 @@
 	}else{%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS"><meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css"><link rel="stylesheet" href="report.css" type="text/css">
-<title>���F��ƏI���̋Ζ��񍐏�</title>
+<title>承認作業終了の勤務報告書</title>
 </head>
 <body>
 <center>
-<font class="title">�Ζ��񍐏��i���F�ς݁j</font><BR><hr color = "#008080">
+<font class="title">勤務報告書（承認済み）</font><BR><hr color = "#008080">
 <table>
-<tr><td align="left"><font color ="red"><small>�ߋ��̋Ζ��񍐏��̍ē��͂��s���ꍇ�͂���Ȍ�̋Ζ��񍐏����ē��͂��Ă��������B</small></font></td></tr>
-<tr><td align="left"><small>�E��j8���̃f�[�^�����F��A7���̃f�[�^���ē��͂���ꍇ��7�����X�V��A8���̃f�[�^���X�V���Ă��������B</small></td></tr>
+<tr><td align="left"><font color ="red"><small>過去の勤務報告書の再入力を行う場合はそれ以後の勤務報告書も再入力してください。</small></font></td></tr>
+<tr><td align="left"><small>・例）8月のデータを承認後、7月のデータを再入力する場合は7月を更新後、8月のデータも更新してください。</small></td></tr>
 </table><hr color = "#008080"><br>
-<font size="4"><b><%= Year_month.getYear() %>�N�@<%= Year_month.getMonth() %>��</b></font>
+<font size="4"><b><%= Year_month.getYear() %>年　<%= Year_month.getMonth() %>月</b></font>
 <table border="1"  cellspacing="0" class="houkoku">
 <tr>
-<th class="t-koumoku"  ><font class="f-koumoku">��</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">�j��</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">P�R�[�h</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">�o�Ύ���</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">�ދΎ���</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">���ߎ���</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">�[�鎞��</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">���ڎ���</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">���l</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">日</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">曜日</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">Pコード</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">出勤時間</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">退勤時間</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">超過時間</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">深夜時間</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">直接時間</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">備考</font></th>
 </tr>
 <%	String sql = "";
 	int thisMonth = Integer.parseInt(Year_month.getMonth()+"00");
@@ -111,16 +111,16 @@
 <br />
 <table border="1"class="houkoku" cellspacing="0">
 <tr>
-<th class="t-koumoku" ><font class="f-koumoku">���ߎ���</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">�[�鎞��</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">�s�J����</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">�x�o����</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">��x����</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">�N�x����</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">���Γ���</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">�`�x�v</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">�a�x�v</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">���v����</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">超過時間</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">深夜時間</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">不労時間</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">休出日数</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">代休日数</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">年休日数</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">欠勤日数</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">Ａ休計</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">Ｂ休計</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">合計時間</font></th>
 </tr>
 <%	GoukeiDAO gdao = new GoukeiDAO();
 	sql = " where number ='"+ShainMST.getNumber()+"'AND year_month ='"+Year_month.getYear_month()+"'";
@@ -144,12 +144,12 @@
 </center><center>
 <table border="1"class="houkoku" cellspacing="0">
 <tr>
-<th class="t-koumoku" ><font class="f-koumoku">���N�t�^����</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">�J�z�N�x����</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">�g�p�N�x����</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">�c�N�x����</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">���Ԏc�Ǝ���</font></th>
-<th class="t-koumoku" ><font class="f-koumoku">�N�ԗݐώc�Ǝ���</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">当年付与日数</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">繰越年休日数</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">使用年休日数</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">残年休日数</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">月間残業時間</font></th>
+<th class="t-koumoku" ><font class="f-koumoku">年間累積残業時間</font></th>
 </tr>
 <%	NenkyuDAO ndao = new NenkyuDAO();
 	sql = " where number ='"+ShainMST.getNumber()+"'";
@@ -181,9 +181,9 @@
 </tr>
 </table><br>
 <form action="Kinmu_nyuryoku.jsp" method="post">
-<input type="submit" value="�ē���" style="cursor: pointer;">
+<input type="submit" value="再入力" style="cursor: pointer;">
 </form><br>
-<a href="Menu_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ ���j���[�֖߂� ]</small></font></a>
+<a href="Menu_Gamen.jsp" style="text-decoration:none;"><font class="link"><small>[ メニューへ戻る ]</small></font></a>
 </center>
 </body>
 </html>

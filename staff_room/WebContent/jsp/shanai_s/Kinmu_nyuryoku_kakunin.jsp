@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS" pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %><%@ page import = "kkweb.common.C_GetWeekday" %><%@ page import = "kkweb.common.C_HolidayBackcolor" %>
 <%@ page import = "kkweb.common.C_CheckTime" %><%@ page import = "kkweb.common.C_CheckGoukei" %><%@ page import = "kkweb.common.C_Lastday" %>
 <%@ page import = "kkweb.common.C_Holiday" %><%@ page import = "kkweb.beans.B_ShainMST" %><%@ page import = "kkweb.beans.B_Year_month" %>
@@ -33,26 +33,26 @@
 		document.B.submit()			
 	}
 </SCRIPT>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css">
 <link rel="stylesheet" href="report.css" type="text/css">
-<title>‹Î–±•ñ‘Šm”F</title>
+<title>å‹¤å‹™å ±å‘Šæ›¸ç¢ºèª</title>
 </head>
 <body>
 <center>
-<font class="title">‹Î–±•ñ‘</font><br><br>
-<font size="4"><b><%= ShainMST.getName() %> F <%= Year_month.getYear() %>”N@<%= Year_month.getMonth() %>ŒŽ</b></font><br>
+<font class="title">å‹¤å‹™å ±å‘Šæ›¸</font><br><br>
+<font size="4"><b><%= ShainMST.getName() %> ï¼š <%= Year_month.getYear() %>å¹´ã€€<%= Year_month.getMonth() %>æœˆ</b></font><br>
 <table border="1" cellspacing="0" class="houkoku">
 <tr>
-<th class="t-koumoku"  ><font class="f-koumoku">“ú</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">—j“ú</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">o‹ÎŽžŠÔ</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">‘Þ‹ÎŽžŠÔ</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">’´‰ßŽžŠÔ</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">[–éŽžŠÔ</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">’¼ÚŽžŠÔ</font></th>
-<th class="t-koumoku"  ><font class="f-koumoku">”õl</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">æ—¥</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">æ›œæ—¥</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">å‡ºå‹¤æ™‚é–“</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">é€€å‹¤æ™‚é–“</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">è¶…éŽæ™‚é–“</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">æ·±å¤œæ™‚é–“</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">ç›´æŽ¥æ™‚é–“</font></th>
+<th class="t-koumoku"  ><font class="f-koumoku">å‚™è€ƒ</font></th>
 </tr>
 <%	Calendar cal = Calendar.getInstance();
 	String sql = "";
@@ -117,16 +117,16 @@
 <br />
 <table border="1"cellspacing="0" class="houkoku">
 <tr>
-<th  class="t-koumoku"><font class="f-koumoku">’´‰ßŽžŠÔ</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">[–éŽžŠÔ</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">•s˜JŽžŠÔ</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">‹xo“ú”</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">‘ã‹x“ú”</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">”N‹x“ú”</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">Œ‡‹Î“ú”</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">‚`‹xŒv</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">‚a‹xŒv</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">‡ŒvŽžŠÔ</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">è¶…éŽæ™‚é–“</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">æ·±å¤œæ™‚é–“</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">ä¸åŠ´æ™‚é–“</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">ä¼‘å‡ºæ—¥æ•°</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">ä»£ä¼‘æ—¥æ•°</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">å¹´ä¼‘æ—¥æ•°</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">æ¬ å‹¤æ—¥æ•°</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">ï¼¡ä¼‘è¨ˆ</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">ï¼¢ä¼‘è¨ˆ</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">åˆè¨ˆæ™‚é–“</font></th>
 </tr>
 <%	GoukeiDAO gdao = new GoukeiDAO();
 	sql = " where number='"+ShainMST.getNumber()+"' AND year_month ='"+Year_month.getYear_month()+"'";
@@ -148,12 +148,12 @@
 </table>
 <table border="1" cellspacing="0" class="houkoku">
 <tr>
-<th  class="t-koumoku"><font class="f-koumoku">“–”N•t—^“ú”</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">ŒJ‰z”N‹x“ú”</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">Žg—p”N‹x“ú”</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">Žc”N‹x“ú”</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">ŒŽŠÔŽc‹ÆŽžŠÔ</font></th>
-<th  class="t-koumoku"><font class="f-koumoku">”NŠÔ—ÝÏŽc‹ÆŽžŠÔ</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">å½“å¹´ä»˜ä¸Žæ—¥æ•°</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">ç¹°è¶Šå¹´ä¼‘æ—¥æ•°</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">ä½¿ç”¨å¹´ä¼‘æ—¥æ•°</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">æ®‹å¹´ä¼‘æ—¥æ•°</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">æœˆé–“æ®‹æ¥­æ™‚é–“</font></th>
+<th  class="t-koumoku"><font class="f-koumoku">å¹´é–“ç´¯ç©æ®‹æ¥­æ™‚é–“</font></th>
 </tr>
 <tr>
 <%	NenkyuDAO_work ndao_work = new NenkyuDAO_work();
@@ -190,12 +190,12 @@
 <tr>
 <td>
 <form action="s_kinmu_houkoku" method="post" name="A">
-<input type="submit" value="³”FˆË—Ši•ñj" style="cursor: pointer;width:120px;" name="aa" onClick="submit1()">
+<input type="submit" value="æ‰¿èªä¾é ¼ï¼ˆå ±å‘Šï¼‰" style="cursor: pointer;width:120px;" name="aa" onClick="submit1()">
 </form>
 </td>
 <td>
 <form method="post" action="Kinmu_Nyuryoku.jsp" name="B">
-<input type="button" onClick='history.back();' value="Ä“ü—Í" style="cursor: pointer;width:120px;" name="bb" onClick="submit2()">
+<input type="button" onClick='history.back();' value="å†å…¥åŠ›" style="cursor: pointer;width:120px;" name="bb" onClick="submit2()">
 </form>
 </td>
 </tr>

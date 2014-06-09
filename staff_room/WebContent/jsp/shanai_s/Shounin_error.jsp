@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=shift_JIS"pageEncoding="shift_JIS"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key");
 		if(id2 == null || id2.equals("false")){	
@@ -6,14 +6,14 @@
 		}else{%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_JIS">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="message.css" type="text/css">
-<title>ƒGƒ‰[</title>
+<title>ã‚¨ãƒ©ãƒ¼</title>
 </head>
 <body>
 <center><div class="location">
-<center><div class="location2"><font class="error">³”Fì‹Æ‚Í³‚µ‚­I—¹‚³‚ê‚Ü‚¹‚ñ‚Å‚µ‚½</font><br><br>
-<button onClick="history.back()">Ä“ü—Í</button></div>
+<center><div class="location2"><font class="error">æ‰¿èªä½œæ¥­ã¯æ­£ã—ãçµ‚äº†ã•ã‚Œã¾ã›ã‚“ã§ã—ãŸ</font><br><br>
+<button onClick="history.back()">å†å…¥åŠ›</button></div>
 </center></div>
 </center>
 </body>
