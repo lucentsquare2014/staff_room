@@ -18,20 +18,39 @@ $(function(){
 	});
 	
 	$("#delete").click(function(){
-		var page = $("input[name='page']").val();
-		var filenames = "";
-		$(".uk-table :checked").each(function(){
-			filenames += $(this).val() + ",";
-			console.log($(this).val());
-		});
-		$.ajax({
-			type : "POST",
-			url : "/staff_room/DocumentDelete",
-			cache: false,
-			data : {"delete" : filenames,
-					"page" : page}
-		}).done(function(){
-			
-		});
+		if(confirm('選択された書類をすべて削除してもいいですか?')){
+			var page = $("input[name='page']").val();
+			var filenames = "";
+			$(".uk-table :checked").each(function(){
+				filenames += $(this).val() + ",";
+				console.log($(this).val());
+			});
+			$.ajax({
+				type : "POST",
+				url : "/staff_room/DocumentDelete",
+				cache: false,
+				data : {"delete" : filenames,
+						"page" : page}
+			}).done(function(){
+				notif({
+					type : "success",
+					msg : "削除しました!",
+					position : "center",
+					width : 500,
+					height : 60,
+					timeout : 2000
+				});
+				if(page == "manual"){
+					$(".uk-table :checked").each(function(){
+						$(this).parent("td").parent("tr").fadeOut();
+					});
+				}else{
+					setTimeout(function(){
+				        location.reload();
+				    },1500);
+				}
+				
+			});
+		}
 	});
 });
