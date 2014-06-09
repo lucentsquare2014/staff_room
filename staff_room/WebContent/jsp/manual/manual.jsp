@@ -47,12 +47,12 @@ body {
 	<!--------------  管理者用　 ----------------->　
 	<% if(user.equals("admin")){ %>
 	<div class="uk-grid">
-		<div class="uk-width-1-2 uk-text-left">
+		<div class="uk-width-1-4 uk-text-left">
 			<button id="delete" class="uk-button uk-button-danger" disabled="disabled">
 			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button>
 		</div>
 
-		<div class="uk-width-1-2 uk-text-right">
+		<div class="uk-width-3-4 uk-text-right">
 		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
 			<input name="select_files" class ="uk-container-right" type="text" disabled>
 			<div class="uk-form-file">
