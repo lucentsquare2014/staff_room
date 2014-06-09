@@ -33,15 +33,9 @@ public class Logout extends HttpServlet {
 	    session.invalidate();
 	    // クッキーを削除する
 	    Cookie login_cookie = GetCookie.get("login_cookie", request);
-	    Cookie pass_cookie = GetCookie.get("pass_cookie", request);
 	    if(login_cookie!=null){
 	    	login_cookie.setMaxAge(0);
 		    response.addCookie(login_cookie);
-	    	
-	    }
-	    if(pass_cookie!=null){
-	    	pass_cookie.setMaxAge(0);
-		    response.addCookie(pass_cookie);
 	    	
 	    }
 	    // 会社のHPへ飛ばす

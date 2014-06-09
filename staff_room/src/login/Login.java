@@ -77,19 +77,8 @@ public class Login extends HttpServlet {
 		        
 		    }
 
-	    	// セッションにログインユーザーとパスワードを保存（パスワードは社内システムの改修時に削除予定）
+	    	// セッションにログインユーザーIDを保存
 	    	session.setAttribute("login", id);
-	    	if(GetCookie.get("pass_cookie", request)==null && !(id.equals("admin"))){
-	    		Cookie pass_cookie = new Cookie("pass_cookie", pwd);
-		    	int day = 60*60*24;
-		    	pass_cookie.setHttpOnly(true);
-		    	pass_cookie.setMaxAge(14 * day); 
-		    	// ユーザー側にクッキーを追加
-		        response.addCookie(pass_cookie);
-	    	}
-	    	//session.setAttribute("password", pwd);
-	    	//RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/top/top.jsp");
-            //dispatcher.forward(request, response);
 	    	response.sendRedirect("./jsp/top/top.jsp");
 	    	return;
 	    } else {
