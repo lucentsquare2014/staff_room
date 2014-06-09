@@ -10,7 +10,7 @@ $(function(){
 				cache: false
 			}).done(function(msg){
 				$("[id=" + news_id + "]").removeClass();
-				$("[id=" + news_id + "]").next(".uk-badge-danger").remove();
+				$("[id=" + news_id + "]").prev(".uk-badge-danger").remove();
 				$("#title").text(msg.title);
 				$("#text").text(msg.text);
 				if(msg.filename != ""){

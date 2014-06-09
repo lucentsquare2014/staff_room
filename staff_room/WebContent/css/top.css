@@ -26,8 +26,9 @@ tbody {
 	top: 230px;
 	left: 40px;
 	overflow: scroll;
-	max-width:650px;
-	max-height: 350px;
+	line-height: 1.75em;
+	width:673px;
+	height: 350px;
 	background-color: #eee;
 }
 
