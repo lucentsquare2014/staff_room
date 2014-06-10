@@ -85,10 +85,14 @@ $(function() {
 								<%}%>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 								<div class="uk-badge uk-badge-danger">new</div>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
+										<%=row.get("title")%>
+									</a>
 									&nbsp;
 								<%}else{%>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
+										<%=row.get("title")%>
+									</a>
 								<%}%>
 								
 								</td>
@@ -115,10 +119,14 @@ $(function() {
 								<%}%>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 								<div class="uk-badge uk-badge-danger">new</div>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
+										<%=row.get("title")%>
+									</a>
 									&nbsp;
 								<%}else{%>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
+										<%=row.get("title")%>
+									</a>
 								<%}%>
 								
 								</td>
@@ -142,10 +150,14 @@ $(function() {
 								<%}%>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 								<div class="uk-badge uk-badge-danger">new</div>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
+										<%=row.get("title")%>
+									</a>
 									&nbsp;
 								<%}else{%>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
+										<%=row.get("title")%>
+									</a>
 								<%}%>
 								
 								</td>
@@ -169,10 +181,14 @@ $(function() {
 								<%}%>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 								<div class="uk-badge uk-badge-danger">new</div>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
+										<%=row.get("title")%>
+									</a>
 									&nbsp;
 								<%}else{%>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
+										<%=row.get("title")%>
+									</a>
 								<%}%>
 								
 								</td>
@@ -197,10 +213,14 @@ $(function() {
 								<%}%>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 								<div class="uk-badge uk-badge-danger">new</div>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
+										<%=row.get("title")%>
+									</a>
 									&nbsp;
 								<%}else{%>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
+										<%=row.get("title")%>
+									</a>
 								<%}%>
 								
 								</td>
@@ -225,10 +245,14 @@ $(function() {
 								<%}%>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 								<div class="uk-badge uk-badge-danger">new</div>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
+										<%=row.get("title")%>
+									</a>
 									&nbsp;
 								<%}else{%>
-									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}"><%=row.get("title")%></a>
+									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
+										<%=row.get("title")%>
+									</a>
 								<%}%>
 								
 								</td>

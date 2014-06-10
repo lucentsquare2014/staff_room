@@ -1,5 +1,5 @@
 $(function(){
-	$("td > a").on("click", function(){
+	$(".kiji").on("click", function(){
 		if(typeof $(this).attr("id") != 'undefined'){
 			var news_id = $(this).attr("id");
 			$.ajax({
@@ -9,7 +9,7 @@ $(function(){
 				data: {"news_id" : news_id},
 				cache: false
 			}).done(function(msg){
-				$("[id=" + news_id + "]").removeClass();
+				$("[id=" + news_id + "]").removeClass("uk-text-danger uk-text-bold");
 				$("[id=" + news_id + "]").prev(".uk-badge-danger").remove();
 				$("#title").text(msg.title);
 				$("#text").text(msg.text);

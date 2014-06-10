@@ -122,10 +122,12 @@
 								<%}%>
 					<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 					<div class="uk-badge uk-badge-danger">new</div>
-						<a id="<%= row.get("news_id") %>" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold"><%= row.get("title") %></a>
+						<a id="<%= row.get("news_id") %>" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold kiji">
+							<%= row.get("title") %>
+						</a>
 						&nbsp;<a href="#" id="btn_print<%=row.get("news_id") %>"><i class="uk-icon-print"></i></a>
 					<%}else{%>
-						<a data-uk-toggle="{target:'#my-id<%=i%>'}"><%= row.get("title") %></a>
+						<a data-uk-toggle="{target:'#my-id<%=i%>'}" class="kiji"><%= row.get("title") %></a>
 						&nbsp;<a href="#" id="btn_print<%=row.get("news_id") %>"><i class="uk-icon-print"></i></a>
 					<%}%>
 					<%if (!row.get("filename").equals("")){ %>
@@ -150,6 +152,7 @@
 						$(function() {
 							$('#btn_print' + <%=row.get("news_id") %>).click(function(){
 	    						$.jPrintArea("#print" + <%=row.get("news_id") %>);
+	    						return false;
 	  						});
 						});
 					</script>
