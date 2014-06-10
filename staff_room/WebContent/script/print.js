@@ -1,5 +1,6 @@
 $.jPrintArea=function(el){
 	var iframe=document.createElement('IFRAME');
+	iframe.src="javascript:false;";
 	var doc=null;
 	$(iframe).attr('style','position:absolute;width:0px;height:0px;left:-500px;top:-500px;');
 	document.body.appendChild(iframe);
