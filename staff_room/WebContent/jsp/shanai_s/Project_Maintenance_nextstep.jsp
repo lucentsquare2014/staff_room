@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
 		if(id2 == null || id2.equals("false")){		
-			pageContext.forward("/Pw_Nyuryoku_system.jsp");
+			pageContext.forward("/");
 		}else{%>
 <html>
 <head>
@@ -42,7 +42,7 @@
 </SCRIPT>
 <title>プロジェクト追加</title>
 </head>
-<%	request.setCharacterEncoding("Windows-31J");
+<%	request.setCharacterEncoding("UTF-8");
 	C_CheckWord word = new C_CheckWord();
 	String project_no_code = request.getParameter("p_code");
 	project_no_code = word.checks(project_no_code);

@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
 		if(id2 == null || id2.equals("false")){
-			pageContext.forward("/Pw_Nyuryoku_system.jsp");
+			pageContext.forward("/");
 		}else{%>
 <jsp:useBean id="InsatuDATA" scope="session" type="java.util.ArrayList"/>
 <html>

@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key");
 		if(id2 == null || id2.equals("false")){		
-			pageContext.forward("/ID_PW_Nyuryoku.jsp");
+			pageContext.forward("/");
 		}else{%>
 <html>
 <head>
@@ -39,7 +39,7 @@
 <tr><td align="left"><small>2.「返却」を押すと、入力者、もしくは承認経路の前者にメールを送信します。</small></td></tr>
 </table>
 </CENTER><hr color = "#008080"><br>
-<%	request.setCharacterEncoding("Windows-31J");
+<%	request.setCharacterEncoding("UTF-8");
 	String iraisha_number = request.getParameter("iraisha_number");
 	String iraisha_name = request.getParameter("iraisha_name");
 	String iraisha_year_month = request.getParameter("iraisha_year_month");
