@@ -78,186 +78,217 @@ $(function() {
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
+								<td style="width:40px;">
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
+								<%}%>
+								<td style="width:35px;">
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+								<div class="uk-badge uk-badge-danger">new</div></td>
+								
 								<td><%=dddate.format(date)%></td>
 								<td>
-								<%if(row.get("primary_flag").equals("1")){%>
-									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
-								<%}%>
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
-									</a>
-									&nbsp;
+									</a></td>
+
 								<%}else{%>
+								<td><%=dddate.format(date)%></td>
+								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
-									</a>
+									</a></td>
 								<%}%>
 								
-								</td>
 								<!-- ジャンル -->
 								<td><%=row.get("postname")%></td>
 								
 							</tr><%}%>
 						</table></li>
 					<!-- 「総務」のテーブル -->	
-					<li class=""><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
 									if (row.get("post_id").equals("1")) {
-										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-										Date date = format.parse(row.get("created"));
-										DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
+									SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+									Date date = format.parse(row.get("created"));
+									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
+								<td style="width:40px;">
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
+								<%}%>
+								<td style="width:35px;">
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+								<div class="uk-badge uk-badge-danger">new</div></td>
+								
 								<td><%=dddate.format(date)%></td>
 								<td>
-								<%if(row.get("primary_flag").equals("1")){%>
-									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
-								<%}%>
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
-									</a>
-									&nbsp;
+									</a></td>
+
 								<%}else{%>
+								<td><%=dddate.format(date)%></td>
+								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
-									</a>
+									</a></td>
 								<%}%>
 								
-								</td>
+								
+								
 							</tr><%}}%>
 						</table></li>
 					<!-- 「人事」のテーブル -->	
-					<li class=""><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
 									if (row.get("post_id").equals("2")) {
-										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-										Date date = format.parse(row.get("created"));
-										DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
+									SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+									Date date = format.parse(row.get("created"));
+									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
+								<td style="width:40px;">
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
+								<%}%>
+								<td style="width:35px;">
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+								<div class="uk-badge uk-badge-danger">new</div></td>
+								
 								<td><%=dddate.format(date)%></td>
 								<td>
-								<%if(row.get("primary_flag").equals("1")){%>
-									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
-								<%}%>
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
-									</a>
-									&nbsp;
+									</a></td>
+
 								<%}else{%>
+								<td><%=dddate.format(date)%></td>
+								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
-									</a>
+									</a></td>
 								<%}%>
 								
-								</td>
+								
+								
 							</tr><%}}%>
 						</table></li>
 					<!-- 「行事」のテーブル -->	
-					<li class=""><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
 									if (row.get("post_id").equals("3")) {
-										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-										Date date = format.parse(row.get("created"));
-										DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
+									SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+									Date date = format.parse(row.get("created"));
+									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
+								<td style="width:40px;">
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
+								<%}%>
+								<td style="width:35px;">
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+								<div class="uk-badge uk-badge-danger">new</div></td>
+								
 								<td><%=dddate.format(date)%></td>
 								<td>
-								<%if(row.get("primary_flag").equals("1")){%>
-									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
-								<%}%>
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
-									</a>
-									&nbsp;
+									</a></td>
+
 								<%}else{%>
+								<td><%=dddate.format(date)%></td>
+								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
-									</a>
+									</a></td>
 								<%}%>
 								
-								</td>
-							</tr>
-							<%}}%>
+								
+								
+							</tr><%}}%>
 						</table></li>
 					<!-- 「開発企画」のテーブル -->	
-					<li class=""><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
 									if (row.get("post_id").equals("4")) {
-										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-										Date date = format.parse(row.get("created"));
-										DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
+									SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+									Date date = format.parse(row.get("created"));
+									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
+								<td style="width:40px;">
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
+								<%}%>
+								<td style="width:35px;">
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+								<div class="uk-badge uk-badge-danger">new</div></td>
+								
 								<td><%=dddate.format(date)%></td>
 								<td>
-								<%if(row.get("primary_flag").equals("1")){%>
-									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
-								<%}%>
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
-									</a>
-									&nbsp;
+									</a></td>
+
 								<%}else{%>
+								<td><%=dddate.format(date)%></td>
+								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
-									</a>
+									</a></td>
 								<%}%>
 								
-								</td>
-							</tr>
-							<%}}%>
+								
+								
+							</tr><%}}%>
 						</table></li>
 					<!-- 「その他」のテーブル -->	
-					<li class=""><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
 									if (row.get("post_id").equals("5")) {
-										SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-										Date date = format.parse(row.get("created"));
-										DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
+									SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+									Date date = format.parse(row.get("created"));
+									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
+								<td style="width:40px;">
+								<%if(row.get("primary_flag").equals("1")){%>
+									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
+								<%}%>
+								<td style="width:35px;">
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+								<div class="uk-badge uk-badge-danger">new</div></td>
+								
 								<td><%=dddate.format(date)%></td>
 								<td>
-								<%if(row.get("primary_flag").equals("1")){%>
-									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
-								<%}%>
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
-									</a>
-									&nbsp;
+									</a></td>
+
 								<%}else{%>
+								<td><%=dddate.format(date)%></td>
+								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
-									</a>
+									</a></td>
 								<%}%>
 								
-								</td>
-							</tr>
-							<%}}%>
+								
+								
+							</tr><%}}%>
 						</table></li>
 				</ul>
 			</div>

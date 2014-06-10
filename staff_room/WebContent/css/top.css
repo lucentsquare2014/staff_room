@@ -1,15 +1,21 @@
+/*背景*/
 body {
 	background-image: url("/staff_room/images/top4.jpg");
 }
 
+
 .main-container {
 	padding-top: 50px;
 }
+
+/*all・総務などのタブ*/
 .uk-subnav{position: absolute;
 	float: left;
 	top: 160px;
 	left: 300px;
 	}
+	
+/*そのタブの文字*/
 .uk-subnav >li>a{
 	font-size: 1.2rem;
 	font-weight: bold;
@@ -19,27 +25,40 @@ body {
 	list-style-type: none;
 	background-color:#5BC0DE;}
 	
-
+/*連絡事項の入った灰色のボックス*/
 tbody {
 	position: absolute;
 	float: left;
 	top: 230px;
-	left: 40px;
+	left: 80px;
 	overflow: scroll;
 	line-height: 1.75em;
-	width:673px;
-	height: 350px;
+	width:590px;
+	height: 300px;
 	background-color: #eee;
 }
+/*件名が２０文字以上になると制限がかかり「...」になる*/
+tbody >tr >td {
+overflow: hidden;
+max-width: 280px;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+	
+	
+
 
 .changelog-ul{
     list-style: none;
 }
+
 .changelog-ul >td{
 	white-space: nowrap;
-    padding-left:8px;
-    padding-right:8px;
+    padding-left:4px;
+    padding-right:4px;
 }
+
+/*水色の「連絡事項」*/
 .changelog-title {
 	position: absolute;
 	float: left;
@@ -51,10 +70,12 @@ tbody {
 	border-radius: 10px;
 }
 
+/*「連絡事項」の文字*/
 .changelog-title h1 {
 	padding: 15px 20px 0 20px;
 	color: white;
 }
+
 
 .page-title {
 	clear: both;
@@ -66,4 +87,3 @@ tbody {
 .page-title h1 {
 	font-size: 100px;
 	color: white;
-}
