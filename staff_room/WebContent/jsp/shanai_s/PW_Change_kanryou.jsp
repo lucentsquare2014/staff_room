@@ -10,7 +10,7 @@
 String changedpw = (String)session.getAttribute("changedpw");
 if( changedpw == null || changedpw.equals("false")
   ){
-	pageContext.forward("/ID_PW_Nyuryoku.jsp");
+	pageContext.forward("/");
 }else{
 %>
 <html>

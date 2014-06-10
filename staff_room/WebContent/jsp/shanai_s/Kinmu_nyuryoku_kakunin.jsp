@@ -10,7 +10,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key");
 	if(id2 == null || id2.equals("false")){	
-		pageContext.forward("/ID_PW_Nyuryoku.jsp");
+		pageContext.forward("/");
 	}else{%>
 <html lang="ja">
 <head>
@@ -69,7 +69,7 @@
 	C_CheckTime cct = new C_CheckTime();
 	C_CheckGoukei ccg = new C_CheckGoukei();
 	C_Holiday ch = new C_Holiday();
-	request.setCharacterEncoding("Windows-31J");
+	request.setCharacterEncoding("UTF-8");
 	KinmuDAO kdao = new KinmuDAO();
 	sql = " where number='"+ShainMST.getNumber()+"' AND year_month='"+Year_month.getYear_month()+"' ORDER BY to_number(hizuke,'99') ASC " ;
 	ArrayList klist = kdao.selectTbl(sql);

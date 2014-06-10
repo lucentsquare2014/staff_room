@@ -8,9 +8,9 @@
 <%
 	String id2 = (String) session.getAttribute("key");
 	if (id2 == null || id2.equals("false")) {
-		pageContext.forward("/ID_PW_Nyuryoku.jsp");
+		pageContext.forward("/");
 	} else {
-		request.setCharacterEncoding("windows-31j");
+		request.setCharacterEncoding("UTF-8");
 		String body = request.getParameter("body");
 		String number = request.getParameter("iraisha_number");
 		String year_month = request.getParameter("iraisha_year_month");

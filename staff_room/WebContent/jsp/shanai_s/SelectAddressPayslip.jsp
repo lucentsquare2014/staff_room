@@ -321,7 +321,7 @@
 			</tr>
 			 --%>
 			<tr class="home">
-				<td colspan="2"><a href="SystemSelect.jsp">[システム選択へ戻る]</a></td>
+				<td colspan="2"><a href="/staff_room">[スタッフルームへ戻る]</a></td>
 		</table>
 	</center>
 </body>

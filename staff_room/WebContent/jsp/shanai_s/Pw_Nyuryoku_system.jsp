@@ -29,7 +29,7 @@
 </tr>
 </table></div>
 </form><br>
-<a href="http://www.lucentsquare.co.jp/staff/staff_main.html" class="link"><font class="link"><small>[ スタッフルームへ戻る ]</small></font></a></div>
+<a href="/staff_room" class="link"><font class="link"><small>[ スタッフルームへ戻る ]</small></font></a></div>
 </center>
 </body>
 </html>

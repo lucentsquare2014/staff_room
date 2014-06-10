@@ -6,7 +6,7 @@
 /// 目的 : パスワード変更エラー用に新規作成
 /// TODO : コーディングスタイルから逸脱しているのでエラーページの共有化を検討する必要あり
 if(errmsg == null || errmsg.getErrmsg() == null){
-	pageContext.forward("/ID_PW_Nyuryoku.jsp");
+	pageContext.forward("/");
 }else{%>
 <html lang="ja">
 <head>

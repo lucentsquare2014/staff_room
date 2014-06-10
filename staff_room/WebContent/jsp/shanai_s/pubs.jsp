@@ -8,7 +8,7 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 		return (null);
 	}
 	else{
-		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
+		return (new String(strVal.getBytes("UTF-8"),"UTF-8"));
 	}
 }
 %>

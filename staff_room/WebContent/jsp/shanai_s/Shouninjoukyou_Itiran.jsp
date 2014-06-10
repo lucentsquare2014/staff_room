@@ -16,7 +16,7 @@
 <%
 	String id2 = (String) session.getAttribute("key");
 	if (id2 == null || id2.equals("false")) {
-		pageContext.forward("/staff_room");
+		pageContext.forward("/");
 	} else {
 %>
 <html lang="ja">
