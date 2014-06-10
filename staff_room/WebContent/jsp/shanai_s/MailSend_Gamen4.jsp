@@ -6,7 +6,7 @@
 	id="mailsend" scope="session" class="kkweb.mail.C_MailSend" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-	request.setCharacterEncoding("windows-31j");
+	request.setCharacterEncoding("UTF-8");
 	String body = request.getParameter("body");
 	String number = request.getParameter("iraisha_number");
 	String year_month = request.getParameter("iraisha_year_month");
