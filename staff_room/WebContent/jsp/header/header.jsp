@@ -78,7 +78,7 @@ $(window).resize(function(){
                     <li>
                     <a href="/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=3">社内文書システム</a>
                     </li>
- 					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
+ 					<li><a href="//www.lucentsquare.co.jp/staff/%E7%A4%BE%E5%86%85%E6%96%87%E6%9B%B8%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0/manual01.pdf">社内文書システム<br>操作説明</a></li>
 
 
 					<% if(user.equals("admin")){ %>
@@ -165,7 +165,7 @@ $(window).resize(function(){
                     <li>
                     <a href="/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=3">社内文書システム</a>
                     </li>
-                    <li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
+                    <li><a href="//www.lucentsquare.co.jp/staff/%E7%A4%BE%E5%86%85%E6%96%87%E6%9B%B8%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0/manual01.pdf"> 社内文書システム操作説明</a></li>
 					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
                     <li><a href="/staff_room/jsp/shanai_s/administrator.jsp">管理-社内システム</a></li>
