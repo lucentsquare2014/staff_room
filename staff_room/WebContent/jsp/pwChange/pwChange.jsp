@@ -28,7 +28,7 @@ body {
 ログインパスワード変更
 </div>
 <br>
-<div class="uk-panel uk-panel-box uk-width-1-3 uk-align-center">
+<div class="uk-panel uk-panel-box uk-align-center" style="width:320px;">
 <div class="uk-text-center">
 			<p class="uk-text-danger" id="alert">
 				<% if(request.getAttribute("error") != null){ %>

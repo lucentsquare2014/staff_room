@@ -124,6 +124,11 @@ $(window).resize(function(){
  			<a class="uk-button uk-button-danger" href="/staff_room/Logout">ログアウト</a>
         </div>
  	</div>
+ 	<div class="header" style="float:right;" id="logout">
+ 		<a href="/staff_room/jsp/SiteManual.jsp"style="text-decoration:none; color:whitesmoke; font-size:1em; text-shadow:0px 0px black;line-height: 40px;">
+ 		help
+ 		</a>
+ 	</div>
 	<a href="" class="uk-navbar-toggle uk-visible-small" id="side" data-uk-offcanvas="{target:'#sidenav'}"></a>
 	<div class="uk-navbar-content uk-navbar-center uk-align-center" id="logo">
 		<a href="//www.lucentsquare.co.jp/"
