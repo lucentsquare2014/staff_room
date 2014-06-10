@@ -126,7 +126,7 @@ $(window).resize(function(){
  	</div>
  	<div class="header" style="float:right;" id="logout">
  		<a href="/staff_room/jsp/SiteManual.jsp"style="text-decoration:none; color:whitesmoke; font-size:1em; text-shadow:0px 0px black;line-height: 40px;">
- 		help
+ 		ヘルプ
  		</a>
  	</div>
 	<a href="" class="uk-navbar-toggle uk-visible-small" id="side" data-uk-offcanvas="{target:'#sidenav'}"></a>
@@ -201,6 +201,7 @@ $(window).resize(function(){
 				</ul>
 			</li>
 			<li class="header"><a href="/staff_room/Logout">ログアウト</a></li>
+			<li class="header"><a href="/staff_room/jsp/SiteManual.jsp">ヘルプ</a></li>
         </ul>
     </div>
 </div>
