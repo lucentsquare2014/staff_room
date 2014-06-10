@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key");
 		if(id2 == null || id2.equals("false")){
-			pageContext.forward("/ID_PW_Nyuryoku.jsp");
+			pageContext.forward("/");
 		}else{%>
 <jsp:useBean id="InsatuDATA" scope="session" type="java.util.ArrayList"/>
 <html>
@@ -27,9 +27,9 @@ function PrintPage(){
 <body>
 <center>
 <div class="noprint">
-<font  class="title">勤務報告書aaaaaa</font>
+<font  class="title">勤務報告書</font>
 <form>
-<%	request.setCharacterEncoding("windows-31j");
+<%	request.setCharacterEncoding("UTF-8");
 	if (InsatuDATA == null || InsatuDATA.size() == 0 ){%>
 <br><br>
 <hr width="400">
