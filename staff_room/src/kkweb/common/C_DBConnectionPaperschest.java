@@ -9,9 +9,9 @@ public class C_DBConnectionPaperschest extends C_DBConnectionAbs{
 	// ローカル
 	//private final static String DRIVER_URL = "jdbc:postgresql://localhost:5432/paperschest";
 	// テストサーバ
-	//private final static String DRIVER_URL = "jdbc:postgresql://192.168.101.21:5432/paperschest";
+	private final static String DRIVER_URL = "jdbc:postgresql://192.168.101.21:5432/paperschest";
 	// 本番サーバ
-	private final static String DRIVER_URL = "jdbc:postgresql://192.168.101.26:5432/paperschest";
+	//private final static String DRIVER_URL = "jdbc:postgresql://192.168.101.26:5432/paperschest";
 	private final static String DRIVER_NAME = "org.postgresql.Driver";
 	private final static String USER_NAME = "postgres";
 	private final static String PASSWORD = "admin";

@@ -54,7 +54,7 @@
 </td>
 </tr>
 </table><br>
-<a href="ID_PW_Nyuryoku.jsp" class="link"><font class="link"><small>[ ID・パスワード入力へ戻る ]</small></font></a></div>
+<a href="/staff_room" class="link"><font class="link"><small>[ スタッフルームトップへ ]</small></font></a></div>
 </center>
 </body>
 </html>
