@@ -9,11 +9,9 @@
 <script src="/staff_room/script/pwcheck.js"></script>
 <style type="text/css">
 body {
-	width: 100%;
-	height: 656px;
+	background-image: url("/staff_room/images/pwChange2.jpg");
 	background-attachment: fixed;
-	background-image: url("/staff_room/images/renraku.png");
-	background-size: 100% auto;
+
 	}
 </style>
 <%@ page import="dao.NewsDAO,
@@ -29,30 +27,33 @@ body {
 <div class="uk-h1 uk-text-center">
 ログインパスワード変更
 </div>
-<br><br><br><br>
+<br>
+<div class="uk-panel uk-panel-box uk-width-1-3 uk-align-center">
 <div class="uk-text-center">
 			<p class="uk-text-danger" id="alert">
 				<% if(request.getAttribute("error") != null){ %>
 					<%= request.getAttribute("error")%>
 				<% } %>
 			</p>
-	<div class="uk-text-danger uk-text-center" id="alert"></div><br><br>
+	<div class="uk-text-danger uk-text-center" id="alert"></div>
 	</div>
 	<form class="uk-form uk-form-horizontal" method="post"
 		action="pwChange_finish.jsp">
-		<div class="uk-form-row" align="center">
-			<div class="uk-h1 uk-text-center uk-text-large">現在のパスワードを入力してください</div><br><br>
-			<input class="uk-form-width-medium" value='' type="password" name="now_pw1" maxlength="20"><br><br><br><br><br><br>
+
+		<div class="uk-text-bold uk-text-large uk-text-center">現在のパスワードを入力してください</div><br>
+		<input class="uk-form-width-medium uk-align-center" value='' type="password" name="now_pw1" maxlength="20">
 			<input value='<%=session.getAttribute("login")%>' type="hidden" name="id">
-			<div class="uk-h1 uk-text-center uk-text-large">変更するパスワードを入力してください</div><br><br>
-			<input class="uk-form-width-medium" value='' type="password" name="new_pw1" maxlength="20"><br><br>
-			<div class="uk-h1 uk-text-center uk-text-large">確認のためもう一度入力してください</div><br><br>
-			<input class="uk-form-width-medium" value=''type="password" name="new_pw2" maxlength="20"><br><br>
-		</div>
+			<br><br><br>
+			<div class="uk-text-bold uk-text-large uk-text-center">変更するパスワードを入力してください</div><br>
+			<input class="uk-form-width-medium uk-align-center" value='' type="password" name="new_pw1" maxlength="20">
+			<div class="uk-text-bold uk-text-large uk-text-center">確認のためもう一度入力してください</div><br>
+			<input class="uk-form-width-medium uk-align-center" value=''type="password" name="new_pw2" maxlength="20">
+			<br><br>
 		<div class="uk-form-row" align="center">
 			<input type="submit"
 				class="uk-button uk-button-large uk-button-primary" value="変更">
 		</div>
 	</form>
+	</div>
 </body>
 </html>
