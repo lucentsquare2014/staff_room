@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
 		if(id2 == null || id2.equals("false")){
-			pageContext.forward("/Pw_Nyuryoku_system.jsp");
+			pageContext.forward("/");
 		}else{%>
 <html>
 <head>
@@ -54,7 +54,7 @@
 </td>
 </tr>
 </table><br>
-<a href="ID_PW_Nyuryoku.jsp" class="link"><font class="link"><small>[ ID・パスワード入力へ戻る ]</small></font></a></div>
+<a href="/staff_room" class="link"><font class="link"><small>[ スタッフルームトップへ ]</small></font></a></div>
 </center>
 </body>
 </html>

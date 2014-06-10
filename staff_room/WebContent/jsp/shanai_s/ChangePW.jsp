@@ -59,7 +59,7 @@
 <input type="password" name="new_pw2"  value='' size="25" maxlength="20"><br><br>
 <!-- <input type="submit"  value="　変更　"  style="cursor: pointer;"><br><br> -->
 <input type="button"  value="　変更　" onclick="aboutbox()" style="cursor: pointer;"><br><br>
-<a href="ID_PW_Nyuryoku.jsp" class="link"><font class="link"><small>[ ID・パスワード入力へ戻る ]</small></font></a>
+<a href="/staff_room" class="link"><font class="link"><small>[ スタッフルームトップへ ]</small></font></a>
 </div>
 </form>
 </center>

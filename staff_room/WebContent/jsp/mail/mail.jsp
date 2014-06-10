@@ -19,19 +19,24 @@ body {
 	background-size: 100% 100%;
 }
 div#con{position: fixed;
-	top: 65px;
-	overflow: scroll;
+	top: 42px;
+	overflow-y: scroll;
 	max-width:100%;
-	max-height: 82%;
-	left:20%;
-	white-space: nowrap;}
+	max-height: 88%;
+	white-space: nowrap;
+}
 td#na {
-padding-left:3%;
+padding-left:20px;
 }
 div#button{
 position:fixed;
 top:30%;
 left:5%;}
+.uk-table {width:55%;
+		   margin-right:auto;
+		   margin-left:auto;
+		   margin-top:5%;
+		   }
 div#button ul{margin-top:20px;
   			  padding-left:0px}
 div#button ul>li{list-style-type: none;}
@@ -66,13 +71,13 @@ text-align:center;}
 	String sql = "select id,name,mail,hurigana from shainmst where zaiseki_flg='1' order by hurigana asc";
 	Maillist = Mail.getShain(sql);%>
 
-<div id="con" class="uk-width-3-5 uk-container-center ">
-	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-width-1-1">
+<div id="con" class="uk-width-1-1 uk-container-center ">
+	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-width-3-5">
 	<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class=" uk-text-center"><font color="#FFFFFF"></font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-3-10 uk-text-center"><font color="#FFFFFF">氏名</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-text-center "><font color="#FFFFFF"></font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-1-4 uk-text-center"><font color="#FFFFFF">氏名</font></th>
 			<th Background="../../images/blackwhite1.png" class=" uk-width-3-10 uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-4-10 uk-text-center"><font color="#FFFFFF">メールアドレス</font></th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-11-20 uk-text-center"><font color="#FFFFFF">メールアドレス</font></th>
 		</tr>
 		
 		<%
@@ -96,8 +101,23 @@ text-align:center;}
 		</tr>
 	<%}%>
 	</table>
+	<div id=button>
+<a class="uk-button uk-button-primary" href="mailto:" id="mail"> メール作成</a>
+<ul>
+<li><a class="uk-button" href="#a">ア</a>
+<a class="uk-button" href="#k">カ</a></li>
+<li><a class="uk-button" href="#s">サ</a>
+<a class="uk-button" href="#t">タ</a></li>
+<li><a class="uk-button" href="#n">ナ</a>
+<a class="uk-button" href="#h">ハ</a></li>
+<li><a class="uk-button" href="#m">マ</a>
+<a class="uk-button" href="#y">ヤ</a></li>
+<li><a class="uk-button" href="#r">ラ</a>
+<a class="uk-button" href="#w">ワ</a></li>
+</ul>
 </div>
-<br><br>
+</div>
+
 <%--/チェックボックス部 --%>
 
 <script>

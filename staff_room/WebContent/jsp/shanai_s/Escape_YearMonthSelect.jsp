@@ -4,7 +4,7 @@
 <%	String id1 = (String)session.getAttribute("key");
 	String id2 = (String)session.getAttribute("key2");
 		if((id1 == null || id1.equals("false")) && (id2 == null || id2.equals("false"))){
-			pageContext.forward("/ID_PW_Nyuryoku.jsp");
+			pageContext.forward("/");
 		}else{	%>
 <html>
 <head>
@@ -26,7 +26,7 @@
 </head>
 <body>
 <CENTER>
-<%	request.setCharacterEncoding("Windows-31J");
+<%	request.setCharacterEncoding("UTF-8");
 	String escapeflg = request.getParameter("escapeflg");
 	String number = request.getParameter("namae");
 	if(escapeflg.equals("0")){%>

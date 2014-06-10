@@ -4,11 +4,11 @@
 <%
 	String id2 = (String)session.getAttribute("key");
 		if(id2 == null || id2.equals("false")){	
-	pageContext.forward("/ID_PW_Nyuryoku.jsp");
+	pageContext.forward("/");
 		}else{
 %>
 <jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST" /><jsp:useBean id="mailsend"  scope ="session" class ="kkweb.mail.C_MailSend"/>
-<%	request.setCharacterEncoding("Windows-31J");
+<%	request.setCharacterEncoding("UTF-8");
 	String iraisha_number = request.getParameter("iraisha_number");
 	String iraisha_name = request.getParameter("iraisha_name");
 	String iraisha_year_month = request.getParameter("iraisha_year_month");

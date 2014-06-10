@@ -179,7 +179,7 @@ function confirmBox(n){
 			</tr>
 			<tr class="home">
 				<td><a href="SelectAddressPayslip.jsp">[送信者選択画面へ戻る]</a>
-				<a href="SystemSelect.jsp">[システム選択へ戻る]</a></td>
+				<a href="/staff_room">[スタッフルームトップへ]</a></td>
 			</tr>
 		</table>
 	</center>

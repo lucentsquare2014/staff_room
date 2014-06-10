@@ -7,7 +7,7 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 			return (null);
 		}
 		else{
-			return (new String(strVal.getBytes("8859_1"),"UTF-8"));
+			return (new String(strVal.getBytes("UTF-8"),"UTF-8"));
 		}
 }
 %>
@@ -28,6 +28,9 @@ String password = "georgir";
 
 // Connectionオブジェクトの生成
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
+// テストーサーバ
+
+//Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.21:5432/georgir",user,password);
 
 // Statementオブジェクトの生成
 Statement stmt_koj = con.createStatement();

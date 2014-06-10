@@ -6,7 +6,7 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 			return (null);
 		}
 		else{
-			return (new String(strVal.getBytes("8859_1"),"JISAutoDetect"));
+			return (new String(strVal.getBytes("UTF-8"),"UTF-8"));
 		}
 }
 %>

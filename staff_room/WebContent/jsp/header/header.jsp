@@ -78,7 +78,7 @@ $(window).resize(function(){
                     <li>
                     <a href="/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=3">社内文書システム</a>
                     </li>
- 					<li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
+ 					<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf">社内文書システム<br>操作説明</a></li>
 
 
 					<% if(user.equals("admin")){ %>
@@ -124,6 +124,11 @@ $(window).resize(function(){
  			<a class="uk-button uk-button-danger" href="/staff_room/Logout">ログアウト</a>
         </div>
  	</div>
+ 	<div class="header" style="float:right;" id="logout">
+ 		<a href="/staff_room/jsp/SiteManual.jsp"style="text-decoration:none; color:whitesmoke; font-size:1em; text-shadow:0px 0px black;line-height: 40px;">
+ 		help
+ 		</a>
+ 	</div>
 	<a href="" class="uk-navbar-toggle uk-visible-small" id="side" data-uk-offcanvas="{target:'#sidenav'}"></a>
 	<div class="uk-navbar-content uk-navbar-center uk-align-center" id="logo">
 		<a href="//www.lucentsquare.co.jp/"
@@ -160,7 +165,7 @@ $(window).resize(function(){
                     <li>
                     <a href="/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=3">社内文書システム</a>
                     </li>
-                    <li><a href="/staff_room/jsp/shanai_s/setsumei.jsp">社内システム操作説明</a></li>
+                    <li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf"> 社内文書システム操作説明</a></li>
 					<% if(user.equals("admin")){ %>
 					<li class="uk-nav-divider"></li>
                     <li><a href="/staff_room/jsp/shanai_s/administrator.jsp">管理-社内システム</a></li>

@@ -11,7 +11,7 @@
 
 		String id2 = (String)session.getAttribute("key");
 		if(id2 == null || id2.equals("false")){
-	pageContext.forward("/ID_PW_Nyuryoku.jsp");
+	pageContext.forward("/");
 		}else{
 %>
 <jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST"/><jsp:useBean id="Year_month" scope="session" class="kkweb.beans.B_Year_month"/>
@@ -112,7 +112,7 @@
 	}
 	function form_submitC(){
 		//adrs ="http://192.36.253.27:8080/kintaikanri/Pcode_ichiran.jsp"移行後は以下を使用
-		adrs ="http://www.lucentsquare.co.jp:8080/kk_web/Pcode_ichiran.jsp"
+		adrs ="/staff_room/jsp/shanai_s/kk_web/Pcode_ichiran.jsp"
 		LinkWin=window.open("","NewPage",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,width=400,height=500')
 		LinkWin.location.href=adrs
 	}

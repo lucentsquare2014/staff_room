@@ -76,9 +76,9 @@
 			page_num = "1";
 		}
 		// offsetにゲットパラメータで取得したページ数を代入
-					String limit = "10";
+					String limit = "100";
 					String offset = String.valueOf((Integer.parseInt(page_num) * Integer
-							.parseInt(limit)) - 10);
+							.parseInt(limit)) - 100);
 		list = dao
 		.getNews("select created,news_id,title,filename,text,writer,primary_flag from news order by update desc " +" limit " + limit +" offset " + offset );
 		ArrayList<HashMap<String, String>> name = null;
@@ -144,7 +144,7 @@
 			<%}%>
 			</div>
 			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
-				style="<%if (list.size() < 10) {
+				style="<%if (list.size() < 100) {
 				out.print("display: none;");
 			}%>">
 				<span><a class="next-page uk-button uk-button-primary"
