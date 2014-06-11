@@ -13,6 +13,10 @@ td#na {
 padding-left:20px;
 font-size:1em;
 }
+div#title{
+
+left:10%;
+}
 div#button{
 position:fixed;
 bottom:5%;
