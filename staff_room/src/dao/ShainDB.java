@@ -14,7 +14,8 @@ public class ShainDB {
 	    String pass = "admin";
 
 	    //　データベース接続
-	    con = DriverManager.getConnection("jdbc:postgresql://192.168.101.21:5432/kintaikanri",user,pass);
+	    con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/kintaikanri",user,pass);
+//	    con = DriverManager.getConnection("jdbc:postgresql://192.168.101.21:5432/kintaikanri",user,pass);
 		}catch (Exception e) {
 		    e.printStackTrace();
 	    }
