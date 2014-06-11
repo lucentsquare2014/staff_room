@@ -340,4 +340,6 @@ String selectAction(String name){
 </body>
 
 </html>
-<%}%>
+<%} else {%>
+<% pageContext.forward("/");%>
+<%} %>

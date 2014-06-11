@@ -235,7 +235,9 @@ try{
   <TD><FORM ACTION="tryagain.jsp" METHOD="POST"><INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"><INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>"><INPUT TYPE="submit" VALUE="月表示" title="月表示に移動します。"></FORM></TD>
   <TD><FORM ACTION="TestExample34.jsp" METHOD="POST"><INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"><INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>"><INPUT TYPE="submit" VALUE="週表示" title="週表示に移動します。"></FORM></TD>
   <TD><FORM ACTION="h_hyoji.jsp" METHOD="POST"><INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"><INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>"><INPUT TYPE="submit" VALUE="日表示" title="日表示に移動します。"></FORM></TD>
-  <TD><FORM ACTION="menu.jsp" METHOD="POST" TARGET="_top"><INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"><INPUT TYPE="submit" VALUE="メインメニューへ戻る" title="メインメニューに戻ります。"></FORM></TD>
+  <TD><FORM ACTION="personal.jsp" METHOD="POST" TARGET="_top"><INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"><INPUT TYPE="submit" VALUE="個人設定" title="個人設定ページヘ移動します。"></FORM></TD>
+  <TD><FORM ACTION="/staff_room" METHOD="POST" TARGET="_top"><INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。"></FORM></TD>
+  
  </TR>
 </TABLE>
 <TABLE BORDER="0" WIDTH="100%">
