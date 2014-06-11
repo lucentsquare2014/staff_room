@@ -28,5 +28,9 @@ $(function(){
 			$("#alert").text("パスワードにアカウントと同一のものは使用できません。");
 			return false;
 		}
+		if(pw1.length < 4 || pw1.length > 20){
+			$("#alert").text("パスワードは4~20文字にしてください。");
+			return false;
+		}
 	});
 });
