@@ -20,7 +20,10 @@
 </head>
 <body>
 <jsp:include page="/jsp/header/header.jsp" />
-
+<br><br><br><br><br><br>
+<div class="uk-h1" id="title">
+記事未読件数一覧
+</div>
 <%
 	ArrayList<Integer> x = new ArrayList<Integer>();
 	Mail.GetShainDB News = new Mail.GetShainDB();
