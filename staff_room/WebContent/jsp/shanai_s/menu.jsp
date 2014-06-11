@@ -1,5 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*,java.util.*,java.io.*"%>
+<%  String id2 = (String)session.getAttribute("login");
+        if(id2 == null){
+            pageContext.forward("/");
+            return;
+        }
+%>
+
 <%!
 // 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{

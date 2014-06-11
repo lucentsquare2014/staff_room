@@ -7,7 +7,7 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 		return (null);
 	}
 	else{
-		return (new String(strVal.getBytes("UTF-8"),"UTF-8"));
+		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
@@ -101,11 +101,16 @@ String memo = "";
 					</FORM>
 				</TD>
 				<TD>
-					<FORM ACTION="menu.jsp" METHOD="POST" TARGET="_top">
+					<FORM ACTION="personal.jsp" METHOD="POST" TARGET="_top">
 						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-						<INPUT TYPE="submit" VALUE="メインメニューへ戻る" title="メインメニューに戻ります。">
+						<INPUT TYPE="submit" VALUE="個人設定" title="個人設定ページに移動します。">
 					</FORM>
 				</TD>
+                <TD>
+                    <FORM ACTION="/staff_room" METHOD="POST" TARGET="_top">
+                        <INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。">
+                    </FORM>
+                </TD>
 			</TR>
 		</TABLE>
 		<%

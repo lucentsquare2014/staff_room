@@ -125,10 +125,10 @@ KOJIN.close();
 								<INPUT TYPE="reset" VALUE="取り消し" STYLE="width:70">
 							</TD>
 							</FORM>
-							<FORM ACTION="menu.jsp" METHOD="Post">
+							<FORM ACTION="Schedule.jsp" METHOD="Post">
 								<TD ALIGN="center" VALIGN="middle">
 									<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-									<INPUT TYPE="submit" VALUE="メインメニューへ戻る">
+									<INPUT TYPE="submit" VALUE="スケジュールへ戻る">
 								</TD>
 							</FORM>
 						</TR>

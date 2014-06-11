@@ -52,7 +52,7 @@
 	//String kintai_menu = "http://localhost:8080/kk_local/Menu_Gamen.jsp";
 	//String kintai_menu = "http://www.lucentsquare.co.jp:8080/kk_web/Menu_Gamen.jsp";
 	String kintai_menu = "Menu_Gamen.jsp";
-	String msj = "menu.jsp";%>
+	String msj = "Schedule.jsp";%>
 
 <!-- <title>システム選択画面</title>
  -->

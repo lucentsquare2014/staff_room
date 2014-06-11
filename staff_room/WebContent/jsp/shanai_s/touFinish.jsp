@@ -31,9 +31,9 @@ String ID = strEncode(request.getParameter("id"));
 <H1>登録しました</H1><br>
 </FONT>
 </SPAN>
-<FORM ACTION="menu.jsp" METHOD="Post">
+<FORM ACTION="Schedule.jsp" METHOD="Post">
 <INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-<INPUT TYPE="submit" VALUE="メインメニューへ戻る">
+<INPUT TYPE="submit" VALUE="スケジュールへ戻る">
 </FORM>
 </CENTER>
 </BODY>
