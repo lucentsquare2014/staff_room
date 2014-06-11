@@ -54,25 +54,20 @@
 		String value = null,value2 = null,value3 = null;
 		List<String> read_check = null;
 		value = request.getParameter("news");
+		System.out.println(value);
 		value2 = request.getParameter("news_id");
 		//未読記事のnews_idを受け取る
 		if(session.getAttribute("unread") !=""){
 			 value3 = String.valueOf(session.getAttribute("unread"));
 			 read_check = Arrays.asList(value3.split(","));
 		}
-		if(value == null){
-			value = "1";
-		}
-		int flag = Integer.parseInt(value);
-
-		if(!(flag == 1 || flag == 2 ||flag == 3 ||flag == 4 || flag == 5)){
-			value = "1";
-		}
+		
 
 		//配列
 		ArrayList<Integer> x = new ArrayList<Integer>();
 		NewsDAO dao = new NewsDAO();
 		ArrayList<HashMap<String, String>> list = null;
+		HashMap<String, String> raw = null;
 		String page_num = request.getParameter("page");
 		if (page_num == null || !NumberUtils.isNumber(page_num)) {
 			page_num = "1";
@@ -81,25 +76,34 @@
 					String limit = "100";
 					String offset = String.valueOf((Integer.parseInt(page_num) * Integer
 							.parseInt(limit)) - 100);
-		list = dao
-		.getNews("select created,news_id,title,filename,text,writer,primary_flag from news where post_id = "
-		+ value + " order by update desc " +" limit " + limit +" offset " + offset );
-		ArrayList<HashMap<String, String>> name = null;
-		name = dao.getNews("select postname from post where post_id =" + value);
-		System.out.print(name);
-		HashMap<String, String> raw = name.get(0);
+		if(value.equals("all")){
+			list = dao.getNews("select * from news order by update desc " + " limit " + limit + " offset " + offset); 
+		}else{
+			list = dao
+					.getNews("select created,news_id,title,filename,text,writer,primary_flag from news where post_id = "
+					+ value + " order by update desc " +" limit " + limit +" offset " + offset );
+			ArrayList<HashMap<String, String>> name = null;
+			name = dao.getNews("select postname from post where post_id =" + value);
+			raw = name.get(0);
+			System.out.println(raw.get("postname"));
+		}
 			%>
 			<div style="position:fixed; top:220px; left:80px;">
 			<div class="uk-grid">
 			<div class="uk-width-1-4 uk-pull-1-6 uk-text-center">
 			<font face="ＭＳ Ｐゴシック">
 			<span style="font-size: 32px;">
-			<nobr><%=raw.get("postname")%></nobr><br></span>
+			<nobr>
+				<% if(value.equals("all")){ %>
+					全て
+				<% }else{ %>
+					<%=raw.get("postname")%>
+				<% } %>
+			</nobr><br></span>
 			</font>
 			</div></div></div>
 
 		<br><br><br><br><br><br>
-		<%System.out.print(list);%>
 		<div class="uk-width-2-3 uk-container-center">
 		<table border="5" class="uk-table uk-text-center uk-width-medium-1-1">
 		<tr class="uk-text-large">

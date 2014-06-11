@@ -50,8 +50,10 @@ $(window).resize(function(){
 			class="uk-navbar-brand"> <img src="/staff_room/images/Logo.png"
 				alt="会社のページに戻る" width="30" height="30"></img></a></li>
 		<li class="header"><a href="/staff_room/jsp/top/top.jsp">TOP</a></li>
-		<li id="w" class="uk-parent header" data-uk-dropdown  ><a>連絡<i
-				class="uk-icon-caret-down"></i></a>
+		<li id="w" class="uk-parent header" data-uk-dropdown>
+			<a href="/staff_room/jsp/news.jsp?news=all">連絡
+				<i class="uk-icon-caret-down"></i>
+			</a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
 					<li><a href="/staff_room/jsp/news.jsp?news=1">総務</a></li>
@@ -142,6 +144,7 @@ $(window).resize(function(){
         	<li class="uk-parent">
         		<a href="#">連絡</a>
         		<ul class="uk-nav-sub">
+        			<li><a href="/staff_room/jsp/news.jsp?news=all">全て</a></li>
         			<li><a href="/staff_room/jsp/news.jsp?news=1">総務</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=2">人事</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=3">行事</a></li>
