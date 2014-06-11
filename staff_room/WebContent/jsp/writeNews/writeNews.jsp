@@ -48,7 +48,7 @@ body {
 			<a href="/staff_room/jsp/writeNews/inputForm.jsp">
 				<button class="uk-button uk-button-primary">
 					<i class="uk-icon-pencil uk-icon-small"></i>　新規作成</button></a>
-			<button id="delete_button" class="uk-button uk-button-danger">
+			<button id="delete_button" class="uk-button uk-button-danger" disabled>
 				<i class="uk-icon-trash-o uk-icon-small"></i>　削除</button>
 		</div>
 		<%
