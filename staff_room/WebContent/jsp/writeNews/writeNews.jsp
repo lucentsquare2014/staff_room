@@ -29,7 +29,7 @@ body {
 	width: 100%;
 	height: 656px;
 	background-attachment: fixed;
-	background-image: url("/staff_room/images/pwChange2.jpg");
+	background-image: url("/staff_room/images/input.png");
 }
 
 .contents {
@@ -92,7 +92,6 @@ body {
 				for (int i = 0; i < list.size(); i++) {
 					HashMap<String, String> row = list.get(i);
 					//時刻がある記事だけの表示
-					if (!row.get("created").equals("")) {
 						SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 						Date date = format.parse(row.get("created"));
 						DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
@@ -132,11 +131,8 @@ body {
 				</td>
 			</tr>
 			<%
-				} else {
-						x.add(i);
-						z++;
-					}
-				}%>
+				}
+			%>
 
 		</table>
 		<%
