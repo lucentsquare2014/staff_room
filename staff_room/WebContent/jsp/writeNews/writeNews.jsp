@@ -29,8 +29,7 @@ body {
 	width: 100%;
 	height: 656px;
 	background-attachment: fixed;
-	background-image: url("/staff_room/images/renraku.png");
-	background-size: 100% auto;
+	background-image: url("/staff_room/images/pwChange2.jpg");
 }
 
 .contents {

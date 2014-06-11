@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<jsp:include page="/html/head.html" />
+<link rel="stylesheet" href="/staff_room/css/readCheck_data.css">
 <%@ page import="dao.ShainDB,
 				java.util.ArrayList,
 				java.sql.Connection,
@@ -17,6 +19,8 @@
 <title>記事未読件数一覧</title>
 </head>
 <body>
+<jsp:include page="/jsp/header/header.jsp" />
+
 <%
 	ArrayList<Integer> x = new ArrayList<Integer>();
 	Mail.GetShainDB News = new Mail.GetShainDB();
@@ -31,8 +35,8 @@
 			<th Background="/staff_room/images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">ID</font></th>
 			<th Background="/staff_room/images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">氏名</font></th>
 			<th Background="/staff_room/images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
-			<th Background="/staff_room/images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">記事未読件数</font></th>
-			<th Background="/staff_room/images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">緊急記事未読件数</font></th>
+			<th nowrap Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-10 uk-text-center"><font color="#FFFFFF">記事<br>未読件数</font></th>
+			<th nowrap Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-10 uk-text-center"><font color="#FFFFFF">緊急記事<br>未読件数</font></th>
 		</tr>
 
 		<%
@@ -72,14 +76,16 @@
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("id")%></td>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("name")%></td>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("hurigana")%></td>
-			<td id = "na" bgcolor="#FFFFFF"><%=unread.length%>
-			<td id = "na" bgcolor="#FFFFFF"><%=primary_count%></td>
+			<td align="right" id = "na" bgcolor="#FFFFFF"><%=unread.length%>
+			<td align="right" id = "na" bgcolor="#FFFFFF"><%=primary_count%></td>
 		</tr>
 	<%
 		}
 		primary.closeShainDB(con);
 	%>
 	</table>
+	<div id=button><a class="uk-button uk-button-primary" href="/staff_room/jsp/writeNews/writeNews.jsp" id="mail"> 管理・編集ページに戻る</a>
+	</div>
 	</div>
 </body>
 </html>
