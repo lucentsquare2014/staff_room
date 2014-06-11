@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import dao.NewsDAO;
 import dao.ShainDB;
@@ -50,7 +51,16 @@ public class ReadCheck {
 	
 	//未読記事を更新する
 	private void updateReadCheck(String unread_ids,String new_ids,String number){
-		String update_ids = unread_ids + new_ids;
+		String update_ids = "";
+		String[] ids = (unread_ids + new_ids).split(",");
+		ArrayList<String> unique = new ArrayList<String>();
+		for(int i = 0; i < ids.length; i++){
+			if(!unique.contains(ids[i])){
+				unique.add(ids[i]);
+				update_ids += unique.get(i) + ",";
+			}
+		}
+		System.out.println(update_ids);
 		String sql = "UPDATE shainkanri SET read_check = '" + update_ids + 
 				"' WHERE shain_number = '" + number + "'";
 		ShainDB shain = new ShainDB();
