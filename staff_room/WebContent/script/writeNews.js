@@ -57,7 +57,7 @@ $(function() {
 									// IDを格納した配列をdeleteNews.jspにPOST送信
 									$.ajax({
 										type : "POST",
-										url : "/staff_room/jsp/writeNews/deleteNews.jsp",
+										url : "/staff_room/DeleteNews",
 										cache: false,
 										data : {
 											// 配列を区切り文字","の文字列に変換
