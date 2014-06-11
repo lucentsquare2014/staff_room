@@ -38,7 +38,7 @@ body {
 	<div class="uk-text-danger uk-text-center" id="alert"></div>
 	</div>
 	<form class="uk-form uk-form-horizontal" method="post"
-		action="pwChange_finish.jsp">
+		action="/staff_room/PwChange">
 
 		<div class="uk-text-bold uk-text-large uk-text-center">現在のパスワードを入力してください</div><br>
 		<input class="uk-form-width-medium uk-align-center" value='' type="password" name="now_pw1" maxlength="20">
