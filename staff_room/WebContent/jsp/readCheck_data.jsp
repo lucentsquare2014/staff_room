@@ -34,14 +34,18 @@
 		<%
 		for (int i = 0; i < Newslist.size(); i++) {
 			HashMap<String, String> Newsmap = Newslist.get(i);
-			String[] unread = Newsmap.get("read_check").split(",",0);
-			Vector<String> vc = new Vector<String>();
+			String[] unread = Newsmap.get("read_check").split(",");
+			for(int j = 0; j < unread.length; j++){
+				unread[j] =
+			}
+		/*重複削除処理 他の処理で行うので保留
+		Vector<String> vc = new Vector<String>();
 			for(int y = 0; y < unread.length; y ++) {
 			if(!vc.contains(unread[y])) {
 			vc.add(unread[y]);
 			}
 			}
-			String[] unread2 = vc.toArray(new String[0]);
+			String[] unread2 = vc.toArray(new String[0]);*/
 			/*if(unread2[0]==""){
 				int count = (unread2.length-1);
 				}else{
@@ -54,11 +58,7 @@
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("id")%></td>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("name")%></td>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("hurigana")%></td>
-			<td id = "na" bgcolor="#FFFFFF"><%if(unread2.length!=0){%>
-				<%=unread2.length-1%>
-				<%}else{%>
-				<%=unread2.length%>
-				<%}%></td>
+			<td id = "na" bgcolor="#FFFFFF"><%=unread.length%>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("read_check")%></td>
 		</tr>
 	<%}%>
