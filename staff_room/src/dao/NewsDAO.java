@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -19,10 +17,10 @@ public class NewsDAO {
 
 	/*
 	 * newsDBに接続するメソッド
-	 * 
+	 *
 	 * @return データベースとやりとりするコネクションクラス
 	 */
-	public static Connection openNewsDB() {
+	public static Connection openkintaikanri() {
 		Connection con = null;
 		try {
 			// JDBCドライバの読み取り
@@ -33,7 +31,9 @@ public class NewsDAO {
 
 			// データベース接続
 			con = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/newsDB", user, pass);
+					"jdbc:postgresql://localhost:5432/kintaikanri", user, pass);
+//			con = DriverManager.getConnection(
+//					"jdbc:postgresql://192.168.101.21:5432/kintaikanri", user, pass);
 			System.out.println("接続成功");
 		} catch (Exception e) {
 			System.out.println("例外発生：" + e);
@@ -42,7 +42,7 @@ public class NewsDAO {
 	}
 
 	/* newsDBへの接続を切断するメソッド */
-	public static void closeNewsDB(Connection con) {
+	public static void closekintaikanri(Connection con) {
 		try {
 			// データベース切断
 			con.close();
@@ -54,7 +54,7 @@ public class NewsDAO {
 	/* post_idのシーケンスを最新のものに更新する*/
 	public void setPostIdSequence(){
 		String sql = "select setval('\"news_newsID_seq\"', (select max(news_id) from news));";
-		Connection con = openNewsDB();
+		Connection con = openkintaikanri();
 		Statement stmt;
 		try{
 			stmt = con.createStatement();
@@ -62,15 +62,15 @@ public class NewsDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally{
-			closeNewsDB(con);
+			closekintaikanri(con);
 		}
 	}
 	/* newsDBに新規に書き込むメソッド */
 	public void writeNews(HashMap<String, String> Newsdata) {
-		Connection con = openNewsDB();
+		Connection con = openkintaikanri();
 		try {
 
-			// SQL文を文字列としてsqlという変数に格納			
+			// SQL文を文字列としてsqlという変数に格納
 			String sql = "INSERT INTO news (post_id, title, text, writer, filename, primary_flag, created, update) VALUES ("
 					+ Newsdata.get("post_id")
 					+ ", ?, ?, ?, ?, ?, "
@@ -78,7 +78,7 @@ public class NewsDAO {
 					+ Newsdata.get("created")
 					+ "'"
 					+ ", "
-					+ "'"					
+					+ "'"
 					+ Newsdata.get("created")
 					+ "')";
 			System.out.println(sql);
@@ -95,24 +95,24 @@ public class NewsDAO {
 		} catch (SQLException e) {
 			System.out.println(e);
 		} finally {
-			closeNewsDB(con);
+			closekintaikanri(con);
 		}
 	}
-	
+
 	/* newsDBにある記事を編集するメソッド */
 	public void updateNews(HashMap<String, String> Newsdata) {
-		Connection con = openNewsDB();
+		Connection con = openkintaikanri();
 		try {
 			// SQL文を文字列としてsqlという変数に格納
-			String sql = "UPDATE news SET " 
-					+ "post_id=" 
+			String sql = "UPDATE news SET "
+					+ "post_id="
 					+ Newsdata.get("post_id")
-					+ ", " 
-					+ "title=?, text=?, writer=?, filename=?, primary_flag=?, " 
-					+ "update=" 
+					+ ", "
+					+ "title=?, text=?, writer=?, filename=?, primary_flag=?, "
+					+ "update="
 					+ "'"
-					+ Newsdata.get("update") 
-					+ "'"					
+					+ Newsdata.get("update")
+					+ "'"
 					+ " WHERE news_id="
 					+ Newsdata.get("news_id");
 			System.out.println(sql);
@@ -130,13 +130,13 @@ public class NewsDAO {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}finally{
-			closeNewsDB(con);
+			closekintaikanri(con);
 		}
 	}
 
 	/* 記事を削除するメソッド */
 	public void deleteNews(String[] ids) {
-		Connection con = openNewsDB();
+		Connection con = openkintaikanri();
 		// ステートメントを作成
 		Statement stmt;
 		try {
@@ -150,18 +150,18 @@ public class NewsDAO {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}finally{
-			closeNewsDB(con);
+			closekintaikanri(con);
 		}
 	}
 
 	// 例：getNews("select * from newsDB");
 	/*
 	 * テーブルのデータを参照し、listに格納して返すメソッド
-	 * 
+	 *
 	 * @return ArrayList<HashMap<String,String>>型の検索結果を格納したリスト
 	 */
 	public ArrayList<HashMap<String, String>> getNews(String sql) {
-		Connection con = openNewsDB();
+		Connection con = openkintaikanri();
 		// ステートメントを作成
 		Statement stmt;
 		// データ格納用のリスト
@@ -194,18 +194,18 @@ public class NewsDAO {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}finally{
-			closeNewsDB(con);
+			closekintaikanri(con);
 		}
 		return list;
 	}
-	
+
 	/*
 	 * 引数に渡された日付よりも新しい作成日付のnews_idを","で区切った文字列で返す
-	 * 
+	 *
 	 * @return String型の文字列
 	 */
 	public String getNewsFromLastLogin(String login_time){
-		Connection con = openNewsDB();
+		Connection con = openkintaikanri();
 		// return用の変数
 		String result = null;
 		// 最後にログインした時間よりも日付が新しい記事を取ってくるsql文
@@ -222,7 +222,7 @@ public class NewsDAO {
 				// executeUpdateメソッドで実行。未読のnews_idを返す
 				ResultSet rs = pstmt.executeQuery();
 				StringBuilder builder = new StringBuilder();
-				
+
 				// 取得したデータを","で区切った文字列に変換
 				while(rs.next()){
 					builder.append(rs.getString("news_id")).append(",");
@@ -232,7 +232,7 @@ public class NewsDAO {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}finally{
-			closeNewsDB(con);
+			closekintaikanri(con);
 		}
 		System.out.println(result);
 		return result;
