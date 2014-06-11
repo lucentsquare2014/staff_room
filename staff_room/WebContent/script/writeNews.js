@@ -20,6 +20,12 @@ $(function() {
 								$("#" + checkbox.attr("id")).attr("class",
 										"uk-icon-square-o");
 							}
+							// 記事が選択されていない時は削除ボタンを押せないようにする。
+							if($(".uk-icon-check-square-o").length > 0){
+								$("#delete_button").prop('disabled', false);
+							}else{
+								$("#delete_button").prop('disabled', true);
+							}
 						});
 
 				/* 記事を削除するdeleteNews.jspに記事にIDを渡す関数 */
@@ -37,10 +43,16 @@ $(function() {
 									if (news[n].getAttribute("flag") == "1") {
 										ids.push(news[n].getAttribute("id"));
 										f = 1;
-										// 削除する記事を隠す
+										// 削除する記事を消す
 										$("#row" + news[n].getAttribute("id"))
-												.fadeOut();
+												.remove();
 									}
+								}
+								// 記事が選択されていない時は削除ボタンを押せないようにする。
+								if($(".uk-icon-check-square-o").length > 0){
+									$("#delete_button").prop('disabled', false);
+								}else{
+									$("#delete_button").prop('disabled', true);
 								}
 
 								if (f == -1) {
