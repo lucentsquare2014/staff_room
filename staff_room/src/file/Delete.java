@@ -22,7 +22,7 @@ import dao.NewsDAO;
 @WebServlet("/Delete")
 public class Delete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -56,10 +56,10 @@ public class Delete extends HttpServlet {
     		}
     	}
 	}
-	
+
 	public String getFilename(int news_id){
 		String select_sql = "select filename from news where news_id = " + news_id;
-		Connection con = NewsDAO.openNewsDB();
+		Connection con = NewsDAO.openkintaikanri();
 		Statement stmt;
 		String filename = "";
 		try {
@@ -68,26 +68,26 @@ public class Delete extends HttpServlet {
 			if(rs.next()){
 				filename = rs.getString("filename");
 			}
-			NewsDAO.closeNewsDB(con);
+			NewsDAO.closekintaikanri(con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return filename;
 	}
-	
+
 	public void updateDB(int news_id, String filename, String delete_name){
 		filename = filename.replace(delete_name + ",", "");
-		String update_sql = "UPDATE news SET filename = '" + filename 
+		String update_sql = "UPDATE news SET filename = '" + filename
 				+ "' where news_id = " + news_id;
-		Connection con = NewsDAO.openNewsDB();
+		Connection con = NewsDAO.openkintaikanri();
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
 			stmt.executeUpdate(update_sql);
-			NewsDAO.closeNewsDB(con);
+			NewsDAO.closekintaikanri(con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 }
