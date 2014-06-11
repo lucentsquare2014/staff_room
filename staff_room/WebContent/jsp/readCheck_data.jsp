@@ -42,19 +42,19 @@
 		for (int i = 0; i < Newslist.size(); i++) {
 			HashMap<String, String> Newsmap = Newslist.get(i);
 			String[] unread = Newsmap.get("read_check").split(",");
-			String aaa = "";
+			String sql_in = "";
 			int primary_count = 0;
 			for(int j = 0; j < unread.length; j++){
 				if(j != unread.length - 1){
-					aaa += "'" + unread[j] + "',";
+					sql_in += "'" + unread[j] + "',";
 				}else{
-					aaa += "'" + unread[j] + "'";
+					sql_in += "'" + unread[j] + "'";
 				}
 
 			}
-			if(!aaa.equals("")){
+			if(!sql_in.equals("")){
 
-				String sql2 = "select count(*) from news where news_id in (" +aaa+ ")" + " and primary_flag = '1'";
+				String sql2 = "select count(*) from news where news_id in (" +sql_in+ ")" + " and primary_flag = '1'";
 
 				try{
 					stmt = con.createStatement();
