@@ -44,7 +44,7 @@ $(function() {
 				</div>
 				<!-- 切り替わるボタンを6個作成 -->
 				<ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#subnav-pill-content'}">
-					<li class="uk-active"><a href="#">all</a></li>
+					<li class="uk-active"><a href="#">全て</a></li>
 					<li class=""><a href="#">総務</a></li>
 					<li class=""><a href="#">人事</a></li>
 					<li class=""><a href="#">行事</a></li>
@@ -69,7 +69,18 @@ $(function() {
 				<!-- 以下、種別ごとにテーブルを作る -->
 				<ul id="subnav-pill-content" class="uk-switcher">
 					<!-- 「all」のテーブル -->
-					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><div id="out_Div"><div id="in_Div">
+					<table class="changelog-content"class="uk-panel-box">
+					<thead>
+						<tr>
+							<th style="width:63px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:90px;"><font color="#FFFFFF">日付　　</font></th>
+							<th style="width:140px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:220px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:150px;"><font color="#FFFFFF">分類</font></th>
+						</tr>
+					</thead>
+					<tbody>
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
@@ -82,15 +93,16 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style="width:35px;">
+								<td>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div></td>
+
 								
 								<td><%=dddate.format(date)%></td>
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td style="width:18px;"><div class="uk-badge uk-badge-danger">new</div></td>
 
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
@@ -98,15 +110,28 @@ $(function() {
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td style="width:30px;">　   　</td>
 								<%}%>
 								
 								<!-- ジャンル -->
 								<td><%=row.get("postname")%></td>
 								
 							</tr><%}%>
-						</table></li>
+						</tbody>
+						</table></div></div></li>
 					<!-- 「総務」のテーブル -->	
-					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><div id="out_Div"><div id="in_Div">
+					<table class="changelog-content"class="uk-panel-box">
+					<thead>
+						<tr>
+							<th style="width:63px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:90px;"><font color="#FFFFFF">日付　　</font></th>
+							<th style="width:140px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:220px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:150px;"><font color="#FFFFFF">　　</font></th>
+						</tr>
+					</thead>
+					<tbody>
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
@@ -120,15 +145,16 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style="width:35px;">
+								<td style=>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div></td>
+								</td>
 								
 								<td><%=dddate.format(date)%></td>
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td style="width:35px;"><div class="uk-badge uk-badge-danger">new</div></td>
 
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
@@ -143,7 +169,18 @@ $(function() {
 							</tr><%}}%>
 						</table></li>
 					<!-- 「人事」のテーブル -->	
-					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><div id="out_Div"><div id="in_Div">
+					<table class="changelog-content"class="uk-panel-box">
+					<thead>
+						<tr>
+							<th style="width:63px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:90px;"><font color="#FFFFFF">日付　　</font></th>
+							<th style="width:140px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:220px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:150px;"><font color="#FFFFFF">　　</font></th>
+						</tr>
+					</thead>
+					<tbody>
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
@@ -157,15 +194,16 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style="width:35px;">
+								<td style=>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div></td>
+								</td>
 								
 								<td><%=dddate.format(date)%></td>
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td style="width:35px;"><div class="uk-badge uk-badge-danger">new</div></td>
 
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
@@ -173,6 +211,7 @@ $(function() {
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td> </td>
 								<%}%>
 								
 								
@@ -180,7 +219,18 @@ $(function() {
 							</tr><%}}%>
 						</table></li>
 					<!-- 「行事」のテーブル -->	
-					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><div id="out_Div"><div id="in_Div">
+					<table class="changelog-content"class="uk-panel-box">
+					<thead>
+						<tr>
+							<th style="width:63px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:90px;"><font color="#FFFFFF">日付　　</font></th>
+							<th style="width:140px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:220px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:150px;"><font color="#FFFFFF">　　</font></th>
+						</tr>
+					</thead>
+					<tbody>
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
@@ -194,15 +244,16 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style="width:35px;">
+								<td style=>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div></td>
+								</td>
 								
 								<td><%=dddate.format(date)%></td>
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td style="width:35px;"><div class="uk-badge uk-badge-danger">new</div></td>
 
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
@@ -210,6 +261,7 @@ $(function() {
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td> </td>
 								<%}%>
 								
 								
@@ -217,7 +269,18 @@ $(function() {
 							</tr><%}}%>
 						</table></li>
 					<!-- 「開発企画」のテーブル -->	
-					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><div id="out_Div"><div id="in_Div">
+					<table class="changelog-content"class="uk-panel-box">
+					<thead>
+						<tr>
+							<th style="width:63px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:90px;"><font color="#FFFFFF">日付　　</font></th>
+							<th style="width:140px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:220px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:150px;"><font color="#FFFFFF">　　</font></th>
+						</tr>
+					</thead>
+					<tbody>
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
@@ -231,15 +294,16 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style="width:35px;">
+								<td style=>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div></td>
+								</td>
 								
 								<td><%=dddate.format(date)%></td>
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td style="width:35px;"><div class="uk-badge uk-badge-danger">new</div></td>
 
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
@@ -247,6 +311,7 @@ $(function() {
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td> </td>
 								<%}%>
 								
 								
@@ -254,7 +319,18 @@ $(function() {
 							</tr><%}}%>
 						</table></li>
 					<!-- 「その他」のテーブル -->	
-					<li class="uk-active"><table class="changelog-content"class="uk-panel-box">
+					<li class="uk-active"><div id="out_Div"><div id="in_Div">
+					<table class="changelog-content"class="uk-panel-box">
+					<thead>
+						<tr>
+							<th style="width:63px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:90px;"><font color="#FFFFFF">日付　　</font></th>
+							<th style="width:140px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:220px;"><font color="#FFFFFF">　　</font></th>
+							<th style="width:150px;"><font color="#FFFFFF">　　</font></th>
+						</tr>
+					</thead>
+					<tbody>
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
@@ -268,15 +344,16 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style="width:35px;">
+								<td style=>
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-								<div class="uk-badge uk-badge-danger">new</div></td>
+								</td>
 								
 								<td><%=dddate.format(date)%></td>
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td style="width:35px;"><div class="uk-badge uk-badge-danger">new</div></td>
 
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
@@ -284,6 +361,7 @@ $(function() {
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%>
 									</a></td>
+									<td> </td>
 								<%}%>
 								
 								
