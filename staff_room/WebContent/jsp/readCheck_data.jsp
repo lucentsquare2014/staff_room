@@ -3,8 +3,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<%@ page import="dao.NewsDAO,
+<%@ page import="dao.ShainDB,
 				java.util.ArrayList,
+				java.sql.Connection,
+				java.sql.Statement,
+				java.sql.ResultSet,
+				java.sql.SQLException,
 				java.util.HashMap,
 				org.apache.commons.lang3.StringEscapeUtils,
 				java.util.Vector"
@@ -32,36 +36,49 @@
 		</tr>
 
 		<%
+		ShainDB primary = new ShainDB();
+		Connection con =primary.openShainDB();
+		Statement stmt;
 		for (int i = 0; i < Newslist.size(); i++) {
 			HashMap<String, String> Newsmap = Newslist.get(i);
 			String[] unread = Newsmap.get("read_check").split(",");
+			String aaa = "";
+			int primary_count = 0;
 			for(int j = 0; j < unread.length; j++){
-				unread[j] =
-			}
-		/*重複削除処理 他の処理で行うので保留
-		Vector<String> vc = new Vector<String>();
-			for(int y = 0; y < unread.length; y ++) {
-			if(!vc.contains(unread[y])) {
-			vc.add(unread[y]);
-			}
-			}
-			String[] unread2 = vc.toArray(new String[0]);*/
-			/*if(unread2[0]==""){
-				int count = (unread2.length-1);
+				if(j != unread.length - 1){
+					aaa += "'" + unread[j] + "',";
 				}else{
-				int count = unread2.length;*/
+					aaa += "'" + unread[j] + "'";
+				}
+
+			}
+			if(!aaa.equals("")){
+
+				String sql2 = "select count(*) from news where news_id in (" +aaa+ ")" + " and primary_flag = '1'";
+
+				try{
+					stmt = con.createStatement();
+					ResultSet rs = stmt.executeQuery(sql2);
+					while(rs.next()){
+						primary_count = rs.getInt("count");
+					}
+				}catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
 
 			%>
-
-
 		<tr>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("id")%></td>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("name")%></td>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("hurigana")%></td>
 			<td id = "na" bgcolor="#FFFFFF"><%=unread.length%>
-			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("read_check")%></td>
+			<td id = "na" bgcolor="#FFFFFF"><%=primary_count%></td>
 		</tr>
-	<%}%>
+	<%
+		}
+		primary.closeShainDB(con);
+	%>
 	</table>
 	</div>
 </body>
