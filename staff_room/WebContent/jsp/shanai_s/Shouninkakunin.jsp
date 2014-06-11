@@ -19,7 +19,7 @@
 <tr><td align="left"><small>1.「承認作業終了」ボタンを押して承認作業を完了させてください。</small></td></tr>
 <tr><td align="left"><small>2. 再度承認依頼を行う場合は下表の承認者一覧から選択してください。</small></td></tr>
 </table><hr color = "#008080"><br>
-<%	request.setCharacterEncoding("Windows-31J");
+<%	request.setCharacterEncoding("UTF-8");
 	String iraisha_number = request.getParameter("iraisha_number");
 	String iraisha_year_month = request.getParameter("iraisha_year_month");
 	String iraisha_name = request.getParameter("iraisha_name");%>
