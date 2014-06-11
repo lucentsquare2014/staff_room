@@ -11,7 +11,7 @@ public class C_CheckPwSystem extends C_ChangePageBase {
 	public String checkRequest(HttpServletRequest request){
 
 		try{
-			request.setCharacterEncoding("Windows-31J");
+			request.setCharacterEncoding("UTF-8");
 			C_CheckWord word = new C_CheckWord();
 
 

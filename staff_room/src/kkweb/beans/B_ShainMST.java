@@ -12,6 +12,8 @@ public class B_ShainMST {
 	private String zaiseki_flg;
 	private String hyouzijun;
 	private String yakusyoku;
+	// フリガナを追加
+	private String hurigana;
 
 	public String getYakusyoku() {
 		return yakusyoku;
@@ -80,5 +82,12 @@ public class B_ShainMST {
 	}
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+
+	public String getHurigana() {
+		return hurigana;
+	}
+	public void setHurigana(String hurigana) {
+		this.hurigana = hurigana;
 	}
 }

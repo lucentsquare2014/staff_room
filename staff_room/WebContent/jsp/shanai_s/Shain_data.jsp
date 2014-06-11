@@ -49,6 +49,9 @@
 	function aboutbox() {				
 		var p = document.form1.f_name.value;
 	   	var n = document.form1.g_name.value;
+	   	// フリガナを追加
+	   	
+        var a = document.form1.hurigana.value;
 	    var h = document.form1.id.value;
 	    var i = document.form1.number.value;
 	    var t = document.form1.mail.value;
@@ -62,10 +65,15 @@
 			n.indexOf(aa) != -1 | n.indexOf(bb) != -1 | n.indexOf(cc) != -1 | n.indexOf(dd) != -1 | n.indexOf(ee) != -1 | n.indexOf(ff) != -1 |
 			h.indexOf(aa) != -1 | h.indexOf(bb) != -1 | h.indexOf(cc) != -1 | h.indexOf(dd) != -1 | h.indexOf(ee) != -1 | h.indexOf(ff) != -1 |
 			i.indexOf(aa) != -1 | i.indexOf(bb) != -1 | i.indexOf(cc) != -1 | i.indexOf(dd) != -1 | i.indexOf(ee) != -1 | i.indexOf(ff) != -1 |
+            a.indexOf(aa) != -1 | a.indexOf(bb) != -1 | a.indexOf(cc) != -1 | a.indexOf(dd) != -1 | a.indexOf(ee) != -1 | a.indexOf(ff) != -1 |
 			t.indexOf(aa) != -1 | t.indexOf(bb) != -1 | t.indexOf(cc) != -1 | t.indexOf(dd) != -1 | t.indexOf(ee) != -1 | t.indexOf(ff) != -1){
 			alert("\"\'\<>\`は入力しないでください。");
 			return false;
 		}else{		
+            if(!a.match(/^[ァ-ロワヲンー 　\r\n\t]*$/)){
+                alert("フリガナに入力できるのは全角カナとスペースだけです。");
+                return false;
+            }
 			return true;
 		}
 	}	
@@ -87,6 +95,7 @@
 <TR>
 <TH class="t-koumoku"><font color="white">姓</font></TH>
 <TH class="t-koumoku"><font color="white">名</font></TH>
+<TH class="t-koumoku"><font color="white">フリガナ</font></TH>
 <TH class="t-koumoku"><font color="white">ID</font></TH>
 <TH class="t-koumoku"><font color="white">社員番号</font></TH>
 <TH class="t-koumoku"><font color="white">所属番号</font></TH>
@@ -97,6 +106,7 @@
 <TR>
 <TD><INPUT TYPE="text" SIZE="5" NAME="f_name" VALUE="<%= Shain.getF_name() %>"></TD>
 <TD><INPUT TYPE="text" SIZE="5" NAME="g_name" VALUE="<%= Shain.getG_name() %>"></TD>
+<TD><INPUT TYPE="text" SIZE="15" NAME="hurigana" VALUE="<%= Shain.getHurigana() %>" ></TD>
 <TD><INPUT TYPE="text" SIZE="10" NAME="id" VALUE="<%= Shain.getId() %>" readonly="readonly"  style="background-color:#bfbfbf;"></TD>
 <TD><INPUT TYPE="text" SIZE="10" NAME="number" VALUE="<%= Shain.getNumber() %>" readonly="readonly"  style="background-color:#bfbfbf;"></TD>
 <TD><INPUT TYPE="text" SIZE="11" NAME="groupnumber" VALUE="<%= Shain.getGROUPnumber() %>" style="ime-mode: disabled;" ></TD>

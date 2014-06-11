@@ -94,6 +94,7 @@ public class LoginDAO {
 				String zaiseki_flg = rs.getString("zaiseki_flg");
 				String hyouzijun = rs.getString("hyouzijun");
 				String yakusyoku = rs.getString("yakusyoku");
+				String hurigana = rs.getString("hurigana");
 
 				b_shainmst.setId(id);
 				b_shainmst.setPw(pw);
@@ -105,6 +106,8 @@ public class LoginDAO {
 				b_shainmst.setZaiseki_flg(zaiseki_flg);
 				b_shainmst.setHyouzijun(hyouzijun);
 				b_shainmst.setYakusyoku(yakusyoku);
+				// フリガナを追加 2014-06-11
+				b_shainmst.setHurigana(hurigana);
 
 				alist.add(b_shainmst);
 			}

@@ -113,6 +113,9 @@ public class C_Shain_update extends C_ChangePageBase {
 			String yakusyoku = request.getParameter("yakusyoku").trim();
 			yakusyoku = word.checks(yakusyoku);
 			String name = f_name+"　"+g_name;
+			// フリガナを追加 2014-06-11
+			String hurigana = request.getParameter("hurigana").trim();
+			hurigana = word.checks(hurigana);
 			
 			//本番用
 			String mail = request.getParameter("mail").trim();
@@ -211,7 +214,7 @@ public class C_Shain_update extends C_ChangePageBase {
 				}
 			}
 			
-			sql =" update shainmst set name ='"+name+"',checked='"+checked+"',groupnumber ='"+groupnumber+"',mail ='"+mail+"',hyouzijun='"+hyouzijun+"',yakusyoku='"+yakusyoku+"' where number = '"+number+"'";
+			sql =" update shainmst set name ='"+name+"',checked='"+checked+"',groupnumber ='"+groupnumber+"',mail ='"+mail+"',hyouzijun='"+hyouzijun+"',yakusyoku='"+yakusyoku+"',hurigana='"+hurigana+"' where number = '"+number+"'";
 			
 			kousin2 = stmt.executeUpdate(sql);
 			

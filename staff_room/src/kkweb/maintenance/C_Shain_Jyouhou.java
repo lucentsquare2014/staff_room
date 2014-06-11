@@ -45,6 +45,7 @@ public class C_Shain_Jyouhou extends C_ChangePageBase {
 			String zaiseki_flg = shain.getZaiseki_flg();			
 			String hyouzijun = shain.getHyouzijun();
 			String yakusyoku = shain.getYakusyoku();
+			String hurigana = shain.getHurigana();
 						
 			String f_name = "";
 			String g_name = "";
@@ -70,6 +71,8 @@ public class C_Shain_Jyouhou extends C_ChangePageBase {
 			mshain.setZaiseki_flg(zaiseki_flg);
 			mshain.setHyouzijun(hyouzijun);
 			mshain.setYakusyoku(yakusyoku);
+			// フリガナを追加 2014-06-11
+			mshain.setHurigana(hurigana);
 						
 			HttpSession session = request.getSession(true);
 			session.setAttribute("Shain",mshain);

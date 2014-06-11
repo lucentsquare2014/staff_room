@@ -95,6 +95,9 @@ public class C_Shain_tuika extends C_ChangePageBase {
 			f_name = word.checks(f_name);
 			String g_name = request.getParameter("g_name").trim();
 			g_name = word.checks(g_name);
+			//フリガナの追加
+			String hurigana = request.getParameter("hurigana").trim();
+			hurigana = word.checks(hurigana);
 			String id = request.getParameter("id").trim();
 			id = word.checks(id);
 			String pw = request.getParameter("pw").trim();
@@ -170,10 +173,12 @@ public class C_Shain_tuika extends C_ChangePageBase {
 					kousin1 = stmt.executeUpdate(sql);
 
 				}
-				String pw1 = DigestUtils.shaHex(pw);
+				String pw1 = DigestUtils.sha1Hex(pw);
 		//		System.out.println("ハッシュ"+pw1);
 		//		sql = " insert into shainMST values ('"+id+"','"+pw+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1')";
-				sql = " insert into shainMST values ('"+id+"','"+pw1+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1','"+hyouzijun+"','"+yakusyoku+"')";
+		//		sql = " insert into shainMST values ('"+id+"','"+pw1+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1','"+hyouzijun+"','"+yakusyoku+"')";
+				// フリガナを追加したsql↓
+				sql = " insert into shainMST values ('"+id+"','"+pw1+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1','"+hyouzijun+"','"+yakusyoku+"','"+hurigana+"')";
 
 				kousin2 = stmt.executeUpdate(sql);
 
