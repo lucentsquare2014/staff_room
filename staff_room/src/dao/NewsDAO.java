@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class NewsDAO {
 
 	/*
-	 * newsDBに接続するメソッド
+	 * kintaikanriに接続するメソッド
 	 *
 	 * @return データベースとやりとりするコネクションクラス
 	 */
@@ -35,7 +35,7 @@ public class NewsDAO {
 					"jdbc:postgresql://localhost:5432/kintaikanri", user, pass);
 			//テストサーバのデータベースにアクセス
 //			con = DriverManager.getConnection(
-//					"jdbc:postgresql://192.168.101.21:5432/kintaikanri", user, pass);
+//					"jdbc:postgresql://192.168.101.31:5432/kintaikanri", user, pass);
 			System.out.println("接続成功");
 		} catch (Exception e) {
 			System.out.println("例外発生：" + e);
@@ -67,7 +67,7 @@ public class NewsDAO {
 			closekintaikanri(con);
 		}
 	}
-	/* newsDBに新規に書き込むメソッド */
+	/* kintaikanriのnewsに新規に書き込むメソッド */
 	public void writeNews(HashMap<String, String> Newsdata) {
 		Connection con = openkintaikanri();
 		try {
@@ -101,7 +101,7 @@ public class NewsDAO {
 		}
 	}
 
-	/* newsDBにある記事を編集するメソッド */
+	/* kintaikanriのnewsにある記事を編集するメソッド */
 	public void updateNews(HashMap<String, String> Newsdata) {
 		Connection con = openkintaikanri();
 		try {
@@ -156,7 +156,7 @@ public class NewsDAO {
 		}
 	}
 
-	// 例：getNews("select * from newsDB");
+	// 例：getNews("select * from kintaikanri");
 	/*
 	 * テーブルのデータを参照し、listに格納して返すメソッド
 	 *
