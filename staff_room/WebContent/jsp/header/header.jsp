@@ -99,9 +99,9 @@ $(window).resize(function(){
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
 					<li><a
-						href="//www.lucentsquare.co.jp/staff/bbq_index.html">BBQ写真館</a></li>
+						href="/staff_room/jsp/photo.jsp?ph=1">BBQ写真館</a></li>
 					<li><a
-						href="//www.lucentsquare.co.jp/staff/25%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5%E8%A1%8C%E4%BA%8B%E6%A1%88%E5%86%85/25year_index.html">創立２５周年記念</a></li>
+						href="/staff_room/jsp/photo.jsp?ph=2">創立２５周年記念</a></li>
 				</ul>
 			</div>
 		</li>
@@ -109,14 +109,14 @@ $(window).resize(function(){
 				class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
-					<li><a href="//www.lucentsquare.co.jp/gps/pc/">GPS</a></li>
+					<li><a href="/staff_room/jsp/etc.jsp?etc=1">GPS</a></li>
 					<li><a
-						href="//www.lucentsquare.co.jp:8080/etalent5_27/main.jsp">e-talent</a></li>
+						href="/staff_room/jsp/etc.jsp?etc=2">e-talent</a></li>
 					<li><a
-						href="//www.lucentsquare.co.jp/staff/WorkingGroup/Advance_WorkingGroup.html">Advance
+						href="/staff_room/jsp/etc.jsp?etc=3">Advance
 							meeting</a></li>
 					<li><a
-						href="//www.lucentsquare.co.jp/staff/newstaff_2014/newstaff_index.html">新入社員紹介</a></li>
+						href="/staff_room/jsp/etc.jsp?etc=4">新入社員紹介</a></li>
 					<li><a
 						href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
 				</ul>
@@ -198,22 +198,22 @@ $(window).resize(function(){
 				<a href="#">Photo</a>
 				<ul class="uk-nav-sub">
 					<li><a
-						href="//www.lucentsquare.co.jp/staff/bbq_index.html">BBQ写真館</a></li>
+						href="/staff_room/jsp/photo.jsp?ph=1">BBQ写真館</a></li>
 					<li><a
-						href="//www.lucentsquare.co.jp/staff/25%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5%E8%A1%8C%E4%BA%8B%E6%A1%88%E5%86%85/25year_index.html">創立２５周年記念</a></li>
+						href="/staff_room/jsp/photo.jsp?ph=2">創立２５周年記念</a></li>
 				</ul>
 			</li>
 			<li class="uk-parent">
 				<a href="#">etc</a>
 				<ul class="uk-nav-sub">
-					<li><a href="//www.lucentsquare.co.jp/gps/pc/">GPS</a></li>
+					<li><a href="/staff_room/jsp/etc.jsp?etc=1">GPS</a></li>
 					<li><a
-						href="//www.lucentsquare.co.jp:8080/etalent5_27/main.jsp">e-talent</a></li>
+						href="/staff_room/jsp/etc.jsp?etc=2">e-talent</a></li>
 					<li><a
-						href="//www.lucentsquare.co.jp/staff/WorkingGroup/Advance_WorkingGroup.html">Advance
+						href="/staff_room/jsp/etc.jsp?etc=3">Advance
 							meeting</a></li>
 					<li><a
-						href="//www.lucentsquare.co.jp/staff/newstaff_2014/newstaff_index.html">新入社員紹介</a></li>
+						href="/staff_room/jsp/etc.jsp?etc=4">新入社員紹介</a></li>
 					<li><a
 						href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
 				</ul>
