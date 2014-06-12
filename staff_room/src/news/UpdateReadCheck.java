@@ -28,7 +28,7 @@ import dao.ShainDB;
 /**
  * Servlet implementation class UpdateReadCheck
  */
-@WebServlet(description = "未読記事を更新するサーブレット", urlPatterns = { "/UpdateReadCheck" })
+//@WebServlet(description = "未読記事を更新するサーブレット", urlPatterns = { "/UpdateReadCheck" })
 public class UpdateReadCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

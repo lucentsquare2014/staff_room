@@ -13,7 +13,7 @@ import dao.NewsDAO;
 /**
  * Servlet implementation class DeleteNews
  */
-@WebServlet(description = "記事を削除する", urlPatterns = { "/DeleteNews" })
+//@WebServlet(description = "記事を削除する", urlPatterns = { "/DeleteNews" })
 public class DeleteNews extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

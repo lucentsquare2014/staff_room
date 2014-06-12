@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class DocumentDelete
  */
-@WebServlet("/DocumentDelete")
+//@WebServlet("/DocumentDelete")
 public class DocumentDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

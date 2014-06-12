@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/LoginFilter")
+//@WebFilter("/LoginFilter")
 public class LoginFilter implements Filter {
 
     /**
