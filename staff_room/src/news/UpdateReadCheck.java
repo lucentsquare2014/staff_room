@@ -67,7 +67,7 @@ public class UpdateReadCheck extends HttpServlet {
 
 			
 			// 要素を検索してその要素を削除
-			while(read_check.indexOf(news_id) != -1){
+			if(read_check.indexOf(news_id) != -1){
 				read_check.remove(read_check.indexOf(news_id));
 			}
 			
@@ -76,8 +76,12 @@ public class UpdateReadCheck extends HttpServlet {
 			
 			/* 再びカンマ区切りの文字列に変換
 			 * 正規表現は…誰かがするかも */
-			String update_str = StringUtils.join(read_check, ",");
-			update_str  = new StringBuilder(update_str).append(",").toString();
+			String update_str = null;
+			if(read_check.size() != 0){
+				update_str = StringUtils.join(read_check, ",");
+				update_str = new StringBuilder(update_str).append(",").toString();
+			}
+			
 			System.out.println(update_str);
 			// DBのread_checkを更新
 			this.updateReadchk(update_str, login_id);

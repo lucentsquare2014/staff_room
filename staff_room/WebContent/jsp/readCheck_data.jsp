@@ -6,8 +6,10 @@
 <jsp:include page="/html/head.html" />
 <link rel="stylesheet" href="/staff_room/css/readCheck_data.css">
 <%@ page import="dao.ShainDB,
+				dao.NewsDAO,
 				java.util.ArrayList,
 				java.sql.Connection,
+				java.sql.PreparedStatement,
 				java.sql.Statement,
 				java.sql.ResultSet,
 				java.sql.SQLException,
@@ -28,7 +30,8 @@
 	ArrayList<Integer> x = new ArrayList<Integer>();
 	Mail.GetShainDB News = new Mail.GetShainDB();
 	ArrayList<HashMap<String, String>> Newslist = null;
-	String sql = "select shainmst.id,shainmst.name,shainmst.hurigana,shainkanri.read_check from shainmst,shainkanri where shainmst.number = shainkanri.shain_number order by shainmst.hurigana asc";
+	String sql = "select shainmst.id,shainmst.name,shainmst.hurigana,shainkanri.read_check,shainkanri.access_time" +
+				" from shainmst,shainkanri where shainmst.number = shainkanri.shain_number order by shainmst.hurigana asc";
 	Newslist = News.getShain(sql);
 	%>
 
@@ -44,11 +47,44 @@
 
 		<%
 		ShainDB primary = new ShainDB();
+		NewsDAO nd = new NewsDAO();
 		Connection con =primary.openShainDB();
 		Statement stmt;
 		for (int i = 0; i < Newslist.size(); i++) {
 			HashMap<String, String> Newsmap = Newslist.get(i);
-			String[] unread = Newsmap.get("read_check").split(",");
+			String past_unread = Newsmap.get("read_check");
+			String last_access = Newsmap.get("access_time");
+			if(last_access.indexOf(".") != -1){
+				last_access = last_access.substring(0, last_access.indexOf("."));
+			}else{
+				last_access = last_access.substring(0, last_access.indexOf("+"));
+			}
+			String result = null;
+			// 最後にログインした時間よりも日付が新しい記事を取ってくるsql文
+			String sql3 = "select news_id from news where created > ?";
+			try {
+				PreparedStatement pstmt = con.prepareStatement(sql3);
+				pstmt.setTimestamp(1, java.sql.Timestamp.valueOf(last_access));
+				ResultSet rs2 = pstmt.executeQuery();
+				StringBuilder builder = new StringBuilder();
+				while(rs2.next()){
+					builder.append(rs2.getString("news_id")).append(",");
+					result =  builder.toString();
+				}
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			if(result != null){
+				past_unread += result;
+			}
+			//String result = nd.getNewsFromLastLogin(last_access);
+			//if(result != null){
+			//	past_unread += result;
+			//}
+			if(past_unread.startsWith(",")){
+				past_unread = past_unread.substring(1, past_unread.length());
+			}
+			String[] unread = past_unread.split(",");
 			String sql_in = "";
 			int primary_count = 0;
 			for(int j = 0; j < unread.length; j++){
@@ -59,9 +95,10 @@
 				}
 
 			}
-			if(!sql_in.equals("")){
+			if(!sql_in.equals("''")){
 
-				String sql2 = "select count(*) from news where news_id in (" +sql_in+ ")" + " and primary_flag = '1'";
+				String sql2 = "select count(*) from news where news_id in (" + sql_in + ")" 
+							+ " and primary_flag = '1'";
 
 				try{
 					stmt = con.createStatement();
@@ -73,13 +110,14 @@
 					System.out.println(e);
 				}
 			}
-
 			%>
 		<tr>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("id")%></td>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("name")%></td>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("hurigana")%></td>
-			<td align="right" id = "na" bgcolor="#FFFFFF"><%=unread.length%>
+			<td align="right" id = "na" bgcolor="#FFFFFF">
+				<% if(unread.length == 1 && unread[0].equals("")){ %>0
+				<% }else{ %><%=unread.length%><% } %></td>
 			<td align="right" id = "na" bgcolor="#FFFFFF"><%=primary_count%></td>
 		</tr>
 	<%
