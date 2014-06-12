@@ -170,7 +170,7 @@
 					out.print("　");
 				} else {%>
 				<span><a class="prev-page uk-button uk-button-primary"
-					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) - 1%>&news_id=<%=value2%>">&lt;&lt;前へ</a></span>
+					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) - 1%>&news=<%=value%>">&lt;&lt;前へ</a></span>
 			<%}%>
 			</div>
 			<div class="uk-width-1-2 page-next uk-text-large uk-text-right"
@@ -178,7 +178,7 @@
 				out.print("display: none;");
 			}%>">
 				<span><a class="next-page uk-button uk-button-primary"
-					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) + 1%>&news_id=<%=value2%>">次へ&gt;&gt;</a></span>
+					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) + 1%>&news=<%=value%>">次へ&gt;&gt;</a></span>
 			</div>
 		</div>
 </div></div></div></div>
