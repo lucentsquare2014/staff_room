@@ -40,20 +40,23 @@
             int inde = str2.indexOf("-");
             String moji = str2.substring(inde+1);
             System.out.println(moji.substring(0,1));
-         %>
-
-			<tr id="<%=moji.substring(0,1)%>">
-				<td bgcolor="#FFFFFF"><a flag="0"
-				class="uk-icon-square-o uk-text-center delete-box"
-				name="check" id="<%=str1.substring(0,index)%>"></a></td>
-				<td id = "na" bgcolor="#FFFFFF"><%=Mailmap.get("name")%></td>
-				<td id = "na" bgcolor="#FFFFFF"><%=Mailmap.get("hurigana")%></td>
-				<td id = "na" bgcolor="#FFFFFF"><a href="mailto:<%=Mailmap.get("mail")%>"><%=Mailmap.get("mail")%></a></td>
-			</tr>
-		<%}%>
+            
+            if(!Mailmap.get("hurigana").equals("")){
+                %>
+       			<tr id="<%=moji.substring(0,1)%>">
+       				<td bgcolor="#FFFFFF"><a flag="0"
+       				class="uk-icon-square-o uk-text-center delete-box"
+       				name="check" id="<%=str1.substring(0,index)%>"></a></td>
+       				<td id = "na" bgcolor="#FFFFFF"><%=Mailmap.get("name")%></td>
+       				<td id = "na" bgcolor="#FFFFFF"><%=Mailmap.get("hurigana")%></td>
+       				<td id = "na" bgcolor="#FFFFFF"><a href="mailto:<%=Mailmap.get("mail")%>"><%=Mailmap.get("mail")%></a></td>
+       			</tr>
+       		<%}}%>
+         
 		</table>
-		
-		<div id=button><a class="uk-button uk-button-primary" href="mailto:" id="mail"> メール作成</a>
+		<div id=button>
+		<div id=button-con>
+		<a class="uk-button uk-button-primary" href="mailto:" id="mail"> メール作成</a>
 			<ul>
 				<li>
 					<a class="uk-button" href="#a">ア</a>
@@ -76,6 +79,9 @@
 					<a class="uk-button" href="#w">ワ</a>
 				</li>
 			</ul>
+			<a class="uk-button uk-button-primary" href="mailto:all@lucentsquare.co.jp;" id="mail"> 全社員へメール</a>
+			
+		</div><div id="tyu">（注）outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div>
 		</div>
 	</div>
 </body>

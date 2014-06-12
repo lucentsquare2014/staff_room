@@ -22,7 +22,7 @@ div#con {
 	overflow-y: scroll;
 	max-width: 100%;
 	max-height: 93.5%;
-	white-space: nowrap;
+	
 }
 
 td#na {
@@ -33,7 +33,19 @@ td#na {
 div#button {
 	position: fixed;
 	top: 30%;
-	left: 5%;
+	left: 2%;
+	width:140px;
+	white-space: none;
+	background-color:rgba(0,0,0,0.8);
+	border-radius: 4px;
+}
+#button-con{align:center;
+margin:10px;
+	
+}
+
+div#button-con>a {
+	width: 100%;
 }
 
 .uk-table {
@@ -41,18 +53,22 @@ div#button {
 	margin-right: auto;
 	margin-left: 23%;
 	margin-top: 5%;
+	white-space: nowrap;
 }
 
 div#button ul {
-	margin-top: 20px;
-	padding-left: 0px
+	padding-left: 0px;
 }
 
 div#button ul>li {
 	list-style-type: none;
+	padding-left:12%;
 }
 
 div#button ul>li>a {
-	width: 48%;
+	width: 40%;
 	text-align: center;
+	margin:auto;
 }
+#tyu{color:white;
+padding: 3px;}
