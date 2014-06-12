@@ -35,7 +35,7 @@ public class NewsDAO {
 					"jdbc:postgresql://localhost:5432/kintaikanri", user, pass);
 			//テストサーバのデータベースにアクセス
 //			con = DriverManager.getConnection(
-//					"jdbc:postgresql://192.168.101.31:5432/kintaikanri", user, pass);
+//					"jdbc:postgresql://192.168.101.21:5432/kintaikanri", user, pass);
 			System.out.println("接続成功");
 		} catch (Exception e) {
 			System.out.println("例外発生：" + e);
