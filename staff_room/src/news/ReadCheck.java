@@ -39,6 +39,9 @@ public class ReadCheck {
 				data[1] = rs.getString("access_time");
 				data[2] = rs.getString("read_check");
 				data[3] = rs.getString("cookie");
+				if(rs.getString("read_check") == null){
+					data[2] = "";
+				}
 			}
 			String update_sql = "UPDATE shainkanri SET access_time = current_timestamp WHERE shain_number = '" + data[0] + "'";
 			stmt.executeUpdate(update_sql);
