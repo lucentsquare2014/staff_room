@@ -8,7 +8,7 @@
 <style>
 body {
 	width: 100%;
-	height: 656px;
+	height: 610px;
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/bbs4.jpg");
 	background-size: 100% 100%;
@@ -16,7 +16,7 @@ body {
 .conetent{
 	padding: 0; 
 	padding-top: 42px; 
-	height: 93%; 
+	height: 100%; 
 	width: 70%;
 	margin-left:auto;
 	margin-right:auto;
