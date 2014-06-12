@@ -14,6 +14,9 @@ body {
 	background-image: url("/staff_room/images/manual01.jpg");
 	background-size: 100% auto;
 }
+#select_files {
+	display:none;
+}
 </style>
 <title>規定・書類</title>
 </head>
@@ -24,8 +27,37 @@ body {
 <!-- <img src="/staff_room/images/manyuaru6.jpg" style="margin-bottom:20px;"> -->
 <!-- <span style="position:absolute;top:40em;left:1100px"><font size="7" color="red" face="ＭＳ 明朝,平成明朝">マニュアル</font></span>   -->
 <div class="uk-width-3-5 uk-container-center">
-<br><br><br><br>
-<% if(user.equals("admin")){ //-----------管理者の申請書類ページ-----------%>
+<br>
+<!--------------  管理者用　 ----------------->　
+	<% if(user.equals("admin")){ %>
+	<div class="uk-grid">
+		<div class="uk-width-1-4 uk-text-left">
+			<button id="delete" class="uk-button uk-button-danger" disabled="disabled">
+			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button>
+		</div>
+		<div class="uk-width-3-4 uk-text-right">
+		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
+			<input type="hidden" name="page" value="manual">
+			<div class="uk-form-file">
+				<button class="uk-button uk-button-success">
+				<i class="uk-icon-file-text uk-icon-small"></i><b>　添付</b></button>
+				<input type="file" name="inputFile" id="upload-select" multiple>
+				<div id="progressbar" class="uk-progress uk-hidden" style="width: 500px;">
+    				<div class="uk-progress-bar" style="width: 0%;">...</div>
+				</div>
+			</div>
+			<button id="add" class="uk-button uk-button-primary" disabled>
+			<i class="uk-icon-upload uk-icon-small"></i><b>　追加</b></button>
+		</form>
+		</div>
+	</div>
+	<div class="uk-width-1-2 uk-align-right" id="select_files">
+		<br>
+		<div class="uk-panel">
+			<ul class="uk-list uk-list-line">
+			</ul>
+		</div>
+	</div>
 	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-width-1-1" >
 		<tr class="uk-text-large">
 		<th Background="../../images/blackwhite1.png" class="uk-text-center">　　</th>
@@ -46,34 +78,6 @@ body {
 
 	</table>
 <%} %>
-	<!--------------  管理者用　 ----------------->　
-	<% if(user.equals("admin")){ %>
-	<div class="uk-grid">
-		<div class="uk-width-1-4 uk-text-left">
-			<button id="delete" class="uk-button uk-button-danger" disabled="disabled">
-			<i class="uk-icon-trash-o uk-icon-small"></i><b>　削除</b></button>
-		</div>
-
-		<div class="uk-width-3-4 uk-text-right">
-		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
-			<input name="select_files" class ="uk-container-right" type="text" disabled>
-			<div class="uk-form-file">
-				<button class="uk-button uk-button-success">
-				<i class="uk-icon-file-text uk-icon-small"></i><b>　添付</b></button>
-				<input type="file" name="inputFile" id="upload-select" multiple>
-				<div id="progressbar" class="uk-progress uk-hidden" style="width: 500px;">
-    				<div class="uk-progress-bar" style="width: 0%;">...</div>
-				</div>
-			</div>
-		<br><br>
-		<div class="uk-width-1-1 uk-text-right">
-			<button id="add" class="uk-button uk-button-primary" disabled>
-			<i class="uk-icon-upload uk-icon-small"></i><b>　追加</b></button>
-		</div>
-	<input type="hidden" name="page" value="manual">
-	</form>
-	</div>
-	<%} %>
 </div>
 </div>
 <br><br>
