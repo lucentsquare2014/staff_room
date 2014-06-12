@@ -30,10 +30,10 @@ body {
 top:250px;
 left:70px}
 
-#out_Div { /* 全体の枠。ここにヘッダを格納 */
-  position: relative; /* 相対位置 */
-  padding-top: 26px;  /*  #in_Div の開始位置 */
-  width: 600px; /* 列幅の合計＋セル間の幅(2px)の合計＋20px 程度 */
+#out_Div {
+  position: relative; 
+  padding-top: 26px; 
+  width: 600px;
    }
  
 #in_Div {
@@ -41,7 +41,10 @@ left:70px}
 	overflow-y: scroll;
 	line-height: 1.75em;
 	height: 300px;
-	background-color: #eee;
+	background-color: whitesmoke;
+	
+	
+	
     }
  
 
