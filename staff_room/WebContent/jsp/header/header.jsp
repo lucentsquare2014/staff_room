@@ -125,7 +125,10 @@ $(window).resize(function(){
 		<li class="uk-parent header" data-uk-dropdown><a>アカウント管理<i class="uk-icon-caret-down"></i></a>
             <div class="uk-dropdown uk-dropdown-navbar">
                 <ul class="uk-nav uk-nav-navbar">
-                    <li><a href="/staff_room/jsp/accountssettings/accountsmanage.jsp">管理者の追加・削除</a></li>
+                    <% if(user.equals("admin")){ %>
+                    <li class="uk-nav-divider"></li>
+                        <li><a href="/staff_room/jsp/accountssettings/accountsmanage.jsp">管理者の追加・削除</a></li>
+                    <% } %>
                 </ul>
             </div>
         </li>
