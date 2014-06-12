@@ -56,6 +56,7 @@ $(window).resize(function(){
 			</a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
+                    <li><a href="/staff_room/jsp/news.jsp?news=all">すべて</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=1">総務</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=2">人事</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=3">行事</a></li>
