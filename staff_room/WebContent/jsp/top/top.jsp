@@ -215,7 +215,7 @@ $(function() {
 							<th style="width:35px;"><font color="#FFFFFF"></font></th>
 							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
 							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF">分類</font></th>
+							<th style="width:150px;"><font color="#FFFFFF"></font></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -247,8 +247,7 @@ $(function() {
 										<%=row.get("title")%></a></td>
 	<%}%>
 
-								<!-- ジャンル -->
-								<td><%=row.get("postname")%></td>
+			
 
 							</tr><%}}%>
 						</tbody>
