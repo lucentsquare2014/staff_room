@@ -10,7 +10,7 @@ body {
 
 .uk-subnav{position: absolute;
 	float: left;
-	top: 160px;
+	top: 200px;
 	left: 300px;
 	white-space: nowrap;
 	}
@@ -26,25 +26,23 @@ body {
 	background-color:#5BC0DE;}
 	
 
-#subnav-pill-content{position:absolute;
-top:250px;
-left:70px}
+#subnav-pill-content{
+	position:absolute;
+	top:260px;
+	left:70px;
+}
 
 #out_Div {
   position: relative; 
   padding-top: 26px; 
   width: 530px;
-   }
+}
  
 #in_Div {
-	
 	overflow-y: scroll;
 	line-height: 1.75em;
 	height: 260px;
 	background-color: whitesmoke;
-	
-	
-	
     }
  
 
@@ -52,12 +50,11 @@ left:70px}
   position: absolute; 
   top: 0px; 
   left: 0px; 
-   }
+}
 
 
 .changelog-content >thead >tr >th{
 	background-image: url("/staff_room/images/blackwhite1.png");
-	
 }
 
 
@@ -67,11 +64,6 @@ max-width: 280px;
 white-space: nowrap;
 text-overflow: ellipsis;
 }
-
-
-	
-	
-
 
 .changelog-ul{
     list-style: none;
@@ -89,7 +81,7 @@ text-overflow: ellipsis;
 	float: left;
 	align: left;
 	left:70px;
-	top: 130px;
+	top: 170px;
 	padding: 0;
 	background-color: #5bc0de;
 	border-radius: 10px;

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet(name = "DocumentUpload", urlPatterns = { "/document" })
+//@WebServlet(name = "DocumentUpload", urlPatterns = { "/document" })
 @MultipartConfig(fileSizeThreshold = 5000000, maxFileSize = 700 * 1024 * 1024)
 public class DocumentUpload extends HttpServlet {
     private static final long serialVersionUID = 1L;

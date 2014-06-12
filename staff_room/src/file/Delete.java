@@ -19,7 +19,7 @@ import dao.NewsDAO;
 /**
  * Servlet implementation class Delete
  */
-@WebServlet("/Delete")
+//@WebServlet("/Delete")
 public class Delete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

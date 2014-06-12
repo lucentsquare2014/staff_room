@@ -21,7 +21,7 @@ import dao.ShainDB;
 /**
  * Servlet implementation class PwChange
  */
-@WebServlet("/PwChange")
+//@WebServlet("/PwChange")
 public class PwChange extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

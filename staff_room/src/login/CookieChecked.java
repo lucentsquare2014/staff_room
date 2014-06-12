@@ -18,7 +18,7 @@ import dao.ShainDB;
 /**
  * Servlet implementation class CookieChecked
  */
-@WebServlet("/CookieChecked")
+//@WebServlet("/CookieChecked")
 public class CookieChecked extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

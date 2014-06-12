@@ -16,8 +16,90 @@
     <param-name>sender</param-name>
     <param-value>20732</param-value>
   </context-param>
+   <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>login.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
   <servlet>
-    <servlet-name>S_Login</servlet-name>
+    <servlet-name>CookieChecked</servlet-name>
+    <servlet-class>login.CookieChecked</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CookieChecked</servlet-name>
+    <url-pattern>/CookieChecked</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>login.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>PwChange</servlet-name>
+    <servlet-class>login.PwChange</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PwChange</servlet-name>
+    <url-pattern>/PwChange</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeleteNews</servlet-name>
+    <servlet-class>news.DeleteNews</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteNews</servlet-name>
+    <url-pattern>/DeleteNews</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateReadCheck</servlet-name>
+    <servlet-class>login.UpdateReadCheck</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateReadCheck</servlet-name>
+    <url-pattern>/UpdateReadCheck</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Delete</servlet-name>
+    <servlet-class>file.Delete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Delete</servlet-name>
+    <url-pattern>/Delete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DocumentDelete</servlet-name>
+    <servlet-class>file.DocumentDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DocumentDelete</servlet-name>
+    <url-pattern>/DocumentDelete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DocumentUpload</servlet-name>
+    <servlet-class>file.DocumentUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DocumentUpload</servlet-name>
+    <url-pattern>/document</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Upload</servlet-name>
+    <servlet-class>file.Upload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+
+
+    <servlet>
+     <servlet-name>S_Login</servlet-name>
     <servlet-class>kkweb.shain.S_Login</servlet-class>
   </servlet>
   <servlet-mapping>
