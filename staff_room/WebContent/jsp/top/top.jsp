@@ -63,8 +63,7 @@ $(function() {
 					NewsDAO dao = new NewsDAO();
 					ArrayList<HashMap<String, String>> table = dao
 							.getNews("select news_id,created,postname,news.post_id,title,primary_flag from news, post where news.post_id = post.post_id order by created desc");
-					ArrayList<HashMap<String, String>> t_copy = new ArrayList<HashMap<String, String>>(
-							table);
+					ArrayList<HashMap<String, String>> t_copy = new ArrayList<HashMap<String, String>>(table);
 				%>
 				<!-- 以下、種別ごとにテーブルを作る -->
 				<ul id="subnav-pill-content" class="uk-switcher">
