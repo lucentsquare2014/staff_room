@@ -1,12 +1,18 @@
 $(function(){
 	$("input[name='inputFile']").on("change",function(){
 		var files = $("#upload-select")[0].files;
-		var file_str = "";
+		$("#select_files ul").html("");
+		$("#select_files div").addClass("uk-panel-box");
 		for(var i = 0; files[i]; i++){
-			file_str += files[i].name + "\n";
+			$("#select_files ul").append('<li>' + files[i].name + '<p class="uk-align-right">' 
+									+ getFiseSize(files[i].size) + '</p></li>');
 		}
-		$("input[name='select_files']").val(file_str);
+		$("#select_files").show();
 		$("#add").prop('disabled',false);
+		if(files.length == 0){
+			$("#select_files").hide();
+			$("#add").prop('disabled',true);
+		}
 	});
 	
 	$(".uk-table :checkbox").click(function(){
@@ -53,4 +59,37 @@ $(function(){
 			});
 		}
 	});
+	
+	function getFiseSize(file_size)
+	{
+	  var str = "";
+	  
+	  // 単位
+	  var unit = ['byte', 'KB', 'MB', 'GB', 'TB'];
+
+	  for (var i = 0; i < unit.length; i++) {  
+	    if (file_size < 1024) {
+	      if (i == 0) {
+	        // カンマ付与
+	        var integer = file_size.toString().replace(/([0-9]{1,3})(?=(?:[0-9]{3})+$)/g, '$1,');
+	        str = integer +  unit[ i ];
+	      } else {
+	        // 小数点第2位は切り捨て
+	        file_size = Math.floor(file_size * 100) / 100;
+	        // 整数と小数に分割
+	        var num = file_size.toString().split('.');
+	        // カンマ付与
+	        var integer = num[0].replace(/([0-9]{1,3})(?=(?:[0-9]{3})+$)/g, '$1,');
+	        if (num[1]) {
+	          file_size = integer + '.' + num[1];
+	        }
+	        str = file_size +  unit[ i ];
+	      }
+	      break;
+	    }
+	    file_size = file_size / 1024;
+	  }
+
+	  return str;
+	} 
 });

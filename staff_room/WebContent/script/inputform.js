@@ -63,7 +63,7 @@ $(function(){
 
         action: '/staff_room/upload', // upload url
 
-        allow : '*.*', // allow only images
+        allow : '*.*', // allow only files
 
         loadstart: function() {
             bar.css("width", "0%").text("0%");
