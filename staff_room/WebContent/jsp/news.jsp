@@ -57,7 +57,7 @@
 		System.out.println(value);
 		value2 = request.getParameter("news_id");
 		//未読記事のnews_idを受け取る
-		if(session.getAttribute("unread") !=""){
+		if(session.getAttribute("unread") != null){
 			 value3 = String.valueOf(session.getAttribute("unread"));
 			 read_check = Arrays.asList(value3.split(","));
 		}
