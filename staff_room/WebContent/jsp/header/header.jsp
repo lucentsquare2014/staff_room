@@ -103,7 +103,8 @@ $(window).resize(function(){
 					<li><a
 						href="//www.lucentsquare.co.jp/staff/25%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5%E8%A1%8C%E4%BA%8B%E6%A1%88%E5%86%85/25year_index.html">創立２５周年記念</a></li>
 				</ul>
-			</div></li>
+			</div>
+		</li>
 		<li class="uk-parent header" data-uk-dropdown><a>etc<i
 				class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
@@ -119,7 +120,16 @@ $(window).resize(function(){
 					<li><a
 						href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
 				</ul>
-			</div></li>
+			</div>
+		</li>
+		<li class="uk-parent header" data-uk-dropdown><a>アカウント管理<i class="uk-icon-caret-down"></i></a>
+            <div class="uk-dropdown uk-dropdown-navbar">
+                <ul class="uk-nav uk-nav-navbar">
+                    <li><a href="/staff_room/jsp/accountssettings/accountmanage.jsp">管理者の追加・削除</a></li>
+                </ul>
+            </div>
+        </li>
+		
 
 	</ul>
 	<div class="uk-navbar-content uk-navbar-flip uk-hidden-small" id="logout">
@@ -132,6 +142,7 @@ $(window).resize(function(){
  		ヘルプ
  		</a>
  	</div>
+
 	<a href="" class="uk-navbar-toggle uk-visible-small" id="side" data-uk-offcanvas="{target:'#sidenav'}"></a>
 	<div class="uk-navbar-content uk-navbar-center uk-align-center" id="logo">
 		<a href="//www.lucentsquare.co.jp/"
