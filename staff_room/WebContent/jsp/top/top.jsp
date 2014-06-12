@@ -55,7 +55,7 @@ $(function() {
 				//未読のnews_idをvalueに入れる
 				String value3 = null;
 				List<String> read_check = null;
-				if(session.getAttribute("unread") !=""){
+				if(session.getAttribute("unread") != null){
 					 value3 = String.valueOf(session.getAttribute("unread"));
 					 read_check = Arrays.asList(value3.split(","));
 				}
