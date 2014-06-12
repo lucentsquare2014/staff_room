@@ -58,7 +58,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>UpdateReadCheck</servlet-name>
-    <servlet-class>login.UpdateReadCheck</servlet-class>
+    <servlet-class>news.UpdateReadCheck</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateReadCheck</servlet-name>
