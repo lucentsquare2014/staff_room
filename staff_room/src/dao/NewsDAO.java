@@ -212,7 +212,6 @@ public class NewsDAO {
 		String result = null;
 		// 最後にログインした時間よりも日付が新しい記事を取ってくるsql文
 		String sql = "select news_id from news where created > ?";
-		System.out.println(sql);
 		try {
 
 				// プリペアードステートメントを作成
@@ -236,7 +235,6 @@ public class NewsDAO {
 		}finally{
 			closekintaikanri(con);
 		}
-		System.out.println(result);
 		return result;
 	}
 
