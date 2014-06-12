@@ -60,7 +60,6 @@ public class ReadCheck {
 				update_ids += unique.get(i) + ",";
 			}
 		}
-		System.out.println(update_ids);
 		String sql = "UPDATE shainkanri SET read_check = '" + update_ids + 
 				"' WHERE shain_number = '" + number + "'";
 		ShainDB shain = new ShainDB();
