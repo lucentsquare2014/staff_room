@@ -73,10 +73,10 @@ $(function() {
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-						<th style="width:65px;"><font color="#FFFFFF"></font></th>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
-							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:300px;"><font color="#FFFFFF">タイトル</font></th>
+						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
+							<th style="width:55px;"><font color="#FFFFFF"></font></th>
+							<th style="width:100px;"><font color="#FFFFFF">日付</font></th>
+							<th style="width:400px;"><font color="#FFFFFF">タイトル</font></th>
 							<th style="width:150px;"><font color="#FFFFFF">分類</font></th>
 						</tr>
 					</thead>
@@ -93,14 +93,10 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style="width:40px;">
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-
 								
-									&nbsp;<div class="uk-badge uk-badge-danger">New</div></td>
-
-								<td><%=dddate.format(date)%></td>
-								<td>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+	                             <td><%=dddate.format(date)%></td>
+								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
@@ -123,11 +119,11 @@ $(function() {
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
+						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
+							<th style="width:35px;"><font color="#FFFFFF"></font></th>
 							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:300px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF">分類</font></th>
+							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:150px;"><font color="#FFFFFF"></font></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -145,14 +141,9 @@ $(function() {
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
 								
-								<td style="width:40px;">
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-
-								
-									&nbsp;<div class="uk-badge uk-badge-danger">New</div></td>
-
-								<td><%=dddate.format(date)%></td>
-								<td>
+	                             <td><%=dddate.format(date)%></td>
+								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
@@ -162,22 +153,23 @@ $(function() {
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%></a></td>
-								<%}%>
+	<%}%>
 
-
+								
 
 							</tr><%}}%>
-						</table></li>
+						</tbody>
+						</table></div></div></li>
 					<!-- 「人事」のテーブル -->	
-					<li class="uk-active"><div id="out_Div"><div id="in_Div">
+<li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
+						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
+							<th style="width:35px;"><font color="#FFFFFF"></font></th>
 							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:300px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF">分類</font></th>
+							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:150px;"><font color="#FFFFFF"></font></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -194,18 +186,10 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style=>
-								<%if(row.get("primary_flag").equals("1")){%>
-									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
-								<%}%>
-								<td style="width:40px;">
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-
 								
-									&nbsp;<div class="uk-badge uk-badge-danger">New</div></td>
-
-								<td><%=dddate.format(date)%></td>
-								<td>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+	                             <td><%=dddate.format(date)%></td>
+								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
@@ -215,22 +199,22 @@ $(function() {
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%></a></td>
-									<td> </td>
-								<%}%>
+	<%}%>
 
-
+								
 
 							</tr><%}}%>
-						</table></li>
+						</tbody>
+						</table></div></div></li>
 					<!-- 「行事」のテーブル -->	
 					<li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
+						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
+							<th style="width:35px;"><font color="#FFFFFF"></font></th>
 							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:300px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
 							<th style="width:150px;"><font color="#FFFFFF">分類</font></th>
 						</tr>
 					</thead>
@@ -248,18 +232,10 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style=>
-								<%if(row.get("primary_flag").equals("1")){%>
-									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
-								<%}%>
-								<td style="width:40px;">
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-
 								
-									&nbsp;<div class="uk-badge uk-badge-danger">New</div></td>
-
-								<td><%=dddate.format(date)%></td>
-								<td>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+	                             <td><%=dddate.format(date)%></td>
+								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
@@ -269,23 +245,24 @@ $(function() {
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%></a></td>
-									<td> </td>
-								<%}%>
+	<%}%>
 
-
+								<!-- ジャンル -->
+								<td><%=row.get("postname")%></td>
 
 							</tr><%}}%>
-						</table></li>
+						</tbody>
+						</table></div></div></li>
 					<!-- 「開発企画」のテーブル -->	
 					<li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
+						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
+							<th style="width:35px;"><font color="#FFFFFF"></font></th>
 							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:300px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF">分類</font></th>
+							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:150px;"><font color="#FFFFFF"></font></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -302,18 +279,10 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style=>
-								<%if(row.get("primary_flag").equals("1")){%>
-									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
-								<%}%>
-								<td style="width:40px;">
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-
 								
-									&nbsp;<div class="uk-badge uk-badge-danger">New</div></td>
-
-								<td><%=dddate.format(date)%></td>
-								<td>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+	                             <td><%=dddate.format(date)%></td>
+								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
@@ -323,23 +292,23 @@ $(function() {
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%></a></td>
-									<td> </td>
-								<%}%>
+	<%}%>
 
-
+								
 
 							</tr><%}}%>
-						</table></li>
+						</tbody>
+						</table></div></div></li>
 					<!-- 「その他」のテーブル -->	
 					<li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
-							<th style="width:65px;"><font color="#FFFFFF"></font></th>
+						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
+							<th style="width:35px;"><font color="#FFFFFF"></font></th>
 							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:300px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF">分類</font></th>
+							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
+							<th style="width:150px;"><font color="#FFFFFF"></font></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -356,18 +325,10 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								<td style=>
-								<%if(row.get("primary_flag").equals("1")){%>
-									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
-								<%}%>
-								<td style="width:40px;">
-								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-
 								
-									&nbsp;<div class="uk-badge uk-badge-danger">New</div></td>
-
-								<td><%=dddate.format(date)%></td>
-								<td>
+								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
+	                             <td><%=dddate.format(date)%></td>
+								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
@@ -377,13 +338,13 @@ $(function() {
 								<td>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%></a></td>
-									<td> </td>
-								<%}%>
+	<%}%>
 
-
+							
 
 							</tr><%}}%>
-						</table></li>
+						</tbody>
+						</table></div></div></li>
 				</ul>
 			</div>
 		</div>

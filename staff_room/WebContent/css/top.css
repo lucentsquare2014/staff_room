@@ -33,14 +33,14 @@ left:70px}
 #out_Div {
   position: relative; 
   padding-top: 26px; 
-  width: 600px;
+  width: 530px;
    }
  
 #in_Div {
 	
 	overflow-y: scroll;
 	line-height: 1.75em;
-	height: 300px;
+	height: 260px;
 	background-color: whitesmoke;
 	
 	
