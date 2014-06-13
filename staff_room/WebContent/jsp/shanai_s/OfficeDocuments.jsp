@@ -60,10 +60,10 @@ String selectAction(String name){
 	// 書類のステータスをセッションに追加
 	session.setAttribute("newinfobox", nibox);
 %>
-
 <title>社内文書確認画面</title>
 </head>
 <body>
+
 	<center>
 		<div class=main>
 			<div class="shadowbox">
@@ -326,12 +326,12 @@ String selectAction(String name){
 								</form>
 							</td>
 						</tr>
-						<tr>
+<!-- 						<tr>
 							<td colspan=2><div align="right">
 									<font size="2"><a href="/staff_room">[スタッフルームトップへ]</a></font>
 								</div></td>
 						</tr>
-
+ -->
 					</table>
 				</div>
 			</div>

@@ -73,20 +73,20 @@ $(window).resize(function(){
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
                     <li>
-                    <a href="/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=1">社内スケジュール</a>
+                    <a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=1">社内スケジュール</a>
                     </li>
                     <li>
-                    <a href="/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=2">社内勤怠システム</a>
+                    <a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=2">社内勤怠システム</a>
                     </li>
                     <li>
-                    <a href="/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=3">社内文書システム</a>
+                    <a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=3">社内文書システム</a>
                     </li>
  					<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf">社内文書システム<br>操作説明</a></li>
 
 
 					<% if(user.equals("1")){ %>
 					<li class="uk-nav-divider"></li>
-                    <li><a href="/staff_room/jsp/shanai_s/administrator.jsp">管理-社内システム</a></li>
+                    <li><a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=4">管理-社内システム</a></li>
                     <% } %>
 				</ul>
 			</div></li>

@@ -101,7 +101,7 @@ String memo = "";
 					</FORM>
 				</TD>
 				<TD>
-					<FORM ACTION="personal.jsp" METHOD="POST" TARGET="_top">
+					<FORM ACTION="personal.jsp" METHOD="POST" TARGET="_parent">
 						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
 						<INPUT TYPE="submit" VALUE="個人設定" title="個人設定ページに移動します。">
 					</FORM>

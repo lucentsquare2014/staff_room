@@ -54,8 +54,8 @@
 </td>
 </tr>
 </table><br>
-<a href="/staff_room" class="link"><font class="link"><small>[ スタッフルームトップへ ]</small></font></a></div>
-</center>
+<!-- <a href="/staff_room" class="link"><font class="link"><small>[ スタッフルームトップへ ]</small></font></a></div>
+ --></center>
 </body>
 </html>
 <%}%>

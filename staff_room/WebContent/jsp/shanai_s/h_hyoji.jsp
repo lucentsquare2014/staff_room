@@ -262,12 +262,17 @@ try{
 							<INPUT TYPE="submit" VALUE="日表示">
 						</FORM>
 					</TD>
-					<TD>
-						<FORM ACTION="menu.jsp" METHOD="POST" TARGET="_top">
-							<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-							<INPUT TYPE="submit" VALUE="メインメニューへ戻る">
-						</FORM>
-					</TD>
+                    <TD>
+                       <FORM ACTION="personal.jsp" METHOD="POST" TARGET="_parent">
+                            <INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
+                            <INPUT TYPE="submit" VALUE="個人設定" title="個人設定ページに移動します。">
+                       </FORM>
+                    </TD>
+                    <TD>
+                      <FORM ACTION="/staff_room" METHOD="POST" TARGET="_top">
+                        <INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。">
+                      </FORM>
+                    </TD>
 				</TR>
 			</TABLE>
 			<TABLE border="0">

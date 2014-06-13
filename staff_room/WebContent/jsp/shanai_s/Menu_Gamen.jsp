@@ -170,10 +170,10 @@
 					</select></li>
 				</ul>
 			</form>
-			<br> <a href="/staff_room/"
+<!-- 			<br> <a href="/staff_room/"
 				class="link"><font class="link"><small>[
 						スタッフルームトップへ ]</small></font></a>
-		</div>
+ -->		</div>
 		<%
 			if (ShainMST.getChecked().equals("1")) {
 		%>
