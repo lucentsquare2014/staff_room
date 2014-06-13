@@ -79,6 +79,11 @@ public class Login extends HttpServlet {
 
 	    	// セッションにログインユーザーIDを保存
 	    	session.setAttribute("login", id);
+	    	String adm = this.getAdmin(id);
+	    	if(adm==null){
+	    		adm="";
+	    	}
+	    	session.setAttribute("admin", adm);
 	    	response.sendRedirect("./jsp/top/top.jsp");
 	    	return;
 	    } else {
@@ -140,6 +145,27 @@ public class Login extends HttpServlet {
 		}finally{
 			shaindb.closeShainDB(con);
 		}
+	}
+	
+	// ログインしたユーザー管理者かどうかを判断する
+	private String getAdmin(String id){
+		ShainDB shaindb = new ShainDB();
+		Connection con = shaindb.openShainDB();
+		String sql = "select administrator from shainmst where id=?";
+		String result = null;
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				result = rs.getString("administrator");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			shaindb.closeShainDB(con);
+		}
+		return result;
 	}
 	
 	// クッキーがなければパスワードを暗号化する

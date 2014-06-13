@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% String user = String.valueOf(session.getAttribute("login")); %>
+<% String user = String.valueOf(session.getAttribute("admin")); %>
 <style type="text/css">
 
 nav#header {
@@ -62,7 +62,7 @@ $(window).resize(function(){
 					<li><a href="/staff_room/jsp/news.jsp?news=3">行事</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=4">開発企画</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=5">その他</a></li>
-					<% if(user.equals("admin")){ %>
+					<% if(user.equals("1")){ %>
 					<li class="uk-nav-divider"></li>
 					<li><a href="/staff_room/jsp/writeNews/writeNews.jsp">管理-連絡</a></li>
 					<% } %>
@@ -84,7 +84,7 @@ $(window).resize(function(){
  					<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf">社内文書システム<br>操作説明</a></li>
 
 
-					<% if(user.equals("admin")){ %>
+					<% if(user.equals("1")){ %>
 					<li class="uk-nav-divider"></li>
                     <li><a href="/staff_room/jsp/shanai_s/administrator.jsp">管理-社内システム</a></li>
                     <% } %>
@@ -153,7 +153,7 @@ $(window).resize(function(){
 					<li><a href="/staff_room/jsp/news.jsp?news=3">行事</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=4">開発企画</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=5">その他</a></li>
-					<% if(user.equals("admin")){ %>
+					<% if(user.equals("1")){ %>
 					<li class="uk-nav-divider"></li>
 					<li><a href="/staff_room/jsp/writeNews/writeNews.jsp">管理-連絡</a></li>
 					<% } %>
@@ -172,7 +172,7 @@ $(window).resize(function(){
                     <a href="/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=3">社内文書システム</a>
                     </li>
                     <li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf"> 社内文書システム操作説明</a></li>
-					<% if(user.equals("admin")){ %>
+					<% if(user.equals("1")){ %>
 					<li class="uk-nav-divider"></li>
                     <li><a href="/staff_room/jsp/shanai_s/administrator.jsp">管理-社内システム</a></li>
 					<% } %>
