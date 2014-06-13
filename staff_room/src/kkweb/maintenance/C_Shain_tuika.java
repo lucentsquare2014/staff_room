@@ -167,6 +167,7 @@ public class C_Shain_tuika extends C_ChangePageBase {
 				int kousin1 = 1;
 				int kousin2 = 0;
 				int kousin3 = 0;
+				int kousin4 = 0;
 				String sql = "";
 
 				cdbc = new C_DBConnection();
@@ -194,9 +195,15 @@ public class C_Shain_tuika extends C_ChangePageBase {
 				sql = " insert into nenkyuMST values ('"+number+"','10','10','0','0','10')";
 
 				kousin3 = stmt.executeUpdate(sql);
+				
 
 				if(kousin1 > 0 && kousin2 > 0 && kousin3 > 0){
 
+					con.commit();
+					// shainkanriに行を追加  2014-06-13
+					String sql1 = "insert into shainkanri(shain_number) values('"+number+"')";
+					
+					kousin4 = stmt.executeUpdate(sql1);
 					con.commit();
 
 					return "";
@@ -208,6 +215,7 @@ public class C_Shain_tuika extends C_ChangePageBase {
 					return "書き込み失敗";
 
 				}
+
 			}
 
 
