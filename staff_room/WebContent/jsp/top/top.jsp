@@ -353,9 +353,9 @@ $(function() {
 			</div>
 		</div>
 	<div id="my-id" class="uk-modal">
-    	<div class="uk-modal-dialog">
+    	<div class="uk-modal-dialog uk-animation-scale-up">
         	<a class="uk-modal-close uk-close"></a>
-        	<div id="title" class="uk-h3"></div>
+        	<div id="title" class="uk-badge uk-text-large uk-width-1-1 uk-text-left"></div>
         	<pre id="text" class="uk-overflow-container"></pre>
         	<p id="filename"></p>
         	<a href="#" id="btn_print"><i class="uk-icon-print"></i></a>
