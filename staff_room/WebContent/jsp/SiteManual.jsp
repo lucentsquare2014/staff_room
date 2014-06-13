@@ -27,16 +27,16 @@ body {
 <ul>
 	<li>それぞれの項目をクリックすることでそのページに移動します。</li>
 	<li>一部の項目は、ポインタを合わせればリンクがリストとして表示されます。<br><br>
-	<image src ="/staff_room/images/help/help_header_pulldown.png" width="80%"><br><br>
+	<image src ="/staff_room/images/help/help_header_pulldown.png" width="100%"><br><br>
 	</li>
 	<li>ログアウトをクリックすると、会社ページに戻ります。</li>
 	<li>ロゴをクリックするとログイン状態のまま、会社ページに戻ります。<br><br>
-	<image src ="/staff_room/images/help/help_header_logout_logo.png" width="80%"><br><br>
+	<image src ="/staff_room/images/help/help_header_logout_logo.png" width="100%"><br><br>
 	</li>
 	<li>携帯からのアクセスなど、ページが小さく表示される場合はヘッダーの表示がサイドバー形式に切り替わります。<br>
 		ヘッダーの端に表示されたボタンをクリックすると、それぞれのページへのリンクがリストとして表示されます。<br><br>
 	<image src ="/staff_room/images/help/help_header_mobile.png" width="30%">
-	<image src ="/staff_room/images/help/help_header_mobile_pulldown.png" width="30%">
+	<image src ="/staff_room/images/help/help_header_mobile_pulldown.png" width="35%">
 	<image src ="/staff_room/images/help/help_header_mobile_pulldown2.png" width="25%">
 	<br><br>
 	</li>
@@ -60,12 +60,12 @@ body {
 	</li>
 	<li>表示される記事が100件を超える場合には、ページ右下に「次へ」というリンクが表示されます。<br>
 		クリックすることで、101件～、201件～と記事を100件ずつ表示することができます。<br><br>
-		<image src ="/staff_room/images/help/help_news_next.png" width="80%"><br><br>
+		<image src ="/staff_room/images/help/help_news_next.png" width="100%"><br><br>
 	</li>
 	<li>表示されているそれぞれの記事のタイトルをクリックすると、記事の内容が表示されます。<br>
 		記事のタイトルを再びクリックすると、記事の内容が非表示になります。</li>
 	<li>記事のタイトル横のアイコンをクリックすると、記事の内容を印刷することができます。<br><br>
-		<image src ="/staff_room/images/help/help_news_text_printout.png" width="80%"><br><br>
+		<image src ="/staff_room/images/help/help_news_text_printout.png" width="100%"><br><br>
 	</li>
 </ul>
 
@@ -82,7 +82,7 @@ body {
 		申請書類ページでは、変更届など記入・提出の必要がある書類とその記入例を利用できます。<br>
 		規定・書類ページでは個人情報保護規定など規定に関する書類を利用できます。</li>
 	<li>ファイル名をクリックすることで書類の閲覧・ダウンロードが行えます。<br><br>
-	<image src ="/staff_room/images/help/help_document.png" width="80%"><br><br>
+	<image src ="/staff_room/images/help/help_document.png" width="100%"><br><br>
 	</li>
 </ul>
 
