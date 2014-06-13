@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-    if(session.getAttribute("login") != null){
-        String user = String.valueOf(session.getAttribute("login"));
-        if (!user.equals("admin")){
+    if(session.getAttribute("admin") != null){
+        String user = String.valueOf(session.getAttribute("admin"));
+        if (!user.equals("1")){
             response.sendRedirect("/staff_room/jsp/top/top.jsp");
         }
     }
