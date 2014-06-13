@@ -11,7 +11,7 @@ body {
 .uk-subnav{position: absolute;
 	float: left;
 	top: 200px;
-	left: 300px;
+	left: 70px;
 	white-space: nowrap;
 	}
 	
@@ -35,7 +35,7 @@ body {
 #out_Div {
   position: relative; 
   padding-top: 26px; 
-  width: 530px;
+  width: 500px;
 }
  
 #in_Div {
@@ -55,6 +55,7 @@ body {
 
 .changelog-content >thead >tr >th{
 	background-image: url("/staff_room/images/blackwhite1.png");
+	padding-left: 10px;
 }
 
 
@@ -81,7 +82,7 @@ text-overflow: ellipsis;
 	float: left;
 	align: left;
 	left:70px;
-	top: 170px;
+	top: 120px;
 	padding: 0;
 	background-color: #5bc0de;
 	border-radius: 10px;
@@ -103,3 +104,25 @@ text-overflow: ellipsis;
 .page-title h1 {
 	font-size: 100px;
 	color: white;
+}
+
+#version{
+position:absolute;
+color:black;
+top:30px;
+right:30px;	
+}
+
+.coL1 { width:40px; }/* colgroupÇÃóÒïùéwíË */
+
+.coL2 { width:90px; }
+
+.coL3 { width:380px; }
+
+.coL4 { width:100px; }
+
+
+
+	
+	
+	

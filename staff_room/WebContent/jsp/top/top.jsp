@@ -36,6 +36,9 @@ $(function() {
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
+	
+	<p id="version">ver.4.0.0</p>
+	
 		<div class="main-container uk-container uk-container-center">
 			<div class="changelog">
 				<div style="margin-botom: 20px;" class="changelog-title"
@@ -44,7 +47,7 @@ $(function() {
 				</div>
 				<!-- 切り替わるボタンを6個作成 -->
 				<ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#subnav-pill-content'}">
-					<li class="uk-active"><a href="#">全て</a></li>
+					<li class="uk-active"><a href="#">すべて</a></li>
 					<li class=""><a href="#">総務</a></li>
 					<li class=""><a href="#">人事</a></li>
 					<li class=""><a href="#">行事</a></li>
@@ -70,13 +73,21 @@ $(function() {
 					<!-- 「all」のテーブル -->
 					<li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
+					
+					<colgroup class="coL1"></colgroup>
+					<colgroup class="coL2"></colgroup>
+					<colgroup class="coL3"></colgroup>
+					<colgroup class="coL4"></colgroup>
+					
 					<thead>
 						<tr>
-						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:55px;"><font color="#FFFFFF"></font></th>
-							<th style="width:100px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:400px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF">分類</font></th>
+						
+   <th class="coL1"><font color="#FFFFFF">　　</font></th>
+   <th class="coL2 uk-text-left"><font color="#FFFFFF">日付</font></th>
+   <th class="coL3 uk-text-left"><font color="#FFFFFF">件名</font></th>
+   <th class="coL4 uk-text-left"><font color="#FFFFFF">分類</font></th>
+   
+ 
 						</tr>
 					</thead>
 					<tbody>
@@ -88,14 +99,14 @@ $(function() {
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td style="width:40px;">
+								<td class="coL1">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
 								
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-	                             <td><%=dddate.format(date)%></td>
-								<td><div class="uk-badge uk-badge-danger">New</div>
+	                             <td class="coL2"><%=dddate.format(date)%></td>
+								<td class="coL3"><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
@@ -108,7 +119,7 @@ $(function() {
 	<%}%>
 
 								<!-- ジャンル -->
-								<td><%=row.get("postname")%></td>
+								<td class="coL4"><%=row.get("postname")%></td>
 
 							</tr><%}%>
 						</tbody>
@@ -118,11 +129,10 @@ $(function() {
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF"></font></th>
+						     <th class="coL1"><font color="#FFFFFF">　　</font></th>
+  							 <th class="coL2 uk-text-left"><font color="#FFFFFF">日付</font></th>
+ 							  <th class="coL3 uk-text-left"><font color="#FFFFFF">件名</font></th>
+ 							  <th class="coL4 uk-text-left"><font color="#FFFFFF">　　</font></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -164,11 +174,10 @@ $(function() {
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF"></font></th>
+						     <th class="coL1"><font color="#FFFFFF">　　</font></th>
+  							 <th class="coL2 uk-text-left"><font color="#FFFFFF">日付</font></th>
+ 							  <th class="coL3 uk-text-left"><font color="#FFFFFF">件名</font></th>
+  								 <th class="coL4 uk-text-left"><font color="#FFFFFF">　　</font></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -210,11 +219,10 @@ $(function() {
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF"></font></th>
+						    <th class="coL1"><font color="#FFFFFF">　　</font></th>
+   							<th class="coL2 uk-text-left"><font color="#FFFFFF">日付</font></th>
+ 							  <th class="coL3 uk-text-left"><font color="#FFFFFF">件名</font></th>
+ 							  <th class="coL4 uk-text-left"><font color="#FFFFFF">　　</font></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -256,11 +264,10 @@ $(function() {
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF"></font></th>
+						    <th class="coL1"><font color="#FFFFFF">　　</font></th>
+  							 <th class="coL2 uk-text-left"><font color="#FFFFFF">日付</font></th>
+  							 <th class="coL3 uk-text-left"><font color="#FFFFFF">件名</font></th>
+ 							  <th class="coL4 uk-text-left"><font color="#FFFFFF">　　</font></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -302,11 +309,10 @@ $(function() {
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-						    <th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:35px;"><font color="#FFFFFF"></font></th>
-							<th style="width:80px;"><font color="#FFFFFF">日付</font></th>
-							<th style="width:270px;"><font color="#FFFFFF">タイトル</font></th>
-							<th style="width:150px;"><font color="#FFFFFF"></font></th>
+						     <th class="coL1"><font color="#FFFFFF">　　</font></th>
+							   <th class="coL2 uk-text-left"><font color="#FFFFFF">日付</font></th>
+							   <th class="coL3 uk-text-left"><font color="#FFFFFF">件名</font></th>
+  							 <th class="coL4 uk-text-left"><font color="#FFFFFF">　　</font></th>
 						</tr>
 					</thead>
 					<tbody>
