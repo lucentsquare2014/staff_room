@@ -91,6 +91,7 @@ public class C_Shain_delete extends C_ChangePageBase {
 			shainNumber = word.checks(shainNumber);
 			int kousin = 0;
 			int kousin1 = 1;
+			int kousin2 = 1;
 			String sql = "";
 
 			cdbc = new C_DBConnection();
@@ -104,14 +105,19 @@ public class C_Shain_delete extends C_ChangePageBase {
 				sql = "delete from syouninshaMST where number ='"+shainNumber+"'";
 
 				kousin1 = stmt.executeUpdate(sql);
+				
 
 			}
 
 			sql = " update shainMST set zaiseki_flg = '0',checked = '0',groupnumber = '0' where number ='"+shainNumber+"'";
 
 			kousin = stmt.executeUpdate(sql);
+
+			// shainkanriテーブルの当該行を削除 2014-06-13
+			sql = "delete from shainkanri where shain_number='"+shainNumber+"'";
+			kousin2 = stmt.executeUpdate(sql);
 			
-			if(kousin > 0 && kousin1 > 0){
+			if(kousin > 0 && kousin1 > 0 && kousin2 > 0){
 
 				con.commit();
 

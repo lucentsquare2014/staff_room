@@ -94,7 +94,9 @@ public class LoginDAO {
 				String zaiseki_flg = rs.getString("zaiseki_flg");
 				String hyouzijun = rs.getString("hyouzijun");
 				String yakusyoku = rs.getString("yakusyoku");
+				// フリガナと管理者権限を追加 2014-06-13
 				String hurigana = rs.getString("hurigana");
+				String administrator = rs.getString("administrator");
 
 				b_shainmst.setId(id);
 				b_shainmst.setPw(pw);
@@ -106,8 +108,9 @@ public class LoginDAO {
 				b_shainmst.setZaiseki_flg(zaiseki_flg);
 				b_shainmst.setHyouzijun(hyouzijun);
 				b_shainmst.setYakusyoku(yakusyoku);
-				// フリガナを追加 2014-06-11
+				// フリガナと管理者権限追加 2014-06-11
 				b_shainmst.setHurigana(hurigana);
+				b_shainmst.setAdministrator(administrator);
 
 				alist.add(b_shainmst);
 			}

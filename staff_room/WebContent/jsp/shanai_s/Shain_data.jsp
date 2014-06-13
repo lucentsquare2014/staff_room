@@ -114,8 +114,19 @@
 <TD><INPUT TYPE="text" SIZE="18" NAME="hyouzijun" VALUE="<%= Shain.getHyouzijun() %>" ></TD>
 <TD><INPUT TYPE="text" SIZE="5" NAME="yakusyoku" VALUE="<%= Shain.getYakusyoku() %>" ></TD>
 </TR>
-<tr><TH class="t-koumoku" colspan="8"><font color="white">メールアドレス</font></TH></tr>
-<tr><TD colspan="8"><INPUT TYPE="text" SIZE="112"  NAME="mail"  value="<%= Shain.getMail() %>" style="ime-mode: disabled;"></TD></tr>
+<tr>
+<TH class="t-koumoku" colspan="7"><font color="white">メールアドレス</font></TH>
+<TH class="t-koumoku" colspan="2"><font color="white">管理者権限</font></TH>
+</tr>
+<tr>
+<TD colspan="7"><INPUT TYPE="text" SIZE="120"  NAME="mail"  value="<%= Shain.getMail() %>" style="ime-mode: disabled;"></TD>
+<TD colspan="2" align="center">
+<select name="administrator">
+<option value="0" <%if(Shain.getAdministrator().equals("0")){%>selected<%}%>>一般アカウント</option>
+<option value="1" <%if(Shain.getAdministrator().equals("1")){%>selected<%}%>>管理者</option>
+</select>
+</TD>
+</tr>
 </TABLE><br>
 <TABLE BORDER="1"  class="mainte">
 <TR>

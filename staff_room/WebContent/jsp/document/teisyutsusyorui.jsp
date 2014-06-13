@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<% String user = String.valueOf(session.getAttribute("login")); %>
+<% String user = String.valueOf(session.getAttribute("admin")); %>
 <html style="overflow-x:auto; white-space:nowrap;">
 <head>
 <jsp:include page="/html/head.html" />
@@ -32,7 +32,7 @@ textarea {
 <div class="uk-width-3-5 uk-container-center">
 <br>
 	<!--------------  管理者用　 ----------------->　
-	<% if(user.equals("admin")){ %>
+	<% if(user.equals("1")){ %>
 	<div class="uk-grid">
 		<div class="uk-width-1-4 uk-text-left">
 			<button id="delete" class="uk-button uk-button-danger" disabled="disabled">
@@ -46,7 +46,7 @@ textarea {
 				<option value="金銭に関係する書類">金銭に関係する書類</option>
 				<option value="育児介護">育児介護</option>
 			</select>
-			<input type="hidden" name="page" value="document">
+			<input type="hidden" name="page" value="Docs">
 			<div class="uk-form-file">
 				<button class="uk-button uk-button-success">
 				<i class="uk-icon-file-text uk-icon-small"></i><b>　添付</b></button>

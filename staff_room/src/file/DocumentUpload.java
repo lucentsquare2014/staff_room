@@ -25,7 +25,7 @@ public class DocumentUpload extends HttpServlet {
     	String uploadFilePath = applicationPath + File.separator + page;
     	// 申請書類の場合はカテゴリを取得。
     	// マニュアルもカテゴリあれば、このif文はいらない。
-    	if(page.equals("document")){
+    	if(page.equals("Docs")){
     		String category = new String(request.getParameter("category").getBytes("ISO-8859-1"),"UTF-8");
     		uploadFilePath = uploadFilePath + File.separator + category;
     	}
@@ -39,7 +39,7 @@ public class DocumentUpload extends HttpServlet {
     			part.write(uploadFilePath + File.separator + name);
     		}
         }
-    	if(page.equals("document")){
+    	if(page.equals("Docs")){
     		response.sendRedirect("/staff_room/jsp/document/teisyutsusyorui.jsp");
     	}else{
     		response.sendRedirect("/staff_room/jsp/manual/manual.jsp");
