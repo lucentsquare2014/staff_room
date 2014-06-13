@@ -85,11 +85,20 @@
 <TD><INPUT TYPE="text" SIZE="11"  NAME="number" style="ime-mode: disabled;"></TD>
 <TD><INPUT TYPE="text" SIZE="17"  NAME="groupnumber" style="ime-mode: disabled;" ></TD>
 <TD><INPUT TYPE="text" SIZE="20"  NAME="checked" style="ime-mode: disabled;" ></TD>
-<TD><INPUT TYPE="text" SIZE="5"  NAME="hyouzijun" ></TD>
+<TD><INPUT TYPE="text" SIZE="18"  NAME="hyouzijun" ></TD>
 <TD><INPUT TYPE="text" SIZE="5"  NAME="yakusyoku" ></TD>
 </TR>
-<tr><TH class="t-koumoku" colspan="7"><font color="white">メールアドレス</font></TH></tr>
-<tr><TD colspan="7"><INPUT TYPE="text" SIZE="85"  NAME="mail" style="ime-mode: disabled;">@lucentsquare.co.jp</TD></tr>
+<tr><TH class="t-koumoku" colspan="8"><font color="white">メールアドレス</font></TH>
+<TH class="t-koumoku" colspan="2"><font color="white">管理者権限</font></TH></tr>
+<tr>
+<TD colspan="8"><INPUT TYPE="text" SIZE="85"  NAME="mail" style="ime-mode: disabled;">@lucentsquare.co.jp</TD>
+<TD colspan="2" align="center">
+<select name="administrator">
+<option value="0" selected>一般アカウント</option>
+<option value="1">管理者</option>
+</select>
+</TD>
+</tr>
 </TABLE><br>
 <TABLE>
 <TR><TD><INPUT TYPE="submit" VALUE="　追加　" class="bottom" ></TD></TR>

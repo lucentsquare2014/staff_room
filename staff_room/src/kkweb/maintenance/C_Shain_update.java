@@ -116,6 +116,9 @@ public class C_Shain_update extends C_ChangePageBase {
 			// フリガナを追加 2014-06-11
 			String hurigana = request.getParameter("hurigana").trim();
 			hurigana = word.checks(hurigana);
+			//管理者権限を追加
+			String administrator = request.getParameter("administrator").trim();
+			administrator = word.checks(administrator);
 			
 			//本番用
 			String mail = request.getParameter("mail").trim();
@@ -132,6 +135,10 @@ public class C_Shain_update extends C_ChangePageBase {
 				//System.out.println("承認者チェックは半角数字の0か1を入力して下さい");
 				return "承認者チェックは半角数字の0か1を入力して下さい";
 
+			}
+			// 管理者権限の入力が正しいかどうか
+			if(checkAdministrator(administrator) != true){
+				return "管理者権限は半角数字の0か1を入力して下さい";
 			}
 
 			if(checkShaingroup(groupnumber) != true){
@@ -214,7 +221,7 @@ public class C_Shain_update extends C_ChangePageBase {
 				}
 			}
 			
-			sql =" update shainmst set name ='"+name+"',checked='"+checked+"',groupnumber ='"+groupnumber+"',mail ='"+mail+"',hyouzijun='"+hyouzijun+"',yakusyoku='"+yakusyoku+"',hurigana='"+hurigana+"' where number = '"+number+"'";
+			sql =" update shainmst set name ='"+name+"',checked='"+checked+"',groupnumber ='"+groupnumber+"',mail ='"+mail+"',hyouzijun='"+hyouzijun+"',yakusyoku='"+yakusyoku+"',hurigana='"+hurigana+"',administrator='"+administrator+"' where number = '"+number+"'";
 			
 			kousin2 = stmt.executeUpdate(sql);
 			
@@ -330,6 +337,26 @@ public class C_Shain_update extends C_ChangePageBase {
 			try{
 				
 				if(checked.equals("1") || checked.equals("0")){
+					return true;
+
+				}else{
+					
+					return false;
+				}
+
+			}catch(Exception e){
+
+				//e.printStackTrace();
+
+				return false;
+
+			}
+		}
+		private boolean checkAdministrator(String admin){
+
+			try{
+				
+				if(admin.equals("1") || admin.equals("0")){
 					return true;
 
 				}else{

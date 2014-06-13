@@ -14,6 +14,8 @@ public class B_ShainMST {
 	private String yakusyoku;
 	// フリガナを追加
 	private String hurigana;
+	// 管理権限の追加
+	private String administrator;
 
 	public String getYakusyoku() {
 		return yakusyoku;
@@ -89,5 +91,13 @@ public class B_ShainMST {
 	}
 	public void setHurigana(String hurigana) {
 		this.hurigana = hurigana;
+	}
+	
+	public String getAdministrator() {
+		return administrator;
+	}
+
+	public void setAdministrator(String administrator) {
+		this.administrator = administrator;
 	}
 }

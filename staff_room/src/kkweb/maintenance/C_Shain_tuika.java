@@ -95,9 +95,14 @@ public class C_Shain_tuika extends C_ChangePageBase {
 			f_name = word.checks(f_name);
 			String g_name = request.getParameter("g_name").trim();
 			g_name = word.checks(g_name);
-			//フリガナの追加
+
+			//フリガナの追加 2014-06-13
 			String hurigana = request.getParameter("hurigana").trim();
 			hurigana = word.checks(hurigana);
+			//管理者権限を追加
+			String administrator = request.getParameter("administrator").trim();
+			administrator = word.checks(administrator);
+			
 			String id = request.getParameter("id").trim();
 			id = word.checks(id);
 			String pw = request.getParameter("pw").trim();
@@ -134,6 +139,10 @@ public class C_Shain_tuika extends C_ChangePageBase {
 
 			if(checkChecked(checked) != true){
 				return "承認者チェックは半角数字の0か1を入力してください。";
+			}
+
+			if(checkAdministrator(administrator) != true){
+				return "管理者権限は半角数字の0か1を入力してください。";
 			}
 
 			if(checkShain(id) == true){
@@ -177,8 +186,8 @@ public class C_Shain_tuika extends C_ChangePageBase {
 		//		System.out.println("ハッシュ"+pw1);
 		//		sql = " insert into shainMST values ('"+id+"','"+pw+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1')";
 		//		sql = " insert into shainMST values ('"+id+"','"+pw1+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1','"+hyouzijun+"','"+yakusyoku+"')";
-				// フリガナを追加したsql↓
-				sql = " insert into shainMST values ('"+id+"','"+pw1+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1','"+hyouzijun+"','"+yakusyoku+"','"+hurigana+"')";
+				// フリガナと管理者権限を追加したsql↓
+				sql = " insert into shainMST values ('"+id+"','"+pw1+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1','"+hyouzijun+"','"+yakusyoku+"','"+hurigana+"','"+administrator+"')";
 
 				kousin2 = stmt.executeUpdate(sql);
 
@@ -303,6 +312,26 @@ public class C_Shain_tuika extends C_ChangePageBase {
 		}
 	}
 
+	private boolean checkAdministrator(String admin){
+
+		try{
+			
+			if(admin.equals("1") || admin.equals("0")){
+				return true;
+
+			}else{
+				
+				return false;
+			}
+
+		}catch(Exception e){
+
+			//e.printStackTrace();
+
+			return false;
+
+		}
+	}
 
 
 
