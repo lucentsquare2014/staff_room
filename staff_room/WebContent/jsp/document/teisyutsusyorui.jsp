@@ -46,7 +46,7 @@ textarea {
 				<option value="金銭に関係する書類">金銭に関係する書類</option>
 				<option value="育児介護">育児介護</option>
 			</select>
-			<input type="hidden" name="page" value="document">
+			<input type="hidden" name="page" value="Docs">
 			<div class="uk-form-file">
 				<button class="uk-button uk-button-success">
 				<i class="uk-icon-file-text uk-icon-small"></i><b>　添付</b></button>
