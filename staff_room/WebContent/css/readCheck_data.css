@@ -1,7 +1,5 @@
-html{font-size:75%;}
-@media screen and (min-width : 768px){
-html{ font-size : 87.5%};
-}
+
+html{ font-size : 87.5%}
 body {
 	width: 100%;
 	height: 100%;
@@ -10,23 +8,56 @@ body {
 }
 
 td#na {
+padding:4px;
 padding-left:20px;
-font-size:1em;
+font-size:1.5em;
+
 }
 div#title{
-
 left:10%;
 }
-div#button{
+div#return{
 position:fixed;
-bottom:5%;
+top:10%;
 right:5%;}
 .uk-table {
-		   margin-top:10%;
+		   margin-top:5%;
 		   margin-bottom:10%;
+		   white-space: nowrap;
 		   }
-div#button ul{margin-top:20px;
-  			  padding-left:0px}
-div#button ul>li{list-style-type: none;}
-div#button ul>li>a{width:40%;
-text-align:center;}
+div#button {
+	position: fixed;
+	top: 30%;
+	left: 2%;
+	width:140px;
+	white-space: none;
+	background-color:rgba(0,0,0,0.8);
+	border-radius: 4px;
+}
+#button-con{align:center;
+margin:10px;
+	
+}
+
+div#button-con>a {
+	width: 100%;
+    margin-top:2px;
+}
+
+div#button ul {
+	padding-left: 0px;
+}
+
+div#button ul>li {
+	list-style-type: none;
+	padding-left:12%;
+	padding-top: 1px;
+}
+
+div#button ul>li>a {
+	width: 40%;
+	text-align: center;
+	margin:auto;
+}
+#tyu{color:white;
+padding: 3px;}

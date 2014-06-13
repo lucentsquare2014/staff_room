@@ -5,6 +5,7 @@
 <head>
 <jsp:include page="/html/head.html" />
 <link rel="stylesheet" href="/staff_room/css/readCheck_data.css">
+<script src="/staff_room/script/MailCheckbox.js"></script>
 <%@ page import="dao.ShainDB,
 				dao.NewsDAO,
 				java.util.ArrayList,
@@ -22,7 +23,7 @@
 </head>
 <body>
 <jsp:include page="/jsp/header/header.jsp" />
-<br><br><br><br><br><br>
+<br><br><br>
 <div class="uk-h1" id="title">
 記事未読件数一覧
 </div>
@@ -30,19 +31,23 @@
 	ArrayList<Integer> x = new ArrayList<Integer>();
 	Mail.GetShainDB News = new Mail.GetShainDB();
 	ArrayList<HashMap<String, String>> Newslist = null;
-	String sql = "select shainmst.id,shainmst.name,shainmst.hurigana,shainkanri.read_check,shainkanri.access_time" +
-				" from shainmst,shainkanri where shainmst.number = shainkanri.shain_number order by shainmst.hurigana asc";
+	String sql = "select shainmst.id,shainmst.mail,shainmst.name,shainmst.hurigana,shainkanri.read_check,shainkanri.access_time" +
+				" from shainmst,shainkanri where shainmst.number = shainkanri.shain_number and shainmst.zaiseki_flg="
+				+"'"
+				+"1"
+				+"'"
+				+"order by shainmst.hurigana asc";
+	System.out.println(sql);
 	Newslist = News.getShain(sql);
 	%>
 
-<div id="con" class="uk-width-3-5 uk-container-center ">
+<div id="con" class="uk-width-2-5 uk-container-center ">
 	<table border="5"  class="uk-table uk-table-hover uk-width-1-1">
 	<tr class="uk-text-large">
-			<th Background="/staff_room/images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">ID</font></th>
-			<th Background="/staff_room/images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">氏名</font></th>
-			<th Background="/staff_room/images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
-			<th nowrap Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-10 uk-text-center"><font color="#FFFFFF">記事<br>未読件数</font></th>
-			<th nowrap Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-10 uk-text-center"><font color="#FFFFFF">緊急記事<br>未読件数</font></th>
+			<th Background="/staff_room/images/blackwhite1.png" class=" uk-text-center "><font color="#FFFFFF"></font></th>
+			<th Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-2 uk-text-center"><font color="#FFFFFF">氏名</font></th>
+			<th nowrap Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-4 uk-text-center"><font color="#FFFFFF">記事<br>未読件数</font></th>
+			<th nowrap Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-4 uk-text-center"><font color="#FFFFFF">緊急記事<br>未読件数</font></th>
 		</tr>
 
 		<%
@@ -52,6 +57,7 @@
 		Statement stmt;
 		for (int i = 0; i < Newslist.size(); i++) {
 			HashMap<String, String> Newsmap = Newslist.get(i);
+			
 			String past_unread = Newsmap.get("read_check");
 			String last_access = Newsmap.get("access_time");
 			if(last_access.indexOf(".") != -1){
@@ -110,11 +116,19 @@
 					System.out.println(e);
 				}
 			}
+			String str1 = Newsmap.get("mail");
+    		int index = str1.indexOf("@");
+    		/*String str2 = Newsmap.get("id");
+            int inde = str2.indexOf("-");
+            String moji = str2.substring(inde+1);
+            
+            ↓<tr>にid=moji.substring(0,1)を挿入 */
 			%>
 		<tr>
-			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("id")%></td>
+			<td bgcolor="#FFFFFF"><a flag="0"
+       				class="uk-icon-square-o uk-text-center delete-box"
+       				name="check" id="<%=str1.substring(0,index)%>"></a></td>
 			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("name")%></td>
-			<td id = "na" bgcolor="#FFFFFF"><%=Newsmap.get("hurigana")%></td>
 			<td align="right" id = "na" bgcolor="#FFFFFF">
 				<% if(unread.length == 1 && unread[0].equals("")){ %>0
 				<% }else{ %><%=unread.length%><% } %></td>
@@ -125,8 +139,35 @@
 		primary.closeShainDB(con);
 	%>
 	</table>
-	<div id=button><a class="uk-button uk-button-primary" href="/staff_room/jsp/writeNews/writeNews.jsp" id="mail"> 管理・編集ページに戻る</a>
-	</div>
+	<div id=button>
+		<div id=button-con>
+		<a class="uk-button uk-button-primary" href="mailto:" id="mail"> メール作成</a>
+			<!--  <ul>
+				<li>
+					<a class="uk-button" href="#a">ア</a>
+					<a class="uk-button" href="#h">ハ</a>
+				</li>
+				<li>
+					<a class="uk-button" href="#k">カ</a>
+					<a class="uk-button" href="#m">マ</a>
+				</li>
+				<li>
+					<a class="uk-button" href="#s">サ</a>
+					<a class="uk-button" href="#y">ヤ</a>
+				</li>
+				<li>
+					<a class="uk-button" href="#t">タ</a>
+					<a class="uk-button" href="#r">ラ</a>
+				</li>
+				<li>
+					<a class="uk-button" href="#n">ナ</a>
+					<a class="uk-button" href="#w">ワ</a>
+				</li>
+			</ul>-->
+		<div id="tyu">（注）outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div>	
+		<a class="uk-button uk-button-success" href="/staff_room/jsp/writeNews/writeNews.jsp" id="mail" style="line-height: 18px;"> 管理・編集<br>ページに戻る</a>	
+		</div>
+		</div>
 	</div>
 </body>
 </html>

@@ -25,6 +25,14 @@ div#con {
 	
 }
 
+.uk-table {
+	width: 55%;
+	margin-right: auto;
+	margin-left: 23%;
+	margin-top: 5%;
+	white-space: nowrap;
+}
+
 td#na {
 	padding-left: 20px;
 	font-size: 1em;
@@ -48,14 +56,6 @@ div#button-con>a {
 	width: 100%;
 }
 
-.uk-table {
-	width: 55%;
-	margin-right: auto;
-	margin-left: 23%;
-	margin-top: 5%;
-	white-space: nowrap;
-}
-
 div#button ul {
 	padding-left: 0px;
 }
@@ -63,6 +63,7 @@ div#button ul {
 div#button ul>li {
 	list-style-type: none;
 	padding-left:12%;
+	padding-top: 1px;
 }
 
 div#button ul>li>a {
