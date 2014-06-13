@@ -25,8 +25,13 @@
 <title>このサイトの使い方</title>
 
 <style type="text/css">
+tr {
+	white-space: nowrap;
+}
+
 body {
 	width: 100%;
+	height: 656px;
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/input.png");
 	background-size: 100% auto;
@@ -35,26 +40,30 @@ body {
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-
-<div class="uk-panel uk-panel-box uk-align-center" style="width:1000px;">
-					<h1 ><font color="#ffffff">マニュアル一覧</font></h1>
-					<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold">1.ヘッダーメニューについて</h2>&nbsp;
-<ul>
-	<li>それぞれの項目をクリックすることでそのページに移動します。</li>
-	<li>一部の項目は、ポインタを合わせればリンクがリストとして表示されます。</li>
-	<br><br>
-<image src ="/staff_room/images/help/help_header_pulldown.png">
-	<li>ログアウトをクリックすると、会社ページに戻ります。</li>
-	<li>ロゴをクリックするとログイン状態のまま、会社ページに戻ります。</li>
-	<li>携帯からのアクセスなど、ページが小さく表示される場合はヘッダーの表示がサイドバー形式に切り替わります。
-	　ヘッダーの端に表示されたボタンをクリックすると、それぞれのページへのリンクがリストとして表示されます。</li>
-</ul>
-<%--
+	<div style="position: relative; top: 90px; left: 0px; width: 100%;">
+		<div class="uk-width-3-5 uk-container-center">
+			<table border="5" class="uk-table  uk-width-medium-1-1">
+				<tr class="uk-text-large">
+					<td Background="../images/blackwhite1.png"
+						class="uk-h2 uk-width-medium-8-10"><font color="#ffffff">マニュアル一覧</font></td>
+				</tr>
+				<tr>
+					<td bgcolor="#FFFFFF"class="uk-h3 uk-width-medium-8-10 "><a
+						data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold">1.ヘッダーメニューについて</a>&nbsp;
+						<div id="my-id1" class="uk-h2  uk-hidden">
+<pre>
+	・それぞれの項目をクリックすることでそのページに移動します。
+	・一部の項目は、ポインタを合わせればリンクがリストとして表示されます。
+	・ログアウトをクリックすると、会社ページに戻ります。
+	・ロゴをクリックするとログイン状態のまま、会社ページに戻ります。
+	・携帯からのアクセスなど、ページが小さく表示される場合はヘッダーの表示がサイドバー形式に切り替わります。
+	　ヘッダーの端に表示されたボタンをクリックすると、それぞれのページへのリンクがリストとして表示されます。
+</pre>
+						</div>
 				<tr>
 					<td bgcolor="#FFFFFF"class="uk-h3 uk-width-medium-8-10 "><a
 						data-uk-toggle="{target:'#my-id2'}" class="uk-text-bold">2.TOP画面について</a>&nbsp;
 						<div id="my-id2" class="uk-h2  uk-hidden">
-
 <pre>
 	・連絡事項として作成された記事の簡易的な閲覧が行えるページです。
 	・「連絡事項」横の分類別ボタンを押すことでその分類の記事のみが表示されます。
@@ -130,7 +139,7 @@ body {
 	　また、アカウントと同一のものはパスワードとして設定することはできません。
 </pre>
 						</div>
-
+				<tr>
 					<td bgcolor="#FFFFFF"class="uk-h3 uk-width-medium-8-10 "><a
 						data-uk-toggle="{target:'#my-id9'}" class="uk-text-bold">9.ログイン画面について</a>&nbsp;
 						<div id="my-id9" class="uk-h2  uk-hidden">
@@ -141,9 +150,8 @@ body {
 	　更新されます。（その時点から二週間ログインが保持されます。ログインを省略してStaff_Roomにアクセスしても更新はされません）
 </pre>
 						</div>
-
+			</table>
 		</div>
-		--%>
 	</div>
 </body>
 </html>
