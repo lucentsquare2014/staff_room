@@ -3,7 +3,7 @@
             java.text.SimpleDateFormat,
             java.util.Date,
             java.util.Locale,java.net.URLDecoder,java.net.URLEncoder"%>
-<% String user2 = String.valueOf(session.getAttribute("login")); %>
+<% String user2 = String.valueOf(session.getAttribute("admin")); %>
 <style type="text/css">
  	td#time {
  		font-size: 80%;
@@ -23,6 +23,9 @@
 	for (int i = 0; i < foldername.length; i++) {
 		File folder = new File(application.getRealPath(File.separator + "Docs" + File.separator + foldername[i]));//使用する子フォルダの場所を指定
 		String filename[] = folder.list();//String型の配列にファイル名を入れる
+		if(folder.list()==null){
+			filename= new String[0];
+		}
 		File[] filedate = folder.listFiles();//File型の配列にファイル名を入れる
 		for (int x = 0; x < filename.length; x++) {
 			/**File型のファイルの更新日時をlastModified()メソッドで取得し、long型に変換後、Date型として指定しフォーマットを変換*/
@@ -32,7 +35,7 @@
 %>
 <tr class="uk-text-center">
 	<!-- -----------管理者用チェックボックス作成----------- -->
-	<% if(user2.equals("admin")){%>
+	<% if(user2.equals("1")){%>
 	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="<%=foldername[i]%>/<%=filename[x]%>"></td>
 	<%}%>
 

@@ -3,7 +3,7 @@
             java.text.SimpleDateFormat,
             java.util.Date,
             java.util.Locale,java.net.URLDecoder,java.net.URLEncoder"%>
-<% String user2 = String.valueOf(session.getAttribute("login")); %>
+<% String user2 = String.valueOf(session.getAttribute("admin")); %>
 <style type="text/css">
  	td#time {
  		font-size: 80%;
@@ -30,7 +30,7 @@
 %>
 <tr class="uk-text-center">
     <!-- -----------管理者用チェックボックス作成----------- -->
-	<% if(user2.equals("admin")){%>
+	<% if(user2.equals("1")){%>
 	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="<%=filename[i]%>"></td>
 	<%}%>
 
