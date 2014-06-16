@@ -89,7 +89,7 @@ $(window).resize(function(){
                     <li>
                     <a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=3">社内文書システム</a>
                     </li>
- 					<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf">社内文書システム<br>操作説明</a></li>
+ 					<li><a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=5">社内文書システム<br>操作説明</a></li>
 
 
 					<% if(user.equals("1")){ %>
@@ -180,7 +180,7 @@ $(window).resize(function(){
                     <li>
                     <a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=3">社内文書システム</a>
                     </li>
-                    <li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf"> 社内文書システム操作説明</a></li>
+                    <li><a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=5"> 社内文書システム操作説明</a></li>
 					<% if(user.equals("1")){ %>
 					<li class="uk-nav-divider"></li>
                     <li><a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=4">管理-社内システム</a></li>
