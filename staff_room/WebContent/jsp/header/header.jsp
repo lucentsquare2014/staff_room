@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <% String user = String.valueOf(session.getAttribute("admin")); %>
-<style type="text/css">
+<html>
+<head>
 
+<style type="text/css">
 nav#header {
 	width: 100%;
 	height: 42px;
@@ -27,13 +29,19 @@ nav#header >ul >li> div >ul >li >a:hover{background-color:black; color:whitesmok
 <script>
 function sidebar(){
 	var w = $(window).width();
+	if(w <= 920){
+		$("#logout").hide();
+	}
 	if(w <= 700){
-		$("#nav,#logout").hide();
+		$("#nav").hide();
 		$("#logo,#side").show();
 	}
 	if(w > 700){
-		$("#nav,#logout").show();
+		$("#nav").show();
 		$("#logo,#side").hide();
+	}
+	if(w > 920){
+		$("#logout").show();
 	}
 }
 $(function(){
@@ -43,7 +51,7 @@ $(window).resize(function(){
 	sidebar();
 });
 </script>
-
+</head>
 <nav id="header" class="uk-navbar">
 	<ul class="uk-navbar-nav" id="nav" >
 		<li class="header"><a href="//www.lucentsquare.co.jp/"
@@ -123,17 +131,18 @@ $(window).resize(function(){
 			</div>
 		</li>
 	</ul>
-	<div class="uk-navbar-content uk-navbar-flip uk-hidden-small" id="logout">
+	<div id="logout">
+	<div class="uk-navbar-content uk-navbar-flip uk-hidden-small" style="white-space:nowrap;">
     	<div class="uk-button-group">
  			<a class="uk-button uk-button-danger" href="/staff_room/Logout">ログアウト</a>
         </div>
  	</div>
- 	<div class="header" style="float:right;" id="logout">
+ 	<div class="header" style="float:right; white-space:nowrap;">
  		<a href="/staff_room/jsp/SiteManual.jsp"style="text-decoration:none; color:whitesmoke; font-size:1em; text-shadow:0px 0px black;line-height: 40px;">
  		ヘルプ
  		</a>
  	</div>
-
+	</div>
 	<a href="" class="uk-navbar-toggle uk-visible-small" id="side" data-uk-offcanvas="{target:'#sidenav'}"></a>
 	<div class="uk-navbar-content uk-navbar-center uk-align-center" id="logo">
 		<a href="//www.lucentsquare.co.jp/"
@@ -212,3 +221,4 @@ $(window).resize(function(){
     </div>
 </div>
 </nav>
+</html>
