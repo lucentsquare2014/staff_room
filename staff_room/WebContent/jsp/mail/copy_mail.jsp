@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% String user = String.valueOf(session.getAttribute("admin")); %>	
+<% //String user = String.valueOf(session.getAttribute("admin")); %>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="dao.ShainDB,
 				dao.NewsDAO,
@@ -39,14 +39,19 @@ $(window).resize(function(){
 	side();
 });
 </script>
+<%
+		String value = null;
+		value = request.getParameter("mmail");
+		if(value==null){value = "0";}%>
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
 		
 	<div id="con" class="uk-width-1-1 uk-container-center ">
-		<% if(user.equals("1")){ %><div id="come">
+		<% //if(user.equals("1")){ %> 
+		<%if(value.equals("1")){%><div id="come">
 			※「記事未読件数」には全記事の中で、未読の総数を表示します。<br>
-			　 「緊急記事未読件数」には緊急とされた記事の中で、未読の総数を表示します。</div><%} %>
+			　 「緊急記事未読件数」には緊急とされた記事の中で、未読の総数を表示します。</div><%}%>
 		<div id="hide">
 		<a class="uk-button uk-button-primary" href="mailto:" id="mail">作成</a>
 			<ul>
@@ -68,7 +73,8 @@ $(window).resize(function(){
 				<th Background="../../images/blackwhite1.png" class=" uk-width-1-4 uk-text-center"><font color="#FFFFFF">氏名</font></th>
 				<th Background="../../images/blackwhite1.png" class=" uk-width-3-10 uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
 				<th Background="../../images/blackwhite1.png" class=" uk-width-11-20 uk-text-center"><font color="#FFFFFF">メールアドレス</font></th>
-				<% if(user.equals("1")){ %>
+				<% //if(user.equals("1")){ %>
+				<%if(value.equals("1")){%>
 				<th nowrap Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-4 uk-text-center"><font color="#FFFFFF">記事<br>未読件数</font></th>
 			    <th nowrap Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-4 uk-text-center"><font color="#FFFFFF">緊急記事<br>未読件数</font></th>
 			    <%} %>
@@ -165,7 +171,8 @@ $(window).resize(function(){
        				<td id = "na" ><%=Newsmap.get("name")%></td>
        				<td id = "na"><%=Newsmap.get("hurigana")%></td>
        				<td id = "na"><a href="mailto:<%=Newsmap.get("mail")%>"><%=Newsmap.get("mail")%></a></td>
-       				<% if(user.equals("1")){ %>
+       				<% //if(user.equals("1")){ %>
+       				<%if(value.equals("1")){%>
        				<td align="right" id = "na">
 					<% if(unread.length == 1 && unread[0].equals("")){ %>0
 					<% }else{ %><%=unread.length%><% } %></td>
