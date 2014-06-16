@@ -19,7 +19,7 @@ $(function(){
 				}
 			}
 			if($("input[name='inputPrimary']").prop('checked')){
-				$("#primary").addClass("uk-panel-badge uk-badge uk-badge-danger uk-text-large");
+				$("#primary").addClass("uk-panel-badge uk-badge uk-badge-warning uk-text-large");
 				$("#primary").text("緊急");
 				$("input[name='inputPrimary']").val("1");
 			}else{
