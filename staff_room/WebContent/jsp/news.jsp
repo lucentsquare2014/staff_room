@@ -77,11 +77,11 @@
 					String offset = String.valueOf((Integer.parseInt(page_num) * Integer
 							.parseInt(limit)) - 100);
 		if(value.equals("all")){
-			list = dao.getNews("select * from news order by update desc " + " limit " + limit + " offset " + offset);
+			list = dao.getNews("select * from news order by created desc " + " limit " + limit + " offset " + offset);
 		}else{
 			list = dao
 					.getNews("select created,news_id,title,filename,text,writer,primary_flag from news where post_id = "
-					+ value + " order by update desc " +" limit " + limit +" offset " + offset );
+					+ value + " order by created desc " +" limit " + limit +" offset " + offset );
 			ArrayList<HashMap<String, String>> name = null;
 			name = dao.getNews("select postname from post where post_id =" + value);
 			raw = name.get(0);
