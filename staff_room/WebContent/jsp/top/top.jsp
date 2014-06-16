@@ -73,40 +73,32 @@ $(function() {
 					<!-- 「all」のテーブル -->
 					<li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
-					
-					<colgroup class="coL1"></colgroup>
-					<colgroup class="coL2"></colgroup>
-					<colgroup class="coL3"></colgroup>
-					<colgroup class="coL4"></colgroup>
-					
 					<thead>
 						<tr>
-						
-   <th class="coL1"><font color="#FFFFFF">　　</font></th>
-   <th class="coL2 uk-text-left"><font color="#FFFFFF">日付</font></th>
-   <th class="coL3 uk-text-left"><font color="#FFFFFF">件名</font></th>
-   <th class="coL4 uk-text-left"><font color="#FFFFFF">分類</font></th>
-   
- 
+						     <th class="coL1"><font color="#FFFFFF">　　</font></th>
+  							 <th class="coL2 uk-text-left"><font color="#FFFFFF">日付</font></th>
+ 							  <th class="coL3 uk-text-left"><font color="#FFFFFF">件名</font></th>
+ 							  <th class="coL4 uk-text-left"><font color="#FFFFFF">　　</font></th>
 						</tr>
 					</thead>
 					<tbody>
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
+									
 									SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 									Date date = format.parse(row.get("created"));
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td class="coL1">
+								<td style="width:40px;">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
 								
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
-	                             <td class="coL2"><%=dddate.format(date)%></td>
-								<td class="coL3"><div class="uk-badge uk-badge-danger">New</div>
+	                             <td><%=dddate.format(date)%></td>
+								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
@@ -118,8 +110,7 @@ $(function() {
 										<%=row.get("title")%></a></td>
 	<%}%>
 
-								<!-- ジャンル -->
-								<td class="coL4"><%=row.get("postname")%></td>
+								
 
 							</tr><%}%>
 						</tbody>
