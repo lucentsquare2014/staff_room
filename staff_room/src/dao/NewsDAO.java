@@ -60,7 +60,7 @@ public class NewsDAO {
 		Statement stmt;
 		try{
 			stmt = con.createStatement();
-			stmt.executeUpdate(sql);
+			stmt.executeQuery(sql);
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally{
