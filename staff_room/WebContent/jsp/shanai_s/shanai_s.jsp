@@ -36,6 +36,9 @@ body {
         	value="1";
         }
         %>
+        <%if(value.equals("5")){ %>
+            <iframe width="100%" height="100%" src="./doc/manual01.pdf"></iframe>
+        <%} %>
         <%if(value.equals("4")){ %>
             <iframe width="100%" height="100%" src="./administrator.jsp"></iframe>
         <%} else { %>
