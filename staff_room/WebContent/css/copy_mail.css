@@ -22,14 +22,41 @@ div#con {
 	overflow-y: scroll;
 	max-width: 100%;
 	max-height: 93.5%;
-	
+}
+div#hide{
+	position:fixed;
+	display: none;
+
 }
 
+div#hide>ul{
+	margin-left:-30px;
+}
+
+div#hide>ul>li{
+	list-style-type: none;
+	margin-left:2px;
+}
+
+div#hide>ul>li>a{
+	width:40px;
+}
+div#hide>a{
+	margin-top:2px;
+	margin-left:2px;
+}
+
+#come{position:absolute;
+top:15px;
+left:40%;
+white-space: nowrap;
+color:red;
+}
 .uk-table {
 	width: 55%;
-	margin-right: auto;
+	margin-right: 23%;
 	margin-left: 23%;
-	margin-top: 5%;
+	margin-top: 55px;
 	white-space: nowrap;
 }
 tr:nth-of-type(2n) {
@@ -48,7 +75,7 @@ div#button {
 	left: 2%;
 	width:140px;
 	white-space: none;
-	background-color:rgba(0,0,0,0.8);
+	background-color:rgba(0,0,0,0.3);
 	border-radius: 4px;
 }
 #button-con{align:center;
