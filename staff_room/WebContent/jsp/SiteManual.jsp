@@ -37,7 +37,7 @@ body {
 		ヘッダーの端に表示されたボタンをクリックすると、それぞれのページへのリンクがリストとして表示されます。<br><br>
 	<image src ="/staff_room/images/help/help_header_mobile.png" width="30%">
 	<image src ="/staff_room/images/help/help_header_mobile_pulldown.png" width="35%">
-	<image src ="/staff_room/images/help/help_header_mobile_pulldown2.png" width="25%">
+	<image src ="/staff_room/images/help/help_header_mobile_pulldown2.png" width="24%">
 	<br><br>
 	</li>
 </ul>
@@ -45,9 +45,12 @@ body {
 					<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold">2.TOP画面について</h2>&nbsp;
 <ul>
 	<li>連絡事項として作成された記事の簡易的な閲覧が行えるページです。</li>
-	<li>「連絡事項」横の分類別ボタンを押すことでその分類の記事のみが表示されます。</li>
+	<li>「連絡事項」下の分類別ボタンを押すことでその分類の記事のみが表示されます。</li>
 	<li>まだ閲覧していない記事には、「new」というアイコンが表示されます。<br>
-		また、記事の作成者が緊急と判断した記事には「緊急」というアイコンが表示されます。</li>
+		また、記事の作成者が緊急と判断した記事には「緊急」というアイコンが表示されます。<br><br>
+	<image src ="/staff_room/images/help/help_top_news.png" width="45%">
+	<image src ="/staff_room/images/help/help_top_news_filter.png" width="45%" height="20%"><br><br>
+		</li>
 	<li>表示されているそれぞれの記事のタイトルをクリックすると、ポップアップで記事の内容が表示されます。</li>
 	<li>表示されたポップアップの左下のアイコンをクリックすると、記事の内容を印刷することができます。<br><br>
 	<image src ="/staff_room/images/help/help_top_popup.png" width="50%"><br><br>
