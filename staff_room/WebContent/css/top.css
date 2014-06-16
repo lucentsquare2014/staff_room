@@ -107,10 +107,10 @@ text-overflow: ellipsis;
 }
 
 #version{
-position:absolute;
+position:fixed;
 color:black;
 top:30px;
-right:30px;	
+left:1250px;	
 }
 
 .coL1 { width:40px; }/* colgroup‚Ì—ñ•w’è */
