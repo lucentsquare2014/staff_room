@@ -62,7 +62,7 @@ public class C_MailSend extends Thread{
 			//System.out.println("C_MailSend送信タイム計測" + subject);
 
 		} catch (Exception e) {
-
+			e.printStackTrace();
 			//System.out.println("C_MailSendメール送信失敗" + subject);
 
 		}
