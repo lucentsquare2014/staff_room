@@ -78,7 +78,7 @@ $(function() {
 						     <th class="coL1"><font color="#FFFFFF">　　</font></th>
   							 <th class="coL2 uk-text-left"><font color="#FFFFFF">日付</font></th>
  							  <th class="coL3 uk-text-left"><font color="#FFFFFF">件名</font></th>
- 							  <th class="coL4 uk-text-left"><font color="#FFFFFF">　　</font></th>
+ 							  <th class="coL4 uk-text-left"><font color="#FFFFFF">分類</font></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -91,7 +91,7 @@ $(function() {
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td style="width:40px;">
+								<td style="width:300px;">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
@@ -109,6 +109,8 @@ $(function() {
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%></a></td>
 	<%}%>
+<!-- ジャンル -->
+								<td class="coL4"><%=row.get("postname")%></td>
 
 								
 
