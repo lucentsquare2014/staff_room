@@ -61,7 +61,7 @@
 			 value3 = String.valueOf(session.getAttribute("unread"));
 			 read_check = Arrays.asList(value3.split(","));
 		}
-		
+
 
 		//配列
 		ArrayList<Integer> x = new ArrayList<Integer>();
@@ -77,7 +77,7 @@
 					String offset = String.valueOf((Integer.parseInt(page_num) * Integer
 							.parseInt(limit)) - 100);
 		if(value.equals("all")){
-			list = dao.getNews("select * from news order by update desc " + " limit " + limit + " offset " + offset); 
+			list = dao.getNews("select * from news order by update desc " + " limit " + limit + " offset " + offset);
 		}else{
 			list = dao
 					.getNews("select created,news_id,title,filename,text,writer,primary_flag from news where post_id = "
@@ -95,7 +95,7 @@
 			<span style="font-size: 32px;">
 			<nobr>
 				<% if(value.equals("all")){ %>
-					全て
+					すべて
 				<% }else{ %>
 					<%=raw.get("postname")%>
 				<% } %>
@@ -138,9 +138,9 @@
                     	<div id="my-id<%=i%>" class="uk-h4 uk-text-left uk-hidden">
                     		<pre><%= row.get("text") %></pre>
                     		<p>添付ファイル：
-                    			<% 
+                    			<%
                     				String arr[] = row.get("filename").split( "," );
-                    				for (int f = 0; f<arr.length; f++){ 
+                    				for (int f = 0; f<arr.length; f++){
                     			%>
                     			<a href=""><%out.println(arr[f]);%></a>
                     			<% } %>
