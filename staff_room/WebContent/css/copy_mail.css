@@ -1,11 +1,5 @@
 html {
-	font-size: 75%;
-}
-
-@media screen and (min-width : 768px) {
-	html {
 		font-size: 87.5%
-	};
 }
 
 body {
@@ -20,22 +14,19 @@ div#con {
 	position: fixed;
 	top: 42px;
 	overflow-y: scroll;
-	max-width: 100%;
+	max-width: 87%;
 	max-height: 93.5%;
+	margin-left: 13%;
 }
+
 div#hide{
 	position:fixed;
 	display: none;
-
-}
-
-div#hide>ul{
-	margin-left:-30px;
+	margin-left:-68px;
 }
 
 div#hide>ul>li{
 	list-style-type: none;
-	margin-left:2px;
 }
 
 div#hide>ul>li>a{
@@ -43,21 +34,31 @@ div#hide>ul>li>a{
 }
 div#hide>a{
 	margin-top:2px;
-	margin-left:2px;
+	margin-left:32px;
 }
 
-#come{position:absolute;
-top:15px;
-left:40%;
-white-space: nowrap;
-color:red;
+#come{
+	position:absolute;
+	width: 55%;
+	left: 10%;
+	top:20px;
+	white-space: nowrap;
+	color:red;
+}
+div#come>a {
+	position:absolute;
+	left:540px;
+	margin-top:-5px;
 }
 .uk-table {
 	width: 55%;
 	margin-right: 23%;
-	margin-left: 23%;
-	margin-top: 55px;
+	margin-left:10%;
+	margin-top:70px;
 	white-space: nowrap;
+}
+.uk-table td {
+    padding: 6px;
 }
 tr:nth-of-type(2n) {
     background:#FFFFFF;}
@@ -72,19 +73,20 @@ td#na {
 div#button {
 	position: fixed;
 	top: 30%;
-	left: 2%;
-	width:140px;
+	left: 1%;
+	width:127px;
 	white-space: none;
-	background-color:rgba(0,0,0,0.3);
+	background-color:rgba(0,0,0,0.5);
 	border-radius: 4px;
 }
-#button-con{align:center;
+#button-con{
+align:center;
 margin:10px;
 	
 }
 
 div#button-con>a {
-	width: 100%;
+
 }
 
 div#button ul {
@@ -93,12 +95,12 @@ div#button ul {
 
 div#button ul>li {
 	list-style-type: none;
-	padding-left:12%;
+	padding-right:12%;
 	padding-top: 1px;
 }
 
 div#button ul>li>a {
-	width: 40%;
+	width: 38px;
 	text-align: center;
 	margin:auto;
 }

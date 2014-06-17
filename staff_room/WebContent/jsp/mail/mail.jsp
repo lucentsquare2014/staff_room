@@ -49,9 +49,12 @@ $(window).resize(function(){
 		
 	<div id="con" class="uk-width-1-1 uk-container-center ">
 		<% //if(user.equals("1")){ %> 
-		<%if(value.equals("1")){%><div id="come">
-			※「記事未読件数」には全記事の中で、未読の総数を表示します。<br>
-			　 「緊急記事未読件数」には緊急とされた記事の中で、未読の総数を表示します。</div><%}%>
+		<%if(value.equals("1")){%>
+			<div id="come">
+				※「記事未読件数」には全記事の中で、未読の総数を表示します。<br> 「緊急記事未読件数」には緊急とされた記事の中で、未読の総数を表示します。
+				<a class="uk-button uk-button-success" href="/staff_room/jsp/writeNews/writeNews.jsp" style="float:right;">管理編集ページに戻る</a>
+			</div><%}%>
+			
 		<div id="hide">
 		<a class="uk-button uk-button-primary" href="mailto:" id="mail">作成</a>
 			<ul>
@@ -181,6 +184,7 @@ $(window).resize(function(){
        		<%}%>
          
 		</table>
+		<br><br><br><br><br><br><br><br><br>
 		<div id=button>
 		<div id=button-con>
 		<a class="uk-button uk-button-primary" href="mailto:" id="mail"> メール作成</a>
@@ -206,9 +210,11 @@ $(window).resize(function(){
 					<a class="uk-button" href="#w">ワ</a>
 				</li>
 			</ul>
-			<a class="uk-button uk-button-primary" href="mailto:all@lucentsquare.co.jp;" id="mail"> 全社員へメール</a>
 			
-		</div><div id="tyu">（注）outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div>
+			
+		</div>
+		<%if(value.equals("1")){%><a class="uk-button uk-button-primary" href="mailto:all@lucentsquare.co.jp;" id="mail" style="white-space:nowrap;margin-left:2px"> 全社員へメール</a><%} %>
+		<div id="tyu">(注)outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div>
 		</div>
 	</div>
 </body>
