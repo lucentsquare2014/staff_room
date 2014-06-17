@@ -6,7 +6,6 @@
 <% String user2 = String.valueOf(session.getAttribute("admin")); %>
 <style type="text/css">
  	td#time {
- 		font-size: 80%;
  		vertical-align: middle;
  	}
  	td#type {
@@ -31,7 +30,8 @@
 			/**File型のファイルの更新日時をlastModified()メソッドで取得し、long型に変換後、Date型として指定しフォーマットを変換*/
 			long lastModifytime = filedate[x].lastModified();
 			Date date = new Date(lastModifytime);
-			DateFormat format = new SimpleDateFormat("GGGGyy年 MMMM d日 ", new Locale("ja", "JP", "JP"));
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 %>
 <tr class="uk-text-center">
 	<!-- -----------管理者用チェックボックス作成----------- -->
@@ -49,7 +49,7 @@
 
 
 	<!-- フォーマットを変換した 更新日時を出力-->
-	<td bgcolor="#FFFFFF" id="time"><%=format.format(date)%></td>
+	<td bgcolor="#FFFFFF" id="time"><%=dddate.format(date)%></td>
 
 	<!-- String型のファイル名を出力 -->
 	<td bgcolor="#FFFFFF"><a href="../syorui_test/<%=URLEncoder.encode(foldername[i], "utf-8")%>/<%=URLEncoder.encode(filename[x], "utf-8")%>"><%=filename[x]%></a></td>

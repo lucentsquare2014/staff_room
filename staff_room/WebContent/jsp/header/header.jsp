@@ -99,7 +99,7 @@ $(window).resize(function(){
 				</ul>
 			</div></li>
 		<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
-		<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">規定・書類</a></li>
+		<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">規程・書類</a></li>
 		<li class="header"><a href="/staff_room/jsp/mail/mail.jsp">Mail</a></li>
 		<li class="header"><a href="/staff_room/jsp/bbs/bbs.jsp">掲示板</a></li>
 		<li class="uk-parent header" data-uk-dropdown><a>Photo<i
@@ -144,9 +144,9 @@ $(window).resize(function(){
  	</div>
 	</div>
 	<a href="" class="uk-navbar-toggle uk-visible-small" id="side" data-uk-offcanvas="{target:'#sidenav'}"></a>
-	<div class="uk-navbar-content uk-navbar-center uk-align-center" id="logo">
+	<div class="uk-navbar-content " id="logo" style="padding:0px 0px; margin-top:1px;">
 		<a href="//www.lucentsquare.co.jp/"
-			class="uk-navbar-brand"> <img src="/staff_room/images/Logo.png"
+			class="uk-navbar-brand" style="padding:0px 0px;"> <img src="/staff_room/images/Logo.png"
 				alt="会社のページに戻る" width="30" height="30"></img></a>
 	</div>
 	<div id="sidenav" class="uk-offcanvas">
@@ -188,7 +188,7 @@ $(window).resize(function(){
 				</ul>
         	</li>
         	<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
-			<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">マニュアル</a></li>
+			<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">規程・書類</a></li>
 			<li class="header"><a href="/staff_room/jsp/mail/mail.jsp">Mail</a></li>
 			<li class="header"><a href="/staff_room/jsp/bbs/bbs.jsp">掲示板</a></li>
 			<li class="uk-parent">

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% String user = String.valueOf(session.getAttribute("admin")); %>
-<html style="overflow-x:auto; white-space:nowrap;">
+<html>
 <head>
 <jsp:include page="/html/head.html" />
 <script src="/staff_room/script/document.js"></script>
@@ -12,7 +12,7 @@ body {
 	height: 656px;
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/shinseisyorui01.jpg");
-	background-size: 100% auto;
+	background-size: 100% 100%;
 }
 textarea {
 	width: 180px;
@@ -26,7 +26,7 @@ textarea {
 <body>
 <jsp:include page="/jsp/header/header.jsp" />
 
-<div class="changelog" style="padding-top: 40px;">
+<div class="changelog" style="padding-top: 40px; white-space:nowrap;">
 <!-- <img src="/staff_room/images/sinseisyorui5-2.jpg" width="100%" height="100%" style="position:absolute; margin-bottom:20px; filter: progid:DXImageTransform.Microsoft.alpha (style=0, opacity=50)"> -->
 <!-- <span style="position:absolute;top:40em;left:1100px"><font size="7" color="red" face="ＭＳ 明朝,平成明朝">申請書類</font></span>   -->
 <div class="uk-width-3-5 uk-container-center">

@@ -26,7 +26,8 @@
 		/**File型のファイルの更新日時をlastModified()メソッドで取得し、long型に変換後、Date型として指定しフォーマットを変換*/
 		long lastModifytime = filedate[i].lastModified();
 		Date date = new Date(lastModifytime);
-		DateFormat format = new SimpleDateFormat("GGGGyy年 MMMM d日 ",new Locale("ja", "JP", "JP"));
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 %>
 <tr class="uk-text-center">
     <!-- -----------管理者用チェックボックス作成----------- -->
@@ -35,7 +36,7 @@
 	<%}%>
 
 	<!-- フォーマットを変換した 更新日時を出力　-->
-	<td bgcolor="#FFFFFF" class="uk-text-center"><%=format.format(date)%></td>
+	<td bgcolor="#FFFFFF" class="uk-text-center"><%=dddate.format(date)%></td>
 
 	<!-- String型のファイル名を出力 -->
 	<td bgcolor="#FFFFFF" class="uk-text-center"><a href="../jsp/<%=filename[i]%>"><%=filename[i]%></a></td>

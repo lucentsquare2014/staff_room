@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <% String user = String.valueOf(session.getAttribute("admin")); %>
-<html style="overflow-x:auto; white-space:nowrap;">
+<html>
 <head>
 <jsp:include page="/html/head.html" />
 <script src="/staff_room/script/document.js"></script>
@@ -12,18 +12,18 @@ body {
 	height: 656px;
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/manual01.jpg");
-	background-size: 100% auto;
+	background-size: 100% 100%;
 }
 #select_files {
 	display:none;
 }
 </style>
-<title>規定・書類</title>
+<title>規程・書類</title>
 </head>
 <body>
 
 <jsp:include page="/jsp/header/header.jsp" />
-<div class="changelog" style="padding-top: 40px;">
+<div class="changelog" style="padding-top: 40px; white-space:nowrap;">
 <!-- <img src="/staff_room/images/manyuaru6.jpg" style="margin-bottom:20px;"> -->
 <!-- <span style="position:absolute;top:40em;left:1100px"><font size="7" color="red" face="ＭＳ 明朝,平成明朝">マニュアル</font></span>   -->
 <div class="uk-width-3-5 uk-container-center">
