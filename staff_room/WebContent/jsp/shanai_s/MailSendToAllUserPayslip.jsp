@@ -303,7 +303,7 @@
 								<tr>
 									<td></td>
 									<td><font class="selectable">URL :
-											http://www.lucentsquare.co.jp:8080/kk_web/SalaryPage?code=各個人の専用コード</font></td>
+											http://www.lucentsquare.co.jp:8080/staff_room/jsp/shanai_s/SalaryPage?code=各個人の専用コード</font></td>
 								</tr>
 								<tr>
 									<td></td>
