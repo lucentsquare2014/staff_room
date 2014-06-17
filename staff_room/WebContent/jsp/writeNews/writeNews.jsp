@@ -45,9 +45,9 @@ body {
 	<div class="contents uk-width-2-3 uk-container-center">
 		<h1>管理・編集</h1>
 	     <div align="right">
-	     <a href="/staff_room/jsp/mail/copy_mail.jsp?mmail=1">
+	     <a href="/staff_room/jsp/mail/mail.jsp?mmail=1">
 	       <button class="uk-button uk-button-success"　value="未読記事">
-	       <i class="uk-icon-user uk-icon-small"></i>　未読記事数確認へ</button></a>
+	       <i class="uk-icon-user uk-icon-small"></i>　記事未読件数確認へ</button></a>
 			<a href="/staff_room/jsp/writeNews/inputForm.jsp">
 				<button class="uk-button uk-button-primary">
 					<i class="uk-icon-pencil uk-icon-small"></i>　新規作成</button></a>
