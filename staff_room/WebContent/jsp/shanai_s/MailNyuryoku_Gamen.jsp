@@ -44,7 +44,7 @@
 <TR>
 <TD>
 <TEXTAREA NAME="body" COLS="80" ROWS="10" ISTYLE="1" >
-　認証ページ：http://www.lucentsquare.co.jp:8080/kk_web/Menu_Gamen.jsp
+　認証ページ：http://www.lucentsquare.co.jp:8080/staff_room/jsp/shanai_s/Menu_Gamen.jsp
 
 <%= okurisaki_name %>さんへ
 

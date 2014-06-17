@@ -60,6 +60,8 @@ public class ReadCheck {
 		for(int i = 0; i < ids.length; i++){
 			if(!unique.contains(ids[i])){
 				unique.add(ids[i]);
+				System.out.println("ids: "+ids[i]+" :" + String.valueOf(i));
+				System.out.println("unique: "+unique.get(i));
 				update_ids += unique.get(i) + ",";
 			}
 		}

@@ -43,6 +43,13 @@
 </form>
 </td>
 </tr>
+<tr>
+<td>
+<form method="get" action="//www.lucentsquare.co.jp/kinmu_db/top.html">
+<input type="submit" value="  社内申請システム  " class="botton2">
+</form>
+</td>
+</tr>
 </table><br><ul><li><font class="index2">Reports</font></li></ul>
 <table>
 <tr>
