@@ -28,8 +28,7 @@ body {
 ログインパスワード変更
 </div>
 <br>
-	<div class="uk-panel uk-panel-box uk-align-center"
-		style="width: 350px;">
+	<div class="uk-panel uk-panel-box uk-align-center"style="width: 450px;">
 		<div class="uk-text-center">
 			<%--エラーメッセージを表示する。エラー処理はpwcheck.jsとPwChange.java --%>
 			<p class="uk-text-danger" id="alert">
@@ -50,6 +49,12 @@ body {
 			<input class="uk-form-width-medium uk-align-center"
 				value='' type="password" name="now_pw1" maxlength="20"> <input
 				value='<%=session.getAttribute("login")%>' type="hidden" name="id"><br> <br> <br>
+
+				<ul>
+					<li>パスワードは4文字以上、20文字以下で設定して下さい。</li>
+					<li>アカウントと同一のものはパスワードとして設定することはできません。</li>
+				</ul>
+
 			<div class="uk-text-bold uk-text-large uk-text-center">変更するパスワードを入力してください</div><br>
 			<input class="uk-form-width-medium uk-align-center"
 				value='' type="password" name="new_pw1" maxlength="20">
