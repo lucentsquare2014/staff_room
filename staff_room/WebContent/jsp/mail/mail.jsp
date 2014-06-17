@@ -187,26 +187,26 @@ $(window).resize(function(){
 		<br><br><br><br><br><br><br><br><br>
 		<div id=button>
 		<div id=button-con>
-		<a class="uk-button uk-button-primary" href="mailto:" id="mail"> メール作成</a>
+		<a class="uk-button uk-button-primary" href="mailto:" id="mail" style="white-space:nowrap;margin-left:10px"> メール作成</a>
 			<ul>
 				<li>
-					<a class="uk-button" href="#a">ア</a>
+					<a class="uk-button" href="#a" style="white-space:nowrap;margin-left:13px">ア</a>
 					<a class="uk-button" href="#h">ハ</a>
 				</li>
 				<li>
-					<a class="uk-button" href="#k">カ</a>
+					<a class="uk-button" href="#k" style="white-space:nowrap;margin-left:13px">カ</a>
 					<a class="uk-button" href="#m">マ</a>
 				</li>
 				<li>
-					<a class="uk-button" href="#s">サ</a>
+					<a class="uk-button" href="#s" style="white-space:nowrap;margin-left:13px">サ</a>
 					<a class="uk-button" href="#y">ヤ</a>
 				</li>
 				<li>
-					<a class="uk-button" href="#t">タ</a>
+					<a class="uk-button" href="#t" style="white-space:nowrap;margin-left:13px">タ</a>
 					<a class="uk-button" href="#r">ラ</a>
 				</li>
 				<li>
-					<a class="uk-button" href="#n">ナ</a>
+					<a class="uk-button" href="#n" style="white-space:nowrap;margin-left:13px">ナ</a>
 					<a class="uk-button" href="#w">ワ</a>
 				</li>
 			</ul>
