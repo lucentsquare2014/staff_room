@@ -184,7 +184,13 @@
             xhr.onreadystatechange = function() {
 
                 settings.readystatechange(xhr);
-
+                
+                if(xhr.readyState == 2){
+                	if(xhr.status == 403){
+                		location.href = "/staff_room/jsp/ip_forbidden.jsp";
+                	}
+                }
+                
                 if (xhr.readyState==4){
 
                     var response = xhr.responseText;

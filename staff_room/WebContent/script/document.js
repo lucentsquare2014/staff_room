@@ -36,7 +36,12 @@ $(function(){
 				url : "/staff_room/DocumentDelete",
 				cache: false,
 				data : {"delete" : filenames,
-						"page" : page}
+						"page" : page},
+				statusCode: {
+					403: function() {
+        				location.href = "/staff_room/jsp/ip_forbidden.jsp";
+        			}
+        		}
 			}).done(function(){
 				notif({
 					type : "success",

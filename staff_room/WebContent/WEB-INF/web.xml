@@ -12,6 +12,30 @@
     <filter-name>LoginFilter</filter-name>
     <url-pattern>/jsp/*</url-pattern>
   </filter-mapping>
+  <filter>
+    <filter-name>Allow Local Network Access</filter-name>
+    <filter-class>file.IpAddressFilter</filter-class>
+    <init-param>
+        <param-name>allowIP</param-name>
+        <param-value>192.168.101.2</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>Allow Local Network Access</filter-name>
+    <servlet-name>DocumentUpload</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Allow Local Network Access</filter-name>
+    <servlet-name>Upload</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Allow Local Network Access</filter-name>
+    <servlet-name>DocumentDelete</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Allow Local Network Access</filter-name>
+    <servlet-name>Delete</servlet-name>
+  </filter-mapping>
   <context-param>
     <param-name>sender</param-name>
     <param-value>20732</param-value>

@@ -103,7 +103,12 @@ $(function(){
             				url: "/staff_room/Delete",
             				data: {"deleteFile" : deleted,
             						"newsId" : news_id },
-            				cache: false
+            				cache: false,
+            				statusCode: {
+            					403: function() {
+                    				location.href = "/staff_room/jsp/ip_forbidden.jsp";
+                    			}
+                    		}
             			}).done(function(){
             				$close.remove();
             				var remove_name = deleted + ",";
@@ -131,7 +136,12 @@ $(function(){
 				url: "/staff_room/Delete",
 				data: {"deleteFile" : deleted,
 						"newsId" : news_id },
-				cache: false
+				cache: false,
+				statusCode: {
+					403: function() {
+        				location.href = "/staff_room/jsp/ip_forbidden.jsp";
+        			}
+        		}
 			}).done(function(){
 				$close.remove();
 				var remove_name = deleted + ",";
