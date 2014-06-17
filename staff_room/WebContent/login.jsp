@@ -51,8 +51,8 @@ if(login_cookie!=null){
 			</h3>
 			<p class="uk-text-success uk-text-left">
 				1.必要事項を入力し、ログインを押してください。<br>
-				2.全角カナは使用しないでください。
-			</p>
+<!-- 				2.全角カナは使用しないでください。
+ -->			</p>
 			<p class="uk-text-danger" id="alert">
 				<% if(request.getAttribute("error") != null){ %>
 					<%= request.getAttribute("error")%>
