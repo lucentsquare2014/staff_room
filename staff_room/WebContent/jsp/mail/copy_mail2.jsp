@@ -80,8 +80,6 @@
 				</li>
 			</ul>
 			<a class="uk-button uk-button-primary" href="mailto:all@lucentsquare.co.jp;" id="mail"> 全社員へメール</a>
-			<a class="uk-button uk-button-primary" href="/staff_room/jsp/writeNews/copy_writeNews.jsp" > 管理・編集ページへ戻る</a>
-			
 			
 		</div><div id="tyu">（注）outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div>
 		</div>
