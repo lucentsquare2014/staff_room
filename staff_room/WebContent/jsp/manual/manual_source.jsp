@@ -39,6 +39,6 @@
 	<td bgcolor="#FFFFFF" class="uk-text-center"><%=dddate.format(date)%></td>
 
 	<!-- String型のファイル名を出力 -->
-	<td bgcolor="#FFFFFF" class="uk-text-center"><a href="../jsp/<%=filename[i]%>"><%=filename[i]%></a></td>
+	<td bgcolor="#FFFFFF" class="uk-text-center"><a href="/staff_room/manual/<%=filename[i]%>"><%=filename[i]%></a></td>
 </tr>
 <%}%>
