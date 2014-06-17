@@ -21,9 +21,9 @@ body {
 	background-size: 100% 100%;
 }
 .conetent{
-	padding: 0; 
-	padding-top: 42px; 
-	height: 100%; 
+	padding: 0;
+	padding-top: 42px;
+	height: 100%;
 	width: 100%;
 	margin-left:auto;
 	margin-right:auto;
@@ -36,8 +36,8 @@ body {
 	<div class="conetent">
 		<%if(value.equals("1")){%><iframe width="100%" height="100%" src="//www.lucentsquare.co.jp/gps/pc/"></iframe><%} %>
 		<%if(value.equals("2")){%><iframe width="100%" height="100%" src="//www.lucentsquare.co.jp:8080/etalent5_27/main.jsp"></iframe><%}%>
-		<%if(value.equals("3")){%><iframe width="100%" height="100%" src="//www.lucentsquare.co.jp/staff/WorkingGroup/Advance_WorkingGroup.html"></iframe><%} %>
-		<%if(value.equals("4")){%><iframe width="100%" height="100%" src="//www.lucentsquare.co.jp/staff/newstaff_2014/newstaff_index.html"></iframe><%} %>		
+		<%if(value.equals("3")){%><iframe width="100%" height="100%" src="/staff_room/html/WorkingGroup/Advance_WorkingGroup.html"></iframe><%} %>
+		<%if(value.equals("4")){%><iframe width="100%" height="100%" src="/staff_room/html/newstaff_2014/newstaff_index.html"></iframe><%} %>
 	</div>
 </body>
 </html>
