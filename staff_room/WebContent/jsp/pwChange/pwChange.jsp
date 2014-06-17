@@ -48,7 +48,7 @@ body {
 			<div class="uk-text-bold uk-text-large uk-text-center">現在のパスワードを入力してください</div><br>
 			<input class="uk-form-width-medium uk-align-center"
 				value='' type="password" name="now_pw1" maxlength="20"> <input
-				value='<%=session.getAttribute("login")%>' type="hidden" name="id"><br> <br> <br>
+				value='<%=session.getAttribute("login")%>' type="hidden" name="id">
 
 				<ul>
 					<li>パスワードは4文字以上、20文字以下で設定して下さい。</li>
