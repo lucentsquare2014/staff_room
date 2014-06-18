@@ -6,9 +6,9 @@
 <%@ page import="java.util.ArrayList, java.util.HashMap, java.util.List, java.util.Arrays"%>
 <%@ page import="org.apache.commons.codec.binary.StringUtils"%>
 
-<% 
+<%
 	List<String> file_list = new ArrayList<String>();
-	
+
 	if(request.getParameter("inputFile") != "" && request.getParameter("inputFile") != null) {
 		String file_str = String.valueOf(jpn2unicode(request.getParameter("inputFile"),"UTF-8"));
 		file_list = Arrays.asList(file_str.split(","));
@@ -25,7 +25,7 @@
 </head>
 <body>
 <jsp:include page="/jsp/header/header.jsp" />
-<br><br><br><br>
+<br><br>
 <form class="uk-form uk-form-horizontal" method="post" action="write_finish.jsp">
 	<!-- 入力フォーム -->
 	<div class="uk-width-medium-3-5 uk-container-center confirm">
@@ -68,7 +68,7 @@
 		<div class="uk-form-row">
 			<label class="uk-form-label uk-text-bold uk-text-large">タイトル</label>
 			<input class="uk-form-width-medium" type="text" name="inputTitle"
-			<% 
+			<%
 				if(request.getParameter("inputTitle")!=null){
 					String title = jpn2unicode(request.getParameter("inputTitle"),"UTF-8");
 					out.print("value=\"" + title + "\"");
@@ -97,7 +97,7 @@
 		<div class="uk-form-row">
 			<div class="uk-form-controls">
 				<div id="loop">
-					<% if(!file_list.isEmpty()) { 
+					<% if(!file_list.isEmpty()) {
 						for(int i = 0; i < file_list.size(); i++){ %>
 						<div class="uk-alert">
 							<a href="" class="uk-alert-close uk-close" data-uk-alert></a>
@@ -133,9 +133,11 @@
 		<div class="uk-form-row">
 			<div class="uk-width-3-4 uk-container-center uk-text-right">
 				<button class="uk-button uk-button-large uk-button-primary" data-uk-toggle="{target:'.confirm'}">確認</button>
+				<a href="/staff_room/jsp/writeNews/writeNews.jsp" class="uk-button uk-button-large uk-button-success" >一覧へ</a>
 			</div>
 		</div>
 	</div>
+<br>
 	<!-- 確認画面 -->
 	<div class="uk-width-medium-3-5 uk-container-center confirm uk-hidden">
 		<div class="uk-h1 uk-text-center">入力確認</div>
