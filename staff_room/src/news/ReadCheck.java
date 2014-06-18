@@ -62,7 +62,10 @@ public class ReadCheck {
 				unique.add(ids[i]);
 				System.out.println("ids: "+ids[i]+" :" + String.valueOf(i));
 				System.out.println("unique: "+unique.get(i));
-				update_ids += unique.get(i) + ",";
+//				update_ids += unique.get(i) + ",";
+				// unique.get(i)でIndexOutOfBounds...のエラーが起こっているので
+				// get（）を使わないように修正
+				update_ids += ids[i] + ",";
 			}
 		}
 		String sql = "UPDATE shainkanri SET read_check = '" + update_ids + 
