@@ -119,7 +119,8 @@ $(function(){
 	
 	$("#add").click(function(){
 		if(exist_flag == 1){
-			if(confirm('ファイル' + exist_files + 'はすでに存在しています。置き換えますか？')){
+			if(!confirm('ファイル' + exist_files + 'はすでに存在しています。置き換えますか？')){
+				return false;
 			}
 		}
 	});
