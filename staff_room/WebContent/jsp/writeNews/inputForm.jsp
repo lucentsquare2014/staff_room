@@ -101,7 +101,7 @@
 						for(int i = 0; i < file_list.size(); i++){ %>
 						<div class="uk-alert">
 							<a href="" class="uk-alert-close uk-close" data-uk-alert></a>
-							<p><%= file_list.get(i) %></p>
+							<a href="/staff_room/upload/<%= file_list.get(i) %>"><%= file_list.get(i) %></a>
 						</div>
 					<% 	}
 					}
