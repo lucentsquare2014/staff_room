@@ -120,6 +120,14 @@
     <servlet-name>Upload</servlet-name>
     <url-pattern>/upload</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>IfExist</servlet-name>
+    <servlet-class>file.IfExist</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IfExist</servlet-name>
+    <url-pattern>/IfExist</url-pattern>
+  </servlet-mapping>
 
 
     <servlet>
