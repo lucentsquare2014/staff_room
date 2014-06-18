@@ -351,7 +351,9 @@ $(function() {
         	<div id="title" class="uk-badge uk-text-large uk-width-1-1 uk-text-left"></div>
         	<pre id="text" class="uk-overflow-container"></pre>
         	<p id="filename"></p>
-        	<a href="#" id="btn_print"><i class="uk-icon-print"></i></a>
+        	<a href="#" id="btn_print" class="uk-text-primary">
+        		<i class="uk-icon-print" data-uk-tooltip title="プリント"></i>
+        	</a>
     	</div>
 	</div>
 </body>

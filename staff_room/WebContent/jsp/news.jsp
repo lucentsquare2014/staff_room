@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -105,7 +105,7 @@
 
 		<br><br><br><br><br><br>
 		<div class="uk-width-2-3 uk-container-center">
-		<table border="5" class="uk-table uk-text-center uk-width-medium-1-1">
+		<table border="1" class="uk-table uk-text-center uk-width-medium-1-1">
 		<tr class="uk-text-large">
 		<td Background="../images/blackwhite1.png" class="uk-h2 uk-width-medium-2-10"><font color="#ffffff">日付</font></td>
 		<td Background="../images/blackwhite1.png" class="uk-h2 uk-width-medium-8-10"><font color="#ffffff">件名</font></td>
@@ -129,10 +129,14 @@
 						<a id="<%= row.get("news_id") %>" data-uk-toggle="{target:'#my-id<%=i%>'}" class="uk-text-danger uk-text-bold kiji">
 							<%= row.get("title") %>
 						</a>
-						&nbsp;<a href="#" id="btn_print<%=row.get("news_id") %>"><i class="uk-icon-print"></i></a>
+						<a href="#" id="btn_print<%=row.get("news_id") %>" class="uk-text-primary">
+							<i class="uk-icon-print" data-uk-tooltip title="プリント"></i>
+						</a>
 					<%}else{%>
 						<a data-uk-toggle="{target:'#my-id<%=i%>'}" class="kiji"><%= row.get("title") %></a>
-						&nbsp;<a href="#" id="btn_print<%=row.get("news_id") %>"><i class="uk-icon-print"></i></a>
+						<a href="#" id="btn_print<%=row.get("news_id") %>" class="uk-text-primary">
+							<i class="uk-icon-print" data-uk-tooltip title="プリント"></i>
+						</a>
 					<%}%>
 					<%if (!row.get("filename").equals("")){ %>
                     	<div id="my-id<%=i%>" class="uk-h4 uk-text-left uk-hidden">
@@ -144,8 +148,7 @@
                     			%>
                     			<a href=""><%out.println(arr[f]);%></a>
                     			<% } %>
-                    		</p>
-                    		<a href="#" id="btn_print<%=row.get("news_id") %>"><i class="uk-icon-print"></i></a>
+                    		</p>    
                     	</div>
 					<%}else{ %>
 					<div id="my-id<%=i%>" class="uk-h4 uk-text-left uk-hidden">
