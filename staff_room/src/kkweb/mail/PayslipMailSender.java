@@ -58,7 +58,7 @@ public class PayslipMailSender extends HttpServlet {
 	/// 送信した方には最新の給与明細書への年月がpayslip_urlに登録される
 	private void mailSend(HttpServletRequest request, HttpServletResponse response) throws IOException{
 		// 文字コードを指定
-		request.setCharacterEncoding("shift-jis");
+		request.setCharacterEncoding("UTF-8");
 		// 文字コードコンバータ
 		C_CharConverter con = new C_CharConverter();
 		// 在籍する社員情報を取得
@@ -129,7 +129,7 @@ public class PayslipMailSender extends HttpServlet {
 		StringBuffer sb = new StringBuffer();
 		String br = System.getProperty("line.separator"); // 改行文字
 		// 本文用URL
-		String url = "http://www.lucentsquare.co.jp:8080/kk_web/SalaryPage?code=";
+		String url = "http://www.lucentsquare.co.jp:8080/staff_room/jsp/shanai_s/SalaryPage?code=";
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy'年'MM'月'dd'日'");
 		SimpleDateFormat sdf_ym = new SimpleDateFormat("yyyy'年'MM'月'");

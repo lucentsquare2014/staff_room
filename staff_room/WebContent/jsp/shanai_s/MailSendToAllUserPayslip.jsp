@@ -8,7 +8,7 @@
 <%
 	ArrayList<String> true_user = new ArrayList<String>();
 	true_user.add(application.getInitParameter("sender")); // 特定ユーザのみ表示
-	//true_user.add("21301");
+	//true_user.add("21409");
 	String id2 = (String) session.getAttribute("key");
 	String from = (String) session.getAttribute("pagefrom");
 	if ((id2 != null ? id2.equals("鍵") : false)

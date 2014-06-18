@@ -120,13 +120,13 @@ public class SalaryPage extends HttpServlet {
 		// エラー用ページURL
 		String disp = "/jsp/shanai_s/PayslipError.jsp";
 //		String url = "http://www.lucentsquare.co.jp:8080/kk_web";
-		String url = "//localhost:8080/staff_room";
+		String url = "//www.lucentsquare.co.jp:8080/staff_room";
 		// エラー用ページへのディスパッチャー
 		RequestDispatcher dispatch = request.getRequestDispatcher(disp);
 		HttpSession session = request.getSession();
 		try{
 			// リクエストの文字コードをUTF-8に設定
-			request.setCharacterEncoding("shift-jis");
+			request.setCharacterEncoding("UTF-8");
 
 			// セッションからログインユーザ情報と年月を取得
 			B_ShainMST user = (B_ShainMST)session.getAttribute("ShainMST");
