@@ -9,7 +9,7 @@
 <style>
 body {
     width: 100%;
-    height: 610px;
+    height: 100%;
     background-attachment: fixed;
     background-color:white;
     background-size: 100% 100%;
@@ -18,7 +18,7 @@ body {
 .conetent{
     padding: 0; 
     padding-top: 42px; 
-    height: 100%; 
+    height: 600px; 
     width: 100%;
     margin-left:auto;
     margin-right:auto;
