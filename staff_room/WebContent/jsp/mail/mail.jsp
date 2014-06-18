@@ -20,25 +20,6 @@
 	<title>メール</title>
 	<script src="/staff_room/script/MailCheckbox.js"></script>
 	<link rel="stylesheet" href="/staff_room/css/copy_mail.css">
-	<script>
-function side(){
-	var w = $(window).width();
-	if(w <= 700){
-		$("#button").hide();
-		$("#hide").show();
-	}
-	if(w > 700){
-		$("#button").show();
-		$("#hide").hide();
-	}
-}
-$(function(){
-	side();
-});
-$(window).resize(function(){
-	side();
-});
-</script>
 <%
 		String value = null;
 		value = request.getParameter("mmail");
@@ -54,22 +35,7 @@ $(window).resize(function(){
 				※「記事未読件数」には全記事の中で、未読の総数を表示します。<br> 「緊急記事未読件数」には緊急とされた記事の中で、未読の総数を表示します。
 				<a class="uk-button uk-button-success" href="/staff_room/jsp/writeNews/writeNews.jsp" style="float:right;">管理編集ページに戻る</a>
 			</div><%}%>
-			
-		<div id="hide">
-		<a class="uk-button uk-button-primary" href="mailto:" id="mail">作成</a>
-			<ul>
-				<li><a class="uk-button " href="#a">ア</a></li>
-				<li><a class="uk-button " href="#k">カ</a></li>
-				<li><a class="uk-button " href="#s">サ</a></li>
-				<li><a class="uk-button " href="#t">タ</a></li>
-				<li><a class="uk-button " href="#n">ナ</a></li>
-				<li><a class="uk-button " href="#h">ハ</a></li>
-				<li><a class="uk-button " href="#m">マ</a></li>
-				<li><a class="uk-button " href="#y">ヤ</a></li>
-				<li><a class="uk-button " href="#r">ラ</a></li>				
-				<li><a class="uk-button " href="#w">ワ</a></li>
-			</ul>
-		</div>
+		
 		<table border="5" bordercolorlight="#000000" bordercolordark="#696969" class="uk-table uk-width-3-5">
 			<tr class="uk-text-large">
 				<th Background="../../images/blackwhite1.png" class=" uk-text-center "><font color="#FFFFFF"></font></th>
@@ -184,7 +150,7 @@ $(window).resize(function(){
        		<%}%>
          
 		</table>
-		<br><br><br><br><br><br><br><br><br>
+		<br>
 		<div id=button>
 		<div id=button-con>
 		<a class="uk-button uk-button-primary" href="mailto:" id="mail" style="white-space:nowrap;margin-left:10px"> メール作成</a>

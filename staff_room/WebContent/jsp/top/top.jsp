@@ -36,9 +36,9 @@ $(function() {
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-	
+
 	<p id="version">ver.4.0.0</p>
-	
+
 		<div class="main-container uk-container uk-container-center">
 			<div class="changelog">
 				<div style="margin-botom: 20px;" class="changelog-title"
@@ -51,7 +51,7 @@ $(function() {
 					<li class=""><a href="#">総務</a></li>
 					<li class=""><a href="#">人事</a></li>
 					<li class=""><a href="#">行事</a></li>
-					<li class=""><a href="#">開発企画</a></li>
+					<li class=""><a href="#">ビジネス推進室</a></li>
 					<li class=""><a href="#">その他</a></li>
 				</ul>
 				<%
@@ -85,7 +85,7 @@ $(function() {
 							<%
 								for (int i = 0; i < table.size(); i++) {
 									HashMap<String, String> row = table.get(i);
-									
+
 									SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 									Date date = format.parse(row.get("created"));
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
@@ -95,14 +95,14 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								
+
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 	                             <td><%=dddate.format(date)%></td>
 								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
-							
+
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
 								<td>
@@ -112,12 +112,12 @@ $(function() {
 <!-- ジャンル -->
 								<td class="coL4"><%=row.get("postname")%></td>
 
-								
+
 
 							</tr><%}%>
 						</tbody>
 						</table></div></div></li>
-					<!-- 「総務」のテーブル -->	
+					<!-- 「総務」のテーブル -->
 					<li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
@@ -142,14 +142,14 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								
+
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 	                             <td><%=dddate.format(date)%></td>
 								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
-							
+
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
 								<td>
@@ -157,12 +157,12 @@ $(function() {
 										<%=row.get("title")%></a></td>
 	<%}%>
 
-								
+
 
 							</tr><%}}%>
 						</tbody>
 						</table></div></div></li>
-					<!-- 「人事」のテーブル -->	
+					<!-- 「人事」のテーブル -->
 <li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
@@ -187,14 +187,14 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								
+
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 	                             <td><%=dddate.format(date)%></td>
 								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
-							
+
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
 								<td>
@@ -202,12 +202,12 @@ $(function() {
 										<%=row.get("title")%></a></td>
 	<%}%>
 
-								
+
 
 							</tr><%}}%>
 						</tbody>
 						</table></div></div></li>
-					<!-- 「行事」のテーブル -->	
+					<!-- 「行事」のテーブル -->
 					<li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
@@ -232,14 +232,14 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								
+
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 	                             <td><%=dddate.format(date)%></td>
 								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
-							
+
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
 								<td>
@@ -247,12 +247,12 @@ $(function() {
 										<%=row.get("title")%></a></td>
 	<%}%>
 
-			
+
 
 							</tr><%}}%>
 						</tbody>
 						</table></div></div></li>
-					<!-- 「開発企画」のテーブル -->	
+					<!-- 「開発企画」のテーブル -->
 					<li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
@@ -277,14 +277,14 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								
+
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 	                             <td><%=dddate.format(date)%></td>
 								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
-							
+
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
 								<td>
@@ -292,12 +292,12 @@ $(function() {
 										<%=row.get("title")%></a></td>
 	<%}%>
 
-								
+
 
 							</tr><%}}%>
 						</tbody>
 						</table></div></div></li>
-					<!-- 「その他」のテーブル -->	
+					<!-- 「その他」のテーブル -->
 					<li class="uk-active"><div id="out_Div"><div id="in_Div">
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
@@ -322,14 +322,14 @@ $(function() {
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
-								
+
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 	                             <td><%=dddate.format(date)%></td>
 								<td><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
-							
+
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
 								<td>
@@ -337,7 +337,7 @@ $(function() {
 										<%=row.get("title")%></a></td>
 	<%}%>
 
-							
+
 
 							</tr><%}}%>
 						</tbody>

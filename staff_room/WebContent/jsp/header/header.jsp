@@ -68,7 +68,7 @@ $(window).resize(function(){
 					<li><a href="/staff_room/jsp/news.jsp?news=1">総務</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=2">人事</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=3">行事</a></li>
-					<li><a href="/staff_room/jsp/news.jsp?news=4">開発企画</a></li>
+					<li><a href="/staff_room/jsp/news.jsp?news=4">ビジネス推進室</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=5">その他</a></li>
 					<% if(user.equals("1")){ %>
 					<li class="uk-nav-divider"></li>
@@ -160,7 +160,7 @@ $(window).resize(function(){
         			<li><a href="/staff_room/jsp/news.jsp?news=1">総務</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=2">人事</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=3">行事</a></li>
-					<li><a href="/staff_room/jsp/news.jsp?news=4">開発企画</a></li>
+					<li><a href="/staff_room/jsp/news.jsp?news=4">ビジネス推進室</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=5">その他</a></li>
 					<% if(user.equals("1")){ %>
 					<li class="uk-nav-divider"></li>

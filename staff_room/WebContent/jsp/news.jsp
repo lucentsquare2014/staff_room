@@ -104,7 +104,7 @@
 			</div></div></div>
 
 		<br><br><br><br><br><br>
-		<div class="uk-width-2-3 uk-container-center">
+		<div class="uk-width-3-5 uk-container-center">
 		<table border="1" class="uk-table uk-text-center uk-width-medium-1-1">
 		<tr class="uk-text-large">
 		<td Background="../images/blackwhite1.png" class="uk-h2 uk-width-medium-2-10"><font color="#ffffff">日付</font></td>
@@ -141,14 +141,14 @@
 					<%if (!row.get("filename").equals("")){ %>
                     	<div id="my-id<%=i%>" class="uk-h4 uk-text-left uk-hidden">
                     		<pre><%= row.get("text") %></pre>
-                    		<p>添付ファイル：
+                    		<p>添付：
                     			<%
                     				String arr[] = row.get("filename").split( "," );
                     				for (int f = 0; f<arr.length; f++){
                     			%>
-                    			<a href=""><%out.println(arr[f]);%></a>
+                    			<a href="/staff_room/upload/<%= arr[f] %>"><%= arr[f] %></a>&nbsp;
                     			<% } %>
-                    		</p>    
+                    		</p>
                     	</div>
 					<%}else{ %>
 					<div id="my-id<%=i%>" class="uk-h4 uk-text-left uk-hidden">

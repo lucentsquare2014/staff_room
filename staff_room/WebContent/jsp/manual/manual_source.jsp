@@ -14,31 +14,41 @@
  	}
  	tr{white-space:nowrap;}
 </style>
-
 <%
-	File folder = new File(application.getRealPath(File.separator + "manual"));//使用するフォルダの場所を指定
-	if(!folder.exists()){
-		folder.mkdirs();
+	File base_folder = new File(application.getRealPath(File.separator + "manual"));//使用する親フォルダの場所を指定
+	if(!base_folder.exists()){
+		base_folder.mkdirs();
 	}
-	String filename[] = folder.list();//String型の配列にファイル名を入れる
-	File[] filedate = folder.listFiles();//File型の配列にファイル名を入れる
-	for (int i = 0; i < filename.length; i++) {
-		/**File型のファイルの更新日時をlastModified()メソッドで取得し、long型に変換後、Date型として指定しフォーマットを変換*/
-		long lastModifytime = filedate[i].lastModified();
-		Date date = new Date(lastModifytime);
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
+	String foldername[] = base_folder.list();//String型の配列にファイル名を入れる
+	for (int i = 0; i < foldername.length; i++) {
+		File folder = new File(application.getRealPath(File.separator + "manual" + File.separator + foldername[i]));//使用する子フォルダの場所を指定
+		String filename[] = folder.list();//String型の配列にファイル名を入れる
+		if(folder.list()==null){
+			filename= new String[0];
+		}
+		File[] filedate = folder.listFiles();//File型の配列にファイル名を入れる
+		for (int x = 0; x < filename.length; x++) {
+			/**File型のファイルの更新日時をlastModified()メソッドで取得し、long型に変換後、Date型として指定しフォーマットを変換*/
+			long lastModifytime = filedate[x].lastModified();
+			Date date = new Date(lastModifytime);
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 %>
 <tr class="uk-text-center">
-    <!-- -----------管理者用チェックボックス作成----------- -->
+	<!-- -----------管理者用チェックボックス作成----------- -->
 	<% if(user2.equals("1")){%>
-	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="<%=filename[i]%>"></td>
+	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="<%=foldername[i]%>/<%=filename[x]%>"></td>
 	<%}%>
 
-	<!-- フォーマットを変換した 更新日時を出力　-->
-	<td bgcolor="#FFFFFF" class="uk-text-center"><%=dddate.format(date)%></td>
+	<!-- ファイル数の半分の時にのみ出力 -->
+	<%if (x == 0) {%>
+	<td bgcolor="#FFFFFF" id="type"rowspan=<%=filename.length%> class="uk-text-middle uk-text-bold"><%=foldername[i]%></td>
+	<%}%>
+
+	<!-- フォーマットを変換した 更新日時を出力-->
+	<td bgcolor="#FFFFFF" id="time"><%=dddate.format(date)%></td>
 
 	<!-- String型のファイル名を出力 -->
-	<td bgcolor="#FFFFFF" class="uk-text-center"><a href="/staff_room/manual/<%=filename[i]%>"><%=filename[i]%></a></td>
+	<td bgcolor="#FFFFFF"><a href="/staff_room/Docs/<%=foldername[i]%>/<%=filename[x]%>"><%=filename[x]%></a></td>
 </tr>
-<%}%>
+<%}}%>

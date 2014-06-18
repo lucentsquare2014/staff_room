@@ -14,7 +14,12 @@ $(function(){
 				$("#title").text(msg.title);
 				$("#text").text(msg.text);
 				if(msg.filename != ""){
-					$("#filename").text("添付：" + msg.filename);
+					$("#filename").text("添付：");
+					var files = msg.filename.split(",");
+					for(var i = 0; i < files.length; i++){
+						$("#filename").append("<a href=\"/staff_room/upload/" + 
+								files[i] + "\">" + files[i] + "</a>&nbsp;");
+					}
 				}
 			});
 		}

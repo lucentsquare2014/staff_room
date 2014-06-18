@@ -1,5 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.io.File" %>
 <% String user = String.valueOf(session.getAttribute("admin")); %>
+<%
+	File doc_folder = new File(application.getRealPath(File.separator + "Docs"));
+	if(!doc_folder.exists()){
+		doc_folder.mkdirs();
+	}
+	String folders[] = doc_folder.list();
+%>
 <html>
 <head>
 <jsp:include page="/html/head.html" />
@@ -14,9 +22,6 @@ body {
 	background-image: url("/staff_room/images/shinseisyorui01.jpg");
 	background-size: 100% 100%;
 }
-textarea {
-	width: 180px;
-}
 #select_files {
 	display:none;
 }
@@ -27,8 +32,6 @@ textarea {
 <jsp:include page="/jsp/header/header.jsp" />
 
 <div class="changelog" style="padding-top: 40px; white-space:nowrap;">
-<!-- <img src="/staff_room/images/sinseisyorui5-2.jpg" width="100%" height="100%" style="position:absolute; margin-bottom:20px; filter: progid:DXImageTransform.Microsoft.alpha (style=0, opacity=50)"> -->
-<!-- <span style="position:absolute;top:40em;left:1100px"><font size="7" color="red" face="ＭＳ 明朝,平成明朝">申請書類</font></span>   -->
 <div class="uk-width-3-5 uk-container-center">
 <br>
 	<!--------------  管理者用　 ----------------->　
@@ -41,10 +44,12 @@ textarea {
 		<div class="uk-width-3-4 uk-text-right">
 		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
 			<select name="category">
-				<option value="変更等届書類">変更等届書類</option>
-				<option value="申請書類">申請書類</option>
-				<option value="金銭に関係する書類">金銭に関係する書類</option>
-				<option value="育児介護">育児介護</option>
+			<% if(folders.length == 0) %><option value="デフォルト">デフォルト</option>
+			<%
+				for(int i = 0; i < folders.length; i++){
+			%>
+				<option value="<%= folders[i] %>"><%= folders[i] %></option>
+			<% } %>
 			</select>
 			<input type="hidden" name="page" value="Docs">
 			<div class="uk-form-file">
@@ -67,7 +72,7 @@ textarea {
 			</ul>
 		</div>
 	</div>
-	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-width-1-1">
+	<table border="5" class="uk-table uk-table-hover uk-width-1-1">
 		<tr class="uk-text-large">
 			<th Background="../../images/blackwhite1.png" class=" uk-text-center"><font color="#FFFFFF">　　</font></th>
 			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
@@ -79,7 +84,7 @@ textarea {
 
 	</table>
 <% }else{ //-----------一般利用者の申請書類ページ----------%>
-	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-table-hover uk-width-1-1">
+	<table border="5" class="uk-table uk-table-hover uk-width-1-1">
 		<tr class="uk-text-large">
 			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
 			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">更新日時</font></th>

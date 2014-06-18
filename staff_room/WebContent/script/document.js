@@ -51,16 +51,9 @@ $(function(){
 					height : 60,
 					timeout : 2000
 				});
-				if(page == "manual"){
-					$(".uk-table :checked").each(function(){
-						$(this).parent("td").parent("tr").fadeOut();
-					});
-				}else{
-					setTimeout(function(){
-				        location.reload();
-				    },1500);
-				}
-				
+				setTimeout(function(){
+					location.reload();
+				},1500);
 			});
 		}
 	});

@@ -15,7 +15,8 @@ $(function(){
 				$("#file").text("");
 				var input_files = $("input[name='inputFiles']").val().split(",");
 				for(var i = 0; i < input_files.length; i++){
-					$("#file").append("<a href=\"\">" + input_files[i] + "</a>&nbsp;");
+					$("#file").append("<a href=\"/staff_room/upload/" + input_files[i] + 
+							"\">" + input_files[i] + "</a>&nbsp;");
 				}
 			}
 			if($("input[name='inputPrimary']").prop('checked')){
@@ -92,7 +93,7 @@ $(function(){
             	$("#loop").append(function(){
             		return "<div class=\"uk-alert\">" + 
             		"<a href=\"\" class=\"uk-alert-close uk-close\" data-uk-alert></a>" +
-            		"<p>" + files[i].name + "</p></div>";
+            		"<a href=\"/staff_room/upload/" + files[i].name + "\">" + files[i].name + "</a></div>";
             	});
             	$("#loop").find('a').click(function(){
             		var deleted = $(this).next().text();
