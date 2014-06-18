@@ -1,0 +1,12 @@
+#out_Div {
+  position: fixed;
+  padding-top: 26px;
+  width: 500px;
+}
+
+#in_Div {
+	overflow-y: scroll;
+	line-height: 1.75em;
+	height: 260px;
+	background-color: whitesmoke;
+    }

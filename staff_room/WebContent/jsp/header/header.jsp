@@ -98,8 +98,8 @@ $(window).resize(function(){
                     <% } %>
 				</ul>
 			</div></li>
+		<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">組織表/規程</a></li>
 		<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
-		<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">規定集</a></li>
 		<li class="header"><a href="/staff_room/jsp/mail/mail.jsp">Mail</a></li>
 		<li class="header"><a href="/staff_room/jsp/bbs/bbs.jsp">掲示板</a></li>
 		<li class="uk-parent header" data-uk-dropdown><a>Photo<i
@@ -187,8 +187,8 @@ $(window).resize(function(){
 					<% } %>
 				</ul>
         	</li>
-        	<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
-			<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">規定集</a></li>
+			<li class="header"><a href="/staff_room/jsp/manual/manual.jsp">組織表/規程</a></li>
+			<li class="header"><a href="/staff_room/jsp/document/teisyutsusyorui.jsp">申請書類</a></li>
 			<li class="header"><a href="/staff_room/jsp/mail/mail.jsp">Mail</a></li>
 			<li class="header"><a href="/staff_room/jsp/bbs/bbs.jsp">掲示板</a></li>
 			<li class="uk-parent">

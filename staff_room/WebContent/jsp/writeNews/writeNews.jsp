@@ -33,18 +33,64 @@ body {
 }
 
 .contents {
-	padding-top: 100px;
+	padding-top: 80px;
 	min-width: 950px;
 }
+p.scroll{
+	height: 5em;
+	overflow: scroll;
+	}
+#out_Div {
+  position: relative;
+  padding-top: 38px;
+  width: 900px;
+}
+
+#in_Div {
+	overflow-y: scroll;
+	line-height: 1.75em;
+	height: 460px;
+	background-color: whitesmoke;
+    }
+
+table >thead{
+
+}
+table >thead>tr{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 900px;
+
+
+}
+.coL1 { width:15px; }/* colgroupの列幅指定 */
+
+.coL2 { width:110px; }
+
+.coL3 { width:120px; }
+
+.coL4 { width:500px; }
+
+.coL5 { width:70px; }
 </style>
 <title>管理編集</title>
 </head>
 
 <body>
+			<div style="position:absolute; top:75px; left:150px;">
+			<div class="uk-grid">
+			<div class="uk-width-1-4 uk-pull-1-6 uk-text-center">
+			<font face="ＭＳ Ｐゴシック">
+			<span style="font-size: 50px;">
+			<nobr>
+			管理・編集
+			</nobr><br></span>
+			</font>
+			</div></div></div>
 	<jsp:include page="/jsp/header/header.jsp" />
-	<div class="contents uk-width-2-3 uk-container-center">
-		<h1>管理・編集</h1>
-	     <div align="right">
+	<div class="contents uk-width-2-3 uk-container-center" style="height:60px;">
+	     <div class="uk-width-1-1 uk-text-right">
 	     <a href="/staff_room/jsp/mail/mail.jsp?mmail=1">
 	       <button class="uk-button uk-button-success"　value="未読記事">
 	       <i class="uk-icon-user uk-icon-small"></i>　記事未読件数確認へ</button></a>
@@ -52,8 +98,8 @@ body {
 				<button class="uk-button uk-button-primary">
 					<i class="uk-icon-pencil uk-icon-small"></i>　新規作成</button></a>
                       <button id="delete_button" class="uk-button uk-button-danger" disabled>
-				<i class="uk-icon-trash-o uk-icon-small"></i>　削除</button>
-		</div>
+				<i class="uk-icon-trash-o uk-icon-small"></i>　削除</button>　　　　　　
+		</div><br>
 		<%
 			//配列
 			ArrayList<Integer> x = new ArrayList<Integer>();
@@ -83,29 +129,33 @@ body {
 			list = dao.getNews(sql);
 			//System.out.println(list.size());
 		%>
-		<table border="10" bordercolorlight="#000000"bordercolordark="#696969" class="uk-h4 uk-table uk-table-striped uk-table-condensed  uk-text-center uk-width-medium-2-4 uk-panel-box">
-			<tr>
-				<td Background="../../images/blackwhite1.png"></td>
-				<td Background="../../images/blackwhite1.png" class="uk-h3 uk-width-medium-1-10"><font color="#ffffff">作成日</font></td>
-				<td Background="../../images/blackwhite1.png" class="uk-h3 uk-width-medium-1-10"><font color="#ffffff">分類</font></td>
-				<td Background="../../images/blackwhite1.png" class="uk-h3 uk-width-medium-7-10 uk-text-left"><font color="#ffffff">タイトル</font></td>
-				<td Background="../../images/blackwhite1.png"></td>
-			</tr>
+		<div id="out_Div"><div id="in_Div">
+		<table border="10" bordercolorlight="#000000"bordercolordark="#696969" class="uk-h4 uk-table uk-table-striped uk-container-center uk-table-condensed  uk-text-center uk-width-medium-2-4 uk-panel-box">
+			<thead>
+				<tr>
+					<th Background="../../images/blackwhite1.png" class="coL1"><font color="#FFFFFF"></font></th>
+  					<th Background="../../images/blackwhite1.png" class="coL2 uk-text-center"><font color="#FFFFFF">作成日</font></th>
+ 					<th Background="../../images/blackwhite1.png" class="coL3 uk-text-center"><font color="#FFFFFF">分類</font></th>
+ 					<th Background="../../images/blackwhite1.png" class="coL4 uk-text-left"><font color="#FFFFFF">タイトル</font></th>
+ 					<th Background="../../images/blackwhite1.png" class="coL5"><font color="#FFFFFF"></font></th>
+				</tr>
+			</thead>
+			<tbody>
 			<%
 				for (int i = 0; i < list.size(); i++) {
 					HashMap<String, String> row = list.get(i);
 					//時刻がある記事だけの表示
 						SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 						Date date = format.parse(row.get("created"));
-						DateFormat dddate = new SimpleDateFormat("GGGGyy年 MM月 dd日 ",new Locale("ja", "JP", "JP"));
+						DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 
 			%>
 			<tr id="row<%=row.get("news_id")%>">
-				<td><a flag="0" class="uk-icon-square-o uk-text-center delete-box"
+				<td class="coL1"><a flag="0" class=" uk-icon-square-o uk-text-left delete-box"
 					name="delete_check" id="<%=row.get("news_id")%>"></a></td>
-				<td nowrap><%=dddate.format(date)%>&nbsp;</td>
-				<td nowrap><%=row.get("postname")%>&nbsp;</td>
-				<td class="uk-text-left" nowrap>
+				<td nowrap class="coL2 uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
+				<td nowrap class="coL3 uk-text-center"><%=row.get("postname")%>&nbsp;</td>
+				<td class="coL4 uk-text-left" nowrap>
 					<!-- title→タイトル --> <a t_id="<%=row.get("news_id")%>"
 					class="body-title"><%=StringEscapeUtils.escapeHtml4(row.get("title")) %></a>
 					<dl>
@@ -116,7 +166,7 @@ body {
 						<dt style="display: none"></dt>
 					</dl>
 				</td>
-				<td>
+				<td class="coL1">
 					<form method="POST" action="inputForm.jsp">
 						<input type="hidden" name="inputNewsid" value="<%=row.get("news_id")%>">
 						<input type="hidden" name="inputPostid" value="<%=row.get("post_id")%>">
@@ -136,8 +186,10 @@ body {
 			<%
 				}
 			%>
-
+		</tbody>
 		</table>
+		</div></div>
+		</div>
 		<%
 
 		%>
