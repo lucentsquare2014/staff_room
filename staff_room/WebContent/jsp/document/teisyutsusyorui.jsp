@@ -1,5 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.io.File" %>
 <% String user = String.valueOf(session.getAttribute("admin")); %>
+<%
+	File doc_folder = new File(application.getRealPath(File.separator + "Docs"));
+	if(!doc_folder.exists()){
+		doc_folder.mkdirs();
+	}
+	String folders[] = doc_folder.list();
+%>
 <html>
 <head>
 <jsp:include page="/html/head.html" />
@@ -41,10 +49,11 @@ textarea {
 		<div class="uk-width-3-4 uk-text-right">
 		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
 			<select name="category">
-				<option value="変更等届書類">変更等届書類</option>
-				<option value="申請書類">申請書類</option>
-				<option value="金銭に関係する書類">金銭に関係する書類</option>
-				<option value="育児介護">育児介護</option>
+			<%
+				for(int i = 0; i < folders.length; i++){
+			%>
+				<option value="<%= folders[i] %>"><%= folders[i] %></option>
+			<% } %>
 			</select>
 			<input type="hidden" name="page" value="Docs">
 			<div class="uk-form-file">
