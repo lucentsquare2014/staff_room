@@ -105,7 +105,7 @@
 
 		<br><br><br><br><br><br>
 		<div class="uk-width-2-3 uk-container-center">
-		<table border="5" class="uk-table uk-text-center uk-width-medium-1-1">
+		<table border="1" class="uk-table uk-text-center uk-width-medium-1-1">
 		<tr class="uk-text-large">
 		<td Background="../images/blackwhite1.png" class="uk-h2 uk-width-medium-2-10"><font color="#ffffff">日付</font></td>
 		<td Background="../images/blackwhite1.png" class="uk-h2 uk-width-medium-8-10"><font color="#ffffff">件名</font></td>
