@@ -141,12 +141,12 @@
 					<%if (!row.get("filename").equals("")){ %>
                     	<div id="my-id<%=i%>" class="uk-h4 uk-text-left uk-hidden">
                     		<pre><%= row.get("text") %></pre>
-                    		<p>添付ファイル：
+                    		<p>添付：
                     			<%
                     				String arr[] = row.get("filename").split( "," );
                     				for (int f = 0; f<arr.length; f++){
                     			%>
-                    			<a href=""><%out.println(arr[f]);%></a>
+                    			<a href="/staff_room/upload/<%= arr[f] %>"><%= arr[f] %></a>&nbsp;
                     			<% } %>
                     		</p>    
                     	</div>
