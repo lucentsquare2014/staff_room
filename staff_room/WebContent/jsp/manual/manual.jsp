@@ -1,5 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.io.File" %>
 <% String user = String.valueOf(session.getAttribute("admin")); %>
+<%
+	File doc_folder = new File(application.getRealPath(File.separator + "manual"));
+	if(!doc_folder.exists()){
+		doc_folder.mkdirs();
+	}
+	String folders[] = doc_folder.list();
+%>
 <html>
 <head>
 <jsp:include page="/html/head.html" />
@@ -24,8 +32,6 @@ body {
 
 <jsp:include page="/jsp/header/header.jsp" />
 <div class="changelog" style="padding-top: 40px; white-space:nowrap;">
-<!-- <img src="/staff_room/images/manyuaru6.jpg" style="margin-bottom:20px;"> -->
-<!-- <span style="position:absolute;top:40em;left:1100px"><font size="7" color="red" face="ＭＳ 明朝,平成明朝">マニュアル</font></span>   -->
 <div class="uk-width-3-5 uk-container-center">
 <br>
 <!--------------  管理者用　 ----------------->　
@@ -37,6 +43,14 @@ body {
 		</div>
 		<div class="uk-width-3-4 uk-text-right">
 		<form class="uk-form" action="/staff_room/document" enctype="multipart/form-data" method="post">
+			<select name="category">
+			<% if(folders.length == 0) %><option value="デフォルト">デフォルト</option>
+			<%
+				for(int i = 0; i < folders.length; i++){
+			%>
+				<option value="<%= folders[i] %>"><%= folders[i] %></option>
+			<% } %>
+			</select>
 			<input type="hidden" name="page" value="manual">
 			<div class="uk-form-file">
 				<button class="uk-button uk-button-success">
@@ -60,7 +74,8 @@ body {
 	</div>
 	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-width-1-1" >
 		<tr class="uk-text-large">
-		<th Background="../../images/blackwhite1.png" class="uk-text-center">　　</th>
+			<th Background="../../images/blackwhite1.png" class="uk-text-center">　　</th>
+			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
 			<th Background="../../images/blackwhite1.png" class="uk-width-3-10 uk-text-center"><font color="#ffffff">更新日時</font></th>
 			<th Background="../../images/blackwhite1.png" class="uk-width-7-10 uk-text-center"><font color="#ffffff">ファイル名</font></th>
 		</tr>
@@ -70,6 +85,7 @@ body {
 <%}else{ %>
 	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-width-1-1" >
 		<tr class="uk-text-large">
+			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
 			<th Background="../../images/blackwhite1.png" class=" uk-width-3-10 uk-text-center"><font color="#ffffff">更新日時</font></th>
 			<th Background="../../images/blackwhite1.png" class=" uk-width-7-10 uk-text-center"><font color="#ffffff">ファイル名</font></th>
 		</tr>

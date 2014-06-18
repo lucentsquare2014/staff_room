@@ -48,10 +48,8 @@ public class DocumentUpload extends HttpServlet {
 					}
 				}
 			}
-			String uploadFilePath = applicationPath + File.separator + page;
-			if(page.equals("Docs")){
-	    		uploadFilePath = uploadFilePath + File.separator + category;
-	    	}
+			String uploadFilePath = applicationPath + File.separator + page 
+					+ File.separator + category;
 			File fileSaveDir = new File(uploadFilePath);
 	        if (!fileSaveDir.exists()) {
 	            fileSaveDir.mkdirs();
