@@ -1,11 +1,16 @@
+var exist_flag = 0;
+var exist_files = "";
 $(function(){
 	$("input[name='inputFile']").on("change",function(){
+		exist_flag = 0;
+		exist_files = "";
 		var files = $("#upload-select")[0].files;
 		$("#select_files ul").html("");
 		$("#select_files div").addClass("uk-panel-box");
 		for(var i = 0; files[i]; i++){
+			isExist(files[i].name);
 			$("#select_files ul").append('<li>' + files[i].name + '<p class="uk-align-right">' 
-									+ getFiseSize(files[i].size) + '</p></li>');
+						+ getFileSize(files[i].size) + '</p></li>');
 		}
 		$("#select_files").show();
 		$("#add").prop('disabled',false);
@@ -58,7 +63,8 @@ $(function(){
 		}
 	});
 	
-	function getFiseSize(file_size)
+	// ファイルのサイズを取得
+	function getFileSize(file_size)
 	{
 	  var str = "";
 	  
@@ -90,4 +96,38 @@ $(function(){
 
 	  return str;
 	} 
+	
+	// ファイルが既に存在するかを判定
+	function isExist(filename){
+		var category = $("select option:selected").val();
+		var page = $("input[name='page']").val();
+		$.ajax({
+			type : "POST",
+			url : "/staff_room/IfExist",
+			cache: false,
+			data : {"category" : category,
+					"file" : filename,
+					"page" : page},
+		}).done(function(result){
+			if(result == "true"){
+				exist_flag = 1;
+				exist_files += filename + " ";
+				$("#select_files ul li:contains('" + filename + "')").addClass("uk-text-danger");
+			}
+		});
+	}
+	
+	$("#add").click(function(){
+		if(exist_flag == 1){
+			if(confirm('ファイル' + exist_files + 'はすでに存在しています。置き換えますか？')){
+			}
+		}
+	});
+	
+	$("select[name='category']").on("change",function(){
+		var files = $("#upload-select")[0].files;
+		for(var i = 0; files[i]; i++){
+			isExist(files[i].name);
+		}
+	});
 });
