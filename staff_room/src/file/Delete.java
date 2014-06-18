@@ -46,7 +46,7 @@ public class Delete extends HttpServlet {
 		if(news_id != null){
 			getFilename = getFilename(Integer.valueOf(news_id));
 		}
-		String applicationPath = request.getServletContext().getRealPath("");
+		String applicationPath = getServletContext().getRealPath("");
     	String deleteFilePath = applicationPath + File.separator + "upload";
     	File file = new File(deleteFilePath + File.separator + filename);
     	if(file.exists()){

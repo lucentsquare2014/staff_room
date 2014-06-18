@@ -34,8 +34,7 @@ public class DocumentDelete extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = request.getParameter("page");
 		String[] files = request.getParameter("delete").split(",");
-		//System.out.println(page);
-		String applicationPath = request.getServletContext().getRealPath("");
+		String applicationPath = getServletContext().getRealPath("");
 		String deleteFilePath = applicationPath + File.separator + page;
 		for(int i = 0; i < files.length; i++){
 			File file = new File(deleteFilePath + File.separator + files[i]);
