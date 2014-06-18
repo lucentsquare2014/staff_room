@@ -19,6 +19,33 @@
 		pageContext.forward("/");
 	} else {
 %>
+<%!
+// 全角スペースを取り除くメソッド
+private String myTrim(String value) {
+	// trim対象文字列のchar型配列を取得する
+	char[] charArray = value.toCharArray();
+	// char型配列の全要素に前からアクセスする
+	for (int idx = 0; idx < charArray.length; idx++) {
+		// 文字が半角スペースか全角スペースの場合、半角スペースに置き換える
+		if (charArray[idx] == ' ' || charArray[idx] == '　') {
+			charArray[idx] = ' ';
+		} else {
+			break;
+		}
+	}
+	// char型配列の全要素に後ろからアクセスする
+	for (int idx = charArray.length - 1; 0 <= idx; idx--) {
+		// 文字が半角スペースか全角スペースの場合、半角スペースに置き換える
+		if (charArray[idx] == ' ' || charArray[idx] == '　') {
+			charArray[idx] = ' ';
+		} else {
+			break;
+		}
+	}
+	// char型配列の文字列にtrim関数を実行した結果を返す
+	return new String(charArray).trim();
+
+}%>
 <html lang="ja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,8 +56,7 @@
 <BODY>
 	<CENTER>
 		<%
-			System.out.println(Year_month_group.getGroupname());
-				if (Year_month_group.getGroupname().equals(" 全グループ ")) {
+			if (Year_month_group.getGroupname().equals(" 全グループ ")) {
 		%>
 		<font class="title">承認状況一覧</font><br> <br> <BIG><B><%=Year_month_group.getYear()%>年
 				<%=Year_month_group.getMonth()%>月<BR></B></BIG>
@@ -75,10 +101,11 @@
 									+ "where zaiseki_flg = '1' and year_month = '"
 									+ Year_month_group.getYear_month()
 									+ "' order by to_number(shainMST.number,'99999') asc ";
-							ArrayList glist = gdao.selectTbl2(sql2);
-							B_GoukeiMST gmst = new B_GoukeiMST();
 
-							System.out.println("debug: 2");
+							ArrayList glist = gdao.selectTbl2(sql2);
+							System.out.println("sql1: " + sql);
+							System.out.println("sql2: " + sql2);
+							B_GoukeiMST gmst = new B_GoukeiMST();
 
 							for (int i = 0; i < slist.size(); i++) {
 								smst = (B_ShainMST) slist.get(i);
@@ -86,6 +113,9 @@
 								if (j < glist.size()) {
 									gmst = (B_GoukeiMST) glist.get(j);
 									id2 = gmst.getId();
+									 //全角スペースを取り除かないで比較していたので判定がfalseになってた
+									id = this.myTrim(id);
+									id2= this.myTrim(id2);
 									if (id.equals(id2)) {
 										flg = gmst.getFlg();
 										j = j + 1;
@@ -247,6 +277,7 @@
 									+ "' and GROUPnumber = '"
 									+ Year_month_group.getGroupnumber()
 									+ "' order by case when hyouzijun is null then'2' when hyouzijun ='' then '1' else '0' end , hyouzijun , to_number(shainMST.number,'99999') asc ";
+							System.out.println(sql2);
 							ArrayList glist = gdao.selectTbl2(sql2);
 							B_GoukeiMST gmst = new B_GoukeiMST();
 							for (int i = 0; i < slist.size(); i++) {
@@ -255,6 +286,9 @@
 								if (j < glist.size()) {
 									gmst = (B_GoukeiMST) glist.get(j);
 									id2 = gmst.getId();
+									// 全角スペースを取り除く
+									id = this.myTrim(id);
+									id2 = this.myTrim(id2);
 									if (id.equals(id2)) {
 										flg = gmst.getFlg();
 										j = j + 1;
