@@ -29,11 +29,11 @@
 <BODY>
 	<CENTER>
 		<%
-		System.out.println(Year_month_group.getGroupname());
-			if (Year_month_group.getGroupname().equals(" 全グループ ")) {
+			System.out.println(Year_month_group.getGroupname());
+				if (Year_month_group.getGroupname().equals(" 全グループ ")) {
 		%>
-		<font class="title">承認状況一覧</font><br>
-		<br> <BIG><B><%=Year_month_group.getYear()%>年 <%=Year_month_group.getMonth()%>月<BR></B></BIG>
+		<font class="title">承認状況一覧</font><br> <br> <BIG><B><%=Year_month_group.getYear()%>年
+				<%=Year_month_group.getMonth()%>月<BR></B></BIG>
 		<TABLE border="1" bordercolor="#008080"
 			style="border: inset 5px #008080; width: 900px;">
 			<TR>
@@ -206,30 +206,23 @@
 		<%
 			} else {
 		%>
-		<font class="title">承認状況一覧</font><br>
-		<br> <BIG><B><%=Year_month_group.getYear()%>年 <%=Year_month_group.getMonth()%>月
-				<%=Year_month_group.getGroupname()%></B></BIG><br>
+		<font class="title">承認状況一覧</font><br> <br> <BIG><B><%=Year_month_group.getYear()%>年
+				<%=Year_month_group.getMonth()%>月 <%=Year_month_group.getGroupname()%></B></BIG><br>
 		<TABLE border="1" bordercolor="#008080"
 			style="border: inset 5px #008080; width: 800px;">
 			<TR>
-				<th nowrap class="t-koumoku"><font class="f-koumoku">氏
-						名</font></th>
-				<th nowrap class="t-koumoku"><font class="f-koumoku">種
-						類</font></th>
+				<th nowrap class="t-koumoku"><font class="f-koumoku">氏 名</font></th>
+				<th nowrap class="t-koumoku"><font class="f-koumoku">種 類</font></th>
 				<th nowrap class="t-koumoku"><font class="f-koumoku">承認状況</font></th>
 				<th nowrap class="t-koumoku"><font class="f-koumoku"><B>承認経路</B></font></th>
 				<TD style="border-style: none;" class="cell2"></TD>
-				<th nowrap class="t-koumoku"><font class="f-koumoku">氏
-						名</font></th>
-				<th nowrap class="t-koumoku"><font class="f-koumoku">種
-						類</font></th>
+				<th nowrap class="t-koumoku"><font class="f-koumoku">氏 名</font></th>
+				<th nowrap class="t-koumoku"><font class="f-koumoku">種 類</font></th>
 				<th nowrap class="t-koumoku"><font class="f-koumoku">承認状況</font></th>
 				<th nowrap class="t-koumoku"><font class="f-koumoku"><B>承認経路</B></font></th>
 				<TD style="border-style: none;" class="cell2"></TD>
-				<th nowrap class="t-koumoku"><font class="f-koumoku">氏
-						名</font></th>
-				<th nowrap class="t-koumoku"><font class="f-koumoku">種
-						類</font></th>
+				<th nowrap class="t-koumoku"><font class="f-koumoku">氏 名</font></th>
+				<th nowrap class="t-koumoku"><font class="f-koumoku">種 類</font></th>
 				<th nowrap class="t-koumoku"><font class="f-koumoku">承認状況</font></th>
 				<th nowrap class="t-koumoku"><font class="f-koumoku"><B>承認経路</B></font></th>
 			</TR>
