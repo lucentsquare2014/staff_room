@@ -205,10 +205,8 @@
 
                     settings.complete(response, xhr);
                 }
-            };
-            if(confirm('選択された書類をすべて削除してもいいですか?')){
+            };         
             xhr.send(formData);
-            }
         }
     }
 

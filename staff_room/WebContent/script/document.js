@@ -112,7 +112,10 @@ $(function(){
 			if(result == "true"){
 				exist_flag = 1;
 				exist_files += filename + " ";
-				$("#select_files ul li:contains('" + filename + "')").addClass("uk-text-danger");
+				var exist_file = $("#select_files ul li:contains('" + filename + "')");
+				exist_file.addClass("uk-text-danger")
+						  .attr("data-uk-tooltip",true)
+						  .attr("title","このファイルは既に存在しています。");
 			}
 		});
 	}
