@@ -200,13 +200,24 @@ if(ID.equals("")){
 		// このような処理をとりました。「選択レコード」→「削除」→「挿入」
 		if(ID.equals(NO)){
 			// 重複スケジュールのチェック
-			ResultSet CHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_END = '" + end + "'  AND S_PLAN = '" + plan + "' AND S_PLAN2 = '" + plan2 + "' AND S_PLACE = '" + place + "' AND S_PLACE2 = '" + place2 + "' AND S_MEMO = '" + memo + "' AND S_ZAISEKI = '" + pre + "' ");
+/* 			
+            ResultSet CHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_END = '" + end + "'  AND S_PLAN = '" + plan + "' AND S_PLAN2 = '" + plan2 + "' AND S_PLACE = '" + place + "' AND S_PLACE2 = '" + place2 + "' AND S_MEMO = '" + memo + "' AND S_ZAISEKI = '" + pre + "' ");
 
 			while(CHECK.next()){
 				check = true;
 			}
 
 			CHECK.close();
+*/
+            // スケジュール上にある予定の開始時間を変えられないのでそれを"既存のコードの書き方に合わせて"修正
+            // 2014-06-19
+            ResultSet CHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + start + "'");
+
+            while(CHECK.next()){
+                check = true;
+            }
+
+            CHECK.close();
 
 			// 共有者スケジュールの重複チェック
 			ResultSet GOGOTea = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE KY_FLAG = '0' AND K_社員NO2 = '" + ID + "'");
@@ -234,9 +245,11 @@ if(ID.equals("")){
 			if(!check && !ky_check){
 				if(FG.equals("0")){
 					// 登録者です。
-
-					stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-					stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + ID + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
+                        stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+                        stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + ID + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
+                    try{
+                    }catch(Exception e){
+                    }
 
 					// 共有者情報の日付と開始時刻を更新
 					//stmt.execute("UPDATE KY_TABLE SET S_DATE = '" + DAnew + "', S_START = '" + start + "', KY_FLAG = '1' WHERE (S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND KY_FLAG = '1' AND K_社員NO2 = '" + ID + "') OR (KY_FLAG = '0' AND K_社員NO2 = '" + ID + "')");
@@ -256,8 +269,8 @@ if(ID.equals("")){
 					int cntKYOYU = hitKYOYU.size();
 
 					for(int i = 0; i < cntKYOYU; i++){
-						stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + hitKYOYU.elementAt(i) + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-						stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + hitKYOYU.elementAt(i) + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
+                        stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + hitKYOYU.elementAt(i) + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+                        stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + hitKYOYU.elementAt(i) + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
 					}
 
 					KYOYU.close();
@@ -308,14 +321,23 @@ if(ID.equals("")){
 			}
 		}else{
 			// 重複スケジュールのチェック
-			ResultSet CHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_END = '" + end + "'  AND S_PLAN = '" + plan + "' AND S_PLAN2 = '" + plan2 + "' AND S_PLACE = '" + place + "' AND S_PLACE2 = '" + place2 + "' AND S_MEMO = '" + memo + "' AND S_ZAISEKI = '" + pre + "' ");
+/* 			ResultSet CHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_END = '" + end + "'  AND S_PLAN = '" + plan + "' AND S_PLAN2 = '" + plan2 + "' AND S_PLACE = '" + place + "' AND S_PLACE2 = '" + place2 + "' AND S_MEMO = '" + memo + "' AND S_ZAISEKI = '" + pre + "' ");
 
 			while(CHECK.next()){
 				check = true;
 			}
 
 			CHECK.close();
+			
+ */
 
+            //ここも同じような処理
+            ResultSet CHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + start + "'");
+
+            while(CHECK.next()){
+                check = true;
+            }
+ 
 			// 共有者スケジュールの重複チェック
 			ResultSet GOGOTea = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE KY_FLAG = '0' AND K_社員NO2 = '" + NO + "'");
 			while(GOGOTea.next()){
