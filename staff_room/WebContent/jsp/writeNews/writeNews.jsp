@@ -27,7 +27,6 @@
 <style type="text/css">
 body {
 	width: 100%;
-	height: 656px;
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/input.png");
 }
@@ -49,7 +48,7 @@ p.scroll{
 #in_Div {
 	overflow-y: scroll;
 	line-height: 1.75em;
-	height: 460px;
+	height: 415px;
 	background-color: whitesmoke;
     }
 
@@ -134,9 +133,9 @@ table >thead>tr{
 			<thead>
 				<tr>
 					<th Background="../../images/blackwhite1.png" class="coL1"><font color="#FFFFFF"></font></th>
-  					<th Background="../../images/blackwhite1.png" class="coL2 uk-text-center"><font color="#FFFFFF">作成日</font></th>
- 					<th Background="../../images/blackwhite1.png" class="coL3 uk-text-center"><font color="#FFFFFF">分類</font></th>
- 					<th Background="../../images/blackwhite1.png" class="coL4 uk-text-left"><font color="#FFFFFF">タイトル</font></th>
+  					<th Background="../../images/blackwhite1.png" class="coL2 uk-h3 uk-text-center"><font color="#FFFFFF">作成日</font></th>
+ 					<th Background="../../images/blackwhite1.png" class="coL3 uk-h3 uk-text-center"><font color="#FFFFFF">分類</font></th>
+ 					<th Background="../../images/blackwhite1.png" class="coL4 uk-h3 uk-text-left"><font color="#FFFFFF">タイトル</font></th>
  					<th Background="../../images/blackwhite1.png" class="coL5"><font color="#FFFFFF"></font></th>
 				</tr>
 			</thead>
