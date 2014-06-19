@@ -50,6 +50,13 @@ $(function(){
 $(window).resize(function(){
 	sidebar();
 });
+
+if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iPad') > 0 || navigator.userAgent.indexOf('iPod') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+	function smart(){
+	$("#nav","#logout").hide();
+	$("#logo,#side").show();
+	}
+}
 </script>
 </head>
 <nav id="header" class="uk-navbar">
