@@ -154,7 +154,6 @@ $(function(){
 	
 	$("#enter").on("click",function(){
 		var new_name = $("input[name='new_name']").val();
-		//var category = $("select option:selected").val();
 		var page = $("input[name='page']").val();
 		$.ajax({
 			type : "POST",
@@ -164,8 +163,14 @@ $(function(){
 					"new_name" : new_name,
 					"older_name" : older_name,
 					"page" : page},
+			statusCode: {
+				403: function() {
+					$("#msg").text("このファイルはすでに存在しています。別のファイル名にしてください！")
+							 .addClass("uk-text-danger");
+	        	}
+	        }
 		}).done(function(){
-			$("#msg").text("ファイル名変更しました！").addClass("uk-text-success");;
+			$("#msg").text("ファイル名変更しました！").attr("class","uk-text-success");
 			setTimeout(function(){
 				location.reload();
 			},1500);

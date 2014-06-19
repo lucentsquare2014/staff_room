@@ -42,7 +42,12 @@ public class ReName extends HttpServlet {
     	File older_file = new File(uploadFilePath + File.separator + older_name);
     	File new_file = new File(uploadFilePath + File.separator + new_name);
     	if(older_file.exists()){
-    		older_file.renameTo(new_file);
+    		if(!older_file.equals(new_file) && new_file.exists()){
+    			response.sendError(HttpServletResponse.SC_FORBIDDEN);
+    		}else{
+    			older_file.renameTo(new_file);
+    		}
+    		
     	}
 	}
 
