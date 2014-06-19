@@ -48,7 +48,7 @@ p.scroll{
 #in_Div {
 	overflow-y: scroll;
 	line-height: 1.75em;
-	height: 415px;
+	height: 360px;
 	background-color: whitesmoke;
     }
 
@@ -189,15 +189,13 @@ table >thead>tr{
 		</table>
 		</div></div>
 		</div>
-		<%
-
-		%>
-		<div class="uk-grid" style="padding-bottom: 50px;">
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<div class="uk-grid uk-width-5-6" style="padding-bottom: 50px;">
 			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left">
 				<%if (page_num.equals("1")) {
 					out.print("　");
 				} else {%>
-				<span><a class="prev-page uk-button uk-button-primary"
+				<span>　　　　　　　　　　　　　　　　　　<a class="prev-page uk-button uk-button-primary"
 					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) - 1%>"><b>&lt;&lt;前へ</b></a></span>
 			<%}%>
 			</div>
