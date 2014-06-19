@@ -279,7 +279,7 @@ function isExist(filename){
 	}).done(function(result){
 		if(result == "true"){
 			exist_flag = 1;
-			exist_files += filename + ",";
+			exist_files += '"' + filename + '" ';
 		}
 	});
 }
