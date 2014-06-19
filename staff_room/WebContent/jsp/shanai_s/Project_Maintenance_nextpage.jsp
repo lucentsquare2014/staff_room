@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Content-Language" content="ja">
 <link rel="stylesheet" href="kintaikanri.css" type="text/css"><link rel="stylesheet" href="report.css" type="text/css">
-<%	request.setCharacterEncoding("windows-31j");
+<%	request.setCharacterEncoding("UTF-8");
 	C_CheckWord word = new C_CheckWord();
 	String onamae = request.getParameter("kousinnamae");
 	onamae = word.checks(onamae);
