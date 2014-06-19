@@ -302,7 +302,7 @@
 							<TD ALIGN="center"><INPUT TYPE="submit" VALUE="表示"></TD>
 					</TR>
 					<TR>
-						<TD colspan="2"><SELECT NAME="group" STYLE="width: 100%;"<OPTION VALUE=""></OPTION>
+						<TD colspan="2"><SELECT NAME="group" STYLE="width: 100%;"><OPTION VALUE=""></OPTION>
 <%int j = -1;
 			for (int i = 0; i < cntGRU; i++) {
 				if (hitGRUNUM.elementAt(i).equals(GR)) {
