@@ -19,6 +19,7 @@ public class C_DBConnectionGeorgir extends C_DBConnectionAbs {
 	private final static String USER_NAME = "georgir";
 	private final static String PASSWORD = "georgir";
 
+
 	@Override
 	// コネクションの生成
 	public Connection createConnection() {

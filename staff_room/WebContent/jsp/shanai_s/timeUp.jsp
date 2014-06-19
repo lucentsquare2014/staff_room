@@ -42,6 +42,7 @@
 	int S_Smini1 = Integer.parseInt(ST.substring(2, 3));
 	int S_Smini2 = Integer.parseInt(ST.substring(3, 4));
 
+	// データベースのコネクションを生成
 	C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
 	Connection con = georgiaDB.createConnection();
 
@@ -324,7 +325,8 @@
 							TYPE="hidden" NAME="s_date1" VALUE="<%=DA%>"> <INPUT
 							TYPE="hidden" NAME="s_start" VALUE="<%=ST%>"> <INPUT
 							TYPE="hidden" NAME="group" VALUE="<%=GR%>"> <INPUT
-							TYPE="hidden" NAME="kind" VALUE="<%=KD%>"> <SPAN
+							TYPE="hidden" NAME="kind" VALUE="<%=KD%>">
+							<SPAN
 							CLASS="shadow"> <FONT COLOR="white"> ようこそ。<%=name_id%>さん。<br><%=name_no%>さんの<br>詳細ｽｹｼﾞｭｰﾙを見ています。<br>
 								<%
 									if (group_id.equals(group_no) || group_id.equals("900")) {

@@ -612,7 +612,8 @@ String memo = "";
 							memo = "<b><メモ></b><BR>"+ memo +"";
 						}
 						*/
-						%> <A
+						%>
+						 <A
 				HREF="timeUp.jsp?id=<%= ID %>&no=<%= no %>&group=<%= post %>&s_date=<%= s_date.substring(0,10) %>&s_start=<%= s_start %>&b_start=&kind=Month-u&act="
 				TARGET="sub02"
 				oncontextmenu="if(!event.ctrlKey){ send<%=mincnt%>('<%= ID %>','<%= no %>','<%= s_date.substring(0,10) %>','<%= s_start %>');return false;}">
@@ -1205,7 +1206,7 @@ String memo = "";
 						}
 						*/
 						%> <A
-			HREF="timeUp.jsp?id=<%= ID %>&no=<%= no %>&group=<%= post %>&s_date=<%= s_date.substring(0,10) %>&s_start=<%= s_start %>&b_start=&kind=Month-u&act="
+			HREF="timeUp.jsp?id=<%= ID %>&no=<%= no %>&group=<%= post %>&s_date=<%= s_date.substring(0,10) %>&s_start=<%= s_start %>&b_start=&taksID=<%=ID+no+s_date.substring(0,10)+s_start %>&kind=Month-u&act="
 			TARGET="sub02"
 			oncontextmenu="if(!event.ctrlKey){ send<%=mincnt%>('<%= ID %>','<%= no %>','<%= s_date.substring(0,10) %>','<%= s_start %>');return false;}">
 				<font size="2"> <%= sche + memo %>
@@ -1225,6 +1226,7 @@ String memo = "";
 							var charno = no;
 							var charde = date;
 							var charst = start;
+
 							deleteCookie(charid,charno,charde,charst);
 							document.cookie = "id="+charid+";";
 							document.cookie = "no="+charno+";";
@@ -1261,8 +1263,10 @@ String memo = "";
 								Es_start = theCookie.substring(Ss_start + 8,Es_start);
 							}
 							parent.main.location.href = "copyInsert.jsp?id="+ Eid +"&no="+ Eno +"&no2="+ charno +"&s_date="+ Es_date +"&s_date2="+ charde +"&s_start="+ Es_start +"&group=<%= post %>
+						
 						&kind="+ charkd +"";
 						}
+					
 					
 					//-->
 					</script> <%
