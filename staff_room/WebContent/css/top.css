@@ -35,7 +35,7 @@ body {
 #out_Div {
   position: relative; 
   padding-top: 26px; 
-  width: 500px;
+  width: 540px;
 }
  
 #in_Div {
@@ -113,13 +113,10 @@ top:30px;
 left:1250px;	
 }
 
-.coL1 { width:40px; }/* colgroupÇÃóÒïùéwíË */
-
-.coL2 { width:90px; }
-
-.coL3 { width:380px; }
-
-.coL4 { width:100px; }
+.coL1 { width:30px; }
+.coL2 { width:70px; }
+.coL3 { width:280px; }
+.coL4 { width:120px; }
 
 	
 	
