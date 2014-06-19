@@ -150,7 +150,6 @@ $(function(){
 				break;
 			}
 		}
-		alert(category);
 	});
 	
 	$("#enter").on("click",function(){
