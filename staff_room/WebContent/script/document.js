@@ -111,7 +111,7 @@ $(function(){
 		}).done(function(result){
 			if(result == "true"){
 				exist_flag = 1;
-				exist_files += filename + " ";
+				exist_files += filename + ",";
 				var exist_file = $("#select_files ul li:contains('" + filename + "')");
 				exist_file.addClass("uk-text-danger")
 						  .attr("data-uk-tooltip",true)

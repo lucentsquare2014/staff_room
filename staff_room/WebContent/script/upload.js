@@ -1,5 +1,6 @@
 /*! UIkit 2.6.0 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
-
+var exist_flag = 0;
+var exist_files = "";
 (function(addon) {
 
     if (typeof define == "function" && define.amd) { // AMD
@@ -161,10 +162,17 @@
 
             // upload all at once
             var formData = new FormData(), xhr = new XMLHttpRequest();
+            exist_flag = 0;
+            exist_files = "";
 
             if (settings.before(settings, files)===false) return;
 
-            for (var i = 0, f; f = files[i]; i++) { formData.append(settings.param, f); }
+            for (var i = 0, f; f = files[i]; i++) { 
+            	formData.append(settings.param, f);
+            	isExist(files[i].name);
+            	
+            }
+            
             for (var p in settings.params) { formData.append(p, settings.params[p]); }
 
             // Add any event handlers here...
@@ -204,15 +212,23 @@
                     }
 
                     settings.complete(response, xhr);
+                    
                 }
-            };         
-            xhr.send(formData);
+            };
+            if(exist_flag == 1){
+            	if(confirm('ファイル' + exist_files + 'はすでに存在しています。置き換えますか？')){
+            		xhr.send(formData);
+            	}
+            }else{
+            	xhr.send(formData);
+            }
         }
+        
     }
 
     xhrupload.defaults = {
         'action': '',
-        'single': true,
+        'single': false,
         'method': 'POST',
         'param' : 'files[]',
         'params': {},
@@ -249,3 +265,21 @@
 
     return xhrupload;
 });
+
+//ファイルが既に存在するかを判定
+function isExist(filename){
+	var page = "upload";
+	$.ajax({
+		type : "POST",
+		url : "/staff_room/IfExist",
+		cache: false,
+		async: false,
+		data : {"file" : filename,
+				"page" : page},
+	}).done(function(result){
+		if(result == "true"){
+			exist_flag = 1;
+			exist_files += filename + ",";
+		}
+	});
+}
