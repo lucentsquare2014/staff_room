@@ -1,19 +1,18 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.util.*,java.sql.*,java.util.Date,java.io.*,java.text.*" %>
-<%!
-// 文字エンコードを行います。
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page
+	import="java.util.*,java.sql.*,java.util.Date,java.io.*,java.text.*"%>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir"%>
+
+<%!// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal==null){
 		return (null);
 	}else{
-		return (new String(strVal.getBytes("UTF-8"),"UTF-8"));
+		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
-}
-
-%>
+}%>
 <%
-
-/* 修正点 */
+	/* 修正点 */
 // 02-08-12 パラメータの送り先を変更[各フレームへ送信 sub01,sub02]
 // 02-08-16 パラメータを修正
 // 02-09-02 パラメータの送り先の変更[２画面に変更したので、sub02にのみ送る]
@@ -152,15 +151,9 @@ try{
 	// 各日付の幅を設定
 	int[] scheduleWidth = new int[48];
 
-	// JDBCドライバのロード
-	Class.forName("org.postgresql.Driver");
-
-	// ユーザ情報
-	String user = "georgir";
-	String password = "georgir";
-
-	// データベース接続
-	Connection dbConn = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
+ //データベース接続
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection dbConn = georgiaDB.createConnection();
 
 	// Statementオブジェクトの生成
 	Statement stmt = dbConn.createStatement();
@@ -219,13 +212,18 @@ try{
 
 	KOJIN.close();
 %>
-	<HTML>
-		<HEAD>
-			<TITLE>スケジュール日表示</TITLE>
-		<STYLE TYPE="text/css">
-			.shadow{filter:shadow(color=#000000,direction=135);position:relative;height:50;width:100%;}
-		</STYLE>
-		<SCRIPT>
+<HTML>
+<HEAD>
+<TITLE>スケジュール日表示</TITLE>
+<STYLE TYPE="text/css">
+.shadow {
+	filter: shadow(color = #000000, direction = 135);
+	position: relative;
+	height: 50;
+	width: 100%;
+}
+</STYLE>
+<SCRIPT>
 		<!--
 		function jump() {
 			window.parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&group=<%= post %>&countY=<%= intYear %>&count=<%= intTuki %>&countD=<%= intDay - 1 %>';
@@ -237,51 +235,51 @@ try{
 		}
 		// -->
 		</SCRIPT>
-		</HEAD>
-		<BODY BGCOLOR="#99A5FF">
-			<TABLE BORDER="0">
-				<TR>
-					<TD>
-						<FORM ACTION="tryagain.jsp" METHOD="POST">
-							<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-							<INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>">
-							<INPUT TYPE="submit" VALUE="月表示">
-						</FORM>
-					</TD>
-					<TD>
-						<FORM ACTION="TestExample34.jsp" METHOD="POST">
-							<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-							<INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>">
-							<INPUT TYPE="submit" VALUE="週表示">
-						</FORM>
-					</TD>
-					<TD>
-						<FORM ACTION="h_hyoji.jsp" METHOD="POST">
-							<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-							<INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>">
-							<INPUT TYPE="submit" VALUE="日表示">
-						</FORM>
-					</TD>
-                    <TD>
-                       <FORM ACTION="personal.jsp" METHOD="POST" TARGET="_parent">
-                            <INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-                            <INPUT TYPE="submit" VALUE="個人設定" title="個人設定ページに移動します。">
-                       </FORM>
-                    </TD>
-                    <TD>
-                      <FORM ACTION="/staff_room" METHOD="POST" TARGET="_top">
-                        <INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。">
-                      </FORM>
-                    </TD>
-				</TR>
-			</TABLE>
-			<TABLE border="0">
-				<TR>
-					<TD>
-						<NOBR><FONT COLOR=white><SPAN CLASS="shadow">
-						<FORM action="h_hyoji.jsp" >グループ名</font>
-						<SELECT NAME="group" STYLE=WIDTH:200>
-							<%
+</HEAD>
+<BODY BGCOLOR="#99A5FF">
+	<TABLE BORDER="0">
+		<TR>
+			<TD>
+				<FORM ACTION="tryagain.jsp" METHOD="POST">
+					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
+						TYPE="hidden" NAME="group" VALUE="<%= post %>"> <INPUT
+						TYPE="submit" VALUE="月表示">
+				</FORM>
+			</TD>
+			<TD>
+				<FORM ACTION="TestExample34.jsp" METHOD="POST">
+					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
+						TYPE="hidden" NAME="group" VALUE="<%= post %>"> <INPUT
+						TYPE="submit" VALUE="週表示">
+				</FORM>
+			</TD>
+			<TD>
+				<FORM ACTION="h_hyoji.jsp" METHOD="POST">
+					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
+						TYPE="hidden" NAME="group" VALUE="<%= post %>"> <INPUT
+						TYPE="submit" VALUE="日表示">
+				</FORM>
+			</TD>
+			<TD>
+				<FORM ACTION="personal.jsp" METHOD="POST" TARGET="_parent">
+					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
+						TYPE="submit" VALUE="個人設定" title="個人設定ページに移動します。">
+				</FORM>
+			</TD>
+			<TD>
+				<FORM ACTION="/staff_room" METHOD="POST" TARGET="_top">
+					<INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。">
+				</FORM>
+			</TD>
+		</TR>
+	</TABLE>
+	<TABLE border="0">
+		<TR>
+			<TD><NOBR>
+					<FONT COLOR=white><SPAN CLASS="shadow">
+							<FORM action="h_hyoji.jsp">グループ名</font> <SELECT NAME="group"
+						STYLE="WIDTH: 200">
+						<%
 							int hitCnt = hitList.size();
 							int j = -1;
 							int i = 0;;
@@ -292,89 +290,80 @@ try{
 							}
 							for(i = 0; i < hitCnt; i++){
 								if(i == j){
-								%><OPTION SELECTED VALUE=<%=hitList2.elementAt(i) %>><%= hitList.elementAt(i) %></OPTION><%
+								%><OPTION SELECTED VALUE=<%=hitList2.elementAt(i) %>><%= hitList.elementAt(i) %></OPTION>
+						<%
 							}else{
-								%><OPTION VALUE=<%=hitList2.elementAt(i) %>><%= hitList.elementAt(i) %></OPTION><%
+								%><OPTION VALUE=<%=hitList2.elementAt(i) %>><%= hitList.elementAt(i) %></OPTION>
+						<%
 							}
 						}
 						%>
-						</SELECT>
-					</TD></span>
+					</SELECT></TD>
+			</span>
 
-					<td valign="top">
-						<FONT COLOR="#ffffff"><SPAN CLASS="shadow"><NOBR>　　日付</span></font>
-					</td>
+			<td valign="top"><FONT COLOR="#ffffff"><SPAN
+					CLASS="shadow"><NOBR> 日付</span></font></td>
 
-					<td valign="top">
-						<INPUT TYPE="TEXT" NAME="countY" VALUE="<%= intYear %>" STYLE=WIDTH:50 MAXLENGTH="4">
-					</td>
-					<td valign="top">
-						<FONT COLOR="#ffffff"><SPAN CLASS="shadow">年</SPAN></font>
-					</td>
+			<td valign="top"><INPUT TYPE="TEXT" NAME="countY"
+				VALUE="<%= intYear %>" STYLE="WIDTH: 50" MAXLENGTH="4"></td>
+			<td valign="top"><FONT COLOR="#ffffff"><SPAN
+					CLASS="shadow">年</SPAN></font></td>
 
-					<TD VALIGN="top">
-						<SELECT NAME="count" STYLE=WIDTH:50>
-							<%
+			<TD VALIGN="top"><SELECT NAME="count" STYLE="WIDTH: 50">
+					<%
 							for(i = 1; i <= 12; i++ ){
 								%>
-								<option value=<%= i %>
-								<%
+					<option value=<%= i %> <%
 								if(i == intTuki){
 									%>
-									SELECTED
-									<%
+						SELECTED <%
 								}
-								%>/><%= i %><%
+								%> /><%= i %>
+					<%
 							}
 							%>
-						</SELECT>
-					</TD>
-					<td VALIGN="top">
-						<FONT COLOR="#ffffff"><SPAN CLASS="shadow">月</SPAN></FONT>
-					</td>
+			</SELECT></TD>
+			<td VALIGN="top"><FONT COLOR="#ffffff"><SPAN
+					CLASS="shadow">月</SPAN></FONT></td>
 
-					<TD VALIGN="top">
-						<SELECT NAME="countD" STYLE=WIDTH:50>
-							<%
+			<TD VALIGN="top"><SELECT NAME="countD" STYLE="WIDTH: 50">
+					<%
 							for(i = 1; i <= 31; i++ ){
 								%>
-								<option value=<%= i %>
-								<%
+					<option value=<%= i %> <%
 								if(i == intDay){
 									%>
-									SELECTED
-									<%
+						SELECTED <%
 								}
-								%>/><%= i %>
-								<%
+								%> /><%= i %>
+					<%
 							}
 							%>
-						</SELECT>
-					</TD>
-					<TD VALIGN="top">
-						<FONT COLOR="#ffffff"><SPAN CLASS="shadow">日</SPAN></FONT>
-					</TD>
+			</SELECT></TD>
+			<TD VALIGN="top"><FONT COLOR="#ffffff"><SPAN
+					CLASS="shadow">日</SPAN></FONT></TD>
 
-					<TD valign="top">
-						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-						<INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>">
-						<INPUT TYPE="submit" NAME="hyoji" VALUE="表示" >
-					</TD>
+			<TD valign="top"><INPUT TYPE="hidden" NAME="id"
+				VALUE="<%= ID %>"> <INPUT TYPE="hidden" NAME="group"
+				VALUE="<%= post %>"> <INPUT TYPE="submit" NAME="hyoji"
+				VALUE="表示"></TD>
+			</FORM>
+		</TR>
+	</TABLE>
+
+	<CENTER>
+
+		<TABLE>
+			<TR>
+				<%-- 前日に移動するボタン --%>
+				<TD VALIGN="bottom">
+					<FORM METHOD="POST" ACTION="h_hyoji.jsp">
+						<INPUT TYPE="button" NAME="zenjitu" VALUE="前日" OnClick="jump()">
 					</FORM>
-				</TR>
-			</TABLE>
+				</TD>
 
-			<CENTER>
-
-			<TABLE>
-				<TR>
-					<%-- 前日に移動するボタン --%>
-					<TD VALIGN="bottom">
-						<FORM METHOD="POST" ACTION="h_hyoji.jsp"><INPUT TYPE="button" NAME="zenjitu" VALUE="前日" OnClick="jump()"></FORM>
-					</TD>
-
-					<TD >
-						<% String kyo ="";
+				<TD>
+					<% String kyo ="";
 						if(intYear==y && intTuki==m && intDay==d){
 							%><%--
 							<script type="text/javascript">
@@ -384,26 +373,27 @@ try{
 								}
 								//-->
 							</script>
-							--%>
-							<% kyo = "lavender";
+							--%> <% kyo = "lavender";
 						}
 						else{
 							kyo = "white";
 						}
-						%>
-						<FONT size="6" color="<%= kyo %>"><B><I><SPAN CLASS="shadow"><%= intYear %>年 <%= intTuki %>月<%= intDay %>日(<%=strYoubi%>)</SPAN></I></B></FONT>
-					</TD>
+						%> <FONT size="6" color="<%= kyo %>"><B><I><SPAN
+								CLASS="shadow"><%= intYear %>年 <%= intTuki %>月<%= intDay %>日(<%=strYoubi%>)</SPAN></I></B></FONT>
+				</TD>
 
-					<%-- 翌日に移動するボタン --%>
-					<TD VALIGN="bottom">
-						<FORM METHOD="POST" ACTION="h_hyoji.jsp"><INPUT TYPE="button" NAME="yokujitu" VALUE="翌日" OnClick="jump2()"></FORM>
-					</TD>
-				</TR>
-			</TABLE>
+				<%-- 翌日に移動するボタン --%>
+				<TD VALIGN="bottom">
+					<FORM METHOD="POST" ACTION="h_hyoji.jsp">
+						<INPUT TYPE="button" NAME="yokujitu" VALUE="翌日" OnClick="jump2()">
+					</FORM>
+				</TD>
+			</TR>
+		</TABLE>
 
-			</CENTER>
+	</CENTER>
 
-			<%
+	<%
 			//グループに所属している人全員を表示のループの開始。一番下のあたりまで、かなりでかいループ
 			int hitCnt2 = hitList3.size();
 			int k = 0;
@@ -472,10 +462,11 @@ try{
 					}rs3.close();
 				%>
 
-				<TABLE BORDER="3" BORDERCOLORLIGHT="#99CCFF" BORDERCOLORDARK="#3366CC" WIDTH="730" BORER-COLLAPSE:COLLAPSE CELLSPACING="0" CELLPADDING="0">
-					<TR>
-						<TD BGCOLOR="D3D3D3" WIDTH="75" ROWSPAN="2">名前</TD>
-							<%
+	<TABLE BORDER="3" BORDERCOLORLIGHT="#99CCFF" BORDERCOLORDARK="#3366CC"
+		WIDTH="730" BORER-COLLAPSE:COLLAPSE CELLSPACING="0" CELLPADDING="0">
+		<TR>
+			<TD BGCOLOR="D3D3D3" WIDTH="75" ROWSPAN="2">名前</TD>
+			<%
 							count00=0;
 							count30=0;
 							cc = 0;
@@ -499,18 +490,21 @@ try{
 								cc = cc + 1;
 								}
 								if((count00 >= 1) && (count30 >= 1)){				//0分から29分に1以上、30分から59分に1以上
-									%><td COLSPAN=60 BGCOLOR=<%= BGCOLOR %>><%= i/60 %></td><%
+									%><td COLSPAN=60 BGCOLOR=<%= BGCOLOR %>><%= i/60 %></td>
+			<%
 								}else if(((count00 >= 1) && (count30 == 0)) || ((count00 == 0) && (count30 >= 1))){//片方だけ1以上
-									%><td COLSPAN=31 BGCOLOR=<%= BGCOLOR %>><%= i/60 %></td><%
+									%><td COLSPAN=31 BGCOLOR=<%= BGCOLOR %>><%= i/60 %></td>
+			<%
 								}else{
-									%><td COLSPAN=2 BGCOLOR=<%= BGCOLOR %>><%= i/60 %></td><%
+									%><td COLSPAN=2 BGCOLOR=<%= BGCOLOR %>><%= i/60 %></td>
+			<%
 								}
 							i = i+60;
 							}
 							%>
-
-						<TR>
-							<%
+		
+		<TR>
+			<%
 							i = 0;
 							cc = 0;
 							count00 = 0;
@@ -532,32 +526,38 @@ try{
 
 								if(count00 >= 1){
 									if((i % 60) == 0){
-										%><TD BGCOLOR=<%= BGCOLOR %> colspan=30><font style=font-size:9>00</font></TD><%
+										%><TD BGCOLOR=<%= BGCOLOR %> colspan=30><font
+				style="font-size: 9">00</font></TD>
+			<%
 									}
 									else{
-										%><TD BGCOLOR=<%= BGCOLOR %> colspan=30><font style=font-size:9>30</font></TD><%
+										%><TD BGCOLOR=<%= BGCOLOR %> colspan=30><font
+				style="font-size: 9">30</font></TD>
+			<%
 									}
 								}else{
 									if((i % 60) == 0){
-										%><TD BGCOLOR=<%= BGCOLOR %>><font style=font-size:9>00</font></TD><%
+										%><TD BGCOLOR=<%= BGCOLOR %>><font style="font-size: 9">00</font></TD>
+			<%
 									}
 									else{
-										%><TD BGCOLOR=<%= BGCOLOR %>><font style=font-size:9>30</font></TD><%
+										%><TD BGCOLOR=<%= BGCOLOR %>><font style="font-size: 9">30</font></TD>
+			<%
 									}
 								}
 								i=i+30;
 							}
 							%>
-						</TR>
-					<TR height="40">
-						<TD BGCOLOR="#FFFFFF" WIDTH="60" VALIGN="top">
-							<NOBR>
-							<A href="timeIn.jsp?id=<%= ID %>&no=<%= sno %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Day&act=" target="sub02" oncontextmenu="if(!event.ctrlKey){ no='<%= sno %>';date='<%= sFmt.format(today) %>'; miseru<%=xxx%>(no,date);return false}">
-								<acronym title="クリックすると新規登録ができます">
-								<FONT SIZE = -1><%= hitList3.elementAt(k) %></FONT>
-							</A>
-						</TD>
-						<%
+		</TR>
+		<TR height="40">
+			<TD BGCOLOR="#FFFFFF" WIDTH="60" VALIGN="top"><NOBR>
+					<A
+						href="timeIn.jsp?id=<%= ID %>&no=<%= sno %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Day&act="
+						target="sub02"
+						oncontextmenu="if(!event.ctrlKey){ no='<%= sno %>';date='<%= sFmt.format(today) %>'; miseru<%=xxx%>(no,date);return false}">
+						<acronym title="クリックすると新規登録ができます"> <FONT SIZE=-1><%= hitList3.elementAt(k) %></FONT>
+					</A></TD>
+			<%
 							i = 0;
 							cc = 0;
 							count30 = 0;
@@ -577,15 +577,20 @@ try{
 								}
 
 								if(count30 == 0){					//30分刻みで見て、予定が入っていないなら
-									%><TD ROWSPAN="2" BGCOLOR="#FFFFFF"<%
+									%><TD ROWSPAN="2" BGCOLOR="#FFFFFF"
+				<%
 									if((i % 60) == 0){
-									 	%>style="BORDER-right:1px none " style="BORDER-left:1px solid #0033FF"<%
+									 	%>
+				style="BORDER-right: 1px none" style="BORDER-left:1px solid #0033FF"
+				<%
 									 	i = i + 30;
 									}else{
-										%>style="BORDER-right:1px none " style="BORDER-left:1px dotted " <%
+										%>
+				style="BORDER-right:1px none " style="BORDER-left:1px dotted "
+				<%
 										i = i + 30;
 									}%>><BR></TD>
-								<%
+			<%
 								}else if(count30 >= 1){			//30分刻みで見て、予定開始（終了）時刻が１つ以上入っているなら
 									starti = 0;					//結合部分付近、基本は↓↓こんな感じ↓↓予定の入り方により変化する
 									endi = 0;					//cellstart	→→→→starti→→→→→joint→	→→→→endi→→→→→→cellend
@@ -662,15 +667,22 @@ try{
 										cc = cc + 1;
 										}
 										if(count30 == 0){										//30分刻みで見て、予定が入っていないなら
-											%><TD ROWSPAN="2" BGCOLOR="#FFFFFF"<%
+											%><TD ROWSPAN="2" BGCOLOR="#FFFFFF"
+				<%
 											if((i % 60) == 0){
-												%>style="BORDER-left:1px solid  #0033FF"style="BORDER-right:1px none "<%
+												%>
+				style="BORDER-left: 1px solid #0033FF"
+				style="BORDER-right:1px none "
+				<%
 												i = i + 30;
 											}else{
-												%>style="BORDER-left:1px dotted #0033FF"style="BORDER-right:1px none " <%
+												%>
+				style="BORDER-left:1px dotted #0033FF"
+				style="BORDER-right:1px none "
+				<%
 												i = i + 30;
 											}%>><BR></TD>
-										<%}
+			<%}
 									}
 									if(cellstart != cellend){									//２つ目の予定からは行わない、1つ前の予定のcellendがcellstartになっている
 										cellstart = zz;
@@ -716,23 +728,32 @@ try{
 									while((starti - cellstart) > zz){							//結合セル前(cellstartからstartiまで)の、セル(白)を表示
 										if(zz == 0){											//最初の1つ目のセルだけに、左側に線を表示
 											if(cellstart % 60 == 0){
-												%><td ROWSPAN="2" bgcolor=white style="BORDER-left:1px solid #0033FF"style="BORDER-right:1px none "><BR></td><%
+												%><td ROWSPAN="2" bgcolor=white
+				style="BORDER-left: 1px solid #0033FF"
+				style="BORDER-right:1px none "><BR></td>
+			<%
 											}else{
-												%><td ROWSPAN="2" bgcolor=white style="BORDER-left:1px dotted "style="BORDER-right:1px none "><BR></td><%
+												%><td ROWSPAN="2" bgcolor=white
+				style="BORDER-left: 1px dotted" style="BORDER-right:1px none "><BR></td>
+			<%
 											}
 										}else{													//２つ目以降のセル(白)を表示
-											%><td ROWSPAN="2"bgcolor=white style="BORDER-top:1px solid #0033FF"
-												style="BORDER-left:1px none "style="BORDER-right:1px none " ><BR></td><%
+											%><td ROWSPAN="2" bgcolor=white
+				style="BORDER-top: 1px solid #0033FF" style="BORDER-left:1px none "
+				style="BORDER-right:1px none "><BR></td>
+			<%
 										}
 										zz = zz+1;
 										i = i+1;
 
 									}%>
-									<td ROWSPAN="2" colspan=<%= joint %> HEIGHT="50" bgcolor="#ffffcb" VALIGN="top"
-										 style="BORDER-left:1px solid #0033FF" style="BORDER-right:1px none">
-									<A href="timeUp.jsp?id=<%= ID %>&no=<%= sno %>&s_date=<%= date1.substring(0,10) %>&s_start=<%= hitListb.elementAt(ST) %>&b_start=&group=<%= post %>&kind=Day-u&act=" target="sub02" oncontextmenu="if(!event.ctrlKey){id='<%= ID %>';no='<%= sno %>';date='<%= date1.substring(0,10) %>';start='<%= start %>'; send<%=mincnt%>(id,no,date,start);return false;}"><nobr>
-									<font size="2">
-									<%															//ここから結合セル(startiからendi)の中身の処理
+			<td ROWSPAN="2" colspan=<%= joint %> HEIGHT="50" bgcolor="#ffffcb"
+				VALIGN="top" style="BORDER-left: 1px solid #0033FF"
+				style="BORDER-right:1px none"><A
+				href="timeUp.jsp?id=<%= ID %>&no=<%= sno %>&s_date=<%= date1.substring(0,10) %>&s_start=<%= hitListb.elementAt(ST) %>&b_start=&group=<%= post %>&kind=Day-u&act="
+				target="sub02"
+				oncontextmenu="if(!event.ctrlKey){id='<%= ID %>';no='<%= sno %>';date='<%= date1.substring(0,10) %>';start='<%= start %>'; send<%=mincnt%>(id,no,date,start);return false;}"><nobr>
+						<font size="2"> <%															//ここから結合セル(startiからendi)の中身の処理
 									ST++;
 									//スケジュールの表示
 									out.print(hitListc.elementAt(tm++));						//予定の時間を表示
@@ -746,8 +767,7 @@ try{
 										out.print(hitList9.elementAt(PL2));						//予定詳細を表示
 										PL++;
 										PL2++;
-									}%>
-									<BR><%
+									}%> <BR> <%
 									if(hitLista.elementAt(P1++)==null){							//場所詳細が入力されていなければ
 										out.print(hitList7.elementAt(SP));						//場所のみを表示
 										SP++;
@@ -757,25 +777,28 @@ try{
 										out.print(hitLista.elementAt(SP2));						//場所詳細を表示
 										SP++;
 										SP2++;
-									}%>
-									<BR></NOBR><%
+									}%> <BR>
+					</NOBR> <%
 									if(hitList8.elementAt(P2++)==null){
 										ME++;
 									}else{
 										out.print(hitList8.elementAt(ME++));
 									}
-									%>
-									</font>
-									</A></TD><%
+									%> </font> </A></TD>
+			<%
 
 									i = i+(endi - starti);										//結合数をiへ加算
 
 									zz = 0;
 									while(cellend - endi > zz){									//結合セル後(endiからcellendまで)の、セル(白)を表示
 										if(zz == 0){											//最初の1つ目のセルだけに、左側に線を表示
-											%><td ROWSPAN="2" bgcolor="white" style="BORDER-left:1px solid #0033FF; BORDER-right:1px none #FFFFFF; BORDER-top:1px solid #3399FF"><BR></td><%
+											%><td ROWSPAN="2" bgcolor="white"
+				style="BORDER-left: 1px solid #0033FF; BORDER-right: 1px none #FFFFFF; BORDER-top: 1px solid #3399FF"><BR></td>
+			<%
 										}else{													//２つ目以降のセル(白)を表示
-											%><td ROWSPAN="2" bgcolor="white" style="BORDER-left:1px none ; BORDER-right:1px none ; BORDER-top:1px solid #3399FF"><BR></td><%
+											%><td ROWSPAN="2" bgcolor="white"
+				style="BORDER-left: 1px none; BORDER-right: 1px none; BORDER-top: 1px solid #3399FF"><BR></td>
+			<%
 										}
 										zz = zz+1;
 										i = i+1;
@@ -790,7 +813,7 @@ try{
 								}
 							}rs3.close();
 							%>
-							<%
+			<%
 					//バナーの呼び出し、表示
 					sFmt = new SimpleDateFormat("yyyy-MM-dd");
 					cal.set( intYear, intTuki - 1, intDay);
@@ -821,13 +844,13 @@ try{
 						colorbg = "orange";
 					}
 					%>
-
-					<TR>
-						<TD bgcolor="<%= colorbg %>" height="30" WIDTH="60" VALIGN="top">
-							<FONT SIZE=-1>バナー<BR><%
-							if(colorbg == "yellow"){%>
-								<A href="dayUp.jsp?id=<%= ID %>&no=<%= sno %>&s_date=&s_start=&b_start=<%= b_start %>&group=<%= post %>&kind=Day-b&act=" TARGET="sub02">
-								<%
+		
+		<TR>
+			<TD bgcolor="<%= colorbg %>" height="30" WIDTH="60" VALIGN="top">
+				<FONT SIZE=-1>バナー<BR> <%
+							if(colorbg == "yellow"){%> <A
+					href="dayUp.jsp?id=<%= ID %>&no=<%= sno %>&s_date=&s_start=&b_start=<%= b_start %>&group=<%= post %>&kind=Day-b&act="
+					TARGET="sub02"> <%
 								//予定が--ならnullへ
 								if(b_plan.equals("--")){
 									b_plan = "";
@@ -866,14 +889,13 @@ try{
 								}else{
 									b_plan = b_plan + b_plan2 + b_place + b_place2;
 								}
-								%>
-								<%=b_plan%>
-							</A><%
+								%> <%=b_plan%>
+				</A> <%
 							}%>
-							</FONT>
-						</TD>
-					</TR>
-						<script language="JavaScript1.2">
+			</FONT>
+			</TD>
+		</TR>
+		<script language="JavaScript1.2">
 							<!--
 							function deleteCookie(theName){
 								document.cookie = theName + "=;expires=Thu," + "01-Jan-70 00:00:01 GMT";
@@ -920,26 +942,29 @@ try{
 									Es_start = theCookie.indexOf(";",Ss_start);
 									Es_start = theCookie.substring(Ss_start + 8,Es_start);
 								}
-								parent.main.location.href = "copyInsert.jsp?id="+ Eid +"&no="+ Eno +"&no2="+ charno +"&s_date="+ Es_date +"&s_date2="+ charde +"&s_start="+ Es_start +"&group=<%= post %>&kind=Day";
+								parent.main.location.href = "copyInsert.jsp?id="+ Eid +"&no="+ Eno +"&no2="+ charno +"&s_date="+ Es_date +"&s_date2="+ charde +"&s_start="+ Es_start +"&group=<%= post %>
+			
+			&kind=Day";
 							}
-							//-->
-						</script>
-				</TABLE>
-				<%
-		}
-		mincnt = mincnt + 1;
-		xxx = xxx + 1;
-	}
-	//グループに所属している人全員を表示のループの終了
-	%>
-	</BODY>
+							
+		
+		//-->
+		</script>
+	</TABLE>
 	<%
+		}
+				mincnt = mincnt + 1;
+				xxx = xxx + 1;
+			}
+			//グループに所属している人全員を表示のループの終了
+	%>
+</BODY>
+<%
 	stmt.close();
-	dbConn.close();
+		dbConn.close();
 
-}
-catch(Exception e){
-	e.printStackTrace();
-}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
 %>
 </HTML>

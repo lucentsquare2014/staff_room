@@ -37,9 +37,67 @@ $(function() {
 								str = str + "";
 							str = str + ids[i] +"@lucentsquare.co.jp;";
 						}
-						$("#mail").attr("href", "mailto:" + str);
+						if(str.length === 0){
+							window.alert('チェックされていません');
+						}
+						else if(str.length < 2083){
+							if(window.confirm("以下の宛先にメールを送ります。よろしいですか？\n" +
+									          "---------------------------------------------\n"+str)){
+								location.href = "mailto:" + str;
+								location.href = "mailto:" + str;
+								location.href = "mailto:" + str;
+							}else{
+								
+							}
+						}else{
+							if(window.confirm("文字数がURLの制限を超えています。\n" +
+											  "以下のアドレスをコピーしてOK押してください。その後、メーラーが起動するので宛先にペーストしてください。\n" +
+											  "---------------------------------------------\n"+str)){
+								location.href = "mailto:";
+							}else{
+								
+							}
+						}
 
-					});
+						});
 
 				});
 	});
+
+//$("#mail").attr("href", "mailto:" + str);}
+/*$("#mail").click(function() {
+var str = "";
+var ids = [];
+var news = $('[name="check"]');
+for ( var n = 0; n < news.length; n++) {
+	if (news[n].getAttribute("flag") == "1")
+		ids.push(news[n].getAttribute("id"));
+}
+for ( var i = 0; i < ids.length; i++) {
+	if (str != "")
+		str = str + "";
+	str = str + ids[i] +"@lucentsquare.co.jp;";
+}
+if(str.length === 0){
+	window.alert('チェックされていません');
+}
+else if(str.length < 2083){
+	if(window.confirm("以下の宛先にメールを送ります。よろしいですか？\n" +
+			          "---------------------------------------------\n"+str)){
+		location.href = "mailto:" + str;
+		location.href = "mailto:" + str;
+		location.href = "mailto:" + str;
+	}else{
+		
+	}
+}else{
+	if(window.confirm("文字数がURLの制限を超えています。\n" +
+					  "以下のアドレスをコピーしてOK押してください。その後、メーラーが起動するので宛先にペーストしてください。\n" +
+					  "---------------------------------------------\n"+str)){
+		location.href = "mailto:";
+	}else{
+		
+	}
+}
+
+});*/

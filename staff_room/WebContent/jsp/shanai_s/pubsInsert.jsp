@@ -1,18 +1,19 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.* , java.util.Vector" %>
-<%!
-// 文字エンコードを行います。
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page
+	import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.* , java.util.Vector"%>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir"%>
+
+<%!// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal==null){
 		return (null);
 	}
 	else{
-		return (new String(strVal.getBytes("UTF-8"),"UTF-8"));
+		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
-}
-%>
+}%>
 <%
-/* 修正点 */
+	/* 修正点 */
 // 06-06-14 削除ボタンを押した際に、共有者じゃない人の予定を、削除してしまうことがあるのを修正
 // 02-09-20 共有者の追加・削除を行うファイルとして作成
 
@@ -31,22 +32,16 @@ String AC = strEncode(request.getParameter("act"));
 
 // 表示の種類を判別するパラメータ
 String KD = request.getParameter("kind");
-
 %>
 <html>
-<head><title>エラー</title></head>
+<head>
+<title>エラー</title>
+</head>
 <body BGCOLOR="#99A5FF">
-<%
+	<%
 
-// JDBCドライバのロード
-Class.forName("org.postgresql.Driver");
-
-// ユーザ認証情報の設定
-String user = "georgir";
-String password = "georgir";
-
-// Connectionオブジェクトの生成
-Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
 
 // Statementオブジェクトの生成
 Statement stmt = con.createStatement();
@@ -87,14 +82,14 @@ if(AC.equals("追加") && (group_id.equals(group_no) || group_id.equals("900")))
 	String[] addlist = request.getParameterValues("add");
 	if(ID.equals(NO)){
 		if((addlist != null) && (addlist[0].length() != 0)){
-			for(int i = 0; i < addlist.length; i++){
-				// 選択された項目に本人が含まれていたら、エラーとする。
-				if(addlist[i].equals(ID)){
-					%>
-					<jsp:forward page="error.jsp">
-					<jsp:param name="flag" value="2" />
-					</jsp:forward>
-					<%
+	for(int i = 0; i < addlist.length; i++){
+		// 選択された項目に本人が含まれていたら、エラーとする。
+		if(addlist[i].equals(ID)){
+%>
+	<jsp:forward page="error.jsp">
+		<jsp:param name="flag" value="2" />
+	</jsp:forward>
+	<%
 				}else{
 					// 重複チェック用SQLの実行
 					ResultSet CHECK = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE K_社員NO = '" + addlist[i] + "' AND K_社員NO2 = '" + ID + "' AND KY_FLAG = '0'");
@@ -112,10 +107,10 @@ if(AC.equals("追加") && (group_id.equals(group_no) || group_id.equals("900")))
 			}
 		}else{
 			%>
-			<jsp:forward page="error.jsp">
-			<jsp:param name="flag" value="0" />
-			</jsp:forward>
-			<%
+	<jsp:forward page="error.jsp">
+		<jsp:param name="flag" value="0" />
+	</jsp:forward>
+	<%
 		}
 	}else{
 		if((addlist != null) && (addlist[0].length() != 0)){
@@ -123,10 +118,10 @@ if(AC.equals("追加") && (group_id.equals(group_no) || group_id.equals("900")))
 				// 選択された項目に本人が含まれていたら、エラーとする。
 				if(addlist[i].equals(NO)){
 					%>
-					<jsp:forward page="error.jsp">
-					<jsp:param name="flag" value="2" />
-					</jsp:forward>
-					<%
+	<jsp:forward page="error.jsp">
+		<jsp:param name="flag" value="2" />
+	</jsp:forward>
+	<%
 				}else{
 					// 重複チェック用SQLの実行
 					ResultSet CHECK = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE K_社員NO = '" + addlist[i] + "' AND K_社員NO2 = '" + NO + "' AND KY_FLAG = '0'");
@@ -144,87 +139,87 @@ if(AC.equals("追加") && (group_id.equals(group_no) || group_id.equals("900")))
 			}
 		}else{
 			%>
-			<jsp:forward page="error.jsp">
-			<jsp:param name="flag" value="0" />
-			</jsp:forward>
-			<%
+	<jsp:forward page="error.jsp">
+		<jsp:param name="flag" value="0" />
+	</jsp:forward>
+	<%
 		}
 	}
 	if(KD.equals("Month")){
 		%>
-		<script>
+	<script>
 		<!--
 			parent.sub02.location.href='timeIn.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 		//-->
 		</script>
-		<%
+	<%
 	}else if(KD.equals("Month-u")){
 		%>
-		<script>
+	<script>
 		<!--
 			parent.sub02.location.href='timeUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 		//-->
 		</script>
-		<%
+	<%
 	}else if(KD.equals("Month-b")){
 		%>
-		<script>
+	<script>
 		<!--
 			parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 		//-->
 		</script>
-		<%
+	<%
 	}else if(KD.equals("Week")){
 		%>
-		<script>
+	<script>
 		<!--
 			parent.sub02.location.href='timeIn.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 		//-->
 		</script>
-		<%
+	<%
 	}else if(KD.equals("Week-u")){
 		%>
-		<script>
+	<script>
 		<!--
 			parent.sub02.location.href='timeUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 		//-->
 		</script>
-		<%
+	<%
 	}else if(KD.equals("Week-b")){
 		%>
-		<script>
+	<script>
 		<!--
 			parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 		//-->
 		</script>
-		<%
+	<%
 	}else if(KD.equals("Day")){
 		%>
-		<script>
+	<script>
 		<!--
 			parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 			parent.sub02.location.href='timeIn.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 		//-->
 		</script>
-		<%
+	<%
 	}else if(KD.equals("Day-u")){
 		%>
-		<script>
+	<script>
 		<!--
 			parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 			parent.sub02.location.href='timeUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 		//-->
 		</script>
-		<%
+	<%
 	}else if(KD.equals("Day-b")){
 		%>
-		<script>
+	<script>
 		<!--
 			parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 			parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 		//-->
 		</script>
-		<%
+	<%
 	}
 }
 /* 追加リスト処理 ここまで */
@@ -246,92 +241,92 @@ else if(AC.equals("削除") && (group_id.equals(group_no) || group_id.equals("90
 			}
 			if(MWD && KD.equals("Month")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='tryagain.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeIn.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Month-u")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='tryagain.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Month-b")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='tryagain.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= BS %>&group=<%= GR %>';
 					parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Week")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='TestExample34.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeIn.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Week-u")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='TestExample34.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Week-b")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='TestExample34.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= BS %>&group=<%= GR %>';
 					parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Day")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeIn.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Day-u")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Day-b")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= BS %>&group=<%= GR %>';
 					parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}
 		}else{
 			%>
-			<jsp:forward page="error.jsp">
-			<jsp:param name="flag" value="0" />
-			</jsp:forward>
-			<%
+	<jsp:forward page="error.jsp">
+		<jsp:param name="flag" value="0" />
+	</jsp:forward>
+	<%
 		}
 	}else{
 		if((dellist != null) && (dellist[0].length() != 0)){
@@ -345,92 +340,92 @@ else if(AC.equals("削除") && (group_id.equals(group_no) || group_id.equals("90
 			}
 			if(MWD && KD.equals("Month")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='tryagain.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeIn.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Month-u")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='tryagain.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Month-b")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='tryagain.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= BS %>&group=<%= GR %>';
 					parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Week")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='TestExample34.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeIn.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Week-u")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='TestExample34.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Week-b")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='TestExample34.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= BS %>&group=<%= GR %>';
 					parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Day")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeIn.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Day-u")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
 					parent.sub02.location.href='timeUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}else if(MWD && KD.equals("Day-b")){
 				%>
-				<script>
+	<script>
 				<!--
 					parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= BS %>&group=<%= GR %>';
 					parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
 				//-->
 				</script>
-				<%
+	<%
 			}
 		}else{
 			%>
-			<jsp:forward page="error.jsp">
-			<jsp:param name="flag" value="0" />
-			</jsp:forward>
-			<%
+	<jsp:forward page="error.jsp">
+		<jsp:param name="flag" value="0" />
+	</jsp:forward>
+	<%
 		}
 	}
 }
@@ -439,7 +434,7 @@ else if(AC.equals("削除") && (group_id.equals(group_no) || group_id.equals("90
 else{
 	%>
 	<jsp:forward page="error.jsp">
-	<jsp:param name="flag" value="5" />
+		<jsp:param name="flag" value="5" />
 	</jsp:forward>
 	<%
 }
@@ -447,7 +442,7 @@ else{
 if(check){
 	%>
 	<jsp:forward page="error.jsp">
-	<jsp:param name="flag" value="1" />
+		<jsp:param name="flag" value="1" />
 	</jsp:forward>
 	<%
 }
@@ -529,11 +524,12 @@ if(KD.equals("Month")){
 	<script>
 	<!--
 		parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
-		parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>&act=';
+		parent.sub02.location.href='dayUp.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&s_start=<%= ST %>&b_start=<%= BS %>&group=<%= GR %>&kind=<%= KD %>
+		&act=';
 	//-->
 	</script>
 	<%
-}
-%>
+		}
+	%>
 </body>
 </html>

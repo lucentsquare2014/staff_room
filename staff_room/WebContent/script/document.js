@@ -134,4 +134,47 @@ $(function(){
 			isExist(files[i].name);
 		}
 	});
+	
+	// ファイル名を変更
+	var older_name = "";
+	var category = "";
+	$("i#edit").on("click",function(){
+		$("input[name='new_name']").val($(this).prev().text());
+		older_name = $("input[name='new_name']").val();
+		var row = $(this).parent().parent();
+		var index = row.index("tr");
+		for(var i = index; i > 0; i--){
+			var type = $("tr:eq(" + i + ")").find("#type").text();
+			if(type != ""){
+				category = type;
+				break;
+			}
+		}
+	});
+	
+	$("#enter").on("click",function(){
+		var new_name = $("input[name='new_name']").val();
+		//var category = $("select option:selected").val();
+		var page = $("input[name='page']").val();
+		$.ajax({
+			type : "POST",
+			url : "/staff_room/ReName",
+			cache: false,
+			data : {"category" : category,
+					"new_name" : new_name,
+					"older_name" : older_name,
+					"page" : page},
+		}).done(function(){
+			$("#msg").text("ファイル名変更しました！").addClass("uk-text-success");;
+			setTimeout(function(){
+				location.reload();
+			},1500);
+		});
+	});
+	$("table td#filename").mouseover(function(){
+		$(this).children("i").show();
+	}).mouseout(function(){
+		$(this).children("i").hide();
+	});
+	
 });

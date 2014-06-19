@@ -1,12 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
+
 <%!
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal == null){
 		return(null);
 	}
 	else{
-		return(new String(strVal.getBytes("UTF-8"),"UTF-8"));
+		return(new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
 }
 %>
@@ -36,15 +38,9 @@ String KD = strEncode(request.getParameter("kind"));
 <body BGCOLOR="#99A5FF">
 <%
 
-// JDBCドライバのロード
-Class.forName("org.postgresql.Driver");
-
-// データベースにログインするための情報
-String user = "georgir";
-String password = "georgir";
-
-// データベースに接続
-Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
+ //データベース接続
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
 
 // ステートメントの生成
 Statement stmt = con.createStatement();
