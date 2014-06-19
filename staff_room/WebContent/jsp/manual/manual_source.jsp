@@ -13,6 +13,12 @@
  		background-color: #FAFAFA;
  	}
  	tr{white-space:nowrap;}
+ 	#edit {
+ 		display: none;
+ 	}
+ 	#edit:hover{
+ 		cursor: pointer;
+ 	}
 </style>
 <%
 	File base_folder = new File(application.getRealPath(File.separator + "manual"));//使用する親フォルダの場所を指定
@@ -49,6 +55,12 @@
 	<td bgcolor="#FFFFFF" id="time"><%=dddate.format(date)%></td>
 
 	<!-- String型のファイル名を出力 -->
-	<td bgcolor="#FFFFFF"><a href="/staff_room/manual/<%=foldername[i]%>/<%=filename[x]%>"><%=filename[x]%></a></td>
+	<td bgcolor="#FFFFFF" class="uk-text-left" id="filename">
+		<a href="/staff_room/manual/<%=foldername[i]%>/<%=filename[x]%>"><%=filename[x]%></a>
+		<% if(user2.equals("1")){%>
+		&nbsp;
+		<i class="uk-icon-edit" id="edit" data-uk-modal="{target:'#edit_form'}"></i>
+		<% } %>
+	</td>
 </tr>
 <%}}%>

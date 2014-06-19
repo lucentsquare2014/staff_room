@@ -25,6 +25,10 @@ body {
 #select_files {
 	display:none;
 }
+div .uk-modal-dialog {
+	width: 400px;
+	top: 100px;
+}
 </style>
 <title>規程・書類</title>
 </head>
@@ -56,9 +60,6 @@ body {
 				<button class="uk-button uk-button-success">
 				<i class="uk-icon-file-text uk-icon-small"></i><b>　添付</b></button>
 				<input type="file" name="inputFile" id="upload-select" multiple>
-				<div id="progressbar" class="uk-progress uk-hidden" style="width: 500px;">
-    				<div class="uk-progress-bar" style="width: 0%;">...</div>
-				</div>
 			</div>
 			<button id="add" class="uk-button uk-button-primary" disabled>
 			<i class="uk-icon-upload uk-icon-small"></i><b>　追加</b></button>
@@ -72,7 +73,7 @@ body {
 			</ul>
 		</div>
 	</div>
-	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-width-1-1" >
+	<table border="5" class="uk-table uk-width-1-1" >
 		<tr class="uk-text-large">
 			<th Background="../../images/blackwhite1.png" class="uk-text-center">　　</th>
 			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
@@ -83,7 +84,7 @@ body {
 		<%@ include file="manual_source.jsp"%>
 		</table>
 <%}else{ %>
-	<table border="5" bordercolorlight="#000000"bordercolordark="#696969" class="uk-table uk-width-1-1" >
+	<table border="5" class="uk-table uk-width-1-1" >
 		<tr class="uk-text-large">
 			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
 			<th Background="../../images/blackwhite1.png" class=" uk-width-3-10 uk-text-center"><font color="#ffffff">更新日時</font></th>
@@ -97,6 +98,22 @@ body {
 </div>
 </div>
 <br><br>
+<div id="edit_form" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <a class="uk-modal-close uk-close"></a>
+        <div class="uk-form uk-width-2-3 uk-align-center">
+        	<p id="msg">新しいファイル名を入力してください。</p>
+        	<div class="uk-form-row">
+        		<input type="text" name="new_name" class="uk-form-width-large">
+        	</div>
+        	<div class="uk-form-row">
+        		<div class="uk-width-1-2 uk-align-center">
+        			<button class="uk-button uk-button-success uk-width-1-1" id="enter">変更</button>
+        		</div>
+        	</div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 
