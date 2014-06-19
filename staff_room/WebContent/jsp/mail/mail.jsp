@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% //String user = String.valueOf(session.getAttribute("admin")); %>	
+<% //String user = String.valueOf(session.getAttribute("admin")); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="dao.ShainDB,
 				dao.NewsDAO,
@@ -17,6 +17,92 @@
 <html>
 <head>
 	<jsp:include page="/html/head.html" />
+<style type="text/css">
+body {
+	width: 100%;
+	background-attachment: fixed;
+	background-image: url("/staff_room/images/input.png");
+}
+
+.contents {
+	padding-top: 80px;
+	min-width: 800px;
+}
+p.scroll{
+	height: 5em;
+	overflow: scroll;
+	}
+#out_Div {
+  position: relative;
+  padding-top: 110px;
+  width: 800px;
+}
+
+#out2_Div {
+  position: relative;
+  padding-top: 130px;
+  width: 800px;
+}
+
+#in_Div {
+	overflow-y: scroll;
+	line-height: 1.75em;
+	height: 450px;
+	background-color: whitesmoke;
+    }
+
+table >thead{
+
+}
+table >thead>tr{
+  position: absolute;
+  top: 70px;
+  left: 0px;
+  width: 800px;
+
+
+}
+.coL1 { width:22px; }/* colgroupの列幅指定 */
+
+.coL2 { width:100px; }
+
+.coL3 { width:140px; }
+
+.coL4 { width:530px; }
+
+.coL5 { width:26px; }
+
+.coL6 { width:101px; }
+
+.coL7 { width:140px; }
+
+.coL8 { width:530px; }
+
+.coL9 { width:14px; }
+
+.coL10 { width:86px; }
+
+.coL11 { width:127px; }
+
+.coL12 { width:377px; }
+
+.coL13 { width:57px; }
+
+.coL14 { width:70px; }
+
+.coL15 { width:70px; }
+
+.coL16 { width:70px; }
+
+.coL17 { width:530px; }
+
+.coL18 { width:70px; }
+
+.coL19 { width:70px; }
+
+.coL20 { width:101px; }
+
+</style>
 	<title>メール</title>
 	<script src="/staff_room/script/MailCheckbox.js"></script>
 	<link rel="stylesheet" href="/staff_room/css/copy_mail.css">
@@ -27,27 +113,34 @@
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-		
+
 	<div id="con" class="uk-width-1-1 uk-container-center ">
-		<% //if(user.equals("1")){ %> 
+		<% //if(user.equals("1")){ %>
 		<%if(value.equals("1")){%>
 			<div id="come">
-				※「記事未読件数」には全記事の中で、未読の総数を表示します。<br> 「緊急記事未読件数」には緊急とされた記事の中で、未読の総数を表示します。
+				※「未読」には全記事の中から、未読の件数を表示します。<br> 　&nbsp;「緊急」には緊急とされた記事の中から、未読の件数を表示します。
 				<a class="uk-button uk-button-success" href="/staff_room/jsp/writeNews/writeNews.jsp" style="float:right;">管理編集ページに戻る</a>
 			</div><%}%>
-		
-		<table border="5" bordercolorlight="#000000" bordercolordark="#696969" class="uk-table uk-width-3-5">
+		<div id="out_Div"><div id="in_Div">
+		<table border="1" bordercolorlight="#000000" bordercolordark="#696969" class="uk-table uk-width-medium-1-1">
+		<thead>
 			<tr class="uk-text-large">
-				<th Background="../../images/blackwhite1.png" class=" uk-text-center "><font color="#FFFFFF"></font></th>
-				<th Background="../../images/blackwhite1.png" class=" uk-width-1-4 uk-text-center"><font color="#FFFFFF">氏名</font></th>
-				<th Background="../../images/blackwhite1.png" class=" uk-width-3-10 uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
-				<th Background="../../images/blackwhite1.png" class=" uk-width-11-20 uk-text-center"><font color="#FFFFFF">メールアドレス</font></th>
 				<% //if(user.equals("1")){ %>
 				<%if(value.equals("1")){%>
-				<th nowrap Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-4 uk-text-center"><font color="#FFFFFF">記事<br>未読件数</font></th>
-			    <th nowrap Background="/staff_room/images/blackwhite1.png" class=" uk-width-1-4 uk-text-center"><font color="#FFFFFF">緊急記事<br>未読件数</font></th>
+				<th Background="../../images/blackwhite1.png" class="coL9  uk-text-center "><font color="#FFFFFF"></font></th>
+				<th Background="../../images/blackwhite1.png" class="coL10  uk-text-center"><font color="#FFFFFF">氏名</font></th>
+				<th Background="../../images/blackwhite1.png" class="coL11  uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
+				<th Background="../../images/blackwhite1.png" class="coL12  uk-text-left"><font color="#FFFFFF">　　　メールアドレス</font></th>
+				<th nowrap Background="/staff_room/images/blackwhite1.png" class="coL13 uk-width-1-4 uk-text-center"><font color="#FFFFFF">未読</font></th>
+			    <th nowrap Background="/staff_room/images/blackwhite1.png" class="coL14 uk-width-1-4 uk-text-center"><font color="#FFFFFF">緊急</font></th>
+			    <%} else {%>
+				<th Background="../../images/blackwhite1.png" class="coL1  uk-text-center "><font color="#FFFFFF"></font></th>
+				<th Background="../../images/blackwhite1.png" class="coL2  uk-text-center"><font color="#FFFFFF">氏名</font></th>
+				<th Background="../../images/blackwhite1.png" class="coL3  uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
+				<th Background="../../images/blackwhite1.png" class="coL4  uk-text-left"><font color="#FFFFFF">　　　メールアドレス</font></th>
 			    <%} %>
 			</tr>
+		</thead>
 		<%
 	ArrayList<Integer> x = new ArrayList<Integer>();
 	Mail.GetShainDB News = new Mail.GetShainDB();
@@ -60,14 +153,14 @@
 				+"order by shainmst.hurigana asc";
 	System.out.println(sql);
 	Newslist = News.getShain(sql);
-		
+
 		ShainDB primary = new ShainDB();
 		NewsDAO nd = new NewsDAO();
 		Connection con =primary.openShainDB();
 		Statement stmt;
 		for (int i = 0; i < Newslist.size(); i++) {
 			HashMap<String, String> Newsmap = Newslist.get(i);
-			
+
 			String past_unread = Newsmap.get("read_check");
 			String last_access = Newsmap.get("access_time");
 			if(last_access.indexOf(".") != -1){
@@ -113,7 +206,7 @@
 			}
 			if(!sql_in.equals("''")){
 
-				String sql2 = "select count(*) from news where news_id in (" + sql_in + ")" 
+				String sql2 = "select count(*) from news where news_id in (" + sql_in + ")"
 							+ " and primary_flag = '1'";
 
 				try{
@@ -133,29 +226,31 @@
             String moji = str2.substring(inde+1);
             System.out.println(moji.substring(0,1));
                 %>
+
        			<tr id="<%=moji.substring(0,1)%>">
-       				<td ><a flag="0"
+       				<td class="coL5 uk-text-center"><a flag="0"
        				class="uk-icon-square-o uk-text-center delete-box"
        				name="check" id="<%=str1.substring(0,index)%>"></a></td>
-       				<td id = "na" ><%=Newsmap.get("name")%></td>
-       				<td id = "na"><%=Newsmap.get("hurigana")%></td>
-       				<td id = "na"><a href="mailto:<%=Newsmap.get("mail")%>"><%=Newsmap.get("mail")%></a></td>
+       				<td class="coL6" ><%=Newsmap.get("name")%></td>
+       				<td class="coL7"><%=Newsmap.get("hurigana")%></td>
+       				<td class="coL8"><a href="mailto:<%=Newsmap.get("mail")%>"><%=Newsmap.get("mail")%></a></td>
        				<% //if(user.equals("1")){ %>
        				<%if(value.equals("1")){%>
-       				<td align="right" id = "na">
+       				<td align="right" class="coL15">
 					<% if(unread.length == 1 && unread[0].equals("")){ %>0
 					<% }else{ %><%=unread.length%><% } %></td>
-					<td align="right" id = "na"><%=primary_count%></td><%} %>
+					<td align="right" class="coL16"><%=primary_count%></td><%} %>
        			</tr>
        		<%}%>
-         
 		</table>
+		</div></div>
 		<br>
 		<div id=button>
 		<div id=button-con>
-		<a class="uk-button uk-button-primary" href="mailto:" id="mail" style="white-space:nowrap;margin-left:10px"> メール作成</a>
-		<a class="uk-button uk-button-primary" id="mai" style="white-space:nowrap;margin-left:10px"> 選択</a>
-		<a class="uk-button uk-button-primary" id="none" style="white-space:nowrap;margin-left:10px"> 不選択</a>
+		<div class="uk-text-center">
+		<a class="uk-button uk-button-primary" href="mailto:" id="mail" style="white-space:nowrap;"> メール作成</a>
+		<a class="uk-button uk-button-primary" id="mai" style="white-space:nowrap;">&nbsp;&nbsp;全選択&nbsp;</a>
+		<a class="uk-button uk-button-danger" id="none" style="white-space:nowrap;"> 選択解除</a>
 			<ul>
 				<li>
 					<a class="uk-button" href="#a" style="white-space:nowrap;margin-left:13px">ア</a>
@@ -178,11 +273,11 @@
 					<a class="uk-button" href="#w">ワ</a>
 				</li>
 			</ul>
-			
-			
+
+
 		</div>
-		<%if(value.equals("1")){%><a class="uk-button uk-button-primary" href="mailto:all@lucentsquare.co.jp;" id="mail" style="white-space:nowrap;margin-left:2px"> 全社員へメール</a><%} %>
-		<div id="tyu">(注)outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div>
+		<%if(value.equals("1")){%><a class="uk-button uk-button-primary" href="mailto:all@lucentsquare.co.jp;" id="mail" style="white-space:nowrap;margin-left:5px"> 全社員へメール</a><%} %>
+		<div id="tyu">(注)outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div></div>
 		</div>
 	</div>
 </body>

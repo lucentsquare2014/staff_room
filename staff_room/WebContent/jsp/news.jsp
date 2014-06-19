@@ -37,7 +37,7 @@
 	}
 	.contents {
 	padding-top: 80px;
-	min-width: 950px;
+	min-width: 810px;
 	}
 	p.scroll{
 		height: 5em;
@@ -45,14 +45,14 @@
 		}
 	#out_Div {
 	  position: relative;
-	  padding-top: 70px;
-	  width: 900px;
+	  padding-top: 106px;
+	  width: 810px;
 	}
 
 	#in_Div {
 		overflow-y: scroll;
 		line-height: 1.75em;
-		max-height: 440px;
+		max-height: 385px;
 		background-color: whitesmoke;
  	   }
 
@@ -61,20 +61,15 @@
 	}
 	table >thead>tr{
  	 position: absolute;
- 	 top: 24px;
+ 	 top: 60px;
  	 left: 0px;
-	  width: 900px;
+	 width: 810px;
 	}
 
-	.coL1 { width:177px; }/* colgroupの列幅指定 */
+	.coL1 { width:166px; }/* colgroupの列幅指定 */
 
-	.coL2 { width:723px; }
+	.coL2 { width:694px; }
 
-	.coL3 { width:120px; }
-
-	.coL4 { width:500px; }
-
-	.coL5 { width:70px; }
 </style>
 </head>
 <body>
@@ -207,7 +202,7 @@
 				<%} %>
 			</td>
 		</table>
-		</div></div>
+		</div></div><br>
 		<!-- 次へボタン、戻るボタンの処理　 -->
 		<div class="uk-grid" style="padding-bottom: 50px;">
 			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left">
