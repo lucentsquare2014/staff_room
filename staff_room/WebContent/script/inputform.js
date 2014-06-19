@@ -89,12 +89,14 @@ $(function(){
             }, 3000);
             var files = $("#upload-select")[0].files;
             for(var i = 0; files[i]; i++){
-            	name_str = name_str + files[i].name + ",";
-            	$("#loop").append(function(){
-            		return "<div class=\"uk-alert\">" + 
-            		"<a href=\"\" class=\"uk-alert-close uk-close\" data-uk-alert></a>" +
-            		"<a href=\"/staff_room/upload/" + files[i].name + "\">" + files[i].name + "</a></div>";
-            	});
+            	if(name_str.indexOf(files[i].name) == -1){
+            		name_str = name_str + files[i].name + ",";
+                	$("#loop").append(function(){
+                		return "<div class=\"uk-alert\">" + 
+                		"<a href=\"\" class=\"uk-alert-close uk-close\" data-uk-alert></a>" +
+                		"<a href=\"/staff_room/upload/" + files[i].name + "\">" + files[i].name + "</a></div>";
+                	});
+            	}
             	$("#loop").find('a').click(function(){
             		var deleted = $(this).next().text();
             		var news_id = $("input[name='inputNewsid']").val();
