@@ -31,11 +31,50 @@
  	tr{white-space:nowrap;}
   	body {
 		width: 100%;
-		height: 656px;
 		background-attachment: fixed;
 		background-image: url("/staff_room/images/renraku01.jpg");
 		background-size: 100% auto;
 	}
+	.contents {
+	padding-top: 80px;
+	min-width: 950px;
+	}
+	p.scroll{
+		height: 5em;
+		overflow: scroll;
+		}
+	#out_Div {
+	  position: relative;
+	  padding-top: 70px;
+	  width: 900px;
+	}
+
+	#in_Div {
+		overflow-y: scroll;
+		line-height: 1.75em;
+		max-height: 440px;
+		background-color: whitesmoke;
+ 	   }
+
+	table >thead{
+
+	}
+	table >thead>tr{
+ 	 position: absolute;
+ 	 top: 24px;
+ 	 left: 0px;
+	  width: 900px;
+	}
+
+	.coL1 { width:177px; }/* colgroupの列幅指定 */
+
+	.coL2 { width:723px; }
+
+	.coL3 { width:120px; }
+
+	.coL4 { width:500px; }
+
+	.coL5 { width:70px; }
 </style>
 </head>
 <body>
@@ -103,13 +142,15 @@
 			</font>
 			</div></div></div>
 
-		<br><br><br><br><br><br>
 		<div class="uk-width-3-5 uk-container-center">
+		<div id="out_Div"><div id="in_Div">
 		<table border="1" class="uk-table uk-text-center uk-width-medium-1-1">
+		<thead>
 		<tr class="uk-text-large">
-		<td Background="../images/blackwhite1.png" class="uk-h2 uk-width-medium-2-10"><font color="#ffffff">日付</font></td>
-		<td Background="../images/blackwhite1.png" class="uk-h2 uk-width-medium-8-10"><font color="#ffffff">件名</font></td>
+		<td Background="../images/blackwhite1.png" class="coL1 uk-h2 uk-width-medium-2-10"><font color="#ffffff">日付</font></td>
+		<td Background="../images/blackwhite1.png" class="coL2 uk-h2 uk-width-medium-8-10"><font color="#ffffff">件名</font></td>
 		</tr>
+		</thead>
 		<%
 		for (int i = 0; i < list.size(); i++) {
 			HashMap<String, String> row = list.get(i);
@@ -166,6 +207,7 @@
 				<%} %>
 			</td>
 		</table>
+		</div></div>
 		<!-- 次へボタン、戻るボタンの処理　 -->
 		<div class="uk-grid" style="padding-bottom: 50px;">
 			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left">
