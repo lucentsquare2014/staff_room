@@ -133,6 +133,10 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
 					<li><a
 						href="/staff_room/jsp/etc.jsp?etc=4">新入社員紹介</a></li>
 					<li><a
+						href="/staff_room/jsp/etc.jsp?etc=5">401K説明書類</a></li>
+					<li><a
+						href="/staff_room/jsp/etc.jsp?etc=6">Pマーク関係書類</a></li>
+					<li><a
 						href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
 				</ul>
 			</div>

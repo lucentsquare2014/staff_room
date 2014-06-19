@@ -12,6 +12,8 @@
 		<%if(value.equals("2")){%><title>e-talent</title><%}%>
 		<%if(value.equals("3")){%><title>Advance meeting</title><%}%>
 		<%if(value.equals("4")){%><title>新入社員紹介</title><%}%>
+		<%if(value.equals("5")){%><title>401K説明書類</title><%}%>
+		<%if(value.equals("6")){%><title>Pマーク関係書類</title><%}%>
 <style>
 body {
 	width: 100%;
@@ -29,15 +31,21 @@ body {
 	margin-right:auto;
 	background-color:white;
 }
+iframe{
+	width:100%;
+	height:100%;
+}
 </style>
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="conetent">
-		<%if(value.equals("1")){%><iframe width="100%" height="100%" src="//www.lucentsquare.co.jp/gps/pc/"></iframe><%} %>
-		<%if(value.equals("2")){%><iframe width="100%" height="100%" src="//www.lucentsquare.co.jp:8080/etalent5_27/main.jsp"></iframe><%}%>
-		<%if(value.equals("3")){%><iframe width="100%" height="100%" src="//www.lucentsquare.co.jp/staff/staff_main.html"></iframe><%} %>
-		<%if(value.equals("4")){%><iframe width="100%" height="100%" src="//www.lucentsquare.co.jp/staff/newstaff_2014/newstaff_index.html"></iframe><%} %>
+		<%if(value.equals("1")){%><iframe src="//www.lucentsquare.co.jp/gps/pc/"></iframe><%} %>
+		<%if(value.equals("2")){%><iframe src="//www.lucentsquare.co.jp:8080/etalent5_27/main.jsp"></iframe><%}%>
+		<%if(value.equals("3")){%><iframe src="//www.lucentsquare.co.jp/staff/staff_main.html"></iframe><%} %>
+		<%if(value.equals("4")){%><iframe src="//www.lucentsquare.co.jp/staff/newstaff_2014/newstaff_index.html"></iframe><%} %>
+		<%if(value.equals("5")){%><iframe src="//www.lucentsquare.co.jp/401KDVD/401K/401K_top.html"></iframe><%} %>
+		<%if(value.equals("6")){%><iframe src="//www.lucentsquare.co.jp/staff/renraku.cgi"></iframe><%} %>
 	</div>
 </body>
 </html>

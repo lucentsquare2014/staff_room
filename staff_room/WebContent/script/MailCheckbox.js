@@ -16,6 +16,14 @@ $(function() {
 											"uk-icon-square-o");
 								}
 							});
+					$("#mai").click(function() {
+						$('[name="check"]').attr("flag","1");
+						$('[name="check"]').attr("class","uk-icon-check-square-o");
+					});
+					$("#none").click(function() {
+						$('[name="check"]').attr("flag","0");
+						$('[name="check"]').attr("class","uk-icon-square-o");
+					});
 					$("#mail").click(function() {
 						var str = "";
 						var ids = [];
