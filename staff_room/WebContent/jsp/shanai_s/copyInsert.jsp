@@ -2,16 +2,18 @@
 <%@ page import="java.sql.*,java.io.*,java.util.*" %>
 <%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
-<%!public String strEncode(String strVal) throws UnsupportedEncodingException{
+<%!
+public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal == null){
 		return(null);
 	}
 	else{
 		return(new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
-}%>
+}
+%>
 <%
-	/* 追加点 */
+/* 追加点 */
 // 02-09-13 コピー機能のスケジュール登録を行う
 
 // ログインしたユーザの社員番号を変数[ID]に格納
@@ -29,21 +31,13 @@ String ST = strEncode(request.getParameter("s_start"));
 String GR = strEncode(request.getParameter("group"));
 
 String KD = strEncode(request.getParameter("kind"));
+
 %>
 <html>
 <head><title>エラー</title></head>
 <body BGCOLOR="#99A5FF">
 <%
-	/* // JDBCドライバのロード
-Class.forName("org.postgresql.Driver");
 
-// データベースにログインするための情報
-String user = "georgir";
-String password = "georgir";
-
-// データベースに接続
-Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
- */
  //データベース接続
  C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
  Connection con = georgiaDB.createConnection();
@@ -133,7 +127,7 @@ if(group_id.equals(group_no) || group_id.equals("900")){
 		stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + NO2 + "','" + DA2 + "','" + ST + "','" + cpyEND + "','" + cpyPLAN + "','" + cpyPLAN2 + "','" + cpyPLACE + "','" + cpyPLACE2 + "','" + cpyMEMO + "','" + cpyTOUROKU + "','" + cpyZAISEKI + "')");
 	}
 	else{
-%>
+	%>
 	<jsp:forward page="error.jsp">
 	 <jsp:param name="flag" value="4" />
 	</jsp:forward>

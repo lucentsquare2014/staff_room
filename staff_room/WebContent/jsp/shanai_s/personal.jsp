@@ -1,68 +1,57 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.sql.*,java.io.*,java.util.*" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.sql.*,java.io.*,java.util.*"%>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir"%>
 
 <%!// 文字エンコードを行います。
-public String strEncode(String strVal) throws UnsupportedEncodingException{
-		if(strVal == null){
+	public String strEncode(String strVal) throws UnsupportedEncodingException {
+		if (strVal == null) {
 			return (null);
+		} else {
+			return (new String(strVal.getBytes("8859_1"), "UTF-8"));
 		}
-		else{
-			return (new String(strVal.getBytes("8859_1"),"UTF-8"));
-		}
-}%>
+	}%>
 <%
 	/* 修正点 */
-// 02-08-16 余計なプログラムの排除
+	// 02-08-16 余計なプログラムの排除
 
-// ログインしたユーザの社員番号を変数[ID]に格納
-String ID = strEncode(request.getParameter("id"));
+	// ログインしたユーザの社員番号を変数[ID]に格納
+	String ID = strEncode(request.getParameter("id"));
 
-// チェック用フラグ
-boolean flag = false;
+	// チェック用フラグ
+	boolean flag = false;
 
-/* // JDBCドライバのロード
-Class.forName("org.postgresql.Driver");
+	C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+	Connection con = georgiaDB.createConnection();
 
-// ユーザ認証情報の設定
-String user = "georgir";
-String password = "georgir";
+	// Statementオブジェクトの生成
+	Statement stmt = con.createStatement();
 
-// Connectionオブジェクトの生成
-Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
- */
- C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
- Connection con = georgiaDB.createConnection();
+	// SQLの実行
+	ResultSet CHECK = stmt
+			.executeQuery("SELECT * FROM PE_TABLE WHERE K_社員NO='" + ID
+					+ "'");
 
-// Statementオブジェクトの生成
-Statement stmt = con.createStatement();
+	if (CHECK.next()) {
+		flag = true;
+	}
 
-// SQLの実行
-ResultSet CHECK = stmt.executeQuery("SELECT * FROM PE_TABLE WHERE K_社員NO='" + ID + "'");
+	CHECK.close();
 
-if(CHECK.next()){
-	flag = true;
-}
-
-CHECK.close();
-
-if(flag){
+	if (flag) {
 %>
-	<jsp:forward page="personalUp.jsp">
-		<jsp:param name="id" value="<%= ID %>" />
-	</jsp:forward>
-	<%
-}
-else{
-	%>
-	<jsp:forward page="personalIn.jsp">
-		<jsp:param name="id" value="<%= ID %>" />
-	</jsp:forward>
-	<%
-}
+<jsp:forward page="personalUp.jsp">
+	<jsp:param name="id" value="<%=ID%>" />
+</jsp:forward>
+<%
+	} else {
+%>
+<jsp:forward page="personalIn.jsp">
+	<jsp:param name="id" value="<%=ID%>" />
+</jsp:forward>
+<%
+	}
 
-// Statement.Connectionオブジェクトを閉じる
-stmt.close();
-con.close();
-
+	// Statement.Connectionオブジェクトを閉じる
+	stmt.close();
+	con.close();
 %>

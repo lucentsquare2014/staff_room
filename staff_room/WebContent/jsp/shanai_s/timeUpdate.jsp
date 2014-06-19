@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.sql.*,java.io.*,java.util.* , java.util.Vector" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.sql.*,java.io.*,java.util.* , java.util.Vector"%>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir"%>
 <%!public String strEncode(String strVal)
         throws UnsupportedEncodingException{
         if(strVal==null){
@@ -89,9 +89,11 @@ String pre = request.getParameter("pre");
 String act = strEncode(request.getParameter("act"));
 %>
 <html>
-<head><title></title></head>
+<head>
+<title></title>
+</head>
 <body BGCOLOR="#99A5FF">
-<%
+	<%
 	if(ID.equals("")){
 	out.println("ユーザＩＤがありません。");
 	out.println("<form><input type=button value=戻る onClick=history.back()></form>");
@@ -145,15 +147,6 @@ String act = strEncode(request.getParameter("act"));
 	out.println("<form><input type=button value=戻る onClick=history.back()></form>");
 }else{
 
-/* 	// JDBCドライバのロード
-	Class.forName("org.postgresql.Driver");
-
-	// データベースにログインするための情報
-	String user = "georgir";
-	String password = "georgir";
- */
-	// データベースに接続
-	//Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
 	C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
     Connection con = georgiaDB.createConnection();
 	// ステートメントの生成
@@ -485,12 +478,12 @@ String act = strEncode(request.getParameter("act"));
 	UorD = false;
 	}else{
 %>
-		<jsp:forward page="error.jsp">
-			<jsp:param name="id" value="<%= ID %>" />
-			<jsp:param name="no" value="<%= NO %>" />
-			<jsp:param name="flag" value="3" />
-		</jsp:forward>
-		<%
+	<jsp:forward page="error.jsp">
+		<jsp:param name="id" value="<%= ID %>" />
+		<jsp:param name="no" value="<%= NO %>" />
+		<jsp:param name="flag" value="3" />
+	</jsp:forward>
+	<%
 	}
 	// 接続解除
 	stmt.close();
@@ -506,7 +499,7 @@ String act = strEncode(request.getParameter("act"));
 		if(KD.equals("Month-u")){
 			if(UorD){
 				%>
-				<SCRIPT LANGUAGE="JAVASCRIPT">
+	<SCRIPT LANGUAGE="JAVASCRIPT">
 <!-- 移動禁止 -->
 <!--
 				parent.main.location.href='tryagain.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DAnew %>&group=<%= GR %>';
@@ -514,10 +507,10 @@ String act = strEncode(request.getParameter("act"));
 // -->
 
 				</SCRIPT>
-				<%
+	<%
 			}else{
 				%>
-				<SCRIPT LANGUAGE="JAVASCRIPT">
+	<SCRIPT LANGUAGE="JAVASCRIPT">
 
 <!--
 				parent.main.location.href='tryagain.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DAold %>&group=<%= GR %>';
@@ -525,12 +518,12 @@ String act = strEncode(request.getParameter("act"));
 // -->
 
 				</SCRIPT>
-				<%
+	<%
 			}
 		}else if(KD.equals("Week-u")){
 			if(UorD){
 				%>
-				<SCRIPT LANGUAGE="JAVASCRIPT">
+	<SCRIPT LANGUAGE="JAVASCRIPT">
 
 <!--
 				parent.main.location.href='TestExample34.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DAnew %>&group=<%= GR %>';
@@ -538,10 +531,10 @@ String act = strEncode(request.getParameter("act"));
 // -->
 
 				</SCRIPT>
-				<%
+	<%
 			}else{
 				%>
-				<SCRIPT LANGUAGE="JAVASCRIPT">
+	<SCRIPT LANGUAGE="JAVASCRIPT">
 
 <!--
 				parent.main.location.href='TestExample34.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DAold %>&group=<%= GR %>';
@@ -549,12 +542,12 @@ String act = strEncode(request.getParameter("act"));
 // -->
 
 				</SCRIPT>
-				<%
+	<%
 			}
 		}else if(KD.equals("Day-u")){
 			if(UorD){
 				%>
-				<SCRIPT LANGUAGE="JAVASCRIPT">
+	<SCRIPT LANGUAGE="JAVASCRIPT">
 
 <!--
 				parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DAnew %>&group=<%= GR %>';
@@ -562,28 +555,27 @@ String act = strEncode(request.getParameter("act"));
 // -->
 
 				</SCRIPT>
-				<%
+	<%
 			}else{
 				%>
-				<SCRIPT LANGUAGE="JAVASCRIPT">
+	<SCRIPT LANGUAGE="JAVASCRIPT">
 
 <!--
 				parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DAold %>&group=<%= GR %>';
 				parent.sub02.location.href='timeIn.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DAold %>&s_start=<%= start %>&b_start=&group=<%= GR %>&kind=<%= KDs %>&act=';
-// -->
-
-				</SCRIPT>
-				<%
-			}
-		}else{
-			%>
-			<jsp:forward page="error.jsp">
-			<jsp:param name="flag" value="0" />
-			</jsp:forward>
-			<%
+	// -->
+	</SCRIPT>
+	<%
 		}
-	}
-}
-%>
+				} else {
+	%>
+	<jsp:forward page="error.jsp">
+		<jsp:param name="flag" value="0" />
+	</jsp:forward>
+	<%
+		}
+			}
+		}
+	%>
 </body>
 </html>

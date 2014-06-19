@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.sql.*,java.io.*,java.util.* , java.util.Vector" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.sql.*,java.io.*,java.util.* , java.util.Vector"%>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir"%>
 
 <%!public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal==null){
@@ -81,9 +81,11 @@ String pre = request.getParameter("pre");
 String act = strEncode(request.getParameter("act"));
 %>
 <html>
-<head><title>エラー</title></head>
+<head>
+<title>エラー</title>
+</head>
 <body BGCOLOR="#99A5FF">
-<%
+	<%
 	if(ID.equals("")){
 		out.println("ユーザＩＤがありません。");
 		out.println("<form><input type=button value=戻る onClick=history.back()></form>");
@@ -279,12 +281,12 @@ String act = strEncode(request.getParameter("act"));
 		}
 		else{
 %>
-			<jsp:forward page="error.jsp">
-			 <jsp:param name="id" value="<%= ID %>" />
-			 <jsp:param name="no" value="<%= NO %>" />
-			 <jsp:param name="flag" value="3" />
-			</jsp:forward>
-			<%
+	<jsp:forward page="error.jsp">
+		<jsp:param name="id" value="<%= ID %>" />
+		<jsp:param name="no" value="<%= NO %>" />
+		<jsp:param name="flag" value="3" />
+	</jsp:forward>
+	<%
 		}
 
 		// 接続解除
@@ -300,7 +302,7 @@ String act = strEncode(request.getParameter("act"));
 		}else{
 			if(KD.equals("Month")){
 				%>
-				<SCRIPT LANGUAGE="JAVASCRIPT">
+	<SCRIPT type="text/javascript">
 <!-- 移動禁止 -->
 <!--
 				parent.main.location.href='tryagain.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
@@ -308,11 +310,11 @@ String act = strEncode(request.getParameter("act"));
 // -->
 <!-- 移動禁止 -->
 				</SCRIPT>
-				<%
+	<%
 			}
 			else if(KD.equals("Week")){
 				%>
-				<SCRIPT LANGUAGE="JAVASCRIPT">
+	<SCRIPT type="text/javascript">
 <!-- 移動禁止 -->
 <!--
 				parent.main.location.href='TestExample34.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
@@ -320,11 +322,11 @@ String act = strEncode(request.getParameter("act"));
 // -->
 <!-- 移動禁止 -->
 				</SCRIPT>
-				<%
+	<%
 			}
 			else if(KD.equals("Day")){
 				%>
-				<SCRIPT LANGUAGE="JAVASCRIPT">
+	<SCRIPT type="text/javascript">
 <!-- 移動禁止 -->
 <!--
 				parent.main.location.href='h_hyoji.jsp?id=<%= ID %>&no=<%= NO %>&s_date=<%= DA %>&group=<%= GR %>';
@@ -332,17 +334,16 @@ String act = strEncode(request.getParameter("act"));
 // -->
 <!-- 移動禁止 -->
 				</SCRIPT>
-				<%
-			}
-			else{
-				%>
-				<jsp:forward page="error.jsp">
-				 <jsp:param name="flag" value="0" />
-				</jsp:forward>
-				<%
+	<%
+		} else {
+	%>
+	<jsp:forward page="error.jsp">
+		<jsp:param name="flag" value="0" />
+	</jsp:forward>
+	<%
+		}
 			}
 		}
-	}
-%>
+	%>
 </body>
 </html>

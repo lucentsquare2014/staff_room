@@ -1,6 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.util.*,java.sql.*,java.util.Date,java.io.*,java.text.*" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page
+	import="java.util.*,java.sql.*,java.util.Date,java.io.*,java.text.*"%>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir"%>
 
 <%!// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
@@ -33,15 +34,7 @@ String konohito = strEncode(request.getParameter("slkname"));
 String post = request.getParameter("group");
 String strReturn = request.getParameter("s_date");
 
-/* // JDBCドライバのロード
-Class.forName("org.postgresql.Driver");
 
-// データベースへ接続
-String user = "georgir";
-String password = "georgir";
-
-Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir", user, password);
- */
  C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
  Connection con = georgiaDB.createConnection();
 
@@ -72,50 +65,55 @@ String s_end = "";
 String memo = "";
 %>
 <html>
-	<head>
-		<title></title>
-		<STYLE TYPE="text/css">
-			.shadow{filter:shadow(color=black,direction=135);position:relative;height:50;width:100%;}
-		</STYLE>
-	</head>
-	<BODY BGCOLOR="#99A5FF">
-		<TABLE BORDER="0">
-			<TR>
-				<TD>
-					<FORM ACTION="tryagain.jsp" METHOD="POST">
-						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-						<INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>">
-						<INPUT TYPE="submit" VALUE="月表示" title="月表示に移動します。">
-					</FORM>
-				</TD>
-				<TD>
-					<FORM ACTION="TestExample34.jsp" METHOD="POST">
-						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-						<INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>">
-						<INPUT TYPE="submit" VALUE="週表示" title="週表示に移動します。">
-					</FORM>
-				</TD>
-				<TD>
-					<FORM ACTION="h_hyoji.jsp" METHOD="POST">
-						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-						<INPUT TYPE="hidden" NAME="group" VALUE="<%= post %>">
-						<INPUT TYPE="submit" VALUE="日表示" title="日表示に移動します。">
-					</FORM>
-				</TD>
-				<TD>
-					<FORM ACTION="personal.jsp" METHOD="POST" TARGET="_parent">
-						<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>">
-						<INPUT TYPE="submit" VALUE="個人設定" title="個人設定ページに移動します。">
-					</FORM>
-				</TD>
-                <TD>
-                    <FORM ACTION="/staff_room" METHOD="POST" TARGET="_top">
-                        <INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。">
-                    </FORM>
-                </TD>
-			</TR>
-		</TABLE>
-		<%
+<head>
+<title></title>
+<STYLE TYPE="text/css">
+.shadow {
+	filter: shadow(color = black, direction = 135);
+	position: relative;
+	height: 50;
+	width: 100%;
+}
+</STYLE>
+</head>
+<BODY BGCOLOR="#99A5FF">
+	<TABLE BORDER="0">
+		<TR>
+			<TD>
+				<FORM ACTION="tryagain.jsp" METHOD="POST">
+					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
+						TYPE="hidden" NAME="group" VALUE="<%= post %>"> <INPUT
+						TYPE="submit" VALUE="月表示" title="月表示に移動します。">
+				</FORM>
+			</TD>
+			<TD>
+				<FORM ACTION="TestExample34.jsp" METHOD="POST">
+					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
+						TYPE="hidden" NAME="group" VALUE="<%= post %>"> <INPUT
+						TYPE="submit" VALUE="週表示" title="週表示に移動します。">
+				</FORM>
+			</TD>
+			<TD>
+				<FORM ACTION="h_hyoji.jsp" METHOD="POST">
+					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
+						TYPE="hidden" NAME="group" VALUE="<%= post %>"> <INPUT
+						TYPE="submit" VALUE="日表示" title="日表示に移動します。">
+				</FORM>
+			</TD>
+			<TD>
+				<FORM ACTION="personal.jsp" METHOD="POST" TARGET="_parent">
+					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
+						TYPE="submit" VALUE="個人設定" title="個人設定ページに移動します。">
+				</FORM>
+			</TD>
+			<TD>
+				<FORM ACTION="/staff_room" METHOD="POST" TARGET="_top">
+					<INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。">
+				</FORM>
+			</TD>
+		</TR>
+	</TABLE>
+	<%
 		// ＤＢグループ名.コンボ
 		ResultSet rs2 = stmt.executeQuery("SELECT * FROM KINMU.GRU ORDER BY G_GRUNO");
 
@@ -199,44 +197,39 @@ String memo = "";
 
 		%>
 
-		<%--  グループ名のコンボボックス  --%>
-		<table>
-			<tr>
-				<form action="tryagain.jsp" method="post">
-					<td>
-						<FONT COLOR="white">
-							<SPAN CLASS="shadow">
-								グループ名
-							</SPAN>
-						</FONT>
-					</td>
-					<td valign="top">
-						<select name=group style=width:200>
-							<option value="all">全社員</option>
-							<%
+	<%--  グループ名のコンボボックス  --%>
+	<table>
+		<tr>
+			<form action="tryagain.jsp" method="post">
+				<td><FONT COLOR="white"> <SPAN CLASS="shadow">
+							グループ名 </SPAN>
+				</FONT></td>
+				<td valign="top"><select name=group style="width: 200">
+						<option value="all">全社員</option>
+						<%
 							if(post == null){
 								post = post;
 							}
 							for(i = 0;i < hitCnt1;i++){
 								if(hitList2.elementAt(i).equals(post)){
-									%><option selected value="<%= hitList2.elementAt(i) %>"><%= hitList1.elementAt(i) %></option><%
+									%><option selected value="<%= hitList2.elementAt(i) %>"><%= hitList1.elementAt(i) %></option>
+						<%
 								}else{
-									%><option value="<%= hitList2.elementAt(i) %>"><%= hitList1.elementAt(i) %></option><%
+									%><option value="<%= hitList2.elementAt(i) %>"><%= hitList1.elementAt(i) %></option>
+						<%
 								}
 							}
 							%>
-						</select>
-					</td>
-					<td valign="top">
-						<input type="hidden" name="group" value="<%= post %>">
-						<input type="hidden" name="id" value="<%= ID %>">
-						<input type="hidden" name="kojin" value="<%= name %>">
-						<input type="hidden" name="count" value="<%= intTuki %>">
-						<input type="hidden" name="countY" value="<%= intYear %>">
-						<input type="submit" value="選択" title="左記のグループを右に表示します。">
-					</td>
-				</form>
-				<%
+				</select></td>
+				<td valign="top"><input type="hidden" name="group"
+					value="<%= post %>"> <input type="hidden" name="id"
+					value="<%= ID %>"> <input type="hidden" name="kojin"
+					value="<%= name %>"> <input type="hidden" name="count"
+					value="<%= intTuki %>"> <input type="hidden" name="countY"
+					value="<%= intYear %>"> <input type="submit" value="選択"
+					title="左記のグループを右に表示します。"></td>
+			</form>
+			<%
 				ResultSet rs4 = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_GRUNO = '"+ post +"' ORDER BY K_PASS2 , K_社員NO");
 
 				Vector hitList3 = new Vector();
@@ -268,120 +261,112 @@ String memo = "";
 				rs8.close();
 
 				%>
-				<form action="tryagain.jsp" method="post">
-					<td>
-						<FONT COLOR="white">
-							<SPAN CLASS="shadow">
-								個人名
-							</SPAN>
-						</FONT>
-					</td>
-					<td valign="top">
-						<select name="slkname" style="width:200">
-							<option selected value=""></option>
-							<%
+			<form action="tryagain.jsp" method="post">
+				<td><FONT COLOR="white"> <SPAN CLASS="shadow">
+							個人名 </SPAN>
+				</FONT></td>
+				<td valign="top"><select name="slkname" style="width: 200">
+						<option selected value=""></option>
+						<%
 							if(post.equals("all")){
 								for(i = 0;i < hitCnt3;i++){
 									if(hitList5.elementAt(i).equals(name)){
-										%><option selected value="<%= hitList5.elementAt(i) %>"><%= hitList5.elementAt(i) %></option><%
+										%><option selected value="<%= hitList5.elementAt(i) %>"><%= hitList5.elementAt(i) %></option>
+						<%
 									}else{
-										%><option value="<%= hitList5.elementAt(i) %>"><%= hitList5.elementAt(i) %></option><%
+										%><option value="<%= hitList5.elementAt(i) %>"><%= hitList5.elementAt(i) %></option>
+						<%
 									}
 								}
 							}else{
 								for(i = 0;i < hitCnt2;i++){
 									if(hitList3.elementAt(i).equals(name)){
-										%><option selected value="<%= hitList3.elementAt(i) %>"><%= hitList3.elementAt(i) %></option><%
+										%><option selected value="<%= hitList3.elementAt(i) %>"><%= hitList3.elementAt(i) %></option>
+						<%
 									}else{
-										%><option value="<%= hitList3.elementAt(i) %>"><%= hitList3.elementAt(i) %></option><%
+										%><option value="<%= hitList3.elementAt(i) %>"><%= hitList3.elementAt(i) %></option>
+						<%
 									}
 								}
 							}
 							%>
-						</select>
+				</select></td>
+				<td valign="top"><input type="hidden" name="group"
+					value="<%= post %>"> <input type="hidden" name="id"
+					value="<%= ID %>"> <input type="hidden" name="kojin"
+					value="<%= name %>"> <input type="hidden" name="count"
+					value="<%= intTuki %>"> <input type="hidden" name="countY"
+					value="<%= intYear %>"> <input type="submit" value="表示"
+					title="左記の人のスケジュールを表示します。"></td>
+			</form>
+		</tr>
+	</table>
+	<center>
+		<table>
+			<tr>
+				<%--  前月に移動するコマンドボタン  --%>
+				<form action="tryagain.jsp" method="post">
+					<td><input type="hidden" name="group" value="<%= post %>">
+						<input type="hidden" name="id" value="<%= ID %>"> <input
+						type="hidden" name="kojin" value="<%= name %>"> <input
+						type="hidden" name="count" value="<%= intTuki - 1 %>"> <input
+						type="hidden" name="countY" value="<%= intYear %>"> <input
+						type="submit" name="zengetu" value="前月" title="前の月に移動します。">
 					</td>
-					<td valign="top">
-						<input type="hidden" name="group" value="<%= post %>">
-						<input type="hidden" name="id" value="<%= ID %>">
-						<input type="hidden" name="kojin" value="<%= name %>">
-						<input type="hidden" name="count" value="<%= intTuki %>">
-						<input type="hidden" name="countY" value="<%= intYear %>">
-						<input type="submit" value="表示" title="左記の人のスケジュールを表示します。">
+				</form>
+				<td><SPAN CLASS="shadow"> <font size="6" color="white">
+							<b><i> <%
+								// 今日の年と月表示ラベル
+								out.print(intYear + "年" + intTuki + "月");
+								%>
+							</i></b>
+					</font>
+				</SPAN></td>
+				<%--  次月に移動するコマンドボタン  --%>
+				<form action="tryagain.jsp" method="post">
+					<td><input type="hidden" name="group" value="<%= post %>">
+						<input type="hidden" name="id" value="<%= ID %>"> <input
+						type="hidden" name="kojin" value="<%= name %>"> <input
+						type="hidden" name="count" value="<%= intTuki + 1 %>"> <input
+						type="hidden" name="countY" value="<%= intYear %>"> <input
+						type="submit" name="jigetu" value="翌月" title="次の月に移動します。">
 					</td>
 				</form>
 			</tr>
 		</table>
-		<center>
-			<table>
-				<tr>
-					<%--  前月に移動するコマンドボタン  --%>
-					<form action="tryagain.jsp" method="post">
-						<td>
-							<input type="hidden" name="group" value="<%= post %>">
-							<input type="hidden" name="id" value="<%= ID %>">
-							<input type="hidden" name="kojin" value="<%= name %>">
-							<input type="hidden" name="count" value="<%= intTuki - 1 %>">
-							<input type="hidden" name="countY" value="<%= intYear %>">
-							<input type="submit" name="zengetu" value="前月" title="前の月に移動します。">
-						</td>
-					</form>
-					<td>
-						<SPAN CLASS="shadow">
-							<font size="6" color="white">
-								<b><i>
-								<%
-								// 今日の年と月表示ラベル
-								out.print(intYear + "年" + intTuki + "月");
-								%>
-								</i></b>
-							</font>
-						</SPAN>
-					</td>
-					<%--  次月に移動するコマンドボタン  --%>
-					<form action="tryagain.jsp" method="post">
-						<td>
-							<input type="hidden" name="group" value="<%= post %>">
-							<input type="hidden" name="id" value="<%= ID %>">
-							<input type="hidden" name="kojin" value="<%= name %>">
-							<input type="hidden" name="count" value="<%= intTuki + 1 %>">
-							<input type="hidden" name="countY" value="<%= intYear %>">
-							<input type="submit" name="jigetu" value="翌月" title="次の月に移動します。">
-						</td>
-					</form>
-				</tr>
-			</table>
-		</center>
+	</center>
 
-		<%--  カレンダー作成  --%>
-		<table width="100%" border="1" cellspacing="0" cellpadding="1"><br>
-			<tr bgcolor="black">
-				<td width="13%" bgcolor="pink">
-					<center>
-						<font color="red">日</font>
-					</center>
-				</td>
-				<td width="13%" bgcolor="white">
-					<center>月</center>
-				</td>
-				<td width="13%" bgcolor="white">
-					<center>火</center>
-				</td>
-				<td width="13%" bgcolor="white">
-					<center>水</center>
-				</td>
-				<td width="13%" bgcolor="white">
-					<center>木</center>
-				</td>
-				<td width="13%" bgcolor="white">
-					<center>金</center>
-				</td>
-				<td width="13%" bgcolor="skyblue">
-					<center>
-						<font color="blue">土</font>
-					</center>
-				</td>
-			</tr>
-			<%
+	<%--  カレンダー作成  --%>
+	<table width="100%" border="1" cellspacing="0" cellpadding="1">
+		<br>
+		<tr bgcolor="black">
+			<td width="13%" bgcolor="pink">
+				<center>
+					<font color="red">日</font>
+				</center>
+			</td>
+			<td width="13%" bgcolor="white">
+				<center>月</center>
+			</td>
+			<td width="13%" bgcolor="white">
+				<center>火</center>
+			</td>
+			<td width="13%" bgcolor="white">
+				<center>水</center>
+			</td>
+			<td width="13%" bgcolor="white">
+				<center>木</center>
+			</td>
+			<td width="13%" bgcolor="white">
+				<center>金</center>
+			</td>
+			<td width="13%" bgcolor="skyblue">
+				<center>
+					<font color="blue">土</font>
+				</center>
+			</td>
+		</tr>
+		<%
 			// テーブル項目取り込み用変数の初期化
 			String bana = "";
 			String b_plan = "";
@@ -424,8 +409,8 @@ String memo = "";
 				Date thisMonth = cal.getTime();
 				String hajime = sFmt.format(thisMonth);
 				%>
-				<tr>
-				<%
+		<tr>
+			<%
 				for( i = 1; i < sWeek; i++ ){
 					sFmt = new SimpleDateFormat("yyyyMMdd");
 					cal.set( intYear, intTuki - 2, zengetu);
@@ -448,20 +433,30 @@ String memo = "";
 					// 曜日毎にバックグランドの色を変更する
 					if(sFmt.format(today).equals(kyo2)){
 					// 今日
-						%><td height="50" align="left" valign="top" bgcolor="lavender"><%
+						%><td height="50" align="left" valign="top" bgcolor="lavender">
+				<%
 					}else if(calWeek == 1){
-						%><td bgcolor="pink" height="50" align="left" valign="top"><%
+						%>
+			
+			<td bgcolor="pink" height="50" align="left" valign="top">
+				<%
 					}else if(yasumi != null){
-						%><td bgcolor="pink" height="50" align="left" valign="top"><%
+						%>
+			
+			<td bgcolor="pink" height="50" align="left" valign="top">
+				<%
 					}else{
-						%><td bgcolor="white" height="50" align="left" valign="top"><%
+						%>
+			
+			<td bgcolor="white" height="50" align="left" valign="top">
+				<%
 					}
-					%>
-					<A HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act=" TARGET="sub02" title="新規登録できます。" oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
-						<%= zengetu %>
-					</A>
-					<font color="red"><%= yasumi %></font><br>
-					<%
+					%> <A
+				HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act="
+				TARGET="sub02" title="新規登録できます。"
+				oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
+					<%= zengetu %>
+			</A> <font color="red"><%= yasumi %></font><br> <%
 					ResultSet rs3 = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_社員NO = '"+ no +"' AND B_START <= '"+ sFmt.format(thisMonth) +"' AND '"+ sFmt.format(thisMonth) +"' <= B_END");
 					while(rs3.next()){
 						b_start = rs3.getString("B_START");
@@ -473,9 +468,9 @@ String memo = "";
 							iro = "yellow";
 						}
 						%>
-						<table bgcolor="<%= iro %>" width="100%">
-							<td>
-								<%
+				<table bgcolor="<%= iro %>" width="100%">
+					<td>
+						<%
 								if(b_start.equals(sFmt.format(thisMonth)) || hajime.equals(sFmt.format(thisMonth))){
 									b_plan2 = rs3.getString("B_PLAN2");
 									b_place = rs3.getString("B_PLACE").trim();
@@ -539,19 +534,16 @@ String memo = "";
 										bmemo = "メモ内容<BR>"+ bmemo +"";
 									}
 									*/
-									%>
-									<A HREF="dayUp.jsp?id=<%= ID %>&no=<%= no %>&s_date=&s_start=&b_start=<%= b_start %>&group=<%= post %>&kind=Month-b&act=" TARGET="sub02" title="<%= bmemo %>">
-										<font size=2>
-											<%= bana + bmemo %>
-										</font>
-									</A>
-									<%
-								}else{%>　<%}
+									%> <A
+						HREF="dayUp.jsp?id=<%= ID %>&no=<%= no %>&s_date=&s_start=&b_start=<%= b_start %>&group=<%= post %>&kind=Month-b&act="
+						TARGET="sub02" title="<%= bmemo %>"> <font size=2> <%= bana + bmemo %>
+						</font>
+					</A> <%
+								}else{%> <%}
 								%>
-								</td>
-							</tr>
-						</table>
-						<%
+					</td>
+					</tr>
+				</table> <%
 					}
 					rs3.close();
 					sFmt = new SimpleDateFormat("yyyyMMdd");
@@ -620,17 +612,16 @@ String memo = "";
 							memo = "<b><メモ></b><BR>"+ memo +"";
 						}
 						*/
-						%>
-						<A HREF="timeUp.jsp?id=<%= ID %>&no=<%= no %>&group=<%= post %>&s_date=<%= s_date.substring(0,10) %>&s_start=<%= s_start %>&b_start=&kind=Month-u&act=" TARGET="sub02" oncontextmenu="if(!event.ctrlKey){ send<%=mincnt%>('<%= ID %>','<%= no %>','<%= s_date.substring(0,10) %>','<%= s_start %>');return false;}">
-							<font size="2">
-								<%= sche + memo %>
-							</font>
-						</A>
-						<%
+						%> <A
+				HREF="timeUp.jsp?id=<%= ID %>&no=<%= no %>&group=<%= post %>&s_date=<%= s_date.substring(0,10) %>&s_start=<%= s_start %>&b_start=&kind=Month-u&act="
+				TARGET="sub02"
+				oncontextmenu="if(!event.ctrlKey){ send<%=mincnt%>('<%= ID %>','<%= no %>','<%= s_date.substring(0,10) %>','<%= s_start %>');return false;}">
+					<font size="2"> <%= sche + memo %>
+				</font>
+			</A> <%
 					}
 					rs6.close();
-					%>
-					<script language="JavaScript1.2">
+					%> <script language="JavaScript1.2">
 					<!--
 						function deleteCookie(theName){
 							document.cookie = theName + "=;expires=Thu," + "01-Jan-70 00:00:01 GMT";
@@ -680,8 +671,7 @@ String memo = "";
 							parent.main.location.href = "copyInsert.jsp?id="+ Eid +"&no="+ Eno +"&no2="+ charno +"&s_date="+ Es_date +"&s_date2="+ charde +"&s_start="+ Es_start +"&group=<%= post %>&kind="+ charkd +"";
 						}
 					//-->
-					</script>
-					<%
+					</script> <%
 					mincnt = mincnt + 1;
 					xxx = xxx + 1;
 					zengetu = zengetu + 1;
@@ -711,8 +701,9 @@ String memo = "";
 				// 日曜日が最初なので行の先頭をあらわす<tr>タグを設定
 				if(calWeek == 1){
 					%>
-					<tr>
-					<%
+			
+		<tr>
+			<%
 				}
 				sFmt = new SimpleDateFormat("yyyy-MM-dd");
 				cal.set(nen,tuki,i);
@@ -721,37 +712,40 @@ String memo = "";
 				if(sFmt.format(today).equals(kyo2)){
 					// 今日
 					%>
-					<td height="50" align="left" valign="top" bgcolor="lavender">
-					<%
+			<td height="50" align="left" valign="top" bgcolor="lavender">
+				<%
 				}else if(calWeek == 1){
 					// 日曜日
 					%>
-					<td height="50" align="left" valign="top" bgcolor="pink">
-					<%
+			
+			<td height="50" align="left" valign="top" bgcolor="pink">
+				<%
 				}else if(yasumi != ""){
 					// 祝日
 					%>
-					<td height="50" align="left" valign="top" bgcolor="pink">
-					<%
+			
+			<td height="50" align="left" valign="top" bgcolor="pink">
+				<%
 				}else if(calWeek == 7){
 					// 土曜日
 					%>
-					<td height="50" align="left" valign="top" bgcolor="skyblue">
-					<%
+			
+			<td height="50" align="left" valign="top" bgcolor="skyblue">
+				<%
 				}else{
 					// 平日
 					%>
-					<td height="50" align="left" valign="top" bgcolor="white">
-					<%
-				}
-				%>
-				<A HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act=" TARGET="sub02" title="新規登録できます。" oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
-					<%= i %>
-				</A>
-				<font color=red>
-					<%= yasumi %>
-				</font><br>
+			
+			<td height="50" align="left" valign="top" bgcolor="white">
 				<%
+				}
+				%> <A
+				HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act="
+				TARGET="sub02" title="新規登録できます。"
+				oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
+					<%= i %>
+			</A> <font color=red> <%= yasumi %>
+			</font><br> <%
 				ResultSet rs3 = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_社員NO = '"+ no +"' AND B_START <= '"+ sFmt.format(thisMonth) +"' AND '"+ sFmt.format(thisMonth) +"' <= B_END");
 				while(rs3.next()){
 					b_start = rs3.getString("B_START");
@@ -763,9 +757,9 @@ String memo = "";
 						iro = "yellow";
 					}
 					%>
-					<table bgcolor="<%= iro %>" width="100%">
-						<TR>
-							<td>
+				<table bgcolor="<%= iro %>" width="100%">
+					<TR>
+						<td>
 							<%
 							
 								if(b_start.equals(sFmt.format(thisMonth)) || (i == 1 && calWeek == 1)){
@@ -851,19 +845,16 @@ String memo = "";
 									bmemo = "<b><メモ></b><BR>"+ bmemo +"";
 								}
 								*/
-								%>
-								<A HREF="dayUp.jsp?id=<%= ID %>&no=<%= no %>&s_date=&s_start=&b_start=<%= b_start %>&group=<%= post %>&kind=Month-b&act=" TARGET="sub02" title="<%= bmemo %>">
-									<font size="2">
-										<%= bana + bmemo %>
-									</font>
-								</A>
-								<%
-							}else{%>　<%}
+								%> <A
+							HREF="dayUp.jsp?id=<%= ID %>&no=<%= no %>&s_date=&s_start=&b_start=<%= b_start %>&group=<%= post %>&kind=Month-b&act="
+							TARGET="sub02" title="<%= bmemo %>"> <font size="2"> <%= bana + bmemo %>
+							</font>
+						</A> <%
+							}else{%> <%}
 							%>
-							</TD>
-						</TR>
-					</table>
-					<%
+						</TD>
+					</TR>
+				</table> <%
 				}
 				rs3.close();
 				sFmt = new SimpleDateFormat("yyyyMMdd");
@@ -933,17 +924,16 @@ String memo = "";
 						memo = "<b><メモ></b><BR>"+ memo +"";
 					}
 					*/
-					%>
-					<A HREF="timeUp.jsp?id=<%= ID %>&no=<%= no %>&group=<%= post %>&s_date=<%= s_date.substring(0,10) %>&s_start=<%= s_start %>&b_start=&kind=Month-u&act=" TARGET="sub02" oncontextmenu="if(!event.ctrlKey){ send<%=mincnt%>('<%= ID %>','<%= no %>','<%= s_date.substring(0,10) %>','<%= s_start %>');return false;}">
-						<font size="2">
-							<%= sche + memo %>
-						</font>
-					</A>
-					<%
+					%> <A
+				HREF="timeUp.jsp?id=<%= ID %>&no=<%= no %>&group=<%= post %>&s_date=<%= s_date.substring(0,10) %>&s_start=<%= s_start %>&b_start=&kind=Month-u&act="
+				TARGET="sub02"
+				oncontextmenu="if(!event.ctrlKey){ send<%=mincnt%>('<%= ID %>','<%= no %>','<%= s_date.substring(0,10) %>','<%= s_start %>');return false;}">
+					<font size="2"> <%= sche + memo %>
+				</font>
+			</A> <%
 				}
 				rs6.close();
-				%>
-				<script language="JavaScript1.2">
+				%> <script language="JavaScript1.2">
 				<!--
 					function deleteCookie(theName){
 						document.cookie = theName + "=;expires=Thu," + "01-Jan-70 00:00:01 GMT";
@@ -993,22 +983,21 @@ String memo = "";
 						parent.main.location.href = "copyInsert.jsp?id="+ Eid +"&no="+ Eno +"&no2="+ charno +"&s_date="+ Es_date +"&s_date2="+ charde +"&s_start="+ Es_start +"&group=<%= post %>&kind="+ charkd +"";
 					}
 				//-->
-				</script>
-				<%
+				</script> <%
 				mincnt = mincnt + 1;
 				xxx = xxx + 1;
 				calWeek++;
 				// 日付用カラムの終了タグを設定
 				%>
-				</td>
-				<%
+			</td>
+			<%
 
 				// 土曜日の場合:1行を</tr>タグで閉じて
 				// 一週間分の表示データをクライアントに送信する
 				if(calWeek > 7){
 				%>
-				</tr>
-				<%
+		</tr>
+		<%
 				}
 				// 曜日を一つ増やす
 				calWeek = ++calWeek % 8;
@@ -1042,29 +1031,31 @@ String memo = "";
 					if(sFmt.format(today).equals(kyo2)){
 						// 今日
 						%>
-						<td height="50" align="left" valign="top" bgcolor="lavender">
-						<%
+		<td height="50" align="left" valign="top" bgcolor="lavender">
+			<%
 					}else if(yasumi != null){
 						%>
-						<td height="50" align="left" valign="top" bgcolor="pink">
-						<%
+		
+		<td height="50" align="left" valign="top" bgcolor="pink">
+			<%
 					}else if(calWeek == 7){
 						%>
-						<td height="50" align="left" valign="top" bgcolor="skyblue">
-						<%
+		
+		<td height="50" align="left" valign="top" bgcolor="skyblue">
+			<%
 					}else{
 						%>
-						<td height="50" align="left" valign="top" bgcolor="white">
-						<%
+		
+		<td height="50" align="left" valign="top" bgcolor="white">
+			<%
 					}
-					%>
-					<A HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act=" TARGET="sub02" title="新規登録できます。" oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
-						<%= j %>
-					</A>
-					<font color="red">
-						<%= yasumi %>
-					</font><br>
-					<%
+					%> <A
+			HREF="timeIn.jsp?id=<%= ID %>&no=<%= no %>&s_date=<%= sFmt.format(today) %>&s_start=&b_start=&group=<%= post %>&kind=Month&act="
+			TARGET="sub02" title="新規登録できます。"
+			oncontextmenu="if(!event.ctrlKey){ miseru<%=xxx%>('<%= no %>','<%= sFmt.format(thisMonth) %>','Month');return false}">
+				<%= j %>
+		</A> <font color="red"> <%= yasumi %>
+		</font><br> <%
 					ResultSet rs3 = stmt.executeQuery("SELECT * FROM B_TABLE WHERE K_社員NO = '"+ no +"' AND B_START <= '"+ sFmt.format(thisMonth) +"' AND '"+ sFmt.format(thisMonth) +"' <= B_END");
 					while(rs3.next()){
 						b_start = rs3.getString("B_START");
@@ -1077,10 +1068,10 @@ String memo = "";
 							iro = "yellow";
 						}
 						%>
-						<table bgcolor="<%= iro %>" width="100%">
-							<tr>
-								<td>
-								<%
+			<table bgcolor="<%= iro %>" width="100%">
+				<tr>
+					<td>
+						<%
 								if(b_start.equals(sFmt.format(thisMonth)) || (i == 1 && calWeek == 1)){
 									b_plan2 = rs3.getString("B_PLAN2");
 									b_place = rs3.getString("B_PLACE").trim();
@@ -1136,19 +1127,16 @@ String memo = "";
 										bmemo = "<b><メモ></b><BR>"+ bmemo +"";
 									}
 									*/
-									%>
-									<A HREF="dayUp.jsp?id=<%= ID %>&no=<%= no %>&s_date=&s_start=&b_start=<%= b_start %>&group=<%= post %>&kind=Month-b&act=" TARGET="sub02"">
-										<font size="2">
-											<%= bana + bmemo %>
-										</font>
-									</A>
-									<%
-								}else{%>　<%}
+									%> <A
+						HREF="dayUp.jsp?id=<%= ID %>&no=<%= no %>&s_date=&s_start=&b_start=<%= b_start %>&group=<%= post %>&kind=Month-b&act="
+						TARGET="sub02""> <font size="2"> <%= bana + bmemo %>
+						</font>
+					</A> <%
+								}else{%> <%}
 								%>
-								</td>
-							</tr>
-						</table>
-						<%
+					</td>
+				</tr>
+			</table> <%
 					}
 					rs3.close();
 					sFmt = new SimpleDateFormat("yyyyMMdd");
@@ -1216,17 +1204,16 @@ String memo = "";
 							memo = "<b><メモ></b><BR>"+ memo +"";
 						}
 						*/
-						%>
-						<A HREF="timeUp.jsp?id=<%= ID %>&no=<%= no %>&group=<%= post %>&s_date=<%= s_date.substring(0,10) %>&s_start=<%= s_start %>&b_start=&kind=Month-u&act=" TARGET="sub02" oncontextmenu="if(!event.ctrlKey){ send<%=mincnt%>('<%= ID %>','<%= no %>','<%= s_date.substring(0,10) %>','<%= s_start %>');return false;}">
-							<font size="2">
-								<%= sche + memo %>
-							</font>
-						</A>
-						<%
+						%> <A
+			HREF="timeUp.jsp?id=<%= ID %>&no=<%= no %>&group=<%= post %>&s_date=<%= s_date.substring(0,10) %>&s_start=<%= s_start %>&b_start=&kind=Month-u&act="
+			TARGET="sub02"
+			oncontextmenu="if(!event.ctrlKey){ send<%=mincnt%>('<%= ID %>','<%= no %>','<%= s_date.substring(0,10) %>','<%= s_start %>');return false;}">
+				<font size="2"> <%= sche + memo %>
+			</font>
+		</A> <%
 						}
 					rs6.close();
-					%>
-					<script language="JavaScript1.2">
+					%> <script language="JavaScript1.2">
 					<!--
 						function deleteCookie(theName){
 							document.cookie = theName + "=;expires=Thu," + "01-Jan-70 00:00:01 GMT";
@@ -1273,23 +1260,24 @@ String memo = "";
 								Es_start = theCookie.indexOf(";",Ss_start);
 								Es_start = theCookie.substring(Ss_start + 8,Es_start);
 							}
-							parent.main.location.href = "copyInsert.jsp?id="+ Eid +"&no="+ Eno +"&no2="+ charno +"&s_date="+ Es_date +"&s_date2="+ charde +"&s_start="+ Es_start +"&group=<%= post %>&kind="+ charkd +"";
+							parent.main.location.href = "copyInsert.jsp?id="+ Eid +"&no="+ Eno +"&no2="+ charno +"&s_date="+ Es_date +"&s_date2="+ charde +"&s_start="+ Es_start +"&group=<%= post %>
+						&kind="+ charkd +"";
 						}
+					
 					//-->
-					</script>
-					<%
-					mincnt = mincnt + 1;
-					xxx = xxx + 1;
-					j = j + 1;
-				}
-			}
-			%>
-			</td>
-			</tr>
-		</table>
-		<%
+					</script> <%
+ 	mincnt = mincnt + 1;
+ 			xxx = xxx + 1;
+ 			j = j + 1;
+ 		}
+ 	}
+ %>
+		</td>
+		</tr>
+	</table>
+	<%
 		stmt.close();
 		con.close();
-		%>
-	</body>
+	%>
+</body>
 </html>
