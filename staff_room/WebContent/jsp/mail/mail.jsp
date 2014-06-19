@@ -154,6 +154,8 @@
 		<div id=button>
 		<div id=button-con>
 		<a class="uk-button uk-button-primary" href="mailto:" id="mail" style="white-space:nowrap;margin-left:10px"> メール作成</a>
+		<a class="uk-button uk-button-primary" id="mai" style="white-space:nowrap;margin-left:10px"> 選択</a>
+		<a class="uk-button uk-button-primary" id="none" style="white-space:nowrap;margin-left:10px"> 不選択</a>
 			<ul>
 				<li>
 					<a class="uk-button" href="#a" style="white-space:nowrap;margin-left:13px">ア</a>
