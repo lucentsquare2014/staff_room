@@ -65,7 +65,7 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
 			class="uk-navbar-brand"> <img src="/staff_room/images/Logo.png"
 				alt="会社のページに戻る" width="30" height="30"></img></a></li>
 		<li class="header"><a href="/staff_room/jsp/top/top.jsp">TOP</a></li>
-		<li id="w" class="uk-parent header" data-uk-dropdown>
+		<li id="wal" class="uk-parent header" data-uk-dropdown>
 			<a href="/staff_room/jsp/news.jsp?news=all">連絡
 				<i class="uk-icon-caret-down"></i>
 			</a>

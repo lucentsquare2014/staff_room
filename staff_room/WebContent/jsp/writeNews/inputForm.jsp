@@ -42,7 +42,7 @@
 					<option value="1">総務</option>
 					<option value="2">人事</option>
 					<option value="3">行事</option>
-					<option value="4">開発</option>
+					<option value="4">ビジネス推進室</option>
 					<option value="5">その他</option>
 				</select>
 			<% } else { %>

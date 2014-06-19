@@ -91,7 +91,7 @@ $(function() {
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td style="width:300px;">
+								<td style="width:200px;">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
