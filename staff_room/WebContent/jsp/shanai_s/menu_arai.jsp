@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.*,java.io.*" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+
 
 <%!
 // 文字エンコードを行います。

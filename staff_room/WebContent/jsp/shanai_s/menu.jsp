@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*,java.util.*,java.io.*"%>
+<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+
 <%  String id2 = (String)session.getAttribute("login");
         if(id2 == null){
             pageContext.forward("/");

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.*,java.sql.*,java.util.Date,java.io.*,java.text.*" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+
 <%!
 // 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{

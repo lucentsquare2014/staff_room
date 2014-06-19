@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.* , java.util.Vector" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
 <%!
 public String strEncode(String strVal)
         throws UnsupportedEncodingException{
@@ -146,16 +147,17 @@ if(ID.equals("")){
 	out.println("<form><input type=button value=戻る onClick=history.back()></form>");
 }else{
 
-	// JDBCドライバのロード
+/* 	// JDBCドライバのロード
 	Class.forName("org.postgresql.Driver");
 
 	// データベースにログインするための情報
 	String user = "georgir";
 	String password = "georgir";
-
+ */
 	// データベースに接続
-	Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
-
+	//Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
+	C_DBConnectionGeorgia georgiaDB = new C_DBConnectionGeorgia();
+    Connection con = georgiaDB.createConnection();
 	// ステートメントの生成
 	Statement stmt = con.createStatement();
 	Statement stmt2 = con.createStatement();
