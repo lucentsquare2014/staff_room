@@ -1,21 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.*,java.sql.*,java.util.Date,java.io.*,java.text.*" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
-<%!
-// 文字エンコードを行います。
+<%!// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal==null){
 		return (null);
 	}else{
 		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
-}
-
-%>
+}%>
 <%
-
-/* 修正点 */
+	/* 修正点 */
 // 02-08-12 パラメータの送り先を変更[各フレームへ送信 sub01,sub02]
 // 02-08-16 パラメータを修正
 // 02-09-02 パラメータの送り先の変更[２画面に変更したので、sub02にのみ送る]
@@ -154,7 +150,7 @@ try{
 	// 各日付の幅を設定
 	int[] scheduleWidth = new int[48];
 
-	// JDBCドライバのロード
+/* 	// JDBCドライバのロード
 	Class.forName("org.postgresql.Driver");
 
 	// ユーザ情報
@@ -163,6 +159,10 @@ try{
 
 	// データベース接続
 	Connection dbConn = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
+ */
+ //データベース接続
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection dbConn = georgiaDB.createConnection();
 
 	// Statementオブジェクトの生成
 	Statement stmt = dbConn.createStatement();

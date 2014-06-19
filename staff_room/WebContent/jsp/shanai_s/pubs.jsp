@@ -1,10 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.* , java.util.Vector" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
 
-<%!
-// 文字エンコードを行います。
+<%!// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal==null){
 		return (null);
@@ -12,10 +11,9 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 	else{
 		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
-}
-%>
+}%>
 <%
-/* 修正点*/
+	/* 修正点*/
 // 02-08-07 共有者情報テーブルの「K_社員NO」のデータ型を変更したことにより、正常にデータを読み出せるようした。
 // 02-08-27 登録者と共有者の表示が、共有者のスケジュールからは表示出来なかったものを修正。
 // 02-09-18 動作テスト期間…バグ発見  314行目 メンバーリストに、共有者テーブルへ登録したユーザが必ず出ている。
@@ -47,7 +45,7 @@ String AC = strEncode(request.getParameter("act"));
 // 表示の種類を判別するパラメータ
 String KD = request.getParameter("kind");
 
-// JDBCドライバのロード
+/* // JDBCドライバのロード
 Class.forName("org.postgresql.Driver");
 
 // ユーザ認証情報の設定
@@ -56,6 +54,9 @@ String password = "georgir";
 
 // Connectionオブジェクトの生成
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
+ */
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
 
 // Statementオブジェクトの生成
 Statement stmt = con.createStatement();
@@ -182,7 +183,6 @@ int cntKYOYU = hitKYOYU.size();
 
 KYOYU.close();
 /* 共有者表示 ここまで */
-
 %>
 <script language="JavaScript">
 <!--

@@ -1,10 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.* , java.util.Vector" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
 
-<%!
-// 文字エンコードを行う
+<%!// 文字エンコードを行う
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal == null){
 		return(null);
@@ -12,10 +11,9 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 	else{
 		return(new String(strVal.getBytes("UTF-8"),"UTF-8"));
 	}
-}
-%>
+}%>
 <%
-/* 修正点 */
+	/* 修正点 */
 // 02-08-05 月・週・日とファイルを分けていたものを結合させ、フラグによって処理を月・週・日へと切り替わる方法に移行
 // 02-08-15 余計なプログラムを省く
 // 02-08-26 選択された日付から一週間進めた日付を終了日に代入していたのをなくす。
@@ -46,7 +44,7 @@ int BSy = Integer.parseInt(BS.substring(0,4));  // 年
 int BSm = Integer.parseInt(BS.substring(5,7));  // 月
 int BSd = Integer.parseInt(BS.substring(8,10)); // 日
 
-// JDBCドライバのロード
+/* // JDBCドライバのロード
 Class.forName("org.postgresql.Driver");
 
 // データベースへのログイン情報
@@ -55,6 +53,10 @@ String password = "georgir";
 
 // Connection オブジェクトを生成
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
+ */
+ //データベース接続
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
 
 // Statementオブジェクトの生成
 Statement stmt = con.createStatement();
@@ -158,7 +160,6 @@ int cntGRU = hitGRUNUM.size();
 
 // ResultSetを閉じる
 GROUP.close();
-
 %>
 <HTML>
 	<HEAD>

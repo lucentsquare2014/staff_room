@@ -1,9 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*,java.util.Date,java.text.*,java.lang.*" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
-<%!
-// 文字エンコードを行います。
+<%!// 文字エンコードを行います。
 	public String strEncode(String strVal) throws UnsupportedEncodingException{
 			if(strVal==null){
 				return (null);
@@ -11,8 +10,7 @@
 			else{
 				return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 			}
-	}
-%>
+	}%>
 <%
 	String table_select = request.getParameter("table_select");
 	String sql_select = request.getParameter("sql_select");
@@ -28,7 +26,7 @@
   		gr_name = strEncode(request.getParameter("gr_name"));
   	}
   	
-	// JDBCドライバのロード
+/* 	// JDBCドライバのロード
 	Class.forName("org.postgresql.Driver");
 
 
@@ -39,7 +37,11 @@
 	String password = "georgir"; // データベースにアクセスするためのパスワード
 
 	Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir", user, password);
-	Statement stmt = con.createStatement();
+ */
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
+
+ Statement stmt = con.createStatement();
 
 	//グループ
 	//ResultSet rs = stmt.executeQuery("select * from GRU order by G_GRUNO");
@@ -64,12 +66,12 @@
 		//rs = stmt.executeQuery("select * from KOJIN where K_社員NO='" + k_no + "'");
 		rs = stmt.executeQuery("select * from kinmu.KOJIN where K_社員NO='" + k_no + "'");
 		if(rs.next()){
-			k_lv = rs.getString("K_承認LV");
-			k_id = rs.getString("K_ID");
-			k_pass = rs.getString("K_PASS");
-			k_name = rs.getString("K_氏名");
-			k_group = rs.getString("K_GRUNO");
-			k_mail = rs.getString("K_MAIL");
+	k_lv = rs.getString("K_承認LV");
+	k_id = rs.getString("K_ID");
+	k_pass = rs.getString("K_PASS");
+	k_name = rs.getString("K_氏名");
+	k_group = rs.getString("K_GRUNO");
+	k_mail = rs.getString("K_MAIL");
 		}
 	}
 	

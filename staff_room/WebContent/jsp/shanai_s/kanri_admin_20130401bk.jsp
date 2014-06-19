@@ -1,9 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*,java.util.Date,java.text.*,java.lang.*" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
-<%!
-// 文字エンコードを行います。
+<%!// 文字エンコードを行います。
 	public String strEncode(String strVal) throws UnsupportedEncodingException{
 			if(strVal==null){
 				return (null);
@@ -11,8 +10,7 @@
 			else{
 				return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 			}
-	}
-%>
+	}%>
 <%
 	//sql文準備
 	String table_select = "";
@@ -32,7 +30,7 @@
 	}
 	String inpPassword = request.getParameter("pass");
 
-	// JDBCドライバのロード
+/* 	// JDBCドライバのロード
 	Class.forName("org.postgresql.Driver");
 
 	// データベースへ接続
@@ -43,7 +41,11 @@
 
 
 	Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir", user, password);
-	Statement stmt = con.createStatement();
+ */
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
+
+ Statement stmt = con.createStatement();
 	Statement upData = con.createStatement();
 
 	//グループ
@@ -88,15 +90,15 @@
 		yotei[1][yotei_count] = rs.getString("場所");	
 		yotei[2][yotei_count] = rs.getString("順番");
 		while(sw_junban.equals("1") || sup_junban == 50){
-			if(Integer.parseInt(yotei[2][yotei_count]) == sup_junban){
-				sw_junban = "0";
-				sup_junban++;
-			}else{
-				junban[tenji_junban][0] = Integer.parseInt(sup_kubun);
-				junban[tenji_junban][1] = sup_junban;
-				sup_junban++;
-				tenji_junban++;
-			}
+	if(Integer.parseInt(yotei[2][yotei_count]) == sup_junban){
+		sw_junban = "0";
+		sup_junban++;
+	}else{
+		junban[tenji_junban][0] = Integer.parseInt(sup_kubun);
+		junban[tenji_junban][1] = sup_junban;
+		sup_junban++;
+		tenji_junban++;
+	}
 		}
 		sup_kubun = yotei[0][yotei_count].trim();
 		sw_junban = "1";
@@ -104,9 +106,9 @@
 	}
 	if(sup_junban < 50){
 		for(int g = sup_junban;g < 51;g++){
-			tenji_junban++;
-			junban[tenji_junban][0] = 2;
-			junban[tenji_junban][1] = g;
+	tenji_junban++;
+	junban[tenji_junban][0] = 2;
+	junban[tenji_junban][1] = g;
 		}
 	}
 	
@@ -125,9 +127,9 @@
 		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,0,1);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
-			a_count++;
-			shuku_day[a_count] = select_year + "0102";
-			shuku_name[a_count] = "振替休日";
+	a_count++;
+	shuku_day[a_count] = select_year + "0102";
+	shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
@@ -135,17 +137,17 @@
 		
 		// 第2月曜日になりうる日は８?１４日なので、８?１４日間で月曜日の日が成人の日となる
 		for(int n = 8;n <= 14;n++){
-			cal = new GregorianCalendar(intYear,0,n);
-			if(cal.get(cal.DAY_OF_WEEK) == 2){
-				if(n < 10){
-					sup_day = "0" + Integer.toString(n);
-			  	}else{
-				  	sup_day = Integer.toString(n);
-			  	}
-				shuku_day[a_count] = select_year + "01" + sup_day;
-				shuku_name[a_count] = "成人の日";			  
-				a_count++;
-				break;
+	cal = new GregorianCalendar(intYear,0,n);
+	if(cal.get(cal.DAY_OF_WEEK) == 2){
+		if(n < 10){
+			sup_day = "0" + Integer.toString(n);
+	  	}else{
+		  	sup_day = Integer.toString(n);
+	  	}
+		shuku_day[a_count] = select_year + "01" + sup_day;
+		shuku_name[a_count] = "成人の日";			  
+		a_count++;
+		break;
 		  }
 		}
 		
@@ -155,9 +157,9 @@
 		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,1,11);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
-			a_count++;
-			shuku_day[a_count] = select_year + "0212";
-			shuku_name[a_count] = "振替休日";
+	a_count++;
+	shuku_day[a_count] = select_year + "0212";
+	shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
@@ -168,9 +170,9 @@
 		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,2,Integer.parseInt(sup_day));
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
-			a_count++;
-			shuku_day[a_count] = select_year + "03" + Integer.toString(Integer.parseInt(sup_day) + 1);
-			shuku_name[a_count] = "振替休日";
+	a_count++;
+	shuku_day[a_count] = select_year + "03" + Integer.toString(Integer.parseInt(sup_day) + 1);
+	shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
@@ -180,9 +182,9 @@
 		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,3,29);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
-			a_count++;
-			shuku_day[a_count] = select_year + "0430";
-			shuku_name[a_count] = "振替休日";
+	a_count++;
+	shuku_day[a_count] = select_year + "0430";
+	shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 
@@ -202,9 +204,9 @@
 		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,4,5);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
-			a_count++;
-			shuku_day[a_count] = select_year + "0506";
-			shuku_name[a_count] = "振替休日";
+	a_count++;
+	shuku_day[a_count] = select_year + "0506";
+	shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 
@@ -213,14 +215,14 @@
 		  // 第３月曜日の場合
 		  // 第３月曜日になりうる日は１５?２１日なので、１５?２１日間で月曜日の日が海の日となる
 		for(int n = 15;n <= 21;n++){
-			cal = new GregorianCalendar(intYear,6,n);
-			if(cal.get(cal.DAY_OF_WEEK) == 2){
-				sup_day = Integer.toString(n);
-				shuku_day[a_count] = select_year + "07" + sup_day;
-				shuku_name[a_count] = "海の日";			  
-				a_count++;
-				break;
-			}
+	cal = new GregorianCalendar(intYear,6,n);
+	if(cal.get(cal.DAY_OF_WEEK) == 2){
+		sup_day = Integer.toString(n);
+		shuku_day[a_count] = select_year + "07" + sup_day;
+		shuku_name[a_count] = "海の日";			  
+		a_count++;
+		break;
+	}
 		}
 		
 		// 敬老の日
@@ -228,14 +230,14 @@
 		  // 第３月曜日の場合
 		  // 第３月曜日になりうる日は１５?２１日なので、１５?２１日間で月曜日の日が敬老の日となる
 		for(int n = 15;n <= 21;n++){
-			cal = new GregorianCalendar(intYear,8,n);
-			if(cal.get(cal.DAY_OF_WEEK) == 2){
-				sup_day = Integer.toString(n);
-				shuku_day[a_count] = select_year + "09" + sup_day;
-				shuku_name[a_count] = "敬老の日";			  
-				a_count++;
-				break;
-			}
+	cal = new GregorianCalendar(intYear,8,n);
+	if(cal.get(cal.DAY_OF_WEEK) == 2){
+		sup_day = Integer.toString(n);
+		shuku_day[a_count] = select_year + "09" + sup_day;
+		shuku_name[a_count] = "敬老の日";			  
+		a_count++;
+		break;
+	}
 		}
 		
 		
@@ -246,9 +248,9 @@
 		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,8,Integer.parseInt(sup_day));
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
-			a_count++;
-			shuku_day[a_count] = select_year + "09" + Integer.toString(Integer.parseInt(sup_day) + 1);
-			shuku_name[a_count] = "振替休日";
+	a_count++;
+	shuku_day[a_count] = select_year + "09" + Integer.toString(Integer.parseInt(sup_day) + 1);
+	shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
@@ -256,29 +258,29 @@
 		
 		// 第2月曜日になりうる日は８?１４日なので、８?１４日間で月曜日の日が体育の日となる
 		for(int n = 8;n <= 14;n++){
-			cal = new GregorianCalendar(intYear,9,n);
-			if(cal.get(cal.DAY_OF_WEEK) == 2){
-				if(n < 10){
-					sup_day = "0" + Integer.toString(n);
-			  	}else{
-				  	sup_day = Integer.toString(n);
-			  	}
-				shuku_day[a_count] = select_year + "10" + sup_day;
-				shuku_name[a_count] = "体育の日";			  
-				a_count++;
-				break;
+	cal = new GregorianCalendar(intYear,9,n);
+	if(cal.get(cal.DAY_OF_WEEK) == 2){
+		if(n < 10){
+			sup_day = "0" + Integer.toString(n);
+	  	}else{
+		  	sup_day = Integer.toString(n);
+	  	}
+		shuku_day[a_count] = select_year + "10" + sup_day;
+		shuku_name[a_count] = "体育の日";			  
+		a_count++;
+		break;
 		  }
 		}
-				
+		
 		// 文化の日
 		shuku_day[a_count] = select_year + "1103";
 		shuku_name[a_count] = "文化の日";
 		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,10,3);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
-			a_count++;
-			shuku_day[a_count] = select_year + "1104";
-			shuku_name[a_count] = "振替休日";
+	a_count++;
+	shuku_day[a_count] = select_year + "1104";
+	shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
@@ -288,9 +290,9 @@
 		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,10,23);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
-			a_count++;
-			shuku_day[a_count] = select_year + "1124";
-			shuku_name[a_count] = "振替休日";
+	a_count++;
+	shuku_day[a_count] = select_year + "1124";
+	shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
@@ -300,181 +302,181 @@
 		// 曜日を調べる
 		cal = new GregorianCalendar(intYear,10,23);
 		if(cal.get(cal.DAY_OF_WEEK) == 1){
-			a_count++;
-			shuku_day[a_count] = select_year + "1224";
-			shuku_name[a_count] = "振替休日";
+	a_count++;
+	shuku_day[a_count] = select_year + "1224";
+	shuku_name[a_count] = "振替休日";
 		}
 		a_count++;
 		
 		for(int w = 0;w < a_count;w++){
-			sql = "insert into HOLIDAY values('" + shuku_day[w] + "','" + shuku_name[w] + "')";
-			upData.execute(sql);
+	sql = "insert into HOLIDAY values('" + shuku_day[w] + "','" + shuku_name[w] + "')";
+	upData.execute(sql);
 		}
 	}
 	
 	if(table_select.equals("user")){
 		if(sql_select.equals("ins")){
-			String k_lv = "";
-			if((request.getParameter("ex1") == null || request.getParameter("ex1").equals("")) 
-					&& (request.getParameter("ex2") == null || request.getParameter("ex2").equals(""))){
-				k_lv = "0";				
-			}else if(request.getParameter("ex1").equals("on")){
-				k_lv = "1";
-			}else if(request.getParameter("ex1").equals("on")){
-				k_lv = "2";
-			}
-			String k_no = "";
-			String k_id = "";
-			String k_pass = "";
-			String k_name = "";
-			String k_gruno = "";
-			String k_mail = "";
+	String k_lv = "";
+	if((request.getParameter("ex1") == null || request.getParameter("ex1").equals("")) 
+			&& (request.getParameter("ex2") == null || request.getParameter("ex2").equals(""))){
+		k_lv = "0";				
+	}else if(request.getParameter("ex1").equals("on")){
+		k_lv = "1";
+	}else if(request.getParameter("ex1").equals("on")){
+		k_lv = "2";
+	}
+	String k_no = "";
+	String k_id = "";
+	String k_pass = "";
+	String k_name = "";
+	String k_gruno = "";
+	String k_mail = "";
 
-			if((request.getParameter("number") == null || request.getParameter("number").equals(""))
-					|| (request.getParameter("usrid") == null || request.getParameter("usrid").equals(""))
-					|| (request.getParameter("usrpw") == null || request.getParameter("usrpw").equals(""))
-					|| (request.getParameter("usrname") == null || request.getParameter("usrname").equals(""))
-					|| (request.getParameter("group") == null || request.getParameter("group").equals(""))
-					|| (request.getParameter("mail") == null || request.getParameter("mail").equals(""))){
-				teishi_flg = "2";
-			}else{
-				k_no = request.getParameter("number");
-				k_id = request.getParameter("usrid");
-				k_pass = request.getParameter("usrpw");
-				k_name = strEncode(request.getParameter("usrname"));
-				k_gruno = request.getParameter("group");
-				k_mail = request.getParameter("mail");
-			}
-			if(teishi_flg.equals("0")){
-				for(int u = 0;u < kojin_count;u++){
-						if(kojin[0][u].equals(k_no)){
-							teishi_flg = "3";
-						}
-						if(kojin[4][u].equals(k_name)){
-							teishi_flg = "4";
-						}
-						if(kojin[2][u].equals(k_id)){
-							teishi_flg = "5";
-						}
-						if(kojin[3][u].equals(k_pass)){
-							teishi_flg = "6";
-						}
+	if((request.getParameter("number") == null || request.getParameter("number").equals(""))
+			|| (request.getParameter("usrid") == null || request.getParameter("usrid").equals(""))
+			|| (request.getParameter("usrpw") == null || request.getParameter("usrpw").equals(""))
+			|| (request.getParameter("usrname") == null || request.getParameter("usrname").equals(""))
+			|| (request.getParameter("group") == null || request.getParameter("group").equals(""))
+			|| (request.getParameter("mail") == null || request.getParameter("mail").equals(""))){
+		teishi_flg = "2";
+	}else{
+		k_no = request.getParameter("number");
+		k_id = request.getParameter("usrid");
+		k_pass = request.getParameter("usrpw");
+		k_name = strEncode(request.getParameter("usrname"));
+		k_gruno = request.getParameter("group");
+		k_mail = request.getParameter("mail");
+	}
+	if(teishi_flg.equals("0")){
+		for(int u = 0;u < kojin_count;u++){
+				if(kojin[0][u].equals(k_no)){
+					teishi_flg = "3";
 				}
-			}
-			if(teishi_flg.equals("0")){
-				sql = "insert into KOJIN(K_社員No,K_承認LV,K_ID,K_PASS,K_氏名,K_GRUNo,K_MAIL) values('" + k_no + "','" + k_lv + "','" + k_id + "','" + k_pass + "','" + k_name + "','" + k_gruno + "','" + k_mail + "')";
-			}
+				if(kojin[4][u].equals(k_name)){
+					teishi_flg = "4";
+				}
+				if(kojin[2][u].equals(k_id)){
+					teishi_flg = "5";
+				}
+				if(kojin[3][u].equals(k_pass)){
+					teishi_flg = "6";
+				}
+		}
+	}
+	if(teishi_flg.equals("0")){
+		sql = "insert into KOJIN(K_社員No,K_承認LV,K_ID,K_PASS,K_氏名,K_GRUNo,K_MAIL) values('" + k_no + "','" + k_lv + "','" + k_id + "','" + k_pass + "','" + k_name + "','" + k_gruno + "','" + k_mail + "')";
+	}
 		}else if(sql_select.equals("del")){
-			String k_no = request.getParameter("user_del");
-			sql = "delete from KOJIN where K_社員NO='" + k_no + "'";
+	String k_no = request.getParameter("user_del");
+	sql = "delete from KOJIN where K_社員NO='" + k_no + "'";
 		}else if(sql_select.equals("upd")){
-			String k_lv = "";
-			if((request.getParameter("ex1") == null || request.getParameter("ex1").equals("")) 
-					&& (request.getParameter("ex2") == null || request.getParameter("ex2").equals(""))){
-				k_lv = "0";				
-			}else if(request.getParameter("ex1").equals("on")){
-				k_lv = "1";
-			}else if(request.getParameter("ex1").equals("on")){
-				k_lv = "2";
-			}
-			String k_no = "";
-			String k_id = "";
-			String k_pass = "";
-			String k_name = "";
-			String k_gruno = "";
-			String k_mail = "";
+	String k_lv = "";
+	if((request.getParameter("ex1") == null || request.getParameter("ex1").equals("")) 
+			&& (request.getParameter("ex2") == null || request.getParameter("ex2").equals(""))){
+		k_lv = "0";				
+	}else if(request.getParameter("ex1").equals("on")){
+		k_lv = "1";
+	}else if(request.getParameter("ex1").equals("on")){
+		k_lv = "2";
+	}
+	String k_no = "";
+	String k_id = "";
+	String k_pass = "";
+	String k_name = "";
+	String k_gruno = "";
+	String k_mail = "";
 
-			if(request.getParameter("new_id") == null || request.getParameter("new_id").equals("")){
-				teishi_flg = "7";
-			}else if(request.getParameter("new_pw") == null || request.getParameter("new_pw").equals("")){
-				teishi_flg = "8";
-			}else if(request.getParameter("new_name") == null || request.getParameter("new_name").equals("")){
-				teishi_flg = "10";
-			}else if(request.getParameter("new_mail") == null || request.getParameter("new_mail").equals("")){
-				teishi_flg = "9";
-			}else{
-				k_no = request.getParameter("new_num");
-				k_id = request.getParameter("new_id");
-				k_pass = request.getParameter("new_pw");
-				k_name = strEncode(request.getParameter("new_name"));
-				k_gruno = request.getParameter("new_gr");
-				k_mail = request.getParameter("new_mail");
-			}
-			if(teishi_flg.equals("0")){
-				sql = "update KOJIN set K_承認Lv='" + k_lv + "',K_ID='" + k_id + "',K_PASS='" + k_pass + "',K_氏名='" + k_name + "',K_GRUNo='" + k_gruno + "',K_MAIL='" + k_mail + "' where K_社員NO='" + k_no + "'";
-			}			
+	if(request.getParameter("new_id") == null || request.getParameter("new_id").equals("")){
+		teishi_flg = "7";
+	}else if(request.getParameter("new_pw") == null || request.getParameter("new_pw").equals("")){
+		teishi_flg = "8";
+	}else if(request.getParameter("new_name") == null || request.getParameter("new_name").equals("")){
+		teishi_flg = "10";
+	}else if(request.getParameter("new_mail") == null || request.getParameter("new_mail").equals("")){
+		teishi_flg = "9";
+	}else{
+		k_no = request.getParameter("new_num");
+		k_id = request.getParameter("new_id");
+		k_pass = request.getParameter("new_pw");
+		k_name = strEncode(request.getParameter("new_name"));
+		k_gruno = request.getParameter("new_gr");
+		k_mail = request.getParameter("new_mail");
+	}
+	if(teishi_flg.equals("0")){
+		sql = "update KOJIN set K_承認Lv='" + k_lv + "',K_ID='" + k_id + "',K_PASS='" + k_pass + "',K_氏名='" + k_name + "',K_GRUNo='" + k_gruno + "',K_MAIL='" + k_mail + "' where K_社員NO='" + k_no + "'";
+	}			
 		}
 	}
 	if(table_select.equals("gru")){
 		if(sql_select.equals("ins")){
-			String g_code = "";
-			String g_name = "";
+	String g_code = "";
+	String g_name = "";
 
-			if((request.getParameter("gr_code") == null || request.getParameter("gr_code").equals(""))
-					|| request.getParameter("gr_name") == null || request.getParameter("gr_name").equals("")){
-				teishi_flg = "2";
-			}else{
-				g_code = request.getParameter("gr_code");
-				g_name = strEncode(request.getParameter("gr_name"));
-			}
-			if(teishi_flg.equals("0")){
-				for(int q = 0;q < group_count;q++){
-						if(group[0][q].equals(g_code)){
-							teishi_flg = "11";
-						}
-						if(group[1][q].equals(g_name)){
-							teishi_flg = "12";
-						}
+	if((request.getParameter("gr_code") == null || request.getParameter("gr_code").equals(""))
+			|| request.getParameter("gr_name") == null || request.getParameter("gr_name").equals("")){
+		teishi_flg = "2";
+	}else{
+		g_code = request.getParameter("gr_code");
+		g_name = strEncode(request.getParameter("gr_name"));
+	}
+	if(teishi_flg.equals("0")){
+		for(int q = 0;q < group_count;q++){
+				if(group[0][q].equals(g_code)){
+					teishi_flg = "11";
 				}
-			}
-			if(teishi_flg.equals("0")){
-				sql = "insert into GRU values('" + g_code + "','" + g_name + "')";
-			}
+				if(group[1][q].equals(g_name)){
+					teishi_flg = "12";
+				}
+		}
+	}
+	if(teishi_flg.equals("0")){
+		sql = "insert into GRU values('" + g_code + "','" + g_name + "')";
+	}
 		}else if(sql_select.equals("del")){
-			String g_code = request.getParameter("gr_num");
-			sql = "delete from GRU where G_GRUNO='" + g_code + "'";
+	String g_code = request.getParameter("gr_num");
+	sql = "delete from GRU where G_GRUNO='" + g_code + "'";
 		}else if(sql_select.equals("upd")){
-			String gr_num = "";
-			String gr_name = "";
+	String gr_num = "";
+	String gr_name = "";
 
-			if(request.getParameter("n_gr_name") == null || request.getParameter("n_gr_name").equals("")){
-				teishi_flg = "13";
-			}else if(request.getParameter("n_gr_num") == null || request.getParameter("n_gr_num").equals("")){
-				teishi_flg = "14";
-			}else{
-				gr_name = strEncode(request.getParameter("n_gr_name"));
-				gr_num = request.getParameter("n_gr_num");
-			}
-			if(teishi_flg.equals("0")){
-				sql = "update GRU set G_GRUNO='" + gr_num + "',G_GRNAME='" + gr_name + "' where G_GRUNO='" + gr_num + "'";
-			}			
+	if(request.getParameter("n_gr_name") == null || request.getParameter("n_gr_name").equals("")){
+		teishi_flg = "13";
+	}else if(request.getParameter("n_gr_num") == null || request.getParameter("n_gr_num").equals("")){
+		teishi_flg = "14";
+	}else{
+		gr_name = strEncode(request.getParameter("n_gr_name"));
+		gr_num = request.getParameter("n_gr_num");
+	}
+	if(teishi_flg.equals("0")){
+		sql = "update GRU set G_GRUNO='" + gr_num + "',G_GRNAME='" + gr_name + "' where G_GRUNO='" + gr_num + "'";
+	}			
 		}
 	}
 	
 	if(table_select.equals("yotei")){
 		if(sql_select.equals("ins")){
-			String y_kubun = "";
-			String y_naiyou = "";
-			String y_junban = "";
-			
-			if(request.getParameter("y_data") == null || request.getParameter("y_data").equals("")){
-				teishi_flg = "2";
-			}else{
-				y_kubun = request.getParameter("kubun");
-				y_naiyou = strEncode(request.getParameter("y_data"));
-				if(y_kubun.equals("1")){
-					y_junban = request.getParameter("y_junban");
-				}else{
-					y_junban = request.getParameter("b_junban");
-				}
-			}
-			if(teishi_flg.equals("0")){
-				sql = "insert into yotei values('" + y_kubun + "','" + y_naiyou + "','" + y_junban + "')";
-			}
+	String y_kubun = "";
+	String y_naiyou = "";
+	String y_junban = "";
+	
+	if(request.getParameter("y_data") == null || request.getParameter("y_data").equals("")){
+		teishi_flg = "2";
+	}else{
+		y_kubun = request.getParameter("kubun");
+		y_naiyou = strEncode(request.getParameter("y_data"));
+		if(y_kubun.equals("1")){
+			y_junban = request.getParameter("y_junban");
+		}else{
+			y_junban = request.getParameter("b_junban");
+		}
+	}
+	if(teishi_flg.equals("0")){
+		sql = "insert into yotei values('" + y_kubun + "','" + y_naiyou + "','" + y_junban + "')";
+	}
 		}else if(sql_select.equals("del")){
-			String y_kubun = request.getParameter("y_kubun");
-			String y_naiyou = strEncode(request.getParameter("y_basyo"));
-			sql = "delete from yotei where 区分='" + y_kubun + "' and 場所='" + y_naiyou + "'";
+	String y_kubun = request.getParameter("y_kubun");
+	String y_naiyou = strEncode(request.getParameter("y_basyo"));
+	sql = "delete from yotei where 区分='" + y_kubun + "' and 場所='" + y_naiyou + "'";
 		}
 	}
 

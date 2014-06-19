@@ -1,9 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.*,java.sql.*,java.util.Date,java.io.*,java.text.*" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
-<%!
-// 文字エンコードを行います。
+<%!// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal == null){
 		return (null);
@@ -11,10 +10,9 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 	else{
 		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
-}
-%>
+}%>
 <%
-/* 修正点 */
+	/* 修正点 */
 // 02-08-12 パラメータの送り先を変更[各フレームへ送信 sub01,sub02]
 // 02-08-15 誰も所属していないグループコードを選択した時に、全社員が個人名コンボボックスに表示されてしまう現象を修正。
 // 02-08-16 パラメータを修正
@@ -35,7 +33,7 @@ String konohito = strEncode(request.getParameter("slkname"));
 String post = request.getParameter("group");
 String strReturn = request.getParameter("s_date");
 
-// JDBCドライバのロード
+/* // JDBCドライバのロード
 Class.forName("org.postgresql.Driver");
 
 // データベースへ接続
@@ -43,6 +41,9 @@ String user = "georgir";
 String password = "georgir";
 
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir", user, password);
+ */
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
 
 Statement stmt = con.createStatement();
 
@@ -69,7 +70,6 @@ String s_date = "";
 String s_start = "";
 String s_end = "";
 String memo = "";
-
 %>
 <html>
 	<head>

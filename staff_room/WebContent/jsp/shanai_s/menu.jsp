@@ -1,16 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*,java.util.*,java.io.*"%>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
-<%  String id2 = (String)session.getAttribute("login");
+<%
+	String id2 = (String)session.getAttribute("login");
         if(id2 == null){
             pageContext.forward("/");
             return;
         }
 %>
 
-<%!
-// 文字エンコードを行います。
+<%!// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 		if(strVal==null){
 			return (null);
@@ -18,16 +18,15 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 		else{
 			return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 		}
-}
-%>
+}%>
 <%
-/* 変更点 */
+	/* 変更点 */
 // 02-08-26 余計なプログラムの排除
 
 // ログインしたユーザの社員番号を変数[ID]に格納
 String ID = strEncode(request.getParameter("id"));
 
-// JDBCドライバのロード
+/* // JDBCドライバのロード
 Class.forName("org.postgresql.Driver");
 
 
@@ -41,7 +40,11 @@ Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5
 
 //Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.21:5432/georgir",user,password);
 
-// Statementオブジェクトの生成
+ */
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
+
+ // Statementオブジェクトの生成
 Statement stmt_koj = con.createStatement();
 
 // SQL実行・個人情報
@@ -52,7 +55,6 @@ String name= "";
 while(rs_koj.next()){
 	name = rs_koj.getString("K_氏名");
 }
-
 %>
 <!DOCTYPE HTML>
 <HTML>

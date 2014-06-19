@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class C_DBConnectionGeorgia extends C_DBConnectionAbs {
+public class C_DBConnectionGeorgir extends C_DBConnectionAbs {
 
 	// ローカルサーバ
 	// private final static String DRIVER_URL =
 	// "jdbc:postgresql://localhost:5432/georgia";
 	// テストサーバ
-	private final static String DRIVER_URL = "jdbc:postgresql://192.168.101.21:5432/georgia";
+	private final static String DRIVER_URL = "jdbc:postgresql://192.168.101.21:5432/georgir";
 	// 本番サーバ
 	// private final static String DRIVER_URL =
 	// "jdbc:postgresql://192.168.101.26:5432/georgia";

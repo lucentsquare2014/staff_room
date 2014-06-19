@@ -1,9 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.util.*,java.sql.*,java.util.Date,java.io.*,java.text.*" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
-<%!
-// 文字エンコードを行います。
+<%!// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 	if(strVal == null){
 		return (null);
@@ -11,10 +10,9 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 	else{
 		return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 	}
-}
-%>
+}%>
 <%
-/* 修正点 */
+	/* 修正点 */
 // 02-08-12 パラメータの送り先を変更[各フレームへ送信 sub01,sub02]
 // 02-08-16 パラメータを修正
 // 02-09-02 パラメータの送り先の変更[２画面に変更したので、sub02にのみ送る]
@@ -25,21 +23,24 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 // 02-08-30 本日の日付を点滅する。
 
 try{
-	// JDBCドライバのロード
-	Class.forName("org.postgresql.Driver");
-
 	// ログインしたユーザの社員番号を変数[ID]に格納
 	String ID = strEncode(request.getParameter("id"));
 
 	// パラメータの受け取り：グループコード
 	String post = request.getParameter("group");
 
+/*     // JDBCドライバのロード
+    Class.forName("org.postgresql.Driver");
+
 	// データベースへ接続
 	String user = "georgir";
 	String password = "georgir";
 
 	Connection dbConn = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
-
+ */
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection dbConn = georgiaDB.createConnection();
+ 
 	Statement stmt = dbConn.createStatement();
 
 	/* グループコード・グループ名をコンボボックスに表示するための処理 */
@@ -203,9 +204,9 @@ try{
 	for( i = d; i > 1; i--){
 	        c = c - 1;
 		if(c == 0){
-			Month = Month - 1;
-			c = eDay;
-			eDay2 = eDay;
+	Month = Month - 1;
+	c = eDay;
+	eDay2 = eDay;
 		}
 	}
 	if(Month == 0){

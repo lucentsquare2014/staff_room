@@ -1,9 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*,java.util.Date,java.text.*,java.lang.*" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
-<%!
-// 文字エンコードを行います。
+<%!// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 		if(strVal==null){
 			return (null);
@@ -11,10 +10,9 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 		else{
 			return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 		}
-}
-%>
+}%>
 <%
-long o_start = 0;
+	long o_start = 0;
 long o_stop = 0;
 long i_start = 0;
 long i_stop = 0;
@@ -22,7 +20,7 @@ long diff = 0;
 long diff2 = 0;
 long diff3 = 0;
 
-// JDBCドライバのロード
+/* // JDBCドライバのロード
 Class.forName("org.postgresql.Driver");
 
 // データベースへ接続
@@ -31,7 +29,10 @@ String password = "georgir"; // データベースにアクセスするための
 
 o_start = System.currentTimeMillis();
 Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir", user, password);
-o_stop = System.currentTimeMillis();
+ */
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
+ o_stop = System.currentTimeMillis();
 
 Statement stmt = con.createStatement();
 
@@ -40,8 +41,8 @@ ResultSet rs = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = 'yuk-su
 i_stop = System.currentTimeMillis();
 
 DatabaseMetaData meta = con.getMetaData();
-System.out.println("JDBC Driver Version = " + meta.getDriverVersion()); 
-	%>
+System.out.println("JDBC Driver Version = " + meta.getDriverVersion());
+%>
 	<html>
 		<body>
 			<div>aaa</div>

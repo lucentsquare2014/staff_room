@@ -1,9 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.util.Date,java.util.Calendar,java.io.*,java.text.*" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
-<%!
-// 文字エンコードを行います。
+<%!// 文字エンコードを行います。
 public String strEncode(String strVal) throws UnsupportedEncodingException{
 		if(strVal==null){
 			return (null);
@@ -11,10 +10,9 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 		else{
 			return (new String(strVal.getBytes("8859_1"),"UTF-8"));
 		}
-}
-%>
+}%>
 <%
-/* 修正点 */
+	/* 修正点 */
 // 02-08-12 表示形式を個人設定で選択したユーザは、その情報を読み出し最優先とする
 // 02-09-04 パラメータの追加
 // 02-09-18 動作テスト期間…バグ発見   48行目〜58行目 グループコードの抽出するテーブル名を記述間違い。
@@ -23,7 +21,7 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 	// ログインしたユーザの社員番号を変数[ID]に格納
 	String ID = strEncode(request.getParameter("id"));
 	
-	// JDBCドライバのロード
+/* 	// JDBCドライバのロード
 	Class.forName("org.postgresql.Driver");
 	
 	// ユーザ認証情報の設定
@@ -32,7 +30,10 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 	
 	// Connectionオブジェクトの生成
 	Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
-	
+ */
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
+
 	// Statementオブジェクトの生成
 	Statement stmt = con.createStatement();
 	
@@ -67,14 +68,14 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 		ResultSet GROUP = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID + "'");
 		
 		while(GROUP.next()){
-			group_id = GROUP.getString("K_GRUNO");
+	group_id = GROUP.getString("K_GRUNO");
 		}
 		
 		GROUP.close();
 	}
 	
 	if(pe_st.equals("1")){
-		%>
+%>
 		<jsp:forward page="Schedule-Month.jsp">
 			<jsp:param name="id" value="<%= ID %>" />
 			<jsp:param name="group" value="<%= group_id %>" />

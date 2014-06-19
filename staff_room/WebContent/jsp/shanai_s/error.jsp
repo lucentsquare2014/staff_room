@@ -1,9 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.*" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
 
-<%!
-public String strEncode(String strVal)
+<%!public String strEncode(String strVal)
         throws UnsupportedEncodingException{
         if(strVal==null){
                  return(null);
@@ -11,10 +10,9 @@ public String strEncode(String strVal)
          else{
                  return(new String(strVal.getBytes("8859_1"),"UTF-8"));
          }
-}
-%>
+}%>
 <%
-/* 修正点 */
+	/* 修正点 */
 // 02-08-13 受け取ったパラメータと条件の一致するエラーメッセージを表示
 // 02-09-21 エラーの種類を増やす
 
@@ -23,7 +21,7 @@ public String strEncode(String strVal)
 	String NO = request.getParameter("no");
 	String FG = request.getParameter("flag");
 
-	// JDBCドライバのロード
+/* 	// JDBCドライバのロード
 	Class.forName("org.postgresql.Driver");
 
 	// ユーザ認証情報の設定
@@ -32,6 +30,10 @@ public String strEncode(String strVal)
 
 	// Connectionオブジェクトの生成
 	Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
+ */
+ //データベース接続
+ C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
+ Connection con = georgiaDB.createConnection();
 
 	// Statementオブジェクトの生成
 	Statement stmt = con.createStatement();

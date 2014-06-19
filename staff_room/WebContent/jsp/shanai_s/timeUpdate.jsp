@@ -1,8 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="java.sql.*,java.io.*,java.util.* , java.util.Vector" %>
-<%@ page import="kkweb.common.C_DBConnectionGeorgia" %>
-<%!
-public String strEncode(String strVal)
+<%@ page import="kkweb.common.C_DBConnectionGeorgir" %>
+<%!public String strEncode(String strVal)
         throws UnsupportedEncodingException{
         if(strVal==null){
                  return(null);
@@ -10,10 +9,9 @@ public String strEncode(String strVal)
          else{
                  return(new String(strVal.getBytes("8859_1"),"UTF-8"));
          }
-}
-%>
+}%>
 <%
-/* 修正点 */
+	/* 修正点 */
 // 02-08-05 月・週・日とファイルを分けていたものを結合させ、フラグによって処理を分ける方法
 // 02-08-13 削除処理は、共有されたスケジュールでも個別に行える
 // 02-08-15 スケジュール変更を行った際に、共有者を増やすと起きるバグを修正しました
@@ -94,7 +92,7 @@ String act = strEncode(request.getParameter("act"));
 <head><title></title></head>
 <body BGCOLOR="#99A5FF">
 <%
-if(ID.equals("")){
+	if(ID.equals("")){
 	out.println("ユーザＩＤがありません。");
 	out.println("<form><input type=button value=戻る onClick=history.back()></form>");
 }else if(NO.equals("")){
@@ -156,7 +154,7 @@ if(ID.equals("")){
  */
 	// データベースに接続
 	//Connection con = DriverManager.getConnection("jdbc:postgresql://192.168.101.26:5432/georgir",user,password);
-	C_DBConnectionGeorgia georgiaDB = new C_DBConnectionGeorgia();
+	C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
     Connection con = georgiaDB.createConnection();
 	// ステートメントの生成
 	Statement stmt = con.createStatement();
@@ -201,15 +199,15 @@ if(ID.equals("")){
 		// プライマリキーに選ばれている項目に更新かける事は出来ないので、
 		// このような処理をとりました。「選択レコード」→「削除」→「挿入」
 		if(ID.equals(NO)){
-			// 重複スケジュールのチェック
+	// 重複スケジュールのチェック
 /* 			
             ResultSet CHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_END = '" + end + "'  AND S_PLAN = '" + plan + "' AND S_PLAN2 = '" + plan2 + "' AND S_PLACE = '" + place + "' AND S_PLACE2 = '" + place2 + "' AND S_MEMO = '" + memo + "' AND S_ZAISEKI = '" + pre + "' ");
 
-			while(CHECK.next()){
-				check = true;
-			}
+	while(CHECK.next()){
+		check = true;
+	}
 
-			CHECK.close();
+	CHECK.close();
 */
             // スケジュール上にある予定の開始時間を変えられないのでそれを"既存のコードの書き方に合わせて"修正
             // 2014-06-19
@@ -221,116 +219,116 @@ if(ID.equals("")){
 
             CHECK.close();
 
-			// 共有者スケジュールの重複チェック
-			ResultSet GOGOTea = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE KY_FLAG = '0' AND K_社員NO2 = '" + ID + "'");
-			while(GOGOTea.next()){
-				Blendy = GOGOTea.getString("K_社員NO");
-				ResultSet KY_CHECK = stmt2.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + Blendy + "' AND S_DATE = '" + DAold + "' AND (('" + start + "' <= S_START AND '" + end + "' > S_START) OR ('" + start + "' < S_END AND '" + end + "' >= S_END) OR (S_START <= '"+ start +"' and '"+ end +"' <= S_END ))");
-				while(KY_CHECK.next()){
-					ky_check = true;
-				}
-				KY_CHECK.close();
-			}
-			GOGOTea.close();
+	// 共有者スケジュールの重複チェック
+	ResultSet GOGOTea = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE KY_FLAG = '0' AND K_社員NO2 = '" + ID + "'");
+	while(GOGOTea.next()){
+		Blendy = GOGOTea.getString("K_社員NO");
+		ResultSet KY_CHECK = stmt2.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + Blendy + "' AND S_DATE = '" + DAold + "' AND (('" + start + "' <= S_START AND '" + end + "' > S_START) OR ('" + start + "' < S_END AND '" + end + "' >= S_END) OR (S_START <= '"+ start +"' and '"+ end +"' <= S_END ))");
+		while(KY_CHECK.next()){
+			ky_check = true;
+		}
+		KY_CHECK.close();
+	}
+	GOGOTea.close();
 
-			// 登録者か共有者かチェック
-			ResultSet TKCHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_TOUROKU = '1'");
+	// 登録者か共有者かチェック
+	ResultSet TKCHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_TOUROKU = '1'");
 
-			String FG = "";
+	String FG = "";
 
-			if(TKCHECK.next()){
-				FG = "0";
-			}
+	if(TKCHECK.next()){
+		FG = "0";
+	}
 
-			TKCHECK.close();
+	TKCHECK.close();
 
-			if(!check && !ky_check){
-				if(FG.equals("0")){
-					// 登録者です。
+	if(!check && !ky_check){
+		if(FG.equals("0")){
+			// 登録者です。
                         stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
                         stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + ID + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
                     try{
                     }catch(Exception e){
                     }
 
-					// 共有者情報の日付と開始時刻を更新
-					//stmt.execute("UPDATE KY_TABLE SET S_DATE = '" + DAnew + "', S_START = '" + start + "', KY_FLAG = '1' WHERE (S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND KY_FLAG = '1' AND K_社員NO2 = '" + ID + "') OR (KY_FLAG = '0' AND K_社員NO2 = '" + ID + "')");
+			// 共有者情報の日付と開始時刻を更新
+			//stmt.execute("UPDATE KY_TABLE SET S_DATE = '" + DAnew + "', S_START = '" + start + "', KY_FLAG = '1' WHERE (S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND KY_FLAG = '1' AND K_社員NO2 = '" + ID + "') OR (KY_FLAG = '0' AND K_社員NO2 = '" + ID + "')");
 
-					/* ここから共有者をスケジュールテーブルへと挿入します。 */
-					// 共有者のIDを取得します。
-					ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE S_DATE = '" + DAnew + "' AND S_START = '" + start + "' AND K_社員NO2 = '" + ID + "'");
+			/* ここから共有者をスケジュールテーブルへと挿入します。 */
+			// 共有者のIDを取得します。
+			ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE S_DATE = '" + DAnew + "' AND S_START = '" + start + "' AND K_社員NO2 = '" + ID + "'");
 
-					// hitListの作成
-					Vector hitKYOYU = new Vector();
+			// hitListの作成
+			Vector hitKYOYU = new Vector();
 
-					while(KYOYU.next()){
-						String seId = KYOYU.getString("K_社員NO");
-						hitKYOYU.addElement(seId);
-					}
+			while(KYOYU.next()){
+				String seId = KYOYU.getString("K_社員NO");
+				hitKYOYU.addElement(seId);
+			}
 
-					int cntKYOYU = hitKYOYU.size();
+			int cntKYOYU = hitKYOYU.size();
 
-					for(int i = 0; i < cntKYOYU; i++){
+			for(int i = 0; i < cntKYOYU; i++){
                         stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + hitKYOYU.elementAt(i) + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
                         stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + hitKYOYU.elementAt(i) + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
-					}
-
-					KYOYU.close();
-					/* ここまで */
-				}else{
-					// 共有者です。
-
-					/* ここから共有者をスケジュールテーブルへと挿入します。 */
-					// 登録者のIDを取得します。
-					ResultSet TOUROKU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE K_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-
-					String toId = "";
-
-					while(TOUROKU.next()){
-						toId = TOUROKU.getString("K_社員NO2");
-					}
-
-					TOUROKU.close();
-
-					// 共有者のIDを取得します。
-					ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND K_社員NO2 = '" + toId + "'");
-
-					// hitListの作成
-					Vector hitKYOYU = new Vector();
-
-					while(KYOYU.next()){
-						String seId = KYOYU.getString("K_社員NO");
-						hitKYOYU.addElement(seId);
-					}
-
-					int cntKYOYU = hitKYOYU.size();
-
-					// 共有者情報の日付と開始時刻を更新
-					stmt.execute("UPDATE KY_TABLE SET S_DATE = '" + DAnew + "', S_START = '" + start + "', KY_FLAG = '1' WHERE (S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND KY_FLAG = '1' AND K_社員NO2 = '" + toId + "') OR (KY_FLAG = '0' AND K_社員NO2 = '" + toId + "')");
-
-					// 登録者の情報を更新
-					stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + toId + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-					stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + toId + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
-
-					for(int i = 0; i < cntKYOYU; i++){
-						stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + hitKYOYU.elementAt(i) + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-						stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + hitKYOYU.elementAt(i) + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
-					}
-
-					KYOYU.close();
-					/* ここまで */
-				}
 			}
+
+			KYOYU.close();
+			/* ここまで */
 		}else{
-			// 重複スケジュールのチェック
+			// 共有者です。
+
+			/* ここから共有者をスケジュールテーブルへと挿入します。 */
+			// 登録者のIDを取得します。
+			ResultSet TOUROKU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE K_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+
+			String toId = "";
+
+			while(TOUROKU.next()){
+				toId = TOUROKU.getString("K_社員NO2");
+			}
+
+			TOUROKU.close();
+
+			// 共有者のIDを取得します。
+			ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND K_社員NO2 = '" + toId + "'");
+
+			// hitListの作成
+			Vector hitKYOYU = new Vector();
+
+			while(KYOYU.next()){
+				String seId = KYOYU.getString("K_社員NO");
+				hitKYOYU.addElement(seId);
+			}
+
+			int cntKYOYU = hitKYOYU.size();
+
+			// 共有者情報の日付と開始時刻を更新
+			stmt.execute("UPDATE KY_TABLE SET S_DATE = '" + DAnew + "', S_START = '" + start + "', KY_FLAG = '1' WHERE (S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND KY_FLAG = '1' AND K_社員NO2 = '" + toId + "') OR (KY_FLAG = '0' AND K_社員NO2 = '" + toId + "')");
+
+			// 登録者の情報を更新
+			stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + toId + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+			stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + toId + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
+
+			for(int i = 0; i < cntKYOYU; i++){
+				stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + hitKYOYU.elementAt(i) + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+				stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + hitKYOYU.elementAt(i) + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
+			}
+
+			KYOYU.close();
+			/* ここまで */
+		}
+	}
+		}else{
+	// 重複スケジュールのチェック
 /* 			ResultSet CHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_END = '" + end + "'  AND S_PLAN = '" + plan + "' AND S_PLAN2 = '" + plan2 + "' AND S_PLACE = '" + place + "' AND S_PLACE2 = '" + place2 + "' AND S_MEMO = '" + memo + "' AND S_ZAISEKI = '" + pre + "' ");
 
-			while(CHECK.next()){
-				check = true;
-			}
+	while(CHECK.next()){
+		check = true;
+	}
 
-			CHECK.close();
-			
+	CHECK.close();
+	
  */
 
             //ここも同じような処理
@@ -340,153 +338,153 @@ if(ID.equals("")){
                 check = true;
             }
  
-			// 共有者スケジュールの重複チェック
-			ResultSet GOGOTea = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE KY_FLAG = '0' AND K_社員NO2 = '" + NO + "'");
-			while(GOGOTea.next()){
-				Blendy = GOGOTea.getString("K_社員NO");
-				ResultSet KY_CHECK = stmt2.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + Blendy + "' AND S_DATE = '" + DAold + "' AND (('" + start + "' <= S_START AND '" + end + "' > S_START) OR ('" + start + "' < S_END AND '" + end + "' >= S_END) OR (S_START <= '"+ start +"' and '"+ end +"' <= S_END ))");
-				while(KY_CHECK.next()){
-					ky_check = true;
-				}
-			KY_CHECK.close();
+	// 共有者スケジュールの重複チェック
+	ResultSet GOGOTea = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE KY_FLAG = '0' AND K_社員NO2 = '" + NO + "'");
+	while(GOGOTea.next()){
+		Blendy = GOGOTea.getString("K_社員NO");
+		ResultSet KY_CHECK = stmt2.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + Blendy + "' AND S_DATE = '" + DAold + "' AND (('" + start + "' <= S_START AND '" + end + "' > S_START) OR ('" + start + "' < S_END AND '" + end + "' >= S_END) OR (S_START <= '"+ start +"' and '"+ end +"' <= S_END ))");
+		while(KY_CHECK.next()){
+			ky_check = true;
+		}
+	KY_CHECK.close();
+	}
+	GOGOTea.close();
+
+	// 登録者か共有者かチェック
+	ResultSet TKCHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_TOUROKU = '1'");
+
+	String FG = "";
+
+	if(TKCHECK.next()){
+		FG = "0";
+	}
+
+	TKCHECK.close();
+
+	if(!check && !ky_check){
+		if(FG.equals("0")){
+			// 本人ではないですが、登録者です。
+
+			stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+			stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + NO + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
+
+			// 共有者情報の日付と開始時刻を更新
+			stmt.execute("UPDATE KY_TABLE SET S_DATE = '" + DAnew + "', S_START = '" + start + "', KY_FLAG = '1' WHERE (S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND KY_FLAG = '1' AND K_社員NO2 = '" + NO + "') OR (KY_FLAG = '0' AND K_社員NO2 = '" + NO + "')");
+
+			/* ここから共有者をスケジュールテーブルへと挿入します。 */
+			ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE S_DATE = '" + DAnew + "' AND S_START = '" + start + "' AND K_社員NO2 = '" + NO + "'");
+
+			// hitListの作成
+			Vector hitKYOYU = new Vector();
+
+			while(KYOYU.next()){
+				String seId = KYOYU.getString("K_社員NO");
+			hitKYOYU.addElement(seId);
 			}
-			GOGOTea.close();
 
-			// 登録者か共有者かチェック
-			ResultSet TKCHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_TOUROKU = '1'");
+			int hitCnt = hitKYOYU.size();
 
-			String FG = "";
-
-			if(TKCHECK.next()){
-				FG = "0";
+			for(int i = 0; i < hitCnt; i++){
+				stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + hitKYOYU.elementAt(i) + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+				stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + hitKYOYU.elementAt(i) + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
 			}
 
-			TKCHECK.close();
+			KYOYU.close();
+			/* ここまで */
 
-			if(!check && !ky_check){
-				if(FG.equals("0")){
-					// 本人ではないですが、登録者です。
+		}else{
+			// 本人ではないですが、共有者です。
 
-					stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-					stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + NO + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
+			/* ここから共有者をスケジュールテーブルへと挿入します。 */
+			// 登録者のIDを取得します。
+			ResultSet TOUROKU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE K_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
 
-					// 共有者情報の日付と開始時刻を更新
-					stmt.execute("UPDATE KY_TABLE SET S_DATE = '" + DAnew + "', S_START = '" + start + "', KY_FLAG = '1' WHERE (S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND KY_FLAG = '1' AND K_社員NO2 = '" + NO + "') OR (KY_FLAG = '0' AND K_社員NO2 = '" + NO + "')");
+			String toId = "";
 
-					/* ここから共有者をスケジュールテーブルへと挿入します。 */
-					ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE S_DATE = '" + DAnew + "' AND S_START = '" + start + "' AND K_社員NO2 = '" + NO + "'");
-
-					// hitListの作成
-					Vector hitKYOYU = new Vector();
-
-					while(KYOYU.next()){
-						String seId = KYOYU.getString("K_社員NO");
-					hitKYOYU.addElement(seId);
-					}
-
-					int hitCnt = hitKYOYU.size();
-
-					for(int i = 0; i < hitCnt; i++){
-						stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + hitKYOYU.elementAt(i) + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-						stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + hitKYOYU.elementAt(i) + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
-					}
-
-					KYOYU.close();
-					/* ここまで */
-
-				}else{
-					// 本人ではないですが、共有者です。
-
-					/* ここから共有者をスケジュールテーブルへと挿入します。 */
-					// 登録者のIDを取得します。
-					ResultSet TOUROKU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE K_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-
-					String toId = "";
-
-					while(TOUROKU.next()){
-						toId = TOUROKU.getString("K_社員NO2");
-					}
-
-					TOUROKU.close();
-
-					// 共有者のIDを取得します。
-					ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND K_社員NO2 = '" + toId + "'");
-
-					// hitListの作成
-					Vector hitKYOYU = new Vector();
-
-					while(KYOYU.next()){
-						String seId = KYOYU.getString("K_社員NO");
-						hitKYOYU.addElement(seId);
-					}
-
-					int cntKYOYU = hitKYOYU.size();
-
-					// 共有者情報の日付と開始時刻を更新
-					stmt.execute("UPDATE KY_TABLE SET S_DATE = '" + DAnew + "', S_START = '" + start + "', KY_FLAG = '1' WHERE (S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND KY_FLAG = '1' AND K_社員NO2 = '" + toId + "') OR (KY_FLAG = '0' AND K_社員NO2 = '" + toId + "')");
-
-					// 登録者の情報を更新
-					stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + toId + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-					stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + toId + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
-
-					for(int i = 0; i < cntKYOYU; i++){
-						stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + hitKYOYU.elementAt(i) + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-						stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + hitKYOYU.elementAt(i) + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
-					}
-
-					KYOYU.close();
-					/* ここまで */
-				}
+			while(TOUROKU.next()){
+				toId = TOUROKU.getString("K_社員NO2");
 			}
+
+			TOUROKU.close();
+
+			// 共有者のIDを取得します。
+			ResultSet KYOYU = stmt.executeQuery("SELECT * FROM KY_TABLE WHERE S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND K_社員NO2 = '" + toId + "'");
+
+			// hitListの作成
+			Vector hitKYOYU = new Vector();
+
+			while(KYOYU.next()){
+				String seId = KYOYU.getString("K_社員NO");
+				hitKYOYU.addElement(seId);
+			}
+
+			int cntKYOYU = hitKYOYU.size();
+
+			// 共有者情報の日付と開始時刻を更新
+			stmt.execute("UPDATE KY_TABLE SET S_DATE = '" + DAnew + "', S_START = '" + start + "', KY_FLAG = '1' WHERE (S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND KY_FLAG = '1' AND K_社員NO2 = '" + toId + "') OR (KY_FLAG = '0' AND K_社員NO2 = '" + toId + "')");
+
+			// 登録者の情報を更新
+			stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + toId + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+			stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + toId + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '1', '" + pre + "')");
+
+			for(int i = 0; i < cntKYOYU; i++){
+				stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + hitKYOYU.elementAt(i) + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+				stmt.execute("INSERT INTO S_TABLE(GO_社員NO,S_DATE,S_START,S_END,S_PLAN,S_PLAN2,S_PLACE,S_PLACE2,S_MEMO,S_TOUROKU,S_ZAISEKI) VALUES('" + hitKYOYU.elementAt(i) + "','" + DAnew + "','" + start + "', '" + end + "', '" + plan + "', '" + plan2 + "', '" + place + "', '" + place2 + "', '" + memo + "', '0', '" + pre + "')");
+			}
+
+			KYOYU.close();
+			/* ここまで */
+		}
+	}
 		}
 	UorD = true;
 	}else if(act.equals("削除") && (group_id.equals(group_no) || group_id.equals("900"))){
 		if(ID.equals(NO)){
-			// 登録者か共有者かチェック
-			ResultSet TKCHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_TOUROKU = '1'");
+	// 登録者か共有者かチェック
+	ResultSet TKCHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_TOUROKU = '1'");
 
-			String FG = "";
+	String FG = "";
 
-			if(TKCHECK.next()){
-				FG = "0";
-			}
+	if(TKCHECK.next()){
+		FG = "0";
+	}
 
-			TKCHECK.close();
+	TKCHECK.close();
 
-			if(FG.equals("0")){
-				// 登録者です。
-				stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-				stmt.execute("DELETE FROM KY_TABLE WHERE S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND K_社員NO2 = '" + ID + "'");
-			}else{
-				// 共有者です。
-				stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-				stmt.execute("DELETE FROM KY_TABLE WHERE K_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-			}
+	if(FG.equals("0")){
+		// 登録者です。
+		stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+		stmt.execute("DELETE FROM KY_TABLE WHERE S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND K_社員NO2 = '" + ID + "'");
+	}else{
+		// 共有者です。
+		stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+		stmt.execute("DELETE FROM KY_TABLE WHERE K_社員NO = '" + ID + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+	}
 		}else{
-			// 登録者か共有者かチェック
-			ResultSet TKCHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_TOUROKU = '1'");
+	// 登録者か共有者かチェック
+	ResultSet TKCHECK = stmt.executeQuery("SELECT * FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND S_TOUROKU = '1'");
 
-			String FG = "";
+	String FG = "";
 
-			if(TKCHECK.next()){
-				FG = "0";
-			}
+	if(TKCHECK.next()){
+		FG = "0";
+	}
 
-			TKCHECK.close();
+	TKCHECK.close();
 
-			if(FG.equals("0")){
-				// 本人ではないけども登録者です。
-				stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-				stmt.execute("DELETE FROM KY_TABLE WHERE S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND K_社員NO2 = '" + NO + "'");
-			}else{
-			// 本人ではないけども共有者です。
-				stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-				stmt.execute("DELETE FROM KY_TABLE WHERE K_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
-			}
+	if(FG.equals("0")){
+		// 本人ではないけども登録者です。
+		stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+		stmt.execute("DELETE FROM KY_TABLE WHERE S_DATE = '" + DAold + "' AND S_START = '" + ST + "' AND K_社員NO2 = '" + NO + "'");
+	}else{
+	// 本人ではないけども共有者です。
+		stmt.execute("DELETE FROM S_TABLE WHERE GO_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+		stmt.execute("DELETE FROM KY_TABLE WHERE K_社員NO = '" + NO + "' AND S_DATE = '" + DAold + "' AND S_START = '" + ST + "'");
+	}
 		}
 	UorD = false;
 	}else{
-		%>
+%>
 		<jsp:forward page="error.jsp">
 			<jsp:param name="id" value="<%= ID %>" />
 			<jsp:param name="no" value="<%= NO %>" />
