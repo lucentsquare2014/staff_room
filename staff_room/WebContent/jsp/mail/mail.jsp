@@ -248,7 +248,7 @@ table >thead>tr{
 		<div id=button>
 		<div id=button-con>
 		<div class="uk-text-center">
-		<a class="uk-button uk-button-primary" href="mailto:" id="mail" style="white-space:nowrap;"> メール作成</a>
+		<a class="uk-button uk-button-primary" id="mail" style="white-space:nowrap;"> メール作成</a>
 		<a class="uk-button uk-button-primary" id="mai" style="white-space:nowrap;">&nbsp;&nbsp;全選択&nbsp;</a>
 		<a class="uk-button uk-button-danger" id="none" style="white-space:nowrap;"> 選択解除</a>
 			<ul>
