@@ -14,6 +14,7 @@ $(function(){
 		var mail_str = "";
 		if(m == n){
 			mail_str = "all@lucentsquare.co.jp";
+			location.href = "mailto:" + mail_str;
 		}else if(n == 0){
 			alert("チェックされていません");
 		}else{
@@ -21,7 +22,7 @@ $(function(){
 				var mail_add = $(this).parent().parent().children("#address").children("a");
 				mail_str += mail_add.text() + ";";
 			});
+			location.href = "mailto:" + mail_str;
 		}
-		location.href = "mailto:" + mail_str;
 	});
 });
