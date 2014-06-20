@@ -17,7 +17,7 @@
 <style>
 body {
 	width: 100%;
-	height: 610px;
+	height: 580px;
 	background-attachment: fixed;
 	background-color:white;
 	background-size: 100% 100%;

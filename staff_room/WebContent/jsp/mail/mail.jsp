@@ -47,7 +47,7 @@ p.scroll{
 #in_Div {
 	overflow-y: scroll;
 	line-height: 1.75em;
-	height: 450px;
+	height: 400px;
 	background-color: whitesmoke;
     }
 

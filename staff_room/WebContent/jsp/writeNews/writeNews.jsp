@@ -83,7 +83,7 @@ table >thead>tr{
 			<font face="ＭＳ Ｐゴシック">
 			<span style="font-size: 50px;">
 			<nobr>
-			管理・編集
+			管理・連絡
 			</nobr><br></span>
 			</font>
 			</div></div></div>
