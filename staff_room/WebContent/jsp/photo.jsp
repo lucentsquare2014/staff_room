@@ -15,15 +15,15 @@
 <style>
 body {
 	width: 100%;
-	height: 610px;
+	height: 580px;
 	background-attachment: fixed;
 	background-color:white;
 	background-size: 100% 100%;
 }
 .conetent{
-	padding: 0; 
-	padding-top: 42px; 
-	height: 100%; 
+	padding: 0;
+	padding-top: 42px;
+	height: 100%;
 	width: 100%;
 	margin-left:auto;
 	margin-right:auto;
@@ -40,7 +40,7 @@ body {
 		<%if(value.equals("2")){%>
 		<iframe width="100%" height="100%" src="//www.lucentsquare.co.jp/staff/25%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5%E8%A1%8C%E4%BA%8B%E6%A1%88%E5%86%85/25year_index.html"></iframe>
 		<%}%>
-		<!-- Photoページを作った際の変更点 -->		
+		<!-- Photoページを作った際の変更点 -->
 	</div>
 </body>
 </html>
