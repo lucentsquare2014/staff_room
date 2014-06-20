@@ -31,9 +31,9 @@
 LoginDAO ldao = new LoginDAO();
 String id = session.getAttribute("login").toString();
 HashMap<String,String> info = ldao.loginInfo(id);
-System.out.println(info);
+System.out.println(info+" (ID_PW_Nyuryoku.jsp)");
 %>
-<form method="POST" action="s_login" name="theform">
+<form method="POST" action="/staff_room/jsp/shanai_s/s_login" name="theform">
 <input type="hidden" name="action" value="gate">
 <input type="hidden"  name="shainID"  value='<%=info.get("id") %>' size="30" maxlength="20" class="text">
 <input type="hidden" name="Pwd"  value='<%=info.get("password") %>' size="25" maxlength="20">

@@ -5,10 +5,10 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +36,13 @@ public class LoginFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		// アクセスされたURIを取得
+		String accessURL = ((HttpServletRequest) request).getServletPath();
+		String param = ((HttpServletRequest) request).getQueryString();
+		accessURL = accessURL + "?" + param;
+		System.out.println(accessURL + " (LoginFilter.jsp)");
+		request.setAttribute("accessURL", accessURL);
+		
 		/* クッキー情報を確認してセッション情報も確認する*/
 		Cookie login_cookie = GetCookie.get("login_cookie", (HttpServletRequest)request);
 		if(login_cookie==null){
@@ -44,12 +51,16 @@ public class LoginFilter implements Filter {
 			HttpSession session = ((HttpServletRequest)request).getSession();
 			if(session==null){
 				session = ((HttpServletRequest)request).getSession(true);
-		        ((HttpServletResponse)response).sendRedirect("/staff_room/login.jsp");
+		        //((HttpServletResponse)response).sendRedirect("/staff_room/login.jsp");
+				RequestDispatcher dispatch = request.getRequestDispatcher("/login.jsp");
+				dispatch.forward(request, response);
 		        return;
 			}else{
 				Object loginCheck = session.getAttribute("login");
 				if(loginCheck == null) {
-					((HttpServletResponse)response).sendRedirect("/staff_room/login.jsp");
+					//((HttpServletResponse)response).sendRedirect("/staff_room/login.jsp");
+					RequestDispatcher dispatch = request.getRequestDispatcher("/login.jsp");
+					dispatch.forward(request, response);
 					return;
 				}
 			}

@@ -32,17 +32,21 @@ body {
         <%
         String value = null;
         value = request.getParameter("mode");
+        String uri = request.getRequestURL().toString();
+        uri = uri.substring(0, uri.length()-13);
+        System.out.println(uri + "   (shanai_s.jsp)");
+        System.out.println();
         if(value==null){
         	value="1";
         }
         %>
         <%if(value.equals("5")){ %>
-            <iframe width="100%" height="100%" src="./doc/manual01.pdf"></iframe>
+            <iframe width="100%" height="100%" src="<%=uri %>/doc/manual01.pdf"></iframe>
         <%} %>
         <%if(value.equals("4")){ %>
-            <iframe width="100%" height="100%" src="./administrator.jsp"></iframe>
+            <iframe width="100%" height="100%" src="<%=uri %>/administrator.jsp"></iframe>
         <%} else { %>
-            <iframe width="100%" height="100%" src="./ID_PW_Nyuryoku.jsp?mode=<%=value%>"></iframe>
+            <iframe width="100%" height="100%" src="<%=uri %>/ID_PW_Nyuryoku.jsp?mode=<%=value%>"></iframe>
         <% } %>
     </div>
 </body>

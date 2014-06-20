@@ -13,7 +13,7 @@
 <%
 	String mode = request.getParameter("mode");
 		if (mode == null) {
-			mode = "1";
+			mode = "2";
 		}
 		if (mode.equals("2")) {
 			response.sendRedirect("./Menu_Gamen.jsp");

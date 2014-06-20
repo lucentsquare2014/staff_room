@@ -46,9 +46,10 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// アクセスされたURLを取得
+		String accessURL = request.getParameter("accessURL").toString();
+		System.out.println(accessURL + "(Login.jsp)");
 		// Login.jspからidとpasswordを取得する
-		System.out.println(request.getParameter("id"));
-		System.out.println(request.getParameter("password"));
 		String id = request.getParameter("id").trim();
 	    String pwd = request.getParameter("password").trim();
 	    
@@ -84,7 +85,9 @@ public class Login extends HttpServlet {
 	    		adm="";
 	    	}
 	    	session.setAttribute("admin", adm);
-	    	response.sendRedirect("./jsp/top/top.jsp");
+	    	//response.sendRedirect("./jsp/top/top.jsp");
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher(accessURL);
+            dispatcher.forward(request, response);
 	    	return;
 	    } else {
 
@@ -93,6 +96,7 @@ public class Login extends HttpServlet {
 	    	session.setAttribute("count", ++n);
 	    	String msg = "idまたはパスワードが正しくありません。";
 	    	request.setAttribute("error",msg);
+	    	request.setAttribute("accessURL", accessURL);
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
             dispatcher.forward(request, response);
 	    }
