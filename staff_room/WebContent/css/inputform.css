@@ -5,15 +5,11 @@ body {
 label {
 	text-align: center;
 }
-dt {
-	padding: 5px 5px 5px 5px;
-	text-align: center;
+#text { 
+	white-space: pre;
 }
-dd {
-	padding: 5px 5px 5px 5px;
-}
-pre { 
-	border: 0px;
+#title,#text,#select,#author,#file{
+	color: gray;
 }
 .uk-alert {
 	width: 250px;
