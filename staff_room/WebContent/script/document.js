@@ -8,9 +8,9 @@ $(function(){
 		$("#select_files ul").html("");
 		$("#select_files div").addClass("uk-panel-box");
 		for(var i = 0; files[i]; i++){
-			$("#select_files ul").append('<li><div class="uk-badge uk-badge-notification uk-badge-danger uk-align-left"'
-						+ 'style="margin:0 0 0 0;" data-uk-tooltip title="このファイルは既に存在しています。">'
-						+ '!</div>&nbsp;<div class="uk-align-left" style="margin:0 0 0 0;">' 
+			$("#select_files ul").append('<li><div class="uk-align-left" style="margin:0 0 0 0;">'
+						+ '<div class="uk-badge uk-badge-notification uk-badge-danger"'
+						+ 'data-uk-tooltip title="このファイルは既に存在しています。">!</div>&nbsp;' 
 						+ files[i].name + '</div><div class="uk-align-right">' 
 						+ getFileSize(files[i].size) + '</div></li>');
 			isExist(files[i].name,i);
@@ -118,11 +118,11 @@ $(function(){
 				exist_flag.push(1);
 				exist_files += '"' + filename + '" ';
 				exist_file.addClass("uk-text-danger");
-				exist_file.children(".uk-badge").show();
+				exist_file.children(1).children(".uk-badge").show();
 			}else{
 				exist_flag.push(0);
 				exist_file.removeClass("uk-text-danger");
-				exist_file.children(".uk-badge").hide();
+				exist_file.children(1).children(".uk-badge").hide();
 			}
 		});
 	}
