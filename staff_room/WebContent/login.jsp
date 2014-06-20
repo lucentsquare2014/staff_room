@@ -31,7 +31,9 @@ if(login_cookie!=null){
 }else{
 	// クッキーなくてもセッションが保存されていればTop画面に遷移
 	if(session.getAttribute("login")!=null){
-		response.sendRedirect("/staff_room/jsp/top/top.jsp");
+		//response.sendRedirect("/staff_room/jsp/top/top.jsp");
+        RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/top/top.jsp");
+        dispatch.forward(request, response);
 	}
 }
 %>
@@ -58,7 +60,7 @@ if(login_cookie!=null){
 					<%= request.getAttribute("error")%>
 				<% } %>
 			</p>
-			<form class="uk-form" action="./Login" method="post">
+			<form class="uk-form" action="/staff_room/Login" method="post">
 				<div class="uk-form-row">
 					<input type="text" placeholder="ユーザ" name="id" class="uk-form-width-medium">
 				</div>
@@ -70,6 +72,12 @@ if(login_cookie!=null){
 					<label>ログイン状態を保持する</label>
 				</div>
 				<div class="uk-form-row">
+				    <% Object url = request.getAttribute("accessURL");
+				       if(url==null){
+				    	   url = "/jsp/top/top.jsp";
+				       }
+				    %>
+				    <input type="hidden" name="accessURL" value="<%=url.toString()%>">
 					<input type="submit" value="ログイン" class="uk-button uk-button-primary">
 					<input type="reset" value="リセット" class="uk-button uk-button-primary">
 				</div>

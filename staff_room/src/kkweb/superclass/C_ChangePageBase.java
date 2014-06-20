@@ -13,11 +13,11 @@ public class C_ChangePageBase extends HttpServlet {
 		"OfficeDocuments",
 		"MailSendToAllUserPayslip",
 		"SelectAddressPayslip",
-		"SystemSelect"
+//		"SystemSelect"
 	};
 //  private final static String url = "//localhost:8080/staff_room";
 //	private final static String url = "//192.168.101.31:8080/staff_room";	
-	private final static String url = "/staff_room";	
+	private final static String url = "/staff_room/jsp/shanai_s";	
 	
 	//	private final static String url = "http://www.lucentsquare.co.jp:8080/kk_web";
 
