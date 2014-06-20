@@ -85,9 +85,9 @@ public class Login extends HttpServlet {
 	    		adm="";
 	    	}
 	    	session.setAttribute("admin", adm);
-	    	//response.sendRedirect("./jsp/top/top.jsp");
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher(accessURL);
-            dispatcher.forward(request, response);
+	    	response.sendRedirect("/staff_room"+accessURL);
+	    	//RequestDispatcher dispatcher = request.getRequestDispatcher(accessURL);
+            //dispatcher.forward(request, response);
 	    	return;
 	    } else {
 
