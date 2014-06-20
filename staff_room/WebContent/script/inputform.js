@@ -6,9 +6,9 @@ $(function(){
 		$("#alert").text("");
 		if(flg == "input"){
 			$("#select").text($("select[name='inputPostid'] option:selected").text());
-			$("#title").text($("input[name='inputTitle']").val());
-			$("#text").text($("textarea[name='inputText']").val());
-			$("#author").text($("input[name='inputWriter']").val());
+			$("#title").text($.trim($("input[name='inputTitle']").val()));
+			$("#text").text($.trim($("textarea[name='inputText']").val()));
+			$("#author").text($.trim($("input[name='inputWriter']").val()));
 			if($("#loop *").length == 0){
 				$("#file").removeClass("uk-panel-box");
 				$("#file ul").text("選択されていません");
@@ -158,6 +158,7 @@ $(function(){
 			});
 		//return false;
 	});
+	
 });
 function style_change(){
 	var w = $(window).width();

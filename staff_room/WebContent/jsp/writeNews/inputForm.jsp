@@ -115,6 +115,8 @@
 			<% if(request.getParameter("inputWriter")!=null){
 				String author = jpn2unicode(request.getParameter("inputWriter"),"UTF-8");
 				out.print("value=\"" + author + "\"");
+			}else{
+				out.print("value=\"" + session.getAttribute("username") + "\"");
 			}
 			%>
 			>
