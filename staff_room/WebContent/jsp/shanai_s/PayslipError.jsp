@@ -34,7 +34,7 @@ p {
 	session.removeAttribute("errorDescription");
 	session.removeAttribute("exception");
 	// リンク用文字列
-	String kintai_login = "OfficeDocuments.jsp";
+	String kintai_login = "/staff_room";
 %>
 <title></title>
 </head>
@@ -69,7 +69,7 @@ p {
 						<td class=b>
 							<div class=return_menu>
 								
-								<a class=menu href="<%=kintai_login%>">[社内文書確認画面に戻る]</a>
+								<a class=menu href="<%=kintai_login%>">[スタッフルームに戻る]</a>
 							</div>
 						</td>
 					</tr>
