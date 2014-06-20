@@ -125,8 +125,8 @@ table >thead>tr{
 		<div id=button-con>
 		<div class="uk-text-center">
 		<a class="uk-button uk-button-primary" id="mail" style="white-space:nowrap;"> メール作成</a>
-		<a class="uk-button uk-button-primary" id="mai" style="white-space:nowrap;">&nbsp;&nbsp;全選択&nbsp;</a>
-		<a class="uk-button uk-button-danger" id="none" style="white-space:nowrap;"> 選択解除</a>
+		<a class="uk-button uk-button-primary" id="all_check" style="white-space:nowrap;">&nbsp;&nbsp;全選択&nbsp;</a>
+		<a class="uk-button uk-button-danger" id="clear" style="white-space:nowrap;"> 選択解除</a>
 			<ul>
 				<li>
 					<a class="uk-button" href="#a" style="white-space:nowrap;margin-left:13px">ア</a>
@@ -263,12 +263,12 @@ table >thead>tr{
                 %>
 
        			<tr id="<%=moji.substring(0,1)%>">
-       				<td class="coL5 uk-text-center"><a flag="0"
-       				class="uk-icon-square-o uk-text-center delete-box"
-       				name="check" id="<%=str1.substring(0,index)%>"></a></td>
+       				<td class="coL5 uk-text-center">
+       					<input type="checkbox" name="check" id="<%=str1.substring(0,index)%>">
+       				</td>
        				<td class="coL6" ><%=Newsmap.get("name")%></td>
        				<td class="coL7"><%=Newsmap.get("hurigana")%></td>
-       				<td class="coL8"><a href="mailto:<%=Newsmap.get("mail")%>"><%=Newsmap.get("mail")%></a></td>
+       				<td class="coL8" id="address"><a href="mailto:<%=Newsmap.get("mail")%>"><%=Newsmap.get("mail")%></a></td>
        				<% //if(user.equals("1")){ %>
        				<%if(value.equals("1")){%>
        				<td align="right" class="coL15">
