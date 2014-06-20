@@ -26,6 +26,7 @@ $(function() {
 					});
 					$("#mail").click(function() {
 						var str = "";
+						var str2 = "";
 						var ids = [];
 						var news = $('[name="check"]');
 						for ( var n = 0; n < news.length; n++) {
@@ -33,27 +34,34 @@ $(function() {
 								ids.push(news[n].getAttribute("id"));
 						}
 						for ( var i = 0; i < ids.length; i++) {
-							if (str != "")
-								str = str + "";
-							str = str + ids[i] +"@lucentsquare.co.jp;";
+							if(i<70){
+								if (str != "")
+									str = str + "";
+								str = str + ids[i] +"@lucentsquare.co.jp;";
+						}
+							if(i>=70){
+								if (str2 != "")
+									str2 = str2 + "";
+								str2 = str2 + ids[i] +"@lucentsquare.co.jp;";
+						}
 						}
 						if(str.length === 0){
 							window.alert('チェックされていません');
 						}
-						else if(str.length < 2083){
+						else if(ids.length < 70){
 							if(window.confirm("以下の宛先にメールを送ります。よろしいですか？\n" +
 									          "---------------------------------------------\n"+str)){
-								location.href = "mailto:" + str;
-								location.href = "mailto:" + str;
-								location.href = "mailto:" + str;
+								location.href = "mailto:" + str;							
 							}else{
 								
 							}
 						}else{
 							if(window.confirm("文字数がURLの制限を超えています。\n" +
 											  "以下のアドレスをコピーしてOK押してください。その後、メーラーが起動するので宛先にペーストしてください。\n" +
-											  "---------------------------------------------\n"+str)){
-								location.href = "mailto:";
+											  "---------------------------------------------\n"+str+
+											  "---------------------------------------------\n"+str2)){
+								location.href = "mailto:" +str ;
+								location.href = "mailto:" +str2 ;
 							}else{
 								
 							}
