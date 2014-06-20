@@ -45,7 +45,7 @@ iframe{
 		<%if(value.equals("3")){%><iframe src="//www.lucentsquare.co.jp/staff/staff_main.html"></iframe><%} %>
 		<%if(value.equals("4")){%><iframe src="//www.lucentsquare.co.jp/staff/newstaff_2014/newstaff_index.html"></iframe><%} %>
 		<%if(value.equals("5")){%><iframe src="//www.lucentsquare.co.jp/401KDVD/401K/401K_top.html"></iframe><%} %>
-		<%if(value.equals("6")){%><iframe src="//www.lucentsquare.co.jp/staff/renraku.cgi"></iframe><%} %>
+		<%if(value.equals("6")){%><iframe src="/staff_room/html/etc/PMark/indexVer9.html"></iframe><%} %>
 	</div>
 </body>
 </html>
