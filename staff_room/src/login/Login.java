@@ -52,6 +52,8 @@ public class Login extends HttpServlet {
 		// Login.jspからidとpasswordを取得する
 		String id = request.getParameter("id").trim();
 	    String pwd = request.getParameter("password").trim();
+	    //ユーザの名前
+	    String username = "";
 	    
 	    HttpSession session = request.getSession(true);
 	    // idとパスワードが一致しているかチェックする
@@ -80,11 +82,13 @@ public class Login extends HttpServlet {
 
 	    	// セッションにログインユーザーIDを保存
 	    	session.setAttribute("login", id);
-	    	String adm = this.getAdmin(id);
+	    	String[] userInfo = getAdmin(id);
+	    	String adm = userInfo[0];
 	    	if(adm==null){
 	    		adm="";
 	    	}
 	    	session.setAttribute("admin", adm);
+	    	session.setAttribute("username", userInfo[1]);
 	    	response.sendRedirect("/staff_room"+accessURL);
 	    	//RequestDispatcher dispatcher = request.getRequestDispatcher(accessURL);
             //dispatcher.forward(request, response);
