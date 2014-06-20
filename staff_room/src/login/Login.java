@@ -156,17 +156,19 @@ public class Login extends HttpServlet {
 	}
 	
 	// ログインしたユーザー管理者かどうかを判断する
-	private String getAdmin(String id){
+	//ついでに名前を取得
+	private String[] getAdmin(String id){
 		ShainDB shaindb = new ShainDB();
 		Connection con = shaindb.openShainDB();
-		String sql = "select administrator from shainmst where id=?";
-		String result = null;
+		String sql = "select administrator,name from shainmst where id=?";
+		String[] result = new String[2];
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
-				result = rs.getString("administrator");
+				result[0] = rs.getString("administrator");
+				result[1] = rs.getString("name");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
