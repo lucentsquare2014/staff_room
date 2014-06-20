@@ -167,7 +167,7 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
         	<li class="uk-parent">
         		<a href="#">連絡</a>
         		<ul class="uk-nav-sub">
-        			<li><a href="/staff_room/jsp/news.jsp?news=all">全て</a></li>
+        			<li><a href="/staff_room/jsp/news.jsp?news=all">すべて</a></li>
         			<li><a href="/staff_room/jsp/news.jsp?news=1">総務</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=2">人事</a></li>
 					<li><a href="/staff_room/jsp/news.jsp?news=3">行事</a></li>
