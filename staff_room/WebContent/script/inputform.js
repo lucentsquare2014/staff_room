@@ -10,13 +10,17 @@ $(function(){
 			$("#text").text($("textarea[name='inputText']").val());
 			$("#author").text($("input[name='inputWriter']").val());
 			if($("#loop *").length == 0){
-				$("#file").text("選択されていません");
+				$("#file").removeClass("uk-panel-box");
+				$("#file ul").text("選択されていません");
 			}else{
-				$("#file").text("");
+				$("#file").addClass("uk-panel-box");
+				$("#file ul").text("");
 				var input_files = $("input[name='inputFiles']").val().split(",");
 				for(var i = 0; i < input_files.length; i++){
-					$("#file").append("<a href=\"/staff_room/upload/" + input_files[i] + 
-							"\">" + input_files[i] + "</a>&nbsp;");
+					if(input_files[i] != ""){
+						$("#file ul").append('<li><a href="/staff_room/upload/' + input_files[i] 
+								+ '">'  + input_files[i] + '</a></li>');
+					}
 				}
 			}
 			if($("input[name='inputPrimary']").prop('checked')){
@@ -154,5 +158,20 @@ $(function(){
 			});
 		//return false;
 	});
-	
+});
+function style_change(){
+	var w = $(window).width();
+	if(w < 960){
+		$("label").css("text-align","left");
+		$("#file").css("width","");
+	}else{
+		$("label").css("text-align","center");
+		$("#file").css("width","240px");
+	}
+}
+$(function(){
+	style_change();
+});
+$(window).resize(function(){
+	style_change();
 });

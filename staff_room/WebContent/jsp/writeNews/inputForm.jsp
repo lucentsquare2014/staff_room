@@ -131,9 +131,10 @@
 			<label class="uk-text-bold uk-text-large">緊急</label>
 		</div>
 		<div class="uk-form-row">
+			<label class="uk-form-label"></label>
 			<div class="uk-width-3-4 uk-container-center uk-text-right">
 				<button class="uk-button uk-button-large uk-button-primary" data-uk-toggle="{target:'.confirm'}">確認</button>
-				<a href="/staff_room/jsp/writeNews/writeNews.jsp" class="uk-button uk-button-large uk-button-success" >一覧へ</a>
+				<a href="/staff_room/jsp/writeNews/writeNews.jsp" class="uk-button uk-button-large uk-button-success uk-align-left">一覧へ</a>
 			</div>
 		</div>
 	</div>
@@ -143,19 +144,32 @@
 		<div class="uk-h1 uk-text-center">入力確認</div>
 		<div class="uk-panel uk-panel-box">
 			<div id="primary"></div>
-			<p class="uk-text-danger uk-text-large" id="alert"></p>
-			<dl class="uk-description-list uk-description-list-horizontal uk-text-large">
-				<dt class="uk-text-bold">分類：</dt>
-				<dd id="select"></dd>
-				<dt class="uk-text-bold">タイトル：</dt>
-				<dd id="title"></dd>
-				<dt class="uk-text-bold">本文：</dt>
-				<dd><pre id="text"></pre></dd>
-				<dt class="uk-text-bold uk-text-large">添付：</dt>
-				<dd id="file"></dd>
-				<dt class="uk-text-bold">保存者：</dt>
-				<dd id="author"></dd>
-			</dl>
+			<p class="uk-text-danger uk-text-large uk-text-center" id="alert"></p>
+			 <div class="uk-form-row">
+			 	<label class="uk-form-label uk-text-bold uk-text-large">分類：</label>
+			 	<div id="select" class="uk-form-label"></div>
+			 </div>
+			 <div class="uk-form-row">
+			 	<label class="uk-form-label uk-text-bold uk-text-large">タイトル：</label>
+			 	<div id="title" class="uk-form-label"></div>
+			 </div>
+			 <div class="uk-form-row">
+			 	<label class="uk-form-label uk-text-bold uk-text-large">本文：</label>
+			 	<div id="text" class="uk-form-label"></div>
+			 </div>
+			 <div class="uk-form-row">
+			 	<label class="uk-form-label uk-text-bold uk-text-large">添付：</label>
+			 	<div class="uk-form-label">
+			 		<div class="uk-panel" id="file">
+						<ul class="uk-list uk-list-line">
+						</ul>
+					</div>
+			 	</div>
+			 </div>
+			 <div class="uk-form-row">
+			 	<label class="uk-form-label uk-text-bold uk-text-large">保存者：</label>
+				<div id="author" class="uk-form-label"></div>
+			 </div>
 			<div class="uk-form-row">
 				<div class="uk-width-3-4 uk-container-center uk-text-right">
 					<button class="uk-button uk-button-large uk-button-primary" data-uk-toggle="{target:'.confirm'}">戻る</button>
