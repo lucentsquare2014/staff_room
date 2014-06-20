@@ -194,7 +194,10 @@ $(function(){
 	$('.uk-modal').on({
 	    'uk.modal.hide': function(){
 	        $("#msg").text("新しいファイル名を入力してください。").removeClass("uk-text-danger");
-	    }
+	    },
+		'uk.modal.show': function(){
+			$("input[name='new_name']").focus();
+		}
 	});
 	
 });
