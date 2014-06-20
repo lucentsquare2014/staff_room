@@ -85,7 +85,7 @@ public class Login extends HttpServlet {
 	    		adm="";
 	    	}
 	    	session.setAttribute("admin", adm);
-	    	response.sendRedirect("/staff_room/"+accessURL);
+	    	response.sendRedirect("/staff_room"+accessURL);
 	    	//RequestDispatcher dispatcher = request.getRequestDispatcher(accessURL);
             //dispatcher.forward(request, response);
 	    	return;
