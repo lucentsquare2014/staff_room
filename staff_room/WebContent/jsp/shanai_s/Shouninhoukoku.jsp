@@ -49,7 +49,8 @@
 	GoukeiDAO goukeidao = new GoukeiDAO();
 	golist = goukeidao.selectTbl(sql);
 	B_GoukeiMST b_goukei = new B_GoukeiMST();
-	b_goukei = (B_GoukeiMST)golist.get(0);%>
+	b_goukei = (B_GoukeiMST)golist.get(0);
+	%>
 <B>＜＜承認経路＞＞</B>
 <TABLE>
 <TR>

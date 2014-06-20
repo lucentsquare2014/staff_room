@@ -127,7 +127,7 @@ public class C_CheckTime {
 		}
 
 	}catch(Exception e){
-
+			System.out.println("hoge (C_CheckTime.java)");
 			e.printStackTrace();
 
 			return "";

@@ -171,7 +171,7 @@ String sql_2 = " where GROUPnumber='"+grouptbl.getGROUPnumber()+"'";
 <INPUT TYPE="hidden" NAME="shouninsha_mail" VALUE="<%= bsyounin.getMail() %>">
 <INPUT TYPE="hidden" NAME="shouninsha_name" VALUE="<%= bsyounin.getName() %>">
 <INPUT TYPE="hidden" NAME="shouninsha_number" VALUE="<%= bsyounin.getNumber() %>">
-<INPUT TYPE="hidden" NAME="body" VALUE="　<%= bsyounin.getName() %>さんへ  勤務報告書の承認をお願いします。<%= ShainMST.getName() %>より http://www.lucentsquare.co.jp:8080/kk_web/Menu_Gamen.jsp"/>
+<INPUT TYPE="hidden" NAME="body" VALUE="　<%= bsyounin.getName() %>さんへ  勤務報告書の承認をお願いします。<%= ShainMST.getName() %>より http://www.lucentsquare.co.jp:8080/staff_room/jsp/shanai_s/shanai_s?mode=2"/>
 </FORM>
 	
 	<%	}

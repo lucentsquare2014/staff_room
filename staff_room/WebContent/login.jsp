@@ -73,6 +73,11 @@ if(login_cookie!=null){
 				</div>
 				<div class="uk-form-row">
 				    <% Object url = request.getAttribute("accessURL");
+			           String param = request.getQueryString();
+			           if(param!=null){
+			               url = url + "?" + param;
+			           }
+				    
 				       if(url==null){
 				    	   url = "/jsp/top/top.jsp";
 				       }

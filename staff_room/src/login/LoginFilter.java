@@ -38,8 +38,6 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// アクセスされたURIを取得
 		String accessURL = ((HttpServletRequest) request).getServletPath();
-		String param = ((HttpServletRequest) request).getQueryString();
-		accessURL = accessURL + "?" + param;
 		System.out.println(accessURL + " (LoginFilter.jsp)");
 		request.setAttribute("accessURL", accessURL);
 		
