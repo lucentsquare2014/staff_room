@@ -52,6 +52,8 @@ public class Login extends HttpServlet {
 		// Login.jspからidとpasswordを取得する
 		String id = request.getParameter("id").trim();
 	    String pwd = request.getParameter("password").trim();
+	    //ユーザの名前
+	    String username = "";
 	    
 	    HttpSession session = request.getSession(true);
 	    // idとパスワードが一致しているかチェックする
@@ -80,11 +82,13 @@ public class Login extends HttpServlet {
 
 	    	// セッションにログインユーザーIDを保存
 	    	session.setAttribute("login", id);
-	    	String adm = this.getAdmin(id);
+	    	String[] userInfo = getAdmin(id);
+	    	String adm = userInfo[0];
 	    	if(adm==null){
 	    		adm="";
 	    	}
 	    	session.setAttribute("admin", adm);
+	    	session.setAttribute("username", userInfo[1]);
 	    	//response.sendRedirect("./jsp/top/top.jsp");
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher(accessURL);
             dispatcher.forward(request, response);
@@ -152,17 +156,19 @@ public class Login extends HttpServlet {
 	}
 	
 	// ログインしたユーザー管理者かどうかを判断する
-	private String getAdmin(String id){
+	//ついでに名前を取得
+	private String[] getAdmin(String id){
 		ShainDB shaindb = new ShainDB();
 		Connection con = shaindb.openShainDB();
-		String sql = "select administrator from shainmst where id=?";
-		String result = null;
+		String sql = "select administrator,name from shainmst where id=?";
+		String[] result = new String[2];
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
-				result = rs.getString("administrator");
+				result[0] = rs.getString("administrator");
+				result[1] = rs.getString("name");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
