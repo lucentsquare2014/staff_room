@@ -121,6 +121,41 @@ table >thead>tr{
 				※「未読」には全記事の中から、未読の件数を表示します。<br> 　&nbsp;「緊急」には緊急とされた記事の中から、未読の件数を表示します。
 				<a style="position:relative;top:0px;left:300px;" class="uk-button uk-button-success" href="/staff_room/jsp/writeNews/writeNews.jsp">管理編集ページに戻る</a>
 			</div><%}%>
+		<div id=button>
+		<div id=button-con>
+		<div class="uk-text-center">
+		<a class="uk-button uk-button-primary" id="mail" style="white-space:nowrap;"> メール作成</a>
+		<a class="uk-button uk-button-primary" id="mai" style="white-space:nowrap;">&nbsp;&nbsp;全選択&nbsp;</a>
+		<a class="uk-button uk-button-danger" id="none" style="white-space:nowrap;"> 選択解除</a>
+			<ul>
+				<li>
+					<a class="uk-button" href="#a" style="white-space:nowrap;margin-left:13px">ア</a>
+					<a class="uk-button" href="#h">ハ</a>
+				</li>
+				<li>
+					<a class="uk-button" href="#k" style="white-space:nowrap;margin-left:13px">カ</a>
+					<a class="uk-button" href="#m">マ</a>
+				</li>
+				<li>
+					<a class="uk-button" href="#s" style="white-space:nowrap;margin-left:13px">サ</a>
+					<a class="uk-button" href="#y">ヤ</a>
+				</li>
+				<li>
+					<a class="uk-button" href="#t" style="white-space:nowrap;margin-left:13px">タ</a>
+					<a class="uk-button" href="#r">ラ</a>
+				</li>
+				<li>
+					<a class="uk-button" href="#n" style="white-space:nowrap;margin-left:13px">ナ</a>
+					<a class="uk-button" href="#w">ワ</a>
+				</li>
+			</ul>
+
+
+		</div>
+		<%if(value.equals("1")){%><a class="uk-button uk-button-primary" href="mailto:all@lucentsquare.co.jp;" id="mail" style="white-space:nowrap;margin-left:-2px"> 全社員へメール</a><%} %>
+		<div id="tyu">(注)outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div></div>
+		</div>
+
 		<div id="out_Div"><div id="in_Div">
 		<table border="1" bordercolorlight="#000000" bordercolordark="#696969" class="uk-table uk-width-medium-1-1">
 		<thead>
@@ -245,40 +280,6 @@ table >thead>tr{
 		</table>
 		</div></div>
 		<br>
-		<div id=button>
-		<div id=button-con>
-		<div class="uk-text-center">
-		<a class="uk-button uk-button-primary" id="mail" style="white-space:nowrap;"> メール作成</a>
-		<a class="uk-button uk-button-primary" id="mai" style="white-space:nowrap;">&nbsp;&nbsp;全選択&nbsp;</a>
-		<a class="uk-button uk-button-danger" id="none" style="white-space:nowrap;"> 選択解除</a>
-			<ul>
-				<li>
-					<a class="uk-button" href="#a" style="white-space:nowrap;margin-left:13px">ア</a>
-					<a class="uk-button" href="#h">ハ</a>
-				</li>
-				<li>
-					<a class="uk-button" href="#k" style="white-space:nowrap;margin-left:13px">カ</a>
-					<a class="uk-button" href="#m">マ</a>
-				</li>
-				<li>
-					<a class="uk-button" href="#s" style="white-space:nowrap;margin-left:13px">サ</a>
-					<a class="uk-button" href="#y">ヤ</a>
-				</li>
-				<li>
-					<a class="uk-button" href="#t" style="white-space:nowrap;margin-left:13px">タ</a>
-					<a class="uk-button" href="#r">ラ</a>
-				</li>
-				<li>
-					<a class="uk-button" href="#n" style="white-space:nowrap;margin-left:13px">ナ</a>
-					<a class="uk-button" href="#w">ワ</a>
-				</li>
-			</ul>
-
-
-		</div>
-		<%if(value.equals("1")){%><a class="uk-button uk-button-primary" href="mailto:all@lucentsquare.co.jp;" id="mail" style="white-space:nowrap;margin-left:5px"> 全社員へメール</a><%} %>
-		<div id="tyu">(注)outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div></div>
-		</div>
 	</div>
 </body>
 </html>
