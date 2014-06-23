@@ -17,6 +17,8 @@ $(function(){
 			location.href = "mailto:" + mail_str;
 		}else if(n == 0){
 			alert("チェックされていません");
+		}else if(n>70){
+			alert("一度に選択できる数は70までです。");		
 		}else{
 			$("table :checked").each(function(){
 				var mail_add = $(this).parent().parent().children("#address").children("a");
