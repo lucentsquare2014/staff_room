@@ -55,15 +55,16 @@ img{
 					<li><a href="#top" id="jump">3.TOP画面</a></li>
 					<li><a href="#news" id="jump">4.連絡画面</a></li>
 					<li><a href="#shanai_s" id="jump">5.社内システム</a></li>
-					<li><a href="#document" id="jump">6.申請書類、規定・書類画面</a></li>
+					<li><a href="#document" id="jump">6.組織表/規程、申請書類画面</a></li>
 					<li><a href="#mail" id="jump">7.Mail画面</a></li>
 					<li><a href="#bbs_photo_etc" id="jump">8.掲示板、Photo、etc</a></li>
 					<li><a href="#pw_change" id="jump">9.ログインパスワードの変更</a></li>
+					<li><a href="#information" id="jump">10.お問い合わせ・バージョン情報</a></li>
 			</ul>
 </div>
 <div class="uk-panel uk-panel-box uk-align-center" style="width:800px">
 					<h1 >マニュアル一覧</h1>
-					<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold" id="login">1.ログイン画面</h2>&nbsp;
+					<h2 class="uk-text-bold" id="login">1.ログイン画面</h2>&nbsp;
 <ul>
 	<li>「ログイン状態を保持する」にチェックを入れてログインした場合、ログアウトを行う、cookieを削除する、<br>
 		ブラウザの変更などの動作を行わない限り、ログイン状態が保持されます。<br>
@@ -74,7 +75,7 @@ img{
 	<img src ="/staff_room/images/help/help_login.png" width="70%"><br><br>
 	</li>
 </ul>
-					<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold" id="header_menu">2.ヘッダーメニュー</h2>&nbsp;
+					<h2 class="uk-text-bold" id="header_menu">2.ヘッダーメニュー</h2>&nbsp;
 <ul>
 	<li>それぞれの項目をクリックすることでそのページに移動します。</li>
 	<li>一部の項目は、ポインタを合わせればリンクがリストとして表示されます。<br><br>
@@ -93,7 +94,7 @@ img{
 	</li>
 </ul>
 
-					<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold" id="top">3.TOP画面</h2>&nbsp;
+					<h2 class="uk-text-bold" id="top">3.TOP画面</h2>&nbsp;
 <ul>
 	<li>連絡事項として作成された記事の簡易的な閲覧が行えるページです。</li>
 	<li>「連絡事項」下の分類別ボタンを押すことでその分類の記事のみが表示されます。</li>
@@ -108,7 +109,7 @@ img{
 	</li>
 </ul>
 
-				<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold" id="news">4.連絡画面</h2>&nbsp;
+				<h2 class="uk-text-bold" id="news">4.連絡画面</h2>&nbsp;
 <ul>
 	<li>連絡事項として作成された記事の閲覧が行えるページです。</li>
 	<li>ヘッダーにリスト表示されたリンクから全ての記事と分類別の記事を表示することができます。<br><br>
@@ -125,24 +126,25 @@ img{
 	</li>
 </ul>
 
-				<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold" id="shanai_s">5.社内システム</h2>&nbsp;
+				<h2 class="uk-text-bold" id="shanai_s">5.社内システム</h2>&nbsp;
 <ul>
 	<li>ヘッダーにリスト表示されたそれぞれのリンクをクリックすることで社内システムを利用することができます。<br><br>
 	<img src ="/staff_room/images/help/help_header_shanaiS.png"><br><br>
 	</li>
 </ul>
 
-					<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold"id="document">6.申請書類、規定・書類画面</h2>&nbsp;
+					<h2 class="uk-text-bold"id="document">6.組織表/規程、申請書類画面</h2>&nbsp;
 <ul>
 	<li>各種書類の閲覧・ダウンロードが行えるページです。<br>
-		申請書類ページでは、変更届など記入・提出の必要がある書類とその記入例を利用できます。<br>
-		規定・書類ページでは個人情報保護規定など規定に関する書類を利用できます。</li>
+		組織表/規程ページでは個人情報保護規定など規定に関する書類を利用できます。<br>
+		申請書類ページでは、変更届など記入・提出の必要がある書類とその記入例を利用できます。
+		</li>
 	<li>ファイル名をクリックすることで書類の閲覧・ダウンロードが行えます。<br><br>
 	<img src ="/staff_room/images/help/help_document.png" width="100%"><br><br>
 	</li>
 </ul>
 
-					<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold"id="mail">7.Mail画面</h2>&nbsp;
+					<h2 class="uk-text-bold"id="mail">7.Mail画面</h2>&nbsp;
 <ul>
 	<li>社員のメールアドレスの確認とメールの作成が行えるページです。</li>
 	<li>メールアドレスをクリックすると、宛先にそのアドレスが入った状態でメールが作成されます（メールソフトが起動します）</li>
@@ -157,7 +159,7 @@ img{
 </ul>
 
 
-	<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold" id="bbs_photo_etc">8.掲示板、Photo、etc</h2>&nbsp;
+	<h2 class="uk-text-bold" id="bbs_photo_etc">8.掲示板、Photo、etc</h2>&nbsp;
 <ul>
 	<li>ヘッダーからのリンクによって各ページに移動します。<br><br>
 	<img src ="/staff_room/images/help/help_bbs.png" width="35%">
@@ -165,7 +167,7 @@ img{
 	<img src ="/staff_room/images/help/help_etc.png" width="35%"><br><br>
 	</li>
 </ul>
-<h2 data-uk-toggle="{target:'#my-id1'}" class="uk-text-bold" id="pw_change">9.ログインパスワードの変更</h2>&nbsp;
+<h2 class="uk-text-bold" id="pw_change">9.ログインパスワードの変更</h2>&nbsp;
 <ul>
 	<li>ログインパスワードの変更はヘッダーメニューの「etc」の中の、「パスワード変更」から行うことができます。<br><br>
 	<img src ="/staff_room/images/help/help_pwChange_pulldown.png" ><br><br></li>
@@ -174,6 +176,11 @@ img{
 		また、アカウントと同一のものはパスワードとして設定することはできません。<br><br>
 	<img src ="/staff_room/images/help/help_pwChange.png" width="40%"><br><br>
 	</li>
+</ul>
+<h2 class="uk-text-bold" id="information">10.問い合わせ・バージョン情報</h2>&nbsp;
+<ul>
+	<li>Staff_Roomのお問合せは：<a href ="mailto:lsc-admin@lucentsquare.co.jp">ビジネス推進室</a><br><br>
+	<li>2014/06/27 ver1.00 リリース</li>
 </ul>
 	</div>
 	</div>
