@@ -24,19 +24,24 @@ a#jump:hover { color:#0000ff; text-decoration:none }
 a#jump:active { color:#0000ff; text-decoration:none }
 
 div#panel {
-	position: fixed;
-	left:2%;
-	max-width: 100%;
 	max-height: 100%;
+	width:200px;
+	float:left;
 }
 div#con {
-	position: fixed;
-	left:2%;
-	max-width: 98%;
+	position: relative;
+	margin-top:82px;
+	width: 1080px;
 	max-height: 100%;
-	overflow-y: scroll;
 	height:93.5%;
-
+	margin-right:auto;
+	margin-left:2%;
+}
+div#manual{
+	overflow-y:scroll;
+	width:800px;
+	height:500px;
+	float:left;
 }
 img{
 	border:3px solid;
@@ -45,10 +50,8 @@ img{
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-	<br><br>
-<div id="con" class="uk-width-1-1 uk-container-center ">
-<br><br><br><br>
-<div id="panel" class="uk-panel uk-panel-box uk-align-left" style="width:200px;">
+<div id="con" class="uk-container-center ">
+<div id="panel" class="uk-panel uk-panel-box uk-align-left">
   			<ul class="uk-list uk-list-line">
   					<li><a href="#login" id="jump">1.ログイン画面</a></li>
 					<li><a href="#header_menu" id="jump">2.ヘッダーメニュー</a></li>
@@ -62,7 +65,7 @@ img{
 					<li><a href="#information" id="jump">10.お問い合わせ・バージョン情報</a></li>
 			</ul>
 </div>
-<div class="uk-panel uk-panel-box uk-align-center" style="width:800px">
+<div id="manual"class="uk-panel uk-panel-box uk-align-center" >
 					<h1 >マニュアル一覧</h1>
 					<h2 class="uk-text-bold" id="login">1.ログイン画面</h2>&nbsp;
 <ul>
