@@ -24,69 +24,19 @@
 <script src="/staff_room/script/writeNews.js"></script>
 <script type="text/javascript" src="/staff_room/script/notifIt.js"></script>
 <link rel="stylesheet" type="text/css" href="/staff_room/css/notifIt.css">
-<style type="text/css">
-body {
-	width: 100%;
-	background-attachment: fixed;
-	background-image: url("/staff_room/images/input.png");
-}
-
-.contents {
-	padding-top: 80px;
-	min-width: 950px;
-}
-p.scroll{
-	height: 5em;
-	overflow: scroll;
-	}
-#out_Div {
-  position: relative;
-  padding-top: 38px;
-  width: 900px;
-}
-
-#in_Div {
-	overflow-y: scroll;
-	line-height: 1.75em;
-	height: 360px;
-	background-color: whitesmoke;
-    }
-
-table >thead{
-
-}
-table >thead>tr{
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 900px;
-
-
-}
-.coL1 { width:15px; }/* colgroupの列幅指定 */
-
-.coL2 { width:110px; }
-
-.coL3 { width:120px; }
-
-.coL4 { width:500px; }
-
-.coL5 { width:70px; }
-</style>
+<link rel="stylesheet" href="/staff_room/css/writeNews.css">
 <title>管理編集</title>
 </head>
 
 <body>
-			<div style="position:absolute; top:75px; left:150px;">
-			<div class="uk-grid">
+	<div style="position:absolute; top:75px; left:150px;">
+		<div class="uk-grid">
 			<div class="uk-width-1-4 uk-pull-1-6 uk-text-center">
-			<font face="ＭＳ Ｐゴシック">
-			<span style="font-size: 50px;">
-			<nobr>
-			管理・連絡
-			</nobr><br></span>
-			</font>
-			</div></div></div>
+				<font face="ＭＳ Ｐゴシック"><span style="font-size: 50px;">
+				<nobr>管理・連絡</nobr></span></font>
+			</div>
+		</div>
+	</div>
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="contents uk-width-2-3 uk-container-center" style="height:60px;">
 	     <div class="uk-width-1-1 uk-text-right">
@@ -132,14 +82,14 @@ table >thead>tr{
 			list = dao.getNews(sql);
 		%>
 		<div id="out_Div"><div id="in_Div">
-		<table border="10" class="uk-h4 uk-table uk-table-striped uk-container-center uk-table-condensed  uk-text-center uk-width-medium-2-4 uk-panel-box">
+		<table border="1" class="uk-h4 uk-table uk-table-striped uk-container-center uk-table-condensed  uk-text-center uk-width-medium-2-4 uk-panel-box">
 			<thead>
 				<tr>
-					<th Background="../../images/blackwhite1.png" class="coL1"><font color="#FFFFFF"></font></th>
-  					<th Background="../../images/blackwhite1.png" class="coL2 uk-h3 uk-text-center"><font color="#FFFFFF">作成日</font></th>
- 					<th Background="../../images/blackwhite1.png" class="coL3 uk-h3 uk-text-center"><font color="#FFFFFF">分類</font></th>
- 					<th Background="../../images/blackwhite1.png" class="coL4 uk-h3 uk-text-left"><font color="#FFFFFF">タイトル</font></th>
- 					<th Background="../../images/blackwhite1.png" class="coL5"><font color="#FFFFFF"></font></th>
+					<th class="coL1"></th>
+  					<th class="coL2 uk-h3 uk-text-center">作成日</th>
+ 					<th class="coL3 uk-h3 uk-text-center">分類</th>
+ 					<th class="coL4 uk-h3 uk-text-left">タイトル</th>
+ 					<th class="coL5"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -158,18 +108,24 @@ table >thead>tr{
 				</td>
 				<td class="coL2 uk-text-center"><%=dddate.format(date)%></td>
 				<td class="coL3 uk-text-center"><%=row.get("postname")%></td>
-				<td class="coL4 uk-text-left" nowrap>
-					<!-- title→タイトル --> 
-					<a t_id="<%=row.get("news_id")%>" class="body-title">
-						<%=StringEscapeUtils.escapeHtml4(row.get("title")) %>
+				<!-- title→タイトル --> 
+				<td class="coL4 uk-text-left">				
+					<a id="<%= row.get("news_id") %>" class="body-title" data-uk-toggle="{target:'#title<%=i%>'}">
+						<%= row.get("title") %>
 					</a>
-					<dl>
-						<dt id="text<%=row.get("news_id")%>" class="body-text">
-							<!-- text→文章 -->
-							<pre><%=row.get("text")%></pre>
-						</dt>
-						<dt style="display: none"></dt>
-					</dl>
+					<div id="title<%=i%>" class="uk-h4 uk-text-left uk-hidden">
+						<pre><%= row.get("text") %></pre>
+						<%if (!row.get("filename").equals("")){ %>
+							<p>添付：
+								<%
+                    				String arr[] = row.get("filename").split( "," );
+                    				for (int f = 0; f<arr.length; f++){
+                    			%>
+                    			<a href="/staff_room/upload/<%= arr[f] %>"><%= arr[f] %></a>&nbsp;
+                    			<% } %>
+                    		</p>
+						<% } %>
+					</div>
 				</td>
 				<td class="coL1">
 					<form method="POST" action="inputForm.jsp">
@@ -195,13 +151,12 @@ table >thead>tr{
 		</table>
 		</div></div>
 		</div>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<div class="uk-grid uk-width-5-6" style="padding-bottom: 50px;">
 			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left">
 				<%if (page_num.equals("1")) {
 					out.print("　");
 				} else {%>
-				<span>　　　　　　　　　　　　　　　　　　<a class="prev-page uk-button uk-button-primary"
+				<span><a class="prev-page uk-button uk-button-primary"
 					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) - 1%>"><b>&lt;&lt;前へ</b></a></span>
 			<%}%>
 			</div>
