@@ -45,14 +45,14 @@
 		}
 	#out_Div {
 	  position: relative;
-	  padding-top: 106px;
+	  padding-top: 96px;
 	  width: 810px;
 	}
 
 	#in_Div {
 		overflow-y: scroll;
 		line-height: 1.75em;
-		max-height: 385px;
+		max-height: 410px;
 		background-color: whitesmoke;
  	   }
 
@@ -61,7 +61,7 @@
 	}
 	table >thead>tr{
  	 position: absolute;
- 	 top: 60px;
+ 	 top: 50px;
  	 left: 0px;
 	 width: 810px;
 	}
@@ -204,7 +204,7 @@
 		</table>
 		</div></div><br>
 		<!-- 次へボタン、戻るボタンの処理　 -->
-		<div class="uk-grid" style="padding-bottom: 50px;">
+		<div class="uk-grid">
 			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left">
 				<%if (page_num.equals("1")) {
 					out.print("　");

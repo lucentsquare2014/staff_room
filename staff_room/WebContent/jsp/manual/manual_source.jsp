@@ -19,6 +19,13 @@
  	#edit:hover{
  		cursor: pointer;
  	}
+.coL11 { width:19px; }/* colgroupの列幅指定 */
+
+.coL22 { width:122px; }
+
+.coL33 { width:145px; }
+
+.coL44 { width:528px; }
 </style>
 <%
 	File base_folder = new File(application.getRealPath(File.separator + "manual"));//使用する親フォルダの場所を指定
@@ -43,19 +50,19 @@
 <tr class="uk-text-center">
 	<!-- -----------管理者用チェックボックス作成----------- -->
 	<% if(user2.equals("1")){%>
-	<td bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="<%=foldername[i]%>/<%=filename[x]%>"></td>
+	<td class="coL11" bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="<%=foldername[i]%>/<%=filename[x]%>"></td>
 	<%}%>
 
 	<!-- ファイル数の半分の時にのみ出力 -->
 	<%if (x == 0) {%>
-	<td bgcolor="#FFFFFF" id="type"rowspan=<%=filename.length%> class="uk-text-middle uk-text-bold"><%=foldername[i]%></td>
+	<td bgcolor="#FFFFFF" id="type"rowspan=<%=filename.length%> class="coL22 uk-text-middle uk-text-bold"><%=foldername[i]%></td>
 	<%}%>
 
 	<!-- フォーマットを変換した 更新日時を出力-->
-	<td bgcolor="#FFFFFF" id="time"><%=dddate.format(date)%></td>
+	<td class="coL33" bgcolor="#FFFFFF" id="time"><%=dddate.format(date)%></td>
 
 	<!-- String型のファイル名を出力 -->
-	<td bgcolor="#FFFFFF" class="uk-text-left" id="filename">
+	<td bgcolor="#FFFFFF" class="coL44 uk-text-left" id="filename">
 		<a href="/staff_room/manual/<%=foldername[i]%>/<%=filename[x]%>"><%=filename[x]%></a>
 		<% if(user2.equals("1")){%>
 		&nbsp;
