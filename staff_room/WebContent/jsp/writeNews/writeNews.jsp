@@ -90,14 +90,19 @@ table >thead>tr{
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="contents uk-width-2-3 uk-container-center" style="height:60px;">
 	     <div class="uk-width-1-1 uk-text-right">
-	     <a href="/staff_room/jsp/mail/mail.jsp?mmail=1">
-	       <button class="uk-button uk-button-success"　value="未読記事">
-	       <i class="uk-icon-user uk-icon-small"></i>　記事未読件数確認へ</button></a>
+	     	<a href="/staff_room/jsp/mail/mail.jsp?mmail=1">
+	     		<button class="uk-button uk-button-success" value="未読記事">
+	     			<i class="uk-icon-user uk-icon-small"></i>　記事未読件数確認へ
+	     		</button>
+	     	</a>
 			<a href="/staff_room/jsp/writeNews/inputForm.jsp">
 				<button class="uk-button uk-button-primary">
-					<i class="uk-icon-pencil uk-icon-small"></i>　新規作成</button></a>
-                      <button id="delete_button" class="uk-button uk-button-danger" disabled>
-				<i class="uk-icon-trash-o uk-icon-small"></i>　削除</button>　　　　　　
+					<i class="uk-icon-pencil uk-icon-small"></i>　新規作成
+				</button>
+			</a>
+            <button id="delete_button" class="uk-button uk-button-danger" disabled>
+				<i class="uk-icon-trash-o uk-icon-small"></i>　削除
+			</button>
 		</div><br>
 		<%
 			//配列
@@ -124,12 +129,10 @@ table >thead>tr{
 			String sql = "select " + select + " from " + from + " where "
 					+ where + " order by " + order + " offset " + offset
 					+ " limit " + limit;
-			//System.out.println(sql);
 			list = dao.getNews(sql);
-			//System.out.println(list.size());
 		%>
 		<div id="out_Div"><div id="in_Div">
-		<table border="10" bordercolorlight="#000000"bordercolordark="#696969" class="uk-h4 uk-table uk-table-striped uk-container-center uk-table-condensed  uk-text-center uk-width-medium-2-4 uk-panel-box">
+		<table border="10" class="uk-h4 uk-table uk-table-striped uk-container-center uk-table-condensed  uk-text-center uk-width-medium-2-4 uk-panel-box">
 			<thead>
 				<tr>
 					<th Background="../../images/blackwhite1.png" class="coL1"><font color="#FFFFFF"></font></th>
@@ -150,13 +153,16 @@ table >thead>tr{
 
 			%>
 			<tr id="row<%=row.get("news_id")%>">
-				<td class="coL1"><a flag="0" class=" uk-icon-square-o uk-text-left delete-box"
-					name="delete_check" id="<%=row.get("news_id")%>"></a></td>
-				<td nowrap class="coL2 uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
-				<td nowrap class="coL3 uk-text-center"><%=row.get("postname")%>&nbsp;</td>
+				<td class="coL1">
+					<input type="checkbox" name="delete_check" id="<%=row.get("news_id")%>">
+				</td>
+				<td class="coL2 uk-text-center"><%=dddate.format(date)%></td>
+				<td class="coL3 uk-text-center"><%=row.get("postname")%></td>
 				<td class="coL4 uk-text-left" nowrap>
-					<!-- title→タイトル --> <a t_id="<%=row.get("news_id")%>"
-					class="body-title"><%=StringEscapeUtils.escapeHtml4(row.get("title")) %></a>
+					<!-- title→タイトル --> 
+					<a t_id="<%=row.get("news_id")%>" class="body-title">
+						<%=StringEscapeUtils.escapeHtml4(row.get("title")) %>
+					</a>
 					<dl>
 						<dt id="text<%=row.get("news_id")%>" class="body-text">
 							<!-- text→文章 -->
@@ -207,6 +213,5 @@ table >thead>tr{
 					href="/staff_room/jsp/writeNews/writeNews.jsp?page=<%=Integer.parseInt(page_num) + 1%>"><b>次へ&gt;&gt;</b></a></span>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
