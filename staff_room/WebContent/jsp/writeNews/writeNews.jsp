@@ -40,15 +40,11 @@
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="contents uk-width-2-3 uk-container-center" style="height:60px;">
 	     <div class="uk-width-1-1 uk-text-right">
-	     	<a href="/staff_room/jsp/mail/mail.jsp?mmail=1">
-	     		<button class="uk-button uk-button-success" value="未読記事">
-	     			<i class="uk-icon-user uk-icon-small"></i>　記事未読件数確認へ
-	     		</button>
+	     	<a href="/staff_room/jsp/mail/mail.jsp?mmail=1" class="uk-button uk-button-success">
+				<i class="uk-icon-user uk-icon-small"></i>　記事未読件数確認へ
 	     	</a>
-			<a href="/staff_room/jsp/writeNews/inputForm.jsp">
-				<button class="uk-button uk-button-primary">
-					<i class="uk-icon-pencil uk-icon-small"></i>　新規作成
-				</button>
+			<a href="/staff_room/jsp/writeNews/inputForm.jsp" class="uk-button uk-button-primary">
+				<i class="uk-icon-pencil uk-icon-small"></i>　新規作成
 			</a>
             <button id="delete_button" class="uk-button uk-button-danger" disabled>
 				<i class="uk-icon-trash-o uk-icon-small"></i>　削除
@@ -135,12 +131,8 @@
 						<input type="hidden" name="inputText" value="<%=StringEscapeUtils.escapeHtml4(row.get("text")) %>">
 						<input type="hidden" name="inputFile" value="<%=StringEscapeUtils.escapeHtml4(row.get("filename")) %>">
 						<input type="hidden" name="inputWriter" value="<%=StringEscapeUtils.escapeHtml4(row.get("writer")) %>">
-
-
 						<input type="hidden" name="inputPrimary" value="<%=row.get("primary_flag")%>">
-
 						<input type="submit" class="uk-button uk-button-success" value="編集">
-
 					</form>
 				</td>
 			</tr>
