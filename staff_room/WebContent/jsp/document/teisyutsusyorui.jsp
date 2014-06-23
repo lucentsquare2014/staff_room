@@ -38,7 +38,7 @@ div .uk-modal-dialog {
 #in_Div {
 	overflow-y: scroll;
 	line-height: 1.75em;
-	max-height: 410px;
+	max-height: 400px;
 	background-color: whitesmoke;
     }
 
@@ -52,19 +52,19 @@ table >thead>tr{
   width: 820px;
 
 }
-.coL1 { width:22px; }/* colgroupの列幅指定 */
+.coL1 { width:25px; }/* colgroupの列幅指定 */
 
-.coL2 { width:165px; }
+.coL2 { width:185px; }
 
-.coL3 { width:110px; }
+.coL3 { width:115px; }
 
-.coL4 { width:453px; }
+.coL4 { width:510px; }
 
-.coL5 { width:120px; }
+.coL5 { width:174px; }
 
-.coL6 { width:140px; }
+.coL6 { width:117px; }
 
-.coL7 { width:560px; }
+.coL7 { width:476px; }
 
 </style>
 <title>申請書類</title>
@@ -113,13 +113,13 @@ table >thead>tr{
 	</div>
 	</div>
 	<div id="out_Div"><div id="in_Div">
-	<table border="1" class="uk-table uk-table-hover uk-width-1-1">
+	<table border="1" class="uk-table uk-table-striped uk-table-hover uk-width-1-1">
 	<thead>
 		<tr class="uk-text-large">
 			<th Background="../../images/blackwhite1.png" class="coL1 uk-text-center"><font color="#FFFFFF"></font></th>
 			<th Background="../../images/blackwhite1.png" class="coL2 uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL3 uk-width-2-10 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL4 uk-width-6-10 uk-text-center"><font color="#FFFFFF">ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL3 uk-width-2-10 uk-text-center"><font color="#FFFFFF">&nbsp;更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL4 uk-width-6-10 uk-text-left"><font color="#FFFFFF">　　ファイル名</font></th>
 		</tr>
 	</thead>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
@@ -134,7 +134,7 @@ table >thead>tr{
 		<tr class="uk-text-large">
 			<th Background="../../images/blackwhite1.png" class="coL5 uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
 			<th Background="../../images/blackwhite1.png" class="coL6 uk-width-2-10 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL7 uk-width-6-10 uk-text-center"><font color="#FFFFFF">ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL7 uk-width-6-10 uk-text-left"><font color="#FFFFFF">　　ファイル名</font></th>
 		</tr>
 	</thead>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->

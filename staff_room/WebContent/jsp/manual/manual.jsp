@@ -54,13 +54,13 @@ table >thead>tr{
 
 
 }
-.coL1 { width:20px; }/* colgroupの列幅指定 */
+.coL1 { width:25px; }/* colgroupの列幅指定 */
 
-.coL2 { width:111px; }
+.coL2 { width:185px; }
 
-.coL3 { width:130px; }
+.coL3 { width:115px; }
 
-.coL4 { width:540px; }
+.coL4 { width:510px; }
 
 .coL5 { width:120px; }
 
@@ -121,7 +121,7 @@ table >thead>tr{
 			<th Background="../../images/blackwhite1.png" class="coL1 uk-text-center"></th>
 			<th Background="../../images/blackwhite1.png" class="coL2 uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
 			<th Background="../../images/blackwhite1.png" class="coL3 uk-width-3-10 uk-text-center"><font color="#ffffff">更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL4 uk-width-7-10 uk-text-center"><font color="#ffffff">ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL4 uk-width-7-10 uk-text-left"><font color="#ffffff">　　ファイル名</font></th>
 		</tr>
 	</thead>
 		<!-- includeディレクトリを使い、"manual_source.jsp"ファイルを埋め込む -->
