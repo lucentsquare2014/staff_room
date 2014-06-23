@@ -17,7 +17,7 @@
 <style>
 body {
 	width: 100%;
-	height: 656px;
+	height: 556px;
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/manual01.jpg");
 	background-size: 100% 100%;
@@ -29,6 +29,45 @@ div .uk-modal-dialog {
 	width: 400px;
 	top: 100px;
 }
+
+#out_Div {
+  position: relative;
+  padding-top: 45px;
+  width: 820px;
+}
+
+#in_Div {
+	overflow-y: scroll;
+	line-height: 1.75em;
+	max-height: 410px;
+	background-color: whitesmoke;
+    }
+
+table >thead{
+
+}
+table >thead>tr{
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  width: 820px;
+
+
+}
+.coL1 { width:20px; }/* colgroupの列幅指定 */
+
+.coL2 { width:111px; }
+
+.coL3 { width:130px; }
+
+.coL4 { width:540px; }
+
+.coL5 { width:120px; }
+
+.coL6 { width:140px; }
+
+.coL7 { width:560px; }
+
 </style>
 <title>規程・書類</title>
 </head>
@@ -67,33 +106,42 @@ div .uk-modal-dialog {
 		</div>
 	</div>
 	<div class="uk-width-1-2 uk-align-right" id="select_files">
+	<div style="position:absolute;z-index:10;">
 		<br>
 		<div class="uk-panel">
 			<ul class="uk-list uk-list-line">
 			</ul>
 		</div>
 	</div>
-	<table border="5" class="uk-table uk-width-1-1" >
+	</div>
+	<div id="out_Div"><div id="in_Div">
+	<table border="1" class="uk-table uk-width-1-1" >
+	<thead>
 		<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class="uk-text-center">　　</th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
-			<th Background="../../images/blackwhite1.png" class="uk-width-3-10 uk-text-center"><font color="#ffffff">更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class="uk-width-7-10 uk-text-center"><font color="#ffffff">ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL1 uk-text-center"></th>
+			<th Background="../../images/blackwhite1.png" class="coL2 uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL3 uk-width-3-10 uk-text-center"><font color="#ffffff">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL4 uk-width-7-10 uk-text-center"><font color="#ffffff">ファイル名</font></th>
 		</tr>
+	</thead>
 		<!-- includeディレクトリを使い、"manual_source.jsp"ファイルを埋め込む -->
 		<%@ include file="manual_source.jsp"%>
-		</table>
-<%}else{ %>
-	<table border="5" class="uk-table uk-width-1-1" >
-		<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class=" uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-3-10 uk-text-center"><font color="#ffffff">更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class=" uk-width-7-10 uk-text-center"><font color="#ffffff">ファイル名</font></th>
-		</tr>
-		<!-- includeディレクトリを使い、"manual_source.jsp"ファイルを埋め込む -->
-		<%@ include file="manual_source.jsp"%>
-
 	</table>
+	</div></div>
+<%}else{ %>
+	<div id="out_Div"><div id="in_Div">
+	<table border="1" class="uk-table uk-width-1-1" >
+	<thead>
+		<tr class="uk-text-large">
+			<th Background="../../images/blackwhite1.png" class="coL5 uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL6 uk-width-3-10 uk-text-center"><font color="#ffffff">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL7 uk-width-7-10 uk-text-center"><font color="#ffffff">ファイル名</font></th>
+		</tr>
+	</thead>
+		<!-- includeディレクトリを使い、"manual_source.jsp"ファイルを埋め込む -->
+		<%@ include file="manual_source.jsp"%>
+	</table>
+	</div></div>
 <%} %>
 </div>
 </div>
