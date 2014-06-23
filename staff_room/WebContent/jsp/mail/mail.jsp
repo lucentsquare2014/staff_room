@@ -18,49 +18,39 @@
 <head>
 	<jsp:include page="/html/head.html" />
 <style type="text/css">
-body {
-	width: 100%;
-	background-attachment: fixed;
-	background-image: url("/staff_room/images/input.png");
-}
 
-.contents {
-	padding-top: 80px;
-	min-width: 800px;
-}
-p.scroll{
-	height: 5em;
-	overflow: scroll;
-	}
 #out_Div {
   position: relative;
-  padding-top: 110px;
-  width: 800px;
+  width: 920px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-#out2_Div {
-  position: relative;
-  padding-top: 130px;
-  width: 800px;
+#come{
+  padding-top: 82px;
+  width: 920px;
+  height:78px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#come>div{
+	float:right;
+}
+#come>a{
+	float:right;
 }
 
 #in_Div {
 	overflow-y: scroll;
 	line-height: 1.75em;
 	height: 400px;
+	width: 800px;
 	background-color: whitesmoke;
+	float:left;
     }
-
-table >thead{
-
-}
 table >thead>tr{
   position: absolute;
-  top: 70px;
-  left: 0px;
+  top:-40px;
   width: 800px;
-
-
 }
 .coL1 { width:22px; }/* colgroupの列幅指定 */
 
@@ -76,7 +66,7 @@ table >thead>tr{
 
 .coL7 { width:140px; }
 
-.coL8 { width:530px; }
+.coL8 { width:524px; }
 
 .coL9 { width:14px; }
 
@@ -90,7 +80,7 @@ table >thead>tr{
 
 .coL14 { width:70px; }
 
-.coL15 { width:70px; }
+.coL15 { width:76px; }
 
 .coL16 { width:70px; }
 
@@ -105,7 +95,7 @@ table >thead>tr{
 </style>
 	<title>メール</title>
 	<script src="/staff_room/script/MailCheckbox.js"></script>
-	<link rel="stylesheet" href="/staff_room/css/copy_mail.css">
+	<link rel="stylesheet" href="/staff_room/css/mail.css">
 <%
 		String value = null;
 		value = request.getParameter("mmail");
@@ -114,49 +104,53 @@ table >thead>tr{
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
 
+
+
+
+
 	<div id="con" class="uk-width-1-1 uk-container-center ">
-		<% //if(user.equals("1")){ %>
-		<%if(value.equals("1")){%>
+		
 			<div id="come">
-				※「未読」には全記事の中から、未読の件数を表示します。<br> 　&nbsp;「緊急」には緊急とされた記事の中から、未読の件数を表示します。
-				<a style="position:relative;top:0px;left:300px;" class="uk-button uk-button-success" href="/staff_room/jsp/writeNews/writeNews.jsp">管理編集ページに戻る</a>
-			</div><%}%>
+			<%if(value.equals("1")){%>
+				<a class="uk-button uk-button-success" href="/staff_room/jsp/writeNews/writeNews.jsp">管理編集ページに戻る</a>
+				<div>※「未読」には全記事の中から、未読の件数を表示します。<br> 　&nbsp;「緊急」には緊急とされた記事の中から、未読の件数を表示します。</div>
+			<%}%>
+			</div>
+		
+
+		<div id="out_Div">
 		<div id=button>
 		<div id=button-con>
-		<div class="uk-text-center">
 		<a class="uk-button uk-button-primary" id="mail" style="white-space:nowrap;"> メール作成</a>
 		<a class="uk-button uk-button-primary" id="all_check" style="white-space:nowrap;">&nbsp;&nbsp;全選択&nbsp;</a>
 		<a class="uk-button uk-button-danger" id="clear" style="white-space:nowrap;"> 選択解除</a>
 			<ul>
 				<li>
-					<a class="uk-button" href="#a" style="white-space:nowrap;margin-left:13px">ア</a>
+					<a class="uk-button" href="#a" style="white-space:nowrap;">ア</a>
 					<a class="uk-button" href="#h">ハ</a>
 				</li>
 				<li>
-					<a class="uk-button" href="#k" style="white-space:nowrap;margin-left:13px">カ</a>
+					<a class="uk-button" href="#k" style="white-space:nowrap;">カ</a>
 					<a class="uk-button" href="#m">マ</a>
 				</li>
 				<li>
-					<a class="uk-button" href="#s" style="white-space:nowrap;margin-left:13px">サ</a>
+					<a class="uk-button" href="#s" style="white-space:nowrap;">サ</a>
 					<a class="uk-button" href="#y">ヤ</a>
 				</li>
 				<li>
-					<a class="uk-button" href="#t" style="white-space:nowrap;margin-left:13px">タ</a>
+					<a class="uk-button" href="#t" style="white-space:nowrap;">タ</a>
 					<a class="uk-button" href="#r">ラ</a>
 				</li>
 				<li>
-					<a class="uk-button" href="#n" style="white-space:nowrap;margin-left:13px">ナ</a>
+					<a class="uk-button" href="#n" style="white-space:nowrap;">ナ</a>
 					<a class="uk-button" href="#w">ワ</a>
 				</li>
 			</ul>
 
 
 		</div>
-		<%if(value.equals("1")){%><a class="uk-button uk-button-primary" href="mailto:all@lucentsquare.co.jp;" id="mail" style="white-space:nowrap;margin-left:-2px"> 全社員へメール</a><%} %>
 		<div id="tyu">(注)outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div></div>
-		</div>
-
-		<div id="out_Div"><div id="in_Div">
+		<div id="in_Div">
 		<table border="1" bordercolorlight="#000000" bordercolordark="#696969" class="uk-table uk-width-medium-1-1">
 		<thead>
 			<tr class="uk-text-large">
@@ -167,7 +161,7 @@ table >thead>tr{
 				<th Background="../../images/blackwhite1.png" class="coL11  uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
 				<th Background="../../images/blackwhite1.png" class="coL12  uk-text-left"><font color="#FFFFFF">　　　メールアドレス</font></th>
 				<th nowrap Background="/staff_room/images/blackwhite1.png" class="coL13 uk-width-1-4 uk-text-center"><font color="#FFFFFF">未読</font></th>
-			    <th nowrap Background="/staff_room/images/blackwhite1.png" class="coL14 uk-width-1-4 uk-text-center"><font color="#FFFFFF">緊急</font></th>
+			    <th nowrap Background="/staff_room/images/blackwhite1.png" class="coL14 uk-width-1-4 uk-text-left"><font color="#FFFFFF">緊急</font></th>
 			    <%} else {%>
 				<th Background="../../images/blackwhite1.png" class="coL1  uk-text-center "><font color="#FFFFFF"></font></th>
 				<th Background="../../images/blackwhite1.png" class="coL2  uk-text-center"><font color="#FFFFFF">氏名</font></th>
@@ -279,7 +273,9 @@ table >thead>tr{
        		<%}%>
 		</table>
 		</div></div>
-		<br>
+		
+		
+		
 	</div>
 </body>
 </html>

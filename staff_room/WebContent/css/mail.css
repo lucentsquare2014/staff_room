@@ -1,13 +1,6 @@
 html {
-	font-size: 75%;
-}
-
-@media screen and (min-width : 768px) {
-	html {
 		font-size: 87.5%
-	};
 }
-
 body {
 	width: 100%;
 	height: 100%;
@@ -17,43 +10,46 @@ body {
 }
 
 div#con {
-	position: fixed;
-	top: 42px;
-	overflow-y: scroll;
 	max-width: 100%;
-	max-height: 93.5%;
+	max-height: 100%;
+	margin-left: auto;
+	margin-top: auto;
 	
 }
 
 .uk-table {
-	width: 55%;
-	margin-right: auto;
-	margin-left: 23%;
-	margin-top: 5%;
 	white-space: nowrap;
+	margin-top:0;
+}
+tr:nth-of-type(2n) {
+    background: none repeat scroll 0% 0% #FFF;
 }
 
-td#na {
-	padding-left: 20px;
+.uk-table td {
+	padding: 4px;
 	font-size: 1em;
+	padding-left:8px
 }
 
 div#button {
-	position: fixed;
-	top: 30%;
-	left: 2%;
-	width:140px;
+	width:120px;
 	white-space: none;
 	background-color:rgba(0,0,0,0.8);
 	border-radius: 4px;
+	float:left;
 }
 #button-con{align:center;
-margin:10px;
-	
+    margin:5px;
+	margin-left:auto;
+	margin-right:auto;
+	width:75%;
+	padding-top:12px;
 }
 
 div#button-con>a {
-	width: 100%;
+	width:100%;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 div#button ul {
@@ -62,12 +58,11 @@ div#button ul {
 
 div#button ul>li {
 	list-style-type: none;
-	padding-left:12%;
 	padding-top: 1px;
 }
 
 div#button ul>li>a {
-	width: 40%;
+	width: 46%;
 	text-align: center;
 	margin:auto;
 }
