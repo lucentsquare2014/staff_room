@@ -1,12 +1,50 @@
+body {
+	width: 100%;
+	background-attachment: fixed;
+	background-image: url("/staff_room/images/input.png");
+}
+
+.contents {
+	padding-top: 80px;
+	min-width: 950px;
+}
+
+p.scroll{
+	height: 5em;
+	overflow: scroll;
+}
+
 #out_Div {
-  position: fixed;
-  padding-top: 26px;
-  width: 500px;
+  position: relative;
+  padding-top: 38px;
+  width: 900px;
 }
 
 #in_Div {
 	overflow-y: scroll;
 	line-height: 1.75em;
-	height: 260px;
+	height: 360px;
 	background-color: whitesmoke;
-    }
+}
+
+thead{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 900px;
+}
+
+th{
+	background-image: url("/staff_room/images/blackwhite1.png");
+	color: #FFFFFF;
+}
+
+.coL1 { width:15px; }
+
+.coL2 { width:110px; }
+
+.coL3 { width:120px; }
+
+.coL4 { width:500px; }
+
+.coL5 { width:70px; }

@@ -66,11 +66,6 @@ $(function() {
 								}
 							}
 						});
-				// タイトルをクリックした時の本文の表示非表示を行う処理
-				$(".body-text").css("display", "none");
-				$(".body-title").click(function() {
-					$("#text" + $(this).attr("t_id")).toggle();
-				});
 			});
 
 });
