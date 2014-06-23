@@ -34,7 +34,7 @@ public class ReName extends HttpServlet {
 		
 		String page = request.getParameter("page");
 		String category = request.getParameter("category");
-		String applicationPath = request.getServletContext().getRealPath("");
+		String applicationPath = getServletContext().getRealPath("");
     	String uploadFilePath = applicationPath + File.separator + page 
     							+ File.separator + category;
     	String new_name = request.getParameter("new_name");
