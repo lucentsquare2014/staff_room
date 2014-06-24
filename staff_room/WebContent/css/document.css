@@ -2,7 +2,7 @@ body {
 	width: 100%;
 	height: 556px;
 	background-attachment: fixed;
-	
+
 	background-size: 100% 100%;
 }
 
@@ -54,6 +54,12 @@ table >thead>tr{
 .coL6 { width:180px; }
 
 .coL7 { width:117px; }
+
+.coL8 { width:177px; }
+
+.coL9 { width:118px; }
+
+.coL10 { width:26px; }
 
 #select_files{
 	display:none;
