@@ -218,4 +218,15 @@ $(function(){
 		$(document).off("mousemove");
 	});
 	
+	// IE対応
+	$("#select_files .uk-close").click(function(){
+		var ua=window.navigator.userAgent;
+		if(ua.match(/MSIE/) || ua.match(/Trident/)) {
+			$("#select_files").hide();
+			$("#add").prop("disabled",true);
+			return false;
+		}
+		
+	});
+
 });
