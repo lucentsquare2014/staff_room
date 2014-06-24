@@ -62,7 +62,8 @@ img{
 					<li><a href="#mail" id="jump">7.Mail画面</a></li>
 					<li><a href="#bbs_photo_etc" id="jump">8.掲示板、Photo、etc</a></li>
 					<li><a href="#pw_change" id="jump">9.ログインパスワードの変更</a></li>
-					<li><a href="#information" id="jump">10.お問い合わせ・バージョン情報</a></li>
+					<li><a href="#admin" id="jump">10.管理者側の操作について</a></li>
+					<li><a href="#information" id="jump">11.お問い合わせ・バージョン情報</a></li>
 			</ul>
 </div>
 <div id="manual"class="uk-panel uk-panel-box uk-align-center" >
@@ -152,12 +153,18 @@ img{
 	<li>社員のメールアドレスの確認とメールの作成が行えるページです。</li>
 	<li>メールアドレスをクリックすると、宛先にそのアドレスが入った状態でメールが作成されます（メールソフトが起動します）</li>
 	<li>送りたい人が複数いる場合は、送りたい人全員の名前横のチェックボックスにチェックを入れ、<br>
-		「メール作成」ボタンをクリックすれば、全員のアドレスが宛先に入った状態でメールが作成されます。</li>
-	<li>「全社員にメール」ボタンをクリックすると、全社員宛のメールが作成されます。<br><br>
-	<img src ="/staff_room/images/help/help_mail_checkbox.png" width="100%"><br><br>
+		「メール作成」ボタンをクリックすれば、全員のアドレスが宛先に入った状態でメールが作成されます。<br>
+		<div class="uk-text-danger">
+		※一度にメールを作成できるのは70名までです。例外として全社員宛のメールならば作成することができます。<br><br>
+		</div>
+		<img src ="/staff_room/images/help/help_mail_checkbox.png" width="100%"><br><br>
 	</li>
-	<li>「メール作成」下のアカサタナそれぞれのボタンをクリックするとその文字の行まで自動的に移動します。<br><br>
-	<img src ="/staff_room/images/help/help_mail_jump.png" width="100%"><br><br>
+	<li>「全選択」ボタンをクリックすると、全てのチェックボックスにチェックが入ります。<br>
+		「選択解除」ボタンをクリックすると、全てのチェックがリセットされます。<br><br>
+		<img src ="/staff_room/images/help/help_mail_checkbotton.png" width="100%"><br><br>
+	</li>
+	<li>各ボタン下のアカサタナそれぞれのボタンをクリックするとその文字の行まで自動的に移動します。<br><br>
+		<img src ="/staff_room/images/help/help_mail_jump.png" width="100%"><br><br>
 	</li>
 </ul>
 
@@ -180,10 +187,15 @@ img{
 	<img src ="/staff_room/images/help/help_pwChange.png" width="40%"><br><br>
 	</li>
 </ul>
-<h2 class="uk-text-bold" id="information">10.問い合わせ・バージョン情報</h2>&nbsp;
+<h2 class="uk-text-bold" id="admin">10.管理者側の操作について</h2>&nbsp;
 <ul>
-	<li>Staff_Roomのお問合せは：<a href ="mailto:lsc-admin@lucentsquare.co.jp">ビジネス推進室</a><br><br>
-	<li>2014/06/27 ver1.00 リリース</li>
+	<li>以下の資料をご利用ください。<br><br></li>
+	<li><a href ="mailto:lsc-admin@lucentsquare.co.jp">管理者マニュアル</a></li>
+</ul>
+<h2 class="uk-text-bold" id="information">11.問い合わせ・バージョン情報</h2>&nbsp;
+<ul>
+	<li>Staff_Roomのお問合せは：<a href ="mailto:lsc-admin@lucentsquare.co.jp">ビジネス推進室</a><br><br></li>
+	<li>2014/06/27 ver1.00 リリース<br><br><br><br></li>
 </ul>
 	</div>
 	</div>
