@@ -2,7 +2,7 @@ body {
 	width: 100%;
 	height: 556px;
 	background-attachment: fixed;
-	
+
 	background-size: 100% 100%;
 }
 
@@ -39,22 +39,27 @@ table >thead>tr{
   position: absolute;
   top: 5px;
   left: 0px;
-  width: 820px;
 
 }
-.coL1 { width:25px; }/* colgroup‚Ì—ñ•w’è */
+.coL1 { width:28px; }/* colgroup‚Ì—ñ•w’è */
 
-.coL2 { width:185px; }
+.coL2 { width:203px; }
 
-.coL3 { width:115px; }
+.coL3 { width:134px; }
 
 .coL4 { width:510px; }
 
-.coL5 { width:174px; }
+.coL5 { width:0px; }
 
-.coL6 { width:117px; }
+.coL6 { width:195px; }
 
-.coL7 { width:476px; }
+.coL7 { width:134px; }
+
+.coL8 { width:191px; }
+
+.coL9 { width:138px; }
+
+.coL10 { width:0px; }
 
 #select_files{
 	display:none;
