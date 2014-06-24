@@ -29,6 +29,11 @@ $(function() {
 	$('#btn_print').click(function(){
 	    $.jPrintArea("#my-id");
 	  });
+	var agent = navigator.userAgent;
+	if(agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 
+		|| agent.search(/iPod/) != -1 || agent.search(/Android/) != -1){
+		$(".uk-modal-dialog").css("top", "35px");
+	}
 });
 </script>
 <title>スタッフルーム</title>
