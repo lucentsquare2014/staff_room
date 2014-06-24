@@ -3,10 +3,15 @@ var exist_files = "";
 $(function(){
 	$("input[name='inputFile']").on("change",function(){
 		exist_flag.length = 0;
-		exist_files = "";
+		exist_files = "";	
 		var files = $("#upload-select")[0].files;
 		$("#select_files ul").html("");
+		var fl = $("input[name='inputFile']").offset();
 		$("#select_files div").addClass("uk-panel-box");
+		$("#select_files").css({
+			"top": fl.top + 30 + "px",
+			"left": fl.left - 250 + "px"
+		});
 		for(var i = 0; files[i]; i++){
 			$("#select_files ul").append('<li><div class="uk-align-left" style="margin:0 0 0 0;">'
 						+ '<div class="uk-badge uk-badge-notification uk-badge-danger"'
@@ -198,6 +203,19 @@ $(function(){
 		'uk.modal.show': function(){
 			$("input[name='new_name']").focus();
 		}
+	});
+	
+	$("#select_files div p").mousedown(function(e){
+		var clickPonitX = e.pageX - $("#select_files").offset().left;
+		var clickPonitY = e.pageY - $("#select_files").offset().top;
+		$(document).mousemove(function(e){
+			$("#select_files").css({
+				"top": e.pageY - clickPonitY + "px",
+				"left": e.pageX - clickPonitX + "px"
+			});
+		});
+	}).mouseup(function(){
+		$(document).off("mousemove");
 	});
 	
 });

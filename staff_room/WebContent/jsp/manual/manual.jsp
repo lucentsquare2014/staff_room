@@ -14,64 +14,10 @@
 <script src="/staff_room/script/document.js"></script>
 <script type="text/javascript" src="/staff_room/script/notifIt.js"></script>
 <link rel="stylesheet" type="text/css" href="/staff_room/css/notifIt.css">
-<style>
-body {
-	width: 100%;
-	height: 556px;
-	background-attachment: fixed;
-	background-image: url("/staff_room/images/manual01.jpg");
-	background-size: 100% 100%;
-}
-#select_files {
-	display:none;
-}
-div .uk-modal-dialog {
-	width: 400px;
-	top: 100px;
-}
-
-#out_Div {
-  position: relative;
-  padding-top: 45px;
-  width: 820px;
-}
-
-#in_Div {
-	overflow-y: scroll;
-	line-height: 1.75em;
-	max-height: 410px;
-	background-color: whitesmoke;
-    }
-
-table >thead{
-
-}
-table >thead>tr{
-  position: absolute;
-  top: 5px;
-  left: 0px;
-  width: 820px;
-
-
-}
-.coL1 { width:25px; }/* colgroupの列幅指定 */
-
-.coL2 { width:185px; }
-
-.coL3 { width:115px; }
-
-.coL4 { width:510px; }
-
-.coL5 { width:120px; }
-
-.coL6 { width:140px; }
-
-.coL7 { width:560px; }
-
-</style>
+<link rel="stylesheet" type="text/css" href="/staff_room/css/document.css">
 <title>規程・書類</title>
 </head>
-<body>
+<body class="manual">
 
 <jsp:include page="/jsp/header/header.jsp" />
 <div class="changelog" style="padding-top: 40px; white-space:nowrap;">
@@ -105,14 +51,13 @@ table >thead>tr{
 		</form>
 		</div>
 	</div>
-	<div class="uk-width-1-2 uk-align-right" id="select_files">
-	<div style="position:absolute;z-index:10;">
-		<br>
+	<div id="select_files">
 		<div class="uk-panel">
+			<a href="" class="uk-close uk-align-right"></a>
+			<p class="uk-text-primary uk-text-bold">以下のファイルをアップロードします：</p>
 			<ul class="uk-list uk-list-line">
 			</ul>
 		</div>
-	</div>
 	</div>
 	<div id="out_Div"><div id="in_Div">
 	<table border="1" class="uk-table uk-width-1-1" >
