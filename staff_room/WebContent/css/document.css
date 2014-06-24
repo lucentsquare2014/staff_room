@@ -1,0 +1,74 @@
+body {
+	width: 100%;
+	height: 556px;
+	background-attachment: fixed;
+	
+	background-size: 100% 100%;
+}
+
+body.manual{
+	background-image: url("/staff_room/images/manual01.jpg");
+}
+
+body.syorui{
+	background-image: url("/staff_room/images/shinseisyorui01.jpg");
+}
+
+div .uk-modal-dialog {
+	width: 400px;
+	top: 100px;
+}
+
+#out_Div {
+  position: relative;
+  padding-top: 45px;
+  width: 820px;
+}
+
+#in_Div {
+	overflow-y: scroll;
+	line-height: 1.75em;
+	max-height: 400px;
+	background-color: whitesmoke;
+    }
+
+table >thead{
+
+}
+table >thead>tr{
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  width: 820px;
+
+}
+.coL1 { width:25px; }/* colgroupÇÃóÒïùéwíË */
+
+.coL2 { width:185px; }
+
+.coL3 { width:115px; }
+
+.coL4 { width:510px; }
+
+.coL5 { width:174px; }
+
+.coL6 { width:117px; }
+
+.coL7 { width:476px; }
+
+#select_files{
+	display:none;
+	position: absolute;
+	z-index: 10;
+	width: 400px;
+}
+
+#select_files p {
+	cursor: move;
+	margin-top: 0px;
+}
+
+#select_files .uk-close{
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
