@@ -43,15 +43,15 @@ public class IpAddressFilter implements Filter {
 		
 		// クライアントのIPアドレスを取得
 		final String ip_address = ((HttpServletRequest)request).getRemoteAddr();
-		if(!ip_address.startsWith(allow_ip)){
+		if(ip_address.startsWith(allow_ip) ){
+			chain.doFilter(request, response);
+		}else{
 			String page = ((HttpServletRequest)request).getRequestURI();
 			if(page.indexOf("document") != -1){
 				((HttpServletResponse) response).sendRedirect("/staff_room/jsp/ip_forbidden.jsp");
 			}else{
 				((HttpServletResponse) response).sendError(HttpServletResponse.SC_FORBIDDEN);
 			}
-		}else{
-			chain.doFilter(request, response);
 		}
 	}
 
