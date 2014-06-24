@@ -21,13 +21,13 @@
 
 #out_Div {
   position: relative;
-  width: 920px;
+  width:900px;
   margin-left: auto;
   margin-right: auto;
 }
 #come{
   padding-top: 82px;
-  width: 920px;
+  width: 890px;
   height:78px;
   margin-left: auto;
   margin-right: auto;
@@ -43,14 +43,14 @@
 	overflow-y: scroll;
 	line-height: 1.75em;
 	height: 400px;
-	width: 800px;
+	max-width: 800px;
 	background-color: whitesmoke;
 	float:left;
     }
 table >thead>tr{
   position: absolute;
-  top:-40px;
-  width: 800px;
+  top:-34px;
+  max-width: 800px;
 }
 .coL1 { width:22px; }/* colgroupの列幅指定 */
 
@@ -58,39 +58,11 @@ table >thead>tr{
 
 .coL3 { width:140px; }
 
-.coL4 { width:530px; }
+.coL4 { width:320px; }
 
-.coL5 { width:26px; }
+.coL5 { width:50px; }
 
-.coL6 { width:101px; }
-
-.coL7 { width:140px; }
-
-.coL8 { width:524px; }
-
-.coL9 { width:14px; }
-
-.coL10 { width:86px; }
-
-.coL11 { width:127px; }
-
-.coL12 { width:377px; }
-
-.coL13 { width:57px; }
-
-.coL14 { width:70px; }
-
-.coL15 { width:76px; }
-
-.coL16 { width:70px; }
-
-.coL17 { width:530px; }
-
-.coL18 { width:70px; }
-
-.coL19 { width:70px; }
-
-.coL20 { width:101px; }
+.coL6 { width:3px; }
 
 </style>
 	<title>メール</title>
@@ -156,17 +128,19 @@ table >thead>tr{
 			<tr class="uk-text-large">
 				<% //if(user.equals("1")){ %>
 				<%if(value.equals("1")){%>
-				<th Background="../../images/blackwhite1.png" class="coL9  uk-text-center "><font color="#FFFFFF"></font></th>
-				<th Background="../../images/blackwhite1.png" class="coL10  uk-text-center"><font color="#FFFFFF">氏名</font></th>
-				<th Background="../../images/blackwhite1.png" class="coL11  uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
-				<th Background="../../images/blackwhite1.png" class="coL12  uk-text-left"><font color="#FFFFFF">　　　メールアドレス</font></th>
-				<th nowrap Background="/staff_room/images/blackwhite1.png" class="coL13 uk-width-1-4 uk-text-center"><font color="#FFFFFF">未読</font></th>
-			    <th nowrap Background="/staff_room/images/blackwhite1.png" class="coL14 uk-width-1-4 uk-text-left"><font color="#FFFFFF">緊急</font></th>
+				<th  class="coL1  uk-text-center" style="padding: 4px;"><font color="#FFFFFF"></font></th>
+				<th  class="coL2  uk-text-center"><font color="#FFFFFF">氏名</font></th>
+				<th  class="coL3  uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
+				<th  class="coL4  uk-text-left"><font color="#FFFFFF">　　　メールアドレス</font></th>
+				<th  class="coL5 uk-text-center"><font color="#FFFFFF">未読</font></th>
+			    <th  class="coL5 uk-text-center"><font color="#FFFFFF">緊急</font></th>
+			    <th  class="coL6 uk-text-center "><font color="#FFFFFF"></font></th>
 			    <%} else {%>
-				<th Background="../../images/blackwhite1.png" class="coL1  uk-text-center "><font color="#FFFFFF"></font></th>
-				<th Background="../../images/blackwhite1.png" class="coL2  uk-text-center"><font color="#FFFFFF">氏名</font></th>
-				<th Background="../../images/blackwhite1.png" class="coL3  uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
-				<th Background="../../images/blackwhite1.png" class="coL4  uk-text-left"><font color="#FFFFFF">　　　メールアドレス</font></th>
+				<th  class="coL1  uk-text-center" style="padding: 4px;"><font color="#FFFFFF"></font></th>
+				<th  class="coL2  uk-text-center"><font color="#FFFFFF">氏名</font></th>
+				<th  class="coL3  uk-text-center"><font color="#FFFFFF">フリガナ</font></th>
+				<th  class="coL4  uk-text-left"><font color="#FFFFFF">　　　メールアドレス</font></th>
+				<th  class="coL6 uk-text-center "><font color="#FFFFFF"></font></th>
 			    <%} %>
 			</tr>
 		</thead>
@@ -254,21 +228,22 @@ table >thead>tr{
             int inde = str2.indexOf("-");
             String moji = str2.substring(inde+1);
             System.out.println(moji.substring(0,1));
+            
                 %>
 
        			<tr id="<%=moji.substring(0,1)%>">
-       				<td class="coL5 uk-text-center">
+       				<td class="coL1 uk-text-center" style="padding: 4px;">
        					<input type="checkbox" name="check" id="<%=str1.substring(0,index)%>">
        				</td>
-       				<td class="coL6" ><%=Newsmap.get("name")%></td>
-       				<td class="coL7"><%=Newsmap.get("hurigana")%></td>
-       				<td class="coL8" id="address"><a href="mailto:<%=Newsmap.get("mail")%>"><%=Newsmap.get("mail")%></a></td>
+       				<td class="coL2" ><%=Newsmap.get("name")%></td>
+       				<td class="coL3"><%=Newsmap.get("hurigana")%></td>
+       				<td class="coL4" id="address"><a href="mailto:<%=Newsmap.get("mail")%>"><%=Newsmap.get("mail")%></a></td>
        				<% //if(user.equals("1")){ %>
        				<%if(value.equals("1")){%>
-       				<td align="right" class="coL15">
-					<% if(unread.length == 1 && unread[0].equals("")){ %>0
-					<% }else{ %><%=unread.length%><% } %></td>
-					<td align="right" class="coL16"><%=primary_count%></td><%} %>
+       				<td align="right" class="coL5"><font>
+					<%if(unread.length == 1 && unread[0].equals("")){%>
+					<%}else{%><%=unread.length%><%}%></font></td>
+					<td align="right" class="coL5"><font><%=primary_count%></font></td><%} %>
        			</tr>
        		<%}%>
 		</table>

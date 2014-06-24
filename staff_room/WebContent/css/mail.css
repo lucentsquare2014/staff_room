@@ -28,14 +28,19 @@ tr:nth-of-type(2n) {
 .uk-table td {
 	padding: 4px;
 	font-size: 1em;
-	padding-left:8px
+	padding-left:8px;
+	vertical-align:middle;
 }
+.uk-table th {
+	padding: 6px 4px 6px 8px;
+	background-image: url("/staff_room/images/blackwhite1.png");
+}
+
 
 div#button {
 	width:120px;
 	white-space: none;
 	background-color:rgba(0,0,0,0.8);
-	border-radius: 4px;
 	float:left;
 }
 #button-con{align:center;
