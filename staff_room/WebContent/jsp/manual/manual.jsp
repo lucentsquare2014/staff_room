@@ -20,7 +20,7 @@
 <body class="manual">
 
 <jsp:include page="/jsp/header/header.jsp" />
-<div class="changelog" style="padding-top: 40px; white-space:nowrap;">
+<div class="changelog" style="padding-top: 40px;">
 <div class="uk-width-3-5 uk-container-center">
 <br>
 <!--------------  管理者用　 ----------------->　
@@ -64,9 +64,10 @@
 	<thead>
 		<tr class="uk-text-large">
 			<th Background="../../images/blackwhite1.png" class="coL1 uk-text-center"></th>
-			<th Background="../../images/blackwhite1.png" class="coL2 uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL3 uk-width-3-10 uk-text-center"><font color="#ffffff">更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL4 uk-width-7-10 uk-text-left"><font color="#ffffff">　　ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL8  uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL9  uk-text-center"><font color="#ffffff">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL4  uk-text-left"><font color="#ffffff">　　ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL5  uk-text-left"><font color="#ffffff"></font></th>
 		</tr>
 	</thead>
 		<!-- includeディレクトリを使い、"manual_source.jsp"ファイルを埋め込む -->
@@ -78,9 +79,10 @@
 	<table border="1" class="uk-table uk-width-1-1" >
 	<thead>
 		<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class="coL5 uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL6 uk-width-3-10 uk-text-center"><font color="#ffffff">更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL7 uk-width-7-10 uk-text-center"><font color="#ffffff">ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL6 uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL7 uk-text-center"><font color="#ffffff">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL4 uk-text-center"><font color="#ffffff">ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL5  uk-text-left"><font color="#ffffff"></font></th>
 		</tr>
 	</thead>
 		<!-- includeディレクトリを使い、"manual_source.jsp"ファイルを埋め込む -->
