@@ -36,7 +36,7 @@ $(function() {
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-
+	
 	<p id="version">ver.4.0.0</p>
 
 		<div class="main-container uk-container uk-container-center">

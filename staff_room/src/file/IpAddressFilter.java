@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -39,17 +40,16 @@ public class IpAddressFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		InetAddress hst = InetAddress.getLocalHost();
-		final String ip_address = hst.getHostAddress();
+		
+		// クライアントのIPアドレスを取得
+		final String ip_address = ((HttpServletRequest)request).getRemoteAddr();
 		if(!ip_address.startsWith(allow_ip)){
-			String page = request.getParameter("page");
-			if(page != null && request.getParameter("delete") == null){
+			String page = ((HttpServletRequest)request).getRequestURI();
+			if(page.indexOf("document") != -1){
 				((HttpServletResponse) response).sendRedirect("/staff_room/jsp/ip_forbidden.jsp");
 			}else{
 				((HttpServletResponse) response).sendError(HttpServletResponse.SC_FORBIDDEN);
 			}
-			
-			
 		}else{
 			chain.doFilter(request, response);
 		}
