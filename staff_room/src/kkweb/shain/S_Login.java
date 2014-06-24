@@ -43,7 +43,7 @@ public class S_Login extends C_ChangePageBase {
 			//return null;
 
 
-			String nextpage="/jsp/shanai_s/ID_PW_Nyuryoku.jsp";
+			String nextpage="/";
 			return nextpage;
 
 		}

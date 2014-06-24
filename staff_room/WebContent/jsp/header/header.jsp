@@ -96,7 +96,7 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
                     <li>
                     <a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=3">社内文書システム</a>
                     </li>
- 					<li><a href="/staff_room/jsp/shanai_s/shanai_s.jsp?mode=5">社内文書システム<br>操作説明</a></li>
+ 					<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf" target="_blank">社内文書システム<br>操作説明</a></li>
 
 
 					<% if(user.equals("1")){ %>
@@ -155,11 +155,13 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
  	</div>
 	</div>
 	<a href="" class="uk-navbar-toggle uk-visible-small" id="side" data-uk-offcanvas="{target:'#sidenav'}"></a>
-	<div class="uk-navbar-content " id="logo" style="padding:0px 0px; margin-top:1px;">
-		<a href="//www.lucentsquare.co.jp/"
-			class="uk-navbar-brand" style="padding:0px 0px;"> <img src="/staff_room/images/Logo.png"
-				alt="会社のページに戻る" width="30" height="30"></img></a>
+	<div class="uk-visible-small uk-navbar-brand uk-navbar-center" id="logo">
+		<a href="//www.lucentsquare.co.jp/"> 
+			<img src="/staff_room/images/Logo.png" alt="会社のページに戻る" style="width:35px;height:35px"></img>
+		</a>
 	</div>
+	
+	<!-- sidebar -->
 	<div id="sidenav" class="uk-offcanvas">
     <div class="uk-offcanvas-bar">
         <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>

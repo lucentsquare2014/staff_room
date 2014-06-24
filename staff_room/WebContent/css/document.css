@@ -39,7 +39,6 @@ table >thead>tr{
   position: absolute;
   top: 5px;
   left: 0px;
-  width: 820px;
 
 }
 .coL1 { width:25px; }/* colgroup‚Ì—ñ•Žw’è */
@@ -50,11 +49,11 @@ table >thead>tr{
 
 .coL4 { width:510px; }
 
-.coL5 { width:174px; }
+.coL5 { width:0px; }
 
-.coL6 { width:117px; }
+.coL6 { width:180px; }
 
-.coL7 { width:476px; }
+.coL7 { width:117px; }
 
 #select_files{
 	display:none;

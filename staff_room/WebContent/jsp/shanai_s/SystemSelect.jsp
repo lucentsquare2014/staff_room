@@ -64,5 +64,10 @@
 </body>
 </html>
 <%
+	} else{
+%>
+<%
+response.sendRedirect("/");
+return;
 	}
 %>
