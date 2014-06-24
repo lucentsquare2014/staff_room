@@ -20,8 +20,8 @@
 <body class="syorui">
 <jsp:include page="/jsp/header/header.jsp" />
 
-<div class="changelog" style="padding-top: 40px; white-space:nowrap;">
-<div class="uk-width-3-5 uk-container-center">
+<div class="changelog uk-container-center" style="padding-top: 40px; width:820px;">
+
 <br>
 	<!--------------  管理者用　 ----------------->　
 	<% if(user.equals("1")){ %>
@@ -65,9 +65,10 @@
 	<thead>
 		<tr class="uk-text-large">
 			<th Background="../../images/blackwhite1.png" class="coL1 uk-text-center"><font color="#FFFFFF"></font></th>
-			<th Background="../../images/blackwhite1.png" class="coL2 uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL3 uk-width-2-10 uk-text-center"><font color="#FFFFFF">&nbsp;更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL4 uk-width-6-10 uk-text-left"><font color="#FFFFFF">　　ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL6 uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL7 uk-text-center"><font color="#FFFFFF">&nbsp;更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL4 uk-text-left"><font color="#FFFFFF">  ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL5 uk-text-left"><font color="#FFFFFF"></font></th>
 		</tr>
 	</thead>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
@@ -80,15 +81,16 @@
 	<table border="1" class="uk-table uk-table-hover uk-width-1-1">
 	<thead>
 		<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class="coL5 uk-width-2-10 uk-text-center"><font color="#FFFFFF">種別</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL6 uk-width-2-10 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL7 uk-width-6-10 uk-text-left"><font color="#FFFFFF">　　ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL6 uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL7 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL4 uk-text-left"><font color="#FFFFFF">  ファイル名</font></th>
+			<th Background="../../images/blackwhite1.png" class="coL5 uk-text-left"><font color="#FFFFFF"></font></th>
 		</tr>
 	</thead>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
 		<%@ include file="syorui_source.jsp"%>
 	</table>
-	</div></div>
+	</div>
 <% } %>　　　　　　
 	</div>
 	<br><br>
