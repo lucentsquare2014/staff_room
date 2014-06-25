@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>ec-neoイベント第２弾　BBQ写真館</title>
+		<style type="text/css">
+			body{
+				width:800px;
+				font-size:80%;
+			}
+			a img{
+				border-style:none;
+			}
+			.t1{
+				border:solid 1px #4B7F36;
+				border-collapse: collapse;
+			}
+			.t1 td{
+				border:solid 1px #4B7F36;
+				text-align:center;
+			}
+			.t1 th{
+				border:solid 1px #4B7F36;
+				background-color:#669966;
+			}
+		</style>
+		<script type="text/javascript">
+			function change_src(val){
+				var text_com = "";
+				document.getElementById('change_img').src='./bbq_img/' + val + '.jpg';
+				
+				switch(Number(val)){
+					case 1:
+						text_com = "準備の途中でお通り雨が…。約３０分ほどで通り過ぎました。";
+						break;
+					case 2:
+						text_com = "";
+						break;
+					case 3:
+						text_com = "";
+						break;
+					case 4:
+						text_com = "ワインオリエンテッド様の <a href='http://www.ec-neo.com/jp/shopping/Shopping2?Code=10605000' target='_blank'>Tradition</a> でカンパイしました。<br>スパークリングワインで、とっても飲みやすかったです ^o^";
+						break;
+					case 5:
+						text_com = "";
+						break;
+					case 6:
+						text_com = "";
+						break;
+					case 7:
+						text_com = "すみません、森谷さん！<br>立て札が邪魔でした…。";
+						break;
+					case 8:
+						text_com = "";
+						break;
+					case 9:
+						text_com = "";
+						break;
+					case 10:
+						text_com = "";
+						break;
+					case 11:
+						text_com = "";
+						break;
+					case 12:
+						text_com = "お肉を計４kg近く注文していたのですが、ペロリとご賞味いただきました。<br>準備不足。もっと注文しておけばよかったです… ToT";
+						break;
+					case 13:
+						text_com = "午前中のお通り雨以後は雨も降らず。<br>天候に恵まれました。";
+						break;
+					case 14:
+						text_com = "";
+						break;
+					case 15:
+						text_com = "";
+						break;
+					case 16:
+						text_com = "";
+						break;
+					case 17:
+						text_com = "";
+						break;
+					case 18:
+						text_com = "";
+						break;
+					case 19:
+						text_com = "";
+						break;
+					case 20:
+						text_com = "味噌ベースの仙台風芋煮です。<br>久慈ファーム様のしゃぶしゃぶ肉（500gくらい）を贅沢に使用しました。<br>具材はすべて宮城県産です。";
+						break;
+					case 21:
+						text_com = "";
+						break;
+					case 22:
+						text_com = "焼きおにぎり製作中！";
+						break;
+					case 23:
+						text_com = "炊きたて美味しく、冷めても美味な四季彩菜工房様のおにぎり。<br>もちろん、焼きおにぎりにしても美味しかったです ^-^";
+						break;
+					default:
+						text_com = "";
+						break;
+				}
+				document.getElementById('comment_text').innerHTML = text_com;
+			}
+		</script>
+	</head>
+	<body>
+	
+		<h1>ec-neoイベント第２弾　BBQ写真館</h1>
+		<br>
+		降水確率７０％の中、１０月２２日（土）木場公園にてBBQを開催致しました！<br>
+		<br>
+		<table style="border:solid 1px #4B7F36;border-collapse:collapse;">
+			<tr>
+				<td rowspan="2" height="388" style="vertical-align:top;border:solid 1px #4B7F36;">
+					<select size="32" Onclick="change_src(this.value)">
+						<option value="1" selected>準備中　その１</option>
+						<option value="2">到着～</option>
+						<option value="3">準備中　その２</option>
+						<option value="4">カンパイ　その１</option>
+						<option value="5">カンパイ　その２</option>
+						<option value="6">カンパイ　その３</option>
+						<option value="7">カンパイ　その４</option>
+						<option value="8">カンパイ　その５</option>
+						<option value="9">カンパイ　その６</option>
+						<option value="10">カンパイ　その７</option>
+						<option value="11">カンパイ　その８</option>
+						<option value="12">談笑中　その１</option>
+						<option value="13">談笑中　その２</option>
+						<option value="14">談笑中　その３</option>
+						<option value="15">談笑中　その４</option>
+						<option value="16">談笑中　その５</option>
+						<option value="17">談笑中　その６</option>
+						<option value="19">談笑中　その７</option>
+						<option value="21">談笑中　その８</option>
+						<option value="18">ソーセージ　グリル中</option>
+						<option value="20">芋煮　あたため中</option>
+						<option value="22">にぎにぎ、焼き焼き</option>
+						<option value="23">おにぎり　グリル中</option>
+				</td>
+				<td>
+					<img src="./bbq_img/1.jpg" id="change_img">
+				</td>
+			</tr>
+			<tr>
+				<td height="58" style="vertical-align:top;border:solid 1px #4B7F36;">【 備考 】<br><div id="comment_text">準備の途中でお通り雨が…。約３０分ほどで通り過ぎました。 </div></td>
+			</tr>
+		</table>
+		<noscript>大変申し訳ございません。JavaScriptを有効にして下さい。</noscript>
+		<br>
+		<br>
+		【 BBQで飲食したec-neo食材 】<br>
+		<table class="t1">
+			<tr>
+				<th width="200">佐助豚　しゃぶしゃぶセット</td>
+				<th width="200">佐助豚　肩ロースブロック</td>
+				<th width="200">佐助豚　焼肉セット</td>
+				<th width="200">佐助豚　粗挽きウィンナセット</td>
+			</tr>
+			<tr>
+				<td><a href="http://www.ec-neo.com/jp/shopping/Shopping2?Code=10302018" target="_blank"><img src="./bbq_img/img_1.jpg"></a></td>
+				<td><a href="http://www.ec-neo.com/jp/shopping/Shopping2?Code=10302004" target="_blank"><img src="./bbq_img/img_2.jpg"></a></td>
+				<td><a href="http://www.ec-neo.com/jp/shopping/Shopping2?Code=10302005" target="_blank"><img src="./bbq_img/img_3.jpg"></a></td>
+				<td><a href="http://www.ec-neo.com/jp/shopping/Shopping2?Code=10302007" target="_blank"><img src="./bbq_img/img_4.jpg"></a></td>
+			</tr>
+			<tr>
+				<th>四季彩菜白米</td>
+				<th>純米生もと造り　まるト</td>
+				<th>蔵元焼酎　吟粒</td>
+				<th>Tradition</td>
+			</tr>
+			<tr>
+				<td><a href="http://www.ec-neo.com/jp/shopping/Shopping2?Code=10701005" target="_blank"><img src="./bbq_img/img_5.jpg"></a></td>
+				<td><a href="http://www.ec-neo.com/jp/shopping/Shopping2?Code=10601066" target="_blank"><img src="./bbq_img/img_6.jpg"></a></td>
+				<td><a href="http://www.ec-neo.com/jp/shopping/Shopping2?Code=10603000" target="_blank"><img src="./bbq_img/img_7.jpg"></a></td>
+				<td><a href="http://www.ec-neo.com/jp/shopping/Shopping2?Code=10605000" target="_blank"><img src="./bbq_img/img_8.jpg"></a></td>
+			</tr>
+		</table>
+		<br>
+		野菜につきましては、すべて宮城県産のものを使用しました。<br>
+		<br>
+		<br>
+		<br>
+	</body>
+</html>
+		
