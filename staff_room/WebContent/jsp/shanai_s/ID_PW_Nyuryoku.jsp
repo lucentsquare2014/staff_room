@@ -5,10 +5,15 @@
 <html lang = "ja">
 <head>
 <script type="text/javascript">
+/*
+ * ページがロードされるとフォームを送信する処理
+ */
     window.onload=function(){
     	document.theform.submit();
     };
-	window.onunload=function(){
+
+    /*多分いらない既存のコード */
+    window.onunload=function(){
 		document.body.style.cursor='auto';
 		document.theform.aa.disabled=false;
 		document.theform.bb.disabled=false;
@@ -19,6 +24,8 @@
 		document.theform.bb.disabled=true;
 		document.theform.submit();
 		}	
+
+	/*//多分いらない既存のコード */
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Language" content="ja">
@@ -32,6 +39,13 @@ LoginDAO ldao = new LoginDAO();
 String id = session.getAttribute("login").toString();
 HashMap<String,String> info = ldao.loginInfo(id);
 System.out.println(info+" (ID_PW_Nyuryoku.jsp)");
+%>
+<%
+/*
+送信されたIDを使ってDBから取得した情報と
+ゲットパラメータの情報を元にsevletにログイン認証を行っている。
+servlet(kkweb.shain.S_Login.java)
+*/
 %>
 <form method="POST" action="/staff_room/jsp/shanai_s/s_login" name="theform">
 <input type="hidden" name="action" value="gate">

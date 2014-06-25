@@ -40,7 +40,12 @@ body {
         	value="1";
         }
         %>
-        <%if(value.equals("4")){ %>
+        <%
+        /*
+        * 渡されたゲットパラメータをID_PW_Nyuryoku.jspに渡して表示している。
+        * 管理者の場合はadministrator.jspを表示している。
+        */
+        if(value.equals("4")){ %>
             <iframe width="100%" height="100%" src="<%=uri %>/administrator.jsp"></iframe>
         <%} else { %>
             <iframe width="100%" height="100%" src="<%=uri %>/ID_PW_Nyuryoku.jsp?mode=<%=value%>"></iframe>

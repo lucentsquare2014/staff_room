@@ -11,9 +11,10 @@
 	if (id2 != null ? id2.equals("鍵") : false) {
 %>
 <%
+/*modeの情報に応じてリダイレクトするところを変えている*/
 	String mode = request.getParameter("mode");
 		if (mode == null) {
-			mode = "2";
+			mode = "1";
 		}
 		if (mode.equals("2")) {
 			response.sendRedirect("./Menu_Gamen.jsp");
@@ -26,7 +27,7 @@
 %>
 <html>
 <head>
-<%
+<% /*modeが１ならページが読み込まれると自動的にフォームを送信するJavaScriptを生成する。*/
 	if (mode.equals("1")) {
 %>
 <script>
@@ -38,24 +39,11 @@
 	}
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- <link rel="stylesheet" href="Syanaibunshou.css" type="text/css">
- -->
-<!-- <link rel="stylesheet" href="css/systemselect.css" type="text/css">
- -->
 <%!// リンク用文字列
-	//String kintai_login = "http://localhost:8080/kk_local/ID_PW_Nyuryoku.jsp";
-	//String kintai_login = "http://www.lucentsquare.co.jp:8080/kk_web/ID_PW_Nyuryoku.jsp";
 	String kintai_login = "ID_PW_Nyuryoku.jsp";
-	//String officedocuments = "OfficeDocuments.jsp";
-	//String officedocuments = "http://www.lucentsquare.co.jp:8080/pc_web/OfficeDocuments.jsp";
 	String officedocuments = "OfficeDocuments.jsp";
-	//String kintai_menu = "http://localhost:8080/kk_local/Menu_Gamen.jsp";
-	//String kintai_menu = "http://www.lucentsquare.co.jp:8080/kk_web/Menu_Gamen.jsp";
 	String kintai_menu = "Menu_Gamen.jsp";
 	String msj = "Schedule.jsp";%>
-
-<!-- <title>システム選択画面</title>
- -->
 </head>
 <body>
 	<form action="<%=msj%>" method="post" name="MSJform">
