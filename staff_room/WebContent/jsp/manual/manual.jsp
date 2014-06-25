@@ -15,7 +15,7 @@
 <script type="text/javascript" src="/staff_room/script/notifIt.js"></script>
 <link rel="stylesheet" type="text/css" href="/staff_room/css/notifIt.css">
 <link rel="stylesheet" type="text/css" href="/staff_room/css/document.css">
-<title>規程・書類</title>
+<title>組織表/規程</title>
 </head>
 <body class="manual">
 
