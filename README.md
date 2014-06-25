@@ -28,7 +28,7 @@ staff_room
 
 ##1.1 jspフォルダ-
 
--jsp 
+- jsp 
   - bbs/
     - 掲示板ページのファイル
   - document/
