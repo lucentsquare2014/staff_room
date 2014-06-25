@@ -207,10 +207,8 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
 			<li class="uk-parent">
 				<a href="#">Photo</a>
 				<ul class="uk-nav-sub">
-					<li><a
-						href="/staff_room/jsp/photo.jsp?ph=1">BBQ写真館</a></li>
-					<li><a
-						href="/staff_room/jsp/photo.jsp?ph=2">創立２５周年記念</a></li>
+					<li><a href="/staff_room/jsp/photo.jsp?ph=1">BBQ写真館</a></li>
+					<li><a href="/staff_room/jsp/photo.jsp?ph=2">創立２５周年記念</a></li>
 				</ul>
 			</li>
 			<li class="uk-parent">
