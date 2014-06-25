@@ -43,7 +43,7 @@ div#manual{
 	height:500px;
 	float:left;
 }
-img{
+#con img{
 	border:3px solid;
 }
 </style>
