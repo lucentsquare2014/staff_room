@@ -37,6 +37,9 @@ thead{
     overflow-wrap: break-word;
     width: 500px;
 }
+.button-list{
+	width: 900px;
+}
 th{
 	background-image: url("/staff_room/images/blackwhite1.png");
 	color: #FFFFFF;

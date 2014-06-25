@@ -39,7 +39,7 @@
 	</div>
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="contents uk-width-2-3 uk-container-center" style="height:60px;">
-	     <div class="uk-width-1-1 uk-text-right">
+	     <div class="uk-width-1-1 uk-text-right button-list">
 	     	<a href="/staff_room/jsp/mail/mail.jsp?mmail=1" class="uk-button uk-button-success">
 				<i class="uk-icon-user uk-icon-small"></i>　記事未読件数確認へ
 	     	</a>
