@@ -20,8 +20,7 @@
 <body class="manual">
 
 <jsp:include page="/jsp/header/header.jsp" />
-<div class="changelog" style="padding-top: 40px;">
-<div class="uk-width-3-5 uk-container-center">
+<div class="changelog uk-container-center" style="padding-top: 40px; width:820px;">
 <br>
 <!--------------  管理者用　 ----------------->　
 	<% if(user.equals("1")){ %>
@@ -90,7 +89,6 @@
 	</table>
 	</div></div>
 <%} %>
-</div>
 </div>
 <br><br>
 <div id="edit_form" class="uk-modal">
