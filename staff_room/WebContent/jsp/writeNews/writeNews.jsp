@@ -109,7 +109,7 @@
 					<a id="<%= row.get("news_id") %>" class="body-title" data-uk-toggle="{target:'#title<%=i%>'}">
 						<%= row.get("title") %>
 					</a>
-					<div id="title<%=i%>" class="uk-h4 uk-text-left uk-hidden">
+					<div id="title<%=i%>" class="uk-h4 uk-text-left uk-hidden text-disp">
 						<pre><%= row.get("text") %></pre>
 						<%if (!row.get("filename").equals("")){ %>
 							<p>添付：

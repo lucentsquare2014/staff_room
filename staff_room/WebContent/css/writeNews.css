@@ -33,7 +33,10 @@ thead{
   left: 0px;
   width: 900px;
 }
-
+.text-disp{
+    overflow-wrap: break-word;
+    width: 500px;
+}
 th{
 	background-image: url("/staff_room/images/blackwhite1.png");
 	color: #FFFFFF;
