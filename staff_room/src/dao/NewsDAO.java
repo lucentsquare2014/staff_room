@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * DBとやりとりをするクラス
+ * newsテーブルとやりとりをするクラス
  */
 public class NewsDAO {
 	
@@ -21,44 +20,6 @@ public class NewsDAO {
 		access = new AccessDB();
 	}
 	
-	/*
-	 * kintaikanriに接続するメソッド
-	 *
-	 * @return データベースとやりとりするコネクションクラス
-	 */
-	public static Connection openkintaikanri() {
-		Connection con = null;
-		try {
-			// JDBCドライバの読み取り
-			Class.forName("org.postgresql.Driver");
-			// 各種設定
-			String user = "lsc2014";
-			String pass = "admin";
-
-			// データベース接続
-			//ローカルのデータベースにアクセス
-			con = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/kintaikanri", user, pass);
-			//テストサーバのデータベースにアクセス
-//			con = DriverManager.getConnection(
-//					"jdbc:postgresql://192.168.101.21:5432/kintaikanri", user, pass);
-			System.out.println("接続成功");
-		} catch (Exception e) {
-			System.out.println("例外発生：" + e);
-		}
-		return con;
-	}
-
-	/* newsDBへの接続を切断するメソッド */
-	public static void closekintaikanri(Connection con) {
-		try {
-			// データベース切断
-			con.close();
-			System.out.println("切断成功");
-		} catch (Exception e) {
-			System.out.println("例外発生：" + e);
-		}
-	}
 	/* post_idのシーケンスを最新のものに更新する*/
 	public void setPostIdSequence(){
 		String sql = "select setval('\"news_newsID_seq\"', (select max(news_id) from news));";
