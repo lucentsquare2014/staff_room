@@ -24,11 +24,11 @@ staff_room
     - Servlet、外部ライブラリやweb.xml等を入れておくところ
   - error.jsp
   - iptest.jsp
-  - login.jsp  
+  - login.jsp 
 
-##1.1 jspフォルダ
+##1.1 jspフォルダ-
 
--jsp
+-jsp 
   - bbs/
     - 掲示板ページのファイル
   - document/
