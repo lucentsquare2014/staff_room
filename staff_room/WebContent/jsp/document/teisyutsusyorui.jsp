@@ -15,6 +15,8 @@
 <script type="text/javascript" src="/staff_room/script/notifIt.js"></script>
 <link rel="stylesheet" type="text/css" href="/staff_room/css/notifIt.css">
 <link rel="stylesheet" type="text/css" href="/staff_room/css/document.css">
+<link rel="stylesheet" href="/staff_room/css/jquery.mCustomScrollbar.css">
+<script src="/staff_room/script/jquery.mCustomScrollbar.js"></script>
 <title>申請書類</title>
 </head>
 <body class="syorui">
@@ -55,8 +57,10 @@
 		<div class="uk-panel">
 			<a href="" class="uk-close uk-align-right"></a>
 			<p class="uk-text-primary uk-text-bold">以下のファイルをアップロードします：</p>
-			<ul class="uk-list uk-list-line">
-			</ul>
+			<div class="content">
+				<ul class="uk-list uk-list-line">
+				</ul>
+			</div>
 		</div>
 	</div>
 

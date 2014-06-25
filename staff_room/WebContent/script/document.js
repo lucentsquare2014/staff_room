@@ -7,7 +7,7 @@ $(function(){
 		var files = $("#upload-select")[0].files;
 		$("#select_files ul").html("");
 		var fl = $("input[name='inputFile']").offset();
-		$("#select_files div").addClass("uk-panel-box");
+		$("#select_files .uk-panel").addClass("uk-panel-box");
 		$("#select_files").css({
 			"top": fl.top + 30 + "px",
 			"left": fl.left - 250 + "px"
@@ -226,7 +226,11 @@ $(function(){
 			$("#add").prop("disabled",true);
 			return false;
 		}
-		
 	});
+	
+	$(".content").mCustomScrollbar({
+    	autoHideScrollbar: true,
+    	theme: "dark"
+    });
 
 });
