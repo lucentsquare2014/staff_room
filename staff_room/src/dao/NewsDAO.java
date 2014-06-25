@@ -14,7 +14,13 @@ import java.util.HashMap;
  * DBとやりとりをするクラス
  */
 public class NewsDAO {
-
+	
+	private AccessDB access;
+	// コンストラクタ
+	public NewsDAO(){
+		access = new AccessDB();
+	}
+	
 	/*
 	 * kintaikanriに接続するメソッド
 	 *
@@ -56,7 +62,7 @@ public class NewsDAO {
 	/* post_idのシーケンスを最新のものに更新する*/
 	public void setPostIdSequence(){
 		String sql = "select setval('\"news_newsID_seq\"', (select max(news_id) from news));";
-		Connection con = openkintaikanri();
+		Connection con = access.openDB();
 		Statement stmt;
 		try{
 			stmt = con.createStatement();
@@ -64,12 +70,12 @@ public class NewsDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally{
-			closekintaikanri(con);
+			access.closeDB(con);
 		}
 	}
 	/* kintaikanriのnewsに新規に書き込むメソッド */
 	public void writeNews(HashMap<String, String> Newsdata) {
-		Connection con = openkintaikanri();
+		Connection con = access.openDB();
 		try {
 
 			// SQL文を文字列としてsqlという変数に格納
@@ -83,7 +89,6 @@ public class NewsDAO {
 					+ "'"
 					+ Newsdata.get("created")
 					+ "')";
-			System.out.println(sql);
 			// プリペアードステートメントを作成
 			// preparedStatementでエスケープ処理
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -97,13 +102,13 @@ public class NewsDAO {
 		} catch (SQLException e) {
 			System.out.println(e);
 		} finally {
-			closekintaikanri(con);
+			access.closeDB(con);
 		}
 	}
 
 	/* kintaikanriのnewsにある記事を編集するメソッド */
 	public void updateNews(HashMap<String, String> Newsdata) {
-		Connection con = openkintaikanri();
+		Connection con = access.openDB();
 		try {
 			// SQL文を文字列としてsqlという変数に格納
 			String sql = "UPDATE news SET "
@@ -117,7 +122,6 @@ public class NewsDAO {
 					+ "'"
 					+ " WHERE news_id="
 					+ Newsdata.get("news_id");
-			System.out.println(sql);
 			// プリペアードステートメントを作成
 			// preparedStatementでエスケープ処理
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -132,13 +136,13 @@ public class NewsDAO {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}finally{
-			closekintaikanri(con);
+			access.closeDB(con);
 		}
 	}
 
 	/* 記事を削除するメソッド */
 	public void deleteNews(String[] ids) {
-		Connection con = openkintaikanri();
+		Connection con = access.openDB();
 		// ステートメントを作成
 		Statement stmt;
 		try {
@@ -152,7 +156,7 @@ public class NewsDAO {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}finally{
-			closekintaikanri(con);
+			access.closeDB(con);
 		}
 	}
 
@@ -163,7 +167,7 @@ public class NewsDAO {
 	 * @return ArrayList<HashMap<String,String>>型の検索結果を格納したリスト
 	 */
 	public ArrayList<HashMap<String, String>> getNews(String sql) {
-		Connection con = openkintaikanri();
+		Connection con = access.openDB();
 		// ステートメントを作成
 		Statement stmt;
 		// データ格納用のリスト
@@ -196,7 +200,7 @@ public class NewsDAO {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}finally{
-			closekintaikanri(con);
+			access.closeDB(con);
 		}
 		return list;
 	}
@@ -207,7 +211,7 @@ public class NewsDAO {
 	 * @return String型の文字列
 	 */
 	public String getNewsFromLastLogin(String login_time){
-		Connection con = openkintaikanri();
+		Connection con = access.openDB();
 		// return用の変数
 		String result = null;
 		// 最後にログインした時間よりも日付が新しい記事を取ってくるsql文
@@ -233,7 +237,7 @@ public class NewsDAO {
 		} catch (SQLException e) {
 			System.out.println(e);
 		}finally{
-			closekintaikanri(con);
+			access.closeDB(con);
 		}
 		return result;
 	}

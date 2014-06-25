@@ -227,7 +227,7 @@ $(function(){
 			return false;
 		}
 	});
-	
+
 	$(".content").mCustomScrollbar({
     	autoHideScrollbar: true,
     	theme: "dark"
