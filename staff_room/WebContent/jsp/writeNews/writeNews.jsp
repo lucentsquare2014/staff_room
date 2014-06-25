@@ -25,18 +25,10 @@
 <script type="text/javascript" src="/staff_room/script/notifIt.js"></script>
 <link rel="stylesheet" type="text/css" href="/staff_room/css/notifIt.css">
 <link rel="stylesheet" href="/staff_room/css/writeNews.css">
-<title>管理編集</title>
+<title>管理･連絡</title>
 </head>
 
 <body>
-	<div style="position:absolute; top:75px; left:150px;">
-		<div class="uk-grid">
-			<div class="uk-width-1-4 uk-pull-1-6 uk-text-center">
-				<font face="ＭＳ Ｐゴシック"><span style="font-size: 50px;">
-				<nobr>管理・連絡</nobr></span></font>
-			</div>
-		</div>
-	</div>
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="contents uk-width-2-3 uk-container-center" style="height:60px;">
 	     <div class="uk-width-1-1 uk-text-right button-list">
@@ -104,8 +96,8 @@
 				</td>
 				<td class="coL2 uk-text-center"><%=dddate.format(date)%></td>
 				<td class="coL3 uk-text-center"><%=row.get("postname")%></td>
-				<!-- title→タイトル --> 
-				<td class="coL4 uk-text-left">				
+				<!-- title→タイトル -->
+				<td class="coL4 uk-text-left">
 					<a id="<%= row.get("news_id") %>" class="body-title" data-uk-toggle="{target:'#title<%=i%>'}">
 						<%= row.get("title") %>
 					</a>
