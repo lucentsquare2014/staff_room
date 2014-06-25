@@ -1,0 +1,22 @@
+body
+    {background-image : url("back.jpg");
+     background-attachment: fixed;
+    }
+
+th  
+    {
+     color: red;
+     font-weight: bold;
+     font-size:120%;
+     bgcolor: aqua;
+    }
+    
+td  
+    {
+    text-decoration:underline;
+    text-align:left;
+    font-size:100%;
+    }
+
+
+   
