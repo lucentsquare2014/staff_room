@@ -3,7 +3,8 @@
 	import="kkweb.dao.*,kkweb.beans.*,java.util.Enumeration,java.util.ArrayList,java.sql.Date,org.apache.commons.codec.digest.DigestUtils"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="ShainMST" scope="session" class="kkweb.beans.B_ShainMST" />
+<jsp:useBean id="ShainMST" scope="session"
+	class="kkweb.beans.B_ShainMST" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 	ArrayList<String> true_user = new ArrayList<String>();
@@ -56,73 +57,75 @@
 </script>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String flag = request.getParameter("pagefrom");
+		String flag = request.getParameter("pagefrom");
 
-	// 給与明細書が登録されている在籍社員情報の取得
-	SendList sendlist = null;
-	if(flag != null ? flag.equals("sendselect") || flag.equals("mailnyuryoku") : false)
-		sendlist = (SendList)session.getAttribute("SendList");
-	else sendlist = new SendListDAO().payslipSendList();
-	// ユーザーリストを取り出す
-	ArrayList<ShainInfo> users = sendlist.getUsers();
-	// 社員番号リストを作成
-	ArrayList<String> numberList = new ArrayList<String>();
-	for (ShainInfo s : users)
-		numberList.add(s.getNumber());
+		// 給与明細書が登録されている在籍社員情報の取得
+		SendList sendlist = null;
+		if (flag != null ? flag.equals("sendselect")
+				|| flag.equals("mailnyuryoku") : false)
+			sendlist = (SendList) session.getAttribute("SendList");
+		else
+			sendlist = new SendListDAO().payslipSendList();
+		// ユーザーリストを取り出す
+		ArrayList<ShainInfo> users = sendlist.getUsers();
+		// 社員番号リストを作成
+		ArrayList<String> numberList = new ArrayList<String>();
+		for (ShainInfo s : users)
+			numberList.add(s.getNumber());
 
-	ArrayList<Date> yearmonth = sendlist.getYearmonth();
-	ArrayList<String> sendlog = sendlist.getSendlog();
-	ArrayList<B_GroupMST> groups = new GroupDAO().selectTbl("");
-	String disabled = "disabled";
-	if (users.size() > 0)
-		disabled = "";
-	//System.out.println("flag : " + flag);
-	if (flag != null ? flag.equals("sendselect") : false) {
-		//form　から送られたネームリスト
-		Enumeration<String> names = request.getParameterNames();
-		ArrayList<ShainInfo> usersmst = new ArrayList<ShainInfo>(
-				users);
-		ArrayList<String> sendlogmst = new ArrayList<String>(
-				sendlog);
-		users.clear();
-		sendlog.clear();
+		ArrayList<Date> yearmonth = sendlist.getYearmonth();
+		ArrayList<String> sendlog = sendlist.getSendlog();
+		ArrayList<B_GroupMST> groups = new GroupDAO().selectTbl("");
+		String disabled = "disabled";
+		if (users.size() > 0)
+			disabled = "";
+		//System.out.println("flag : " + flag);
+		if (flag != null ? flag.equals("sendselect") : false) {
+			//form　から送られたネームリスト
+			Enumeration<String> names = request.getParameterNames();
+			ArrayList<ShainInfo> usersmst = new ArrayList<ShainInfo>(
+					users);
+			ArrayList<String> sendlogmst = new ArrayList<String>(
+					sendlog);
+			users.clear();
+			sendlog.clear();
 
-		while (names.hasMoreElements()) {
-			String name = names.nextElement();
-			//System.out.println(name);
-			// 選ばれた社員番号ならば
-			if (numberList.contains(name)) {
+			while (names.hasMoreElements()) {
+				String name = names.nextElement();
 				//System.out.println(name);
-				users.add(usersmst.get(numberList.indexOf(name)));
-				sendlog.add(sendlogmst.get(numberList.indexOf(name)));
+				// 選ばれた社員番号ならば
+				if (numberList.contains(name)) {
+					//System.out.println(name);
+					users.add(usersmst.get(numberList.indexOf(name)));
+					sendlog.add(sendlogmst.get(numberList.indexOf(name)));
+				}
 			}
+			sendlist.setUsers(users);
+			sendlist.setSendlog(sendlog);
+		} else {
+			flag = "";
 		}
-		sendlist.setUsers(users);
-		sendlist.setSendlog(sendlog);
-	} else {
-		flag = "";
-	}
-	int countSended = sendlist.countSended();
+		int countSended = sendlist.countSended();
 
-	String title = "一斉送信確認";
-	if (flag.equals("sendselect") || flag.equals("mailnyuryoku")) {
-		title = "送信確認";
-	}
+		String title = "一斉送信確認";
+		if (flag.equals("sendselect") || flag.equals("mailnyuryoku")) {
+			title = "送信確認";
+		}
 
-	String body = request.getParameter("body");
-	String subject = request.getParameter("subject");
-	String url_flg = request.getParameter("url");
-	String kakidasi = request.getParameter("kakidasi");
-	if (body == null)
-		body = "";
-	if (subject == null)
-		subject = "";
-	if (url_flg == null)
-		url_flg = "true";
-	if (kakidasi == null)
-		kakidasi = "1";
-	session.setAttribute("SendList", sendlist);
-	session.setAttribute("pagefrom", "sendall");
+		String body = request.getParameter("body");
+		String subject = request.getParameter("subject");
+		String url_flg = request.getParameter("url");
+		String kakidasi = request.getParameter("kakidasi");
+		if (body == null)
+			body = "";
+		if (subject == null)
+			subject = "";
+		if (url_flg == null)
+			url_flg = "true";
+		if (kakidasi == null)
+			kakidasi = "1";
+		session.setAttribute("SendList", sendlist);
+		session.setAttribute("pagefrom", "sendall");
 %>
 
 <title><%=title%></title>
@@ -133,7 +136,7 @@
 			<table id="main">
 				<tr>
 					<td>
-						<h1><%=title %></h1>
+						<h1><%=title%></h1>
 					</td>
 				</tr>
 				<tr>
@@ -215,101 +218,111 @@
 				 --%>
 				<tr>
 					<td>
-					<form action="PayslipMailSender" method="post" name="sendform">
-					<%--					<input type="hidden" name="body" value="<%=body%>">
+						<form action="PayslipMailSender" method="post" name="sendform">
+							<%--					<input type="hidden" name="body" value="<%=body%>">
 											<input type="hidden" name="subject" value="<%=subject%>">
 											<input type="hidden" name="url" value="<%=url_flg%>">
 											<input type="hidden" name="pagefrom" value="sendall">
 						 --%>
 
-						<center>
-							<table class="mailtmp">
-								<tr>
-									<td class="midasi" colspan="2"><strong>送信内容</strong></td>
-								</tr>
-								<tr>
-									<td colspan="2"><hr class="underline" size="2px"></td>
-								</tr>
-								<tr>
-									<td>タイトル</td>
-									<td>[社内文書システム]
-									<%-->
+							<center>
+								<table class="mailtmp">
+									<tr>
+										<td class="midasi" colspan="2"><strong>送信内容</strong></td>
+									</tr>
+									<tr>
+										<td colspan="2"><hr class="underline" size="2px"></td>
+									</tr>
+									<tr>
+										<td>タイトル</td>
+										<td>[社内文書システム] <%-->
 									<%if(subject != null ? subject.length() > 0 : false){ %>
 										<font class="rewritable"><%=subject%></font>
 									<%}else{ %>
 										<font class="rewritable">給与明細書を公開しました。</font>
 									<%}%>
-									--%>
-									<input type="text" NAME="subject"
-									<%if(subject != null ? subject.length() > 0 : false){%>
-										value="<%=subject%>"
-									<%}else{ %>
-										value="給与明細書を公開しました。"
-									<%} %>
-									size="50"></td>
-								</tr>
-								<tr>
-									<td>本文</td>
-									<td>OOさんへ</td>
-								</tr>
-								<tr><td>書き出し</td>
-								<td>
-									<select size="1" name="kakidasi">
-											<option value="0"
-											<%if(kakidasi.equals("0"))
-												out.println("selected=\"selected\"");
-											%>>空欄</option>
-											<option value="1"
-											<%if(kakidasi.equals("1"))
-												out.println("selected=\"selected\"");
-											%>>給与明細書(yyyy年mm月支給分)を公開しました。</option>
-											<option value="2"
-											<%if(kakidasi.equals("2"))
-												out.println("selected=\"selected\"");
-											%>>給与明細書(yyyy年mm月支給分)を更新しました。</option>
-									</select>
-								</td>
-								</tr>
-								<tr><td></td>
-								<td>
-								<%if(body != null ? body.length() > 0 : false){%>
-								<textarea name="body" cols="90" rows="5" istyle="1"><%=body%></textarea>
-								<%}else{%>
-<textarea name="body" cols="90"  rows="5" istyle="1" >
-</textarea>
-								<%}%>
-								</td></tr>
+									--%> <input type="text" NAME="subject"
+											<%if (subject != null ? subject.length() > 0 : false) {%>
+											value="<%=subject%>" <%} else {%> value="給与明細書を公開しました。" <%}%>
+											size="50"></td>
+									</tr>
+									<tr>
+										<td>本文</td>
+										<td>OOさんへ</td>
+									</tr>
+									<tr>
+										<td>書き出し</td>
+										<td><select size="1" name="kakidasi">
+												<option value="0"
+													<%if (kakidasi.equals("0"))
+					out.println("selected=\"selected\"");%>>空欄</option>
+												<option value="1"
+													<%if (kakidasi.equals("1"))
+					out.println("selected=\"selected\"");%>>給与明細書(yyyy年mm月支給分)を公開しました。</option>
+												<option value="2"
+													<%if (kakidasi.equals("2"))
+					out.println("selected=\"selected\"");%>>給与明細書(yyyy年mm月支給分)を更新しました。</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>
+											<%
+												if (body != null ? body.length() > 0 : false) {
+											%> <textarea
+												name="body" cols="90" rows="5" istyle="1"><%=body%></textarea>
+											<%
+												} else {
+											%> <textarea name="body" cols="90" rows="5" istyle="1">
+</textarea> <%
+ 	}
+ %>
+										</td>
+									</tr>
 
-								<tr><td></td><td><%=ShainMST.getName()%>より</td></tr>
-								<tr class="mailUrl">
-									<td colspan="2" class="url">URLを記載　:　
-									<%if(url_flg != null ? url_flg.equals("true") : false){ %>
-									<input type="radio" name="url" value="true" checked="checked">する
-									<input type="radio" name="url" value="false">しない
-									<%}else{ %>
-									<input type="radio" name="url" value="true">する
-									<input type="radio" name="url" value="false" checked="checked">しない
-									<%} %>
-									</td>
-								</tr>
-								<tr>
-									<td>URL内容</td>
-									<td><font class="selectable">以下のURLから支給年月が最も新しい給与明細書がPDF形式でご確認できます。</font></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td><font class="selectable">-------------------------------------------------------------------</font></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td><font class="selectable">URL :
-											http://www.lucentsquare.co.jp:8080/staff_room/jsp/shanai_s/SalaryPage?code=各個人の専用コード</font></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td><font class="selectable">-------------------------------------------------------------------</font></td>
-								</tr>
-								<%--
+									<tr>
+										<td></td>
+										<td><%=ShainMST.getName()%>より</td>
+									</tr>
+									<tr class="mailUrl">
+										<td colspan="2" class="url">URLを記載 : <%
+											if (url_flg != null ? url_flg.equals("true") : false) {
+										%>
+											<input type="radio" name="url" value="true" checked="checked">する
+											<input type="radio" name="url" value="false">しない <%
+												} else {
+											%>
+											<input type="radio" name="url" value="true">する <input
+											type="radio" name="url" value="false" checked="checked">しない
+											<%
+												}
+											%>
+										</td>
+									</tr>
+									<tr>
+										<td>URL内容</td>
+										<td><font class="selectable">以下のURLから支給年月が最も新しい給与明細書がPDF形式でご確認できます。</font></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td><font class="selectable">-------------------------------------------------------------------</font></td>
+									</tr>
+									<tr>
+										<td></td>
+										<%
+											String uri = request.getRequestURL().toString();
+												uri = uri.substring(0, uri.indexOf("/", uri.indexOf("//") + 2));
+												System.out.println(uri + "  (MailSendToAllUserPayslip.jsp)");
+										%>
+
+										<td><font class="selectable">URL :
+												<%=uri %>/staff_room/jsp/shanai_s/SalaryPage?code=各個人の専用コード</font></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td><font class="selectable">-------------------------------------------------------------------</font></td>
+									</tr>
+									<%--
 								<%if(body != null ? body.length() > 0 : false){
 									String[] strs = body.split("\n");
 									///System.out.println(strs.length);
@@ -349,42 +362,44 @@
 								</tr>
 								<%}%>
 								 --%>
-							</table>
-						</center>
-						<div id="sendformdiv">
-							<table class="sendform">
-								<tr>
-									<td class="submit">
-										<%--
+								</table>
+							</center>
+							<div id="sendformdiv">
+								<table class="sendform">
+									<tr>
+										<td class="submit">
+											<%--
 									<form action="MailNyuryokuPayslip.jsp" method="post">
-									 --%>
-											<input name="send"  class="button"
-												<%if (users.size() == 0)out.println("disabled=\"true\"");%>
-												type="button" value="送信"
-												onclick="confirmBox(<%=countSended%>,'PayslipMailSender')">
-												<%--
+									 --%> <input name="send" class="button"
+											<%if (users.size() == 0)
+					out.println("disabled=\"true\"");%>
+											type="button" value="送信"
+											onclick="confirmBox(<%=countSended%>,'PayslipMailSender')">
+											<%--
 											<input name="send_nyuryoku"  class="button" type="button" value="本文の変更"
 												<%if (users.size() == 0)out.println("disabled=\"true\"");%>
 												onclick="sendNyuryoku('MailNyuryokuPayslip.jsp')">
 										 		--%>
-									</td>
-									<td class="reselect">
-									<%--<form action="SelectAddressPayslip.jsp" method="post"
-											name="reselectform"> --%>
-											<input name="reselect" class="button"
-												<%if (users.size() == 0)out.println("disabled=\"true\"");%>
-												type="button" value="送信先を選択し直す" onclick="sendNyuryoku('SelectAddressPayslip.jsp')">
-									</td>
-								</tr>
-								<tr class="home">
-									<td colspan="2"><a href="SystemSelect.jsp">[スタッフルームトップへ]</a></td>
-								</tr>
-							</table>
-						</div>
+										</td>
+										<td class="reselect">
+											<%--<form action="SelectAddressPayslip.jsp" method="post"
+											name="reselectform"> --%> <input name="reselect"
+											class="button"
+											<%if (users.size() == 0)
+					out.println("disabled=\"true\"");%>
+											type="button" value="送信先を選択し直す"
+											onclick="sendNyuryoku('SelectAddressPayslip.jsp')">
+										</td>
+									</tr>
+									<tr class="home">
+										<td colspan="2"><a href="/staff_room">[スタッフルームトップへ]</a></td>
+									</tr>
+								</table>
+							</div>
 						</form>
 					</td>
 				</tr>
-<%--			<tr>
+				<%--			<tr>
 					<td>
 						<div id="sendformdiv">
 							<table class="sendform">
@@ -425,7 +440,7 @@
 					</td>
 				</tr>
  --%>
-				</table>
+			</table>
 		</div>
 	</center>
 </body>

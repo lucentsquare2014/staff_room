@@ -129,7 +129,10 @@ public class PayslipMailSender extends HttpServlet {
 		StringBuffer sb = new StringBuffer();
 		String br = System.getProperty("line.separator"); // 改行文字
 		// 本文用URL
-		String url = "http://www.lucentsquare.co.jp:8080/staff_room/jsp/shanai_s/SalaryPage?code=";
+		String uri = request.getRequestURL().toString();
+		uri = uri.substring(0, uri.indexOf("/", uri.indexOf("//") + 2));
+		System.out.println(uri + "  (PayslipMailSender.java)");
+		String url = uri+"/staff_room/jsp/shanai_s/SalaryPage?code=";
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy'年'MM'月'dd'日'");
 		SimpleDateFormat sdf_ym = new SimpleDateFormat("yyyy'年'MM'月'");

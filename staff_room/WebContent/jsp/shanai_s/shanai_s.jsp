@@ -33,7 +33,7 @@ body {
         String value = null;
         value = request.getParameter("mode");
         String uri = request.getRequestURL().toString();
-        uri = uri.substring(0, uri.length()-13);
+        uri = uri.substring(0, uri.lastIndexOf("/"));
         System.out.println(uri + "   (shanai_s.jsp)");
         System.out.println();
         if(value==null){
