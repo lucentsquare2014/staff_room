@@ -10,7 +10,7 @@ body {
 
 .uk-subnav{position: absolute;
 	float: left;
-	top: 200px;
+	top: 180px;
 	left: 70px;
 	white-space: nowrap;
 	}
@@ -28,7 +28,7 @@ body {
 
 #subnav-pill-content{
 	position:absolute;
-	top:260px;
+	top:240px;
 	left:70px;
 }
 
@@ -65,7 +65,10 @@ max-width: 280px;
 white-space: nowrap;
 text-overflow: ellipsis;
 }
-
+.changelog {
+	width: 660px;
+    height: 520px;
+}
 .changelog-ul{
     list-style: none;
 }
@@ -82,7 +85,7 @@ text-overflow: ellipsis;
 	float: left;
 	align: left;
 	left:70px;
-	top: 120px;
+	top: 100px;
 	padding: 0;
 	background-color: #5bc0de;
 	border-radius: 10px;
