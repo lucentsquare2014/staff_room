@@ -33,7 +33,6 @@
 		width: 100%;
 		background-attachment: fixed;
 		background-image: url("/staff_room/images/renraku01.jpg");
-		background-size: 100% auto;
 	}
 	.contents {
 	padding-top: 80px;
@@ -137,7 +136,7 @@
 			</font>
 			</div></div></div>
 
-		<div class="uk-width-3-5 uk-container-center">
+
 		<div id="out_Div"><div id="in_Div">
 		<table border="1" class="uk-table uk-text-center uk-width-medium-1-1">
 		<thead>
@@ -204,6 +203,7 @@
 		</table>
 		</div></div><br>
 		<!-- 次へボタン、戻るボタンの処理　 -->
+		<div class="uk-width-3-5 uk-container-center">
 		<div class="uk-grid">
 			<div class="uk-width-1-2 page-prev uk-text-large uk-text-left">
 				<%if (page_num.equals("1")) {
@@ -221,6 +221,7 @@
 					href="/staff_room/jsp/news.jsp?page=<%=Integer.parseInt(page_num) + 1%>&news=<%=value%>">次へ&gt;&gt;</a></span>
 			</div>
 		</div>
-</div></div></div></div>
+		</div>
+</div></div></div>
 </body>
 </html>
