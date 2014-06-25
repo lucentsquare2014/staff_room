@@ -190,8 +190,15 @@ img{
 <h2 class="uk-text-bold" id="admin">10.管理者側の操作について</h2>&nbsp;
 <ul>
 	<li>以下の資料をご利用ください。<br><br></li>
-	<li><a href ="mailto:lsc-admin@lucentsquare.co.jp">管理者マニュアル</a></li>
+	<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf" target="_blank">管理者マニュアル</a></li>
 </ul>
+<ol>
+	<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf" target="_blank">記事管理ヘルプ</a></li>
+	<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf" target="_blank">社内システムヘルプ</a></li>
+	<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf" target="_blank">書類アップロードヘルプ</a></li>
+	<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf" target="_blank">記事未読件数表示ヘルプ</a></li>
+	<li><a href="/staff_room/jsp/shanai_s/doc/manual01.pdf" target="_blank">PHOTOページ追加ヘルプ</a></li>
+</ol>
 <h2 class="uk-text-bold" id="information">11.問い合わせ・バージョン情報</h2>&nbsp;
 <ul>
 	<li>Staff_Roomのお問合せは：<a href ="mailto:lsc-admin@lucentsquare.co.jp">ビジネス推進室</a><br><br></li>

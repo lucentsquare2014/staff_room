@@ -149,18 +149,18 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
         </div>
  	</div>
  	<div class="header" style="float:right; white-space:nowrap;">
- 		<a href="/staff_room/jsp/SiteManual.jsp"style="text-decoration:none; color:whitesmoke; font-size:1em; text-shadow:0px 0px black;line-height: 40px;">
+ 		<a href="/staff_room/jsp/help/SiteManual.jsp"style="text-decoration:none; color:whitesmoke; font-size:1em; text-shadow:0px 0px black;line-height: 40px;">
  		ヘルプ
  		</a>
  	</div>
 	</div>
 	<a href="" class="uk-navbar-toggle uk-visible-small" id="side" data-uk-offcanvas="{target:'#sidenav'}"></a>
 	<div class="uk-visible-small uk-navbar-brand uk-navbar-center" id="logo">
-		<a href="//www.lucentsquare.co.jp/"> 
+		<a href="//www.lucentsquare.co.jp/">
 			<img src="/staff_room/images/Logo.png" alt="会社のページに戻る" style="width:35px;height:35px"></img>
 		</a>
 	</div>
-	
+
 	<!-- sidebar -->
 	<div id="sidenav" class="uk-offcanvas">
     <div class="uk-offcanvas-bar">
@@ -229,7 +229,7 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
 				</ul>
 			</li>
 			<li class="header"><a href="/staff_room/Logout">ログアウト</a></li>
-			<li class="header"><a href="/staff_room/jsp/SiteManual.jsp">ヘルプ</a></li>
+			<li class="header"><a href="/staff_room/jsp/help/SiteManual.jsp">ヘルプ</a></li>
         </ul>
     </div>
 </div>
