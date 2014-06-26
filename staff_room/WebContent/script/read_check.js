@@ -17,8 +17,8 @@ $(function(){
 					$("#filename").text("添付：");
 					var files = msg.filename.split(",");
 					for(var i = 0; i < files.length; i++){
-						$("#filename").append("<a href=\"/staff_room/upload/" + 
-								files[i] + "\">" + files[i] + "</a>&nbsp;");
+						$("#filename").append("<br><a href=\"/staff_room/upload/" +
+								files[i] + "\">" + files[i] + "</a>");
 					}
 				}
 			});
