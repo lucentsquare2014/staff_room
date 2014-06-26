@@ -48,7 +48,7 @@ public class IpAddressFilter implements Filter {
 		}else{
 			String page = ((HttpServletRequest)request).getRequestURI();
 			if(page.indexOf("document") != -1){
-				((HttpServletResponse) response).sendRedirect("/staff_room/jsp/ip_forbidden.jsp");
+				((HttpServletResponse) response).sendRedirect("/staff_room/jsp/error/ip_forbidden.jsp");
 			}else{
 				((HttpServletResponse) response).sendError(HttpServletResponse.SC_FORBIDDEN);
 			}
