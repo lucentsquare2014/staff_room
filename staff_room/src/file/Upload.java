@@ -23,7 +23,8 @@ public class Upload extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
     	response.setCharacterEncoding("utf-8");
-    	String applicationPath = request.getServletContext().getRealPath("");
+    	//String applicationPath = request.getServletContext().getRealPath("");
+    	String applicationPath = getServletContext().getRealPath("");
     	String uploadFilePath = applicationPath + File.separator + "upload";
     	File fileSaveDir = new File(uploadFilePath);
         if (!fileSaveDir.exists()) {
