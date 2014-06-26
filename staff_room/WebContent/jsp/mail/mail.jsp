@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <% //String user = String.valueOf(session.getAttribute("admin")); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ page import="dao.ShainDB,
-				dao.NewsDAO,
+<%@ page import="dao.AccessDB,
 				java.util.ArrayList,
 				java.sql.Connection,
 				java.sql.PreparedStatement,
@@ -123,10 +122,9 @@ table >thead>tr{
 		</div>
 		<div id="tyu">(注)outlook起動後、メールアドレスの読み込みまで少し時間がかかります。</div></div>
 		<div id="in_Div">
-		<table border="1" bordercolorlight="#000000" bordercolordark="#696969" class="uk-table uk-width-medium-1-1">
+		<table border="1" class="uk-table uk-width-medium-1-1">
 		<thead>
 			<tr class="uk-text-large">
-				<% //if(user.equals("1")){ %>
 				<%if(value.equals("1")){%>
 				<th  class="coL1  uk-text-center" style="padding: 4px;"><font color="#FFFFFF"></font></th>
 				<th  class="coL2  uk-text-center"><font color="#FFFFFF">氏名</font></th>
@@ -144,92 +142,79 @@ table >thead>tr{
 			    <%} %>
 			</tr>
 		</thead>
-		<%
+<%
 	ArrayList<Integer> x = new ArrayList<Integer>();
-	Mail.GetShainDB News = new Mail.GetShainDB();
-	ArrayList<HashMap<String, String>> Newslist = null;
+	Mail.GetMail mails = new Mail.GetMail();
+	ArrayList<HashMap<String, String>> Maillist = null;
 	String sql = "select shainmst.id,shainmst.mail,shainmst.name,shainmst.hurigana,shainkanri.read_check,shainkanri.access_time" +
 				" from shainmst,shainkanri where shainmst.number = shainkanri.shain_number and shainmst.zaiseki_flg="
 				+"'"
 				+"1"
 				+"'"
 				+"order by shainmst.hurigana asc";
-	System.out.println(sql);
-	Newslist = News.getShain(sql);
-
-		ShainDB primary = new ShainDB();
-		NewsDAO nd = new NewsDAO();
-		Connection con =primary.openShainDB();
-		Statement stmt;
-		for (int i = 0; i < Newslist.size(); i++) {
-			HashMap<String, String> Newsmap = Newslist.get(i);
-
-			String past_unread = Newsmap.get("read_check");
-			String last_access = Newsmap.get("access_time");
-			if(last_access.indexOf(".") != -1){
-				last_access = last_access.substring(0, last_access.indexOf("."));
+	Maillist = mails.getShainMail(sql);
+	AccessDB access = new AccessDB();
+	Connection con = access.openDB();
+	Statement stmt;
+	for (int i = 0; i < Maillist.size(); i++) {
+		HashMap<String, String> Newsmap = Maillist.get(i);
+		String past_unread = Newsmap.get("read_check");
+		String last_access = Newsmap.get("access_time");
+		if(last_access.indexOf(".") != -1){
+			last_access = last_access.substring(0, last_access.indexOf("."));
+		}else{
+			last_access = last_access.substring(0, last_access.indexOf("+"));
+		}
+		String result = null;
+		// 最後にログインした時間よりも日付が新しい記事を取ってくるsql文
+		String sql3 = "select news_id from news where created > ?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql3);
+			pstmt.setTimestamp(1, java.sql.Timestamp.valueOf(last_access));
+			ResultSet rs2 = pstmt.executeQuery();
+			StringBuilder builder = new StringBuilder();
+			while(rs2.next()){
+				builder.append(rs2.getString("news_id")).append(",");
+				result =  builder.toString();
+			}
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		if(result != null){
+			past_unread += result;
+		}
+		if(past_unread.startsWith(",")){
+			past_unread = past_unread.substring(1, past_unread.length());
+		}
+		String[] unread = past_unread.split(",");
+		String sql_in = "";
+		int primary_count = 0;
+		for(int j = 0; j < unread.length; j++){
+			if(j != unread.length - 1){
+				sql_in += "'" + unread[j] + "',";
 			}else{
-				last_access = last_access.substring(0, last_access.indexOf("+"));
+				sql_in += "'" + unread[j] + "'";
 			}
-			String result = null;
-			// 最後にログインした時間よりも日付が新しい記事を取ってくるsql文
-			String sql3 = "select news_id from news where created > ?";
-			try {
-				PreparedStatement pstmt = con.prepareStatement(sql3);
-				pstmt.setTimestamp(1, java.sql.Timestamp.valueOf(last_access));
-				ResultSet rs2 = pstmt.executeQuery();
-				StringBuilder builder = new StringBuilder();
-				while(rs2.next()){
-					builder.append(rs2.getString("news_id")).append(",");
-					result =  builder.toString();
+		}
+		if(!sql_in.equals("''")){
+			String sql2 = "select count(*) from news where news_id in (" + sql_in + ")"
+						+ " and primary_flag = '1'";
+			try{
+				stmt = con.createStatement();
+				ResultSet rs = stmt.executeQuery(sql2);
+				while(rs.next()){
+					primary_count = rs.getInt("count");
 				}
-				} catch (SQLException e) {
+			}catch (SQLException e) {
 					System.out.println(e);
-				}
-			if(result != null){
-				past_unread += result;
 			}
-			//String result = nd.getNewsFromLastLogin(last_access);
-			//if(result != null){
-			//	past_unread += result;
-			//}
-			if(past_unread.startsWith(",")){
-				past_unread = past_unread.substring(1, past_unread.length());
-			}
-			String[] unread = past_unread.split(",");
-			String sql_in = "";
-			int primary_count = 0;
-			for(int j = 0; j < unread.length; j++){
-				if(j != unread.length - 1){
-					sql_in += "'" + unread[j] + "',";
-				}else{
-					sql_in += "'" + unread[j] + "'";
-				}
-
-			}
-			if(!sql_in.equals("''")){
-
-				String sql2 = "select count(*) from news where news_id in (" + sql_in + ")"
-							+ " and primary_flag = '1'";
-
-				try{
-					stmt = con.createStatement();
-					ResultSet rs = stmt.executeQuery(sql2);
-					while(rs.next()){
-						primary_count = rs.getInt("count");
-					}
-				}catch (SQLException e) {
-					System.out.println(e);
-				}
-			}
-			String str1 = Newsmap.get("mail");
-    		int index = str1.indexOf("@");
-    		String str2 = Newsmap.get("id");
-            int inde = str2.indexOf("-");
-            String moji = str2.substring(inde+1);
-            System.out.println(moji.substring(0,1));
-            
-                %>
+		}
+		String str1 = Newsmap.get("mail");
+    	int index = str1.indexOf("@");
+    	String str2 = Newsmap.get("id");
+        int inde = str2.indexOf("-");
+        String moji = str2.substring(inde+1);
+%>
 
        			<tr id="<%=moji.substring(0,1)%>">
        				<td class="coL1 uk-text-center" style="padding: 4px;">
@@ -238,19 +223,18 @@ table >thead>tr{
        				<td class="coL2" ><%=Newsmap.get("name")%></td>
        				<td class="coL3"><%=Newsmap.get("hurigana")%></td>
        				<td class="coL4" id="address"><a href="mailto:<%=Newsmap.get("mail")%>"><%=Newsmap.get("mail")%></a></td>
-       				<% //if(user.equals("1")){ %>
        				<%if(value.equals("1")){%>
        				<td align="right" class="coL5"><font>
 					<%if(unread.length == 1 && unread[0].equals("")){%>
 					<%}else{%><%=unread.length%><%}%></font></td>
 					<td align="right" class="coL5"><font><%=primary_count%></font></td><%} %>
        			</tr>
-       		<%}%>
+<%
+	}
+    access.closeDB(con);	
+%>
 		</table>
 		</div></div>
-		
-		
-		
 	</div>
 </body>
 </html>
