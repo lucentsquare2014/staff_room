@@ -131,7 +131,7 @@
                     				String arr[] = row.get("filename").split( "," );
                     				for (int f = 0; f<arr.length; f++){
                     			%>
-                    			<a href="/staff_room/upload/<%= arr[f] %>"><%= arr[f] %></a>&nbsp;
+                    			<a href="/staff_room/upload/<%= arr[f] %>"><br><%= arr[f] %></a>
                     			<% } %>
                     		</p>
                     	</div>
