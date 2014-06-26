@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import dao.ShainDB;
+import dao.AccessDB;
 
 /**
  * Servlet implementation class Login
@@ -52,8 +51,6 @@ public class Login extends HttpServlet {
 		// Login.jspからidとpasswordを取得する
 		String id = request.getParameter("id").trim();
 	    String pwd = request.getParameter("password").trim();
-	    //ユーザの名前
-	    String username = "";
 	    
 	    HttpSession session = request.getSession(true);
 	    // idとパスワードが一致しているかチェックする
@@ -116,8 +113,8 @@ public class Login extends HttpServlet {
 		System.out.println(pwd);
 */
 		// 社員データベースから照合する
-		ShainDB shain = new ShainDB();
-		Connection con = shain.openShainDB();
+		AccessDB access = new AccessDB();
+		Connection con = access.openDB();
 		String sql = "SELECT * FROM shainmst WHERE id = ? AND pw = ?";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -125,22 +122,22 @@ public class Login extends HttpServlet {
 		    pstmt.setString(2, pwd);
 		    ResultSet rs = pstmt.executeQuery();
 		    if(rs.next()){
-		    	shain.closeShainDB(con);
 		    	return true;
 		    } else{
-		    	shain.closeShainDB(con);
 		    	return false;
 		    }
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+		} finally {
+			access.closeDB(con);
 		}
 	}
 	
 	/* shainkanriのcookieに文字列を保存する */
 	private void saveCookie(String cookie, String id){
-		ShainDB shaindb = new ShainDB();
-		Connection con = shaindb.openShainDB();
+		AccessDB shaindb = new AccessDB();
+		Connection con = shaindb.openDB();
 		String sql = "update shainkanri set cookie = ? where shain_number ="
 				     + "(SELECT number FROM shainmst WHERE id = ?)";
 		try {
@@ -151,15 +148,15 @@ public class Login extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
-			shaindb.closeShainDB(con);
+			shaindb.closeDB(con);
 		}
 	}
 	
 	// ログインしたユーザー管理者かどうかを判断する
 	//ついでに名前を取得
 	private String[] getAdmin(String id){
-		ShainDB shaindb = new ShainDB();
-		Connection con = shaindb.openShainDB();
+		AccessDB shaindb = new AccessDB();
+		Connection con = shaindb.openDB();
 		String sql = "select administrator,name from shainmst where id=?";
 		String[] result = new String[2];
 		try {
@@ -173,7 +170,7 @@ public class Login extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
-			shaindb.closeShainDB(con);
+			shaindb.closeDB(con);
 		}
 		return result;
 	}

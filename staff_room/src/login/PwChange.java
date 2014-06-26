@@ -8,7 +8,6 @@ import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import dao.ShainDB;
+import dao.AccessDB;
 
 /**
  * Servlet implementation class PwChange
@@ -57,8 +56,8 @@ public class PwChange extends HttpServlet {
 	}
 	
 	private boolean pwCheck(String id, String pwd, String new_pwd){
-		ShainDB shain = new ShainDB();
-		Connection con = shain.openShainDB();
+		AccessDB shain = new AccessDB();
+		Connection con = shain.openDB();
 		String sql = "SELECT * FROM shainmst WHERE id = ? AND pw = ?";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -66,7 +65,6 @@ public class PwChange extends HttpServlet {
 		    pstmt.setString(2, pwd);
 		    ResultSet rs = pstmt.executeQuery();
 		    if(!rs.next()){
-		    	shain.closeShainDB(con);
 		    	return false;
 		    }else{
 		    	String update = "UPDATE shainmst SET " + "pw=?" + " WHERE id=?";
@@ -74,12 +72,13 @@ public class PwChange extends HttpServlet {
 		    	pstmt.setString(1, new_pwd);
 				pstmt.setString(2, id);
 				pstmt.executeUpdate();
-				shain.closeShainDB(con);
 				return true;
 		    }
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+		} finally {
+			shain.closeDB(con);
 		}
 	}
 
