@@ -34,8 +34,8 @@ public class DocumentUpload extends HttpServlet {
         upload.setHeaderEncoding("UTF-8");
         
         try{
-        	List list = upload.parseRequest(request);
-			Iterator iterator = list.iterator();
+        	List<FileItem> list = upload.parseRequest(request);
+			Iterator<FileItem> iterator = list.iterator();
 			while(iterator.hasNext()){
 				FileItem fItem = (FileItem)iterator.next();
 				if(fItem.isFormField()){
@@ -54,7 +54,7 @@ public class DocumentUpload extends HttpServlet {
 	        if (!fileSaveDir.exists()) {
 	            fileSaveDir.mkdirs();
 	        }
-	        Iterator iterator2 = list.iterator();
+	        Iterator<FileItem> iterator2 = list.iterator();
 			while(iterator2.hasNext()){
 				FileItem fItem = (FileItem)iterator2.next();
 				if(!(fItem.isFormField())){

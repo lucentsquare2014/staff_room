@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import dao.AccessDB;
 import dao.NewsDAO;
-import dao.ShainDB;
 
 public class ReadCheck {
 	
@@ -27,8 +27,8 @@ public class ReadCheck {
 	private String[] getInfo(String id){
 		String sql = "SELECT * FROM shainkanri WHERE shain_number = " +
 				"(SELECT number FROM shainmst WHERE id = '" + id + "')";
-		ShainDB shain = new ShainDB();
-		Connection con = shain.openShainDB();
+		AccessDB shain = new AccessDB();
+		Connection con = shain.openDB();
 		Statement stmt;
 		String[] data = new String[4];
 		try {
@@ -48,7 +48,7 @@ public class ReadCheck {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		shain.closeShainDB(con);
+		shain.closeDB(con);
 		return data;
 	}
 	
@@ -60,8 +60,6 @@ public class ReadCheck {
 		for(int i = 0; i < ids.length; i++){
 			if(!unique.contains(ids[i])){
 				unique.add(ids[i]);
-				System.out.println("ids: "+ids[i]+" :" + String.valueOf(i));
-				System.out.println("unique: "+unique.get(i));
 //				update_ids += unique.get(i) + ",";
 				// unique.get(i)でIndexOutOfBounds...のエラーが起こっているので
 				// get（）を使わないように修正
@@ -70,16 +68,17 @@ public class ReadCheck {
 		}
 		String sql = "UPDATE shainkanri SET read_check = '" + update_ids + 
 				"' WHERE shain_number = '" + number + "'";
-		ShainDB shain = new ShainDB();
-		Connection con = shain.openShainDB();
+		AccessDB shain = new AccessDB();
+		Connection con = shain.openDB();
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			shain.closeDB(con);
 		}
-		shain.closeShainDB(con);
 	}
 	
 }
