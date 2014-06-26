@@ -31,7 +31,7 @@
 				<a class="uk-button uk-button-success" href="/staff_room/jsp/writeNews/writeNews.jsp">管理編集ページに戻る</a>
 				<div>※「未読」には全記事の中から、未読の件数を表示します。<br> 　&nbsp;「緊急」には緊急とされた記事の中から、未読の件数を表示します。</div>
 			<%}%><%else{%>
-			<div style="float:left;margin-left:120px;">一度に選択できるのは70名までです。<br>全社員宛てのメールならば、作成することができます。全てにチェックを入れ、メール作成をして下さい。</div>
+			<div class="uk-text-bold" style="float:left;margin-left:120px;">一度に選択できるのは70名までです。<br>全社員宛てのメールならば、作成することができます。全てにチェックを入れ、メール作成をして下さい。</div>
 			<%}%>
 			</div>
 		<div id="out_Div">
@@ -176,7 +176,7 @@
        			</tr>
 <%
 	}
-    access.closeDB(con);	
+    access.closeDB(con);
 %>
 		</table>
 		</div></div>
