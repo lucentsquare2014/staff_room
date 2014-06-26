@@ -2,19 +2,16 @@ body {
 	background-image: url("/staff_room/images/top4.jpg");
 }
 
-
 .main-container {
 	padding-top: 50px;
 }
-
 
 .uk-subnav{position: absolute;
 	float: left;
 	top: 180px;
 	left: 70px;
 	white-space: nowrap;
-	}
-	
+}
 
 .uk-subnav >li>a{
 	font-size: 1.2rem;
@@ -23,8 +20,8 @@ body {
 	display: block;
 	text-decoration: none;
 	list-style-type: none;
-	background-color:#5BC0DE;}
-	
+	background-color:#5BC0DE;
+}
 
 #subnav-pill-content{
 	position:absolute;
@@ -43,19 +40,18 @@ body {
 	line-height: 1.75em;
 	height: 260px;
 	background-color: whitesmoke;
-    }
- 
-
-.changelog-content >thead>tr{
-  position: absolute; 
-  top: 0px; 
-  left: 0px; 
 }
 
+.changelog-content >thead>tr{
+  position: absolute;
+  top: 0px; 
+  left: 0px;
+}
 
 .changelog-content >thead >tr >th{
 	background-image: url("/staff_room/images/blackwhite1.png");
 	padding-left: 10px;
+	color: #FFFFFF;
 }
 
 

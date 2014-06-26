@@ -7,46 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="/html/head.html" />
 <script src="/staff_room/script/read_check.js"></script>
+<link rel="stylesheet" href="/staff_room/css/site_manual.css">
 <title>このサイトの使い方</title>
-
-<style type="text/css">
-
-body {
-	width: 100%;
-	background-attachment: fixed;
-	background-image: url("/staff_room/images/input.png");
-	background-size: 100% auto;
-}
-
-a#jump:link { color:#000; text-decoration:none }
-a#jump:visited { color:#000; text-decoration:none }
-a#jump:hover { color:#0000ff; text-decoration:none }
-a#jump:active { color:#0000ff; text-decoration:none }
-
-div#panel {
-	max-height: 100%;
-	width:200px;
-	float:left;
-}
-div#con {
-	position: relative;
-	margin-top:82px;
-	width: 1080px;
-	max-height: 100%;
-	height:93.5%;
-	margin-right:auto;
-	margin-left:2%;
-}
-div#manual{
-	overflow-y:scroll;
-	width:800px;
-	height:500px;
-	float:left;
-}
-#con img{
-	border:3px solid;
-}
-</style>
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />

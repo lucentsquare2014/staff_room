@@ -80,10 +80,10 @@ $(function() {
 					<table class="changelog-content"class="uk-panel-box">
 					<thead>
 						<tr>
-						     <th class="coL1"><font color="#FFFFFF">　　</font></th>
-  							 <th class="coL2 uk-text-left"><font color="#FFFFFF">日付</font></th>
- 							  <th class="coL3 uk-text-left"><font color="#FFFFFF">件名</font></th>
- 							  <th class="coL4 uk-text-left"><font color="#FFFFFF">分類</font></th>
+						     <th class="coL1"></th>
+  							 <th class="coL2 uk-text-left">日付</th>
+ 							  <th class="coL3 uk-text-left">件名</th>
+ 							  <th class="coL4 uk-text-left">分類</th>
 						</tr>
 					</thead>
 					<tbody>
