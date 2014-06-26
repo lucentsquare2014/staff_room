@@ -38,6 +38,26 @@ table >thead>tr{
 	width: 810px;
 }
 
+div#category {
+	position: fixed;
+	top: 220px;
+	left: 80px;
+}
+
+div#main {
+	position: relative;
+	top: -80px;
+	left: 0px;
+	width: 100%;
+}
+
+div#sub {
+	position: relative;
+	top: 60px;
+	left: 0px;
+	width: 100%;
+}
+
 .coL1 { width:166px; }/* colgroupÇÃóÒïùéwíË */
 
 .coL2 { width:694px; }

@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="code.jsp" %>
 <%@ page import="java.util.ArrayList, java.util.HashMap, java.util.List, java.util.Arrays"%>
 
 <%
 	List<String> file_list = new ArrayList<String>();
 
 	if(request.getParameter("inputFile") != "" && request.getParameter("inputFile") != null) {
-		String file_str = String.valueOf(jpn2unicode(request.getParameter("inputFile"),"UTF-8"));
+		String file_str = new String(request.getParameter("inputFile").getBytes("ISO-8859-1"), "UTF-8");
 		file_list = Arrays.asList(file_str.split(","));
 	}
 %>
@@ -18,20 +17,21 @@
 <jsp:include page="/html/head.html" />
 <script src="/staff_room/script/upload.js"></script>
 <script src="/staff_room/script/inputform.js"></script>
-<title>入力フォーム</title>
+<title>記事新規・編集</title>
 <link rel="stylesheet" href="/staff_room/css/inputform.css">
 </head>
 <body>
 <jsp:include page="/jsp/header/header.jsp" />
-<br><br>
-<form class="uk-form uk-form-horizontal" method="post" action="write_finish.jsp">
+<br><br><br>
+<form class="uk-form uk-form-horizontal" method="post" action="/staff_room/SaveNews">
 	<!-- 入力フォーム -->
 	<div class="uk-width-medium-3-5 uk-container-center confirm">
-		<div class="uk-h1 uk-text-center"><% if(request.getParameter("inputNewsid")==null){%>
+		<div class="uk-h1 uk-text-center">
+		<% if(request.getParameter("inputNewsid")==null){%>
 			新規記事の作成
-			<%}else{%>
+		<%}else{%>
 			既存記事の編集
-			<%}%>
+		<%}%>
 		</div><br>
 		<div class="uk-form-row">
 			<label class="uk-form-label uk-text-bold uk-text-large">分類</label>
@@ -68,7 +68,7 @@
 			<input class="uk-form-width-medium" type="text" name="inputTitle"
 			<%
 				if(request.getParameter("inputTitle")!=null){
-					String title = jpn2unicode(request.getParameter("inputTitle"),"UTF-8");
+					String title = new String(request.getParameter("inputTitle").getBytes("ISO-8859-1"), "UTF-8");
 					out.print("value=\"" + title + "\"");
 				}
 			%>
@@ -79,7 +79,9 @@
 			<% if(request.getParameter("inputText")==null){ %>
 				<textarea class="uk-form-width-large" rows="10" name="inputText"></textarea>
 			<% } else { %>
-				<textarea class="uk-form-width-large" rows="10" name="inputText"><%= jpn2unicode(request.getParameter("inputText"),"UTF-8")%></textarea>
+				<textarea class="uk-form-width-large" rows="10" name="inputText">
+					<%= new String(request.getParameter("inputText").getBytes("ISO-8859-1"), "UTF-8") %>
+				</textarea>
 			<% } %>
 		</div>
 		<div class="uk-form-row" id="uploaded">
@@ -111,7 +113,7 @@
 			<label class="uk-form-label uk-text-bold uk-text-large">保存者</label>
 			<input type="text" name="inputWriter"
 			<% if(request.getParameter("inputWriter")!=null){
-				String author = jpn2unicode(request.getParameter("inputWriter"),"UTF-8");
+				String author = new String(request.getParameter("inputWriter").getBytes("ISO-8859-1"), "UTF-8");
 				out.print("value=\"" + author + "\"");
 			}else{
 				out.print("value=\"" + session.getAttribute("username") + "\"");
@@ -182,7 +184,7 @@
 	<input type="hidden" name="inputNewsid" value="<%= request.getParameter("inputNewsid") %>">
 	<% } %>
 	<% if(request.getParameter("inputFile") != "" && request.getParameter("inputFile") != null){ %>
-	<input type="hidden" name="inputFiles" value="<%= jpn2unicode(request.getParameter("inputFile"),"UTF-8") %>">
+	<input type="hidden" name="inputFiles" value="<%= new String(request.getParameter("inputFile").getBytes("ISO-8859-1"), "UTF-8") %>">
 	<% }else{ %>
 	<input type="hidden" name="inputFiles" value="">
 	<% } %>
