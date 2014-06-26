@@ -73,6 +73,14 @@
     <url-pattern>/PwChange</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>SaveNews</servlet-name>
+    <servlet-class>news.SaveNews</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveNews</servlet-name>
+    <url-pattern>/SaveNews</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>DeleteNews</servlet-name>
     <servlet-class>news.DeleteNews</servlet-class>
   </servlet>

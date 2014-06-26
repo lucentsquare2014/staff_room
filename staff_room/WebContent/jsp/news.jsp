@@ -30,20 +30,15 @@
 <body>
 	<jsp:include page="/jsp/header/header.jsp" /><br><br>
 <!--	<img src="/staff_room/images/renraku5.jpg"> -->
-	<div style="position:relative; top:-80px; left:0px; width: 100%;">
+	<div id="main">
 
 	<div align="center">
-<%-- 保留 後ろにNEWSの画像入れるなら
-<img src="/staff_room/images/newswall.png" style="position:relative;height: 600; width:100%">
---%>
-
-	<div style="position:relative; top:60px; left:0px; width:100%">
+	<div id="sub">
 
 	<%
 		String value = null,value2 = null,value3 = null;
 		List<String> read_check = null;
 		value = request.getParameter("news");
-		System.out.println(value);
 		value2 = request.getParameter("news_id");
 		//未読記事のnews_idを受け取る
 		if(session.getAttribute("unread") != null){
@@ -74,10 +69,9 @@
 			ArrayList<HashMap<String, String>> name = null;
 			name = dao.getNews("select postname from post where post_id =" + value);
 			raw = name.get(0);
-			System.out.println(raw.get("postname"));
 		}
 			%>
-			<div style="position:fixed; top:220px; left:80px;">
+			<div id="category">
 			<div class="uk-grid">
 			<div class="uk-width-1-4 uk-pull-1-6 uk-text-center">
 			<font face="ＭＳ Ｐゴシック">
