@@ -8,13 +8,12 @@ import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ShainDB;
+import dao.AccessDB;
 /**
  * Servlet implementation class CookieChecked
  */
@@ -58,8 +57,8 @@ public class CookieChecked extends HttpServlet {
 	private String[] getInfo(String cookie_id){
 		String sql = "select id, pw from shainmst where number=" +
 				"(select shain_number from shainkanri where cookie=?)";
-		ShainDB shain = new ShainDB();
-		Connection con = shain.openShainDB();
+		AccessDB shain = new AccessDB();
+		Connection con = shain.openDB();
 		PreparedStatement pstmt;
 		String[] data = new String[2];
 		try {
@@ -73,7 +72,7 @@ public class CookieChecked extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
-			shain.closeShainDB(con);
+			shain.closeDB(con);
 		}
 		return data;
 	}
