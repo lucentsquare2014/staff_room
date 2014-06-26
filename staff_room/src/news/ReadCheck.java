@@ -17,8 +17,7 @@ public class ReadCheck {
 		NewsDAO news = new NewsDAO();
 		String new_ids = news.getNewsFromLastLogin(last_access);
 		if(new_ids != null){
-			updateReadCheck(kanri_info[2], new_ids, kanri_info[0]);
-			kanri_info[2] = kanri_info[2] + new_ids;
+			kanri_info[2] = updateReadCheck(kanri_info[2], new_ids, kanri_info[0]);
 		}
 		return  kanri_info[2];
 	}
@@ -53,7 +52,7 @@ public class ReadCheck {
 	}
 	
 	//未読記事を更新する
-	private void updateReadCheck(String unread_ids,String new_ids,String number){
+	private String updateReadCheck(String unread_ids,String new_ids,String number){
 		String update_ids = "";
 		String[] ids = (unread_ids + new_ids).split(",");
 		ArrayList<String> unique = new ArrayList<String>();
@@ -76,9 +75,9 @@ public class ReadCheck {
 			stmt.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			shain.closeDB(con);
-		}
+		} 
+		shain.closeDB(con);
+		return unread_ids;
 	}
 	
 }
