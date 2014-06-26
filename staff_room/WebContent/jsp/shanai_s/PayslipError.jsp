@@ -69,7 +69,7 @@ p {
 						<td class=b>
 							<div class=return_menu>
 								
-								<a class=menu href="<%=kintai_login%>">[スタッフルームに戻る]</a>
+								<a target="_parent" class="menu" href="<%=kintai_login%>">[スタッフルームに戻る]</a>
 							</div>
 						</td>
 					</tr>
