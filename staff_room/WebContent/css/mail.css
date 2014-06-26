@@ -72,3 +72,48 @@ div#button ul>li>a {
 }
 #tyu{color:white;
 padding: 3px;}
+
+#out_Div {
+  position: relative;
+  width:900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#come{
+  padding-top: 82px;
+  width: 890px;
+  height:78px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#come>div{
+	float:right;
+}
+#come>a{
+	float:right;
+}
+
+#in_Div {
+	overflow-y: scroll;
+	line-height: 1.75em;
+	height: 400px;
+	max-width: 800px;
+	background-color: whitesmoke;
+	float:left;
+    }
+table >thead>tr{
+  position: absolute;
+  top:-34px;
+  max-width: 800px;
+}
+.coL1 { width:22px; }/* colgroup‚Ì—ñ•w’è */
+
+.coL2 { width:100px; }
+
+.coL3 { width:140px; }
+
+.coL4 { width:320px; }
+
+.coL5 { width:50px; }
+
+.coL6 { width:3px; }

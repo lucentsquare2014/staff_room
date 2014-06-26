@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% //String user = String.valueOf(session.getAttribute("admin")); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="dao.AccessDB,
 				java.util.ArrayList,
@@ -16,54 +15,6 @@
 <html>
 <head>
 	<jsp:include page="/html/head.html" />
-<style type="text/css">
-
-#out_Div {
-  position: relative;
-  width:900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-#come{
-  padding-top: 82px;
-  width: 890px;
-  height:78px;
-  margin-left: auto;
-  margin-right: auto;
-}
-#come>div{
-	float:right;
-}
-#come>a{
-	float:right;
-}
-
-#in_Div {
-	overflow-y: scroll;
-	line-height: 1.75em;
-	height: 400px;
-	max-width: 800px;
-	background-color: whitesmoke;
-	float:left;
-    }
-table >thead>tr{
-  position: absolute;
-  top:-34px;
-  max-width: 800px;
-}
-.coL1 { width:22px; }/* colgroupの列幅指定 */
-
-.coL2 { width:100px; }
-
-.coL3 { width:140px; }
-
-.coL4 { width:320px; }
-
-.coL5 { width:50px; }
-
-.coL6 { width:3px; }
-
-</style>
 	<title>メール</title>
 	<script src="/staff_room/script/MailCheckbox.js"></script>
 	<link rel="stylesheet" href="/staff_room/css/mail.css">
@@ -74,14 +25,8 @@ table >thead>tr{
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-
-
-
-
-
 	<div id="con" class="uk-width-1-1 uk-container-center ">
-		
-			<div id="come">
+		<div id="come">
 			<%if(value.equals("1")){%>
 				<a class="uk-button uk-button-success" href="/staff_room/jsp/writeNews/writeNews.jsp">管理編集ページに戻る</a>
 				<div>※「未読」には全記事の中から、未読の件数を表示します。<br> 　&nbsp;「緊急」には緊急とされた記事の中から、未読の件数を表示します。</div>
