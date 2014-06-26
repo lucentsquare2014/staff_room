@@ -15,12 +15,12 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.ResultSetMetaData" %>
 <%@ page import="java.sql.SQLException" %>
-<html class="uk-height-1-1">
+<html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="/html/head.html" />
 <style type="text/css">
 	body {
-		background-image: url("/staff_room/images/input.png");
+		background-image: url("/staff_room/images/input.png");	
 	}
 </style>
 <head>

@@ -24,52 +24,8 @@
 <jsp:include page="/html/head.html" />
 <script src="/staff_room/script/read_check.js"></script>
 <script src="/staff_room/script/print.js"></script>
-
+<link rel="stylesheet" href="/staff_room/css/news.css">
 <title>連絡事項</title>
-
-<style type="text/css">
- 	tr{white-space:nowrap;}
-  	body {
-		width: 100%;
-		background-attachment: fixed;
-		background-image: url("/staff_room/images/renraku01.jpg");
-	}
-	.contents {
-	padding-top: 80px;
-	min-width: 810px;
-	}
-	p.scroll{
-		height: 5em;
-		overflow: scroll;
-		}
-	#out_Div {
-	  position: relative;
-	  padding-top: 96px;
-	  width: 810px;
-	}
-
-	#in_Div {
-		overflow-y: scroll;
-		line-height: 1.75em;
-		max-height: 410px;
-		background-color: whitesmoke;
- 	   }
-
-	table >thead{
-
-	}
-	table >thead>tr{
- 	 position: absolute;
- 	 top: 50px;
- 	 left: 0px;
-	 width: 810px;
-	}
-
-	.coL1 { width:166px; }/* colgroupの列幅指定 */
-
-	.coL2 { width:694px; }
-
-</style>
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" /><br><br>

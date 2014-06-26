@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="code.jsp" %>
-<%@ page import="dao.NewsDAO"%>
 <%@ page import="java.util.ArrayList, java.util.HashMap, java.util.List, java.util.Arrays"%>
-<%@ page import="org.apache.commons.codec.binary.StringUtils"%>
 
 <%
 	List<String> file_list = new ArrayList<String>();
