@@ -39,9 +39,7 @@ public class CookieChecked extends HttpServlet {
 			System.out.println(login_cookie.getName());
 			System.out.println(login_cookie.getValue());
 			String[] data = getInfo(login_cookie.getValue());
-			String fwstr = "/Login?id="+data[0]+"&password="+data[1];
-			request.setAttribute("id", data[0]);
-			request.setAttribute("password", data[1]);
+			String fwstr = "/Login?id="+data[0]+"&password="+data[1]+"&accessURL=/jsp/top/top.jsp";
 			RequestDispatcher dispatch = request.getRequestDispatcher(fwstr);
 			dispatch.forward(request, response);
 		}
