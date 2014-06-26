@@ -54,13 +54,13 @@ body {
 	color: #FFFFFF;
 }
 
-
 tbody >tr >td {
 overflow: hidden;
 max-width: 280px;
 white-space: nowrap;
 text-overflow: ellipsis;
 }
+
 .changelog {
 	width: 660px;
     height: 520px;
@@ -74,7 +74,6 @@ text-overflow: ellipsis;
     padding-left:4px;
     padding-right:4px;
 }
-
 
 .changelog-title {
 	position: absolute;
@@ -91,7 +90,6 @@ text-overflow: ellipsis;
 	padding: 15px 20px 0 20px;
 	color: white;
 }
-
 
 .page-title {
 	clear: both;
