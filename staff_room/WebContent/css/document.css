@@ -83,3 +83,20 @@ table >thead>tr{
 .content{
 	max-height: 180px;
 }
+
+td#time {
+ 	font-size: 80%;
+ 	vertical-align: middle;
+ }
+ 
+ td#type {
+ 	background-color: #FAFAFA;
+ }
+ 
+ #edit {
+ 	display: none;
+ }
+ 
+ #edit:hover{
+ 	cursor: pointer;
+ }

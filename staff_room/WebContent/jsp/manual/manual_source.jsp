@@ -4,28 +4,6 @@
             java.util.Date,
             java.util.Locale,java.net.URLDecoder,java.net.URLEncoder"%>
 <% String user2 = String.valueOf(session.getAttribute("admin")); %>
-<style type="text/css">
- 	td#time {
- 		font-size: 80%;
- 		vertical-align: middle;
- 	}
- 	td#type {
- 		background-color: #FAFAFA;
- 	}
- 	#edit {
- 		display: none;
- 	}
- 	#edit:hover{
- 		cursor: pointer;
- 	}
-.coL11 { width:19px; }/* colgroupの列幅指定 */
-
-.coL22 { width:150px; }
-
-.coL33 { width:100px; }
-
-.coL44 { width:400px; }
-</style>
 <%
 	File base_folder = new File(application.getRealPath(File.separator + "manual"));//使用する親フォルダの場所を指定
 	if(!base_folder.exists()){

@@ -9,8 +9,8 @@ $(function(){
 		var fl = $("input[name='inputFile']").offset();
 		$("#select_files .uk-panel").addClass("uk-panel-box");
 		$("#select_files").css({
-			"top": fl.top + 30 + "px",
-			"left": fl.left - 250 + "px"
+			"top": fl.top + 35 + "px",
+			"left": fl.left - 225 + "px"
 		});
 		for(var i = 0; files[i]; i++){
 			$("#select_files ul").append('<li><div class="uk-align-left" style="margin:0 0 0 0;">'

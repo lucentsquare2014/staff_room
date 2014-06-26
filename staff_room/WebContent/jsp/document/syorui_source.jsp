@@ -4,21 +4,6 @@
             java.util.Date,
             java.util.Locale,java.net.URLDecoder,java.net.URLEncoder"%>
 <% String user2 = String.valueOf(session.getAttribute("admin")); %>
-<style type="text/css">
- 	td#time {
- 		font-size: 80%;
- 		vertical-align: middle;
- 	}
- 	td#type {
- 		background-color: #FAFAFA;
- 	}
- 	#edit {
- 		display: none;
- 	}
- 	#edit:hover{
- 		cursor: pointer;
- 	}
-</style>
 <%
 	File base_folder = new File(application.getRealPath(File.separator + "Docs"));//使用する親フォルダの場所を指定
 	if(!base_folder.exists()){
