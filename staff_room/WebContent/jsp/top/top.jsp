@@ -30,7 +30,7 @@ $(function() {
 	    $.jPrintArea("#my-id");
 	  });
 	var agent = navigator.userAgent;
-	if(agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 
+	if(agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1
 		|| agent.search(/iPod/) != -1 || agent.search(/Android/) != -1){
 		$(".uk-modal-dialog").css("top", "35px");
 	}
@@ -41,9 +41,11 @@ $(function() {
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-	
-	<p id="version">ver.4.0.0</p>
-
+	<div class="uk-grid">
+	<div class="uk-width-1-1 uk-text-right">
+	<div style="padding-top:45px;">
+	ver 1.00　　　&nbsp;
+	</div></div></div>
 		<div class="main-container uk-container uk-container-center">
 			<div class="changelog">
 				<div style="margin-botom: 20px;" class="changelog-title"
@@ -80,9 +82,9 @@ $(function() {
 					<thead>
 						<tr>
 						     <th class="coL1"></th>
-  							 <th class="coL2 uk-text-left">日付</th>
- 							  <th class="coL3 uk-text-left">件名</th>
- 							  <th class="coL4 uk-text-left">分類</th>
+  							 <th class="coL2 uk-text-left">&nbsp;日付</th>
+ 							 <th class="coL3 uk-text-left">件名</th>
+ 							 <th class="coL4 uk-text-left">分類</th>
 						</tr>
 					</thead>
 					<tbody>

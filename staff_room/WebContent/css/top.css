@@ -30,11 +30,11 @@ body {
 }
 
 #out_Div {
-  position: relative; 
-  padding-top: 26px; 
+  position: relative;
+  padding-top: 26px;
   width: 540px;
 }
- 
+
 #in_Div {
 	overflow-y: scroll;
 	line-height: 1.75em;
@@ -44,7 +44,7 @@ body {
 
 .changelog-content >thead>tr{
   position: absolute;
-  top: 0px; 
+  top: 0px;
   left: 0px;
 }
 
@@ -107,7 +107,7 @@ text-overflow: ellipsis;
 position:fixed;
 color:black;
 top:30px;
-left:1250px;	
+left:1250px;
 }
 
 .coL1 { width:30px; }
