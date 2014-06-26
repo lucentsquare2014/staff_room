@@ -2,7 +2,7 @@ body {
 	width: 100%;
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/help.png");
-	background-size: 100% auto;
+	background-repeat:no-repeat;
 }
 
 a#jump:link { color:#000; text-decoration:none }

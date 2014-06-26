@@ -11,7 +11,7 @@
 body {
 	background-image: url("/staff_room/images/pwChange2.jpg");
 	background-attachment: fixed;
-
+	background-repeat:no-repeat;
 	}
 </style>
 <%@ page import="dao.NewsDAO,

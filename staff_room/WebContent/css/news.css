@@ -6,6 +6,7 @@ body {
 	width: 100%;
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/renraku01.jpg");
+	background-repeat:no-repeat;
 }
 
 .contents {
