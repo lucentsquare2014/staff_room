@@ -39,8 +39,8 @@ public class Upload extends HttpServlet {
         upload.setSizeMax(-1);
         upload.setHeaderEncoding("UTF-8");
         try {
-			List list = upload.parseRequest(request);
-			Iterator iterator = list.iterator();
+			List<FileItem> list = upload.parseRequest(request);
+			Iterator<FileItem> iterator = list.iterator();
 			while(iterator.hasNext()){
 				FileItem fItem = (FileItem)iterator.next();
 				if(!(fItem.isFormField())){
