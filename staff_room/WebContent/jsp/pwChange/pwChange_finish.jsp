@@ -14,7 +14,7 @@
 <jsp:include page="/html/head.html" />
 <style type="text/css">
 	body {
-		background-image: url("/staff_room/images/input.png");
+		background-image: url("/staff_room/images/pwChange2.jpg");
 	}
 </style>
 <head>

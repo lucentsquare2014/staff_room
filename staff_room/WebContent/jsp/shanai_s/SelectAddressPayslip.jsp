@@ -8,6 +8,7 @@
 	ArrayList<String> true_user = new ArrayList<String>();
 	true_user.add(application.getInitParameter("sender")); // 特定ユーザのみ表示
 	true_user.add("21409"); //テストユーザー
+	//
 	String id2 = (String) session.getAttribute("key");
 	String from = (String) session.getAttribute("pagefrom");
 	if ((id2 != null ? id2.equals("鍵") : false)
@@ -321,7 +322,7 @@
 			</tr>
 			 --%>
 			<tr class="home">
-				<td colspan="2"><a href="/staff_room">[スタッフルームへ戻る]</a></td>
+				<td colspan="2"><a href="/staff_room" target="_parent">[スタッフルームへ戻る]</a></td>
 		</table>
 	</center>
 </body>
