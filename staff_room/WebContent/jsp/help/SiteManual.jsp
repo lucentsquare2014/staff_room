@@ -156,7 +156,7 @@
 </ul>
 <ol>
 	<li><a href="/staff_room/jsp/help/doc/news_help.pdf" target="_blank">記事管理ヘルプ</a></li>
-	<li><a href="/staff_room/jsp/help/doc/shanai_s_help_help.pdf" target="_blank">社内システムヘルプ</a></li>
+	<li><a href="/staff_room/jsp/help/doc/shanai_s_help.pdf" target="_blank">社内システムヘルプ</a></li>
 	<li><a href="/staff_room/jsp/help/doc/doc_help.pdf" target="_blank">書類アップロードヘルプ</a></li>
 	<li><a href="/staff_room/jsp/help/doc/read_check_help.pdf" target="_blank">記事未読件数表示ヘルプ</a></li>
 	<li><a href="/staff_room/jsp/help/doc/photo_help.pdf" target="_blank">PHOTOページ追加ヘルプ</a></li>
