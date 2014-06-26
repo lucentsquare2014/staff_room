@@ -79,9 +79,7 @@
 			<% if(request.getParameter("inputText")==null){ %>
 				<textarea class="uk-form-width-large" rows="10" name="inputText"></textarea>
 			<% } else { %>
-				<textarea class="uk-form-width-large" rows="10" name="inputText">
-					<%= new String(request.getParameter("inputText").getBytes("ISO-8859-1"), "UTF-8") %>
-				</textarea>
+				<textarea class="uk-form-width-large" rows="10" name="inputText"><%= new String(request.getParameter("inputText").getBytes("ISO-8859-1"), "UTF-8") %></textarea>
 			<% } %>
 		</div>
 		<div class="uk-form-row" id="uploaded">
