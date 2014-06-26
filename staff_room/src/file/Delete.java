@@ -9,12 +9,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.NewsDAO;
+import dao.AccessDB;
 
 /**
  * Servlet implementation class Delete
@@ -22,12 +21,14 @@ import dao.NewsDAO;
 //@WebServlet("/Delete")
 public class Delete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private AccessDB access;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Delete() {
         super();
+        access = new AccessDB();
     }
 
 	/**
@@ -59,7 +60,7 @@ public class Delete extends HttpServlet {
 
 	public String getFilename(int news_id){
 		String select_sql = "select filename from news where news_id = " + news_id;
-		Connection con = NewsDAO.openkintaikanri();
+		Connection con = access.openDB();
 		Statement stmt;
 		String filename = "";
 		try {
@@ -68,10 +69,10 @@ public class Delete extends HttpServlet {
 			if(rs.next()){
 				filename = rs.getString("filename");
 			}
-			NewsDAO.closekintaikanri(con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		access.closeDB(con);
 		return filename;
 	}
 
@@ -79,14 +80,16 @@ public class Delete extends HttpServlet {
 		filename = filename.replace(delete_name + ",", "");
 		String update_sql = "UPDATE news SET filename = '" + filename
 				+ "' where news_id = " + news_id;
-		Connection con = NewsDAO.openkintaikanri();
+		Connection con = access.openDB();
 		Statement stmt;
 		try {
 			stmt = con.createStatement();
 			stmt.executeUpdate(update_sql);
-			NewsDAO.closekintaikanri(con);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			access.closeDB(con);
 		}
 
 	}

@@ -7,19 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import dao.ShainDB;
 
+import dao.AccessDB;
 
-	// 例：getShain("select * from ShainDB");
-	/*
-	 * テーブルのデータを参照し、listに格納して返すメソッド
-	 * 
-	 * @return ArrayList<HashMap<String,String>>型の検索結果を格納したリスト
-	 */
-public class GetShainDB {
-	public ArrayList<HashMap<String, String>> getShain(String sql) {
-		ShainDB dao = new ShainDB();
-		Connection con = dao.openShainDB();
+public class GetMail {
+	
+	public ArrayList<HashMap<String, String>> getShainMail(String sql) {
+		AccessDB access = new AccessDB();
+		Connection con = access.openDB();
 		// ステートメントを作成　(ステートメント：制御や宣言などを行うために言語仕様にあらかじめ組み込まれている命令語、
 		// および、それらを用いて記述された一つの命令文のこと)
 		Statement stmt;
@@ -52,12 +47,12 @@ public class GetShainDB {
 				// 1件分のデータを格納
 				list.add(map);
 			}
-			dao.closeShainDB(con);
-			} catch (SQLException e) {
+		} catch (SQLException e) {
 			System.out.println(e);
 		}finally{
-			
+			access.closeDB(con);
 		}
 		return list;
 	}
-	}
+
+}

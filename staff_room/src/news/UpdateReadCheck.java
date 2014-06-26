@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,8 +21,8 @@ import org.apache.commons.lang.StringUtils;
 import com.google.gson.Gson;
 
 
+import dao.AccessDB;
 import dao.NewsDAO;
-import dao.ShainDB;
 
 /**
  * Servlet implementation class UpdateReadCheck
@@ -63,9 +62,7 @@ public class UpdateReadCheck extends HttpServlet {
 		try {
 			// 文字列を一旦ArrayListに変換
 			List<String> read_check = this.toArrayList(unread, ",");
-			System.out.println(read_check);
 
-			
 			// 要素を検索してその要素を削除
 			if(read_check.indexOf(news_id) != -1){
 				read_check.remove(read_check.indexOf(news_id));
@@ -82,7 +79,6 @@ public class UpdateReadCheck extends HttpServlet {
 				update_str = new StringBuilder(update_str).append(",").toString();
 			}
 			
-			System.out.println(update_str);
 			// DBのread_checkを更新
 			this.updateReadchk(update_str, login_id);
 			// セッションにある未読記事の情報を更新
@@ -106,8 +102,8 @@ public class UpdateReadCheck extends HttpServlet {
 	
 	/* read_checkを更新するメソッド */
 	private void updateReadchk(String read_check, String login_id) throws SQLException{
-		ShainDB shain = new ShainDB();
-		Connection con = shain.openShainDB();
+		AccessDB shain = new AccessDB();
+		Connection con = shain.openDB();
 		// 未読記事を更新する
 		String sql = "update shainkanri set read_check=? where shain_number ="
 				   + "(SELECT number FROM shainmst WHERE id = ?)";
@@ -116,7 +112,7 @@ public class UpdateReadCheck extends HttpServlet {
 		pstmt.setString(2, login_id);
 		
 		pstmt.executeUpdate();
-		shain.closeShainDB(con);
+		shain.closeDB(con);
 	}
 	
 	/* 
