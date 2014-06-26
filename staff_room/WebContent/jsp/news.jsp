@@ -91,8 +91,8 @@
 		<table border="1" class="uk-table uk-text-center uk-width-medium-1-1">
 		<thead>
 		<tr class="uk-text-large">
-		<td Background="../images/blackwhite1.png" class="coL1 uk-h2 uk-width-medium-2-10"><font color="#ffffff">日付</font></td>
-		<td Background="../images/blackwhite1.png" class="coL2 uk-h2 uk-width-medium-8-10"><font color="#ffffff">件名</font></td>
+		<td Background="../images/blackwhite1.png" class="coL1 uk-h2"><font color="#ffffff">日付</font></td>
+		<td Background="../images/blackwhite1.png" class="coL2 uk-h2"><font color="#ffffff">件名</font></td>
 		</tr>
 		</thead>
 		<%
@@ -103,8 +103,8 @@
 			DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd",new Locale("JP", "JP", "JP"));
 				%>
 				<tr>
-				<td bgcolor="#FFFFFF" class="uk-h3 uk-width-medium-2-10 uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
-				<td id="print<%=row.get("news_id") %>" bgcolor="#FFFFFF" class="uk-h3 uk-width-medium-8-10 uk-text-left">
+				<td bgcolor="#FFFFFF" class="coL1 uk-h3  uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
+				<td id="print<%=row.get("news_id") %>" bgcolor="#FFFFFF" class="coL2 uk-h3  uk-text-left">
 				<!--記事のタイトルなどを表示-->
 				<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>
