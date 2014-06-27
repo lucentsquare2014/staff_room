@@ -17,12 +17,13 @@
 <style>
 body {
 	width: 100%;
-	height: 580px;
+	height: 100%;
 	background-attachment: fixed;
 	background-color:white;
 	background-size: 100% 100%;
+	overflow: hidden;
 }
-.conetent{
+.content{
 	padding: 0;
 	padding-top: 42px;
 	height: 100%;
@@ -36,10 +37,23 @@ iframe{
 	height:100%;
 }
 </style>
+<script type="text/javascript">
+function framesize(){
+    var w = $(window).height();
+    $('.content').css("height", w-42);
+}
+$(function(){
+    framesize();
+});
+$(window).resize(function(){
+    framesize();
+});
+
+</script>
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-	<div class="conetent">
+	<div class="content">
 		<%if(value.equals("1")){%><iframe src="//www.lucentsquare.co.jp/gps/pc/"></iframe><%} %>
 		<%if(value.equals("2")){%><iframe src="//www.lucentsquare.co.jp:8080/etalent5_27/main.jsp"></iframe><%}%>
 		<%if(value.equals("3")){%><iframe src="/staff_room/html/etc/WorkingGroup/Advance_WorkingGroup.html"></iframe><%} %>

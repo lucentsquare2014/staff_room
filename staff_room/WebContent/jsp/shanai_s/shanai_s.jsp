@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String value = null;
+	value = request.getParameter("mode");
+	String uri = request.getRequestURL().toString();
+	uri = uri.substring(0, uri.lastIndexOf("/"));
+	System.out.println(uri + "   (shanai_s.jsp)");
+	System.out.println();
+	if (value == null) {
+		value = "1";
+	}
+%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -11,35 +22,37 @@ body {
     width: 100%;
     height: 100%;
     background-attachment: fixed;
-    background-color:white;
     background-size: 100% 100%;
     overflow: hidden;
+    background-color: #fff;
 }
-.conetent{
+.content{
     padding: 0; 
     padding-top: 42px; 
-    height: 600px; 
+    height: 600px;
     width: 100%;
     margin-left:auto;
     margin-right:auto;
     background-color:white;
 }
 </style>
+<script type="text/javascript">
+function framesize(){
+    var w = $(window).height();
+    $('.content').css("height", w-42);
+}
+$(function(){
+	framesize();
+});
+$(window).resize(function(){
+	framesize();
+});
+
+</script>
 </head>
 <body>
     <jsp:include page="/jsp/header/header.jsp" />
-    <div class="conetent">
-        <%
-        String value = null;
-        value = request.getParameter("mode");
-        String uri = request.getRequestURL().toString();
-        uri = uri.substring(0, uri.lastIndexOf("/"));
-        System.out.println(uri + "   (shanai_s.jsp)");
-        System.out.println();
-        if(value==null){
-        	value="1";
-        }
-        %>
+    <div class="content">
         <%
         /*
         * 渡されたゲットパラメータをID_PW_Nyuryoku.jspに渡して表示している。
