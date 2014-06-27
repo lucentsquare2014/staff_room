@@ -513,7 +513,7 @@ String memo = "";
 									if( bmemo == null || bmemo.equals("") ){
 										bmemo = "";
 									}else{
-										bmemo = "<b><メモ></b><BR>"+ bmemo +"";
+										bmemo = "<b><メモ></b><BR>"+ bmemo +"<BR><BR>";
 									}
 									
 									
@@ -596,7 +596,7 @@ String memo = "";
 						if( memo == null || memo.equals("")){
 							memo = "";
 						}else{
-							memo = "<b><メモ></b><BR>"+ memo +"";
+							memo = "<b><メモ></b><BR>"+ memo +"<BR><BR>";
 						}
 						/*
 						if( memo != null ){
@@ -829,7 +829,7 @@ String memo = "";
 								if( bmemo == null || bmemo.equals("")){
 									bmemo = "";
 								}else{
-									bmemo = "<b><メモ></b><BR>"+ bmemo +"";
+									bmemo = "<b><メモ></b><BR>"+ bmemo +"<BR><BR>";
 								}
 								
 								/*
@@ -909,7 +909,7 @@ String memo = "";
 					if( memo == null || memo.equals("")){
 						memo = "";
 					}else{
-						memo = "<b><メモ></b><BR>"+ memo +"";
+						memo = "<b><メモ></b><BR>"+ memo +"<BR><BR>";
 					}
 					/*
 					if( memo != null ){
@@ -1113,7 +1113,7 @@ String memo = "";
 									if( bmemo == null || bmemo.equals("")){
 										bmemo = "";
 									}else{
-										bmemo = "<b><メモ></b><BR>"+ bmemo +"";
+										bmemo = "<b><メモ></b><BR>"+ bmemo +"<BR><BR>";
 									}
 									/*
 									if( bmemo != null ){
@@ -1189,7 +1189,7 @@ String memo = "";
 						if( memo == null || memo.equals("")){
 							memo = "";
 						}else{
-							memo = "<b><メモ></b><BR>"+ memo +"";
+							memo = "<b><メモ></b><BR>"+ memo +"<BR><BR>";
 						}
 						/*
 						if( memo != null ){
