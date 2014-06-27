@@ -42,8 +42,8 @@ public class IpAddressFilter implements Filter {
 		
 		// クライアントのIPアドレスを取得
 		final String ip_address = ((HttpServletRequest)request).getRemoteAddr();
-		if(ip_address.startsWith(allow_ip) 
-				){
+		if(ip_address.startsWith(allow_ip) || ip_address.equals("127.0.0.1") 
+				|| ip_address.equals("0:0:0:0:0:0:0:1")){
 			chain.doFilter(request, response);
 		}else{
 			String page = ((HttpServletRequest)request).getRequestURI();
