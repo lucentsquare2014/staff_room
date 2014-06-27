@@ -52,7 +52,7 @@ $(function(){
 						"page" : page},
 				statusCode: {
 					403: function() {
-        				location.href = "/staff_room/jsp/ip_forbidden.jsp";
+        				location.href = "/staff_room/jsp/error/ip_forbidden.jsp";
         			}
         		}
 			}).done(function(){
