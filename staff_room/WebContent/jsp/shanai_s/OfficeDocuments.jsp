@@ -326,12 +326,11 @@ String selectAction(String name){
 								</form>
 							</td>
 						</tr>
-<!-- 						<tr>
+ 						<tr>
 							<td colspan=2><div align="right">
 									<font size="2"><a href="/staff_room">[スタッフルームトップへ]</a></font>
 								</div></td>
 						</tr>
- -->
 					</table>
 				</div>
 			</div>
