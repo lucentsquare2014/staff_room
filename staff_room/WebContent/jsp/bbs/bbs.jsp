@@ -8,13 +8,12 @@
 <style>
 body {
 	width: 100%;
-	height: 100%;
+	height: 610px;
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/bbs4.jpg");
 	background-size: 100% 100%;
-	overflow: hidden;
 }
-.content{
+.conetent{
 	padding: 0; 
 	padding-top: 42px; 
 	height: 100%; 
@@ -22,25 +21,11 @@ body {
 	margin-left:auto;
 	margin-right:auto;
 }
-
 </style>
-<script type="text/javascript">
-function framesize(){
-    var w = $(window).height();
-    $('.content').css("height", w-42);
-}
-$(function(){
-    framesize();
-});
-$(window).resize(function(){
-    framesize();
-});
-
-</script>
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-	<div class="content">
+	<div class="conetent">
 		<iframe width="100%" height="100%"
 			src="//www.lucentsquare.co.jp/staff/members/joyful/joyful.cgi">
 		</iframe>

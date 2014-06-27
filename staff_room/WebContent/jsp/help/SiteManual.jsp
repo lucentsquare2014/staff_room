@@ -35,8 +35,7 @@
 	<li>「ログイン状態を保持する」にチェックを入れてログインした場合、ログアウトを行う、cookieを削除する、<br>
 		ブラウザの変更などの動作を行わない限り、ログイン状態が保持されます。<br>
 		（Staff_Roomへのアクセス時、ログインが省略されます）</li>
-	<li>ログインが保持される期間は二週間です。この期間は新たに「ログイン状態を保持する」にチェックを入れてログインすることで<br>
-		更新されます。<br>
+	<li>ログインが保持される期間は二週間です。この期間は新たに「ログイン状態を保持する」にチェックを入れてログインすることで更新されます。<br>
 		（その時点から二週間ログインが保持されます。ログインを省略してStaff_Roomにアクセスしても更新はされません）<br><br>
 	<img src ="/staff_room/images/help/help_login.png" width="70%"><br><br>
 	</li>
@@ -47,15 +46,17 @@
 	<li>一部の項目は、ポインタを合わせればリンクがリストとして表示されます。<br><br>
 	<img src ="/staff_room/images/help/help_header_pulldown.png" width="100%"><br><br>
 	</li>
+	<br><br>
 	<li>ログアウトをクリックすると、会社ページに戻ります。</li>
 	<li>ロゴをクリックするとログイン状態のまま、会社ページに戻ります。<br><br>
 	<img src ="/staff_room/images/help/help_header_logout_logo.png" width="100%"><br><br>
 	</li>
+	<br><br>
 	<li>携帯からのアクセスなど、ページが小さく表示される場合はヘッダーの表示がサイドバー形式に切り替わります。<br>
 		ヘッダーの端に表示されたボタンをクリックすると、それぞれのページへのリンクがリストとして表示されます。<br><br>
 	<img src ="/staff_room/images/help/help_header_mobile.png" width="30%">
-	<img src ="/staff_room/images/help/help_header_mobile_pulldown.png" width="35%">
-	<img src ="/staff_room/images/help/help_header_mobile_pulldown2.png" width="24%">
+	<img src ="/staff_room/images/help/help_header_mobile_pulldown.png" width="30%">
+	<img src ="/staff_room/images/help/help_header_mobile_pulldown2.png" width="30%">
 	<br><br>
 	</li>
 </ul>
@@ -69,6 +70,8 @@
 	<img src ="/staff_room/images/help/help_top_news.png" width="45%">
 	<img src ="/staff_room/images/help/help_top_news_filter.png" width="45%" height="20%"><br><br>
 		</li>
+		<br>
+		<br>
 	<li>表示されているそれぞれの記事のタイトルをクリックすると、ポップアップで記事の内容が表示されます。</li>
 	<li>表示されたポップアップの左下のアイコンをクリックすると、記事の内容を印刷することができます。<br><br>
 	<img src ="/staff_room/images/help/help_top_popup.png" width="50%"><br><br>
@@ -81,10 +84,12 @@
 	<li>ヘッダーにリスト表示されたリンクから全ての記事と分類別の記事を表示することができます。<br><br>
 	<img src ="/staff_room/images/help/help_header_news_pulldown.png"><br><br>
 	</li>
+	<br><br>
 	<li>表示される記事が100件を超える場合には、ページ右下に「次へ」というリンクが表示されます。<br>
 		クリックすることで、101件～、201件～と記事を100件ずつ表示することができます。<br><br>
 		<img src ="/staff_room/images/help/help_news_next.png" width="100%"><br><br>
 	</li>
+	<br><br>
 	<li>表示されているそれぞれの記事のタイトルをクリックすると、記事の内容が表示されます。<br>
 		記事のタイトルを再びクリックすると、記事の内容が非表示になります。</li>
 	<li>記事のタイトル横のアイコンをクリックすると、記事の内容を印刷することができます。<br><br>
@@ -121,10 +126,12 @@
 		</div>
 		<img src ="/staff_room/images/help/help_mail_checkbox.png" width="100%"><br><br>
 	</li>
+	<br><br>
 	<li>「全選択」ボタンをクリックすると、全てのチェックボックスにチェックが入ります。<br>
 		「選択解除」ボタンをクリックすると、全てのチェックがリセットされます。<br><br>
 		<img src ="/staff_room/images/help/help_mail_checkbotton.png" width="100%"><br><br>
 	</li>
+	<br><br>
 	<li>各ボタン下のアカサタナそれぞれのボタンをクリックするとその文字の行まで自動的に移動します。<br><br>
 		<img src ="/staff_room/images/help/help_mail_jump.png" width="100%"><br><br>
 	</li>
@@ -134,7 +141,7 @@
 	<h2 class="uk-text-bold" id="bbs_photo_etc">8.掲示板、Photo、etc</h2>&nbsp;
 <ul>
 	<li>ヘッダーからのリンクによって各ページに移動します。<br><br>
-	<img src ="/staff_room/images/help/help_bbs.png" width="35%">
+	<img src ="/staff_room/images/help/help_bbs.png" width="30%">
 	<img src ="/staff_room/images/help/help_photo_pulldown.png" width="28%">
 	<img src ="/staff_room/images/help/help_etc.png" width="35%"><br><br>
 	</li>
@@ -161,7 +168,7 @@
 	<li><a href="/staff_room/jsp/help/doc/read_check_help.pdf" target="_blank">記事未読件数表示ヘルプ</a></li>
 	<li><a href="/staff_room/jsp/help/doc/photo_help.pdf" target="_blank">PHOTOページ追加ヘルプ</a></li>
 </ol>
-<h2 class="uk-text-bold" id="information">11.問い合わせ・バージョン情報</h2>&nbsp;
+<h2 class="uk-text-bold" id="information">11.お問い合わせ・バージョン情報</h2>&nbsp;
 <ul>
 	<li>Staff_Roomのお問合せは：<a href ="mailto:lsc-admin@lucentsquare.co.jp">ビジネス推進室</a><br><br></li>
 	<li>2014/06/27 ver1.00 リリース<br><br><br><br></li>

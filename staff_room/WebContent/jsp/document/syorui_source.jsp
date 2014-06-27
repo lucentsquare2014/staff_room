@@ -32,7 +32,7 @@
 
 	<!-- ファイル数の半分の時にのみ出力 -->
 	<%if (x == 0) {%>
-	<td bgcolor="#FFFFFF" id="type"rowspan=<%=filename.length%> class="coL2 uk-text-middle uk-text-bold"><%=foldername[i]%></td>
+	<td bgcolor="#FFFFFF" id="type"rowspan=<%=filename.length%> class="coL2 uk-text-middle uk-text-left uk-text-bold"><%=foldername[i]%></td>
 	<%}%>
 
 	<!-- フォーマットを変換した 更新日時を出力-->
