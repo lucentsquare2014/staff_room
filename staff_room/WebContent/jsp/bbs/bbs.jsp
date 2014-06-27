@@ -13,7 +13,7 @@ body {
 	background-image: url("/staff_room/images/bbs4.jpg");
 	background-size: 100% 100%;
 }
-.conetent{
+.content{
 	padding: 0;
 	padding-top: 42px;
 	height: 100%;
@@ -22,10 +22,23 @@ body {
 	margin-right:auto;
 }
 </style>
+<script type="text/javascript">
+function framesize(){
+    var w = $(window).height();
+    $('.content').css("height", w-42);
+}
+$(function(){
+    framesize();
+});
+$(window).resize(function(){
+    framesize();
+});
+
+</script>
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-	<div class="conetent">
+	<div class="content">
 		<iframe width="100%" height="100%"
 			src="/staff_room/jsp/members/joyful/joyful.cgi">
 		</iframe>
