@@ -19,6 +19,11 @@
 <script src="/staff_room/script/inputform.js"></script>
 <title>記事新規・編集</title>
 <link rel="stylesheet" href="/staff_room/css/inputform.css">
+<style>
+body{
+overflow: auto;
+}
+</style>
 </head>
 <body>
 <jsp:include page="/jsp/header/header.jsp" />
