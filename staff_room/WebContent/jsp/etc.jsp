@@ -14,6 +14,9 @@
 		<%if(value.equals("4")){%><title>新入社員紹介</title><%}%>
 		<%if(value.equals("5")){%><title>401K説明書類</title><%}%>
 		<%if(value.equals("6")){%><title>Pマーク関係書類</title><%}%>
+		<%if(value.equals("7")){%><title>社内報2005</title><%}%>
+		<%if(value.equals("8")){%><title>社内報2006</title><%}%>
+
 <style>
 body {
 	width: 100%;
@@ -60,6 +63,9 @@ $(window).resize(function(){
 		<%if(value.equals("4")){%><iframe src="/staff_room/html/etc/newstaff_2014/newstaff_index.html"></iframe><%} %>
 		<%if(value.equals("5")){%><iframe src="//www.lucentsquare.co.jp/401KDVD/401K/401K_top.html"></iframe><%} %>
 		<%if(value.equals("6")){%><iframe src="/staff_room/html/etc/PMark/indexVer9.html"></iframe><%} %>
+		<%if(value.equals("7")){%><iframe src="/staff_room/html/etc/syanaihou/syanaihou/lsc01.htm"></iframe><%} %>
+		<%if(value.equals("8")){%><iframe src="/staff_room/html/etc/syanaihou/syanaihou/lsc02.htm"></iframe><%} %>
+
 	</div>
 </body>
 </html>
