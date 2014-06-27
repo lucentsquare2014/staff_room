@@ -14,9 +14,9 @@ body {
 	background-size: 100% 100%;
 }
 .conetent{
-	padding: 0; 
-	padding-top: 42px; 
-	height: 100%; 
+	padding: 0;
+	padding-top: 42px;
+	height: 100%;
 	width: 70%;
 	margin-left:auto;
 	margin-right:auto;
@@ -27,7 +27,7 @@ body {
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="conetent">
 		<iframe width="100%" height="100%"
-			src="//www.lucentsquare.co.jp/staff/members/joyful/joyful.cgi">
+			src="/staff_room/jsp/members/joyful/joyful.cgi">
 		</iframe>
 	</div>
 </body>

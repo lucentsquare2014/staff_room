@@ -38,7 +38,7 @@ body {
 		<iframe width="100%" height="100%" src="/staff_room/html/photo/bbq/bbq_index.html"></iframe>
 		<%}%>
 		<%if(value.equals("2")){%>
-		<iframe width="100%" height="100%" src="//www.lucentsquare.co.jp/staff/25%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5%E8%A1%8C%E4%BA%8B%E6%A1%88%E5%86%85/25year_index.html"></iframe>
+		<iframe width="100%" height="100%" src="/staff_room/html/photo/25year/25year_index.html"></iframe>
 		<%}%>
 		<!-- Photoページを作った際の変更点 -->
 	</div>
