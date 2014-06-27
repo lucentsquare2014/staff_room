@@ -74,6 +74,9 @@ String memo = "";
 	height: 50;
 	width: 100%;
 }
+body{
+font-family: "ＭＳ Ｐゴシック",sans-serif;
+}
 </STYLE>
 </head>
 <BODY BGCOLOR="#99A5FF">
