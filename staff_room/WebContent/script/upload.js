@@ -195,7 +195,7 @@ var exist_files = "";
                 
                 if(xhr.readyState == 2){
                 	if(xhr.status == 403){
-                		location.href = "/staff_room/jsp/ip_forbidden.jsp";
+                		location.href = "/staff_room/jsp/error/ip_forbidden.jsp";
                 	}
                 }
                 
