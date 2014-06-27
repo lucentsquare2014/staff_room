@@ -8,7 +8,7 @@
 <style>
 body {
 	width: 100%;
-	height: 610px;
+	height: 100%;
 	background-attachment: fixed;
 	background-image: url("/staff_room/images/bbs4.jpg");
 	background-size: 100% 100%;
