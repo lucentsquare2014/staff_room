@@ -61,6 +61,11 @@ public class LoginFilter implements Filter {
 					return;
 				}
 			}
+		}else{
+			CookieChecked cc = new CookieChecked();
+			String[] data = cc.getInfo(login_cookie.getValue());
+			HttpSession session = ((HttpServletRequest)request).getSession();
+			session.setAttribute("login", data[0]);
 		}
 		chain.doFilter(request, response);
 	}
