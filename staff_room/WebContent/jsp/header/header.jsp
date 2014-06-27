@@ -34,6 +34,13 @@ nav#header >ul >li> div >ul >li >a:hover{background-color:black; color:whitesmok
 	line-height: 40px;
 }
 
+#help:active{
+background-color:gray;
+}
+
+
+
+
 #rare{
 	display: none;
 	position: relative;
