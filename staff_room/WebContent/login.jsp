@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="login.GetCookie" %>
 <%
-    // 新しいセッションならば入力回数を０から始める
+/*     // 新しいセッションならば入力回数を０から始める
 	if(session.isNew()){
 		session.setAttribute("count", 0);
 	}else{
@@ -21,7 +21,9 @@
 			return;
 		}
 	}
-%>
+    // とりあえずなしにする。
+ */
+ %>
 <%
 // クッキーがあればTop画面に遷移
 Cookie login_cookie = GetCookie.get("login_cookie", request);

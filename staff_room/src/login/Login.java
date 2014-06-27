@@ -92,10 +92,11 @@ public class Login extends HttpServlet {
 	    	return;
 	    } else {
 
-	    	// ログイン回数をプラスする
+/*	    	// ログイン回数をプラスする
+            // ５回失敗はナシで
 	    	int n = Integer.valueOf(String.valueOf(session.getAttribute("count")));
 	    	session.setAttribute("count", ++n);
-	    	String msg = "idまたはパスワードが正しくありません。";
+*/	    	String msg = "idまたはパスワードが正しくありません。";
 	    	request.setAttribute("error",msg);
 	    	request.setAttribute("accessURL", accessURL);
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
