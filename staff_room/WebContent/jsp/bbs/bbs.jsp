@@ -27,7 +27,7 @@ body {
 	<jsp:include page="/jsp/header/header.jsp" />
 	<div class="conetent">
 		<iframe width="100%" height="100%"
-			src="/staff_room/jsp/members/joyful/joyful.cgi">
+			src="//www.lucentsquare.co.jp/staff/members/joyful/joyful.cgi">
 		</iframe>
 	</div>
 </body>

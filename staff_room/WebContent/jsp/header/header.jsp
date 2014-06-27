@@ -27,9 +27,9 @@ nav#header >ul >li> div >ul >li >a:hover{background-color:black; color:whitesmok
 }
 
 #help {
-	text-decoration: none; 
-	color: whitesmoke; 
-	font-size: 1em; 
+	text-decoration: none;
+	color: whitesmoke;
+	font-size: 1em;
 	text-shadow: 0px 0px black;
 	line-height: 40px;
 }
@@ -54,20 +54,20 @@ background-color:gray;
 
 #rare h5{
 	margin-top: 5px;
-	text-decoration: none; 
-	color: #fff; 
+	text-decoration: none;
+	color: #fff;
 	text-shadow: 0px 0px black;
 }
 
 #rare li>a{
-	text-decoration: none; 
-	color: #ccc; 
-	font-size: 1em; 
+	text-decoration: none;
+	color: #ccc;
+	font-size: 1em;
 	text-shadow: 0px 0px black;
 }
 
 #rare li>a:active{
-	background-color: gray; 
+	background-color: gray;
 	color: #fff;
 }
 
@@ -170,13 +170,16 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
 			<a>etc<i class="uk-icon-caret-down"></i></a>
 			<div class="uk-dropdown uk-dropdown-navbar">
 				<ul class="uk-nav uk-nav-navbar">
+					<li><a href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=1">GPS</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=2">e-talent</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=3">Advance meeting</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=4">新入社員紹介</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=5">401K説明書類</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=6">Pマーク関係書類</a></li>
-					<li><a href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
+					<li><a href="/staff_room/jsp/etc.jsp?etc=7">社内報2005</a></li>
+					<li><a href="/staff_room/jsp/etc.jsp?etc=8">社内報2006</a></li>
+
 				</ul>
 			</div>
 		</li>
@@ -247,13 +250,15 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
 			<li class="uk-parent">
 				<a href="#">etc</a>
 				<ul class="uk-nav-sub">
+					<li><a href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=1">GPS</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=2">e-talent</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=3">Advance meeting</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=4">新入社員紹介</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=5">401K説明書類</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=6">Pマーク関係書類</a></li>
-					<li><a href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
+					<li><a href="/staff_room/jsp/etc.jsp?etc=7">社内報2005</a></li>
+					<li><a href="/staff_room/jsp/etc.jsp?etc=8">社内報2006</a></li>
 				</ul>
 			</li>
 			<li class="header"><a href="/staff_room/Logout">ログアウト</a></li>
@@ -267,12 +272,14 @@ if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iP
 		<li class="uk-parent data-uk-dropdown"><a href="#">etc</a>
 			<ul class="uk-nav-sub">
 				<li><a href="/staff_room/jsp/etc.jsp?etc=1">GPS</a></li>
+					<li><a href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=2">e-talent</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=3">Advance meeting</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=4">新入社員紹介</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=5">401K説明書類</a></li>
 					<li><a href="/staff_room/jsp/etc.jsp?etc=6">Pマーク関係書類</a></li>
-					<li><a href="/staff_room/jsp/pwChange/pwChange.jsp">パスワード変更</a></li>
+					<li><a href="/staff_room/jsp/etc.jsp?etc=7">社内報2005</a></li>
+					<li><a href="/staff_room/jsp/etc.jsp?etc=8">社内報2006</a></li>
 			</ul>
 		</li>
 		<li><a href="/staff_room/jsp/help/SiteManual.jsp">ヘルプ</a></li>
