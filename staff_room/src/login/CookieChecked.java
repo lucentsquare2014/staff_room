@@ -52,7 +52,7 @@ public class CookieChecked extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 	
-	public String[] getInfo(String cookie_id){
+	private String[] getInfo(String cookie_id){
 		String sql = "select id, pw from shainmst where number=" +
 				"(select shain_number from shainkanri where cookie=?)";
 		AccessDB shain = new AccessDB();
