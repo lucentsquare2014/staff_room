@@ -151,7 +151,8 @@
 					primary_count = rs.getInt("count");
 				}
 			}catch (SQLException e) {
-					System.out.println(e);
+				System.out.println(Newsmap.get("id"));
+				System.out.println(e);
 			}
 		}
 		String str1 = Newsmap.get("mail");
@@ -171,6 +172,7 @@
        				<%if(value.equals("1")){%>
        				<td align="right" class="coL5"><font>
 					<%if(unread.length == 1 && unread[0].equals("")){%>
+						0
 					<%}else{%><%=unread.length%><%}%></font></td>
 					<td align="right" class="coL5"><font><%=primary_count%></font></td><%} %>
        			</tr>
