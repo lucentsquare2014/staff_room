@@ -49,7 +49,7 @@ uri = uri.substring(0, uri.indexOf("/", uri.indexOf("//")+2));
 System.out.println(uri+"  (MailNyuryoku_Gamen.jsp)");
 %>
 <TEXTAREA NAME="body" COLS="80" ROWS="10" ISTYLE="1" >
-　認証ページ：<%=uri %>/staff_room/jsp/shanai_s/shanai_s.jsp?mode=2
+　認証ページ：<%=uri %>/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=2
 
 <%= okurisaki_name %>さんへ
 

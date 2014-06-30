@@ -215,7 +215,7 @@
 
 
 						<INPUT TYPE="hidden" NAME="body"
-							VALUE="　<%=bsyounin.getName()%>さんへ  勤務報告書の承認をお願いします。<%=ShainMST.getName()%>より <%=uri %>/staff_room/jsp/shanai_s/shanai_s.jsp?mode=2" />
+							VALUE="　<%=bsyounin.getName()%>さんへ  勤務報告書の承認をお願いします。<%=ShainMST.getName()%>より <%=uri %>/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=2" />
 					</FORM> <%
  	}
  			}
