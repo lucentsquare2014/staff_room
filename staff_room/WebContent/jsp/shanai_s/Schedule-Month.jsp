@@ -34,7 +34,10 @@ SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
 
 %>
 <HTML>
-<HEAD><TITLE>スケジュール管理</TITLE></HEAD>
+<HEAD><TITLE>スケジュール管理</TITLE>
+<style>
+</style>
+</HEAD>
 <FRAMESET COLS="75%,25%" FRAMEBORDER="0">
 	<FRAME SRC="tryagain.jsp?id=<%= ID %>&s_date=<%= sFmt.format(dat) %>&group=<%= GR %>" NAME="main" noresize>
 	<FRAME SRC="timeIn.jsp?id=<%= ID %>&no=<%= ID %>&s_date=<%= sFmt.format(dat) %>&s_start=&b_start=&group=<%= GR %>&kind=<%= KD %>&act=" NAME="sub02" scrolling="no" noresize>

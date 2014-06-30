@@ -220,7 +220,16 @@
 	width: 100%;
 }
 body{
-font-family: "ＭＳ Ｐゴシック",sans-serif;
+font-family: "ＭＳ Ｐゴシック";
+}
+input {
+ font-family: "ＭＳ Ｐゴシック";
+ }
+select {
+ font-family: "ＭＳ Ｐゴシック";
+}
+textarea {
+ font-family: "ＭＳ Ｐゴシック";
 }
 </STYLE>
 <BODY BGCOLOR="#99A5FF">

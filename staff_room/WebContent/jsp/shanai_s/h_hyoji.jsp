@@ -223,7 +223,13 @@ try{
 	width: 100%;
 }
 body{
-font-family: "ＭＳ Ｐゴシック",sans-serif;
+font-family: "ＭＳ Ｐゴシック";
+}
+input {
+ font-family: "ＭＳ Ｐゴシック";
+ }
+select {
+ font-family: "ＭＳ Ｐゴシック";
 }
 </STYLE>
 <SCRIPT>
@@ -898,61 +904,57 @@ font-family: "ＭＳ Ｐゴシック",sans-serif;
 			</FONT>
 			</TD>
 		</TR>
-		<script language="JavaScript1.2">
-							<!--
-							function deleteCookie(theName){
-								document.cookie = theName + "=;expires=Thu," + "01-Jan-70 00:00:01 GMT";
-								return true;
-							}
+                        <script language="JavaScript1.2">
+                            <!--
+                            function deleteCookie(theName){
+                                document.cookie = theName + "=;expires=Thu," + "01-Jan-70 00:00:01 GMT";
+                                return true;
+                            }
 
-							function send<%= mincnt %>(a,b,c,d){
-								alert("スケジュールをコピーします。");
-								var charid = a;
-								var charno = b;
-								var charde = c;
-								var charst = d;
-								deleteCookie(charid,charno,charde,charst);
-								document.cookie = "id="+charid+";";
-								document.cookie = "no="+charno+";";
-								document.cookie = "s_date="+charde+";";
-								document.cookie = "s_start="+charst+";";
-								// リダイレクト処理
-								parent.main.location.href = "h_hyoji.jsp?id=<%= ID %>&no=<%= sno %>&s_date=<%= sFmt.format(today) %>&s_start=<%= start %>&group=<%= post %>&kind=Week";
-							}
-							function miseru<%= xxx %>(no,date){
-								alert("スケジュールを貼りつけします。");
-								var charno = no;
-								var charde = date;
-								// JavaScriptによるCookieからの抜き出し
-								theCookie = document.cookie + ";";
-								Sid = theCookie.indexOf("id");
-								Sno = theCookie.indexOf("no");
-								Ss_date = theCookie.indexOf("s_date");
-								Ss_start = theCookie.indexOf("s_start");
-								if(Sid != -1){
-									Eid = theCookie.indexOf(";",Sid);
-									Eid = theCookie.substring(Sid + 3,Eid);
-								}
-								if(Sno != -1){
-									Eno = theCookie.indexOf(";",Sno);
-									Eno = theCookie.substring(Sno + 3,Eno);
-								}
-								if(Ss_date != -1){
-									Es_date = theCookie.indexOf(";",Ss_date);
-									Es_date = theCookie.substring(Ss_date + 7,Es_date);
-								}
-								if(Ss_start != -1){
-									Es_start = theCookie.indexOf(";",Ss_start);
-									Es_start = theCookie.substring(Ss_start + 8,Es_start);
-								}
-								parent.main.location.href = "copyInsert.jsp?id="+ Eid +"&no="+ Eno +"&no2="+ charno +"&s_date="+ Es_date +"&s_date2="+ charde +"&s_start="+ Es_start +"&group=<%= post %>
-			
-			&kind=Day";
-							}
-							
-		
-		//-->
-		</script>
+                            function send<%= mincnt %>(a,b,c,d){
+                                alert("スケジュールをコピーします。");
+                                var charid = a;
+                                var charno = b;
+                                var charde = c;
+                                var charst = d;
+                                deleteCookie(charid,charno,charde,charst);
+                                document.cookie = "id="+charid+";";
+                                document.cookie = "no="+charno+";";
+                                document.cookie = "s_date="+charde+";";
+                                document.cookie = "s_start="+charst+";";
+                                // リダイレクト処理
+                                parent.main.location.href = "h_hyoji.jsp?id=<%= ID %>&no=<%= sno %>&s_date=<%= sFmt.format(today) %>&s_start=<%= start %>&group=<%= post %>&kind=Week";
+                            }
+                            function miseru<%= xxx %>(no,date){
+                                alert("スケジュールを貼りつけします。");
+                                var charno = no;
+                                var charde = date;
+                                // JavaScriptによるCookieからの抜き出し
+                                theCookie = document.cookie + ";";
+                                Sid = theCookie.indexOf("id");
+                                Sno = theCookie.indexOf("no");
+                                Ss_date = theCookie.indexOf("s_date");
+                                Ss_start = theCookie.indexOf("s_start");
+                                if(Sid != -1){
+                                    Eid = theCookie.indexOf(";",Sid);
+                                    Eid = theCookie.substring(Sid + 3,Eid);
+                                }
+                                if(Sno != -1){
+                                    Eno = theCookie.indexOf(";",Sno);
+                                    Eno = theCookie.substring(Sno + 3,Eno);
+                                }
+                                if(Ss_date != -1){
+                                    Es_date = theCookie.indexOf(";",Ss_date);
+                                    Es_date = theCookie.substring(Ss_date + 7,Es_date);
+                                }
+                                if(Ss_start != -1){
+                                    Es_start = theCookie.indexOf(";",Ss_start);
+                                    Es_start = theCookie.substring(Ss_start + 8,Es_start);
+                                }
+                                parent.main.location.href = "copyInsert.jsp?id="+ Eid +"&no="+ Eno +"&no2="+ charno +"&s_date="+ Es_date +"&s_date2="+ charde +"&s_start="+ Es_start +"&group=<%= post %>&kind=Day";
+                            }
+                            //-->
+                        </script>
 	</TABLE>
 	<%
 		}

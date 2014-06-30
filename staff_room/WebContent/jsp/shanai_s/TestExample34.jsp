@@ -229,7 +229,13 @@ try{
 	width: 100%;
 }
 body{
-font-family: "ＭＳ Ｐゴシック",sans-serif;
+font-family: "ＭＳ Ｐゴシック";
+}
+input {
+ font-family: "ＭＳ Ｐゴシック";
+ }
+select {
+ font-family: "ＭＳ Ｐゴシック";
 }
 </STYLE>
 </HEAD>
@@ -255,7 +261,7 @@ font-family: "ＭＳ Ｐゴシック",sans-serif;
 					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"><INPUT
 						TYPE="submit" VALUE="個人設定" title="個人設定ページヘ移動します。">
 				</FORM></TD>
-			<TD><FORM ACTION="/staff_room" METHOD="POST" TARGET="_top">
+			<TD><FORM ACTION="/staff_room/jsp/top/top.jsp" METHOD="POST" TARGET="_top">
 					<INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。">
 				</FORM></TD>
 
