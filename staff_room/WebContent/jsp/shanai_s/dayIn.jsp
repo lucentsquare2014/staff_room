@@ -9,7 +9,7 @@
 		if (strVal == null) {
 			return (null);
 		} else {
-			return (new String(strVal.getBytes("UTF-8"), "UTF-8"));
+			return (new String(strVal.getBytes("8859_1"), "UTF-8"));
 		}
 	}%>
 <%
