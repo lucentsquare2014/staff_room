@@ -511,7 +511,7 @@ select {
 							i = i+60;
 							}
 							%>
-		
+
 		<TR>
 			<%
 							i = 0;
@@ -853,7 +853,7 @@ select {
 						colorbg = "orange";
 					}
 					%>
-		
+
 		<TR>
 			<TD bgcolor="<%= colorbg %>" height="30" WIDTH="60" VALIGN="top">
 				<FONT SIZE=-1>バナー<BR> <%
@@ -931,8 +931,8 @@ select {
                                 var charde = date;
                                 // JavaScriptによるCookieからの抜き出し
                                 theCookie = document.cookie + ";";
-                                Sid = theCookie.indexOf("id");
-                                Sno = theCookie.indexOf("no");
+                                Sid = theCookie.indexOf("id=");
+                                Sno = theCookie.indexOf("no=");
                                 Ss_date = theCookie.indexOf("s_date");
                                 Ss_start = theCookie.indexOf("s_start");
                                 if(Sid != -1){

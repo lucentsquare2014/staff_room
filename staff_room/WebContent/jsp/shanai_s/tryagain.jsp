@@ -19,7 +19,7 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 // 02-08-16 パラメータを修正
 // 02-09-02 パラメータの送り先の変更[２画面に変更したので、sub02にのみ送る]
 // 13-06-18 バナーを未記入で入力すると変更、削除ができない現象を修正。
-		
+
 /* 追加点 */
 // 02-08-15 休み関連の予定を選択した時に、バナースケジュールの色を変更する。
 // 02-08-30 本日の日付を点滅する。
@@ -446,17 +446,17 @@ select {
 				<%
 					}else if(calWeek == 1){
 						%>
-			
+
 			<td bgcolor="pink" height="50" align="left" valign="top">
 				<%
 					}else if(yasumi != null){
 						%>
-			
+
 			<td bgcolor="pink" height="50" align="left" valign="top">
 				<%
 					}else{
 						%>
-			
+
 			<td bgcolor="white" height="50" align="left" valign="top">
 				<%
 					}
@@ -491,9 +491,9 @@ select {
 									if(b_place.equals("--")){
 										b_place = "";
 									}
-                                    
-								
-									
+
+
+
 									if(b_plan != "" && b_plan2 != null){
 										bana = b_plan + "<b>" + " : " + "</b>" + b_plan2 + "<BR>";
 									}else if(b_plan != "" && b_plan2 == null){
@@ -512,8 +512,8 @@ select {
 									}else{
 										bana = bana + "<BR>";
 									}
-									
-									
+
+
 								    // 2013-06-18 変更者:鈴木亮子 21304
 									//if(b_plan == "" && b_plan2 == null && b_place == "" && b_place2 == null){
 									if(b_plan.length() == 0 && b_plan2.length() == 0 && b_place.length() == 0 && b_place2.length() == 0){
@@ -524,10 +524,10 @@ select {
 									}else{
 										bmemo = "<b><メモ></b><BR>"+ bmemo +"<BR><BR>";
 									}
-									
-									
-									
-									
+
+
+
+
 									/*
 									if( bmemo != null ){
 										bmemo = "<b><メモ></b><BR>"+ bmemo +"";
@@ -658,8 +658,8 @@ select {
 							var charkd = kd;
 							// JavaScriptによるCookieからの抜き出し
 							theCookie = document.cookie + ";";
-							Sid = theCookie.indexOf("id");
-							Sno = theCookie.indexOf("no");
+							Sid = theCookie.indexOf("id=");
+							Sno = theCookie.indexOf("no=");
 							Ss_date = theCookie.indexOf("s_date");
 							Ss_start = theCookie.indexOf("s_start");
 							if(Sid != -1){
@@ -711,7 +711,7 @@ select {
 				// 日曜日が最初なので行の先頭をあらわす<tr>タグを設定
 				if(calWeek == 1){
 					%>
-			
+
 		<tr>
 			<%
 				}
@@ -727,25 +727,25 @@ select {
 				}else if(calWeek == 1){
 					// 日曜日
 					%>
-			
+
 			<td height="50" align="left" valign="top" bgcolor="pink">
 				<%
 				}else if(yasumi != ""){
 					// 祝日
 					%>
-			
+
 			<td height="50" align="left" valign="top" bgcolor="pink">
 				<%
 				}else if(calWeek == 7){
 					// 土曜日
 					%>
-			
+
 			<td height="50" align="left" valign="top" bgcolor="skyblue">
 				<%
 				}else{
 					// 平日
 					%>
-			
+
 			<td height="50" align="left" valign="top" bgcolor="white">
 				<%
 				}
@@ -771,7 +771,7 @@ select {
 					<TR>
 						<td>
 							<%
-							
+
 								if(b_start.equals(sFmt.format(thisMonth)) || (i == 1 && calWeek == 1)){
 								b_plan2 = rs3.getString("B_PLAN2");
 								b_place = rs3.getString("B_PLACE").trim();
@@ -812,7 +812,7 @@ select {
 									bmemo = "<b><メモ></b><BR>"+ bmemo +"";
 								}
 								//*/// 2013-06-18 左記の日時におけるオリジナルコード 終了
-								
+
 								if(b_plan.length() > 0 && b_plan2 != null){
 									bana = b_plan + "<b>" + " : " + "</b>" + b_plan2 + "<BR>";
 								}else if(b_plan.length() > 0 && b_plan2 == null){
@@ -831,7 +831,7 @@ select {
 								}else{
 									bana = bana + "<BR>";
 								}
-								
+
 								if(b_plan.length() == 0 && b_plan2.length() == 0 && b_place.length() == 0 && b_place2.length() == 0){
 									bana = "バナー<BR>詳細情報なし";
 								}
@@ -840,7 +840,7 @@ select {
 								}else{
 									bmemo = "<b><メモ></b><BR>"+ bmemo +"<BR><BR>";
 								}
-								
+
 								/*
 								if( bmemo != null ){
 									bmemo = "<b><メモ></b><BR>"+ bmemo +"";
@@ -970,8 +970,8 @@ select {
 						var charkd = kd;
 						// JavaScriptによるCookieからの抜き出し
 						theCookie = document.cookie + ";";
-						Sid = theCookie.indexOf("id");
-						Sno = theCookie.indexOf("no");
+						Sid = theCookie.indexOf("id=");
+						Sno = theCookie.indexOf("no=");
 						Ss_date = theCookie.indexOf("s_date");
 						Ss_start = theCookie.indexOf("s_start");
 						if(Sid != -1){
@@ -1045,17 +1045,17 @@ select {
 			<%
 					}else if(yasumi != null){
 						%>
-		
+
 		<td height="50" align="left" valign="top" bgcolor="pink">
 			<%
 					}else if(calWeek == 7){
 						%>
-		
+
 		<td height="50" align="left" valign="top" bgcolor="skyblue">
 			<%
 					}else{
 						%>
-		
+
 		<td height="50" align="left" valign="top" bgcolor="white">
 			<%
 					}
@@ -1112,11 +1112,11 @@ select {
 									}else{
 										bana = bana + "<BR>";
 									}
-									
+
 								    // 2013-06-18 変更者:鈴木亮子 21304
 									//if(b_plan == "" && b_plan2 == null && b_place == "" && b_place2 == null){
 									if(b_plan.length() == 0 && b_plan2.length() == 0 && b_place.length() == 0 && b_place2.length() == 0){
-									
+
 										bana = "バナー<BR>詳細情報なし";
 									}
 									if( bmemo == null || bmemo.equals("")){
@@ -1251,8 +1251,8 @@ select {
                             var charkd = kd;
                             // JavaScriptによるCookieからの抜き出し
                             theCookie = document.cookie + ";";
-                            Sid = theCookie.indexOf("id");
-                            Sno = theCookie.indexOf("no");
+                            Sid = theCookie.indexOf("id=");
+                            Sno = theCookie.indexOf("no=");
                             Ss_date = theCookie.indexOf("s_date");
                             Ss_start = theCookie.indexOf("s_start");
                             if(Sid != -1){
