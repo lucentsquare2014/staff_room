@@ -229,7 +229,7 @@ try{
 	width: 100%;
 }
 body{
-font-family: "ＭＳ Ｐゴシック",sans-serif;
+font-family: "ＭＳ Ｐゴシック","MS PGothic";
 }
 </STYLE>
 </HEAD>

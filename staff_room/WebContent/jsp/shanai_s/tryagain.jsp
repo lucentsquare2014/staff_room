@@ -75,7 +75,13 @@ String memo = "";
 	width: 100%;
 }
 body{
-font-family: "ＭＳ Ｐゴシック",sans-serif;
+font-family: "ＭＳ Ｐゴシック","MS PGothic";
+}
+input {
+ font-family: 'MS Pゴシック';
+ }
+select {
+ font-family: 'MS Pゴシック';
 }
 </STYLE>
 </head>
@@ -86,32 +92,32 @@ font-family: "ＭＳ Ｐゴシック",sans-serif;
 				<FORM ACTION="tryagain.jsp" METHOD="POST">
 					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
 						TYPE="hidden" NAME="group" VALUE="<%= post %>"> <INPUT
-						TYPE="submit" VALUE="月表示" title="月表示に移動します。">
+						TYPE="submit" VALUE="月表示" title="月表示に移動します。" style="font-family: 'MS Pゴシック'">
 				</FORM>
 			</TD>
 			<TD>
 				<FORM ACTION="TestExample34.jsp" METHOD="POST">
 					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
 						TYPE="hidden" NAME="group" VALUE="<%= post %>"> <INPUT
-						TYPE="submit" VALUE="週表示" title="週表示に移動します。">
+						TYPE="submit" VALUE="週表示" title="週表示に移動します。" style="font-family: 'MS Pゴシック'">
 				</FORM>
 			</TD>
 			<TD>
 				<FORM ACTION="h_hyoji.jsp" METHOD="POST">
 					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
 						TYPE="hidden" NAME="group" VALUE="<%= post %>"> <INPUT
-						TYPE="submit" VALUE="日表示" title="日表示に移動します。">
+						TYPE="submit" VALUE="日表示" title="日表示に移動します。" style="font-family: 'MS Pゴシック'">
 				</FORM>
 			</TD>
 			<TD>
 				<FORM ACTION="personal.jsp" METHOD="POST" TARGET="_parent">
 					<INPUT TYPE="hidden" NAME="id" VALUE="<%= ID %>"> <INPUT
-						TYPE="submit" VALUE="個人設定" title="個人設定ページに移動します。">
+						TYPE="submit" VALUE="個人設定" title="個人設定ページに移動します。" style="font-family: 'MS Pゴシック'">
 				</FORM>
 			</TD>
 			<TD>
 				<FORM ACTION="/staff_room" METHOD="POST" TARGET="_top">
-					<INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。">
+					<INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。" style="font-family: 'MS Pゴシック'">
 				</FORM>
 			</TD>
 		</TR>
@@ -230,7 +236,7 @@ font-family: "ＭＳ Ｐゴシック",sans-serif;
 					value="<%= name %>"> <input type="hidden" name="count"
 					value="<%= intTuki %>"> <input type="hidden" name="countY"
 					value="<%= intYear %>"> <input type="submit" value="選択"
-					title="左記のグループを右に表示します。"></td>
+					title="左記のグループを右に表示します。" style="font-family: 'MS Pゴシック'"></td>
 			</form>
 			<%
 				ResultSet rs4 = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_GRUNO = '"+ post +"' ORDER BY K_PASS2 , K_社員NO");
@@ -300,7 +306,7 @@ font-family: "ＭＳ Ｐゴシック",sans-serif;
 					value="<%= name %>"> <input type="hidden" name="count"
 					value="<%= intTuki %>"> <input type="hidden" name="countY"
 					value="<%= intYear %>"> <input type="submit" value="表示"
-					title="左記の人のスケジュールを表示します。"></td>
+					title="左記の人のスケジュールを表示します。" style="font-family: 'MS Pゴシック'"></td>
 			</form>
 		</tr>
 	</table>
@@ -314,7 +320,7 @@ font-family: "ＭＳ Ｐゴシック",sans-serif;
 						type="hidden" name="kojin" value="<%= name %>"> <input
 						type="hidden" name="count" value="<%= intTuki - 1 %>"> <input
 						type="hidden" name="countY" value="<%= intYear %>"> <input
-						type="submit" name="zengetu" value="前月" title="前の月に移動します。">
+						type="submit" name="zengetu" value="前月" title="前の月に移動します。" style="font-family: 'MS Pゴシック'">
 					</td>
 				</form>
 				<td><SPAN CLASS="shadow"> <font size="6" color="white">
@@ -332,7 +338,7 @@ font-family: "ＭＳ Ｐゴシック",sans-serif;
 						type="hidden" name="kojin" value="<%= name %>"> <input
 						type="hidden" name="count" value="<%= intTuki + 1 %>"> <input
 						type="hidden" name="countY" value="<%= intYear %>"> <input
-						type="submit" name="jigetu" value="翌月" title="次の月に移動します。">
+						type="submit" name="jigetu" value="翌月" title="次の月に移動します。" style="font-family: 'MS Pゴシック'">
 					</td>
 				</form>
 			</tr>
