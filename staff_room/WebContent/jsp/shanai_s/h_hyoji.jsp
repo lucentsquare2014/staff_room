@@ -222,6 +222,9 @@ try{
 	height: 50;
 	width: 100%;
 }
+body{
+font-family: "ＭＳ Ｐゴシック",sans-serif;
+}
 </STYLE>
 <SCRIPT>
 		<!--

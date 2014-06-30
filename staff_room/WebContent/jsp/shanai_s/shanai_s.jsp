@@ -23,7 +23,6 @@ body {
     height: 100%;
     background-attachment: fixed;
     background-size: 100% 100%;
-    overflow: hidden;
     background-color: #fff;
 }
 .content{
@@ -39,7 +38,7 @@ body {
 <script type="text/javascript">
 function framesize(){
     var w = $(window).height();
-    $('.content').css("height", w-42);
+    $('iframe').css("height", w-42);
 }
 $(function(){
 	framesize();

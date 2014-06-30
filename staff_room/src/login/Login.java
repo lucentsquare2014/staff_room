@@ -47,6 +47,14 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// アクセスされたURLを取得
 		String accessURL = request.getParameter("accessURL").toString();
+		// 社内システムに直接アクセスしようとすると発動
+		if(accessURL.indexOf("Schedule.jsp")>0){
+			accessURL = "/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=1";
+		}else if(accessURL.indexOf("Menu_Gamen.jsp")>0){
+			accessURL = "/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=2";
+		}else if(accessURL.indexOf("OfficeDocuments.jsp")>0){
+			accessURL = "/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=3";
+		}
 		System.out.println(accessURL + "(Login.jsp)");
 		// Login.jspからidとpasswordを取得する
 		String id = request.getParameter("id").trim();
@@ -92,10 +100,11 @@ public class Login extends HttpServlet {
 	    	return;
 	    } else {
 
-	    	// ログイン回数をプラスする
+/*	    	// ログイン回数をプラスする
+            // ５回失敗はナシで
 	    	int n = Integer.valueOf(String.valueOf(session.getAttribute("count")));
 	    	session.setAttribute("count", ++n);
-	    	String msg = "idまたはパスワードが正しくありません。";
+*/	    	String msg = "idまたはパスワードが正しくありません。";
 	    	request.setAttribute("error",msg);
 	    	request.setAttribute("accessURL", accessURL);
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");

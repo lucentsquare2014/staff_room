@@ -13,7 +13,12 @@ public class ReadCheck {
 	
 	public String getUnread(String id){
 		String[] kanri_info = getInfo(id);
-		String last_access = kanri_info[1].substring(0, kanri_info[1].indexOf("."));
+		String last_access = "";
+		if(kanri_info[1].indexOf(".") != -1){
+			last_access = kanri_info[1].substring(0, kanri_info[1].indexOf("."));
+		}else{
+			last_access = kanri_info[1].substring(0, kanri_info[1].indexOf("+"));
+		}
 		NewsDAO news = new NewsDAO();
 		String new_ids = news.getNewsFromLastLogin(last_access);
 		if(new_ids != null){
@@ -77,7 +82,7 @@ public class ReadCheck {
 			e.printStackTrace();
 		} 
 		shain.closeDB(con);
-		return unread_ids;
+		return update_ids;
 	}
 	
 }
