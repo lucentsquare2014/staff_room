@@ -231,9 +231,6 @@ input {
 select {
  font-family: "ＭＳ Ｐゴシック";
 }
-textarea {
- font-family: "ＭＳ Ｐゴシック";
-}
 </STYLE>
 <SCRIPT>
 		<!--

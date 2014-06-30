@@ -75,13 +75,13 @@ String memo = "";
 	width: 100%;
 }
 body{
-font-family: "ＭＳ Ｐゴシック","MS PGothic";
+font-family: "ＭＳ Ｐゴシック";
 }
 input {
- font-family: 'MS Pゴシック';
+ font-family: "ＭＳ Ｐゴシック";
  }
 select {
- font-family: 'MS Pゴシック';
+ font-family: "ＭＳ Ｐゴシック";
 }
 </STYLE>
 </head>
@@ -116,7 +116,7 @@ select {
 				</FORM>
 			</TD>
 			<TD>
-				<FORM ACTION="/staff_room" METHOD="POST" TARGET="_top">
+				<FORM ACTION="/staff_room/jsp/top/top.jsp" METHOD="POST" target="_top">
 					<INPUT TYPE="submit" VALUE="スタッフルームに戻る" title="スタッフルームトップへ移動します。" style="font-family: 'MS Pゴシック'">
 				</FORM>
 			</TD>
