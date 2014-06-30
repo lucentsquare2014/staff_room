@@ -151,7 +151,6 @@
 					primary_count = rs.getInt("count");
 				}
 			}catch (SQLException e) {
-				System.out.println(Newsmap.get("id"));
 				System.out.println(e);
 			}
 		}
