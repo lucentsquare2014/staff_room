@@ -33,7 +33,7 @@ try{
 
  C_DBConnectionGeorgir georgiaDB = new C_DBConnectionGeorgir();
  Connection dbConn = georgiaDB.createConnection();
- 
+
 	Statement stmt = dbConn.createStatement();
 
 	/* グループコード・グループ名をコンボボックスに表示するための処理 */
@@ -462,28 +462,28 @@ for(i=0; i<hitKOJ; i++){
 			else if(yasumi != ""){
 				// 祝日
 				%>
-						
+
 						<td height="50" align="left" valign="top" bgcolor="pink">
 							<%
 			}
 			else if(j == 0){
 				// 日曜
 				%>
-						
+
 						<td height="50" align="left" valign="top" bgcolor="pink">
 							<%
 			}
 			else if(j == 6){
 				// 土曜
 				%>
-						
+
 						<td height="50" align="left" valign="top" bgcolor="skyblue">
 							<%
 			}
 			else{
 				// 平日
 				%>
-						
+
 						<td height="50" align="left" valign="top" bgcolor="white">
 							<%
 			}
@@ -569,7 +569,7 @@ for(i=0; i<hitKOJ; i++){
 					else{
 						bmemo = "<b><メモ></b><BR>"+ bmemo +"";
 					}*/
-					
+
 					// 2013-06-18 変更者:鈴木亮子 21304
 					//if(b_plan == "" && b_plan2 == "" && b_place == "" && b_place2 == "" && bmemo == ""){
 					if(b_plan.length() == 0 && b_plan2.length() == 0 && b_place.length() == 0 && b_place2.length() == 0){
@@ -706,8 +706,8 @@ for(i=0; i<hitKOJ; i++){
                         var charde = date;
                         // JavaScriptによるCookieからの抜き出し
                         theCookie = document.cookie + ";";
-                        Sid = theCookie.indexOf("id");
-                        Sno = theCookie.indexOf("no");
+                        Sid = theCookie.indexOf("id=");
+                        Sno = theCookie.indexOf("no=");
                         Ss_date = theCookie.indexOf("s_date");
                         Ss_start = theCookie.indexOf("s_start");
                         if(Sid != -1){
@@ -736,7 +736,7 @@ for(i=0; i<hitKOJ; i++){
  					c = c + 1;
  				}
  %>
-			
+
 		</tr>
 		</TD>
 		</TR>
