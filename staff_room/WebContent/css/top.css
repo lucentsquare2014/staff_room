@@ -21,7 +21,7 @@ body {
 	display: block;
 	text-decoration: none;
 	list-style-type: none;
-	background-color:#5BC0DE;
+	background-color:#5BC0DE; 
 }
 
 #subnav-pill-content{
@@ -35,12 +35,16 @@ body {
   padding-top: 26px;
   width: 540px;
 }
+ 
+tr:nth-of-type(2n) {
+  background: none repeat scroll 0% 0% White;
+}
 
 #in_Div {
 	overflow-y: scroll;
 	line-height: 1.75em;
 	height: 260px;
-	background-color: whitesmoke;
+	background-color: LightYellow;
 }
 
 .changelog-content >thead>tr{
@@ -83,7 +87,7 @@ text-overflow: ellipsis;
 	left:70px;
 	top: 100px;
 	padding: 0;
-	background-color: #5bc0de;
+	background-color: #5bc0de; 
 	border-radius: 10px;
 }
 
@@ -91,6 +95,7 @@ text-overflow: ellipsis;
 	padding: 15px 20px 0 20px;
 	color: white;
 }
+
 
 .page-title {
 	clear: both;

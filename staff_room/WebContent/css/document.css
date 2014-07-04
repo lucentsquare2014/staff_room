@@ -24,13 +24,17 @@ div .uk-modal-dialog {
   width: 820px;
 }
 
+tr:nth-of-type(2n) {
+    background: none repeat scroll 0% 0% Ivory;
+}
+
 #in_Div {
 	overflow-y: scroll;
 	line-height: 1.75em;
 	max-height: 400px;
-	background-color: whitesmoke;
-    }
-
+	background-color: LightYellow;
+}
+ 
 table >thead{
 
 }
@@ -91,7 +95,7 @@ td#time {
  }
  
  td#type {
- 	background-color: #FAFAFA;
+ 	background-color: #FAFAFA; /*background-color: ;*/
  }
  
  #edit {

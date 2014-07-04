@@ -27,19 +27,19 @@
 <tr class="uk-text-center">
 	<!-- -----------管理者用チェックボックス作成----------- -->
 	<% if(user2.equals("1")){%>
-	<td class="coL1" bgcolor="#FFFFFF"><input type="checkbox" name="aa" value="<%=foldername[i]%>/<%=filename[x]%>"></td>
+	<td class="coL1" ><input type="checkbox" name="aa" value="<%=foldername[i]%>/<%=filename[x]%>"></td>
 	<%}%>
 
 	<!-- ファイル数の半分の時にのみ出力 -->
 	<%if (x == 0) {%>
-	<td bgcolor="#FFFFFF" id="type"rowspan=<%=filename.length%> class="coL2 uk-text-middle uk-text-left uk-text-bold"><%=foldername[i]%></td>
+	<td  id="type"rowspan=<%=filename.length%> class="coL2 uk-text-middle uk-text-left uk-text-bold"><%=foldername[i]%></td>
 	<%}%>
 
 	<!-- フォーマットを変換した 更新日時を出力-->
-	<td class="coL3" bgcolor="#FFFFFF" id="time"><%=dddate.format(date)%></td>
+	<td class="coL3"  id="time"><%=dddate.format(date)%></td>
 
 	<!-- String型のファイル名を出力 -->
-	<td bgcolor="#FFFFFF" class="coL4 uk-text-left" id="filename">
+	<td  class="coL4 uk-text-left" id="filename">
 		<a href="/staff_room/manual/<%=foldername[i]%>/<%=filename[x]%>"><%=filename[x]%></a>
 		<% if(user2.equals("1")){%>
 		&nbsp;

@@ -25,7 +25,11 @@ p.scroll{
 	overflow-y: scroll;
 	line-height: 1.75em;
 	height: 360px;
-	background-color: whitesmoke;
+	background-color: lightyellow;
+}
+
+tr:nth-of-type(2n) {
+  background: none repeat scroll 0% 0% Ivory;
 }
 
 thead{

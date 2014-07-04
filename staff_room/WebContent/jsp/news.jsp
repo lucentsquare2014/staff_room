@@ -103,8 +103,8 @@
 			DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd",new Locale("JP", "JP", "JP"));
 				%>
 				<tr>
-				<td bgcolor="#FFFFFF" class="coL1 uk-h3  uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
-				<td id="print<%=row.get("news_id") %>" bgcolor="#FFFFFF" class="coL2 uk-h3  uk-text-left">
+				<td class="coL1 uk-h3  uk-text-center"><%=dddate.format(date)%>&nbsp;</td>
+				<td id="print<%=row.get("news_id") %>" class="coL2 uk-h3  uk-text-left">
 				<!--記事のタイトルなどを表示-->
 				<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div>

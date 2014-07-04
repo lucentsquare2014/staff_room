@@ -23,9 +23,8 @@
 <jsp:include page="/jsp/header/header.jsp" />
 
 <div class="changelog uk-container-center" style="padding-top: 40px; width:820px;">
-
 <br>
-	<!--------------  管理者用　 ----------------->　
+<!--------------  管理者用　 ----------------->　
 	<% if(user.equals("1")){ %>
 	<div class="uk-grid">
 		<div class="uk-width-1-4 uk-text-left">
@@ -63,7 +62,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div id="out_Div"><div id="in_Div">
 	<table border="1" class="uk-table uk-table-striped uk-table-hover uk-width-1-1">
 	<thead>
@@ -77,7 +75,6 @@
 	</thead>
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
 		<%@ include file="syorui_source.jsp"%>
-
 	</table>
 	</div></div>
 <% }else{ //-----------一般利用者の申請書類ページ----------%>
@@ -94,11 +91,10 @@
 		<!-- includeディレクトリを使い、"syorui_source.jsp"ファイルを埋め込む -->
 		<%@ include file="syorui_source.jsp"%>
 	</table>
-	</div>
+	</div></div>
 <% } %>　　　　　　
 	</div>
 	<br><br>
-</div>
 <div id="edit_form" class="uk-modal">
     <div class="uk-modal-dialog">
         <a class="uk-modal-close uk-close"></a>

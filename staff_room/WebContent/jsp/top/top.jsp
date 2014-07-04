@@ -82,7 +82,7 @@ $(function() {
 					<thead>
 						<tr>
 						     <th class="coL1"></th>
-  							 <th class="coL2 uk-text-left">&nbsp;日付</th>
+  							 <th class="coL2 uk-text-left">日付</th>
  							 <th class="coL3 uk-text-left">件名</th>
  							 <th class="coL4 uk-text-left">分類</th>
 						</tr>
@@ -97,7 +97,7 @@ $(function() {
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td style="width:200px;">
+								<td style="width:38px;">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
@@ -144,7 +144,7 @@ $(function() {
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td style="width:40px;">
+								<td style="width:38px;">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
@@ -189,7 +189,7 @@ $(function() {
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td style="width:40px;">
+								<td style="width:38px;">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
@@ -234,7 +234,7 @@ $(function() {
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td style="width:40px;">
+								<td style="width:38px;">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
@@ -279,7 +279,7 @@ $(function() {
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td style="width:40px;">
+								<td style="width:38px;">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
@@ -324,7 +324,7 @@ $(function() {
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
 							<tr class="changelog-ul ">
-								<td style="width:40px;">
+								<td style="width:38px;">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
 								<%}%>
