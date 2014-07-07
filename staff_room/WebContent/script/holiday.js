@@ -21,18 +21,34 @@ $(function(){
 			alert("祝日名を入力してください！");
 			return false;
 		}
+		var y = $("#year option:selected").text();
+		var di = new Date(y, m - 1, d);
+		if(!(di.getFullYear() == y && di.getMonth() == m-1 && di.getDate() == d)){
+			alert("正しい日付を入力してください。");
+			return false;
+		}
 	});
 	
 	$("input[type='text']").change(function(){
-		var txt = $(this).val();
+		var txt = $.trim($(this).val());
 		var han = txt.replace(/[Ａ-Ｚａ-ｚ０-９]/g,function(s){return String.fromCharCode(s.charCodeAt(0)-0xFEE0);});
+		if(han.match(/^[1-9]$/)){
+			han = 0 + han;
+		}
 		$(this).val(han);
 	});
 	
 	$("#update").click(function(){
+		var y = $("#year option:selected").text();
 		var m = $.trim($("input[name='month']").val());
 		var d = $.trim($("input[name='day']").val());
-		
+		if(m != "" && d != ""){
+			var di = new Date(y, m - 1, d);
+			if(!(di.getFullYear() == y && di.getMonth() == m-1 && di.getDate() == d)){
+				alert("正しい日付を入力してください。");
+				return false;
+			}
+		}
 	});
 	
 	$("#year").change(function(){
