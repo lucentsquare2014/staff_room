@@ -1,0 +1,15 @@
+body {
+	width: 100%;
+	background-attachment: fixed;
+	background-image: url("/staff_room/images/help1.png");
+	background-repeat:no-repeat;
+}
+
+ul{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+h2{
+	margin-top:10px;
+	margin-bottom:10px;
+}
