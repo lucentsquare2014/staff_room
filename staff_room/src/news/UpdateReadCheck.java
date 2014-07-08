@@ -62,7 +62,6 @@ public class UpdateReadCheck extends HttpServlet {
 		try {
 			// 文字列を一旦ArrayListに変換
 			List<String> read_check = this.toArrayList(unread, ",");
-			System.out.println(read_check + ":" + read_check.size());
 
 			// 要素を検索してその要素を削除
 			if(read_check.indexOf(news_id) != -1){

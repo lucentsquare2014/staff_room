@@ -44,7 +44,6 @@ public class Exchange extends HttpServlet {
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println(json);
-		System.out.println(json);
 	}
 
 }
