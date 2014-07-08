@@ -23,11 +23,11 @@
 	<div class="uk-panel uk-panel-box uk-align-center uk-width-4-5">
 		<h2 class="uk-text-bold">バージョン情報</h2>
 		<ul>
-			<li>2014/07/04 ver2.00  SSL認証の適用<br>
-			　　　　　　　　　　　　　　社内スケジュールのバグ修正<br>			　　　　　　　　　　　　　　
-			　　　　　　　　　　　　　　ページ内テーブルデザインの改善作業<br>
+			<li>2014/07/04 ver2.00　　SSL認証の適用<br>
+			　　　　　　　　　　　　　　　       社内スケジュールのバグ修正<br>			　　　　　　　　　　　　　          　
+　ページ内テーブルデザインの改善作業<br>　 </li>
 			
-			　　　　　　　　　　　　　　　　　　　</li>
+			　　　　　　　　　　　　　　　　　　　
 		</ul>
 		<ul>
 			<li>2014/06/27 ver1.00 リリース</li>
@@ -40,7 +40,7 @@
 			</li>
 		</ul>
 	</div>
-	</div>
+	
 
 </body>
 </html>
