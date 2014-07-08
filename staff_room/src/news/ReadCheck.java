@@ -59,6 +59,9 @@ public class ReadCheck {
 	//未読記事を更新する
 	private String updateReadCheck(String unread_ids,String new_ids,String number){
 		String update_ids = "";
+		if(unread_ids.equals(",")){
+			unread_ids = "";
+		}
 		String[] ids = (unread_ids + new_ids).split(",");
 		ArrayList<String> unique = new ArrayList<String>();
 		for(int i = 0; i < ids.length; i++){
