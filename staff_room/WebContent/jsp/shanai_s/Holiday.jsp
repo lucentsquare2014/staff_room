@@ -75,7 +75,7 @@ input[type="text"]{
 					HashMap<String, String> hld_map = hld_list.get(i);
 					String ymd = hld_map.get("h_年月日");
 					String month = ymd.substring(4, 6);
-					String day = ymd.substring(6);
+					String day = ymd.substring(6).trim();
 					String name = hld_map.get("h_休日名");
 			%>
 			<tr>

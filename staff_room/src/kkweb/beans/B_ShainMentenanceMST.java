@@ -15,7 +15,10 @@ public class B_ShainMentenanceMST {
 	private String yakusyoku;
 	private String hurigana;
 	// 管理権限の追加
-	private String administrator;	
+	private String administrator;
+	//スケジュール用グループ番号と表示順
+	private String k_gruno;
+	private String k_pass2;
 	
 	public String getYakusyoku() {
 		return yakusyoku;
@@ -108,5 +111,16 @@ public class B_ShainMentenanceMST {
 	public void setAdministrator(String administrator) {
 		this.administrator = administrator;
 	}
-
+	public String getK_gruno() {
+		return k_gruno;
+	}
+	public void setK_gruno(String k_gruno) {
+		this.k_gruno = k_gruno;
+	}
+	public String getK_pass2() {
+		return k_pass2;
+	}
+	public void setK_pass2(String k_pass2) {
+		this.k_pass2 = k_pass2;
+	}
 }

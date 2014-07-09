@@ -97,6 +97,9 @@ public class LoginDAO {
 				// フリガナと管理者権限を追加 2014-06-13
 				String hurigana = rs.getString("hurigana");
 				String administrator = rs.getString("administrator");
+				//スケジュール用グループ番号と表示順を追加2014-07-08
+				String k_gruno = rs.getString("k_gruno");
+				String k_pass2 = rs.getString("k_pass2");
 
 				b_shainmst.setId(id);
 				b_shainmst.setPw(pw);
@@ -111,6 +114,9 @@ public class LoginDAO {
 				// フリガナと管理者権限追加 2014-06-11
 				b_shainmst.setHurigana(hurigana);
 				b_shainmst.setAdministrator(administrator);
+				//スケジュール用グループ番号と表示順を追加2014-07-08
+				b_shainmst.setK_gruno(k_gruno);
+				b_shainmst.setK_pass2(k_pass2);
 
 				alist.add(b_shainmst);
 			}
