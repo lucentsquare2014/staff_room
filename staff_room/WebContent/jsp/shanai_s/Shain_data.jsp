@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %><%@ page import = "kkweb.dao.NenkyuDAO" %><%@ page import = "kkweb.beans.B_NenkyuMST" %>
-<%@ page import = "dao.S_GroupDAO,java.util.ArrayList,java.util.HashMap" %>
+<%@ page import = "schedule.GetGroup,java.util.ArrayList,java.util.HashMap" %>
 <jsp:useBean id="Shain" scope="session" class="kkweb.beans.B_ShainMentenanceMST"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
@@ -126,7 +126,7 @@
 <TD colspan="2">
 	<select name="k_gruno">
 	<%
-	S_GroupDAO group = new S_GroupDAO();
+	GetGroup group = new GetGroup();
 	ArrayList<HashMap<String, String>> list = group.getGroup();
 	for(int i = 0; i < list.size(); i++){
 		HashMap<String, String> row = list.get(i);

@@ -38,15 +38,15 @@
 </form>
 </td>
 <td>
-<form method="post" action="Holiday_Maintenance.jsp">
+<form method="post" action="Holiday.jsp">
 <input type="submit" value="祝日マスタメンテナンス" class="botton2">
 </form>
 </td>
 </tr>
 <tr>
 <td>
-<form method="get" action="//www.lucentsquare.co.jp/kinmu_db/top.html">
-<input type="submit" value="  社内申請システム  " class="botton2">
+<form method="post" action="Schedule_Maintenance.jsp">
+<input type="submit" value="  スケジュールマスタメンテナンス  " class="botton2">
 </form>
 </td>
 </tr>

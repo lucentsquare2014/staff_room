@@ -1,4 +1,4 @@
-package dao;
+package schedule;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,12 +8,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class S_GroupDAO {
-	public ArrayList<HashMap<String, String>> getGroup(){
+import dao.AccessDB;
+
+public class GetSection {
+	public ArrayList<HashMap<String, String>> getSection(){
 		AccessDB access = new AccessDB();
 		Connection con = access.openDB();
 		Statement stmt;
-		String sql = "SELECT * FROM schedule.gru ORDER BY g_gruno";
+		String sql = "SELECT * FROM schedule.yotei ORDER BY 順番";
 		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 		try {
 			stmt = con.createStatement();
