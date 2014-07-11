@@ -61,7 +61,7 @@ $(window).resize(function(){
 		<%if(value.equals("2")){%><iframe src="//www.lucentsquare.co.jp:8080/etalent5_27/main.jsp"></iframe><%}%>
 		<%if(value.equals("3")){%><iframe src="/staff_room/html/etc/WorkingGroup/Advance_WorkingGroup.html"></iframe><%} %>
 		<%if(value.equals("4")){%><iframe src="/staff_room/html/etc/newstaff_2014/newstaff_index.html"></iframe><%} %>
-		<%if(value.equals("5")){%><iframe src="//www.lucentsquare.co.jp/401KDVD/401K/401K_top.html"></iframe><%} %>
+		<%if(value.equals("5")){%><iframe src="/staff_room/html/etc/401K/401K_top.html"></iframe><%} %>
 		<%if(value.equals("6")){%><iframe src="/staff_room/html/etc/PMark/indexVer9.html"></iframe><%} %>
 		<%if(value.equals("7")){%><iframe src="/staff_room/html/etc/syanaihou/syanaihou/lsc01.htm"></iframe><%} %>
 		<%if(value.equals("8")){%><iframe src="/staff_room/html/etc/syanaihou/syanaihou/lsc02.htm"></iframe><%} %>
