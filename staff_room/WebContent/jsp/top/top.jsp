@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="dao.NewsDAO,
@@ -17,13 +18,42 @@
 		session.setAttribute("unread", unread);
 	}
 %>
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ja">
 <head>
 <jsp:include page="/html/head.html" />
 <link rel="stylesheet" href="/staff_room/css/top.css">
 <script src="/staff_room/script/read_check.js"></script>
 <script src="/staff_room/script/print.js"></script>
+<script src="/staff_room/script/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+       $("#history").hide();
+       $("#subnav-pill-content").show();
+       $("#top").show();
+      
+       var flg = "change";
+      
+        $("#button_id").click(function() {
+        	$("#history,#subnav-pill-content,#top").toggle();
+        	
+        	if (flg == "change"){
+        		$(this).text("連絡事項　表示").css("color","white").css("background","#5bc0de");
+        		flg = "next_change";
+        	}else{
+        		$(this).text("サイトversion情報　表示").css("color","white").css("background","coral");
+        		flg = "change";
+        	}
+        
+                                  
+        
+        });
+        });
+        
+</script>
+
 <script>
 $(function() {
 	$('#btn_print').click(function(){
@@ -41,25 +71,26 @@ $(function() {
 </head>
 <body>
 	<jsp:include page="/jsp/header/header.jsp" />
-	<div class="uk-grid">
-	<div class="uk-width-1-1 uk-text-right">
-	<div style="padding-top:45px;">
-	ver 1.00　　　&nbsp;
-	</div></div></div>
-		<div class="main-container uk-container uk-container-center">
-			<div class="changelog">
+	
+	
+	<div id= button_id>サイトversion情報　表示 
+	</div>
+	
+		
+		<div  class="main-container uk-container uk-container-center">
+			<div  class="changelog">
 				<div style="margin-botom: 20px;" class="changelog-title"
 					class="uk-panel-box">
-					<h1 class="uk-text-bold">連絡事項</h1>
-				</div>
+					<h1 id="top" class="uk-text-bold">連絡事項</h1>
+			</div>	
 				<!-- 切り替わるボタンを6個作成 -->
 				<ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#subnav-pill-content'}">
-					<li class="uk-active"><a href="#">すべて</a></li>
-					<li class=""><a href="#">総務</a></li>
-					<li class=""><a href="#">人事</a></li>
-					<li class=""><a href="#">行事</a></li>
-					<li class=""><a href="#">ビジネス推進室</a></li>
-					<li class=""><a href="#">その他</a></li>
+					<li id="top" class="uk-active"><a href="#">すべて</a></li>
+					<li id="top" class=""><a href="#">総務</a></li>
+					<li id="top" class=""><a href="#">人事</a></li>
+					<li id="top" class=""><a href="#">行事</a></li>
+					<li id="top" class=""><a href="#">ビジネス推進室</a></li>
+					<li id="top" class=""><a href="#">その他</a></li>
 				</ul>
 				<%
 				//未読のnews_idをvalueに入れる
@@ -163,6 +194,7 @@ $(function() {
 										<%=row.get("title")%></a></td>
 	<%}%>
 
+<td class="coL4"></td>
 
 
 							</tr><%}}%>
@@ -196,7 +228,7 @@ $(function() {
 
 								<%if(read_check.indexOf(row.get("news_id")) != -1){%>
 	                             <td><%=dddate.format(date)%></td>
-								<td><div class="uk-badge uk-badge-danger">New</div>
+								<td class="coL5"><div class="uk-badge uk-badge-danger">New</div>
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="uk-text-danger uk-text-bold kiji">
 										<%=row.get("title")%>
 									</a></td>
@@ -208,7 +240,7 @@ $(function() {
 										<%=row.get("title")%></a></td>
 	<%}%>
 
-
+<td class="coL4"></td>
 
 							</tr><%}}%>
 						</tbody>
@@ -248,12 +280,13 @@ $(function() {
 
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
-								<td>
+								<td class="coL5">
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%></a></td>
 	<%}%>
 
 
+<td class="coL4"></td>
 
 							</tr><%}}%>
 						</tbody>
@@ -278,7 +311,7 @@ $(function() {
 									Date date = format.parse(row.get("created"));
 									DateFormat dddate = new SimpleDateFormat("yyyy/MM/dd ",new Locale("JP", "JP", "JP"));
 							%>
-							<tr class="changelog-ul ">
+							<tr class="changelog-ul " >
 								<td style="width:38px;">
 								<%if(row.get("primary_flag").equals("1")){%>
 									&nbsp;<div class="uk-badge uk-badge-warning">緊急</div></td>
@@ -293,12 +326,13 @@ $(function() {
 
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
-								<td>
+								<td class="coL5">
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%></a></td>
 	<%}%>
 
 
+<td class="coL4"></td>
 
 							</tr><%}}%>
 						</tbody>
@@ -338,12 +372,13 @@ $(function() {
 
 								<%}else{%>
 								<td><%=dddate.format(date)%></td>
-								<td>
+								<td class="coL5">
 									<a id="<%= row.get("news_id") %>" data-uk-modal="{target:'#my-id'}" class="kiji">
 										<%=row.get("title")%></a></td>
 	<%}%>
 
 
+<td class="coL4"></td>
 
 							</tr><%}}%>
 						</tbody>
@@ -360,7 +395,18 @@ $(function() {
         	<a href="#" id="btn_print" class="uk-text-primary">
         		<i class="uk-icon-print" data-uk-tooltip title="プリント"></i>
         	</a>
+        	</div>
     	</div>
-	</div>
+
+<div id="history"  class="contents uk-width-2-3 uk-container-center main-container ">
+<div style="margin-bottom: 20px;" class="update-title"
+					class="uk-panel-box"><h1 class="uk-text-bold">
+					サイトversion情報</h1>
+	</div>		
+				<iframe class="uk-panel  uk-align-center uk-width-4-5 update_Div update-note " src="/staff_room/jsp/koshin/link.jsp"></iframe>
+	     	</div>
+
+
+	
 </body>
 </html>
