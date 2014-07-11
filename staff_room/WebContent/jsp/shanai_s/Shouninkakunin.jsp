@@ -62,7 +62,12 @@
 <INPUT TYPE="hidden" NAME="iraisha_number"VALUE="<%=iraisha_number %>" >
 <INPUT TYPE="hidden" NAME="iraisha_name" VALUE="<%=iraisha_name %>">
 <INPUT TYPE="hidden" NAME="iraisha_year_month"VALUE="<%=iraisha_year_month %>" >
-<INPUT TYPE="hidden" NAME="body" VALUE=" <%= b_syouninsha.getName() %> さんへ <%= iraisha_name %> さんの勤務報告書の承認をお願いします。 <%= ShainMST.getName() %> より　http://www.lucentsquare.co.jp:8080/staff_room/jsp/shanai_s/shanai_s?mode=2"/>
+<%
+							String uri = request.getRequestURL().toString();
+											uri = uri.substring(0,
+													uri.indexOf("/", uri.indexOf("//") + 2));											
+						%>
+<INPUT TYPE="hidden" NAME="body" VALUE=" <%= b_syouninsha.getName() %> さんへ <%= iraisha_name %> さんの勤務報告書の承認をお願いします。 <%= ShainMST.getName() %> より　<%=uri %>/staff_room/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=2"/>
 </FORM>
 </TD>
 </TR>
