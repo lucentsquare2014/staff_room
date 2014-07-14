@@ -66,9 +66,9 @@
 	<table border="1" class="uk-table uk-table-striped uk-table-hover uk-width-1-1">
 	<thead>
 		<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class="coL1 uk-text-center"><font color="#FFFFFF"></font></th>
-			<th Background="../../images/blackwhite1.png" class="coL6 uk-text-center"><font color="#FFFFFF">種別</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL7 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" style="width:27px;" class="uk-text-center"><font color="#FFFFFF"></font></th>
+			<th Background="../../images/blackwhite1.png" style="width:182px;" class="uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" style="width:121px;" class="uk-text-center"><font color="#FFFFFF">更新日時</font></th>
 			<th Background="../../images/blackwhite1.png" class="coL4 uk-text-left"><font color="#FFFFFF">　ファイル名</font></th>
 			<th Background="../../images/blackwhite1.png" class="coL5 uk-text-left"><font color="#FFFFFF"></font></th>
 		</tr>
@@ -82,8 +82,8 @@
 	<table border="1" class="uk-table uk-table-hover uk-width-1-1">
 	<thead>
 		<tr class="uk-text-large">
-			<th Background="../../images/blackwhite1.png" class="coL6 uk-text-center"><font color="#FFFFFF">種別</font></th>
-			<th Background="../../images/blackwhite1.png" class="coL7 uk-text-center"><font color="#FFFFFF">更新日時</font></th>
+			<th Background="../../images/blackwhite1.png" style="width:182px;" class="uk-text-center"><font color="#FFFFFF">種別</font></th>
+			<th Background="../../images/blackwhite1.png" style="width:121px;"class="uk-text-center"><font color="#FFFFFF">更新日時</font></th>
 			<th Background="../../images/blackwhite1.png" class="coL4 uk-text-left"><font color="#FFFFFF">　ファイル名</font></th>
 			<th Background="../../images/blackwhite1.png" class="coL5 uk-text-left"><font color="#FFFFFF"></font></th>
 		</tr>
