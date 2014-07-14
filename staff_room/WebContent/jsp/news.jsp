@@ -91,7 +91,7 @@
 		<table border="1" class="uk-table uk-text-center uk-width-medium-1-1">
 		<thead>
 		<tr class="uk-text-large">
-		<td Background="../images/blackwhite1.png" class="coL1 uk-h2"><font color="#ffffff">日付</font></td>
+		<td Background="../images/blackwhite1.png"  style="width:173px;" class="uk-h2"><font color="#ffffff">日付</font></td>
 		<td Background="../images/blackwhite1.png" class="coL2 uk-h2"><font color="#ffffff">件名</font></td>
 		</tr>
 		</thead>
