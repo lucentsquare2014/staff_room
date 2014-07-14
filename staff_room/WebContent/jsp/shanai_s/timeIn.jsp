@@ -23,9 +23,15 @@
 
 	// ログインしたユーザの社員番号を変数[ID]に格納
 	String ID = strEncode(request.getParameter("id"));
+	if(ID == null){
+		ID = session.getAttribute("login").toString();
+	}
 
 	// パラメータの取得[共用パラメータ]
 	String NO = request.getParameter("no");
+	if(NO == null){
+		NO = ID;
+	}
 	String DA = strEncode(request.getParameter("s_date"));
 	String GR = request.getParameter("group");
 
@@ -161,6 +167,9 @@
 
 	// 表示形式を設定
 	SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
+	if(DA == null){
+		DA = sFmt.format(dat);
+	}
 
 	//変数宣言
 	int i = 0;

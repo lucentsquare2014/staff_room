@@ -54,6 +54,10 @@ public class Login extends HttpServlet {
 			accessURL = "/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=2";
 		}else if(accessURL.indexOf("OfficeDocuments.jsp")>0){
 			accessURL = "/jsp/shanai_s/ID_PW_Nyuryoku.jsp?mode=3";
+		}else if(accessURL.indexOf("timeInsert") > 0 || accessURL.indexOf("timeUpdate") > 0){
+			accessURL = "/jsp/shanai_s/timeIn.jsp";
+		}else if(accessURL.indexOf("dayInsert") > 0 || accessURL.indexOf("dayUpdate") > 0){
+			accessURL = "/jsp/shanai_s/dayIn.jsp";
 		}
 		System.out.println(accessURL + "(Login.jsp)");
 		// Login.jspからidとpasswordを取得する
@@ -94,7 +98,8 @@ public class Login extends HttpServlet {
 	    	}
 	    	session.setAttribute("admin", adm);
 	    	session.setAttribute("username", userInfo[1]);
-	    	response.sendRedirect("/staff_room"+accessURL);
+			response.sendRedirect("/staff_room"+accessURL);
+	    	
 	    	//RequestDispatcher dispatcher = request.getRequestDispatcher(accessURL);
             //dispatcher.forward(request, response);
 	    	return;

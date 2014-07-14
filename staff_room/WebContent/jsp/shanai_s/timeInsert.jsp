@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="java.sql.*,java.io.*,java.util.* , java.util.Vector"%>
+<%@ page import="java.sql.*,java.io.*,java.util.* , java.text.* ,java.util.Vector,java.util.Date,java.util.Calendar"%>
 <%@ page import="kkweb.common.C_DBConnectionGeorgir"%>
 
 <%!public String strEncode(String strVal)
@@ -23,9 +23,14 @@ throws UnsupportedEncodingException{
 
 // ログインしたユーザの社員番号を変数[ID]に格納
 String ID = strEncode(request.getParameter("id"));
+if(ID == null){
+	ID = session.getAttribute("login").toString();
+}
 
 // [timeIn]で入力された各項目をパラメータとして取得
-String NO = request.getParameter("no");
+//String NO = request.getParameter("no");
+String NO = ID;
+System.out.println("sadsad:" + NO);
 String DA = request.getParameter("s_date");
 String GR = request.getParameter("group");
 
@@ -36,6 +41,12 @@ int DAy=2000;	//とりあえず
 int DAm=11;		//エラーを通過する
 int DAd=11;		//値を変数に入れておく
 boolean Uru = false;//うるう年ならtrueへ
+if(DA == null){
+	Calendar now = Calendar.getInstance();
+	Date dat = now.getTime();
+	SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
+	DA = sFmt.format(dat);
+}
 if(DA != ""){
 	DAy = Integer.parseInt(DA.substring(0,4));  // 年
 	DAm = Integer.parseInt(DA.substring(5,7));  // 月
@@ -141,7 +152,10 @@ String act = strEncode(request.getParameter("act"));
 		String group_id = "";
 		
 		while(GROUPID.next()){
-	group_id = GROUPID.getString("K_GRUNO");
+			group_id = GROUPID.getString("K_GRUNO");
+			if(GR == null){
+				GR = GROUPID.getString("k_gruno");
+			}
 		}
 		
 		GROUPID.close();

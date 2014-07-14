@@ -26,6 +26,9 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 try{
 	// ログインしたユーザの社員番号を変数[ID]に格納
 	String ID = strEncode(request.getParameter("id"));
+	if(ID == null){
+		ID = session.getAttribute("login").toString();
+	}
 
 	// パラメータの受け取り：グループコード
 	String post = request.getParameter("group");
@@ -35,6 +38,12 @@ try{
  Connection dbConn = georgiaDB.createConnection();
 
 	Statement stmt = dbConn.createStatement();
+	if(post == null){
+		ResultSet GM = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID +"'");
+		while(GM.next()){
+			post = GM.getString("k_gruno");
+		}
+	}
 
 	/* グループコード・グループ名をコンボボックスに表示するための処理 */
 	// SQLの実行・グループ情報

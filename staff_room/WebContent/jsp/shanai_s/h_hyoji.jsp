@@ -24,12 +24,24 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 try{
 	// ログインしたユーザの社員番号を変数[ID]に格納
 	String ID = strEncode(request.getParameter("id"));
+	if(ID == null){
+		ID = session.getAttribute("login").toString();
+	}
 
 	// パラメータの受け取り・日付
 	String strReturn = request.getParameter("s_date");
 
 	// パラメータの受け取り・グループコード
 	String post = request.getParameter("group");
+	if(post == null){
+		C_DBConnectionGeorgir dc = new C_DBConnectionGeorgir();
+		Connection dbConn = dc.createConnection();
+		Statement stmt = dbConn.createStatement();
+		ResultSet GM = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + ID +"'");
+		while(GM.next()){
+			post = GM.getString("k_gruno");
+		}
+	}
 
 	//カレンダーの呼び出し
 	GregorianCalendar cal = new GregorianCalendar();

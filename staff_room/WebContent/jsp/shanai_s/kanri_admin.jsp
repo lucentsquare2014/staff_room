@@ -296,7 +296,7 @@
 		shuku_day[a_count] = select_year + "1223";
 		shuku_name[a_count] = "天皇誕生日";
 		// 曜日を調べる
-		cal = new GregorianCalendar(intYear, 10, 23);
+		cal = new GregorianCalendar(intYear, 11, 23);
 		if (cal.get(cal.DAY_OF_WEEK) == 1) {
 			a_count++;
 			shuku_day[a_count] = select_year + "1224";
@@ -677,7 +677,7 @@
 								calendar.setTime(trialtime);
 								int intTodayY = calendar.get(Calendar.YEAR);
 
-								for (int x = intTodayY; x <= intTodayY + 1; x++) {
+								for (int x = intTodayY - 3; x <= intTodayY + 1; x++) {
 							%>
 							<OPTION VALUE=<%=x%>><%=x%></OPTION>
 							<%

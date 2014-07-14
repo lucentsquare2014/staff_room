@@ -26,6 +26,9 @@ public String strEncode(String strVal) throws UnsupportedEncodingException{
 
 // ログインしたユーザの社員番号を変数[ID]に格納
 String ID = strEncode(request.getParameter("id"));
+if(ID == null){
+	ID = session.getAttribute("login").toString();
+}
 
 // パラメータの受け取り
 String reqNo = strEncode(request.getParameter("no"));
@@ -51,8 +54,10 @@ ResultSet NAME = stmt.executeQuery("SELECT * FROM KINMU.KOJIN WHERE K_ID = '" + 
 if( name == null ){
 	while(NAME.next()){
 		name = NAME.getString("K_氏名");
+		if(post == null){
+		post = NAME.getString("k_gruno");
+		}
 	}
-
 	NAME.close();
 }else if( konohito != null ){
 	name = konohito;

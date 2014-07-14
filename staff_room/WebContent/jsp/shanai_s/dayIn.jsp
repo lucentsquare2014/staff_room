@@ -25,9 +25,15 @@
 
 	// ログインしたユーザの社員番号を変数[ID]に格納
 	String ID = strEncode(request.getParameter("id"));
+	if(ID == null){
+		ID = session.getAttribute("login").toString();
+	}
 
 	// パラメータの取得[共用パラメータ]
 	String NO = request.getParameter("no");
+	if(NO == null){
+		NO = ID;
+	}
 	String GR = request.getParameter("group");
 
 	// パラメータの取得[pubs使用]
@@ -40,6 +46,12 @@
 
 	// 選択された日付の分割
 	String BS = request.getParameter("b_start");
+	if(BS == null){
+		Calendar now = Calendar.getInstance();
+		Date dat = now.getTime();
+		SimpleDateFormat sFmt = new SimpleDateFormat("yyyy-MM-dd");
+		BS = sFmt.format(dat);
+	}
 	int BSy = Integer.parseInt(BS.substring(0, 4)); // 年
 	int BSm = Integer.parseInt(BS.substring(5, 7)); // 月
 	int BSd = Integer.parseInt(BS.substring(8, 10)); // 日
