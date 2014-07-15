@@ -58,6 +58,8 @@ public class Login extends HttpServlet {
 			accessURL = "/jsp/shanai_s/timeIn.jsp";
 		}else if(accessURL.indexOf("dayInsert") > 0 || accessURL.indexOf("dayUpdate") > 0){
 			accessURL = "/jsp/shanai_s/dayIn.jsp";
+		}else if(accessURL.indexOf("personal") > 0){
+			accessURL = "/jsp/shanai_s/personal.jsp";
 		}
 		System.out.println(accessURL + "(Login.jsp)");
 		// Login.jspからidとpasswordを取得する

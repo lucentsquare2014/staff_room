@@ -16,6 +16,9 @@
 
 	// ログインしたユーザの社員番号を変数[ID]に格納
 	String ID = strEncode(request.getParameter("id"));
+	if(ID == null){
+		ID = session.getAttribute("login").toString();
+	}
 
 	// チェック用フラグ
 	boolean flag = false;

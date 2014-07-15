@@ -49,7 +49,7 @@ public class DeleteSection extends HttpServlet {
 		} finally {
 			access.closeDB(con);
 		}
-		response.sendRedirect("/staff_room/jsp/shanai_s/schedule_maintenance.jsp");
+		response.sendRedirect("/staff_room/jsp/shanai_s/Schedule_Maintenance.jsp");
 	}
 
 }
