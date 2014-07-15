@@ -42,7 +42,7 @@ table{
 		<tr><td align="left"><small>3.削除する場合は削除する行の項目を空欄にした後「更新」のボタンを押してください。</small></td></tr>
 	</table>
 	<hr color = "#008080"><br>
-	<form method="post" action="NewGroup">
+	<form method="post" action="/staff_room/NewGroup">
 		<table border="1" class ="mainte">
 			<tr>
 				<th class="t-koumoku"><font color="white">番号</font></th>
@@ -57,7 +57,7 @@ table{
 			<tr><td><input type="submit" value="　追加　"  class="bottom" id="add_gruop"></td></tr>
 		</table>
 	</form><br>
-	<form method="post" action="UpdateGroup">
+	<form method="post" action="/staff_room/UpdateGroup">
 		<table border="1" class ="mainte" id="main">
 			<tr>
 				<th class="t-koumoku"><font color="white">番号</font></th>
@@ -114,7 +114,7 @@ table{
 		<tr><td align="left"><small>2.削除する場合は削除ボタンを押してください。</small></td></tr>
 	</table>
 	<hr color = "#008080"><br>
-	<form method="post" action="NewSection">
+	<form method="post" action="/staff_room/NewSection">
 		<table>
 			<tr>
 				<td>区分</td>
@@ -159,7 +159,7 @@ table{
 					<tr>
 						<td><%= yotei.get(m).get("場所") %></td>
 						<td>
-							<form method="post" action="DeleteSection">
+							<form method="post" action="/staff_room/DeleteSection">
 								<input type="submit" value="削除">
 								<input type="hidden" name="delete" value="<%= yotei.get(m).get("順番") %>">
 							</form>
@@ -177,7 +177,7 @@ table{
 					<tr>
 						<td><%= place.get(n).get("場所") %></td>
 						<td>
-							<form method="post" action="DeleteSection">
+							<form method="post" action="/staff_room/DeleteSection">
 								<input type="submit" value="削除">
 								<input type="hidden" name="delete" value="<%= place.get(n).get("順番") %>">
 							</form>

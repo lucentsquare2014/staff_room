@@ -18,15 +18,13 @@
 		session.setAttribute("unread", unread);
 	}
 %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-                    "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <jsp:include page="/html/head.html" />
 <link rel="stylesheet" href="/staff_room/css/top.css">
 <script src="/staff_room/script/read_check.js"></script>
 <script src="/staff_room/script/print.js"></script>
-<script src="/staff_room/script/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -46,9 +44,6 @@ $(document).ready(function(){
         		$(this).text("サイトversion情報　表示").css("color","white").css("background","coral");
         		flg = "change";
         	}
-        
-                                  
-        
         });
         });
         
@@ -77,20 +72,20 @@ $(function() {
 	</div>
 	
 		
-		<div  class="main-container uk-container uk-container-center">
+		<div id="top" class="main-container uk-container uk-container-center">
 			<div  class="changelog">
 				<div style="margin-botom: 20px;" class="changelog-title"
 					class="uk-panel-box">
-					<h1 id="top" class="uk-text-bold">連絡事項</h1>
+					<h1 class="uk-text-bold">連絡事項</h1>
 			</div>	
 				<!-- 切り替わるボタンを6個作成 -->
 				<ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#subnav-pill-content'}">
-					<li id="top" class="uk-active"><a href="#">すべて</a></li>
-					<li id="top" class=""><a href="#">総務</a></li>
-					<li id="top" class=""><a href="#">人事</a></li>
-					<li id="top" class=""><a href="#">行事</a></li>
-					<li id="top" class=""><a href="#">ビジネス推進室</a></li>
-					<li id="top" class=""><a href="#">その他</a></li>
+					<li class="uk-active"><a href="#">すべて</a></li>
+					<li class=""><a href="#">総務</a></li>
+					<li class=""><a href="#">人事</a></li>
+					<li class=""><a href="#">行事</a></li>
+					<li class=""><a href="#">ビジネス推進室</a></li>
+					<li class=""><a href="#">その他</a></li>
 				</ul>
 				<%
 				//未読のnews_idをvalueに入れる
@@ -398,15 +393,11 @@ $(function() {
         	</div>
     	</div>
 
-<div id="history"  class="contents uk-width-2-3 uk-container-center main-container ">
-<div style="margin-bottom: 20px;" class="update-title"
-					class="uk-panel-box"><h1 class="uk-text-bold">
-					サイトversion情報</h1>
-	</div>		
-				<iframe class="uk-panel  uk-align-center uk-width-4-5 update_Div update-note " src="/staff_room/jsp/koshin/link.jsp"></iframe>
-	     	</div>
-
-
-	
+<div id="history"  class="contents uk-width-2-3 uk-container-center main-container">
+	<div style="margin-bottom: 20px;" class="update-title uk-panel-box">
+		<h1 class="uk-text-bold">サイトversion情報</h1>
+	</div>
+	<iframe class="uk-panel  uk-align-center uk-width-4-5 update_Div update-note " src="/staff_room/jsp/koshin/link.jsp"></iframe>
+</div>
 </body>
 </html>

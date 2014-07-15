@@ -304,7 +304,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>C_Shain_update</servlet-name>
-    <url-pattern>/jsp/shanai_s/c_shain_update</url-pattern>
+    <url-pattern>/c_shain_update</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>C_Shain_delete</servlet-name>
@@ -450,7 +450,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>NewGroup</servlet-name>
-    <url-pattern>/jsp/shanai_s/NewGroup</url-pattern>
+    <url-pattern>/NewGroup</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>UpdateGroup</servlet-name>
@@ -458,7 +458,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateGroup</servlet-name>
-    <url-pattern>/jsp/shanai_s/UpdateGroup</url-pattern>
+    <url-pattern>/UpdateGroup</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>NewSection</servlet-name>
@@ -466,7 +466,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>NewSection</servlet-name>
-    <url-pattern>/jsp/shanai_s/NewSection</url-pattern>
+    <url-pattern>/NewSection</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>DeleteSection</servlet-name>
@@ -474,10 +474,13 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteSection</servlet-name>
-    <url-pattern>/jsp/shanai_s/DeleteSection</url-pattern>
+    <url-pattern>/DeleteSection</url-pattern>
   </servlet-mapping>
    <error-page>
     <error-code>404</error-code>
     <location>/jsp/error/404.jsp</location>
   </error-page>
+  <session-config>
+  	<session-timeout>5</session-timeout>
+  </session-config>
 </web-app>
