@@ -2,6 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="kkweb.dao.LoginDAO,java.util.HashMap" %>
+<% 
+if(session.isNew()){
+	response.sendRedirect("/staff_room/login.jsp");
+}
+%>
 <html lang = "ja">
 <head>
 <script type="text/javascript">

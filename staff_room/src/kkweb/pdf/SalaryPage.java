@@ -94,8 +94,9 @@ public class SalaryPage extends HttpServlet {
 				if(names.hasMoreElements()) target += "&";
 			}
 			System.out.println("doGet-> dispatcher ID_PW... (kkweb.pdf.SalalyPage.java)");
-			session.setAttribute("target", target);
-			request.getRequestDispatcher("ID_PW_Nyuryoku.jsp").forward(request, response);
+			//session.setAttribute("target", target);
+			response.sendRedirect("/staff_room/login.jsp");
+			//request.getRequestDispatcher("ID_PW_Nyuryoku.jsp").forward(request, response);
 		}
 	}
 
