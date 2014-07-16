@@ -65,6 +65,7 @@ body {
 				<input type="submit"
 					class="uk-button uk-button-large uk-button-primary" value="変更">
 			</div>
+			<input type="hidden" name="user" value="<%= session.getAttribute("login") %>">
 		</form>
 	</div>
 </body>

@@ -41,9 +41,10 @@ public class PwChange extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = ((HttpServletRequest)request).getSession();
+		//HttpSession session = ((HttpServletRequest)request).getSession();
 		String pwd = DigestUtils.sha1Hex(request.getParameter("now_pw1"));
-		String id = session.getAttribute("login").toString();
+		String id = request.getParameter("user");
+		//String id = session.getAttribute("login").toString();
 		String new_pwd = DigestUtils.sha1Hex(request.getParameter("new_pw1"));
 		if(pwCheck(id, pwd, new_pwd)){
 			response.sendRedirect("/staff_room/jsp/pwChange/pwChange_finish.jsp");
