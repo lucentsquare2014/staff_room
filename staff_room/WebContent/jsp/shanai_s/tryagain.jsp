@@ -562,7 +562,7 @@ select {
 					rs3.close();
 					sFmt = new SimpleDateFormat("yyyyMMdd");
 					// スケジュールの呼び出し
-					ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_社員NO = '"+ no +"'");
+					ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_社員NO = '"+ no +"'" + " ORDER BY s_start ASC");
 					while(rs6.next()){
 						String s_place = rs6.getString("S_PLACE").trim();		//場所取得
 						String s_place2 = rs6.getString("S_PLACE2");			//場所詳細取得
@@ -875,7 +875,7 @@ select {
 				sFmt = new SimpleDateFormat("yyyyMMdd");
 
 				// スケジュールの呼び出し
-				ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_社員NO = '"+ no +"'");
+				ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_社員NO = '"+ no +"'" + " ORDER BY s_start ASC");
 				while(rs6.next()){
 					String s_place = rs6.getString("S_PLACE").trim();		//場所取得
 					String s_place2 = rs6.getString("S_PLACE2");			//場所詳細取得
@@ -1156,7 +1156,7 @@ select {
 					rs3.close();
 					sFmt = new SimpleDateFormat("yyyyMMdd");
 					// スケジュールの呼び出し
-					ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_社員NO = '"+ no +"'");
+					ResultSet rs6 = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) +"' AND GO_社員NO = '"+ no +"'" + " ORDER BY s_start ASC");
 					while(rs6.next()){
 						String s_place = rs6.getString("S_PLACE").trim();		//場所取得
 						String s_place2 = rs6.getString("S_PLACE2");			//場所詳細取得

@@ -610,7 +610,7 @@ for(i=0; i<hitKOJ; i++){
 			cal.set( Year, Month-1, c);
 			thisMonth = cal.getTime();
 
-			ResultSet SCHE = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) + "' AND GO_社員NO = '"+ no +"'");
+			ResultSet SCHE = stmt.executeQuery("SELECT * FROM S_TABLE WHERE S_DATE = '"+ sFmt.format(thisMonth) + "' AND GO_社員NO = '"+ no +"'" + " ORDER BY s_start ASC");
 
 			String s_date = "";
 			String s_start = "";
