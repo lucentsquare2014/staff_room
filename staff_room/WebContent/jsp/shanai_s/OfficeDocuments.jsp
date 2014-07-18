@@ -340,5 +340,5 @@ String selectAction(String name){
 
 </html>
 <%} else {%>
-<% pageContext.forward("/");%>
+<% pageContext.forward("ID_PW_Nyuryoku.jsp?mode=3");%>
 <%} %>
