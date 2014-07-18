@@ -119,11 +119,7 @@ public class C_Shain_update extends C_ChangePageBase {
 			//管理者権限を追加
 			String administrator = request.getParameter("administrator").trim();
 			administrator = word.checks(administrator);
-			//スケジュール用グループ番号と表示順を追加2014-07-08
-			String k_gruno = request.getParameter("k_gruno").trim();
-			k_gruno = word.checks(k_gruno);
-			String k_pass2 = request.getParameter("k_pass2").trim();
-			k_pass2 = word.checks(k_pass2);
+			
 			//本番用
 			String mail = request.getParameter("mail").trim();
 			mail = word.checks(mail);
@@ -225,9 +221,7 @@ public class C_Shain_update extends C_ChangePageBase {
 				}
 			}
 			
-			sql =" update shainmst set name ='"+name+"',checked='"+checked+"',groupnumber ='"+groupnumber+"',mail ='"+mail+"',hyouzijun='"+hyouzijun+"',yakusyoku='"+yakusyoku
-					+"',hurigana='"+hurigana+"',administrator='"+administrator+"',k_gruno='"+k_gruno+"',k_pass2='"+k_pass2
-					+"' where number = '"+number+"'";
+			sql =" update shainmst set name ='"+name+"',checked='"+checked+"',groupnumber ='"+groupnumber+"',mail ='"+mail+"',hyouzijun='"+hyouzijun+"',yakusyoku='"+yakusyoku+"',hurigana='"+hurigana+"',administrator='"+administrator+"' where number = '"+number+"'";
 			
 			kousin2 = stmt.executeUpdate(sql);
 			

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %><%@ page import = "kkweb.dao.NenkyuDAO" %><%@ page import = "kkweb.beans.B_NenkyuMST" %>
-<%@ page import = "schedule.GetGroup,java.util.ArrayList,java.util.HashMap" %>
 <jsp:useBean id="Shain" scope="session" class="kkweb.beans.B_ShainMentenanceMST"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
@@ -116,29 +115,11 @@
 <TD><INPUT TYPE="text" SIZE="5" NAME="yakusyoku" VALUE="<%= Shain.getYakusyoku() %>" ></TD>
 </TR>
 <tr>
-<TH class="t-koumoku" colspan="4"><font color="white">メールアドレス</font></TH>
-<TH class="t-koumoku" colspan="2"><font color="white">グループ番号（スケジュール）</font></TH>
-<TH class="t-koumoku" colspan="1"><font color="white">表示順</font></TH>
+<TH class="t-koumoku" colspan="7"><font color="white">メールアドレス</font></TH>
 <TH class="t-koumoku" colspan="2"><font color="white">管理者権限</font></TH>
 </tr>
 <tr>
-<TD colspan="4"><INPUT TYPE="text" SIZE="60"  NAME="mail"  value="<%= Shain.getMail() %>" style="ime-mode: disabled;"></TD>
-<TD colspan="2">
-	<select name="k_gruno">
-	<%
-	GetGroup group = new GetGroup();
-	ArrayList<HashMap<String, String>> list = group.getGroup();
-	for(int i = 0; i < list.size(); i++){
-		HashMap<String, String> row = list.get(i);
-		if(row.get("g_gruno").equals(Shain.getK_gruno())){
-	%>
-	<option value="<%= row.get("g_gruno") %>" selected><%= row.get("g_gruno") %> <%= row.get("g_grname") %></option>
-	<% }else{ %>
-	<option value="<%= row.get("g_gruno") %>"><%= row.get("g_gruno") %> <%= row.get("g_grname") %></option>
-	<% }} %>
-	</select>
-</TD>
-<TD colspan="1"><INPUT TYPE="text" SIZE="20"  NAME="k_pass2" VALUE="<%= Shain.getK_pass2() %>"></TD>
+<TD colspan="7"><INPUT TYPE="text" SIZE="120"  NAME="mail"  value="<%= Shain.getMail() %>" style="ime-mode: disabled;"></TD>
 <TD colspan="2" align="center">
 <select name="administrator">
 <option value="0" <%if(Shain.getAdministrator().equals("0")){%>selected<%}%>>一般アカウント</option>
