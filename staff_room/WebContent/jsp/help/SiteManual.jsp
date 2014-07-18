@@ -25,7 +25,7 @@
 					<li><a href="#bbs_photo_etc" id="jump">8.掲示板、Photo、etc</a></li>
 					<li><a href="#pw_change" id="jump">9.ログインパスワードの変更</a></li>
 					<li><a href="#admin" id="jump">10.管理者側の操作について</a></li>
-					<li><a href="#information" id="jump">11.お問い合わせ・バージョン情報</a></li>
+					<li><a href="#information" id="jump">11.お問い合わせ</a></li>
 			</ul>
 </div>
 <div id="manual"class="uk-panel uk-panel-box uk-align-center" >
@@ -168,10 +168,10 @@
 	<li><a href="/staff_room/jsp/help/doc/read_check_help.pdf" target="_blank">記事未読件数表示ヘルプ</a></li>
 	<li><a href="/staff_room/jsp/help/doc/photo_help.pdf" target="_blank">PHOTOページ追加ヘルプ</a></li>
 </ol>
-<h2 class="uk-text-bold" id="information">11.お問い合わせ・バージョン情報</h2>&nbsp;
+<h2 class="uk-text-bold" id="information">11.お問い合わせ</h2>&nbsp;
 <ul>
 	<li>Staff_Roomのお問合せは：<a href ="mailto:lsc-admin@lucentsquare.co.jp">ビジネス推進室</a><br><br></li>
-	<li>2014/06/27 ver1.00 リリース<br><br><br><br></li>
+	
 </ul>
 	</div>
 	</div>

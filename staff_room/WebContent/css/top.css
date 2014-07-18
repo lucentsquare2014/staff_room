@@ -45,15 +45,15 @@ tr:nth-of-type(2n) {
 	position:absolute;
 	top: 50px;
   left: 10px;
-  border-top: 1px solid #ccc;  
-    border-right: 1px solid #999;  
-    border-bottom: 1px solid #999;  
-    border-left: 1px solid #ccc;  
+  border-top: 1px solid rgba(0,0,0,0.0);  
+    border-right: 1px solid rgba(0,0,0,0.0);  
+    border-bottom: 1px solid rgba(0,0,0,0.0);  
+    border-left: 1px solid rgba(0,0,0,0.0);  
     padding: 5px 20px;  
     font-weight: bold;  
     cursor: pointer;  
-    background: coral;
-    color:white;
+    background: rgba(0,0,0,0.0);
+    color:#999999;
 	
 }
 
@@ -166,21 +166,21 @@ pre{
 	position: absolute;
 	float: left;
 	align: left;
-	 border-top: 1px solid #ccc;  
-    border-right: 1px solid #999;  
-    border-bottom: 1px solid #999;  
-    border-left: 1px solid #ccc; 
+	 border-top: 3px solid #ccc;  
+    border-right: 3px solid #999;  
+    border-bottom: 3px solid #999;  
+    border-left: 3px solid #ccc; 
 	left:70px;
 	top: 100px;
 	padding: 0;
-	background-color: coral; 
+	background-color: #ffffcc; 
 	border-radius: 10px;
-	
+
 }
 
 .update-title h1 {
 	padding: 15px 20px 0 20px;
-	color: white;
+	color: #999999;
 }
 .update_Div {
 	

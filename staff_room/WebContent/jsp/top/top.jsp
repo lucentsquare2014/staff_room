@@ -38,10 +38,10 @@ $(document).ready(function(){
         	$("#history,#subnav-pill-content,#top").toggle();
         	
         	if (flg == "change"){
-        		$(this).text("連絡事項　表示").css("color","white").css("background","#5bc0de");
+        		$(this).text("連絡事項　表示").css("color","#999999").css("background","rgba(0,0,0,0.0)");
         		flg = "next_change";
         	}else{
-        		$(this).text("サイトversion情報　表示").css("color","white").css("background","coral");
+        		$(this).text("サイトversion1.0.1　表示").css("color","#999999").css("background","rgba(0,0,0,0.0)");
         		flg = "change";
         	}
         });
@@ -68,7 +68,7 @@ $(function() {
 	<jsp:include page="/jsp/header/header.jsp" />
 	
 	
-	<div id= button_id>サイトversion情報　表示 
+	<div id= button_id>サイトversion1.0.1　表示
 	</div>
 	
 		
