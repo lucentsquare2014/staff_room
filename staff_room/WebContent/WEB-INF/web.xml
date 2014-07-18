@@ -12,6 +12,10 @@
     <filter-name>LoginFilter</filter-name>
     <url-pattern>*.jsp</url-pattern>
   </filter-mapping>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/jsp/shanai_s/SalaryPage</url-pattern>
+  </filter-mapping>
   <filter>
     <filter-name>Allow Local Network Access</filter-name>
     <filter-class>file.IpAddressFilter</filter-class>
@@ -420,67 +424,8 @@
     <servlet-name>PayslipMailSender</servlet-name>
     <url-pattern>/jsp/shanai_s/PayslipMailSender</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>NewHoliday</servlet-name>
-    <servlet-class>holiday.NewHoliday</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>NewHoliday</servlet-name>
-    <url-pattern>/jsp/shanai_s/NewHoliday</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>UpdateHoliday</servlet-name>
-    <servlet-class>holiday.UpdateHoliday</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UpdateHoliday</servlet-name>
-    <url-pattern>/jsp/shanai_s/UpdateHoliday</url-pattern>
-  </servlet-mapping>
-   <servlet>
-    <servlet-name>Exchange</servlet-name>
-    <servlet-class>holiday.Exchange</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Exchange</servlet-name>
-    <url-pattern>/jsp/shanai_s/Exchange</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>NewGroup</servlet-name>
-    <servlet-class>schedule.NewGroup</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>NewGroup</servlet-name>
-    <url-pattern>/NewGroup</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>UpdateGroup</servlet-name>
-    <servlet-class>schedule.UpdateGroup</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>UpdateGroup</servlet-name>
-    <url-pattern>/UpdateGroup</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>NewSection</servlet-name>
-    <servlet-class>schedule.NewSection</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>NewSection</servlet-name>
-    <url-pattern>/NewSection</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>DeleteSection</servlet-name>
-    <servlet-class>schedule.DeleteSection</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DeleteSection</servlet-name>
-    <url-pattern>/DeleteSection</url-pattern>
-  </servlet-mapping>
    <error-page>
     <error-code>404</error-code>
     <location>/jsp/error/404.jsp</location>
   </error-page>
-  <session-config>
-  	<session-timeout>5</session-timeout>
-  </session-config>
 </web-app>

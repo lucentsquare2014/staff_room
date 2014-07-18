@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import = "schedule.GetGroup,java.util.ArrayList,java.util.HashMap" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%	String id2 = (String)session.getAttribute("key2");
 		if(id2 == null || id2.equals("false")){	
@@ -14,9 +13,9 @@
 	function form_submitA(){
 	//adrs ="http://www1.lucentsquare.co.jp/kintaikanri/Group_ichiran.jsp"
 	//移行後は以下を使用
-	adrs ="/staff_room/jsp/shanai_s/Group_ichiran.jsp";
-	LinkWin=window.open("","NewPage",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,width=400,height=500');
-	LinkWin.location.href=adrs;
+	adrs ="/staff_room/jsp/shanai_s/Group_ichiran.jsp"
+	LinkWin=window.open("","NewPage",'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=1,resizable=1,width=400,height=500')
+	LinkWin.location.href=adrs
 	}
 	function aboutbox() {	
 		var p = document.form1.f_name.value;
@@ -89,25 +88,10 @@
 <TD><INPUT TYPE="text" SIZE="18"  NAME="hyouzijun" ></TD>
 <TD><INPUT TYPE="text" SIZE="5"  NAME="yakusyoku" ></TD>
 </TR>
-<tr><TH class="t-koumoku" colspan="5"><font color="white">メールアドレス</font></TH>
-<TH class="t-koumoku" colspan="2"><font color="white">グループ番号（スケジュール）</font></TH>
-<TH class="t-koumoku" colspan="1"><font color="white">表示順</font></TH>
+<tr><TH class="t-koumoku" colspan="8"><font color="white">メールアドレス</font></TH>
 <TH class="t-koumoku" colspan="2"><font color="white">管理者権限</font></TH></tr>
 <tr>
-<TD colspan="5"><INPUT TYPE="text" SIZE="50"  NAME="mail" style="ime-mode: disabled;">@lucentsquare.co.jp</TD>
-<TD colspan="2">
-	<select name="k_gruno">
-	<%
-	GetGroup group = new GetGroup();
-	ArrayList<HashMap<String, String>> list = group.getGroup();
-	for(int i = 0; i < list.size(); i++){
-		HashMap<String, String> row = list.get(i);
-	%>
-	<option value="<%= row.get("g_gruno") %>"><%= row.get("g_gruno") %> <%= row.get("g_grname") %></option>
-	<% } %>
-	</select>
-</TD>
-<TD colspan="1"><INPUT TYPE="text" SIZE="20"  NAME="k_pass2" ></TD>
+<TD colspan="8"><INPUT TYPE="text" SIZE="85"  NAME="mail" style="ime-mode: disabled;">@lucentsquare.co.jp</TD>
 <TD colspan="2" align="center">
 <select name="administrator">
 <option value="0" selected>一般アカウント</option>

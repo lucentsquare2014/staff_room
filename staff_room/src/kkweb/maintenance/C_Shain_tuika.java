@@ -117,11 +117,6 @@ public class C_Shain_tuika extends C_ChangePageBase {
 			hyouzijun = word.checks(hyouzijun);
 			String yakusyoku = request.getParameter("yakusyoku").trim();
 			yakusyoku = word.checks(yakusyoku);
-			//スケジュール用グループ番号と表示順を追加2014-07-08
-			String k_gruno = request.getParameter("k_gruno").trim();
-			k_gruno = word.checks(k_gruno);
-			String k_pass2 = request.getParameter("k_pass2").trim();
-			k_pass2 = word.checks(k_pass2);
 						
 			String name = f_name+"　"+g_name;
 
@@ -193,8 +188,7 @@ public class C_Shain_tuika extends C_ChangePageBase {
 		//		sql = " insert into shainMST values ('"+id+"','"+pw+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1')";
 		//		sql = " insert into shainMST values ('"+id+"','"+pw1+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1','"+hyouzijun+"','"+yakusyoku+"')";
 				// フリガナと管理者権限を追加したsql↓
-				sql = " insert into shainMST values ('"+id+"','"+pw1+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1','"+hyouzijun+"','"+yakusyoku+
-						"','"+hurigana+"','"+administrator+"','"+k_gruno+"','"+k_pass2+"')";
+				sql = " insert into shainMST values ('"+id+"','"+pw1+"','"+checked+"','"+name+"','"+number+"','"+groupnumber+"','"+mail+"','1','"+hyouzijun+"','"+yakusyoku+"','"+hurigana+"','"+administrator+"')";
 
 				kousin2 = stmt.executeUpdate(sql);
 
