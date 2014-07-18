@@ -17,8 +17,8 @@
 	    <td>　　・勤怠システムから送信されるURL設定を修正しました。</td><br><br>
 		<td>　　・社内スケジュールにおいて、過去のスケジュール内容の時系列が<br>　　　バラバラになる問題を修正しました。</td><br><br>　
 		<td>　・スタッフルーム全体のテーブル色を変更しました。</td><br><br>　
-		<td>　・401K説明書類のページで、Google Chrome,Firefox,Operaでの<br>　　動画視聴ができない問題を修正しました（現在,Safariは未対応です）</td><br>　<br>　
-		<td>　・サイトversion情報の切り替え表示を追加しました。</td><br><br>　　
+		<td>　・401K説明書類のページで、Google Chrome,Firefox,Operaでの<br>　　　動画視聴ができない問題を修正しました（現在,Safariは未対応です）</td><br><br>　
+		<td>　・サイトVersion情報の切り替え表示を追加しました。</td><br><br>　　
 		
 		
 					
